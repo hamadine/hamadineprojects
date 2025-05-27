@@ -5,8 +5,9 @@ const assets = [
   "./style.css
   "./manifest.json",
   "./icon-192.png",
-  "./icon-512.png"
-  "./data/mots.json
+  "./icon-512.png",
+  "./data/mots.json",
+  "./stylelintrc.JSON
 ];
 
 self.addEventListener("install", e => {
