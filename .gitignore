@@ -1,0 +1,16 @@
+# Archives
+*.zip
+
+# Scripts locaux
+auto-fix.sh
+
+# Fichiers système
+.DS_Store
+Thumbs.db
+
+# Backups ou fichiers inutiles
+*.bak
+*.swp
+
+# Dossiers temporaires
+tadaksahak-learning-updated
