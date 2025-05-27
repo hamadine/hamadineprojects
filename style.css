@@ -1,0 +1,167 @@
+/* Palette du coucher de soleil dans le désert */
+:root {
+  --fond-principal: #fcebd5;
+  --texte-principal: #4b2e1f;
+  --accent: #d9822b;
+  --ombre: rgba(0, 0, 0, 0.1);
+  --fond-carte: #fff5e1;
+  --bouton: #c75c24;
+  --bouton-texte: #fff;
+  --bouton-hover: #a7491d;
+  --bordure-chat: #e3c5a1;
+}
+
+* {
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--fond-principal);
+  color: var(--texte-principal);
+  font-family: 'Segoe UI', sans-serif;
+  margin: 0;
+  padding: 1rem;
+}
+
+h1, h2, h3 {
+  color: var(--accent);
+  margin-bottom: 0.5rem;
+}
+
+main {
+  background-color: var(--fond-carte);
+  border-radius: 12px;
+  padding: 2rem;
+  max-width: 700px;
+  margin: auto;
+  box-shadow: 0 4px 12px var(--ombre);
+}
+
+.logo {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+.logo img {
+  width: 120px;
+  margin: 0.5rem;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+.rond img {
+  border-radius: 50%;
+}
+
+#mot {
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+#motTexte {
+  font-size: 2rem;
+  font-weight: bold;
+  animation: fadeIn 0.5s ease-in-out;
+}
+#definition {
+  font-size: 1.2rem;
+  margin-top: 0.5rem;
+}
+
+#compteur {
+  margin-top: 1rem;
+  font-style: italic;
+  color: #6e4a31;
+}
+
+#navigation {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 2rem;
+  gap: 1rem;
+}
+
+button {
+  background-color: var(--bouton);
+  color: var(--bouton-texte);
+  border: none;
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.1s ease;
+  width: 48%;
+}
+button:hover {
+  background-color: var(--bouton-hover);
+  transform: translateY(-2px);
+}
+button:focus-visible {
+  outline: 2px dashed var(--accent);
+  outline-offset: 4px;
+}
+
+#searchBar {
+  width: 100%;
+  padding: 0.75rem;
+  margin-bottom: 1rem;
+  font-size: 1rem;
+  border: 1px solid var(--accent);
+  border-radius: 8px;
+}
+
+.lang-switch {
+  text-align: center;
+  margin: 1rem 0;
+}
+.lang-switch button {
+  width: auto;
+  margin: 0 4px;
+  padding: 6px 12px;
+  border-radius: 6px;
+}
+
+#chatWindow {
+  background-color: var(--fond-carte);
+  border: 1px solid var(--bordure-chat);
+  padding: 1rem;
+  height: 250px;
+  overflow-y: auto;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  font-size: 0.95rem;
+}
+#chatInput {
+  width: 100%;
+  padding: 0.5rem;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  margin-top: 0.5rem;
+}
+
+footer {
+  text-align: center;
+  margin-top: 3rem;
+  font-size: 0.9rem;
+  color: #7c5c44;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  main {
+    padding: 1rem;
+  }
+
+  button {
+    width: 100%;
+    margin-top: 0.5rem;
+  }
+
+  #navigation {
+    flex-direction: column;
+    align-items: center;
+  }
+}
