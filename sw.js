@@ -2,9 +2,11 @@ const cacheName = "tadaksahak-v1";
 const assets = [
   "./",
   "./index.html",
+  "./style.css
   "./manifest.json",
   "./icon-192.png",
   "./icon-512.png"
+  "./data/mots.json
 ];
 
 self.addEventListener("install", e => {
