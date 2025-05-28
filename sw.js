@@ -9,11 +9,13 @@ const assets = [
   "./icon-192.png",
   "./icon-512.png",
   "./data/mots.json"
+  "./offline.html"
   // "./stylelintrc.JSON"  <-- Probablement inutile ici (explication ci-dessous)
 ];
 
 // INSTALLATION : mise en cache des fichiers essentiels
 self.addEventListener("install", event => {
+  self.skipWaiting();
   event.waitUntil(
     caches.open(cacheName).then(cache => {
       return cache.addAll(assets);
