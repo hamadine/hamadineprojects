@@ -1,74 +1,22 @@
 let mots = [];
 let index = 0;
 let langue = "fr";
-let uiLangue = "fr";
 let lectureActive = false;
 let autoLectureTimeout;
 
-// 🌍 Dictionnaire multilingue pour l'interface
-const UI_LABELS = {
-  fr: {
-    searchPlaceholder: "Chercher un mot...",
-    audio: "▶️ Écouter",
-    replay: "⟳ Rejouer",
-    autoplay: "▶️ Lecture auto",
-    previous: "◀️ Précédent",
-    next: "Suivant ▶️",
-    botWelcome: "Bot : Bonjour, je m'appelle Hamadine. Quel mot cherchez-vous ?",
-    notFound: "Mot non trouvé",
-    chatPlaceholder: "Écris ta question...",
-    send: "Envoyer"
-  },
-  en: {
-    searchPlaceholder: "Search a word...",
-    audio: "▶️ Listen",
-    replay: "⟳ Replay",
-    autoplay: "▶️ Autoplay",
-    previous: "◀️ Previous",
-    next: "Next ▶️",
-    botWelcome: "Bot: Hello, I’m Hamadine. What word are you looking for?",
-    notFound: "Word not found",
-    chatPlaceholder: "Type your question...",
-    send: "Send"
-  },
-  ar: {
-    searchPlaceholder: "ابحث عن كلمة...",
-    audio: "▶️ استمع",
-    replay: "⟳ إعادة",
-    autoplay: "▶️ تشغيل تلقائي",
-    previous: "◀️ السابق",
-    next: "التالي ▶️",
-    botWelcome: "البوت: مرحبًا، أنا حمادين. ما الكلمة التي تبحث عنها؟",
-    notFound: "الكلمة غير موجودة",
-    chatPlaceholder: "اكتب سؤالك...",
-    send: "إرسال"
-  },
-  ru: {
-    searchPlaceholder: "Искать слово...",
-    audio: "▶️ Прослушать",
-    replay: "⟳ Повтор",
-    autoplay: "▶️ Автовоспроизведение",
-    previous: "◀️ Назад",
-    next: "Вперёд ▶️",
-    botWelcome: "Бот: Привет, я Хамадин. Какое слово вы ищете?",
-    notFound: "Слово не найдено",
-    chatPlaceholder: "Напишите ваш вопрос...",
-    send: "Отправить"
-  }
-};
-
+// Chargement dynamique du JSON
 fetch("data/mots.json")
   .then(res => res.json())
   .then(data => {
     mots = data;
 
+    // ✅ Désactiver le bouton 'tz' s'il n'existe pas dans les données
     if (!mots.some(m => m.tz)) {
       const tzBtn = document.querySelector('[onclick*="tz"]');
       if (tzBtn) tzBtn.style.display = "none";
     }
 
     afficherMot();
-    mettreAJourInterface();
   })
   .catch(e => {
     document.getElementById("motTexte").innerText = "❌ Fichier mots.json introuvable";
@@ -76,33 +24,130 @@ fetch("data/mots.json")
     document.getElementById("compteur").innerText = "";
   });
 
-function mettreAJourInterface() {
-  const labels = UI_LABELS[uiLangue];
+function afficherMot() {
+  if (!mots.length) return;
+  const mot = mots[index];
+  document.getElementById("motTexte").innerText = mot?.mot || "—";
+  document.getElementById("definition").innerText = mot?.[langue] || "";
+  document.getElementById("compteur").innerText = `${index + 1} / ${mots.length}`;
 
-  document.getElementById("searchBar").placeholder = labels.searchPlaceholder;
-  document.querySelector("#audioButtons button:nth-child(1)").innerText = labels.audio;
-  document.querySelector("#audioButtons button:nth-child(2)").innerText = labels.replay;
-  document.querySelector("#audioButtons button:nth-child(3)").innerText = labels.autoplay;
-  document.querySelector("#navigation button:nth-child(1)").innerText = labels.previous;
-  document.querySelector("#navigation button:nth-child(2)").innerText = labels.next;
-  document.getElementById("chatInput").placeholder = labels.chatPlaceholder;
-  document.querySelector("button[onclick='envoyerMessage()']").innerText = labels.send;
+  document.querySelectorAll("#audioButtons button").forEach(btn => {
+    btn.disabled = !mot?.audio;
+    btn.style.opacity = mot?.audio ? "1" : "0.5";
+    btn.style.cursor = mot?.audio ? "pointer" : "not-allowed";
+  });
 }
 
-function changerLangueInterface(lang) {
-  if (UI_LABELS[lang]) {
-    uiLangue = lang;
-    mettreAJourInterface();
+function changerLangue(l) {
+  langue = l;
+  afficherMot();
+}
+
+function motSuivant() {
+  if (!mots.length) return;
+  index = (index + 1) % mots.length;
+  afficherMot();
+}
+
+function motPrecedent() {
+  if (!mots.length) return;
+  index = (index - 1 + mots.length) % mots.length;
+  afficherMot();
+}
+
+function jouerTadaksahak(i = index) {
+  if (!mots.length) return;
+  const audioFile = mots[i].audio;
+  if (audioFile) {
+    const audio = new Audio("audios/" + audioFile);
+    audio.play().catch(e => {
+      console.warn("Audio indisponible : " + e.message);
+      lectureActive = false; // ✅ arrête auto-lecture si audio échoue
+    });
   }
 }
 
-// ... (le reste de ton code reste identique)
+function rejouerMot() {
+  jouerTadaksahak(index);
+}
 
-// Ajout à la fin de `window.onload` :
+function lectureAuto() {
+  if (lectureActive) {
+    lectureActive = false;
+    clearTimeout(autoLectureTimeout);
+    return;
+  }
+  lectureActive = true;
+  lectureMot(index);
+}
+
+function lectureMot(i) {
+  if (!lectureActive || i >= mots.length) {
+    lectureActive = false;
+    return;
+  }
+  index = i;
+  afficherMot();
+  jouerTadaksahak(i);
+  autoLectureTimeout = setTimeout(() => lectureMot(i + 1), 4000);
+}
+
+function rechercherMot() {
+  if (!mots.length) return;
+  const terme = document.getElementById("searchBar").value.toLowerCase();
+  const found = mots.find(m =>
+    m.mot.toLowerCase().includes(terme) || m[langue]?.toLowerCase().includes(terme)
+  );
+  if (found) {
+    index = mots.indexOf(found);
+    afficherMot();
+  } else {
+    document.getElementById("motTexte").innerText = "Mot non trouvé";
+    document.getElementById("definition").innerText = "";
+    document.getElementById("compteur").innerText = "";
+  }
+}
+
+function envoyerMessage() {
+  const input = document.getElementById("chatInput");
+  const message = input.value.trim();
+  if (!message) return;
+
+  const chatWindow = document.getElementById("chatWindow");
+  const msgDiv = document.createElement("div");
+  msgDiv.textContent = "Vous : " + message;
+  msgDiv.style.fontWeight = "bold";
+  chatWindow.appendChild(msgDiv);
+
+  if (!mots.length) {
+    const botDiv = document.createElement("div");
+    botDiv.textContent = "Bot : Dictionnaire non chargé.";
+    chatWindow.appendChild(botDiv);
+    chatWindow.scrollTop = chatWindow.scrollHeight;
+    input.value = "";
+    return;
+  }
+
+  const réponse = mots.find(m =>
+    m.mot.toLowerCase() === message.toLowerCase() ||
+    m[langue]?.toLowerCase().includes(message.toLowerCase())
+  );
+
+  const botDiv = document.createElement("div");
+  botDiv.textContent = réponse
+    ? `Bot : ${réponse.mot} = ${réponse[langue]}`
+    : "Bot : Je ne connais pas ce mot.";
+  chatWindow.appendChild(botDiv);
+
+  chatWindow.scrollTop = chatWindow.scrollHeight;
+  input.value = "";
+  input.focus(); // ✅ UX clavier
+}
+
 window.onload = () => {
   const chatWindow = document.getElementById("chatWindow");
   const accueil = document.createElement("div");
-  accueil.textContent = UI_LABELS[uiLangue].botWelcome;
+  accueil.textContent = "Bot : Bonjour, je m'appelle Hamadine. Quel mot cherchez-vous ?";
   chatWindow.appendChild(accueil);
   chatWindow.scrollTop = chatWindow.scrollHeight;
-}; good evening
+};
