@@ -17,10 +17,11 @@
     
   </header>
 
-   <main>
-  <div class="logo" style="text-align:center;">
-    <img src="images/idaksahak_round.png" alt="Logo Tadaksahak" width="120" />
-  </div>
+  <main>
+    <div class="logo" style="text-align:center;">
+      <img src="images/idaksahak_round.png" alt="Logo Tadaksahak" width="120" />
+    </div>
+
     <section>
       <input
         id="searchBar"
@@ -76,9 +77,18 @@
   </footer>
 
   <script src="script.js" defer></script>
+
+  <!-- ✅ Bloc d’enregistrement du Service Worker -->
   <script>
     if ("serviceWorker" in navigator) {
-      navigator.serviceWorker.register("service-worker.js");
+      navigator.serviceWorker
+        .register("./sw.js")
+        .then(reg => {
+          console.log("✅ Service Worker enregistré avec succès :", reg.scope);
+        })
+        .catch(err => {
+          console.error("❌ Échec de l'enregistrement du Service Worker :", err);
+        });
     }
   </script>
 </body>
