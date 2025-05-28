@@ -164,4 +164,21 @@ footer {
     flex-direction: column;
     align-items: center;
   }
+  /* Sélecteur de langue d'interface (drapeaux) */
+.lang-switch[aria-label*="interface"] {
+  margin-top: 1.5rem;
+}
+.lang-switch[aria-label*="interface"] button {
+  font-size: 1.2rem;
+  padding: 8px 12px;
+  background-color: var(--fond-carte);
+  color: var(--texte-principal);
+  border: 2px solid var(--accent);
+  transition: transform 0.2s ease, background-color 0.2s ease;
+}
+.lang-switch[aria-label*="interface"] button:hover {
+  background-color: var(--accent);
+  color: white;
+  transform: scale(1.1);
+}
 }
