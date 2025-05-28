@@ -1,3 +1,4 @@
+import { traductionsUI } from './data/interface-langues.js';
 let mots = [];
 let index = 0;
 let langue = "fr";
