@@ -20,7 +20,7 @@ fetch("data/mots.json")
     afficherMot();
   })
   .catch(e => {
-    document.getElementById("motTexte").innerText = "❌ Fichier mots.json introuvable";
+    document.getElementById("motTexte").innerText = "data/mots.json;
     document.getElementById("definition").innerText = "";
     document.getElementById("compteur").innerText = "";
   });
@@ -137,7 +137,7 @@ function envoyerMessage() {
   const botDiv = document.createElement("div");
   botDiv.textContent = réponse
     ? `Bot : ${réponse.mot} = ${réponse[langue]}`
-    : "Bot : Je ne connais pas ce mot.";
+    : "Bot : Je ne connais pas ce mot mais je le cherche, contactez mon développeur Hamadine AG MOCTAR.";
   chatWindow.appendChild(botDiv);
 
   chatWindow.scrollTop = chatWindow.scrollHeight;
@@ -148,7 +148,7 @@ function envoyerMessage() {
 window.onload = () => {
   const chatWindow = document.getElementById("chatWindow");
   const accueil = document.createElement("div");
-  accueil.textContent = "Bot : Bonjour, je m'appelle Hamadine. Quel mot cherchez-vous ?";
+  accueil.textContent = "Bot : Bonjour, je m'appelle Hamadine. Demandez-moi un mot et je vous le donne. Il se peut que je ne connaisse pas certains mais je me bats pour vous en trouver. Le meilleur reste avenir. Alors vous êtes prêt? Yallah بسم االله";";
   chatWindow.appendChild(accueil);
   chatWindow.scrollTop = chatWindow.scrollHeight;
 };
