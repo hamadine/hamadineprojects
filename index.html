@@ -14,7 +14,6 @@
 
 <body>
   <header class="logo" aria-label="Logos Tadaksahak">
-    
   </header>
 
   <main>
@@ -23,6 +22,7 @@
     </div>
 
     <section>
+      <!-- ✅ Barre de recherche -->
       <input
         id="searchBar"
         type="text"
@@ -35,12 +35,21 @@
         <h2 id="motTexte">...</h2>
         <p id="definition">...</p>
 
-        <div class="lang-switch" aria-label="Changer de langue">
+        <!-- ✅ Sélecteur de langue des définitions -->
+        <div class="lang-switch" aria-label="Changer la langue des traductions">
           <button onclick="changerLangue('fr')" aria-label="Français">Fr</button>
           <button onclick="changerLangue('en')" aria-label="Anglais">En</button>
           <button onclick="changerLangue('ar')" aria-label="Arabe">ع</button>
           <button onclick="changerLangue('tz')" aria-label="Tamajaq">ⵜ</button>
           <button onclick="changerLangue('ru')" aria-label="Russe">Ru</button>
+        </div>
+
+        <!-- ✅ Nouveau : sélecteur de langue de l’interface -->
+        <div class="lang-switch" style="margin-top: 1rem;" aria-label="Changer la langue de l'interface">
+          <button onclick="changerLangueInterface('fr')" aria-label="Interface français">🇫🇷</button>
+          <button onclick="changerLangueInterface('en')" aria-label="Interface anglais">🇬🇧</button>
+          <button onclick="changerLangueInterface('ar')" aria-label="Interface arabe">🇸🇦</button>
+          <button onclick="changerLangueInterface('ru')" aria-label="Interface russe">🇷🇺</button>
         </div>
 
         <p id="compteur">1 / X</p>
