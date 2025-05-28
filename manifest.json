@@ -1,0 +1,18 @@
+{
+  "name": "Tadaksahak Learning",
+  "short_name": "Tadaksahak",
+  "lang": "fr",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#fcebd5",
+  "theme_color": "#d9822b",
+  "description": "Apprentissage du vocabulaire Tadaksahak avec audio et traduction multilingue.",
+  "icons": [
+    {
+      "src": "images/idaksahak_round.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

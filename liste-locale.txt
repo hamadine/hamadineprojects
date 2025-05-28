@@ -1,0 +1,24 @@
+.:
+audit_web.sh
+auto-fix (1).zip
+auto-fix.sh
+auto-fix.zip
+data
+fichiers-existants.txt
+fichiers-locaux.txt
+images
+index.html
+liens-utilises.txt
+liste-locale.txt
+manifest.json
+script.js
+style.css
+sw.js
+tadaksahak-learning-updated.zip
+
+./data:
+mots.json
+
+./images:
+idaksahak_round.png
+idaksahak_square.png
