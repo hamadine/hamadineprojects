@@ -123,795 +123,228 @@
     "mot": "Guŋgú",
     "prononciation": "ⴳⵓⵏⴳⵓ",
     "categorie": "n.",
-    "traductions": {
-      "fr": "Ventre",
-      "en": "Belly",
-      "ar": "بطن",
-      "ru": "Живот"
-    },
+    "fr": "Ventre",
+    "en": "Belly",
+    "ar": "بطن",
+    "ru": "Живот",
     "definition": "Partie du corps où se trouvent les organes digestifs.",
     "etymologie": "",
-    "audio": "./audio/gunggu.mp3"
+    "audio": "gunggu.mp3"
   },
   {
     "mot": "Bêr",
     "prononciation": "ⴱⴻⵔ",
     "categorie": "vi.",
-    "traductions": {
-      "fr": "Être grand",
-      "en": "Big, to be",
-      "ar": "كبير",
-      "ru": "Быть большим"
-    },
+    "fr": "Être grand",
+    "en": "Big, to be",
+    "ar": "كبير",
+    "ru": "Быть большим",
     "definition": "Verbe qualifiant ce qui possède une grande taille.",
     "etymologie": "",
-    "audio": "./audio/ber.mp3"
+    "audio": "ber.mp3"
   },
   {
     "mot": "Bêr",
     "prononciation": "ⴱⴻⵔ",
     "categorie": "vt.",
-    "traductions": {
-      "fr": "Agrandir",
-      "en": "Big, to make",
-      "ar": "يُكبّر",
-      "ru": "Увеличивать"
-    },
+    "fr": "Agrandir",
+    "en": "Big, to make",
+    "ar": "يُكبّر",
+    "ru": "Увеличивать",
     "definition": "Action de rendre quelque chose plus grand.",
     "etymologie": "",
-    "audio": "./audio/ber.mp3"
+    "audio": "ber.mp3"
   },
   {
     "mot": "Cíidaw",
     "prononciation": "ⵛⵉⴷⴰⵡ",
     "categorie": "n.",
-    "traductions": {
-      "fr": "Oiseau",
-      "en": "Bird (general)",
-      "ar": "طائر",
-      "ru": "Птица"
-    },
+    "fr": "Oiseau",
+    "en": "Bird (general)",
+    "ar": "طائر",
+    "ru": "Птица",
     "definition": "Animal à plumes qui vole.",
     "etymologie": "",
-    "audio": "./audio/ciidaw.mp3"
+    "audio": "ciidaw.mp3"
   },
   {
     "mot": "Ŋá",
     "prononciation": "ⵏⴰ",
     "categorie": "vt.",
-    "traductions": {
-      "fr": "Mordre (animal)",
-      "en": "Bite (animal), to",
-      "ar": "يعض",
-      "ru": "Кусать (животное)"
-    },
+    "fr": "Mordre (animal)",
+    "en": "Bite (animal), to",
+    "ar": "يعض",
+    "ru": "Кусать (животное)",
     "definition": "Action de saisir avec les dents.",
     "etymologie": "",
-    "audio": "./audio/nga.mp3"
+    "audio": "nga.mp3"
   },
   {
     "mot": "ṇám",
     "prononciation": "ⵏⴰⵎ",
     "categorie": "vt.",
-    "traductions": {
-      "fr": "Mordre",
-      "en": "Bite, to",
-      "ar": "يعض",
-      "ru": "Кусать"
-    },
+    "fr": "Mordre",
+    "en": "Bite, to",
+    "ar": "يعض",
+    "ru": "Кусать",
     "definition": "Action de saisir avec les dents.",
     "etymologie": "",
-    "audio": "./audio/nam.mp3"
+    "audio": "nam.mp3"
   },
   {
     "mot": "Bíibi",
     "prononciation": "ⴱⵉⴱⵉ",
     "categorie": "adj.",
-    "traductions": {
-      "fr": "Noir",
-      "en": "Black",
-      "ar": "أسود",
-      "ru": "Чёрный"
-    },
+    "fr": "Noir",
+    "en": "Black",
+    "ar": "أسود",
+    "ru": "Чёрный",
     "definition": "Couleur sombre, opposée à la lumière.",
     "etymologie": "",
-    "audio": "./audio/biibi.mp3"
+    "audio": "biibi.mp3"
   },
   {
     "mot": "Bíibi",
     "prononciation": "ⴱⵉⴱⵉ",
     "categorie": "n.",
-    "traductions": {
-      "fr": "Noir (couleur)",
-      "en": "Black (color)",
-      "ar": "أسود",
-      "ru": "Чёрный (цвет)"
-    },
+    "fr": "Noir (couleur)",
+    "en": "Black (color)",
+    "ar": "أسود",
+    "ru": "Чёрный (цвет)",
     "definition": "Nom désignant la couleur noire.",
     "etymologie": "",
-    "audio": "./audio/biibi.mp3"
+    "audio": "biibi.mp3"
   },
   {
     "mot": "Bíibi",
     "prononciation": "ⴱⵉⴱⵉ",
     "categorie": "vi.",
-    "traductions": {
-      "fr": "Être noir",
-      "en": "Black, to be",
-      "ar": "يكون أسود",
-      "ru": "Быть чёрным"
-    },
+    "fr": "Être noir",
+    "en": "Black, to be",
+    "ar": "يكون أسود",
+    "ru": "Быть чёрным",
     "definition": "Verbe exprimant l’état d’être noir.",
     "etymologie": "",
-    "audio": "./audio/biibi.mp3"
+    "audio": "biibi.mp3"
   },
   {
     "mot": "Bíibi",
     "prononciation": "ⴱⵉⴱⵉ",
     "categorie": "vt.",
-    "traductions": {
-      "fr": "Noircir",
-      "en": "Blacken, to",
-      "ar": "يُسود",
-      "ru": "Очёрнивать"
-    },
+    "fr": "Noircir",
+    "en": "Blacken, to",
+    "ar": "يُسود",
+    "ru": "Очёрнивать",
     "definition": "Faire devenir noir, rendre noir.",
     "etymologie": "",
-    "audio": "./audio "Kud-én",
+    "audio": "biibi.mp3"
+  },
+  {
+    "mot": "Kud-én",
     "prononciation": "ⴽⵓⴷⵉⵏ",
     "categorie": "npl.",
-    "traductions": {
-      "fr": "Sang",
-      "en": "Blood",
-      "ar": "دم",
-      "ru": "Кровь"
-    },
+    "fr": "Sang",
+    "en": "Blood",
+    "ar": "دم",
+    "ru": "Кровь",
     "definition": "Liquide vital circulant dans les veines.",
     "etymologie": "",
-    "audio": "./audio/kuden.mp3"
+    "audio": "kuden.mp3"
   },
   {
     "mot": "Fúr",
     "prononciation": "ⴼⵓⵔ",
     "categorie": "vi.",
-    "traductions": {
-      "fr": "Souffler (vent)",
-      "en": "Blow (wind), to",
-      "ar": "تهب",
-      "ru": "Дуть (о ветре)"
-    },
+    "fr": "Souffler (vent)",
+    "en": "Blow (wind), to",
+    "ar": "تهب",
+    "ru": "Дуть (о ветре)",
     "definition": "Déplacement d’air naturel.",
     "etymologie": "",
-    "audio": "./audio/fur.mp3"
+    "audio": "fur.mp3"
   },
   {
     "mot": "Biidí",
     "prononciation": "ⴱⵉⵉⴷⵉ",
     "categorie": "n.",
-    "traductions": {
-      "fr": "Os",
-      "en": "Bone (general)",
-      "ar": "عظم",
-      "ru": "Кость"
-    },
+    "fr": "Os",
+    "en": "Bone (general)",
+    "ar": "عظم",
+    "ru": "Кость",
     "definition": "Partie dure du squelette interne.",
     "etymologie": "",
-    "audio": "./audio/biidi.mp3"
+    "audio": "biidi.mp3"
   },
   {
     "mot": "ʃ-ǝ́nfǝʃ",
     "prononciation": "ⵛⴻⵏⴼⴻⵛ",
     "categorie": "vi.",
-    "traductions": {
-      "fr": "Respirer",
-      "en": "Breathe, to",
-      "ar": "يتنفس",
-      "ru": "Дышать"
-    },
-    "definition": "Inspirer et expirer l'air par les voies respiratoires.",
-    "etymologie": "",
-    "audio": "./audio/shenfesh.mp3"
-  },
-  {
-    "mot": "Kurú-kuru",
-    "prononciation": "ⴽⵓⵔⵓ",
-    "categorie": "vt.",
-    "traductions": {
-      "fr": "Brûler",
-      "en": "Burn, to",
-      "ar": "يحرق",
-      "ru": "Сжигать"
-    },
-    "definition": "Mettre le feu à quelque chose.",
-    "etymologie": "",
-    "audio": "./audio/kurukuru.mp3"
-  },
-  {
-    "mot": "Kurú-kuru",
-    "prononciation": "ⴽⵓⵔⵓ",
-    "categorie": "vi.",
-    "traductions": {
-      "fr": "Être brûlé",
-      "en": "Burned, to be",
-      "ar": "محروق",
-      "ru": "Сгореть"
-    },
-    "definition": "Être détruit ou altéré par le feu.",
-    "etymologie": "",
-    "audio": "./audio/kurukuru.mp3"
-  },
-  {
-    "mot": "Kár",
-    "prononciation": "ⴽⴰⵔ",
-    "categorie": "vt.",
-    "traductions": {
-      "fr": "Sculpter",
-      "en": "Carve (wooden spoon), to",
-      "ar": "ينحت",
-      "ru": "Вырезать"
-    },
-    "definition": "Tailler une forme dans du bois.",
-    "etymologie": "",
-    "audio": "./audio/kar.mp3"
-  },
-  {
-    "mot": "Báarar",
-    "prononciation": "ⴱⴰⵔⴰⵔ",
-    "categorie": "n.",
-    "traductions": {
-      "fr": "Enfant",
-      "en": "Child",
-      "ar": "طفل",
-      "ru": "Ребёнок"
-    },
-    "definition": "Être humain jeune, encore dépendant.",
-    "etymologie": "",
-    "audio": "./audio/baarar.mp3"
-  },
-  {
-    "mot": "Kóoray",
-    "categorie": "adj.",
-    "fr": "Blanc",
-    "en": "White",
-    "ar": "أبيض",
-    "ru": "Белый",
-    "prononciation": "ⴽⵓⵔⴰⵢ"
-  },
-  {
-    "mot": "Kóoray",
-    "categorie": "n.",
-    "fr": "Blanc (couleur)",
-    "en": "White (color)",
-    "ar": "أبيض",
-    "ru": "Белый (цвет)",
-    "prononciation": "ⴽⵓⵔⴰⵢ"
-  },
-  {
-    "mot": "Kóoray",
-    "categorie": "vi.",
-    "fr": "Être blanc",
-    "en": "White, to be",
-    "ar": "أبيض يكون",
-    "ru": "Быть белым",
-    "prononciation": "ⴽⵓⵔⴰⵢ"
-  },
-  {
-    "mot": "Ci",
-    "categorie": "interrogative pron.",
-    "fr": "Qui ? / Quoi ?",
-    "en": "Who? / What?",
-    "ar": "من؟ / ماذا؟",
-    "ru": "Кто? / Что?",
-    "prononciation": "ⵛⵉ"
-  },
-  {
-    "mot": "Ci ná hó be",
-    "categorie": "interrogative phrase",
-    "fr": "Pourquoi ?",
-    "en": "Why?",
-    "ar": "لماذا؟",
-    "ru": "Почему?",
-    "prononciation": "ⵛⵉ ⵏⴰ ⵀⵓⴱⴻ"
-  },
-  {
-    "mot": "Yilwá",
-    "categorie": "vi.",
-    "fr": "Être large",
-    "en": "Wide, to be",
-    "ar": "عريض",
-    "ru": "Быть широким",
-    "prononciation": "ⵢⵉⵍⵡⴰ"
-  },
-  {
-    "mot": "Surgóy",
-    "categorie": "n.",
-    "fr": "Épouse",
-    "en": "Wife",
-    "ar": "زوجة",
-    "ru": "Жена",
-    "prononciation": "ⵙⵓⵔⴳⵓⵢ"
-  },
-  {
-    "mot": "Héw",
-    "categorie": "n.",
-    "fr": "Vent",
-    "en": "Wind",
-    "ar": "ريح",
-    "ru": "Ветерcategorie": "n.",
-    "fr": "Aile",
-    "en": "Wing",
-    "ar": "جناح",
-    "ru": "Крыло",
-    "prononciation": "ⴰⴼⵔⴰⵡ"
-  },
-  {
-    "mot": "Tús",
-    "categorie": "vt.",
-    "fr": "Effacer",
-    "en": "Wipe out, to",
-    "ar": "يمحو",
-    "ru": "Стереть",
-    "prononciation": "ⵜⵓⵙ"
-  },
-  {
-    "mot": "Tús",
-    "categorie": "vi.",
-    "fr": "Être effacé",
-    "en": "Wiped out, to be",
-    "ar": "ممسوح",
-    "ru": "Быть стёртым",
-    "prononciation": "ⵜⵓⵙ"
-  },
-  {
-    "mot": "Tús",
-    "categorie": "n.",
-    "fr": "Effacement",
-    "en": "Wiping out",
-    "ar": "محو",
-    "ru": "Стирание",
-    "prononciation": "ⵜⵓⵙ"
-  },
-  {
-    "mot": "Ǝnda",
-    "categorie": "prep.",
-    "fr": "Avec (compagnie)",
-    "en": "With (company)",
-    "ar": "مع",
-    "ru": "С (компанией)",
-    "prononciation": "ⴻⵏⴷⴰ"
-  },
-  {
-    "mot": "Ǝnda",
-    "categorie": "prep.",
-    "fr": "Avec (instrument)",
-    "en": "With (instrument)",
-    "ar": "بواسطة",
-    "ru": "С (инструментом)",
-    "prononciation": "ⴻⵏⴷⴰ"
-  },
-  {
-    "mot": "káy he be",
-    "categorie": "idiom.",
-    "fr": "Retenir quelque chose",
-    "en": "Withhold something, to",
-    "ar": "ⵀⴻ",
-    "ru": "Удерживать",
-    "prononciation": ""
-  },
-  {
-    "mot": "iddá ~ íd",
-    "categorie": "phrase.",
-    "fr": "Avant quelqu’un",
-    "en": "Before somebody",
-    "ar": "قبل شخص",
-    "ru": "Перед кем-то",
-    "prononciation": "ⴽⴰ ⵎⵓ"
-  },
-  {
-    "mot": "Baŋgú",
-    "categorie": "n.",
-    "fr": "Début",
-    "en": "Beginning",
-    "ar": "بداية",
-    "ru": "Начало",
-    "prononciation": "ⴱⴰⵏⴳⵓ"
-  },
-  {
-    "mot": "Guŋgú",
-    "categorie": "n.",
-    "fr": "Ventre",
-    "en": "Belly",
-    "ar": "بطن",
-    "ru": "Живот",
-    "prononciation": "ⴳⵓⵏⴳⵓ"
-  },
-  {
-    "mot": "Bêr",
-    "categorie": "vi.",
-    "fr": "Être grand",
-    "en": "Big, to be",
-    "ar": "كبير",
-    "ru": "Быть большим",
-    "prononciation": "ⴱⴻⵔ"
-  },
-  {
-    "mot": "Bêr",
-    "categorie": "vt.",
-    "fr": "Agrandir",
-    "en": "Big, to make",
-    "ar": "كَبَّر",
-    "ru": "Увеличить",
-    "prononciation": "ⴱⴻⵔ"
-  },
-  {
-    "mot": "Cíidaw",
-    "categorie": "n.",
-    "fr": "Oiseau",
-    "en": "Bird (general)",
-    "ar": "طائر",
-    "ru": "Птица",
-    "prononciation": "ⵛⵉⴷⴰⵡ"
-  },
-  {
-    "mot": "Ŋá",
-    "categorie": "vt.",
-    "fr": "Mordre (animal)",
-    "en": "Bite (animal to",
-    "ar": "يعض",
-    "ru": "Укусить (животное)",
-    "prononciation": "ⵏⴰ"
-  },
-  {
-    "mot": "ṇám",
-    "categorie": "vt.",
-    "fr": "Mordre",
-    "en": "Bite, to",
-    "ar": "يعض",
-    "ru": "Кусать",
-    "prononciation": "ⵏⴰⵎ"
-  },
-  {
-    "mot": "Bíibi",
-    "categorie": "adj.",
-    "fr": "Noir",
-    "en": "Black",
-    "ar": "أسود",
-    "ru": "Чёрный",
-    "prononciation": "ⴱⵉⴱⵉ"
-  },
-  {
-    "mot": "Bíibi",
-    "categorie": "n.",
-    "fr": "Noir (couleur)",
-    "en": "Black (color)",
-    "ar": "أسود",
-    "ru": "Чёрный (цвет)",
-    "prononciation": "ⴱⵉⴱⵉ"
-  },
-  {
-    "mot": "Bíibi",
-    "categorie": "vi.",
-    "fr": "Être noir",
-    "en": "Black, to be",
-    "ar": "أسود يكون",
-    "ru": "Быть чёрным",
-    "prononciation": "ⴱⵉⴱⵉ"
-  },
-  {
-    "mot": "Bíibi",
-    "categorie": "vt.",
-    "fr": "Noircir",
-    "en": "Blacken, to",
-    "ar": "يُسَوِّد",
-    "ru": "Очернять",
-    "prononciation": "ⴱⵉⴱⵉ"
-  },
-  {
-    "mot": "Kud-én",
-    "categorie": "npl.",
-    "fr": "Sang",
-    "en": "Blood",
-    "ar": "دم",
-    "ru": "Кровь",
-    "prononciation": "ⴽⵓⴷⵉⵏ"
-  },
-  {
-    "mot": "Fúr",
-    "categorie": "vi.",
-    "fr": "Souffler (vent)",
-    "en": "Blow (wind), to",
-    "ar": "تهب",
-    "ru": "Дуть (ветер)",
-    "prononciation": "ⴼⵓⵔ"
-  },
-  {
-    "mot": "Biidí",
-    "categorie": "n.",
-    "fr": "Os",
-    "en": "Bone (general)",
-    "ar": "عظم",
-    "ru": "Кость",
-    "prononciation": "ⴱⵉⵉⴷⵉ"
-  },
-  {
-    "mot": "ʃ-ǝ́nfǝʃ",
-    "categorie": "vi.",
     "fr": "Respirer",
     "en": "Breathe, to",
     "ar": "يتنفس",
     "ru": "Дышать",
-    "prononciation": "ⵛⴻⵏⴼⴻⵛ"
+    "definition": "Inspirer et expirer l'air par les voies respiratoires.",
+    "etymologie": "",
+    "audio": "shenfesh.mp3"
   },
   {
     "mot": "Kurú-kuru",
+    "prononciation": "ⴽⵓⵔⵓ",
     "categorie": "vt.",
     "fr": "Brûler",
     "en": "Burn, to",
     "ar": "يحرق",
-    "ru": "Сжечь",
-    "prononciation": "ⴽⵓⵔⵓ"
+    "ru": "Сжигать",
+    "definition": "Mettre le feu à quelque chose.",
+    "etymologie": "",
+    "audio": "kurukuru.mp3"
   },
   {
     "mot": "Kurú-kuru",
+    "prononciation": "ⴽⵓⵔⵓ",
     "categorie": "vi.",
     "fr": "Être brûlé",
     "en": "Burned, to be",
     "ar": "محروق",
     "ru": "Сгореть",
-    "prononciation": "ⴽⵓⵔⵓ"
+    "definition": "Être détruit ou altéré par le feu.",
+    "etymologie": "",
+    "audio": "kurukuru.mp3"
   },
   {
     "mot": "Kár",
+    "prononciation": "ⴽⴰⵔ",
     "categorie": "vt.",
     "fr": "Sculpter",
     "en": "Carve (wooden spoon), to",
     "ar": "ينحت",
     "ru": "Вырезать",
-    "prononciation": "ⴽⴰⵔ"
+    "definition": "Tailler une forme dans du bois.",
+    "etymologie": "",
+    "audio": "kar.mp3"
   },
   {
     "mot": "Báarar",
+    "prononciation": "ⴱⴰⵔⴰⵔ",
     "categorie": "n.",
     "fr": "Enfant",
     "en": "Child",
     "ar": "طفل",
     "ru": "Ребёнок",
-    "prononciation": "ⴱⴰⵔⴰⵔ"
-  },
-  {
-    "mot": "Kóoray",
-    "categorie": "adj.",
-    "fr": "Blanc",
-    "en": "White",
-    "ar": "أبيض",
-    "ru": "Белый",
-    "prononciation": "ⴽⵓⵔⴰⵢ"
-  },
-  {
-    "mot": "Kóoray",
-    "categorie": "n.",
-    "fr": "Blanc (couleur)",
-    "en": "White (color)",
-    "ar": "أبيض",
-    "ru": "Белый (цвет)",
-    "prononciation": "ⴽⵓⵔⴰⵢ"
-  },
-  {
-    "mot": "Kóoray",
-    "categorie": "vi.",
-    "fr": "Être blanc",
-    "en": "White, to be",
-    "ar": "أبيض يكون",
-    "ru": "Быть белым",
-    "prononciation": "ⴽⵓⵔⴰⵢ"
-  },
-  {
-    "mot": "Ci",
-    "categorie": "interrogative pron.",
-    "fr": "Qui ? / Quoi ?",
-    "en": "Who? / What?",
-    "ar": "من؟ / ماذا؟",
-    "ru": "Кто? / Что?",
-    "prononciation": "ⵛⵉ"
-  },
-  {
-    "mot": "Ci ná hó be",
-    "categorie": "interrogative phrase",
-    "fr": "Pourquoi ?",
-    "en": "Why?",
-    "ar": "لماذا؟",
-    "ru": "Почему?",
-    "prononciation": "ⵛⵉ ⵏⴰ ⵀⵓⴱⴻ"
-  },
-  {
-    "mot": "Yilwá",
-    "categorie": "vi.",
-    "fr": "Être large",
-    "en": "Wide, to be",
-    "ar": "عريض",
-    "ru": "Быть широким",
-    "prononciation": "ⵢⵉⵍⵡⴰ"
-  },
-  {
-    "mot": "Surgóy",
-    "categorie": "n.",
-    "fr": "Épouse",
-    "en": "Wife",
-    "ar": "زوجة",
-    "ru": "Жена",
-    "prononciation": "ⵙⵓⵔⴳⵓⵢ"
-  },
- ": "ⵀⵉⵡ"
+    "definition": "Être humain jeune, encore dépendant.",
+    "etymologie": "",
+    "audio": "baarar.mp3"
   },
   {
     "mot": "Áfraw",
+    "prononciation": "ⴰⴼⵔⴰⵡ",
     "categorie": "n.",
     "fr": "Aile",
     "en": "Wing",
     "ar": "جناح",
     "ru": "Крыло",
-    "prononciation": "ⴰⴼⵔⴰⵡ"
-  },
-  {
-    "mot": "Tús",
-    "categorie": "vt.",
-    "fr": "Effacer",
-    "en": "Wipe out, to",
-    "ar": "يمحو",
-    "ru": "Стереть",
-    "prononciation": "ⵜⵓⵙ"
-  },
-  {
-    "mot": "Tús",
-    "categorie": "vi.",
-    "fr": "Être effacé",
-    "en": "Wiped out, to be",
-    "ar": "ممسوح",
-    "ru": "Быть стёртым",
-    "prononciation": "ⵜⵓⵙ"
-  },
-  {
-    "mot": "Tús",
-    "categorie": "n.",
-    "fr": "Effacement",
-    "en": "Wiping out",
-    "ar": "محو",
-    "ru": "Стирание",
-    "prononciation": "ⵜⵓⵙ"
-  },
-  {
-    "mot": "Ǝnda",
-    "categorie": "prep.",
-    "fr": "Avec (compagnie)",
-    "en": "With (company)",
-    "ar": "مع",
-    "ru": "С (компанией)",
-    "prononciation": "ⴻⵏⴷⴰ"
-  },
-  {
-    "mot": "Ǝnda",
-    "categorie": "prep.",
-    "fr": "Avec (instrument)",
-    "en": "With (instrument)",
-    "ar": "بواسطة",
-    "ru": "С (инструментом)",
-    "prononciation": "ⴻⵏⴷⴰ"
-  },
-  {
-    "mot": "káy he be",
-    "categorie": "idiom.",
-    "fr": "Retenir quelque chose",
-    "en": "Withhold something, to",
-    "ar": "ⵀⴻ",
-    "ru": "Удерживать",
-    "prononciation": ""
-  },
-  {
-    "mot": "iddá ~ íd",
-    "categorie": "phrase.",
-    "fr": "Avant quelqu’un",
-    "en": "Before somebody",
-    "ar": "قبل شخص",
-    "ru": "Перед кем-то",
-    "prononciation": "ⴽⴰ ⵎⵓ"
-  },
-  {
-    "mot": "Baŋgú",
-    "categorie": "n.",
-    "fr": "Début",
-    "en": "Beginning",
-    "ar": "بداية",
-    "ru": "Начало",
-    "prononciation": "ⴱⴰⵏⴳⵓ"
-  },
-  {
-    "mot": "Guŋgú",
-    "categorie": "n.",
-    "fr": "Ventre",
-    "en": "Belly",
-    "ar": "بطن",
-    "ru": "Живот",
-    "prononciation": "ⴳⵓⵏⴳⵓ"
-  },
-  {
-    "mot": "Bêr",
-    "categorie": "vi.",
-    "fr": "Être grand",
-    "en": "Big, to be",
-    "ar": "كبير",
-    "ru": "Быть большим",
-    "prononciation": "ⴱⴻⵔ"
-  },
-  {
-    "mot": "Bêr",
-    "categorie": "vt.",
-    "fr": "Agrandir",
-    "en": "Big, to make",
-    "ar": "كَبَّر",
-    "ru": "Увеличить",
-    "prononciation": "ⴱⴻⵔ"
-  },
-  {
-    "mot": "Cíidaw",
-    "categorie": "n.",
-    "fr": "Oiseau",
-    "en": "Bird (general)",
-    "ar": "طائر",
-    "ru": "Птица",
-    "prononciation": "ⵛⵉⴷⴰⵡ"
-  },
-  {
-    "mot": "Ŋá",
-    "categorie": "vt.",
-    "fr": "Mordre (animal)",
-    "en": "Bite (animal), to",
-    "ar": "يعض",
-    "ru": "Укусить (животное)",
-    "prononciation": "ⵏⴰ"
-  },
-  {
-    "mot": "ṇám",
-    "categorie": "vt.",
-    "fr": "Mordre",
-    "en": "Bite, to",
-    "ar": "يعض",
-    "ru": "Кусать",
-    "prononciation": "ⵏⴰⵎ"
-  },
-  {
-    "mot": "Bíibi",
-    "categorie": "adj.",
-    "fr": "Noir",
-    "en": "Black",
-    "ar": "أسود",
-    "ru": "Чёрный",
-    "prononciation": "ⴱⵉⴱⵉ"
-  },
-  {
-    "mot": "Bíibi",
-    "categorie": "n.",
-    "fr": "Noir (couleur)",
-    "en": "Black (color)",
-    "ar": "أسود",
-    "ru": "Чёрный (цвет)",
-    "prononciation": "ⴱⵉⴱⵉ"
-  },
-  {
-    "mot": "Bíibi",
-    "categorie": "vi.",
-": "Noircir",
-    "en": "Blacken, to",
-    "ar": "يُسَوِّد",
-    "ru": "Очернять",
-    "prononciation": "ⴱⵉⴱⵉ"
-  },
-  {
-    "mot": "Kud-én",
-    "categorie": "npl.",
-    "fr": "Sang",
-    "en": "Blood",
-    "ar": "دم",
-    "ru": "Кровь",
-    "prononciation": "ⴽⵓⴷⵉⵏ"
+    "definition": "Appendice permettant de voler, chez les oiseaux notamment.",
+    "etymologie": "",
+    "audio": "afraw.mp3"
   }
 ]
