@@ -1,6 +1,6 @@
 {
   "name": "Tadaksahak Learning",
-  "short_name": "Tadaksahak",
+  "short_name": "Tadaksahak avec Hamadine",
   "lang": "fr",
   "start_url": "./",
   "scope": "./",
@@ -12,6 +12,9 @@
     {
       "src": "images/idaksahak_round.png",
       "sizes": "512x512",
+      "type": "image/png"
+      "src": "images/idaksahak_square.png",
+      "sizes": "192x192",
       "type": "image/png"
     }
   ]
