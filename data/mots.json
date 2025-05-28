@@ -26,7 +26,7 @@
   {
     "mot": "Káamil",
     "prononciation": "ⴽⴰⴰⵎⵉⵍ",
-    "categorie": "quant.",
+   ": "quant.",
     "fr": "Tout",
     "en": "All",
     "ar": "كل",
@@ -372,283 +372,313 @@
     "audio": "./audio/baarar.mp3"
   },
   {
-    "mot": "Nuun-én",
-    "prononciation": "ⵏⵓⵏⵉⵏ",
+    "mot": "Kóoray",
+    "categorie": "adj.",
+    "fr": "Blanc",
+    "en": "White",
+    "ar": "أبيض",
+    "ru": "Белый",
+    "prononciation": "ⴽⵓⵔⴰⵢ"
+  },
+  {
+    "mot": "Kóoray",
+    "categorie": "n.",
+    "fr": "Blanc (couleur)",
+    "en": "White (color)",
+    "ar": "أبيض",
+    "ru": "Белый (цвет)",
+    "prononciation": "ⴽⵓⵔⴰⵢ"
+  },
+  {
+    "mot": "Kóoray",
+    "categorie": "vi.",
+    "fr": "Être blanc",
+    "en": "White, to be",
+    "ar": "أبيض يكون",
+    "ru": "Быть белым",
+    "prononciation": "ⴽⵓⵔⴰⵢ"
+  },
+  {
+    "mot": "Ci",
+    "categorie": "interrogative pron.",
+    "fr": "Qui ? / Quoi ?",
+    "en": "Who? / What?",
+    "ar": "من؟ / ماذا؟",
+    "ru": "Кто? / Что?",
+    "prononciation": "ⵛⵉ"
+  },
+  {
+    "mot": "Ci ná hó be",
+    "categorie": "interrogative phrase",
+    "fr": "Pourquoi ?",
+    "en": "Why?",
+    "ar": "لماذا؟",
+    "ru": "Почему?",
+    "prononciation": "ⵛⵉ ⵏⴰ ⵀⵓⴱⴻ"
+  },
+  {
+    "mot": "Yilwá",
+    "categorie": "vi.",
+    "fr": "Être large",
+    "en": "Wide, to be",
+    "ar": "عريض",
+    "ru": "Быть широким",
+    "prononciation": "ⵢⵉⵍⵡⴰ"
+  },
+  {
+    "mot": "Surgóy",
+    "categorie": "n.",
+    "fr": "Épouse",
+    "en": "Wife",
+    "ar": "زوجة",
+    "ru": "Жена",
+    "prononciation": "ⵙⵓⵔⴳⵓⵢ"
+  },
+  {
+    "mot": "Héw",
+    "categorie": "n.",
+    "fr": "Vent",
+    "en": "Wind",
+    "ar": "ريح",
+    "ru":n.",
+    "fr": "Aile",
+    "en": "Wing",
+    "ar": "جناح",
+    "ru": "Крыло",
+    "prononciation": "ⴰⴼⵔⴰⵡ"
+  },
+  {
+    "mot": "Tús",
+    "categorie": "vt.",
+    "fr": "Effacer",
+    "en": "Wipe out, to",
+    "ar": "يمحو",
+    "ru": "Стереть",
+    "prononciation": "ⵜⵓⵙ"
+  },
+  {
+    "mot": "Tús",
+    "categorie": "vi.",
+    "fr": "Être effacé",
+    "en": "Wiped out, to be",
+    "ar": "ممسوح",
+    "ru": "Быть стёртым",
+    "prononciation": "ⵜⵓⵙ"
+  },
+  {
+    "mot": "Tús",
+    "categorie": "n.",
+    "fr": "Effacement",
+    "en": "Wiping out",
+    "ar": "محو",
+    "ru": "Стирание",
+    "prononciation": "ⵜⵓⵙ"
+  },
+  {
+    "mot": "Ǝnda",
+    "categorie": "prep.",
+    "fr": "Avec (compagnie)",
+    "en": "With (company)",
+    "ar": "مع",
+    "ru": "С (компанией)",
+    "prononciation": "ⴻⵏⴷⴰ"
+  },
+  {
+    "mot": "Ǝnda",
+    "categorie": "prep.",
+    "fr": "Avec (instrument)",
+    "en": "With (instrument)",
+    "ar": "بواسطة",
+    "ru": "С (инструментом)",
+    "prononciation": "ⴻⵏⴷⴰ"
+  },
+  {
+    "mot": "káy he be",
+    "categorie": "idiom.",
+    "fr": "Retenir quelque chose",
+    "en": "Withhold something, to",
+    "ar": "ⵀⴻ",
+    "ru": "Удерживать",
+    "prononciation": ""
+  },
+  {
+    "mot": "iddá ~ íd",
+    "categorie": "phrase.",
+    "fr": "Avant quelqu’un",
+    "en": "Before somebody",
+    "ar": "قبل شخص",
+    "ru": "Перед кем-то",
+    "prononciation": "ⴽⴰ ⵎⵓ"
+  },
+  {
+    "mot": "Baŋgú",
+    "categorie": "n.",
+    "fr": "Début",
+    "en": "Beginning",
+    "ar": "بداية",
+    "ru": "Начало",
+    "prononciation": "ⴱⴰⵏⴳⵓ"
+  },
+  {
+    "mot": "Guŋgú",
+    "categorie": "n.",
+    "fr": "Ventre",
+    "en": "Belly",
+    "ar": "بطن",
+    "ru": "Живот",
+    "prononciation": "ⴳⵓⵏⴳⵓ"
+  },
+  {
+    "mot": "Bêr",
+    "categorie": "vi.",
+    "fr": "Être grand",
+    "en": "Big, to be",
+    "ar": "كبير",
+    "ru": "Быть большим",
+    "prononciation": "ⴱⴻⵔ"
+  },
+  {
+    "mot": "Bêr",
+    "categorie": "vt.",
+    "fr": "Agrandir",
+    "en": "Big, to make",
+    "ar": "كَبَّر",
+    "ru": "Увеличить",
+    "prononciation": "ⴱⴻⵔ"
+  },
+  {
+    "mot": "Cíidaw",
+    "categorie": "n.",
+    "fr": "Oiseau",
+    "en": "Bird (general)",
+    "ar": "طائر",
+    "ru": "Птица",
+    "prononciation": "ⵛⵉⴷⴰⵡ"
+  },
+  {
+    "mot": "Ŋá",
+    "categorie": "vt.",
+    "fr": "Mordre (animal)",
+    "en": "Bite (animal), to",
+    "ar": "يعض",
+    "ru": "Укусить (животное)",
+    "prononciation": "ⵏⴰ"
+  },
+  {
+    "mot": "ṇám",
+    "categorie": "vt.",
+    "fr": "Mordre",
+    "en": "Bite, to",
+    "ar": "يعض",
+    "ru": "Кусать",
+    "prononciation": "ⵏⴰⵎ"
+  },
+  {
+    "mot": "Bíibi",
+    "categorie": "adj.",
+    "fr": "Noir",
+    "en": "Black",
+    "ar": "أسود",
+    "ru": "Чёрный",
+    "prononciation": "ⴱⵉⴱⵉ"
+  },
+  {
+    "mot": "Bíibi",
+    "categorie": "n.",
+    "fr": "Noir (couleur)",
+    "en": "Black (color)",
+    "ar": "أسود",
+    "ru": "Чёрный (цвет)",
+    "prononciation": "ⴱⵉⴱⵉ"
+  },
+  {
+    "mot": "Bíibi",
+    "categorie": "vi.",
+    "fr": "Être noir",
+    "en": "Black, to be",
+    "ar": "أسود يكون",
+    "ru": "Быть чёрным",
+    "prononciation": "ⴱⵉⴱⵉ"
+  },
+  {
+    "mot": "Bíibi",
+    "categorie": "vt.",
+    "fr": "Noircir",
+    "en": "Blacken, to",
+    "ar": "يُسَوِّد",
+    "ru": "Очернять",
+    "prononciation": "ⴱⵉⴱⵉ"
+  },
+  {
+    "mot": "Kud-én",
     "categorie": "npl.",
-    "traductions": {
-      "fr": "Nuage",
-      "en": "Cloud",
-      "ar": "سحاب",
-      "ru": "Облака"
-    },
-    "definition": "Formation visible de gouttelettes d'eau ou de glace.",
-    "etymologie": "",
-    "audio": "./audio/nuunen.mp3"
+    "fr": "Sang",
+    "en": "Blood",
+    "ar": "دم",
+    "ru": "Кровь",
+    "prononciation": "ⴽⵓⴷⵉⵏ"
   },
   {
-    "mot": "Kóy-kat",
-    "prononciation": "ⴽⵓⵢ ⴽⴰⵜ",
+    "mot": "Fúr",
     "categorie": "vi.",
-    "traductions": {
-      "fr": "Venir",
-      "en": "Come, to",
-      "ar": "يأتي",
-      "ru": "Приходить"
-    },
-    "definition": "Se déplacer vers le locuteur ou le point de référence.",
-    "etymologie": "",
-    "audio": "./audio/koykat.mp3"
+    "fr": "Souffler (vent)",
+    "en": "Blow (wind), to",
+    "ar": "تهب",
+    "ru": "Дуть (ветер)",
+    "prononciation": "ⴼⵓⵔ"
   },
   {
-    "mot": "ʃ-iḍǝn",
-    "prononciation": "ⵛⵉⴹⴻⵏ",
+    "mot": "Biidí",
+    "categorie": "n.",
+    "fr": "Os",
+    "en": "Bone (general)",
+    "ar": "عظم",
+    "ru": "Кость",
+    "prononciation": "ⴱⵉⵉⴷⵉ"
+  },
+  {
+    "mot": "ʃ-ǝ́nfǝʃ",
+    "categorie": "vi.",
+    "fr": "Respirer",
+    "en": "Breathe, to",
+    "ar": "يتنفس",
+    "ru": "Дышать",
+    "prononciation": "ⵛⴻⵏⴼⴻⵛ"
+  },
+  {
+    "mot": "Kurú-kuru",
     "categorie": "vt.",
-    "traductions": {
-      "fr": "Compter",
-      "en": "Count, to",
-      "ar": "يعد",
-      "ru": "Считать"
-    },
-    "definition": "Énumérer en ordre numérique.",
-    "etymologie": "",
-    "audio": "./audio/shidhen.mp3"
+    "fr": "Brûler",
+    "en": "Burn, to",
+    "ar": "يحرق",
+    "ru": "Сжечь",
+    "prononciation": "ⴽⵓⵔⵓ"
   },
   {
-    "mot": "ʃ-iḍǝn",
-    "prononciation": "ⵛⵉⴹⴻⵏ",
-    "categorie": "n.",
-    "traductions": {
-      "fr": "Comptage",
-      "en": "Counting",
-      "ar": "عدّ",
-      "ru": "Подсчёт"
-    },
-    "definition": "Action de compter.",
-    "etymologie": "",
-    "audio": "./audio/shidhen.mp3"
+    "mot": "Kurú-kuru",
+    "categorie": "vi.",
+    "fr": "Être brûlé",
+    "en": "Burned, to be",
+    "ar": "محروق",
+    "ru": "Сгореть",
+    "prononciation": "ⴽⵓⵔⵓ"
   },
   {
-    "mot": "Gánda",
-    "prononciation": "ⴳⴰⵏⴷⴰ",
-    "categorie": "n.",
-    "traductions": {
-      "fr": "Pays",
-      "en": "Country",
-      "ar": "بلد",
-      "ru": "Страна"
-    },
-    "definition": "Territoire habité et organisé politiquement.",
-    "etymologie": "",
-    "audio": "./audio/ganda.mp3"
-  },
-  {
-    "mot": "Dumbú",
-    "prononciation": "ⴷⵓⵎⴱⵓ",
+    "mot": "Kár",
     "categorie": "vt.",
-    "traductions": {
-      "fr": "Couper",
-      "en": "Cut, to",
-      "ar": "يقطع",
-      "ru": "Резать"
-    },
-    "definition": "Séparer en morceaux à l’aide d’un outil.",
-    "etymologie": "",
-    "audio": "./audio/dumbu.mp3"
+    "fr": "Sculpter",
+    "en": "Carve (wooden spoon), to",
+    "ar": "ينحت",
+    "ru": "Вырезать",
+    "prononciation": "ⴽⴰⵔ"
   },
   {
-    "mot": "Kós",
-    "prononciation": "ⴽⵓⵙ",
-    "categorie": "vt.",
-    "traductions": {
-      "fr": "Couper",
-      "en": "Cut, to",
-      "ar": "يقطع",
-      "ru": "Резать"
-    },
-    "definition": "Séparer une partie d’un tout avec un instrument tranchant.",
-    "etymologie": "",
-    "audio": "./audio/kos.mp3"
-  },
-  {
-    "mot": "Kós",
-    "prononciation": "ⴽⵓⵙ",
-    "categorie": "vi.",
-    "traductions": {
-      "fr": "Être coupé",
-      "en": "Cut, to be",
-      "ar": "مقطوع",
-      "ru": "Быть порезанным"
-    },
-    "definition": "Être séparé ou sectionné.",
-    "etymologie": "",
-    "audio": "./audio/kos.mp3"
-  },
-  {
-    "mot": "Kós",
-    "prononciation": "ⴽⵓⵙ",
+    "mot": "Báarar",
     "categorie": "n.",
-    "traductions": {
-      "fr": "Coupe",
-      "en": "Cutting",
-      "ar": "قص",
-      "ru": "Разрез"
-    },
-    "definition": "Résultat ou action de couper.",
-    "etymologie": "",
-    "audio": "./audio/kos.mp3"
-  },
-  {
-    "mot": "Zaɣrí",
-    "prononciation": "ⵣⴰⵖⵔⵉ",
-    "categorie": "n.",
-    "traductions": {
-      "fr": "Jour",
-      "en": "Day",
-      "ar": "يوم",
-      "ru": "День"
-    },
-    "definition": "Période de 24 heures.",
-    "etymologie": "",
-    "audio": "./audio/zaghri.mp3"
-  },
-  {
-    "mot": "Bún",
-    "prononciation": "ⴱⵓⵏ",
-    "categorie": "vi.",
-    "traductions": {
-      "fr": "Être mort",
-      "en": "Dead, to be",
-      "ar": "ميت",
-      "ru": "Быть мертвым"
-    },
-    "definition": "État de non-vie.",
-    "etymologie": "",
-    "audio": "./audio/bun.mp3"
-  },
-  {
-    "mot": "Bún",
-    "prononciation": "ⴱⵓⵏ",
-    "categorie": "n.",
-    "traductions": {
-      "fr": "Mort",
-      "en": "Death",
-      "ar": "موت",
-      "ru": "Смерть"
-    },
-    "definition": "Cessation de toute activité vitale.",
-    "etymologie": "",
-    "audio": "./audio/bun.mp3"
-  },
-  {
-    "mot": "Kukú",
-    "prononciation": "ⴽⵓⴽⵓ",
-    "categorie": "vi.",
-    "traductions": {
-      "fr": "Être profond",
-      "en": "Deep, to be",
-      "ar": "عميق",
-      "ru": "Быть глубоким"
-    },
-    "definition": "Avoir une grande profondeur.",
-    "etymologie": "",
-    "audio": "./audio/kuku.mp3"
-  },
-  {
-    "mot": "Kukú",
-    "prononciation": "ⴽⵓⴽⵓ",
-    "categorie": "vt.",
-    "traductions": {
-      "fr": "Approfondir",
-      "en": "Deepen, to",
-      "ar": "يعمق",
-      "ru": "Углублять"
-    },
-    "definition": "Rendre plus profond.",
-    "etymologie": "",
-    "audio": "./audio/kuku.mp3"
-  },
-  {
-    "mot": "Bún",
-    "prononciation": "ⴱⵓⵏ",
-    "categorie": "vi.",
-    "traductions": {
-      "fr": "Mourir",
-      "en": "Die, to",
-      "ar": "يموت",
-      "ru": "Умереть"
-    },
-    "definition": "Cesser de vivre.",
-    "etymologie": "",
-    "audio": "./audio/bun.mp3"
-  },
-  {
-    "mot": "Fás",
-    "prononciation": "ⴼⴰⵙ",
-    "categorie": "vt.",
-    "traductions": {
-      "fr": "Creuser",
-      "en": "Dig, to",
-      "ar": "يحفر",
-      "ru": "Копать"
-    },
-    "definition": "Ouvrir un trou dans une surface.",
-    "etymologie": "",
-    "audio": "./audio/fas.mp3"
-  },
-  {
-    "mot": "Fás",
-    "prononciation": "ⴼⴰⵙ",
-    "categorie": "n.",
-    "traductions": {
-      "fr": "Creusement",
-      "en": "Digging",
-      "ar": "حفر",
-      "ru": "Копка"
-    },
-    "definition": "Action de faire un trou.",
-    "etymologie": "",
-    "audio": "./audio/fas.mp3"
-  },
-  {
-    "mot": "Lés",
-    "prononciation": "ⵍⴻⵙ",
-    "categorie": "n.",
-    "traductions": {
-      "fr": "Saleté (excrément)",
-      "en": "Dirt (excrement)",
-      "ar": "أوساخ",
-      "ru": "Грязь (испражнения)"
-    },
-    "definition": "Matières sales ou excréments.",
-    "etymologie": "",
-    "audio": "./audio/les.mp3"
-  },
-  {
-    "mot": "Lés",
-    "prononciation": "ⵍⴻⵙ",
-    "categorie": "vi.",
-    "traductions": {
-      "fr": "Être sale",
-      "en": "Dirty, to be",
-      "ar": "قذر",
-      "ru": "Быть грязным"
-    },
-    "definition": "Être dans un état de saleté.",
-    "etymologie": "",
-    "audio": "./audio/les.mp3"
-  },
-  {
-    "mot": "ʒíibit",
-    "prononciation": "ⵊⵉⴱⵉⵜ",
-    "categorie": "vi.",
-    "traductions": {
-      "fr": "Être sale",
-      "en": "Dirty, to be",
-      "ar": "قذر",
-      "ru": "Быть грязным"
-    },
-    "definition": "Être dans un état de saleté.",
-    "etymologie": "",
-    "audio": "./audio/jiibit.mp3"
+    "fr": "Enfant",
+    "en": "Child",
+    "ar": "طفل",
+    "ru": "Ребёнок",
+    "prononciation": "ⴱⴰⵔⴰⵔ"
   }
 ]
