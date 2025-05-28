@@ -1,8 +1,8 @@
 {
   "name": "Tadaksahak Learning",
-  "short_name": "Tadaksahak avec Hamadine",
+  "short_name": "Tadaksahak",
   "lang": "fr",
-  "start_url": "./",
+  "start_url": "./index.html",
   "scope": "./",
   "display": "standalone",
   "background_color": "#fcebd5",
@@ -10,11 +10,13 @@
   "description": "Apprentissage du vocabulaire Tadaksahak avec audio et traduction multilingue.",
   "icons": [
     {
-      "src": "images/idaksahak_round.png",
-      "sizes": "512x512",
-      "type": "image/png"
       "src": "images/idaksahak_square.png",
       "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "images/idaksahak_round.png",
+      "sizes": "512x512",
       "type": "image/png"
     }
   ]
