@@ -181,4 +181,38 @@ footer {
   color: white;
   transform: scale(1.1);
 }
+.grammaire {
+  background: rgba(217, 130, 43, 0.1);
+  padding: 1rem;
+  border-radius: 8px;
+  margin-top: 1rem;
+}
+
+.morpheme {
+  background: var(--accent);
+  color: white;
+  padding: 0.2rem 0.4rem;
+  border-radius: 4px;
+  cursor: help;
+  position: relative;
+}
+
+.morpheme:hover::after {
+  content: attr(data-morpheme);
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #333;
+  color: white;
+  padding: 0.3rem;
+  border-radius: 4px;
+  white-space: nowrap;
+  z-index: 10;
+}
+
+@media (max-width: 600px) {
+  .grammaire {
+    font-size: 0.9rem;
+  }
 }
