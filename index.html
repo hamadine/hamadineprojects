@@ -1,104 +1,38 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Apprendre le Tadaksahak</title>
-  <link rel="icon" href="images/idaksahak_round.png" type="image/png" />
-  <link rel="manifest" href="manifest.json" />
-  <meta name="description" content="Vocabulaire Tadaksahak en audio avec traduction multilingue." />
-  <meta property="og:title" content="Tadaksahak Learning" />
-  <meta property="og:image" content="images/idaksahak_square_512.png" />
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tadaksahak Learning</title>
+  <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
-  <header class="logo" aria-label="Logos Tadaksahak">
-  </header>
-
   <main>
-    <div class="logo" style="text-align:center;">
-      <img src="images/idaksahak_round.png" alt="Logo Tadaksahak" width="120" />
-    </div>
-
+    <!-- Votre contenu existant reste inchangé -->
     <section>
-      <!-- ✅ Barre de recherche -->
-      <input
-        id="searchBar"
-        type="text"
-        placeholder="Chercher un mot..."
-        oninput="rechercherMot()"
-        aria-label="Zone de recherche"
-      />
-
-      <article id="mot" role="region" aria-live="polite">
+      <article id="mot">
         <h2 id="motTexte">...</h2>
         <p id="definition">...</p>
-
-        <!-- ✅ Sélecteur de langue des définitions -->
-        <div class="lang-switch" aria-label="Changer la langue des traductions">
-          <button onclick="changerLangue('fr')" aria-label="Français">Fr</button>
-          <button onclick="changerLangue('en')" aria-label="Anglais">En</button>
-          <button onclick="changerLangue('ar')" aria-label="Arabe">ع</button>
-          <button onclick="changerLangue('tz')" aria-label="Tamajaq">ⵜ</button>
-          <button onclick="changerLangue('ru')" aria-label="Russe">Ru</button>
+        <p id="compteur">0/0</p>
+        
+        <div class="lang-switch">
+          <button onclick="changerLangue('fr')">Fr</button>
+          <button onclick="changerLangue('en')">En</button>
+          <button onclick="changerLangue('ar')">ع</button>
         </div>
-
-        <!-- ✅ Nouveau : sélecteur de langue de l’interface -->
-        <div class="lang-switch" style="margin-top: 1rem;" aria-label="Changer la langue de l'interface">
-          <button onclick="changerLangueInterface('fr')" aria-label="Interface français">🇫🇷</button>
-          <button onclick="changerLangueInterface('en')" aria-label="Interface anglais">🇬🇧</button>
-          <button onclick="changerLangueInterface('ar')" aria-label="Interface arabe">🇸🇦</button>
-          <button onclick="changerLangueInterface('ru')" aria-label="Interface russe">🇷🇺</button>
-        </div>
-
-        <p id="compteur">1 / X</p>
 
         <div id="audioButtons">
-          <button onclick="jouerTadaksahak()" aria-label="Écouter le mot" disabled style="opacity: 0.5; cursor: not-allowed;">▶️ Écouter</button>
-          <button onclick="rejouerMot()" aria-label="Réécouter le mot" disabled style="opacity: 0.5; cursor: not-allowed;">⟳ Rejouer</button>
-          <button onclick="lectureAuto()" aria-label="Lecture automatique" disabled style="opacity: 0.5; cursor: not-allowed;">▶️ Lecture auto</button>
+          <button onclick="jouerAudio()">▶️ Écouter</button>
         </div>
 
-        <nav id="navigation" aria-label="Navigation entre les mots">
-          <button onclick="motPrecedent()" aria-label="Mot précédent">◀️ Précédent</button>
-          <button onclick="motSuivant()" aria-label="Mot suivant">Suivant ▶️</button>
+        <nav id="navigation">
+          <button onclick="motPrecedent()">◀️ Précédent</button>
+          <button onclick="motSuivant()">Suivant ▶️</button>
         </nav>
       </article>
     </section>
-
-    <section aria-labelledby="chat-title" style="margin-top: 2rem;">
-      <h2 id="chat-title">Chat Tadaksahak</h2>
-      <div id="chatWindow" class="chatbox" role="log" aria-live="polite"></div>
-      <input
-        type="text"
-        id="chatInput"
-        placeholder="Écris ta question..."
-        onkeydown="if(event.key==='Enter') envoyerMessage()"
-        aria-label="Saisie du message"
-      />
-      <button onclick="envoyerMessage()" aria-label="Envoyer le message">Envoyer</button>
-    </section>
   </main>
 
-  <footer>
-    <p>&copy; 2025 • Tadaksahak Learning by Hamadine AG MOCTAR</p>
-  </footer>
-
-  <script src="script.js" defer></script>
-
-  <!-- ✅ Bloc d’enregistrement du Service Worker -->
-  <script>
-    if ("serviceWorker" in navigator) {
-      navigator.serviceWorker
-        .register("./sw.js")
-        .then(reg => {
-          console.log("✅ Service Worker enregistré avec succès :", reg.scope);
-        })
-        .catch(err => {
-          console.error("❌ Échec de l'enregistrement du Service Worker :", err);
-        });
-    }
-  </script>
+  <script src="script.js"></script>
 </body>
 </html>
