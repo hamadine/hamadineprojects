@@ -5,10 +5,21 @@
   "start_url": "./index.html",
   "scope": "./",
   "display": "standalone",
+  "orientation": "portrait",
   "background_color": "#fcebd5",
   "theme_color": "#d9822b",
   "description": "Apprentissage du vocabulaire Tadaksahak avec audio et traduction multilingue.",
   "icons": [
+    {
+      "src": "images/idaksahak_square.png",
+      "sizes": "96x96",
+      "type": "image/png"
+    },
+    {
+      "src": "images/idaksahak_square.png",
+      "sizes": "144x144",
+      "type": "image/png"
+    },
     {
       "src": "images/idaksahak_square.png",
       "sizes": "192x192",
