@@ -8,7 +8,7 @@ let lectureActive = false;
 let autoLectureTimeout;
 
 // Chargement dynamique du JSON
-fetch("data/mots.json")
+fetch("./data/mots.json")
   .then(res => res.json())
   .then(data => {
     mots = data;
