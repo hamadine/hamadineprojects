@@ -2,7 +2,8 @@ import { traductionsUI } from './data/interface-langues.js';
 
 let mots = [];
 let index = 0;
-let langue = "fr";
+let langue = "fr"; // langue des définitions
+let langueInterface = "fr"; // langue de l'interface UI
 let lectureActive = false;
 let autoLectureTimeout;
 
@@ -41,7 +42,10 @@ function afficherMot() {
     btn.style.cursor = hasAudio ? "pointer" : "not-allowed";
   });
 
-  document.getElementById("audioNote").innerText = mot?.audio ? "" : "Pas de fichier audio disponible.";
+  // Afficher une note si l'audio est manquant (optionnel, selon ton HTML)
+  if (document.getElementById("audioNote")) {
+    document.getElementById("audioNote").innerText = mot?.audio ? "" : "Pas de fichier audio disponible.";
+  }
 }
 
 function changerLangue(l) {
@@ -132,9 +136,79 @@ function rechercherMot() {
   }
 }
 
+// --- BOT HAMADINE INTELLIGENT ---
+// Nettoie la question pour extraire le mot clé
+function nettoyerQuestion(question) {
+  let res = question.toLowerCase();
+  // Retire le nom du bot et diverses formulations
+  const patterns = [
+    /hamadine[ ,:]*/i,
+    /comment (on )?(dit|écrit|appelle|prononce) (on )?/i,
+    /en tadaksahak[ \?\.!]*/i,
+    /en français[ \?\.!]*/i,
+    /en russe[ \?\.!]*/i,
+    /en anglais[ \?\.!]*/i,
+    /en arabe[ \?\.!]*/i,
+    /en tamajaq[ \?\.!]*/i,
+    /s'il te plaît[ \?\.!]*/i,
+    /svp[ \?\.!]*/i,
+    /stp[ \?\.!]*/i
+  ];
+  for (let pat of patterns) {
+    res = res.replace(pat, '');
+  }
+  // Retire ponctuations et espaces superflus
+  res = res.replace(/[?.!,;]/g, '').trim();
+  return res;
+}
+
+// Trouver le mot le plus proche (suggestion)
+function suggestionMot(motCherche) {
+  // Recherche simple : commence par la même lettre ou distance de Levenshtein <=2
+  let closest = "";
+  let minDist = 99;
+  for (const m of mots) {
+    const dist = levenshtein(motCherche, m.mot.toLowerCase());
+    if (dist < minDist) {
+      minDist = dist;
+      closest = m.mot;
+    }
+  }
+  if (minDist <= 2 && closest) return closest; // tolérant à 2 fautes
+  return "";
+}
+
+// Levenshtein (distance d'édition) pour la tolérance aux fautes
+function levenshtein(a, b) {
+  const matrix = [];
+  let i, j;
+  // Initialisation
+  for (i = 0; i <= b.length; i++) {
+    matrix[i] = [i];
+  }
+  for (j = 0; j <= a.length; j++) {
+    matrix[0][j] = j;
+  }
+  // Remplissage
+  for (i = 1; i <= b.length; i++) {
+    for (j = 1; j <= a.length; j++) {
+      if (b.charAt(i - 1) === a.charAt(j - 1)) {
+        matrix[i][j] = matrix[i - 1][j - 1];
+      } else {
+        matrix[i][j] = Math.min(
+          matrix[i - 1][j - 1] + 1, // substitution
+          matrix[i][j - 1] + 1,     // insertion
+          matrix[i - 1][j] + 1      // suppression
+        );
+      }
+    }
+  }
+  return matrix[b.length][a.length];
+}
+
 function envoyerMessage() {
   const input = document.getElementById("chatInput");
-  const message = input.value.trim();
+  let message = input.value.trim();
   if (!message) return;
 
   const chatWindow = document.getElementById("chatWindow");
@@ -145,23 +219,35 @@ function envoyerMessage() {
 
   if (!mots.length) {
     const botDiv = document.createElement("div");
-    botDiv.textContent = "Bot : Dictionnaire non chargé.";
+    botDiv.textContent = "Hamadine : Dictionnaire non chargé.";
     chatWindow.appendChild(botDiv);
     chatWindow.scrollTop = chatWindow.scrollHeight;
     input.value = "";
     return;
   }
 
+  // Nettoie la question pour extraire le mot clé
   const normaliser = str => str.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+  let motRecherche = nettoyerQuestion(message);
+  motRecherche = normaliser(motRecherche);
+
   const réponse = mots.find(m =>
-    normaliser(m.mot) === normaliser(message) ||
-    normaliser(m[langue] || "").includes(normaliser(message))
+    normaliser(m.mot) === motRecherche ||
+    normaliser(m[langue] || "").includes(motRecherche)
   );
 
   const botDiv = document.createElement("div");
-  botDiv.textContent = réponse
-    ? `Bot : ${réponse.mot} = ${réponse[langue]}`
-    : "Bot : Je ne connais pas ce mot mais je le cherche. Contactez mon développeur Hamadine AG MOCTAR.";
+  if (réponse) {
+    botDiv.textContent = `Hamadine : "${réponse.mot}" se dit "${réponse[langue]}" en Tadaksahak.`;
+  } else {
+    // Suggestion si mot inconnu
+    const suggestion = suggestionMot(motRecherche);
+    if (suggestion) {
+      botDiv.textContent = `Hamadine : Je n'ai pas trouvé ce mot, mais voulais-tu dire "${suggestion}" ?`;
+    } else {
+      botDiv.textContent = `Hamadine : Je ne connais pas ce mot, mais je vais essayer de l'ajouter bientôt. N'hésite pas à me signaler les mots manquants !`;
+    }
+  }
   chatWindow.appendChild(botDiv);
 
   chatWindow.scrollTop = chatWindow.scrollHeight;
@@ -169,10 +255,46 @@ function envoyerMessage() {
   input.focus();
 }
 
+// Fonction pour changer la langue de l'interface UI
+function changerLangueInterface(lang) {
+  if (!traductionsUI[lang]) return;
+  langueInterface = lang;
+
+  // Gérer RTL pour l'arabe
+  document.documentElement.dir = (lang === 'ar') ? 'rtl' : 'ltr';
+
+  const trad = traductionsUI[lang];
+
+  // Navigation entre les mots
+  const btnPrev = document.querySelector('#navigation button[onclick*="motPrecedent"]');
+  const btnNext = document.querySelector('#navigation button[onclick*="motSuivant"]');
+  if (btnPrev) btnPrev.innerText = trad.precedent;
+  if (btnNext) btnNext.innerText = trad.suivant;
+
+  // Boutons audio
+  const btnEcouter = document.querySelector('#audioButtons button[onclick*="jouerTadaksahak"]');
+  const btnRejouer = document.querySelector('#audioButtons button[onclick*="rejouerMot"]');
+  const btnLectureAuto = document.querySelector('#audioButtons button[onclick*="lectureAuto"]');
+  if (btnEcouter) btnEcouter.innerText = trad.ecouter;
+  if (btnRejouer) btnRejouer.innerText = trad.rejouer;
+  if (btnLectureAuto) btnLectureAuto.innerText = trad.lectureAuto;
+
+  // Chat
+  const chatTitre = document.querySelector('section[aria-labelledby="chat-title"] h2');
+  if (chatTitre) chatTitre.innerText = trad.chatTitre;
+  const btnEnvoyer = document.querySelector('button[onclick*="envoyerMessage"]');
+  if (btnEnvoyer) btnEnvoyer.innerText = trad.envoyer;
+}
+
+// Message d'accueil personnalisé au chargement
 window.onload = () => {
   const chatWindow = document.getElementById("chatWindow");
   const accueil = document.createElement("div");
-  accueil.textContent = `Bot : Bonjour, je m'appelle Hamadine. Demandez-moi un mot et je vous le donne. Il se peut que je ne connaisse pas certains mais je me bats pour vous en trouver. Le meilleur reste avenir. Alors vous êtes prêt ? Yallah بسم الله`;
+  accueil.textContent =
+    "Bienvenue sur Tadaksahak-Learning, je me nomme Hamadine AG MOCTAR et c'est avec plaisir que je vous fais découvrir la langue Tadaksahak.";
   chatWindow.appendChild(accueil);
   chatWindow.scrollTop = chatWindow.scrollHeight;
+
+  // Initialiser la langue d'interface par défaut
+  changerLangueInterface(langueInterface);
 };
