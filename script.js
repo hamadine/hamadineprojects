@@ -1,300 +1,901 @@
-import { traductionsUI } from './data/interface-langues.js';
-
-let mots = [];
-let index = 0;
-let langue = "fr"; // langue des définitions
-let langueInterface = "fr"; // langue de l'interface UI
-let lectureActive = false;
-let autoLectureTimeout;
-
-// Chargement dynamique du JSON
-fetch("./data/mots.json")
-  .then(res => res.json())
-  .then(data => {
-    mots = data;
-
-    // ✅ Cacher le bouton tz si la clé n’existe pas dans les données
-    if (!mots.some(m => m.tz)) {
-      const tzBtn = document.querySelector('[onclick*="tz"]');
-      if (tzBtn) tzBtn.style.display = "none";
-    }
-
-    afficherMot();
-  })
-  .catch(e => {
-    document.getElementById("motTexte").innerText = "Erreur de chargement : data/mots.json";
-    document.getElementById("definition").innerText = "";
-    document.getElementById("compteur").innerText = "";
-  });
-
-function afficherMot() {
-  if (!mots.length) return;
-  const mot = mots[index];
-
-  document.getElementById("motTexte").innerText = mot?.mot || "—";
-  document.getElementById("definition").innerText = mot?.[langue] || "";
-  document.getElementById("compteur").innerText = `${index + 1} / ${mots.length}`;
-
-  document.querySelectorAll("#audioButtons button").forEach(btn => {
-    const hasAudio = !!mot?.audio;
-    btn.disabled = !hasAudio;
-    btn.style.opacity = hasAudio ? "1" : "0.5";
-    btn.style.cursor = hasAudio ? "pointer" : "not-allowed";
-  });
-
-  // Afficher une note si l'audio est manquant (optionnel, selon ton HTML)
-  if (document.getElementById("audioNote")) {
-    document.getElementById("audioNote").innerText = mot?.audio ? "" : "Pas de fichier audio disponible.";
-  }
-}
-
-function changerLangue(l) {
-  langue = l;
-  afficherMot();
-}
-
-function motSuivant() {
-  if (!mots.length) return;
-  index = (index + 1) % mots.length;
-  afficherMot();
-}
-
-function motPrecedent() {
-  if (!mots.length) return;
-  index = (index - 1 + mots.length) % mots.length;
-  afficherMot();
-}
-
-function jouerTadaksahak(i = index) {
-  if (!mots.length) return;
-  const audioFile = mots[i]?.audio;
-  if (audioFile) {
-    const audio = new Audio("audios/" + audioFile);
-    audio.play().catch(e => {
-      console.warn("Audio indisponible : " + e.message);
-      lectureActive = false;
-    });
-  }
-}
-
-function rejouerMot() {
-  jouerTadaksahak(index);
-}
-
-function lectureAuto() {
-  if (lectureActive) {
-    lectureActive = false;
-    clearTimeout(autoLectureTimeout);
-    return;
-  }
-  lectureActive = true;
-  lectureMot(index);
-}
-
-function lectureMot(i) {
-  if (!lectureActive || i >= mots.length) {
-    lectureActive = false;
-    return;
-  }
-
-  index = i;
-  afficherMot();
-
-  const audioFile = mots[i]?.audio;
-  if (audioFile) {
-    const audio = new Audio("audios/" + audioFile);
-    audio.onended = () => {
-      if (lectureActive) lectureMot(i + 1);
-    };
-    audio.play().catch(e => {
-      console.warn("Erreur audio :", e.message);
-      lectureActive = false;
-    });
-  } else {
-    // Pas d'audio → avance manuellement
-    autoLectureTimeout = setTimeout(() => lectureMot(i + 1), 2500);
-  }
-}
-
-function rechercherMot() {
-  if (!mots.length) return;
-  const terme = document.getElementById("searchBar").value.trim().toLowerCase();
-  const normaliser = str => str.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
-
-  const found = mots.find(m =>
-    normaliser(m.mot).includes(normaliser(terme)) ||
-    normaliser(m[langue] || "").includes(normaliser(terme))
-  );
-
-  if (found) {
-    index = mots.indexOf(found);
-    afficherMot();
-  } else {
-    document.getElementById("motTexte").innerText = "Mot non trouvé";
-    document.getElementById("definition").innerText = "";
-    document.getElementById("compteur").innerText = "";
-  }
-}
-
-// --- BOT HAMADINE INTELLIGENT ---
-// Nettoie la question pour extraire le mot clé
-function nettoyerQuestion(question) {
-  let res = question.toLowerCase();
-  // Retire le nom du bot et diverses formulations
-  const patterns = [
-    /hamadine[ ,:]*/i,
-    /comment (on )?(dit|écrit|appelle|prononce) (on )?/i,
-    /en tadaksahak[ \?\.!]*/i,
-    /en français[ \?\.!]*/i,
-    /en russe[ \?\.!]*/i,
-    /en anglais[ \?\.!]*/i,
-    /en arabe[ \?\.!]*/i,
-    /en tamajaq[ \?\.!]*/i,
-    /s'il te plaît[ \?\.!]*/i,
-    /svp[ \?\.!]*/i,
-    /stp[ \?\.!]*/i
-  ];
-  for (let pat of patterns) {
-    res = res.replace(pat, '');
-  }
-  // Retire ponctuations et espaces superflus
-  res = res.replace(/[?.!,;]/g, '').trim();
-  return res;
-}
-
-// Trouver le mot le plus proche (suggestion)
-function suggestionMot(motCherche) {
-  // Recherche simple : commence par la même lettre ou distance de Levenshtein <=2
-  let closest = "";
-  let minDist = 99;
-  for (const m of mots) {
-    const dist = levenshtein(motCherche, m.mot.toLowerCase());
-    if (dist < minDist) {
-      minDist = dist;
-      closest = m.mot;
-    }
-  }
-  if (minDist <= 2 && closest) return closest; // tolérant à 2 fautes
-  return "";
-}
-
-// Levenshtein (distance d'édition) pour la tolérance aux fautes
-function levenshtein(a, b) {
-  const matrix = [];
-  let i, j;
-  // Initialisation
-  for (i = 0; i <= b.length; i++) {
-    matrix[i] = [i];
-  }
-  for (j = 0; j <= a.length; j++) {
-    matrix[0][j] = j;
-  }
-  // Remplissage
-  for (i = 1; i <= b.length; i++) {
-    for (j = 1; j <= a.length; j++) {
-      if (b.charAt(i - 1) === a.charAt(j - 1)) {
-        matrix[i][j] = matrix[i - 1][j - 1];
-      } else {
-        matrix[i][j] = Math.min(
-          matrix[i - 1][j - 1] + 1, // substitution
-          matrix[i][j - 1] + 1,     // insertion
-          matrix[i - 1][j] + 1      // suppression
-        );
-      }
-    }
-  }
-  return matrix[b.length][a.length];
-}
-
-function envoyerMessage() {
-  const input = document.getElementById("chatInput");
-  let message = input.value.trim();
-  if (!message) return;
-
-  const chatWindow = document.getElementById("chatWindow");
-  const msgDiv = document.createElement("div");
-  msgDiv.textContent = "Vous : " + message;
-  msgDiv.style.fontWeight = "bold";
-  chatWindow.appendChild(msgDiv);
-
-  if (!mots.length) {
-    const botDiv = document.createElement("div");
-    botDiv.textContent = "Hamadine : Dictionnaire non chargé.";
-    chatWindow.appendChild(botDiv);
-    chatWindow.scrollTop = chatWindow.scrollHeight;
-    input.value = "";
-    return;
-  }
-
-  // Nettoie la question pour extraire le mot clé
-  const normaliser = str => str.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
-  let motRecherche = nettoyerQuestion(message);
-  motRecherche = normaliser(motRecherche);
-
-  const réponse = mots.find(m =>
-    normaliser(m.mot) === motRecherche ||
-    normaliser(m[langue] || "").includes(motRecherche)
-  );
-
-  const botDiv = document.createElement("div");
-  if (réponse) {
-    botDiv.textContent = `Hamadine : "${réponse.mot}" se dit "${réponse[langue]}" en Tadaksahak.`;
-  } else {
-    // Suggestion si mot inconnu
-    const suggestion = suggestionMot(motRecherche);
-    if (suggestion) {
-      botDiv.textContent = `Hamadine : Je n'ai pas trouvé ce mot, mais voulais-tu dire "${suggestion}" ?`;
-    } else {
-      botDiv.textContent = `Hamadine : Je ne connais pas ce mot, mais je vais essayer de l'ajouter bientôt. N'hésite pas à me signaler les mots manquants !`;
-    }
-  }
-  chatWindow.appendChild(botDiv);
-
-  chatWindow.scrollTop = chatWindow.scrollHeight;
-  input.value = "";
-  input.focus();
-}
-
-// Fonction pour changer la langue de l'interface UI
-function changerLangueInterface(lang) {
-  if (!traductionsUI[lang]) return;
-  langueInterface = lang;
-
-  // Gérer RTL pour l'arabe
-  document.documentElement.dir = (lang === 'ar') ? 'rtl' : 'ltr';
-
-  const trad = traductionsUI[lang];
-
-  // Navigation entre les mots
-  const btnPrev = document.querySelector('#navigation button[onclick*="motPrecedent"]');
-  const btnNext = document.querySelector('#navigation button[onclick*="motSuivant"]');
-  if (btnPrev) btnPrev.innerText = trad.precedent;
-  if (btnNext) btnNext.innerText = trad.suivant;
-
-  // Boutons audio
-  const btnEcouter = document.querySelector('#audioButtons button[onclick*="jouerTadaksahak"]');
-  const btnRejouer = document.querySelector('#audioButtons button[onclick*="rejouerMot"]');
-  const btnLectureAuto = document.querySelector('#audioButtons button[onclick*="lectureAuto"]');
-  if (btnEcouter) btnEcouter.innerText = trad.ecouter;
-  if (btnRejouer) btnRejouer.innerText = trad.rejouer;
-  if (btnLectureAuto) btnLectureAuto.innerText = trad.lectureAuto;
-
-  // Chat
-  const chatTitre = document.querySelector('section[aria-labelledby="chat-title"] h2');
-  if (chatTitre) chatTitre.innerText = trad.chatTitre;
-  const btnEnvoyer = document.querySelector('button[onclick*="envoyerMessage"]');
-  if (btnEnvoyer) btnEnvoyer.innerText = trad.envoyer;
-}
-
-// Message d'accueil personnalisé au chargement
-window.onload = () => {
-  const chatWindow = document.getElementById("chatWindow");
-  const accueil = document.createElement("div");
-  accueil.textContent =
-    "Bienvenue sur Tadaksahak-Learning, je me nomme Hamadine AG MOCTAR et c'est avec plaisir que je vous fais découvrir la langue Tadaksahak.";
-  chatWindow.appendChild(accueil);
-  chatWindow.scrollTop = chatWindow.scrollHeight;
-
-  // Initialiser la langue d'interface par défaut
-  changerLangueInterface(langueInterface);
+// Configuration avec URLs absolues pour GitHub Pages
+const CONFIG = {
+  dataURL: "https://raw.githubusercontent.com/hamadine/Tadaksahak-Learning-/main/data/mots.json",
+  audioBaseURL: "https://hamadine.github.io/Tadaksahak-Learning-/audios/"
 };
+
+// Données de fallback intégrées
+let mots = [
+  [
+  {
+    "mot": "Báy",
+    "prononciation": "ⴱⴰⵢ",
+    "categorie": "vt.",
+    "fr": "Pouvoir (faire)",
+    "en": "Able, to be",
+    "ar": "يستطيع",
+    "ru": "Мочь",
+    "definition": "Verbe exprimant la capacité ou possibilité d’action.",
+    "etymologie": "",
+    "audio": "bay.mp3"
+  },
+  {
+    "mot": "Yiddár",
+    "prononciation": "ⵢⵉⴷⴷⴰⵔ",
+    "categorie": "vi.",
+    "fr": "Être en vie",
+    "en": "Alive, to be",
+    "ar": "يعيش",
+    "ru": "Быть живым",
+    "definition": "Être dans un état de vie.",
+    "etymologie": "",
+    "audio": "yiddar.mp3"
+  },
+  {
+    "mot": "Káamil",
+    "prononciation": "ⴽⴰⴰⵎⵉⵍ",
+    "categorie": "quant.",
+    "fr": "Tout",
+    "en": "All",
+    "ar": "كل",
+    "ru": "Всё",
+    "definition": "Indique l’universalité ou la totalité d’un ensemble.",
+    "etymologie": "",
+    "audio": "kaamil.mp3"
+  },
+  {
+    "mot": "Ka",
+    "prononciation": "ⴽⴰ",
+    "categorie": "postp.",
+    "fr": "Parmi",
+    "en": "Among",
+    "ar": "بين",
+    "ru": "Среди",
+    "definition": "Indique l’inclusion dans un groupe ou un lieu.",
+    "etymologie": "",
+    "audio": "ka.mp3"
+  },
+  {
+    "mot": "Hór",
+    "prononciation": "ⵀⵓⵔ",
+    "categorie": "vi.",
+    "fr": "S'amuser",
+    "en": "Amuse oneself, to",
+    "ar": "يمرح",
+    "ru": "Веселиться",
+    "definition": "Prendre plaisir à une activité ludique.",
+    "etymologie": "",
+    "audio": "hor.mp3"
+  },
+  {
+    "mot": "Baabá",
+    "prononciation": "ⴱⴰⴱⴰ",
+    "categorie": "n.",
+    "fr": "Ancêtre paternel",
+    "en": "Ancestor (paternal)",
+    "ar": "جد",
+    "ru": "Прадед",
+    "definition": "Personne d’une lignée paternelle des générations précédentes.",
+    "etymologie": "",
+    "audio": "baaba.mp3"
+  },
+  {
+    "mot": "Ǝnda",
+    "prononciation": "ⴻⵏⴷⴰ",
+    "categorie": "prep.",
+    "fr": "Et (entre noms)",
+    "en": "And (between noun phrases)",
+    "ar": "و",
+    "ru": "И",
+    "definition": "Coordonne deux groupes nominaux.",
+    "etymologie": "",
+    "audio": "enda.mp3"
+  },
+  {
+    "mot": "A-múudǝr",
+    "prononciation": "ⴰⵎⵓⵓⴷⴻⵔ",
+    "categorie": "n.",
+    "fr": "Animal",
+    "en": "Animal",
+    "ar": "حيوان",
+    "ru": "Животное",
+    "definition": "Nom désignant tout être vivant non humain.",
+    "etymologie": "",
+    "audio": "amuurdor.mp3"
+  },
+  {
+    "mot": "Mán",
+    "prononciation": "ⵎⴰⵏ",
+    "categorie": "vt.",
+    "fr": "Approcher",
+    "en": "Approach, to",
+    "ar": "يقترب",
+    "ru": "Приближаться",
+    "definition": "Se déplacer vers quelque chose ou quelqu’un.",
+    "etymologie": "",
+    "audio": "man.mp3"
+  },
+  {
+    "mot": "Kambá",
+    "prononciation": "ⴽⴰⵎⴱⴰ",
+    "categorie": "n.",
+    "fr": "Bras / main",
+    "en": "Arm / hand",
+    "ar": "يد / ذراع",
+    "ru": "Рука / кисть",
+    "definition": "Membre supérieur du corps humain.",
+    "etymologie": "",
+    "audio": "kamba.mp3"
+  },
+  {
+    "mot": "Guŋgú",
+    "prononciation": "ⴳⵓⵏⴳⵓ",
+    "categorie": "n.",
+    "fr": "Ventre",
+    "en": "Belly",
+    "ar": "بطن",
+    "ru": "Живот",
+    "definition": "Partie du corps où se trouvent les organes digestifs.",
+    "etymologie": "",
+    "audio": "gunggu.mp3"
+  },
+  {
+    "mot": "Bêr",
+    "prononciation": "ⴱⴻⵔ",
+    "categorie": "vi.",
+    "fr": "Être grand",
+    "en": "Big, to be",
+    "ar": "كبير",
+    "ru": "Быть большим",
+    "definition": "Verbe qualifiant ce qui possède une grande taille.",
+    "etymologie": "",
+    "audio": "ber.mp3"
+  },
+  {
+    "mot": "Bêr",
+    "prononciation": "ⴱⴻⵔ",
+    "categorie": "vt.",
+    "fr": "Agrandir",
+    "en": "Big, to make",
+    "ar": "يُكبّر",
+    "ru": "Увеличивать",
+    "definition": "Action de rendre quelque chose plus grand.",
+    "etymologie": "",
+    "audio": "ber.mp3"
+  },
+  {
+    "mot": "Cíidaw",
+    "prononciation": "ⵛⵉⴷⴰⵡ",
+    "categorie": "n.",
+    "fr": "Oiseau",
+    "en": "Bird (general)",
+    "ar": "طائر",
+    "ru": "Птица",
+    "definition": "Animal à plumes qui vole.",
+    "etymologie": "",
+    "audio": "ciidaw.mp3"
+  },
+  {
+    "mot": "Ŋá",
+    "prononciation": "ⵏⴰ",
+    "categorie": "vt.",
+    "fr": "Mordre (animal)",
+    "en": "Bite (animal), to",
+    "ar": "يعض",
+    "ru": "Кусать (животное)",
+    "definition": "Action de saisir avec les dents.",
+    "etymologie": "",
+    "audio": "nga.mp3"
+  },
+  {
+    "mot": "ṇám",
+    "prononciation": "ⵏⴰⵎ",
+    "categorie": "vt.",
+    "fr": "Mordre",
+    "en": "Bite, to",
+    "ar": "يعض",
+    "ru": "Кусать",
+    "definition": "Action de saisir avec les dents.",
+    "etymologie": "",
+    "audio": "nam.mp3"
+  },
+  {
+    "mot": "Bíibi",
+    "prononciation": "ⴱⵉⴱⵉ",
+    "categorie": "adj.",
+    "fr": "Noir",
+    "en": "Black",
+    "ar": "أسود",
+    "ru": "Чёрный",
+    "definition": "Couleur sombre, opposée à la lumière.",
+    "etymologie": "",
+    "audio": "biibi.mp3"
+  },
+  {
+    "mot": "Bíibi",
+    "prononciation": "ⴱⵉⴱⵉ",
+    "categorie": "n.",
+    "fr": "Noir (couleur)",
+    "en": "Black (color)",
+    "ar": "أسود",
+    "ru": "Чёрный (цвет)",
+    "definition": "Nom désignant la couleur noire.",
+    "etymologie": "",
+    "audio": "biibi.mp3"
+  },
+  {
+    "mot": "Bíibi",
+    "prononciation": "ⴱⵉⴱⵉ",
+    "categorie": "vi.",
+    "fr": "Être noir",
+    "en": "Black, to be",
+    "ar": "يكون أسود",
+    "ru": "Быть чёрным",
+    "definition": "Verbe exprimant l’état d’être noir.",
+    "etymologie": "",
+    "audio": "biibi.mp3"
+  },
+  {
+    "mot": "Bíibi",
+    "prononciation": "ⴱⵉⴱⵉ",
+    "categorie": "vt.",
+    "fr": "Noircir",
+    "en": "Blacken, to",
+    "ar": "يُسود",
+    "ru": "Очёрнивать",
+    "definition": "Faire devenir noir, rendre noir.",
+    "etymologie": "",
+    "audio": "biibi.mp3"
+  },
+  {
+    "mot": "Kud-én",
+    "prononciation": "ⴽⵓⴷⵉⵏ",
+    "categorie": "npl.",
+    "fr": "Sang",
+    "en": "Blood",
+    "ar": "دم",
+    "ru": "Кровь",
+    "definition": "Liquide vital circulant dans les veines.",
+    "etymologie": "",
+    "audio": "kuden.mp3"
+  },
+  {
+    "mot": "Fúr",
+    "prononciation": "ⴼⵓⵔ",
+    "categorie": "vi.",
+    "fr": "Souffler (vent)",
+    "en": "Blow (wind), to",
+    "ar": "تهب",
+    "ru": "Дуть (о ветре)",
+    "definition": "Déplacement d’air naturel.",
+    "etymologie": "",
+    "audio": "fur.mp3"
+  },
+  {
+    "mot": "Biidí",
+    "prononciation": "ⴱⵉⵉⴷⵉ",
+    "categorie": "n.",
+    "fr": "Os",
+    "en": "Bone (general)",
+    "ar": "عظم",
+    "ru": "Кость",
+    "definition": "Partie dure du squelette interne.",
+    "etymologie": "",
+    "audio": "biidi.mp3"
+  },
+  {
+    "mot": "ʃ-ǝ́nfǝʃ",
+    "prononciation": "ⵛⴻⵏⴼⴻⵛ",
+    "categorie": "vi.",
+    "fr": "Respirer",
+    "en": "Breathe, to",
+    "ar": "يتنفس",
+    "ru": "Дышать",
+    "definition": "Inspirer et expirer l'air par les voies respiratoires.",
+    "etymologie": "",
+    "audio": "shenfesh.mp3"
+  },
+  {
+    "mot": "Kurú-kuru",
+    "prononciation": "ⴽⵓⵔⵓ",
+    "categorie": "vt.",
+    "fr": "Brûler",
+    "en": "Burn, to",
+    "ar": "يحرق",
+    "ru": "Сжигать",
+    "definition": "Mettre le feu à quelque chose.",
+    "etymologie": "",
+    "audio": "kurukuru.mp3"
+  },
+  {
+    "mot": "Kurú-kuru",
+    "prononciation": "ⴽⵓⵔⵓ",
+    "categorie": "vi.",
+    "fr": "Être brûlé",
+    "en": "Burned, to be",
+    "ar": "محروق",
+    "ru": "Сгореть",
+    "definition": "Être détruit ou altéré par le feu.",
+    "etymologie": "",
+    "audio": "kurukuru.mp3"
+  },
+  {
+    "mot": "Kár",
+    "prononciation": "ⴽⴰⵔ",
+    "categorie": "vt.",
+    "fr": "Sculpter",
+    "en": "Carve (wooden spoon), to",
+    "ar": "ينحت",
+    "ru": "Вырезать",
+    "definition": "Tailler une forme dans du bois.",
+    "etymologie": "",
+    "audio": "kar.mp3"
+  },
+  {
+    "mot": "Báarar",
+    "prononciation": "ⴱⴰⵔⴰⵔ",
+    "categorie": "n.",
+    "fr": "Enfant",
+    "en": "Child",
+    "ar": "طفل",
+    "ru": "Ребёнок",
+    "definition": "Être humain jeune, encore dépendant.",
+    "etymologie": "",
+    "audio": "baarar.mp3"
+  },
+  {
+    "mot": "Áfraw",
+    "prononciation": "ⴰⴼⵔⴰⵡ",
+    "categorie": "n.",
+    "fr": "Aile",
+    "en": "Wing",
+    "ar": "جناح",
+    "ru": "Крыло",
+    "definition": "Appendice permettant de voler, chez les oiseaux notamment.",
+    "etymologie": "",
+    "audio": "afraw.mp3"
+  },
+  {
+    "mot": "A-múudǝr",
+    "prononciation": "ⴰⵎⵓⵓⴷⴻⵔ",
+    "categorie": "n.",
+    "fr": "Animal",
+    "en": "Animal",
+    "ar": "حيوان",
+    "ru": "Животное",
+    "definition": "Nom désignant tout être vivant non humain.",
+    "etymologie": "",
+    "audio": "amuurdor.mp3"
+  },
+  {
+    "mot": "A-rúuru",
+    "prononciation": "ⴰⵔⵓⵔⵓ",
+    "categorie": "n.",
+    "fr": "Dos",
+    "en": "Back (body part)",
+    "ar": "ظهر",
+    "ru": "Спина",
+    "definition": "Partie postérieure du corps humain.",
+    "etymologie": "",
+    "audio": "aruuruu.mp3"
+  },
+  {
+    "mot": "A-yyár",
+    "prononciation": "ⴰⵢⵢⴰⵔ",
+    "categorie": "n.",
+    "fr": "Lune",
+    "en": "Moon",
+    "ar": "قمر",
+    "ru": "Луна",
+    "definition": "Satellite naturel de la Terre.",
+    "etymologie": "",
+    "audio": "ayyar.mp3"
+  },
+  {
+    "mot": "Akkóz",
+    "prononciation": "ⴰⴽⴽⵓⵣ",
+    "categorie": "num.",
+    "fr": "Quatre",
+    "en": "Four",
+    "ar": "أربعة",
+    "ru": "Четыре",
+    "definition": "Nombre cardinal 4.",
+    "etymologie": "",
+    "audio": "akkoz.mp3"
+  },
+  {
+    "mot": "Áa-har",
+    "prononciation": "ⴰⴰⵀⴰⵔ",
+    "categorie": "n.",
+    "fr": "Lion",
+    "en": "Lion",
+    "ar": "أسد",
+    "ru": "Лев",
+    "definition": "Grand félin carnivore vivant en Afrique.",
+    "etymologie": "",
+    "audio": "aahar.mp3"
+  },
+  {
+    "mot": "Maaní",
+    "prononciation": "ⵎⴰⵏⵉ",
+    "categorie": "n.",
+    "fr": "Graisse",
+    "en": "Fat (on meat)",
+    "ar": "دهن",
+    "ru": "",
+    "definition": "Substance grasse présente dans la viande.",
+    "etymologie": "",
+    "audio": "maani.mp3"
+  },
+  {
+    "mot": "ṇás",
+    "prononciation": "ⵏⴰⵙ",
+    "categorie": "vt.",
+    "fr": "Grossir",
+    "en": "Fat, to make",
+    "ar": "يسمن",
+    "ru": "",
+    "definition": "Faire prendre du poids, rendre gras.",
+    "etymologie": "",
+    "audio": "nas.mp3"
+  },
+  {
+    "mot": "Baabá",
+    "prononciation": "ⴱⴰⴱⴰ",
+    "categorie": "n.",
+    "fr": "Père",
+    "en": "Father",
+    "ar": "أب",
+    "ru": "",
+    "definition": "Parent masculin, géniteur.",
+    "etymologie": "",
+    "audio": "baaba.mp3"
+  },
+  {
+    "mot": "Hambará",
+    "prononciation": "ⵀⴰⵎⴱⴰⵔⴰ",
+    "categorie": "n.",
+    "fr": "Peur",
+    "en": "Fear",
+    "ar": "خوف",
+    "ru": "",
+    "definition": "Sentiment d'inquiétude ou d'effroi.",
+    "etymologie": "",
+    "audio": "hambara.mp3"
+  },
+  {
+    "mot": "Hambará",
+    "prononciation": "ⵀⴰⵎⴱⴰⵔⴰ",
+    "categorie": "vt.",
+    "fr": "Avoir peur",
+    "en": "Fear, to",
+    "ar": "يخاف",
+    "ru": "",
+    "definition": "Ressentir ou manifester de la peur.",
+    "etymologie": "",
+    "audio": "hambara.mp3"
+  },
+  {
+    "mot": "Áfraw",
+    "prononciation": "ⴰⴼⵔⴰⵡ",
+    "categorie": "n.",
+    "fr": "Plume",
+    "en": "Feather",
+    "ar": "ريشة",
+    "ru": "",
+    "definition": "Structure légère poussant sur les oiseaux, utilisée pour le vol.",
+    "etymologie": "",
+    "audio": "afraw.mp3"
+  },
+  {
+    "mot": "Barjí",
+    "prononciation": "ⴱⴰⵔⵊⵉ",
+    "categorie": "n.",
+    "fr": "Fibre (végétale)",
+    "en": "Fiber (plant)",
+    "ar": "ليف",
+    "ru": "",
+    "definition": "Faisceau de tissu végétal utilisé dans la fabrication.",
+    "etymologie": "",
+    "audio": "barji.mp3"
+  },
+  {
+    "mot": "Zóɣ",
+    "prononciation": "ⵣⵓⵖ",
+    "categorie": "vi.",
+    "fr": "Se battre",
+    "en": "Fight, to",
+    "ar": "يقاتل",
+    "ru": "",
+    "definition": "Entrer dans un conflit physique ou verbal.",
+    "etymologie": "",
+    "audio": "zogh.mp3"
+  },
+  {
+    "mot": "Huurú",
+    "prononciation": "ⵀⵓⵔⵓ",
+    "categorie": "n.",
+    "fr": "Feu",
+    "en": "Fire",
+    "ar": "نار",
+    "ru": "",
+    "definition": "Combustion produisant chaleur et lumière.",
+    "etymologie": "",
+    "audio": "huuru.mp3"
+  },
+  {
+    "mot": "Tugúdu",
+    "prononciation": "ⵜⵓⴳⵓⴷⵓ",
+    "categorie": "n.",
+    "fr": "Bois (de feu)",
+    "en": "(fire)wood",
+    "ar": "حطب",
+    "ru": "",
+    "definition": "Bois destiné à être brûlé.",
+    "etymologie": "",
+    "audio": "tugudu.mp3"
+  },
+  {
+    "mot": "A-mánana",
+    "prononciation": "ⴰⵎⴰⵏⴰⵏⴰ",
+    "categorie": "n.",
+    "fr": "Poisson",
+    "en": "Fish",
+    "ar": "سمك",
+    "ru": "",
+    "definition": "Animal aquatique utilisé souvent comme aliment.",
+    "etymologie": "",
+    "audio": "amanana.mp3"
+  },
+  {
+    "mot": "ʃammúʃ",
+    "prononciation": "ⵛⴰⵎⵎⵓⵛ",
+    "categorie": "num.",
+    "fr": "Cinq",
+    "en": "Five",
+    "ar": "خمسة",
+    "ru": "",
+    "definition": "Nombre représentant l’unité après quatre.",
+    "etymologie": "",
+    "audio": "shammush.mp3"
+  },
+  {
+    "mot": "Dudú",
+    "prononciation": "ⴷⵓⴷⵓ",
+    "categorie": "vi.",
+    "fr": "Couler",
+    "en": "Flow, to",
+    "ar": "يتدفق",
+    "ru": "",
+    "definition": "Se déplacer sous forme de liquide.",
+    "etymologie": "",
+    "audio": "dudu.mp3"
+  },
+  {
+    "mot": "ṣót",
+    "prononciation": "ⵚⵓⵟ",
+    "categorie": "vi.",
+    "fr": "Voler",
+    "en": "Fly, to",
+    "ar": "يطير",
+    "ru": "",
+    "definition": "Se déplacer dans l’air avec des ailes.",
+    "etymologie": "",
+    "audio": "sot.mp3"
+  },
+  {
+    "mot": "Cáy",
+    "prononciation": "ⵙⴰⵢ",
+    "categorie": "n.",
+    "fr": "Pied / jambe",
+    "en": "Foot / leg",
+    "ar": "رجل",
+    "ru": "",
+    "definition": "Membre inférieur servant à marcher.",
+    "etymologie": "",
+    "audio": "cay.mp3"
+  },
+  {
+    "mot": "Akkóz",
+    "prononciation": "ⴰⴽⴽⵓⵣ",
+    "categorie": "num.",
+    "fr": "Quatre",
+    "en": "Four",
+    "ar": "أربعة",
+    "ru": "",
+    "definition": "Nombre représentant l’unité après trois.",
+    "etymologie": "",
+    "audio": "akkoz.mp3"
+  },
+  {
+    "mot": "Ízzay",
+    "prononciation": "ⵉⵣⵣⴰⵢ",
+    "categorie": "n.",
+    "fr": "Fruit",
+    "en": "Fruit",
+    "ar": "فاكهة",
+    "ru": "",
+    "definition": "Produit comestible provenant d’une plante.",
+    "etymologie": "",
+    "audio": "izzay.mp3"
+  },
+  {
+    "mot": "Haab-én",
+    "prononciation": "ⵀⴰⴱⵉⵏ",
+    "categorie": "npl.",
+    "fr": "Fourrure",
+    "en": "Fur",
+    "ar": "فراء",
+    "ru": "",
+    "definition": "Poil doux recouvrant certains animaux.",
+    "etymologie": "",
+    "audio": "haaben.mp3"
+  },
+  {
+    "mot": "Hór",
+    "prononciation": "ⵀⵓⵔ",
+    "categorie": "n.",
+    "fr": "Jeu",
+    "en": "Game (play)",
+    "ar": "لعبة",
+    "ru": "",
+    "definition": "Activité de loisir ou de divertissement.",
+    "etymologie": "",
+    "audio": "hor_game.mp3"
+  },
+  {
+    "mot": "Ná",
+    "prononciation": "ⵏⴰ",
+    "categorie": "vt.",
+    "fr": "Donner",
+    "en": "Give, to",
+    "ar": "يعطي",
+    "ru": "",
+    "definition": "Faire un don ou offrir quelque chose.",
+    "etymologie": "",
+    "audio": "na.mp3"
+  },
+  {
+    "mot": "Ná",
+    "prononciation": "ⵏⴰ",
+    "categorie": "n.",
+    "fr": "Don",
+    "en": "Giving",
+    "ar": "عطاء",
+    "ru": "",
+    "definition": "Action d’offrir quelque chose à quelqu’un.",
+    "etymologie": "",
+    "audio": "na_don.mp3"
+  },
+  {
+    "mot": "Áŋga",
+    "prononciation": "ⴰⵏⴳⴰ",
+    "categorie": "ind. pron.",
+    "fr": "Il/elle",
+    "en": "He/she/it",
+    "ar": "هي/هو",
+    "ru": "",
+    "definition": "Pronom personnel pour référer à une personne ou chose.",
+    "etymologie": "",
+    "audio": "anga.mp3"
+  },
+  {
+    "mot": "Kár",
+    "prononciation": "ⴽⴰⵔ",
+    "categorie": "vt.",
+    "fr": "Frapper",
+    "en": "Hit, to",
+    "ar": "يضرب",
+    "ru": "",
+    "definition": "Appliquer une force brusque sur quelque chose.",
+    "etymologie": "",
+    "audio": "kar_frapper.mp3"
+  },
+  {
+    "mot": "Yíddǝr",
+    "prononciation": "ⵢⵉⴷⴷⵔ",
+    "categorie": "vt.",
+    "fr": "Tenir",
+    "en": "Hold, to",
+    "ar": "يمسك",
+    "ru": "",
+    "definition": "Saisir et garder en main.",
+    "etymologie": "",
+    "audio": "yiddar_tenir.mp3"
+  },
+  {
+    "mot": "Korrá",
+    "prononciation": "ⴽⵓⵔⵔⴰ",
+    "categorie": "vi.",
+    "fr": "Être chaud",
+    "en": "Hot, to be (warm)",
+    "ar": "دافئ",
+    "ru": "",
+    "definition": "Avoir une température élevée.",
+    "etymologie": "",
+    "audio": "korra_warm.mp3"
+  },
+  {
+    "mot": "Korrá",
+    "prononciation": "ⴽⵓⵔⵔⴰ",
+    "categorie": "vt.",
+    "fr": "Chauffer",
+    "en": "Hot, to make",
+    "ar": "يسخن",
+    "ru": "",
+    "definition": "Faire monter la température de quelque chose.",
+    "etymologie": "",
+    "audio": "korra_chaud.mp3"
+  },
+  {
+    "mot": "Man ǝ́mmǝk aɣó ǝnda",
+    "prononciation": "ⵎⴰⵏ ⴻⵎⵎⴽ ⴰⵖⵓ ⴻⵏⴷⴰ",
+    "categorie": "question phrase",
+    "fr": "Comment ?",
+    "en": "How?",
+    "ar": "كيف؟",
+    "ru": "",
+    "definition": "Question pour demander la manière ou la méthode.",
+    "etymologie": "",
+    "audio": "man_emmek.mp3"
+  },
+  {
+    "mot": "Gimár",
+    "prononciation": "ⴳⵉⵎⴰⵔ",
+    "categorie": "vi.",
+    "fr": "Chasser",
+    "en": "Hunt (game), to",
+    "ar": "يصطاد",
+    "ru": "",
+    "definition": "Poursuivre et capturer des animaux.",
+    "etymologie": "",
+    "audio": "gimar.mp3"
+  },
+  {
+    "mot": "Aarú",
+    "prononciation": "ⴰⴰⵔⵓ",
+    "categorie": "n.",
+    "fr": "Mari",
+    "en": "Husband",
+    "ar": "زوج",
+    "ru": "",
+    "definition": "Époux masculin dans un mariage.",
+    "etymologie": "",
+    "audio": "aaru_mari.mp3"
+  },
+  {
+    "mot": "Aɣay",
+    "prononciation": "ⴰⵖⴰⵢ",
+    "categorie": "ind. pron.",
+    "fr": "Je",
+    "en": "I",
+    "ar": "أنا",
+    "ru": "",
+    "definition": "Pronom personnel à la première personne.",
+    "etymologie": "",
+    "audio": "aghay.mp3"
+  },
+  {
+    "mot": "Ǝnda",
+    "prononciation": "ⴻⵏⴷⴰ",
+    "categorie": "clause particle",
+    "fr": "Si / quand",
+    "en": "If/when",
+    "ar": "عندما / إذا",
+    "ru": "",
+    "definition": "Utilisé pour introduire une condition ou un moment.",
+    "etymologie": "",
+    "audio": "enda_si.mp3"
+  },
+  {
+    "mot": "Ǝndár",
+    "prononciation": "ⴻⵏⴷⴰⵔ",
+    "categorie": "conj.",
+    "fr": "Si (hypothétique)",
+    "en": "If (hypothetical)",
+    "ar": "لو",
+    "ru": "",
+    "definition": "Indique une situation hypothétique ou supposée.",
+    "etymologie": "",
+    "audio": "endar.mp3"
+  },
+  {
+    "mot": "Ǝs-kábahar",
+    "prononciation": "ⴻⵙⴽⴰⴱⴰⵀⴰⵔ",
+    "categorie": "conj.",
+    "fr": "Si / quand",
+    "en": "If/when",
+    "ar": "عندما / إذا",
+    "ru": "",
+    "definition": "Autre forme pour introduire une condition ou un moment.",
+    "etymologie": "",
+    "audio": "eskabahar.mp3"
+  },
+  {
+    "mot": "Bêr",
+    "prononciation": "ⴱⴻⵔ",
+    "categorie": "vi.",
+    "fr": "Être important",
+    "en": "Important, to be",
+    "ar": "مهم",
+    "ru": "",
+    "definition": "Décrire une chose ayant beaucoup de valeur ou de signification.",
+    "etymologie": "",
+    "audio": "ber_important.mp3"
+  },
+  {
+    "mot": "Lés",
+    "prononciation": "ⵍⴻⵙ",
+    "categorie": "vi.",
+    "fr": "Être impur (religieux)",
+    "en": "Impure (religiously), to be",
+    "ar": "نجس",
+    "ru": "",
+    "definition": "État considéré comme rituellement impur.",
+    "etymologie": "",
+    "audio": "les_impuretés.mp3"
+  }
+]
+
+// Variables d'état
+let index = 0;
+let langue = "fr";
+let lectureActive = false;
+let audioInstance = null;
+
+// Chargement des données (avec double fallback)
+async function init() {
+  try {
+    // 1. Essai de chargement depuis GitHub
+    const response = await fetch(CONFIG.dataURL);
+    if (!response.ok) throw new Error("Erreur réseau");
+    const data = await response.json();
+    if (data.length > 0) mots = data;
+    
+    // 2. Vérification des audios
+    if (!mots[0].audio) {
+      console.warn("Aucun fichier audio détecté");
+    }
+  } catch (e) {
+    console.warn("Utilisation des données intégrées :", e.message);
+  } finally {
+    afficherMot();
+    setupUI();
+  }
+}
+
+// Fonctions principales (optimisées)
+function afficherMot() {
+  const mot = mots[index];
+  if (!mot) return;
+
+  document.getElementById("motTexte").textContent = mot.mot;
+  document.getElementById("definition").textContent = mot[langue] || "Traduction manquante";
+  document.getElementById("compteur").textContent = `${index + 1}/${mots.length}`;
+
+  // Gestion audio
+  const hasAudio = !!mot.audio;
+  document.querySelectorAll("#audioButtons button").forEach(btn => {
+    btn.disabled = !hasAudio;
+    btn.style.opacity = hasAudio ? 1 : 0.5;
+  });
+}
+
+function jouerAudio() {
+  if (audioInstance) {
+    audioInstance.pause();
+    audioInstance.currentTime = 0;
+  }
+
+  const audioFile = mots[index]?.audio;
+  if (!audioFile) return;
+
+  audioInstance = new Audio(CONFIG.audioBaseURL + audioFile);
+  audioInstance.play().catch(e => {
+    console.error("Erreur audio :", e.message);
+    alert(`Fichier audio manquant : ${audioFile}`);
+  });
+}
+
+// Initialisation au chargement
+window.onload = init;
