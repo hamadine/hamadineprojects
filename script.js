@@ -1,4 +1,5 @@
 import { traductionsUI } from './data/interface-langues.js';
+
 let mots = [];
 let index = 0;
 let langue = "fr";
@@ -11,7 +12,7 @@ fetch("data/mots.json")
   .then(data => {
     mots = data;
 
-    // ✅ Désactiver le bouton 'tz' s'il n'existe pas dans les données
+    // ✅ Cacher le bouton tz si la clé n’existe pas dans les données
     if (!mots.some(m => m.tz)) {
       const tzBtn = document.querySelector('[onclick*="tz"]');
       if (tzBtn) tzBtn.style.display = "none";
@@ -20,7 +21,7 @@ fetch("data/mots.json")
     afficherMot();
   })
   .catch(e => {
-    document.getElementById("motTexte").innerText = "data/mots.json;
+    document.getElementById("motTexte").innerText = "Erreur de chargement : data/mots.json";
     document.getElementById("definition").innerText = "";
     document.getElementById("compteur").innerText = "";
   });
@@ -28,15 +29,19 @@ fetch("data/mots.json")
 function afficherMot() {
   if (!mots.length) return;
   const mot = mots[index];
+
   document.getElementById("motTexte").innerText = mot?.mot || "—";
   document.getElementById("definition").innerText = mot?.[langue] || "";
   document.getElementById("compteur").innerText = `${index + 1} / ${mots.length}`;
 
   document.querySelectorAll("#audioButtons button").forEach(btn => {
-    btn.disabled = !mot?.audio;
-    btn.style.opacity = mot?.audio ? "1" : "0.5";
-    btn.style.cursor = mot?.audio ? "pointer" : "not-allowed";
+    const hasAudio = !!mot?.audio;
+    btn.disabled = !hasAudio;
+    btn.style.opacity = hasAudio ? "1" : "0.5";
+    btn.style.cursor = hasAudio ? "pointer" : "not-allowed";
   });
+
+  document.getElementById("audioNote").innerText = mot?.audio ? "" : "Pas de fichier audio disponible.";
 }
 
 function changerLangue(l) {
@@ -58,12 +63,12 @@ function motPrecedent() {
 
 function jouerTadaksahak(i = index) {
   if (!mots.length) return;
-  const audioFile = mots[i].audio;
+  const audioFile = mots[i]?.audio;
   if (audioFile) {
     const audio = new Audio("audios/" + audioFile);
     audio.play().catch(e => {
       console.warn("Audio indisponible : " + e.message);
-      lectureActive = false; // ✅ arrête auto-lecture si audio échoue
+      lectureActive = false;
     });
   }
 }
@@ -87,18 +92,36 @@ function lectureMot(i) {
     lectureActive = false;
     return;
   }
+
   index = i;
   afficherMot();
-  jouerTadaksahak(i);
-  autoLectureTimeout = setTimeout(() => lectureMot(i + 1), 4000);
+
+  const audioFile = mots[i]?.audio;
+  if (audioFile) {
+    const audio = new Audio("audios/" + audioFile);
+    audio.onended = () => {
+      if (lectureActive) lectureMot(i + 1);
+    };
+    audio.play().catch(e => {
+      console.warn("Erreur audio :", e.message);
+      lectureActive = false;
+    });
+  } else {
+    // Pas d'audio → avance manuellement
+    autoLectureTimeout = setTimeout(() => lectureMot(i + 1), 2500);
+  }
 }
 
 function rechercherMot() {
   if (!mots.length) return;
-  const terme = document.getElementById("searchBar").value.toLowerCase();
+  const terme = document.getElementById("searchBar").value.trim().toLowerCase();
+  const normaliser = str => str.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+
   const found = mots.find(m =>
-    m.mot.toLowerCase().includes(terme) || m[langue]?.toLowerCase().includes(terme)
+    normaliser(m.mot).includes(normaliser(terme)) ||
+    normaliser(m[langue] || "").includes(normaliser(terme))
   );
+
   if (found) {
     index = mots.indexOf(found);
     afficherMot();
@@ -129,26 +152,27 @@ function envoyerMessage() {
     return;
   }
 
+  const normaliser = str => str.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
   const réponse = mots.find(m =>
-    m.mot.toLowerCase() === message.toLowerCase() ||
-    m[langue]?.toLowerCase().includes(message.toLowerCase())
+    normaliser(m.mot) === normaliser(message) ||
+    normaliser(m[langue] || "").includes(normaliser(message))
   );
 
   const botDiv = document.createElement("div");
   botDiv.textContent = réponse
     ? `Bot : ${réponse.mot} = ${réponse[langue]}`
-    : "Bot : Je ne connais pas ce mot mais je le cherche, contactez mon développeur Hamadine AG MOCTAR.";
+    : "Bot : Je ne connais pas ce mot mais je le cherche. Contactez mon développeur Hamadine AG MOCTAR.";
   chatWindow.appendChild(botDiv);
 
   chatWindow.scrollTop = chatWindow.scrollHeight;
   input.value = "";
-  input.focus(); // ✅ UX clavier
+  input.focus();
 }
 
 window.onload = () => {
   const chatWindow = document.getElementById("chatWindow");
   const accueil = document.createElement("div");
-  accueil.textContent = "Bot : Bonjour, je m'appelle Hamadine. Demandez-moi un mot et je vous le donne. Il se peut que je ne connaisse pas certains mais je me bats pour vous en trouver. Le meilleur reste avenir. Alors vous êtes prêt? Yallah بسم االله";";
+  accueil.textContent = `Bot : Bonjour, je m'appelle Hamadine. Demandez-moi un mot et je vous le donne. Il se peut que je ne connaisse pas certains mais je me bats pour vous en trouver. Le meilleur reste avenir. Alors vous êtes prêt ? Yallah بسم الله`;
   chatWindow.appendChild(accueil);
   chatWindow.scrollTop = chatWindow.scrollHeight;
 };
