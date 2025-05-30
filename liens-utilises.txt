@@ -1,5 +1,0 @@
-href="images/idaksahak_round.png
-href="manifest.json
-href="style.css
-src="images/idaksahak_round.png
-src="script.js

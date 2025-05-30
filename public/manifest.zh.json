@@ -1,0 +1,25 @@
+{
+  "name": "塔达克萨哈克多语言词典",
+  "short_name": "Tadaksahak",
+  "lang": "zh",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#fcebd5",
+  "theme_color": "#d9822b",
+  "description": "通过音频和多语言翻译学习塔达克萨哈克词汇。",
+  "icons": [
+    {
+      "src": "images/idaksahak_square.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "images/idaksahak_round.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}

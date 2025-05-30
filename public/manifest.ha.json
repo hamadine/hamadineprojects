@@ -1,0 +1,25 @@
+{
+  "name": "Kamus ɗin Tadaksahak na harsuna da dama",
+  "short_name": "Tadaksahak",
+  "lang": "ha",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#fcebd5",
+  "theme_color": "#d9822b",
+  "description": "Koyi da kalmomin Tadaksahak tare da sauti da fassarar harsuna da dama.",
+  "icons": [
+    {
+      "src": "images/idaksahak_square.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "images/idaksahak_round.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}

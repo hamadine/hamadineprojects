@@ -1,830 +1,164 @@
-[
-  {
-    "mot": "Báy",
-    "prononciation": "ⴱⴰⵢ",
-    "categorie": "vt.",
-    "fr": "Pouvoir (faire)",
-    "en": "Able, to be",
-    "ar": "يستطيع",
-    "ru": "Мочь",
-    "definition": "Verbe exprimant la capacité ou possibilité d’action.",
-    "etymologie": "",
-    "audio": "bay.mp3"
-  },
-  {
-    "mot": "Yiddár",
-    "prononciation": "ⵢⵉⴷⴷⴰⵔ",
-    "categorie": "vi.",
-    "fr": "Être en vie",
-    "en": "Alive, to be",
-    "ar": "يعيش",
-    "ru": "Быть живым",
-    "definition": "Être dans un état de vie.",
-    "etymologie": "",
-    "audio": "yiddar.mp3"
-  },
-  {
-    "mot": "Káamil",
-    "prononciation": "ⴽⴰⴰⵎⵉⵍ",
-    "categorie": "quant.",
-    "fr": "Tout",
-    "en": "All",
-    "ar": "كل",
-    "ru": "Всё",
-    "definition": "Indique l’universalité ou la totalité d’un ensemble.",
-    "etymologie": "",
-    "audio": "kaamil.mp3"
-  },
-  {
-    "mot": "Ka",
-    "prononciation": "ⴽⴰ",
-    "categorie": "postp.",
-    "fr": "Parmi",
-    "en": "Among",
-    "ar": "بين",
-    "ru": "Среди",
-    "definition": "Indique l’inclusion dans un groupe ou un lieu.",
-    "etymologie": "",
-    "audio": "ka.mp3"
-  },
-  {
-    "mot": "Hór",
-    "prononciation": "ⵀⵓⵔ",
-    "categorie": "vi.",
-    "fr": "S'amuser",
-    "en": "Amuse oneself, to",
-    "ar": "يمرح",
-    "ru": "Веселиться",
-    "definition": "Prendre plaisir à une activité ludique.",
-    "etymologie": "",
-    "audio": "hor.mp3"
-  },
-  {
-    "mot": "Baabá",
-    "prononciation": "ⴱⴰⴱⴰ",
-    "categorie": "n.",
-    "fr": "Ancêtre paternel",
-    "en": "Ancestor (paternal)",
-    "ar": "جد",
-    "ru": "Прадед",
-    "definition": "Personne d’une lignée paternelle des générations précédentes.",
-    "etymologie": "",
-    "audio": "baaba.mp3"
-  },
-  {
-    "mot": "Ǝnda",
-    "prononciation": "ⴻⵏⴷⴰ",
-    "categorie": "prep.",
-    "fr": "Et (entre noms)",
-    "en": "And (between noun phrases)",
-    "ar": "و",
-    "ru": "И",
-    "definition": "Coordonne deux groupes nominaux.",
-    "etymologie": "",
-    "audio": "enda.mp3"
-  },
-  {
-    "mot": "A-múudǝr",
-    "prononciation": "ⴰⵎⵓⵓⴷⴻⵔ",
-    "categorie": "n.",
-    "fr": "Animal",
-    "en": "Animal",
-    "ar": "حيوان",
-    "ru": "Животное",
-    "definition": "Nom désignant tout être vivant non humain.",
-    "etymologie": "",
-    "audio": "amuurdor.mp3"
-  },
-  {
-    "mot": "Mán",
-    "prononciation": "ⵎⴰⵏ",
-    "categorie": "vt.",
-    "fr": "Approcher",
-    "en": "Approach, to",
-    "ar": "يقترب",
-    "ru": "Приближаться",
-    "definition": "Se déplacer vers quelque chose ou quelqu’un.",
-    "etymologie": "",
-    "audio": "man.mp3"
-  },
-  {
-    "mot": "Kambá",
-    "prononciation": "ⴽⴰⵎⴱⴰ",
-    "categorie": "n.",
-    "fr": "Bras / main",
-    "en": "Arm / hand",
-    "ar": "يد / ذراع",
-    "ru": "Рука / кисть",
-    "definition": "Membre supérieur du corps humain.",
-    "etymologie": "",
-    "audio": "kamba.mp3"
-  },
-  {
-    "mot": "Guŋgú",
-    "prononciation": "ⴳⵓⵏⴳⵓ",
-    "categorie": "n.",
-    "fr": "Ventre",
-    "en": "Belly",
-    "ar": "بطن",
-    "ru": "Живот",
-    "definition": "Partie du corps où se trouvent les organes digestifs.",
-    "etymologie": "",
-    "audio": "gunggu.mp3"
-  },
-  {
-    "mot": "Bêr",
-    "prononciation": "ⴱⴻⵔ",
-    "categorie": "vi.",
-    "fr": "Être grand",
-    "en": "Big, to be",
-    "ar": "كبير",
-    "ru": "Быть большим",
-    "definition": "Verbe qualifiant ce qui possède une grande taille.",
-    "etymologie": "",
-    "audio": "ber.mp3"
-  },
-  {
-    "mot": "Bêr",
-    "prononciation": "ⴱⴻⵔ",
-    "categorie": "vt.",
-    "fr": "Agrandir",
-    "en": "Big, to make",
-    "ar": "يُكبّر",
-    "ru": "Увеличивать",
-    "definition": "Action de rendre quelque chose plus grand.",
-    "etymologie": "",
-    "audio": "ber.mp3"
-  },
-  {
-    "mot": "Cíidaw",
-    "prononciation": "ⵛⵉⴷⴰⵡ",
-    "categorie": "n.",
-    "fr": "Oiseau",
-    "en": "Bird (general)",
-    "ar": "طائر",
-    "ru": "Птица",
-    "definition": "Animal à plumes qui vole.",
-    "etymologie": "",
-    "audio": "ciidaw.mp3"
-  },
-  {
-    "mot": "Ŋá",
-    "prononciation": "ⵏⴰ",
-    "categorie": "vt.",
-    "fr": "Mordre (animal)",
-    "en": "Bite (animal), to",
-    "ar": "يعض",
-    "ru": "Кусать (животное)",
-    "definition": "Action de saisir avec les dents.",
-    "etymologie": "",
-    "audio": "nga.mp3"
-  },
-  {
-    "mot": "ṇám",
-    "prononciation": "ⵏⴰⵎ",
-    "categorie": "vt.",
-    "fr": "Mordre",
-    "en": "Bite, to",
-    "ar": "يعض",
-    "ru": "Кусать",
-    "definition": "Action de saisir avec les dents.",
-    "etymologie": "",
-    "audio": "nam.mp3"
-  },
-  {
-    "mot": "Bíibi",
-    "prononciation": "ⴱⵉⴱⵉ",
-    "categorie": "adj.",
-    "fr": "Noir",
-    "en": "Black",
-    "ar": "أسود",
-    "ru": "Чёрный",
-    "definition": "Couleur sombre, opposée à la lumière.",
-    "etymologie": "",
-    "audio": "biibi.mp3"
-  },
-  {
-    "mot": "Bíibi",
-    "prononciation": "ⴱⵉⴱⵉ",
-    "categorie": "n.",
-    "fr": "Noir (couleur)",
-    "en": "Black (color)",
-    "ar": "أسود",
-    "ru": "Чёрный (цвет)",
-    "definition": "Nom désignant la couleur noire.",
-    "etymologie": "",
-    "audio": "biibi.mp3"
-  },
-  {
-    "mot": "Bíibi",
-    "prononciation": "ⴱⵉⴱⵉ",
-    "categorie": "vi.",
-    "fr": "Être noir",
-    "en": "Black, to be",
-    "ar": "يكون أسود",
-    "ru": "Быть чёрным",
-    "definition": "Verbe exprimant l’état d’être noir.",
-    "etymologie": "",
-    "audio": "biibi.mp3"
-  },
-  {
-    "mot": "Bíibi",
-    "prononciation": "ⴱⵉⴱⵉ",
-    "categorie": "vt.",
-    "fr": "Noircir",
-    "en": "Blacken, to",
-    "ar": "يُسود",
-    "ru": "Очёрнивать",
-    "definition": "Faire devenir noir, rendre noir.",
-    "etymologie": "",
-    "audio": "biibi.mp3"
-  },
-  {
-    "mot": "Kud-én",
-    "prononciation": "ⴽⵓⴷⵉⵏ",
-    "categorie": "npl.",
-    "fr": "Sang",
-    "en": "Blood",
-    "ar": "دم",
-    "ru": "Кровь",
-    "definition": "Liquide vital circulant dans les veines.",
-    "etymologie": "",
-    "audio": "kuden.mp3"
-  },
-  {
-    "mot": "Fúr",
-    "prononciation": "ⴼⵓⵔ",
-    "categorie": "vi.",
-    "fr": "Souffler (vent)",
-    "en": "Blow (wind), to",
-    "ar": "تهب",
-    "ru": "Дуть (о ветре)",
-    "definition": "Déplacement d’air naturel.",
-    "etymologie": "",
-    "audio": "fur.mp3"
-  },
-  {
-    "mot": "Biidí",
-    "prononciation": "ⴱⵉⵉⴷⵉ",
-    "categorie": "n.",
-    "fr": "Os",
-    "en": "Bone (general)",
-    "ar": "عظم",
-    "ru": "Кость",
-    "definition": "Partie dure du squelette interne.",
-    "etymologie": "",
-    "audio": "biidi.mp3"
-  },
-  {
-    "mot": "ʃ-ǝ́nfǝʃ",
-    "prononciation": "ⵛⴻⵏⴼⴻⵛ",
-    "categorie": "vi.",
-    "fr": "Respirer",
-    "en": "Breathe, to",
-    "ar": "يتنفس",
-    "ru": "Дышать",
-    "definition": "Inspirer et expirer l'air par les voies respiratoires.",
-    "etymologie": "",
-    "audio": "shenfesh.mp3"
-  },
-  {
-    "mot": "Kurú-kuru",
-    "prononciation": "ⴽⵓⵔⵓ",
-    "categorie": "vt.",
-    "fr": "Brûler",
-    "en": "Burn, to",
-    "ar": "يحرق",
-    "ru": "Сжигать",
-    "definition": "Mettre le feu à quelque chose.",
-    "etymologie": "",
-    "audio": "kurukuru.mp3"
-  },
-  {
-    "mot": "Kurú-kuru",
-    "prononciation": "ⴽⵓⵔⵓ",
-    "categorie": "vi.",
-    "fr": "Être brûlé",
-    "en": "Burned, to be",
-    "ar": "محروق",
-    "ru": "Сгореть",
-    "definition": "Être détruit ou altéré par le feu.",
-    "etymologie": "",
-    "audio": "kurukuru.mp3"
-  },
-  {
-    "mot": "Kár",
-    "prononciation": "ⴽⴰⵔ",
-    "categorie": "vt.",
-    "fr": "Sculpter",
-    "en": "Carve (wooden spoon), to",
-    "ar": "ينحت",
-    "ru": "Вырезать",
-    "definition": "Tailler une forme dans du bois.",
-    "etymologie": "",
-    "audio": "kar.mp3"
-  },
-  {
-    "mot": "Báarar",
-    "prononciation": "ⴱⴰⵔⴰⵔ",
-    "categorie": "n.",
-    "fr": "Enfant",
-    "en": "Child",
-    "ar": "طفل",
-    "ru": "Ребёнок",
-    "definition": "Être humain jeune, encore dépendant.",
-    "etymologie": "",
-    "audio": "baarar.mp3"
-  },
-  {
-    "mot": "Áfraw",
-    "prononciation": "ⴰⴼⵔⴰⵡ",
-    "categorie": "n.",
-    "fr": "Aile",
-    "en": "Wing",
-    "ar": "جناح",
-    "ru": "Крыло",
-    "definition": "Appendice permettant de voler, chez les oiseaux notamment.",
-    "etymologie": "",
-    "audio": "afraw.mp3"
-  },
-  {
-    "mot": "A-múudǝr",
-    "prononciation": "ⴰⵎⵓⵓⴷⴻⵔ",
-    "categorie": "n.",
-    "fr": "Animal",
-    "en": "Animal",
-    "ar": "حيوان",
-    "ru": "Животное",
-    "definition": "Nom désignant tout être vivant non humain.",
-    "etymologie": "",
-    "audio": "amuurdor.mp3"
-  },
-  {
-    "mot": "A-rúuru",
-    "prononciation": "ⴰⵔⵓⵔⵓ",
-    "categorie": "n.",
-    "fr": "Dos",
-    "en": "Back (body part)",
-    "ar": "ظهر",
-    "ru": "Спина",
-    "definition": "Partie postérieure du corps humain.",
-    "etymologie": "",
-    "audio": "aruuruu.mp3"
-  },
-  {
-    "mot": "A-yyár",
-    "prononciation": "ⴰⵢⵢⴰⵔ",
-    "categorie": "n.",
-    "fr": "Lune",
-    "en": "Moon",
-    "ar": "قمر",
-    "ru": "Луна",
-    "definition": "Satellite naturel de la Terre.",
-    "etymologie": "",
-    "audio": "ayyar.mp3"
-  },
-  {
-    "mot": "Akkóz",
-    "prononciation": "ⴰⴽⴽⵓⵣ",
-    "categorie": "num.",
-    "fr": "Quatre",
-    "en": "Four",
-    "ar": "أربعة",
-    "ru": "Четыре",
-    "definition": "Nombre cardinal 4.",
-    "etymologie": "",
-    "audio": "akkoz.mp3"
-  },
-  {
-    "mot": "Áa-har",
-    "prononciation": "ⴰⴰⵀⴰⵔ",
-    "categorie": "n.",
-    "fr": "Lion",
-    "en": "Lion",
-    "ar": "أسد",
-    "ru": "Лев",
-    "definition": "Grand félin carnivore vivant en Afrique.",
-    "etymologie": "",
-    "audio": "aahar.mp3"
-  },
-  {
-    "mot": "Maaní",
-    "prononciation": "ⵎⴰⵏⵉ",
-    "categorie": "n.",
-    "fr": "Graisse",
-    "en": "Fat (on meat)",
-    "ar": "دهن",
-    "ru": "",
-    "definition": "Substance grasse présente dans la viande.",
-    "etymologie": "",
-    "audio": "maani.mp3"
-  },
-  {
-    "mot": "ṇás",
-    "prononciation": "ⵏⴰⵙ",
-    "categorie": "vt.",
-    "fr": "Grossir",
-    "en": "Fat, to make",
-    "ar": "يسمن",
-    "ru": "",
-    "definition": "Faire prendre du poids, rendre gras.",
-    "etymologie": "",
-    "audio": "nas.mp3"
-  },
-  {
-    "mot": "Baabá",
-    "prononciation": "ⴱⴰⴱⴰ",
-    "categorie": "n.",
-    "fr": "Père",
-    "en": "Father",
-    "ar": "أب",
-    "ru": "",
-    "definition": "Parent masculin, géniteur.",
-    "etymologie": "",
-    "audio": "baaba.mp3"
-  },
-  {
-    "mot": "Hambará",
-    "prononciation": "ⵀⴰⵎⴱⴰⵔⴰ",
-    "categorie": "n.",
-    "fr": "Peur",
-    "en": "Fear",
-    "ar": "خوف",
-    "ru": "",
-    "definition": "Sentiment d'inquiétude ou d'effroi.",
-    "etymologie": "",
-    "audio": "hambara.mp3"
-  },
-  {
-    "mot": "Hambará",
-    "prononciation": "ⵀⴰⵎⴱⴰⵔⴰ",
-    "categorie": "vt.",
-    "fr": "Avoir peur",
-    "en": "Fear, to",
-    "ar": "يخاف",
-    "ru": "",
-    "definition": "Ressentir ou manifester de la peur.",
-    "etymologie": "",
-    "audio": "hambara.mp3"
-  },
-  {
-    "mot": "Áfraw",
-    "prononciation": "ⴰⴼⵔⴰⵡ",
-    "categorie": "n.",
-    "fr": "Plume",
-    "en": "Feather",
-    "ar": "ريشة",
-    "ru": "",
-    "definition": "Structure légère poussant sur les oiseaux, utilisée pour le vol.",
-    "etymologie": "",
-    "audio": "afraw.mp3"
-  },
-  {
-    "mot": "Barjí",
-    "prononciation": "ⴱⴰⵔⵊⵉ",
-    "categorie": "n.",
-    "fr": "Fibre (végétale)",
-    "en": "Fiber (plant)",
-    "ar": "ليف",
-    "ru": "",
-    "definition": "Faisceau de tissu végétal utilisé dans la fabrication.",
-    "etymologie": "",
-    "audio": "barji.mp3"
-  },
-  {
-    "mot": "Zóɣ",
-    "prononciation": "ⵣⵓⵖ",
-    "categorie": "vi.",
-    "fr": "Se battre",
-    "en": "Fight, to",
-    "ar": "يقاتل",
-    "ru": "",
-    "definition": "Entrer dans un conflit physique ou verbal.",
-    "etymologie": "",
-    "audio": "zogh.mp3"
-  },
-  {
-    "mot": "Huurú",
-    "prononciation": "ⵀⵓⵔⵓ",
-    "categorie": "n.",
-    "fr": "Feu",
-    "en": "Fire",
-    "ar": "نار",
-    "ru": "",
-    "definition": "Combustion produisant chaleur et lumière.",
-    "etymologie": "",
-    "audio": "huuru.mp3"
-  },
-  {
-    "mot": "Tugúdu",
-    "prononciation": "ⵜⵓⴳⵓⴷⵓ",
-    "categorie": "n.",
-    "fr": "Bois (de feu)",
-    "en": "(fire)wood",
-    "ar": "حطب",
-    "ru": "",
-    "definition": "Bois destiné à être brûlé.",
-    "etymologie": "",
-    "audio": "tugudu.mp3"
-  },
-  {
-    "mot": "A-mánana",
-    "prononciation": "ⴰⵎⴰⵏⴰⵏⴰ",
-    "categorie": "n.",
-    "fr": "Poisson",
-    "en": "Fish",
-    "ar": "سمك",
-    "ru": "",
-    "definition": "Animal aquatique utilisé souvent comme aliment.",
-    "etymologie": "",
-    "audio": "amanana.mp3"
-  },
-  {
-    "mot": "ʃammúʃ",
-    "prononciation": "ⵛⴰⵎⵎⵓⵛ",
-    "categorie": "num.",
-    "fr": "Cinq",
-    "en": "Five",
-    "ar": "خمسة",
-    "ru": "",
-    "definition": "Nombre représentant l’unité après quatre.",
-    "etymologie": "",
-    "audio": "shammush.mp3"
-  },
-  {
-    "mot": "Dudú",
-    "prononciation": "ⴷⵓⴷⵓ",
-    "categorie": "vi.",
-    "fr": "Couler",
-    "en": "Flow, to",
-    "ar": "يتدفق",
-    "ru": "",
-    "definition": "Se déplacer sous forme de liquide.",
-    "etymologie": "",
-    "audio": "dudu.mp3"
-  },
-  {
-    "mot": "ṣót",
-    "prononciation": "ⵚⵓⵟ",
-    "categorie": "vi.",
-    "fr": "Voler",
-    "en": "Fly, to",
-    "ar": "يطير",
-    "ru": "",
-    "definition": "Se déplacer dans l’air avec des ailes.",
-    "etymologie": "",
-    "audio": "sot.mp3"
-  },
-  {
-    "mot": "Cáy",
-    "prononciation": "ⵙⴰⵢ",
-    "categorie": "n.",
-    "fr": "Pied / jambe",
-    "en": "Foot / leg",
-    "ar": "رجل",
-    "ru": "",
-    "definition": "Membre inférieur servant à marcher.",
-    "etymologie": "",
-    "audio": "cay.mp3"
-  },
-  {
-    "mot": "Akkóz",
-    "prononciation": "ⴰⴽⴽⵓⵣ",
-    "categorie": "num.",
-    "fr": "Quatre",
-    "en": "Four",
-    "ar": "أربعة",
-    "ru": "",
-    "definition": "Nombre représentant l’unité après trois.",
-    "etymologie": "",
-    "audio": "akkoz.mp3"
-  },
-  {
-    "mot": "Ízzay",
-    "prononciation": "ⵉⵣⵣⴰⵢ",
-    "categorie": "n.",
-    "fr": "Fruit",
-    "en": "Fruit",
-    "ar": "فاكهة",
-    "ru": "",
-    "definition": "Produit comestible provenant d’une plante.",
-    "etymologie": "",
-    "audio": "izzay.mp3"
-  },
-  {
-    "mot": "Haab-én",
-    "prononciation": "ⵀⴰⴱⵉⵏ",
-    "categorie": "npl.",
-    "fr": "Fourrure",
-    "en": "Fur",
-    "ar": "فراء",
-    "ru": "",
-    "definition": "Poil doux recouvrant certains animaux.",
-    "etymologie": "",
-    "audio": "haaben.mp3"
-  },
-  {
-    "mot": "Hór",
-    "prononciation": "ⵀⵓⵔ",
-    "categorie": "n.",
-    "fr": "Jeu",
-    "en": "Game (play)",
-    "ar": "لعبة",
-    "ru": "",
-    "definition": "Activité de loisir ou de divertissement.",
-    "etymologie": "",
-    "audio": "hor_game.mp3"
-  },
-  {
-    "mot": "Ná",
-    "prononciation": "ⵏⴰ",
-    "categorie": "vt.",
-    "fr": "Donner",
-    "en": "Give, to",
-    "ar": "يعطي",
-    "ru": "",
-    "definition": "Faire un don ou offrir quelque chose.",
-    "etymologie": "",
-    "audio": "na.mp3"
-  },
-  {
-    "mot": "Ná",
-    "prononciation": "ⵏⴰ",
-    "categorie": "n.",
-    "fr": "Don",
-    "en": "Giving",
-    "ar": "عطاء",
-    "ru": "",
-    "definition": "Action d’offrir quelque chose à quelqu’un.",
-    "etymologie": "",
-    "audio": "na_don.mp3"
-  },
-  {
-    "mot": "Áŋga",
-    "prononciation": "ⴰⵏⴳⴰ",
-    "categorie": "ind. pron.",
-    "fr": "Il/elle",
-    "en": "He/she/it",
-    "ar": "هي/هو",
-    "ru": "",
-    "definition": "Pronom personnel pour référer à une personne ou chose.",
-    "etymologie": "",
-    "audio": "anga.mp3"
-  },
-  {
-    "mot": "Kár",
-    "prononciation": "ⴽⴰⵔ",
-    "categorie": "vt.",
-    "fr": "Frapper",
-    "en": "Hit, to",
-    "ar": "يضرب",
-    "ru": "",
-    "definition": "Appliquer une force brusque sur quelque chose.",
-    "etymologie": "",
-    "audio": "kar_frapper.mp3"
-  },
-  {
-    "mot": "Yíddǝr",
-    "prononciation": "ⵢⵉⴷⴷⵔ",
-    "categorie": "vt.",
-    "fr": "Tenir",
-    "en": "Hold, to",
-    "ar": "يمسك",
-    "ru": "",
-    "definition": "Saisir et garder en main.",
-    "etymologie": "",
-    "audio": "yiddar_tenir.mp3"
-  },
-  {
-    "mot": "Korrá",
-    "prononciation": "ⴽⵓⵔⵔⴰ",
-    "categorie": "vi.",
-    "fr": "Être chaud",
-    "en": "Hot, to be (warm)",
-    "ar": "دافئ",
-    "ru": "",
-    "definition": "Avoir une température élevée.",
-    "etymologie": "",
-    "audio": "korra_warm.mp3"
-  },
-  {
-    "mot": "Korrá",
-    "prononciation": "ⴽⵓⵔⵔⴰ",
-    "categorie": "vt.",
-    "fr": "Chauffer",
-    "en": "Hot, to make",
-    "ar": "يسخن",
-    "ru": "",
-    "definition": "Faire monter la température de quelque chose.",
-    "etymologie": "",
-    "audio": "korra_chaud.mp3"
-  },
-  {
-    "mot": "Man ǝ́mmǝk aɣó ǝnda",
-    "prononciation": "ⵎⴰⵏ ⴻⵎⵎⴽ ⴰⵖⵓ ⴻⵏⴷⴰ",
-    "categorie": "question phrase",
-    "fr": "Comment ?",
-    "en": "How?",
-    "ar": "كيف؟",
-    "ru": "",
-    "definition": "Question pour demander la manière ou la méthode.",
-    "etymologie": "",
-    "audio": "man_emmek.mp3"
-  },
-  {
-    "mot": "Gimár",
-    "prononciation": "ⴳⵉⵎⴰⵔ",
-    "categorie": "vi.",
-    "fr": "Chasser",
-    "en": "Hunt (game), to",
-    "ar": "يصطاد",
-    "ru": "",
-    "definition": "Poursuivre et capturer des animaux.",
-    "etymologie": "",
-    "audio": "gimar.mp3"
-  },
-  {
-    "mot": "Aarú",
-    "prononciation": "ⴰⴰⵔⵓ",
-    "categorie": "n.",
-    "fr": "Mari",
-    "en": "Husband",
-    "ar": "زوج",
-    "ru": "",
-    "definition": "Époux masculin dans un mariage.",
-    "etymologie": "",
-    "audio": "aaru_mari.mp3"
-  },
-  {
-    "mot": "Aɣay",
-    "prononciation": "ⴰⵖⴰⵢ",
-    "categorie": "ind. pron.",
-    "fr": "Je",
-    "en": "I",
-    "ar": "أنا",
-    "ru": "",
-    "definition": "Pronom personnel à la première personne.",
-    "etymologie": "",
-    "audio": "aghay.mp3"
-  },
-  {
-    "mot": "Ǝnda",
-    "prononciation": "ⴻⵏⴷⴰ",
-    "categorie": "clause particle",
-    "fr": "Si / quand",
-    "en": "If/when",
-    "ar": "عندما / إذا",
-    "ru": "",
-    "definition": "Utilisé pour introduire une condition ou un moment.",
-    "etymologie": "",
-    "audio": "enda_si.mp3"
-  },
-  {
-    "mot": "Ǝndár",
-    "prononciation": "ⴻⵏⴷⴰⵔ",
-    "categorie": "conj.",
-    "fr": "Si (hypothétique)",
-    "en": "If (hypothetical)",
-    "ar": "لو",
-    "ru": "",
-    "definition": "Indique une situation hypothétique ou supposée.",
-    "etymologie": "",
-    "audio": "endar.mp3"
-  },
-  {
-    "mot": "Ǝs-kábahar",
-    "prononciation": "ⴻⵙⴽⴰⴱⴰⵀⴰⵔ",
-    "categorie": "conj.",
-    "fr": "Si / quand",
-    "en": "If/when",
-    "ar": "عندما / إذا",
-    "ru": "",
-    "definition": "Autre forme pour introduire une condition ou un moment.",
-    "etymologie": "",
-    "audio": "eskabahar.mp3"
-  },
-  {
-    "mot": "Bêr",
-    "prononciation": "ⴱⴻⵔ",
-    "categorie": "vi.",
-    "fr": "Être important",
-    "en": "Important, to be",
-    "ar": "مهم",
-    "ru": "",
-    "definition": "Décrire une chose ayant beaucoup de valeur ou de signification.",
-    "etymologie": "",
-    "audio": "ber_important.mp3"
-  },
-  {
-    "mot": "Lés",
-    "prononciation": "ⵍⴻⵙ",
-    "categorie": "vi.",
-    "fr": "Être impur (religieux)",
-    "en": "Impure (religiously), to be",
-    "ar": "نجس",
-    "ru": "",
-    "definition": "État considéré comme rituellement impur.",
-    "etymologie": "",
-    "audio": "les_impuretés.mp3"
-  }
-]
+{"mot":"Báy","cat":"vt.","fr":"Pouvoir (faire)","en":"Able, to be","ar":"يستطيع","tz":"ⴱⴰⵢ","tr":"Yapabilmek","da":"Kunne","de":"Können","nl":"Kunnen","sv":"Kunna","ru":"Мочь","zh":"能够","cs":"Moci","ha":"Iya","es":"Poder","it":"Potere"}
+{"mot":"Yiddár","cat":"vi.","fr":"Être en vie","en":"Alive, to be","ar":"يعيش","tz":"ⵢⵉⴷⴷⴰⵔ","tr":"Yaşamak","da":"At være i live","de":"Am Leben sein","nl":"Levend zijn","sv":"Leva","ru":"Жить","zh":"活着","cs":"Žít","ha":"Raye","es":"Estar vivo","it":"Essere vivo"}
+{"mot":"Káamil","cat":"quantifier","fr":"Tout","en":"All","ar":"كل","tz":"ⴽⴰⴰⵎⵉⵍ","tr":"Tüm","da":"Alle","de":"Alle","nl":"Alle","sv":"Allt","ru":"Все","zh":"所有","cs":"Všechno","ha":"Duka","es":"Todo","it":"Tutto"}
+{"mot":"Ka","cat":"postp.","fr":"Parmi","en":"Among","ar":"بين","tz":"ⴽⴰ","tr":"Arasında","da":"Blandt","de":"Unter","nl":"Onder","sv":"Bland","ru":"Среди","zh":"在…之中","cs":"Mezi","ha":"Cikin","es":"Entre","it":"Tra"}
+{"mot":"Hór","cat":"vi.","fr":"S'amuser","en":"Amuse oneself, to","ar":"يمرح","tz":"ⵀⵓⵔ","tr":"Eğlenmek","da":"More sig","de":"Sich amüsieren","nl":"Zich vermaken","sv":"Roar sig","ru":"Развлекаться","zh":"娱乐","cs":"Bavit se","ha":"Nishadantar","es":"Divertirse","it":"Divertirsi"}
+{"mot":"Baabá","cat":"n.","fr":"Ancêtre paternel","en":"Ancestor (paternal)","ar":"جد","tz":"ⴱⴰⴱⴰ","tr":"Baba atası","da":"Farfader","de":"Vorfahre väterlicherseits","nl":"Vaderlijke voorouder","sv":"Farfar","ru":"Предок (по отцу)","zh":"祖父","cs":"Otcovský předek","ha":"Kaka","es":"Ancestro paterno","it":"Antenato paterno"}
+{"mot":"Ǝnda","cat":"prep.","fr":"Et (entre noms)","en":"And (between noun phrases)","ar":"و","tz":"ⴻⵏⴷⴰ","tr":"Ve","da":"Og","de":"Und","nl":"En","sv":"Och","ru":"И","zh":"和","cs":"A","ha":"Da","es":"Y","it":"E"}
+{"mot":"A-múudǝr","cat":"n.","fr":"Animal","en":"Animal","ar":"حيوان","tz":"ⴰⵎⵓⵓⴷⴻⵔ","tr":"Hayvan","da":"Dyr","de":"Tier","nl":"Dier","sv":"Djur","ru":"Животное","zh":"动物","cs":"Zvíře","ha":"Dabba","es":"Animal","it":"Animale"}
+{"mot":"Mán","cat":"vt.","fr":"Approcher","en":"Approach, to","ar":"يقترب","tz":"ⵎⴰⵏ","tr":"Yaklaşmak","da":"Nærme sig","de":"Sich nähern","nl":"Naderen","sv":"Närma sig","ru":"Подходить","zh":"接近","cs":"Přiblížit se","ha":"Kusanto","es":"Acercarse","it":"Avvicinarsi"}
+{"mot":"Kambá","cat":"n.","fr":"Bras / main","en":"Arm / hand","ar":"ذراع / يد","tz":"ⴽⴰⵎⴱⴰ","tr":"Kol / el","da":"Arm / hånd","de":"Arm / Hand","nl":"Arm / hand","sv":"Arm / hand","ru":"Рука / кисть","zh":"手臂 / 手","cs":"Ruka / dlaň","ha":"Hannu / hannu","es":"Brazo / mano","it":"Braccio / mano"}
+{"mot":"Booʃí","cat":"n.","fr":"Cendres","en":"Ashes","ar":"رماد","tz":"ⴱⵓⵛⵉ","tr":"Kül","da":"Aske","de":"Asche","nl":"As","sv":"Aska","ru":"Пепел","zh":"灰烬","cs":"Popel","ha":"Toka","es":"Cenizas","it":"Cenere"}
+{"mot":"Daw","cat":"postp.","fr":"Chez (quelqu’un)","en":"At (somebody’s)","ar":"عند","tz":"ⴷⴰⵡ","tr":"Birinin yanında","da":"Hos nogen","de":"Bei (jemandem)","nl":"Bij","sv":"Hos","ru":"У (кого-то)","zh":"在某人家里","cs":"U (někoho)","ha":"Gida","es":"En casa de","it":"Presso"}
+{"mot":"A-rúuru","cat":"n.","fr":"Dos","en":"Back (body part)","ar":"ظهر","tz":"ⴰⵔⵓⵔⵓ","tr":"Sırt","da":"Ryg","de":"Rücken","nl":"Rug","sv":"Rygg","ru":"Спина","zh":"背部","cs":"Záda","ha":"Baya","es":"Espalda","it":"Schiena"}
+{"mot":"Agar","cat":"adj.","fr":"Mauvais","en":"Bad","ar":"سيء","tz":"ⴰⴳⴰⵔ","tr":"Kötü","da":"Dårlig","de":"Schlecht","nl":"Slecht","sv":"Dålig","ru":"Плохой","zh":"坏的","cs":"Špatný","ha":"Mugun","es":"Malo","it":"Cattivo"}
+{"mot":"Yibrár","cat":"vi.","fr":"Être mauvais","en":"Bad, to be","ar":"يكون سيئًا","tz":"ⵢⵉⴱⵔⴰⵔ","tr":"Kötü olmak","da":"At være dårlig","de":"Schlecht sein","nl":"Slecht zijn","sv":"Att vara dålig","ru":"Быть плохим","zh":"变坏","cs":"Být špatný","ha":"Zama mugunta","es":"Estar mal","it":"Essere cattivo"}
+{"mot":"Barjí","cat":"n.","fr":"Écorce","en":"Bark","ar":"قشر","tz":"ⴱⴰⵔⵊⵉ","tr":"Kabuk","da":"Bark","de":"Rinde","nl":"Bast","sv":"Bark","ru":"Кора","zh":"树皮","cs":"Kůra","ha":"Fata","es":"Corteza","it":"Corteccia"}
+{"mot":"ṭóndi","cat":"n.","fr":"Batterie","en":"Battery","ar":"بطارية","tz":"ⵟⵓⵏⴷⵉ","tr":"Pil","da":"Batteri","de":"Batterie","nl":"Batterij","sv":"Batteri","ru":"Батарея","zh":"电池","cs":"Baterie","ha":"Batura","es":"Batería","it":"Batteria"}
+{"mot":"Igdá","cat":"conj.","fr":"Parce que","en":"Because","ar":"لأن","tz":"ⵉⴳⴷⴰ","tr":"Çünkü","da":"Fordi","de":"Weil","nl":"Omdat","sv":"Eftersom","ru":"Потому что","zh":"因为","cs":"Protože","ha":"Saboda","es":"Porque","it":"Perché"}
+{"mot":"Mo ka.","cat":"noun phrase.","fr":"Avant quelqu’un","en":"Before somebody","ar":"قبل شخص","tz":"ⵎⵓ ⴽⴰ","tr":"Birisinden önce","da":"Før nogen","de":"Vor jemandem","nl":"Voor iemand","sv":"Före någon","ru":"До кого-то","zh":"在某人之前","cs":"Před někým","ha":"Kafin","es":"Antes de alguien","it":"Prima di qualcuno"}
+{"mot":"Baŋgú","cat":"n.","fr":"Début","en":"Beginning","ar":"بداية","tz":"ⴱⴰⵏⴳⵓ","tr":"Başlangıç","da":"Begyndelse","de":"Anfang","nl":"Begin","sv":"Början","ru":"Начало","zh":"开始","cs":"Začátek","ha":"Farko","es":"Comienzo","it":"Inizio"}
+{"mot":"Guŋgú","cat":"n.","fr":"Ventre","en":"Belly","ar":"بطن","tz":"ⴳⵓⵏⴳⵓ","tr":"Karın","da":"Mave","de":"Bauch","nl":"Buik","sv":"Mage","ru":"Живот","zh":"肚子","cs":"Břicho","ha":"Ciki","es":"Vientre","it":"Pancia"}
+{"mot":"Bêr","cat":"vi.","fr":"Être grand","en":"Big, to be","ar":"كبير","tz":"ⴱⴻⵔ","tr":"Büyük olmak","da":"At være stor","de":"Groß sein","nl":"Groot zijn","sv":"Vara stor","ru":"Быть большим","zh":"变大","cs":"Být velký","ha":"Zama babba","es":"Ser grande","it":"Essere grande"}
+{"mot":"Bêr","cat":"vt.","fr":"Agrandir","en":"Big, to make","ar":"يُكبّر","tz":"ⴱⴻⵔ","tr":"Büyütmek","da":"Gøre stor","de":"Vergrößern","nl":"Vergroten","sv":"Förstora","ru":"Увеличить","zh":"放大","cs":"Zvětšit","ha":"Kara girma","es":"Agrandar","it":"Ingrandire"}
+{"mot":"Cíidaw","cat":"n.","fr":"Oiseau","en":"Bird (general)","ar":"طائر","tz":"ⵛⵉⴷⴰⵡ","tr":"Kuş","da":"Fugl","de":"Vogel","nl":"Vogel","sv":"Fågel","ru":"Птица","zh":"鸟","cs":"Pták","ha":"Tsuntsu","es":"Pájaro","it":"Uccello"}
+{"mot":"Ŋá","cat":"vt.","fr":"Mordre (animal)","en":"Bite (animal), to","ar":"يعض","tz":"ⵏⴰ","tr":"Isırmak","da":"Bide","de":"Beißen","nl":"Bijten","sv":"Bita","ru":"Укусить","zh":"咬","cs":"Kousnout","ha":"Cizo","es":"Morder","it":"Mordere"}
+{"mot":"ṇám","cat":"vt.","fr":"Mordre","en":"Bite, to","ar":"يعض","tz":"ⵏⴰⵎ","tr":"Isırmak","da":"Bide","de":"Beißen","nl":"Bijten","sv":"Bita","ru":"Укусить","zh":"咬","cs":"Kousnout","ha":"Cizo","es":"Morder","it":"Mordere"}
+{"mot":"Bíibi","cat":"adj.","fr":"Noir","en":"Black","ar":"أسود","tz":"ⴱⵉⴱⵉ","tr":"Siyah","da":"Sort","de":"Schwarz","nl":"Zwart","sv":"Svart","ru":"Чёрный","zh":"黑色","cs":"Černý","ha":"Baƙi","es":"Negro","it":"Nero"}
+{"mot":"Bíibi","cat":"n.","fr":"Noir (couleur)","en":"Black (color)","ar":"أسود","tz":"ⴱⵉⴱⵉ","tr":"Siyah (renk)","da":"Sort (farve)","de":"Schwarz (Farbe)","nl":"Zwart (kleur)","sv":"Svart (färg)","ru":"Чёрный (цвет)","zh":"黑色（颜色）","cs":"Černá (barva)","ha":"Baƙin launi","es":"Negro (color)","it":"Nero (colore)"}
+{"mot":"Bíibi","cat":"vi.","fr":"Être noir","en":"Black, to be","ar":"يكون أسود","tz":"ⴱⵉⴱⵉ","tr":"Siyah olmak","da":"At være sort","de":"Schwarz sein","nl":"Zwart zijn","sv":"Att vara svart","ru":"Быть чёрным","zh":"变黑","cs":"Být černý","ha":"Zama baƙi","es":"Ser negro","it":"Essere nero"}
+{"mot":"Bíibi","cat":"vt.","fr":"Noircir","en":"Blacken, to","ar":"يُسود","tz":"ⴱⵉⴱⵉ","tr":"Karartmak","da":"Gøre sort","de":"Schwärzen","nl":"Zwart maken","sv":"Göra svart","ru":"Очернить","zh":"使变黑","cs":"Zčernit","ha":"Mai baƙanta","es":"Ennegrecer","it":"Nerire"}
+{"mot":"Kud-én","cat":"npl.","fr":"Sang","en":"Blood","ar":"دم","tz":"ⴽⵓⴷⵉⵏ","tr":"Kan","da":"Blod","de":"Blut","nl":"Bloed","sv":"Blod","ru":"Кровь","zh":"血","cs":"Krev","ha":"Jini","es":"Sangre","it":"Sangue"}
+{"mot":"Fúr","cat":"vi.","fr":"Souffler (vent)","en":"Blow (wind), to","ar":"تهب","tz":"ⴼⵓⵔ","tr":"Esmek (rüzgar)","da":"Blæse (vind)","de":"Wehen (Wind)","nl":"Waaien","sv":"Blåsa (vind)","ru":"Дуть (ветер)","zh":"吹风","cs":"Vát","ha":"Hura iska","es":"Soplar (viento)","it":"Soffiare (vento)"}
+{"mot":"Biidí","cat":"n.","fr":"Os","en":"Bone (general)","ar":"عظم","tz":"ⴱⵉⵉⴷⵉ","tr":"Kemik","da":"Knogle","de":"Knochen","nl":"Bot","sv":"Ben","ru":"Кость","zh":"骨头","cs":"Kost","ha":"Ƙashi","es":"Hueso","it":"Osso"}
+{"mot":"ʃ-ǝ́nfǝʃ","cat":"vi.","fr":"Respirer","en":"Breathe, to","ar":"يتنفس","tz":"ⵛⴻⵏⴼⴻⵛ","tr":"Nefes almak","da":"At trække vejret","de":"Atmen","nl":"Ademen","sv":"Andas","ru":"Дышать","zh":"呼吸","cs":"Dýchat","ha":"Numfashi","es":"Respirar","it":"Respirare"}
+{"mot":"Kurú-kuru","cat":"vt.","fr":"Brûler","en":"Burn, to","ar":"يحرق","tz":"ⴽⵓⵔⵓ","tr":"Yakmak","da":"Brænde","de":"Verbrennen","nl":"Branden","sv":"Bränna","ru":"Сжечь","zh":"烧","cs":"Pálit","ha":"Kona","es":"Quemar","it":"Bruciare"}
+{"mot":"Kurú-kuru","cat":"vi.","fr":"Être brûlé","en":"Burned, to be","ar":"محروق","tz":"ⴽⵓⵔⵓ","tr":"Yanmak","da":"Blive brændt","de":"Verbrannt sein","nl":"Verbrand zijn","sv":"Bli bränd","ru":"Сгореть","zh":"被烧","cs":"Být spálený","ha":"Konewa","es":"Estar quemado","it":"Essere bruciato"}
+{"mot":"Kár","cat":"vt.","fr":"Sculpter","en":"Carve (wooden spoon), to","ar":"ينحت","tz":"ⴽⴰⵔ","tr":"Oymak","da":"Skære ud","de":"Schnitzen","nl":"Snijden","sv":"Snida","ru":"Вырезать","zh":"雕刻","cs":"Tesat","ha":"Sassaƙa","es":"Tallarlo","it":"Intagliare"}
+{"mot":"Báarar","cat":"n.","fr":"Enfant","en":"Child","ar":"طفل","tz":"ⴱⴰⵔⴰⵔ","tr":"Çocuk","da":"Barn","de":"Kind","nl":"Kind","sv":"Barn","ru":"Ребёнок","zh":"孩子","cs":"Dítě","ha":"Yaro","es":"Niño","it":"Bambino"}
+{"mot":"Nuun-én","cat":"npl.","fr":"Nuage","en":"Cloud","ar":"سحاب","tz":"ⵏⵓⵏⵉⵏ","tr":"Bulut","da":"Sky","de":"Wolke","nl":"Wolk","sv":"Moln","ru":"Облако","zh":"云","cs":"Mrak","ha":"Gajimare","es":"Nube","it":"Nuvola"}
+{"mot":"Fufú","cat":"n.","fr":"Froid (temps)","en":"Cold (weather)","ar":"برد","tz":"ⴼⵓⴼⵓ","tr":"Soğuk","da":"Kulde","de":"Kälte","nl":"Kou","sv":"Kyla","ru":"Холод","zh":"寒冷","cs":"Chlad","ha":"Sanyi","es":"Frío","it":"Freddo"}
+{"mot":"Kóy-kat","cat":"vi.","fr":"Venir","en":"Come, to","ar":"يأتي","tz":"ⴽⵓⵢ ⴽⴰⵜ","tr":"Gelmek","da":"Komme","de":"Kommen","nl":"Komen","sv":"Komma","ru":"Приходить","zh":"来","cs":"Přijít","ha":"Zo","es":"Venir","it":"Venire"}
+{"mot":"ʃ-iḍǝn","cat":"vt.","fr":"Compter","en":"Count, to","ar":"يعد","tz":"ⵛⵉⴹⴻⵏ","tr":"Saymak","da":"Tælle","de":"Zählen","nl":"Tellen","sv":"Räkna","ru":"Считать","zh":"数","cs":"Počítat","ha":"Ƙirga","es":"Contar","it":"Contare"}
+{"mot":"ʃ-iḍǝn","cat":"n.","fr":"Comptage","en":"Counting","ar":"عدّ","tz":"ⵛⵉⴹⴻⵏ","tr":"Sayım","da":"Opgørelse","de":"Zählung","nl":"Telling","sv":"Räkning","ru":"Подсчёт","zh":"计数","cs":"Počítání","ha":"Ƙididdiga","es":"Conteo","it":"Conteggio"}
+{"mot":"Gánda","cat":"n.","fr":"Pays","en":"Country","ar":"بلد","tz":"ⴳⴰⵏⴷⴰ","tr":"Ülke","da":"Land","de":"Land","nl":"Land","sv":"Land","ru":"Страна","zh":"国家","cs":"Země","ha":"Ƙasa","es":"País","it":"Paese"}
+{"mot":"Dumbú","cat":"vt.","fr":"Couper","en":"Cut, to","ar":"يقطع","tz":"ⴷⵓⵎⴱⵓ","tr":"Kesmek","da":"Skære","de":"Schneiden","nl":"Snijden","sv":"Skära","ru":"Резать","zh":"切","cs":"Řezat","ha":"Yanke","es":"Cortar","it":"Tagliare"}
+{"mot":"Kós","cat":"vt.","fr":"Couper","en":"Cut, to","ar":"يقطع","tz":"ⴽⵓⵙ","tr":"Kesmek","da":"Skære","de":"Schneiden","nl":"Snijden","sv":"Skära","ru":"Резать","zh":"切","cs":"Řezat","ha":"Yanke","es":"Cortar","it":"Tagliare"}
+{"mot":"Kós","cat":"vi.","fr":"Être coupé","en":"Cut, to be","ar":"مقطوع","tz":"ⴽⵓⵙ","tr":"Kesilmiş olmak","da":"Være skåret","de":"Geschnitten sein","nl":"Gesneden zijn","sv":"Vara skuren","ru":"Быть порезанным","zh":"被切","cs":"Být řezaný","ha":"An yanke","es":"Estar cortado","it":"Essere tagliato"}
+{"mot":"Kós","cat":"n.","fr":"Coupe","en":"Cutting","ar":"قص","tz":"ⴽⵓⵙ","tr":"Kesme","da":"Skæring","de":"Schnitt","nl":"Snede","sv":"Skärning","ru":"Разрез","zh":"切割","cs":"Řezání","ha":"Yanka","es":"Corte","it":"Taglio"}
+{"mot":"Zaɣrí","cat":"n.","fr":"Jour","en":"Day","ar":"يوم","tz":"ⵣⴰⵖⵔⵉ","tr":"Gün","da":"Dag","de":"Tag","nl":"Dag","sv":"Dag","ru":"День","zh":"天","cs":"Den","ha":"Rana","es":"Día","it":"Giorno"}
+{"mot":"Bún","cat":"vi.","fr":"Être mort","en":"Dead, to be","ar":"ميت","tz":"ⴱⵓⵏ","tr":"Ölü olmak","da":"At være død","de":"Tot sein","nl":"Dood zijn","sv":"Vara död","ru":"Быть мёртвым","zh":"死亡","cs":"Být mrtvý","ha":"Mutu","es":"Estar muerto","it":"Essere morto"}
+{"mot":"Bún","cat":"n.","fr":"Mort","en":"Death","ar":"موت","tz":"ⴱⵓⵏ","tr":"Ölüm","da":"Død","de":"Tod","nl":"Dood","sv":"Död","ru":"Смерть","zh":"死亡","cs":"Smrt","ha":"Mutuwa","es":"Muerte","it":"Morte"}
+{"mot":"Kukú","cat":"vi.","fr":"Être profond","en":"Deep, to be","ar":"عميق","tz":"ⴽⵓⴽⵓ","tr":"Derin olmak","da":"At være dyb","de":"Tief sein","nl":"Diep zijn","sv":"Att vara djup","ru":"Быть глубоким","zh":"深","cs":"Být hluboký","ha":"Zurfi","es":"Ser profundo","it":"Essere profondo"}
+{"mot":"Kukú","cat":"vt.","fr":"Approfondir","en":"Deepen, to","ar":"يعمّق","tz":"ⴽⵓⴽⵓ","tr":"Derinleştirmek","da":"Uddybe","de":"Vertiefen","nl":"Verdiepen","sv":"Fördjupa","ru":"Углубить","zh":"加深","cs":"Prohloubit","ha":"Tsunduma","es":"Profundizar","it":"Approfondire"}
+{"mot":"Bún","cat":"vi.","fr":"Mourir","en":"Die, to","ar":"يموت","tz":"ⴱⵓⵏ","tr":"Ölmek","da":"Dø","de":"Sterben","nl":"Sterven","sv":"Dö","ru":"Умереть","zh":"死亡","cs":"Zemřít","ha":"Mutuwa","es":"Morir","it":"Morire"}
+{"mot":"Fás","cat":"vt.","fr":"Creuser","en":"Dig, to","ar":"يحفر","tz":"ⴼⴰⵙ","tr":"Kazmak","da":"Grave","de":"Graben","nl":"Graven","sv":"Gräva","ru":"Копать","zh":"挖","cs":"Kopat","ha":"Haƙa","es":"Cavar","it":"Scavare"}
+{"mot":"Fás","cat":"n.","fr":"Creusement","en":"Digging","ar":"حفر","tz":"ⴼⴰⵙ","tr":"Kazma","da":"Udgravning","de":"Grabung","nl":"Graven","sv":"Grävning","ru":"Копание","zh":"挖掘","cs":"Kopání","ha":"Haƙa","es":"Excavación","it":"Scavo"}
+{"mot":"Lés","cat":"n.","fr":"Saleté (excrément)","en":"Dirt (excrement)","ar":"أوساخ","tz":"ⵍⴻⵙ","tr":"Kir (dışkı)","da":"Snavs (afføring)","de":"Schmutz (Exkremente)","nl":"Vuil (ontlasting)","sv":"Smuts (avföring)","ru":"Грязь (экскременты)","zh":"污垢（排泄物）","cs":"Špína (výkaly)","ha":"Datti (najasa)","es":"Suciedad (excremento)","it":"Sporcizia (escrementi)"}
+{"mot":"Lés","cat":"vi.","fr":"Être sale","en":"Dirty, to be","ar":"قذر","tz":"ⵍⴻⵙ","tr":"Kirli olmak","da":"At være beskidt","de":"Schmutzig sein","nl":"Vies zijn","sv":"Att vara smutsig","ru":"Быть грязным","zh":"肮脏","cs":"Být špinavý","ha":"Zama datti","es":"Estar sucio","it":"Essere sporco"}
+{"mot":"ʒíibit","cat":"vi.","fr":"Être sale","en":"Dirty, to be","ar":"قذر","tz":"ⵊⵉⴱⵉⵜ","tr":"Kirli olmak","da":"At være beskidt","de":"Schmutzig sein","nl":"Vies zijn","sv":"Att vara smutsig","ru":"Быть грязным","zh":"肮脏","cs":"Být špinavý","ha":"Datti","es":"Estar sucio","it":"Essere sporco"}
+{"mot":"Lés","cat":"vt.","fr":"Rendre sale","en":"Dirty, to make","ar":"يوسخ","tz":"ⵍⴻⵙ","tr":"Kirletmek","da":"Gøre beskidt","de":"Verschmutzen","nl":"Vuil maken","sv":"Göra smutsig","ru":"Загрязнять","zh":"弄脏","cs":"Zašpinit","ha":"Mai datti","es":"Ensuciar","it":"Sporcare"}
+{"mot":"Mór","cat":"vt.","fr":"S'éloigner de","en":"Distance from, to","ar":"ابتعد عن","tz":"ⵎⵓⵔ","tr":"Uzaklaşmak","da":"Fjerne sig fra","de":"Sich entfernen","nl":"Zich verwijderen van","sv":"Avlägsna sig från","ru":"Отдаляться от","zh":"远离","cs":"Vzdálit se","ha":"Nisa da","es":"Alejarse de","it":"Allontanarsi da"}
+{"mot":"Yíʃǝf","cat":"vi.","fr":"Plonger","en":"Dive, to","ar":"يغوص","tz":"ⵢⵉⵛⴼ","tr":"Dalgıçlık yapmak","da":"Dykke","de":"Tauchen","nl":"Duiken","sv":"Dyka","ru":"Нырять","zh":"潜水","cs":"Potápět se","ha":"Nutse","es":"Bucear","it":"Tuffarsi"}
+{"mot":"Hánʃi","cat":"n.","fr":"Chien","en":"Dog (general)","ar":"كلب","tz":"ⵀⴰⵏⵛⵉ","tr":"Köpek","da":"Hund","de":"Hund","nl":"Hond","sv":"Hund","ru":"Собака","zh":"狗","cs":"Pes","ha":"Kare","es":"Perro","it":"Cane"}
+{"mot":"Keení ŋ guná","cat":"n.","fr":"Rêve","en":"Dream","ar":"حلم","tz":"ⴽⴻⵏⵉ ⵏ ⴳⵓⵏⴰ","tr":"Rüya","da":"Drøm","de":"Traum","nl":"Droom","sv":"Dröm","ru":"Сон","zh":"梦","cs":"Sen","ha":"Mafarki","es":"Sueño","it":"Sogno"}
+{"mot":"Nín","cat":"vt.","fr":"Boire","en":"Drink, to","ar":"يشرب","tz":"ⵏⵉⵏ","tr":"İçmek","da":"Drikke","de":"Trinken","nl":"Drinken","sv":"Dricka","ru":"Пить","zh":"喝","cs":"Pít","ha":"Sha","es":"Beber","it":"Bere"}
+{"mot":"Qóq","cat":"vi.","fr":"Être sec","en":"Dry, to be","ar":"جاف","tz":"ⵇⵇ","tr":"Kuru olmak","da":"At være tør","de":"Trocken sein","nl":"Droog zijn","sv":"Vara torr","ru":"Быть сухим","zh":"干","cs":"Být suchý","ha":"Bushe","es":"Estar seco","it":"Essere secco"}
+{"mot":"Fás","cat":"vi.","fr":"Être creusé","en":"Dug, to be","ar":"محفور","tz":"ⴼⴰⵙ","tr":"Kazılmış olmak","da":"At være gravet","de":"Gegraben sein","nl":"Gegraven zijn","sv":"Vara grävd","ru":"Быть выкопанным","zh":"被挖","cs":"Být vykopán","ha":"An haƙa","es":"Estar excavado","it":"Essere scavato"}
+{"mot":"Bún","cat":"vi.","fr":"Être émoussé","en":"Dull (knife), to be","ar":"غير حاد","tz":"ⴱⵓⵏ","tr":"Kör olmak (bıçak)","da":"At være sløv","de":"Stumpf sein","nl":"Bot zijn","sv":"Vara slö","ru":"Быть тупым","zh":"钝","cs":"Být tupý","ha":"Zama makaho","es":"Estar desafilado","it":"Essere smussato"}
+{"mot":"A-báaleq","cat":"n.","fr":"Poussière","en":"Dust","ar":"غبار","tz":"ⴰⴱⴰⵍⴻⵇ","tr":"Toz","da":"Støv","de":"Staub","nl":"Stof","sv":"Damm","ru":"Пыль","zh":"灰尘","cs":"Prach","ha":"Ƙura","es":"Polvo","it":"Polvere"}
+{"mot":"Haŋgá","cat":"n.","fr":"Oreille","en":"Ear","ar":"أذن","tz":"ⵀⴰⵏⴳⴰ","tr":"Kulak","da":"Øre","de":"Ohr","nl":"Oor","sv":"Öra","ru":"Ухо","zh":"耳朵","cs":"Ucho","ha":"Kunne","es":"Oreja","it":"Orecchio"}
+{"mot":"Gánda","cat":"n.","fr":"Terre","en":"Earth","ar":"أرض","tz":"ⴳⴰⵏⴷⴰ","tr":"Toprak","da":"Jord","de":"Erde","nl":"Aarde","sv":"Jord","ru":"Земля","zh":"地球","cs":"Země","ha":"Ƙasa","es":"Tierra","it":"Terra"}
+{"mot":"Ŋá","cat":"vt.","fr":"Manger","en":"Eat, to","ar":"يأكل","tz":"ⵏⴰ","tr":"Yemek","da":"Spise","de":"Essen","nl":"Eten","sv":"Äta","ru":"Есть","zh":"吃","cs":"Jíst","ha":"Ci","es":"Comer","it":"Mangiare"}
+{"mot":"Ŋá","cat":"n.","fr":"Repas","en":"Eating","ar":"أكل","tz":"ⵏⴰ","tr":"Yemek","da":"Spisning","de":"Essen","nl":"Eten","sv":"Ätande","ru":"Приём пищи","zh":"吃饭","cs":"Jídlo","ha":"Cin abinci","es":"Comida","it":"Pasto"}
+{"mot":"T-áa-fult","cat":"n.","fr":"Œuf","en":"Egg","ar":"بيضة","tz":"ⵜⴰⴼⵓⵍⵜ","tr":"Yumurta","da":"Æg","de":"Ei","nl":"Ei","sv":"Ägg","ru":"Яйцо","zh":"鸡蛋","cs":"Vejce","ha":"Ƙwai","es":"Huevo","it":"Uovo"}
+{"mot":"Bún","cat":"n.","fr":"Fin","en":"End","ar":"نهاية","tz":"ⴱⵓⵏ","tr":"Son","da":"Slut","de":"Ende","nl":"Einde","sv":"Slut","ru":"Конец","zh":"结束","cs":"Konec","ha":"Ƙarshe","es":"Fin","it":"Fine"}
+{"mot":"Lés","cat":"vi.","fr":"Être sale","en":"Dirty, to be","ar":"قذر","tz":"ⵍⴻⵙ","tr":"Kirli olmak","da":"At være beskidt","de":"Schmutzig sein","nl":"Vies zijn","sv":"Vara smutsig","ru":"Быть грязным","zh":"变脏","cs":"Být špinavý","ha":"Zama datti","es":"Estar sucio","it":"Essere sporco"}
+{"mot":"ʒíibit","cat":"vi.","fr":"Être sale","en":"Dirty, to be","ar":"قذر","tz":"ⵊⵉⴱⵉⵜ","tr":"Kirli olmak","da":"At være beskidt","de":"Schmutzig sein","nl":"Vies zijn","sv":"Vara smutsig","ru":"Быть грязным","zh":"变脏","cs":"Být špinavý","ha":"Datti","es":"Estar sucio","it":"Essere sporco"}
+{"mot":"Lés","cat":"vt.","fr":"Rendre sale","en":"Dirty, to make","ar":"يوسخ","tz":"ⵍⴻⵙ","tr":"Kirletmek","da":"Gøre beskidt","de":"Verschmutzen","nl":"Vuil maken","sv":"Smutsa ner","ru":"Загрязнить","zh":"弄脏","cs":"Znečistit","ha":"Bata","es":"Ensuciar","it":"Sporcare"}
+{"mot":"Mór","cat":"vt.","fr":"S'éloigner de","en":"Distance from, to","ar":"ابتعد عن","tz":"ⵎⵓⵔ","tr":"Uzaklaşmak","da":"Fjerne sig fra","de":"Sich entfernen von","nl":"Zich verwijderen van","sv":"Avlägsna sig från","ru":"Удаляться от","zh":"远离","cs":"Vzdálit se od","ha":"Nesa da","es":"Alejarse de","it":"Allontanarsi da"}
+{"mot":"Yíʃǝf","cat":"vi.","fr":"Plonger","en":"Dive, to","ar":"يغوص","tz":"ⵢⵉⵛⴼ","tr":"Dalış yapmak","da":"Dykke","de":"Tauchen","nl":"Duiken","sv":"Dyk","ru":"Нырять","zh":"潜水","cs":"Potápět se","ha":"Nutse","es":"Bucear","it":"Immergersi"}
+{"mot":"Hánʃi","cat":"n.","fr":"Chien","en":"Dog (general)","ar":"كلب","tz":"ⵀⴰⵏⵛⵉ","tr":"Köpek","da":"Hund","de":"Hund","nl":"Hond","sv":"Hund","ru":"Собака","zh":"狗","cs":"Pes","ha":"Kare","es":"Perro","it":"Cane"}
+{"mot":"Keení ŋ guná","cat":"n.","fr":"Rêve","en":"Dream","ar":"حلم","tz":"ⴽⴻⵏⵉ ⵏ ⴳⵓⵏⴰ","tr":"Rüya","da":"Drøm","de":"Traum","nl":"Droom","sv":"Dröm","ru":"Сон","zh":"梦","cs":"Sen","ha":"Mafarki","es":"Sueño","it":"Sogno"}
+{"mot":"Nín","cat":"vt.","fr":"Boire","en":"Drink, to","ar":"يشرب","tz":"ⵏⵉⵏ","tr":"İçmek","da":"Drikke","de":"Trinken","nl":"Drinken","sv":"Dricka","ru":"Пить","zh":"喝","cs":"Pít","ha":"Sha","es":"Beber","it":"Bere"}
+{"mot":"Qóq","cat":"vi.","fr":"Être sec","en":"Dry, to be","ar":"جاف","tz":"ⵇⵇ","tr":"Kuru olmak","da":"At være tør","de":"Trocken sein","nl":"Droog zijn","sv":"Vara torr","ru":"Быть сухим","zh":"干燥","cs":"Být suchý","ha":"Bushewa","es":"Estar seco","it":"Essere secco"}
+{"mot":"Fás","cat":"vi.","fr":"Être creusé","en":"Dug, to be","ar":"محفور","tz":"ⴼⴰⵙ","tr":"Kazılmış","da":"Være gravet","de":"Gegraben sein","nl":"Gegraven zijn","sv":"Varit grävd","ru":"Быть выкопанным","zh":"被挖","cs":"Být vykopán","ha":"An haƙa","es":"Estar excavado","it":"Essere scavato"}
+{"mot":"Bún","cat":"vi.","fr":"Être émoussé","en":"Dull (knife), to be","ar":"غير حاد","tz":"ⴱⵓⵏ","tr":"Kör olmak (bıçak)","da":"Være sløv","de":"Stumpf sein","nl":"Bot zijn","sv":"Vara slö","ru":"Быть тупым","zh":"钝","cs":"Být tupý","ha":"Kashe","es":"Estar desafilado","it":"Essere smussato"}
+{"mot":"A-báaleq","cat":"n.","fr":"Poussière","en":"Dust","ar":"غبار","tz":"ⴰⴱⴰⵍⴻⵇ","tr":"Toz","da":"Støv","de":"Staub","nl":"Stof","sv":"Damm","ru":"Пыль","zh":"灰尘","cs":"Prach","ha":"Gari","es":"Polvo","it":"Polvere"}
+{"mot":"Haŋgá","cat":"n.","fr":"Oreille","en":"Ear","ar":"أذن","tz":"ⵀⴰⵏⴳⴰ","tr":"Kulak","da":"Øre","de":"Ohr","nl":"Oor","sv":"Öra","ru":"Ухо","zh":"耳朵","cs":"Ucho","ha":"Kunne","es":"Oreja","it":"Orecchio"}
+{"mot":"Gánda","cat":"n.","fr":"Terre","en":"Earth","ar":"أرض","tz":"ⴳⴰⵏⴷⴰ","tr":"Toprak","da":"Jord","de":"Erde","nl":"Aarde","sv":"Jord","ru":"Земля","zh":"地球","cs":"Země","ha":"Ƙasa","es":"Tierra","it":"Terra"}
+{"mot":"Ŋá","cat":"vt.","fr":"Manger","en":"Eat, to","ar":"يأكل","tz":"ⵏⴰ","tr":"Yemek","da":"Spise","de":"Essen","nl":"Eten","sv":"Äta","ru":"Есть","zh":"吃","cs":"Jíst","ha":"Ci","es":"Comer","it":"Mangiare"}
+{"mot":"Ŋá","cat":"n.","fr":"Repas","en":"Eating","ar":"أكل","tz":"ⵏⴰ","tr":"Yeme","da":"Spisning","de":"Essen (Vorgang)","nl":"Eten","sv":"Ätande","ru":"Еда","zh":"进食","cs":"Jídlo","ha":"Abinci","es":"Comida","it":"Mangiare"}
+{"mot":"T-áa-fult","cat":"n.","fr":"Œuf","en":"Egg","ar":"بيضة","tz":"ⵜⴰⴼⵓⵍⵜ","tr":"Yumurta","da":"Æg","de":"Ei","nl":"Ei","sv":"Ägg","ru":"Яйцо","zh":"鸡蛋","cs":"Vejce","ha":"Ƙwai","es":"Huevo","it":"Uovo"}
+{"mot":"Bún","cat":"n.","fr":"Fin","en":"End","ar":"نهاية","tz":"ⴱⵓⵏ","tr":"Son","da":"Slut","de":"Ende","nl":"Einde","sv":"Slut","ru":"Конец","zh":"结束","cs":"Konec","ha":"Ƙarshe","es":"Fin","it":"Fine"}
+{"mot":"Míya","cat":"n.","fr":"Fin","en":"End","ar":"نهاية","tz":"ⵎⵉⵢⴰ","tr":"Son","da":"Slut","de":"Ende","nl":"Einde","sv":"Slut","ru":"Конец","zh":"结尾","cs":"Konec","ha":"Ƙarshen","es":"Final","it":"Fine"}
+{"mot":"Bún","cat":"vi.","fr":"Être à plat","en":"Exhausted (battery), to be","ar":"فارغ","tz":"ⴱⵓⵏ","tr":"Bitmiş (pil)","da":"Være afladet","de":"Leer sein (Batterie)","nl":"Leeg zijn (batterij)","sv":"Vara urladdad","ru":"Разряжена (батарея)","zh":"电池耗尽","cs":"Být vybitý","ha":"Sassauta (baturi)","es":"Estar agotada (batería)","it":"Essere scarica (batteria)"}
+{"mot":"Wí","cat":"vt.","fr":"Éteindre","en":"Extinguish (fire, light), to","ar":"أطفأ","tz":"ⵡⵉ","tr":"Söndürmek","da":"Slukke","de":"Löschen","nl":"Doven","sv":"Släcka","ru":"Потушить","zh":"熄灭","cs":"Uhasit","ha":"Kashe","es":"Apagar","it":"Spegnere"}
+{"mot":"Mó","cat":"n.","fr":"Œil","en":"Eye","ar":"عين","tz":"ⵎⵓ","tr":"Göz","da":"Øje","de":"Auge","nl":"Oog","sv":"Öga","ru":"Глаз","zh":"眼睛","cs":"Oko","ha":"Ido","es":"Ojo","it":"Occhio"}
+{"mot":"Mó","cat":"n.","fr":"Visage","en":"Face","ar":"وجه","tz":"ⵎⵓ","tr":"Yüz","da":"Ansigt","de":"Gesicht","nl":"Gezicht","sv":"Ansikte","ru":"Лицо","zh":"脸","cs":"Obličej","ha":"Fuska","es":"Cara","it":"Volto"}
+{"mot":"Kár","cat":"vi.","fr":"Tomber (pluie)","en":"Fall (rain), to","ar":"تمطر","tz":"ⴽⴰⵔ","tr":"Yağmak","da":"Regne","de":"Regnen","nl":"Regenen","sv":"Regna","ru":"Идти (о дожде)","zh":"下雨","cs":"Pršet","ha":"Yin ruwa","es":"Llover","it":"Piovere"}
+{"mot":"Káŋ","cat":"vi.","fr":"Tomber","en":"Fall, to","ar":"يسقط","tz":"ⴽⴰⵏ","tr":"Düşmek","da":"Falde","de":"Fallen","nl":"Vallen","sv":"Falla","ru":"Падать","zh":"掉下","cs":"Padat","ha":"Fāɗuwa","es":"Caer","it":"Cadere"}
+{"mot":"Báy","cat":"vt.","fr":"Connaître","en":"Familiar with, to be","ar":"يعرف","tz":"ⴱⴰⵢ","tr":"Aşina olmak","da":"At kende","de":"Vertraut sein","nl":"Bekend zijn met","sv":"Vara bekant med","ru":"Быть знакомым с","zh":"熟悉","cs":"Být obeznámen","ha":"Sani","es":"Conocer","it":"Essere familiare con"}
+{"mot":"Mór","cat":"vi.","fr":"Être loin","en":"Far away, to be","ar":"بعيد","tz":"ⵎⵓⵔ","tr":"Uzak olmak","da":"Være langt væk","de":"Weit weg sein","nl":"Ver weg zijn","sv":"Vara långt borta","ru":"Быть далеко","zh":"遥远","cs":"Být daleko","ha":"Nesa","es":"Estar lejos","it":"Essere lontano"}
+{"mot":"Maaní","cat":"n.","fr":"Graisse","en":"Fat (on meat)","ar":"دهن","tz":"ⵎⴰⵏⵉ","tr":"Yağ (et)","da":"Fedt (kød)","de":"Fett (am Fleisch)","nl":"Vet (vlees)","sv":"Fett (på kött)","ru":"Жир (на мясе)","zh":"脂肪（肉）","cs":"Tuk (na mase)","ha":"Mai (nama)","es":"Grasa (en carne)","it":"Grasso (sulla carne)"}
+{"mot":"ṇás","cat":"vt.","fr":"Grossir","en":"Fat, to make","ar":"يسمن","tz":"ⵏⴰⵙ","tr":"Şişmanlatmak","da":"Fede op","de":"Fett machen","nl":"Dik maken","sv":"Göra fet","ru":"Откормить","zh":"使肥胖","cs":"Ztloustnout","ha":"Kāra","es":"Engordar","it":"Ingrassare"}
+{"mot":"Baabá","cat":"n.","fr":"Père","en":"Father","ar":"أب","tz":"ⴱⴰⴱⴰ","tr":"Baba","da":"Far","de":"Vater","nl":"Vader","sv":"Far","ru":"Отец","zh":"父亲","cs":"Otec","ha":"Uba","es":"Padre","it":"Padre"}
+{"mot":"Hambará","cat":"n.","fr":"Peur","en":"Fear","ar":"خوف","tz":"ⵀⴰⵎⴱⴰⵔⴰ","tr":"Korku","da":"Frygt","de":"Angst","nl":"Angst","sv":"Rädsla","ru":"Страх","zh":"害怕","cs":"Strach","ha":"Tsoro","es":"Miedo","it":"Paura"}
+{"mot":"Hambará","cat":"vt.","fr":"Avoir peur","en":"Fear, to","ar":"يخاف","tz":"ⵀⴰⵎⴱⴰⵔⴰ","tr":"Korkmak","da":"At frygte","de":"Fürchten","nl":"Vrezen","sv":"Frukta","ru":"Бояться","zh":"害怕","cs":"Bát se","ha":"Tsoro","es":"Temer","it":"Temere"}
+{"mot":"Áfraw","cat":"n.","fr":"Plume","en":"Feather","ar":"ريشة","tz":"ⴰⴼⵔⴰⵡ","tr":"Tüy","da":"Fjer","de":"Feder","nl":"Veer","sv":"Fjäder","ru":"Перо","zh":"羽毛","cs":"Pírko","ha":"Fari","es":"Pluma","it":"Piuma"}
+{"mot":"Barjí","cat":"n.","fr":"Fibre (végétale)","en":"Fiber (plant)","ar":"ليف","tz":"ⴱⴰⵔⵊⵉ","tr":"Lif","da":"Fiber","de":"Faser","nl":"Vezel","sv":"Fiber","ru":"Волокно","zh":"纤维","cs":"Vlákno","ha":"Zare","es":"Fibra","it":"Fibra"}
+{"mot":"Zóɣ","cat":"vi.","fr":"Se battre","en":"Fight, to","ar":"يقاتل","tz":"ⵣⵓⵖ","tr":"Dövüşmek","da":"Slås","de":"Kämpfen","nl":"Vechten","sv":"Slåss","ru":"Драться","zh":"打斗","cs":"Bojovat","ha":"Fada","es":"Luchar","it":"Combattere"}
+{"mot":"Huurú","cat":"n.","fr":"Feu","en":"Fire","ar":"نار","tz":"ⵀⵓⵔⵓ","tr":"Ateş","da":"Ild","de":"Feuer","nl":"Vuur","sv":"Eld","ru":"Огонь","zh":"火","cs":"Oheň","ha":"Wuta","es":"Fuego","it":"Fuoco"}
+{"mot":"Tugúdu","cat":"n.","fr":"Bois (de feu)","en":"(fire)wood","ar":"حطب","tz":"ⵜⵓⴳⵓⴷⵓ","tr":"Odun","da":"Brænde","de":"Brennholz","nl":"Brandhout","sv":"Ved","ru":"Дрова","zh":"柴火","cs":"Palivové dřevo","ha":"Itace","es":"Leña","it":"Legna da ardere"}
+{"mot":"A-mánana","cat":"n.","fr":"Poisson","en":"Fish","ar":"سمك","tz":"ⴰⵎⴰⵏⴰⵏⴰ","tr":"Balık","da":"Fisk","de":"Fisch","nl":"Vis","sv":"Fisk","ru":"Рыба","zh":"鱼","cs":"Ryba","ha":"Kifi","es":"Pescado","it":"Pesce"}
+{"mot":"ʃammúʃ","cat":"num.","fr":"Cinq","en":"Five","ar":"خمسة","tz":"ⵛⴰⵎⵎⵓⵛ","tr":"Beş","da":"Fem","de":"Fünf","nl":"Vijf","sv":"Fem","ru":"Пять","zh":"五","cs":"Pět","ha":"Biyar","es":"Cinco","it":"Cinque"}
+{"mot":"Ízzay","cat":"n.","fr":"Fruit","en":"Fruit","ar":"فاكهة","tz":"ⵉⵣⵣⴰⵢ","tr":"Meyve","da":"Frugt","de":"Obst","nl":"Fruit","sv":"Frukt","ru":"Фрукт","zh":"水果","cs":"Ovoce","ha":"'Ya'yan itace","es":"Fruta","it":"Frutto"}
+{"mot":"Haab-én","cat":"npl.","fr":"Fourrure","en":"Fur","ar":"فراء","tz":"ⵀⴰⴱⵉⵏ","tr":"Kürk","da":"Pels","de":"Pelz","nl":"Bont","sv":"Päls","ru":"Мех","zh":"皮毛","cs":"Kožešina","ha":"Fata","es":"Pelo","it":"Pelliccia"}
+{"mot":"Hór","cat":"n.","fr":"Jeu","en":"Game (play)","ar":"لعبة","tz":"ⵀⵓⵔ","tr":"Oyun","da":"Spil","de":"Spiel","nl":"Spel","sv":"Spel","ru":"Игра","zh":"游戏","cs":"Hra","ha":"Wasa","es":"Juego","it":"Gioco"}
+{"mot":"Ná","cat":"vt.","fr":"Donner","en":"Give, to","ar":"يعطي","tz":"ⵏⴰ","tr":"Vermek","da":"Give","de":"Geben","nl":"Geven","sv":"Ge","ru":"Давать","zh":"给","cs":"Dát","ha":"Ba","es":"Dar","it":"Dare"}
+{"mot":"Ná","cat":"n.","fr":"Don","en":"Giving","ar":"عطاء","tz":"ⵏⴰ","tr":"Verme","da":"Givning","de":"Geben","nl":"Geven","sv":"Givande","ru":"Дарение","zh":"给予","cs":"Dávání","ha":"Bayarwa","es":"Don","it":"Dare"}
+{"mot":"Giŋ-gimán","cat":"adj.","fr":"Bon","en":"Good","ar":"جيد","tz":"ⴳⵉⵏⴳⵉⵎⴰⵏ","tr":"İyi","da":"God","de":"Gut","nl":"Goed","sv":"Bra","ru":"Хороший","zh":"好","cs":"Dobrý","ha":"Nagari","es":"Bueno","it":"Buono"}
+{"mot":"Nana béeri","cat":"n.","fr":"Grand-mère","en":"Grandmother","ar":"جدة","tz":"ⵏⴰⵏⴰ ⴱⴻⴻⵔⵉ","tr":"Büyükanne","da":"Bedstemor","de":"Großmutter","nl":"Grootmoeder","sv":"Mormor/Farmor","ru":"Бабушка","zh":"祖母","cs":"Babička","ha":"Kaka","es":"Abuela","it":"Nonna"}
+{"mot":"Baba béeri","cat":"n.","fr":"Grand-père","en":"Grandfather","ar":"جد","tz":"ⴱⴰⴱⴰ ⴱⴻⴻⵔⵉ","tr":"Büyükbaba","da":"Bedstefar","de":"Großvater","nl":"Grootvader","sv":"Farfar/Morfar","ru":"Дедушка","zh":"祖父","cs":"Dědeček","ha":"Kaka","es":"Abuelo","it":"Nonno"}
+{"mot":"Yél","cat":"n.","fr":"Herbe","en":"Grass (green)","ar":"عشب","tz":"ⵢⴻⵍ","tr":"Ot","da":"Græs","de":"Gras","nl":"Gras","sv":"Gräs","ru":"Трава","zh":"草","cs":"Tráva","ha":"Ciyawa","es":"Hierba","it":"Erba"}
+{"mot":"ṭay","cat":"vi.","fr":"Être vert","en":"Green (grass), to be","ar":"أخضر","tz":"ⵟⴰⵢ","tr":"Yeşil olmak","da":"At være grøn","de":"Grün sein","nl":"Groen zijn","sv":"Vara grön","ru":"Быть зелёным","zh":"绿色","cs":"Být zelený","ha":"Zama kore","es":"Estar verde","it":"Essere verde"}
+{"mot":"Garúura","cat":"n.","fr":"Solution verte","en":"Green solution","ar":"محلول أخضر","tz":"ⴳⴰⵔⵓⵔⴰ","tr":"Yeşil çözüm","da":"Grøn løsning","de":"Grüne Lösung","nl":"Groene oplossing","sv":"Grön lösning","ru":"Зелёное решение","zh":"绿色方案","cs":"Zelené řešení","ha":"Maganin kore","es":"Solución verde","it":"Soluzione verde"}
+{"mot":"Gánda","cat":"n.","fr":"Sol","en":"Ground","ar":"أرض","tz":"ⴳⴰⵏⴷⴰ","tr":"Zemin","da":"Jord","de":"Boden","nl":"Grond","sv":"Mark","ru":"Почва","zh":"地面","cs":"Zemina","ha":"Kasa","es":"Suelo","it":"Suolo"}
+{"mot":"Áadan-an","cat":"npl.","fr":"Tripes","en":"Guts","ar":"أحشاء","tz":"ⴰⴰⴷⴰⵏⴰⵏ","tr":"Bağırsaklar","da":"Indvolde","de":"Eingeweide","nl":"Ingewanden","sv":"Inälvor","ru":"Кишки","zh":"内脏","cs":"Vnitřnosti","ha":"Hanji","es":"Vísceras","it":"Viscere"}
+{"mot":"Baŋgú","cat":"n.","fr":"Tête","en":"Head","ar":"رأس","tz":"ⴱⴰⵏⴳⵓ","tr":"Baş","da":"Hoved","de":"Kopf","nl":"Hoofd","sv":"Huvud","ru":"Голова","zh":"头","cs":"Hlava","ha":"Kai","es":"Cabeza","it":"Testa"}
+{"mot":"Mó","cat":"vt.","fr":"Entendre (nouvelles)","en":"Hear (news), to","ar":"يسمع","tz":"ⵎⵓ","tr":"Duymak (haber)","da":"Høre (nyheder)","de":"Hören (Nachrichten)","nl":"Horen (nieuws)","sv":"Höra (nyheter)","ru":"Слышать (новости)","zh":"听（消息）","cs":"Slyšet (zprávy)","ha":"Sauraro (labarai)","es":"Escuchar (noticias)","it":"Sentire (notizie)"}
+{"mot":"Mó","cat":"vi.","fr":"Entendre (bruit)","en":"Hear (noise), to","ar":"يسمع","tz":"ⵎⵓ","tr":"Duymak (gürültü)","da":"Høre (lyd)","de":"Hören (Geräusch)","nl":"Horen (geluid)","sv":"Höra (ljud)","ru":"Слышать (звук)","zh":"听（声音）","cs":"Slyšet (hluk)","ha":"Sauraro (amo)","es":"Escuchar (ruido)","it":"Sentire (rumore)"}
+{"mot":"Wǝ́l","cat":"n.","fr":"Cœur","en":"Heart","ar":"قلب","tz":"ⵡⴻⵍ","tr":"Kalp","da":"Hjerte","de":"Herz","nl":"Hart","sv":"Hjärta","ru":"Сердце","zh":"心脏","cs":"Srdce","ha":"Zuciya","es":"Corazón","it":"Cuore"}
+{"mot":"Korrá","cat":"n.","fr":"Chaleur","en":"Heat","ar":"حرارة","tz":"ⴽⵓⵔⵔⴰ","tr":"Isı","da":"Varme","de":"Hitze","nl":"Hitte","sv":"Värme","ru":"Жара","zh":"热","cs":"Teplo","ha":"Zafi","es":"Calor","it":"Calore"}
+{"mot":"Tíŋ","cat":"vi.","fr":"Être lourd","en":"Heavy, to be (T)","ar":"ثقيل","tz":"ⵜⵉⵏ","tr":"Ağır olmak","da":"Være tung","de":"Schwer sein","nl":"Zwaar zijn","sv":"Vara tung","ru":"Быть тяжёлым","zh":"沉重","cs":"Být těžký","ha":"Nauyi","es":"Ser pesado","it":"Essere pesante"}
+{"mot":"Yiltág","cat":"vi.","fr":"Être lourd","en":"Heavy, to be","ar":"ثقيل","tz":"ⵢⵉⵍⵜⴰⴳ","tr":"Ağır","da":"Tung","de":"Schwer","nl":"Zwaar","sv":"Tung","ru":"Тяжёлый","zh":"重的","cs":"Těžký","ha":"Mai nauyi","es":"Pesado","it":"Pesante"}
+{"mot":"Néeda","cat":"n.","fr":"Ici","en":"Here","ar":"هنا","tz":"ⵏⴻⴷⴰ","tr":"Burada","da":"Her","de":"Hier","nl":"Hier","sv":"Här","ru":"Здесь","zh":"这里","cs":"Tady","ha":"Anan","es":"Aquí","it":"Qui"}
+{"mot":"Áŋga","cat":"ind. Pron.","fr":"Il/elle","en":"He/she/it","ar":"هو/هي","tz":"ⴰⵏⴳⴰ","tr":"O","da":"Han/hun","de":"Er/sie/es","nl":"Hij/zij/het","sv":"Han/hon/det","ru":"Он/она/оно","zh":"他/她/它","cs":"On/ona/to","ha":"Shi/ita","es":"Él/ella/ello","it":"Lui/lei/esso"}
+{"mot":"Kár","cat":"vt.","fr":"Frapper","en":"Hit, to","ar":"يضرب","tz":"ⴽⴰⵔ","tr":"Vurmak","da":"Slå","de":"Schlagen","nl":"Slaan","sv":"Slå","ru":"Ударить","zh":"打","cs":"Udeřit","ha":"Bugawa","es":"Golpear","it":"Colpire"}
+{"mot":"Yíddǝr","cat":"vt.","fr":"Tenir","en":"Hold, to","ar":"يمسك","tz":"ⵢⵉⴷⴷⵔ","tr":"Tutmak","da":"Holde","de":"Halten","nl":"Vasthouden","sv":"Hålla","ru":"Держать","zh":"握住","cs":"Držet","ha":"Riƙe","es":"Sujetar","it":"Tenere"}
+{"mot":"Korrá","cat":"vi.","fr":"Être chaud","en":"Hot, to be (warm)","ar":"دافئ","tz":"ⴽⵓⵔⵔⴰ","tr":"Sıcak olmak","da":"Være varm","de":"Warm sein","nl":"Warm zijn","sv":"Vara varm","ru":"Быть тёплым","zh":"温暖","cs":"Být teplý","ha":"Zafi","es":"Estar caliente","it":"Essere caldo"}
+{"mot":"Korrá","cat":"vt.","fr":"Chauffer","en":"Hot, to make","ar":"يسخن","tz":"ⴽⵓⵔⵔⴰ","tr":"Isıtmak","da":"Opvarme","de":"Erwärmen","nl":"Verwarmen","sv":"Värma","ru":"Нагревать","zh":"加热","cs":"Ohřát","ha":"Dumi","es":"Calentar","it":"Scaldare"}
+{"mot":"Man ǝ́mmǝk aɣó ǝnda","cat":"question phrase","fr":"Comment ?","en":"How?","ar":"كيف؟","tz":"ⵎⴰⵏ ⴻⵎⵎⴽ ⴰⵖⵓ ⴻⵏⴷⴰ","tr":"Nasıl?","da":"Hvordan?","de":"Wie?","nl":"Hoe?","sv":"Hur?","ru":"Как?","zh":"怎么？","cs":"Jak?","ha":"Yaya?","es":"¿Cómo?","it":"Come?"}
+{"mot":"Gimár","cat":"vi.","fr":"Chasser","en":"Hunt (game), to","ar":"يصطاد","tz":"ⴳⵉⵎⴰⵔ","tr":"Avlanmak","da":"Jage","de":"Jagen","nl":"Jagen","sv":"Jaga","ru":"Охотиться","zh":"打猎","cs":"Lovit","ha":"Farauta","es":"Cazar","it":"Cacciare"}
+{"mot":"Aarú","cat":"n.","fr":"Mari","en":"Husband","ar":"زوج","tz":"ⴰⴰⵔⵓ","tr":"Koca","da":"Mand","de":"Ehemann","nl":"Echtgenoot","sv":"Make","ru":"Муж","zh":"丈夫","cs":"Manžel","ha":"Miji","es":"Esposo","it":"Marito"}
+{"mot":"Aɣay","cat":"ind. Pron.","fr":"Je","en":"I","ar":"أنا","tz":"ⴰⵖⴰⵢ","tr":"Ben","da":"Jeg","de":"Ich","nl":"Ik","sv":"Jag","ru":"Я","zh":"我","cs":"Já","ha":"Ni","es":"Yo","it":"Io"}
+{"mot":"Ǝnda","cat":"clause particle","fr":"Si / quand","en":"If/when","ar":"إذا / عندما","tz":"ⴻⵏⴷⴰ","tr":"Eğer / ne zaman","da":"Hvis / når","de":"Wenn / wann","nl":"Als / wanneer","sv":"Om / när","ru":"Если / когда","zh":"如果 / 当","cs":"Pokud / když","ha":"Idan / lokacin","es":"Si / cuando","it":"Se / quando"}
+{"mot":"Ǝndár","cat":"conj.","fr":"Si (hypothétique)","en":"If (hypothetical)","ar":"لو","tz":"ⴻⵏⴷⴰⵔ","tr":"Eğer (varsayımsal)","da":"Hvis (hypotetisk)","de":"Falls (hypothetisch)","nl":"Als (hypothetisch)","sv":"Om (hypotetiskt)","ru":"Если (гипотетически)","zh":"如果（假设）","cs":"Kdyby (hypotetické)","ha":"Idan (zaton)","es":"Si (hipotético)","it":"Se (ipotetico)"}
+{"mot":"Ǝs-kábahar","cat":"conj.","fr":"Si / quand","en":"If/when","ar":"إذا / عندما","tz":"ⴻⵙ ⴽⴰⴱⴰⵀⴰⵔ","tr":"Eğer / ne zaman","da":"Hvis / når","de":"Wenn / wann","nl":"Als / wanneer","sv":"Om / när","ru":"Если / когда","zh":"如果 / 当","cs":"Pokud / když","ha":"Idan / lokacin","es":"Si / cuando","it":"Se / quando"}
+{"mot":"Bêr","cat":"vi.","fr":"Être important","en":"Important, to be","ar":"مهم","tz":"ⴱⴻⵔ","tr":"Önemli olmak","da":"Være vigtig","de":"Wichtig sein","nl":"Belangrijk zijn","sv":"Vara viktig","ru":"Быть важным","zh":"重要","cs":"Být důležitý","ha":"Zama mai muhimmanci","es":"Ser importante","it":"Essere importante"}
+{"mot":"Lés","cat":"vi.","fr":"Être impur (religieux)","en":"Impure (religiously), to be","ar":"نجس","tz":"ⵍⴻⵙ","tr":"Dini açıdan kirli olmak","da":"Være uren (religiøst)","de":"Unrein sein (religiös)","nl":"Onrein zijn (religieus)","sv":"Vara oren (religiöst)","ru":"Быть нечистым (религиозно)","zh":"宗教不洁","cs":"Být nečistý (nábožensky)","ha":"Najasa","es":"Ser impuro (religioso)","it":"Essere impuro (religioso)"}
+{"mot":"Ka","cat":"postp.","fr":"Être en impureté","en":"Impure (religiously), to be in","ar":"في نجاسة","tz":"ⴽⴰ","tr":"Kutsal olmayan durumda olmak","da":"Være i urenhed","de":"In Unreinheit sein","nl":"Onrein zijn","sv":"I orenhet","ru":"Находиться в нечистоте","zh":"处于不洁","cs":"Být v nečistotě","ha":"Cikin najasa","es":"Estar en impureza","it":"Essere in impurità"}
+{"mot":"A-bíji","cat":"n.","fr":"Chacal","en":"Jackal","ar":"ابن آوى","tz":"ⴰⴱⵉⵊⵉ","tr":"Çakal","da":"Sjakal","de":"Schakal","nl":"Jakhals","sv":"Schakal","ru":"Шакал","zh":"豺","cs":"Šakal","ha":"Kare daji","es":"Chacal","it":"Sciacallo"}
+{"mot":"Intáynawt","cat":"n.","fr":"Chacal","en":"Jackal","ar":"ابن آوى","tz":"ⵉⵏⵜⴰⵢⵏⴰⵡⵜ","tr":"Çakal","da":"Sjakal","de":"Schakal","nl":"Jakhals","sv":"Schakal","ru":"Шакал","zh":"豺","cs":"Šakal","ha":"Kare daji","es":"Chacal","it":"Sciacallo"}
+{"mot":"Mó céena","cat":"n.","fr":"Chacal","en":"Jackal","ar":"ابن آوى","tz":"ⵎⵓ ⵛⴻⴻⵏⴰ","tr":"Çakal","da":"Sjakal","de":"Schakal","nl":"Jakhals","sv":"Schakal","ru":"Шакал","zh":"豺","cs":"Šakal","ha":"Kare daji","es":"Chacal","it":"Sciacallo"}
+{"mot":"ṣót","cat":"n.","fr":"Saut","en":"Jump (n)","ar":"قفزة","tz":"ⵚⵓⵟ","tr":"Zıplama","da":"Hop","de":"Sprung","nl":"Sprong","sv":"Hopp","ru":"Прыжок","zh":"跳跃","cs":"Skok","ha":"Tsalle","es":"Salto","it":"Salto"}
+{"mot":"ṣót","cat":"vt.","fr":"Sauter par-dessus","en":"Jump over, to","ar":"يقفز فوق","tz":"ⵚⵓⵟ","tr":"Üzerinden atlamak","da":"Hoppe over","de":"Überspringen","nl":"Overspringen","sv":"Hoppa över","ru":"Перепрыгнуть","zh":"跳过","cs":"Přeskočit","ha":"Tsallake","es":"Saltar sobre","it":"Saltare sopra"}
+{"mot":"Yilbák","cat":"vi.","fr":"Être maigre","en":"Lean, to be","ar":"نحيف","tz":"ⵢⵉⵍⴱⴰⴽ","tr":"Zayıf olmak","da":"Være mager","de":"Mager sein","nl":"Mager zijn","sv":"Var mager","ru":"Быть худым","zh":"瘦","cs":"Být hubený","ha":"Kankare","es":"Estar delgado","it":"Essere magro"}
+{"mot":"Kuurú","cat":"n.","fr":"Cuir","en":"Leather","ar":"جلد","tz":"ⴽⵓⵔⵓ","tr":"Deri","da":"Læder","de":"Leder","nl":"Leer","sv":"Läder","ru":"Кожа","zh":"皮革","cs":"Kůže","ha":"Fata","es":"Cuero","it":"Pelle"}
+{"mot":"Cindí","cat":"vi.","fr":"Se reposer","en":"Leave a rest, to","ar":"يرتاح","tz":"ⵛⵏⴷⵉ","tr":"Dinlenmek","da":"Hvile","de":"Sich ausruhen","nl":"Rust nemen","sv":"Vila","ru":"Отдыхать","zh":"休息","cs":"Odpočívat","ha":"Huta","es":"Descansar","it":"Riposa"}
+{"mot":"Kóy","cat":"vt.","fr":"Partir pour","en":"Leave for, to","ar":"يغادر إلى","tz":"ⴽⵓⵢ","tr":"Gitmek","da":"Rejse til","de":"Verlassen (zu)","nl":"Vertrekken naar","sv":"Åka till","ru":"Уехать","zh":"离开去","cs":"Odejít","ha":"Tafiya zuwa","es":"Salir hacia","it":"Partire per"}
+{"mot":"Zálgat","cat":"n.","fr":"Gauche","en":"Left (side)","ar":"يسار","tz":"ⵣⴰⵍⴳⴰⵜ","tr":"Sol (taraf)","da":"Venstre (side)","de":"Links (Seite)","nl":"Links (kant)","sv":"Vänster (sida)","ru":"Левая сторона","zh":"左边","cs":"Levá strana","ha":"Hagu","es":"Izquierda","it":"Sinistra"}
+{"mot":"Cáy","cat":"n.","fr":"Jambe / pied","en":"Leg / foot","ar":"رجل","tz":"ⴽⴰⵢ","tr":"Bacak / ayak","da":"Ben / fod","de":"Bein / Fuß","nl":"Been / voet","sv":"Ben / fot","ru":"Нога / стопа","zh":"腿 / 脚","cs":"Noha / chodidlo","ha":"Kafa / ƙafa","es":"Pierna / pie","it":"Gamba / piede"}
+{"mot":"Kukú","cat":"n.","fr":"Longueur","en":"Length","ar":"طول","tz":"ⴽⵓⴽⵓ","tr":"Uzunluk","da":"Længde","de":"Länge","nl":"Lengte","sv":"Längd","ru":"Длина","zh":"长度","cs":"Délka","ha":"Tsawo","es":"Longitud","it":"Lunghezza"}
+{"mot":"Yíniʃtaga","cat":"vi.","fr":"S’allonger sur le côté","en":"Lie on side, to","ar":"ينام على جانبه","tz":"ⵢⵉⵏⵉⵛⵜⴰⴳⴰ","tr":"Yan yatmak","da":"Ligge på siden","de":"Auf der Seite liegen","nl":"Op z'n zij liggen","sv":"Ligga på sidan","ru":"Лежать на боку","zh":"侧躺","cs":"Ležet na boku","ha":"Kwanciya a gefe","es":"Acostarse de lado","it":"Sdraiarsi su un lato"}
+{"mot":"Tárra nn ízzay","cat":"n.","fr":"Lion","en":"Lion","ar":"أسد","tz":"ⵜⴰⵔⵔⴰ ⵏ ⵉⵣⵣⴰⵢ","tr":"Aslan","da":"Løve","de":"Löwe","nl":"Leeuw","sv":"Lejon","ru":"Лев","zh":"狮子","cs":"Lev","ha":"Zaki","es":"León","it":"Leone"}

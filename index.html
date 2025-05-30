@@ -1,28 +1,83 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Tadaksahak Learning</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Dictionnaire Tadaksahak Multilingue</title>
+
+  <link rel="icon" href="images/idaksahak_round.png" type="image/png" />
+  <meta name="description" content="Vocabulaire Tadaksahak en audio avec traduction multilingue." />
+  <meta property="og:title" content="Tadaksahak Learning" />
+  <meta property="og:image" content="images/idaksahak_square_512.png" />
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- Manifest dynamique pour 16 langues -->
+  <script>
+    const lang = (navigator.language || navigator.userLanguage || "fr").split("-")[0];
+    const manifestURL = {
+      fr: "manifest.fr.json",
+      en: "manifest.en.json",
+      ar: "manifest.ar.json",
+      ru: "manifest.ru.json",
+      nl: "manifest.nl.json",
+      de: "manifest.de.json",
+      da: "manifest.da.json",
+      cs: "manifest.cs.json",
+      bm: "manifest.bm.json",
+      tz: "manifest.tz.json",
+      tr: "manifest.tr.json",
+      es: "manifest.es.json",
+      it: "manifest.it.json",
+      ha: "manifest.ha.json",
+      sv: "manifest.sv.json",
+      zh: "manifest.zh.json"
+    }[lang] || "manifest.json";
+
+    const link = document.createElement('link');
+    link.rel = 'manifest';
+    link.href = manifestURL;
+    document.head.appendChild(link);
+  </script>
 </head>
+
 <body>
+  <header class="logo" aria-label="Logo Tadaksahak">
+    <img src="images/idaksahak_round.png" alt="Logo rond" class="rond" />
+  </header>
+
   <main>
-    <!-- Votre contenu existant reste inchangé -->
     <section>
+      <input id="searchBar" type="text" placeholder="Chercher un mot..." oninput="rechercherMot()" aria-label="Zone de recherche" />
+
       <article id="mot">
         <h2 id="motTexte">...</h2>
         <p id="definition">...</p>
-        <p id="compteur">0/0</p>
-        
-        <div class="lang-switch">
+
+        <div class="lang-switch" aria-label="Changer la langue">
           <button onclick="changerLangue('fr')">Fr</button>
           <button onclick="changerLangue('en')">En</button>
           <button onclick="changerLangue('ar')">ع</button>
+          <button onclick="changerLangue('ru')">Ru</button>
+          <button onclick="changerLangue('nl')">Nl</button>
+          <button onclick="changerLangue('de')">De</button>
+          <button onclick="changerLangue('da')">🇩🇰</button>
+          <button onclick="changerLangue('cs')">Cs</button>
+          <button onclick="changerLangue('bm')">Bm</button>
+          <button onclick="changerLangue('tz')">Tz</button>
+          <button onclick="changerLangue('tr')">Tr</button>
+          <button onclick="changerLangue('es')">Es</button>
+          <button onclick="changerLangue('it')">It</button>
+          <button onclick="changerLangue('ha')">Ha</button>
+          <button onclick="changerLangue('sv')">Sv</button>
+          <button onclick="changerLangue('zh')">中文</button>
         </div>
 
+        <div id="compteur">1 / ...</div>
+
         <div id="audioButtons">
-          <button onclick="jouerAudio()">▶️ Écouter</button>
+          <button id="btnPlay" disabled>▶️ Écouter</button>
+          <button id="btnReplay" disabled>⟳ Rejouer</button>
+          <button id="btnAuto" disabled>▶️ Lecture auto</button>
         </div>
 
         <nav id="navigation">
@@ -31,8 +86,19 @@
         </nav>
       </article>
     </section>
+
+    <section aria-labelledby="chat-title">
+      <h2 id="chat-title">Chat Tadaksahak</h2>
+      <div id="chatWindow" role="log" aria-live="polite"></div>
+      <input type="text" id="chatInput" placeholder="Tape ton mot ou ta question ici..." onkeydown="if(event.key==='Enter') envoyerMessage()" />
+      <button onclick="envoyerMessage()">Envoyer</button>
+    </section>
   </main>
 
-  <script src="script.js"></script>
+  <footer>
+    <p>&copy; 2025 Tadaksahak Multilingue with Hamadine</p>
+  </footer>
+
+  <script src="script.js" defer></script>
 </body>
 </html>

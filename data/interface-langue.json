@@ -1,0 +1,162 @@
+{
+  "fr": {
+    "precedent": "Précédent",
+    "suivant": "Suivant",
+    "ecouter": "Écouter",
+    "rejouer": "Réécouter",
+    "lectureAuto": "Lecture auto",
+    "chatTitre": "Discussion avec Hamadine",
+    "envoyer": "Envoyer",
+    "searchPlaceholder": "Rechercher un mot..."
+  },
+  "en": {
+    "precedent": "Previous",
+    "suivant": "Next",
+    "ecouter": "Play",
+    "rejouer": "Replay",
+    "lectureAuto": "Auto-play",
+    "chatTitre": "Chat with Hamadine",
+    "envoyer": "Send",
+    "searchPlaceholder": "Search a word..."
+  },
+  "ar": {
+    "precedent": "السابق",
+    "suivant": "التالي",
+    "ecouter": "استمع",
+    "rejouer": "أعد الاستماع",
+    "lectureAuto": "تشغيل تلقائي",
+    "chatTitre": "الدردشة مع حمدين",
+    "envoyer": "إرسال",
+    "searchPlaceholder": "ابحث عن كلمة..."
+  },
+  "ru": {
+    "precedent": "Назад",
+    "suivant": "Вперёд",
+    "ecouter": "Прослушать",
+    "rejouer": "Повтор",
+    "lectureAuto": "Автовоспроизведение",
+    "chatTitre": "Чат с Хамадин",
+    "envoyer": "Отправить",
+    "searchPlaceholder": "Поиск слова..."
+  },
+  "nl": {
+    "precedent": "Vorige",
+    "suivant": "Volgende",
+    "ecouter": "Afspelen",
+    "rejouer": "Opnieuw",
+    "lectureAuto": "Automatisch afspelen",
+    "chatTitre": "Chat met Hamadine",
+    "envoyer": "Verzenden",
+    "searchPlaceholder": "Zoek een woord..."
+  },
+  "de": {
+    "precedent": "Zurück",
+    "suivant": "Weiter",
+    "ecouter": "Abspielen",
+    "rejouer": "Wiederholen",
+    "lectureAuto": "Auto-Wiedergabe",
+    "chatTitre": "Chat mit Hamadine",
+    "envoyer": "Senden",
+    "searchPlaceholder": "Wort suchen..."
+  },
+  "da": {
+    "precedent": "Forrige",
+    "suivant": "Næste",
+    "ecouter": "Afspil",
+    "rejouer": "Afspil igen",
+    "lectureAuto": "Automatisk afspilning",
+    "chatTitre": "Chat med Hamadine",
+    "envoyer": "Send",
+    "searchPlaceholder": "Søg efter et ord..."
+  },
+  "cs": {
+    "precedent": "Předchozí",
+    "suivant": "Další",
+    "ecouter": "Přehrát",
+    "rejouer": "Znovu",
+    "lectureAuto": "Automatické přehrávání",
+    "chatTitre": "Chat s Hamadine",
+    "envoyer": "Odeslat",
+    "searchPlaceholder": "Hledat slovo..."
+  },
+  "bm": {
+    "precedent": "Kɔ́rɔ",
+    "suivant": "Kalan",
+    "ecouter": "Nà",
+    "rejouer": "Nà fɔ̀",
+    "lectureAuto": "Ka nà kɛ sisan",
+    "chatTitre": "Benkɛ Hamadine la",
+    "envoyer": "Cɛ",
+    "searchPlaceholder": "Sɔ̀rɔ kɔ̀sɛbaya..."
+  },
+  "tz": {
+    "precedent": "Aɣerbaz",
+    "suivant": "Asnaw",
+    "ecouter": "Semmes",
+    "rejouer": "Semmes tikelt nniḍen",
+    "lectureAuto": "Semmes awurman",
+    "chatTitre": "Ameslay d Hamadine",
+    "envoyer": "Azen",
+    "searchPlaceholder": "Nadi awal..."
+  },
+  "tr": {
+    "precedent": "Önceki",
+    "suivant": "Sonraki",
+    "ecouter": "Dinle",
+    "rejouer": "Tekrar dinle",
+    "lectureAuto": "Otomatik oynatma",
+    "chatTitre": "Hamadine ile sohbet",
+    "envoyer": "Gönder",
+    "searchPlaceholder": "Bir kelime ara..."
+  },
+  "es": {
+    "precedent": "Anterior",
+    "suivant": "Siguiente",
+    "ecouter": "Escuchar",
+    "rejouer": "Repetir",
+    "lectureAuto": "Reproducción automática",
+    "chatTitre": "Chat con Hamadine",
+    "envoyer": "Enviar",
+    "searchPlaceholder": "Buscar una palabra..."
+  },
+  "it": {
+    "precedent": "Precedente",
+    "suivant": "Successivo",
+    "ecouter": "Ascolta",
+    "rejouer": "Riascolta",
+    "lectureAuto": "Riproduzione automatica",
+    "chatTitre": "Chatta con Hamadine",
+    "envoyer": "Invia",
+    "searchPlaceholder": "Cerca una parola..."
+  },
+  "ha": {
+    "precedent": "Na baya",
+    "suivant": "Na gaba",
+    "ecouter": "Saurara",
+    "rejouer": "Sake sauraro",
+    "lectureAuto": "Karatu ta atomatik",
+    "chatTitre": "Tattaunawa da Hamadine",
+    "envoyer": "Aika",
+    "searchPlaceholder": "Nemo kalma..."
+  },
+  "sv": {
+    "precedent": "Föregående",
+    "suivant": "Nästa",
+    "ecouter": "Spela",
+    "rejouer": "Spela igen",
+    "lectureAuto": "Autospelning",
+    "chatTitre": "Chatt med Hamadine",
+    "envoyer": "Skicka",
+    "searchPlaceholder": "Sök ett ord..."
+  },
+  "zh": {
+    "precedent": "上一页",
+    "suivant": "下一页",
+    "ecouter": "播放",
+    "rejouer": "重播",
+    "lectureAuto": "自动播放",
+    "chatTitre": "与Hamadine聊天",
+    "envoyer": "发送",
+    "searchPlaceholder": "搜索单词..."
+  }
+}

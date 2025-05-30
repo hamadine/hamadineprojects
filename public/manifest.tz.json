@@ -1,0 +1,25 @@
+{
+  "name": "ⴷⵉⴽⵉⵏⴰⵡⵉⵔ ⵜⴰⴷⴰⴽⵙⴰⵀⴰⴽ ⵎⵓⵍⵉⵍⵉⴳⴰⵏ",
+  "short_name": "ⵜⴰⴷⴰⴽⵙⴰⵀⴰⴽ",
+  "lang": "tz",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#fcebd5",
+  "theme_color": "#d9822b",
+  "description": "ⴰⵙⵉⴷⴷⴰⵏ ⵏ ⵓⵎⵎⴰⵏ ⵜⴰⴷⴰⴽⵙⴰⵀⴰⴽ ⴷ ⵉⴽⵉⵏⴰⵡⵉⵔ ⴰⵏⴰⴳⴳⵓⴷ ⴷ ⵜⵉⵎⵎⴰⴳⴰⵔⵉⵏ.",
+  "icons": [
+    {
+      "src": "images/idaksahak_square.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "images/idaksahak_round.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}

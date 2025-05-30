@@ -1,0 +1,25 @@
+{
+  "name": "Mehrsprachiges Tadaksahak-Wörterbuch",
+  "short_name": "Tadaksahak",
+  "lang": "de",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#fcebd5",
+  "theme_color": "#d9822b",
+  "description": "Lerne Tadaksahak-Vokabeln mit Audio und mehrsprachiger Übersetzung.",
+  "icons": [
+    {
+      "src": "images/idaksahak_square.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "images/idaksahak_round.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}

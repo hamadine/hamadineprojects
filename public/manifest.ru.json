@@ -1,0 +1,25 @@
+{
+  "name": "Многоязычный словарь Тадаксакак",
+  "short_name": "Tadaksahak",
+  "lang": "ru",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#fcebd5",
+  "theme_color": "#d9822b",
+  "description": "Изучение слов Тадаксакак с аудио и переводом на разные языки.",
+  "icons": [
+    {
+      "src": "images/idaksahak_square.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "images/idaksahak_round.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}
