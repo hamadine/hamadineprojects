@@ -1,14 +1,13 @@
 const CACHE_NAME = "tadaksahak-cache-v1";
 const URLS_TO_CACHE = [
-  "./",
-  "./index.html",
-  "./style.css",
-  "./app.js",
-  "./data/mots.json",
-  "./data/interface-langues.json",
-  "./images/idaksahak_round.png",
-  "./images/idaksahak_square.png",
-  "./images/idaksahak_square_512.png"
+  "/Tadaksahak-Learning-/",
+  "/Tadaksahak-Learning-/index.html",
+  "/Tadaksahak-Learning-/style.css",
+  "/Tadaksahak-Learning-/app.js",
+  "/Tadaksahak-Learning-/data/mots.json",
+  "/Tadaksahak-Learning-/data/interface-langue.json", // <-- adapte bien le nom !
+  "/Tadaksahak-Learning-/images/idaksahak_round.png"
+  // Enlève les images carrées si tu ne les utilises plus
 ];
 
 // Installation du service worker
@@ -41,11 +40,14 @@ self.addEventListener("activate", event => {
 self.addEventListener("fetch", event => {
   event.respondWith(
     caches.match(event.request).then(response => {
-      return response || fetch(event.request).catch(() =>
-        event.request.destination === "document"
-          ? caches.match("./index.html")
-          : null
+      return (
+        response ||
+        fetch(event.request).catch(() =>
+          event.request.destination === "document"
+            ? caches.match("/Tadaksahak-Learning-/index.html")
+            : null
+        )
       );
     })
   );
-});
+});});
