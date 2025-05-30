@@ -1,6 +1,7 @@
 let mots = [];
 let index = 0;
 
+// Chargement du JSON
 fetch("data/mots.json")
   .then(res => res.json())
   .then(data => {
@@ -14,10 +15,10 @@ function afficherMot() {
   document.getElementById("definition").innerText = mot.fr || "";
   document.getElementById("compteur").innerText = `${index + 1} / ${mots.length}`;
 
-  // Audio toujours désactivé sans message
+  // Désactive les boutons audio (adapte si tu veux l’audio plus tard)
   ["btnPlay", "btnReplay", "btnAuto"].forEach(id => {
     const btn = document.getElementById(id);
-    btn.disabled = true;
+    if (btn) btn.disabled = true;
   });
 }
 
@@ -34,19 +35,24 @@ function motPrecedent() {
 }
 
 function envoyerMessage() {
-  const input = document.getElementBy"definition("chatInput");
+  const input = document.getElementById("chatInput");
   const message = input.value.trim();
   if (!message) return;
 
+  // Message utilisateur
   const div = document.createElement("div");
   div.textContent = "Vous : " + message;
   div.style.fontWeight = "bold";
   document.getElementById("chatWindow").appendChild(div);
 
-  // Réponse simulée
+  // Réponse simulée du bot
   const bot = document.createElement("div");
-  bot.textContent = `Hamadine : Je vous entends, mais ma base lexicale est encore en cours.`;
+  bot.textContent = `Hamadine : Salut, je vous entends, mais ma base lexicale est encore en cours.`;
   document.getElementById("chatWindow").appendChild(bot);
 
+  // Défilement automatique du chat vers le bas
+  document.getElementById("chatWindow").scrollTop = document.getElementById("chatWindow").scrollHeight;
+
   input.value = "";
+  input.focus();
 }
