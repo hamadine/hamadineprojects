@@ -13,9 +13,11 @@
 body {
   background: linear-gradient(to bottom, #e6f3ff 0%, #f2faff 60%, #ffffff 100%);
   color: var(--texte-principal);
-  font-family: 'Segoe UI', sans-serif;
+  font-family: 'Segoe UI', Arial, sans-serif;
   margin: 0;
   padding: 1rem;
+  min-height: 100vh;
+  transition: background-color 0.3s, color 0.3s;
 }
 
 main {
@@ -25,6 +27,7 @@ main {
   max-width: 700px;
   margin: auto;
   box-shadow: 0 4px 12px var(--ombre);
+  transition: background-color 0.3s, color 0.3s;
 }
 
 button {
@@ -35,7 +38,18 @@ button {
   font-size: 1rem;
   border-radius: 8px;
   cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.1s ease;
+  transition: background-color 0.3s, transform 0.1s, box-shadow 0.2s;
+}
+
+button:hover:not([disabled]) {
+  background-color: var(--bouton-hover);
+  transform: translateY(-2px) scale(1.03);
+  box-shadow: 0 2px 8px var(--ombre);
+}
+
+button:focus {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
 }
 
 button[disabled] {
@@ -43,11 +57,107 @@ button[disabled] {
   cursor: not-allowed;
 }
 
+input, textarea {
+  font-size: 1rem;
+  border: 1px solid var(--accent);
+  border-radius: 6px;
+  padding: 0.5em 0.8em;
+  margin: 0.2em 0;
+  background: #fff;
+  color: var(--texte-principal);
+  box-sizing: border-box;
+  transition: border-color 0.2s, background 0.3s, color 0.3s;
+}
+
+input:focus, textarea:focus {
+  border-color: var(--bouton);
+  outline: none;
+}
+
+input::placeholder, textarea::placeholder {
+  color: var(--accent);
+  opacity: 0.7;
+}
+
+.carte, .section {
+  background: var(--fond-carte);
+  border-radius: 10px;
+  box-shadow: 0 2px 6px var(--ombre);
+  padding: 1.5rem;
+  margin-bottom: 1.2rem;
+}
+
+#chatWindow {
+  border: 1px solid var(--bordure-chat);
+  background: #f9fcff;
+  border-radius: 8px;
+  height: 90px;
+  overflow-y: auto;
+  padding: 0.5em 0.7em;
+  margin-bottom: 0.7em;
+  font-size: 0.98em;
+}
+
 footer {
   text-align: center;
   margin-top: 2rem;
-  font-size: 0.9rem;
+  font-size: 0.92rem;
   color: #557;
+  box-shadow: 0 -1px 6px var(--ombre);
+  background: transparent;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  background: var(--fond-carte);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--accent);
+  border-radius: 4px;
+}
+
+#lang-switcher {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3em;
+  margin-bottom: 1rem;
+}
+
+#lang-switcher button {
+  padding: 0.5em 0.8em;
+  font-size: 1.05em;
+  border-radius: 6px;
+  background: var(--fond-carte);
+  color: var(--texte-principal);
+  border: 1.5px solid var(--accent);
+  transition: background 0.2s, color 0.2s, transform 0.1s;
+}
+
+#lang-switcher button:hover, #lang-switcher button:focus {
+  background: var(--accent);
+  color: #fff;
+  transform: scale(1.07);
+}
+
+#compteur {
+  color: var(--accent);
+  font-weight: bold;
+  font-size: 1.1em;
+  margin: 0.7em 0;
+  display: inline-block;
+}
+
+@media (max-width: 800px) {
+  main {
+    padding: 1rem;
+    max-width: 98vw;
+  }
+}
+
+@media (max-width: 520px) {
+  main { padding: 0.4rem; }
+  button, input, textarea { font-size: 0.99em; }
+  #lang-switcher button { font-size: 0.98em; }
 }
 
 @media (prefers-color-scheme: dark) {
@@ -65,5 +175,19 @@ footer {
 
   body {
     background: linear-gradient(to bottom, #0b1a28 0%, #2a1f1a 70%, #3c2a1e 100%);
+  }
+  input, textarea {
+    background: #2a1f1a;
+    color: var(--texte-principal);
+    border: 1px solid var(--accent);
+  }
+  #chatWindow {
+    background: #221815;
+    color: var(--texte-principal);
+    border-color: var(--bordure-chat);
+  }
+  .carte, .section, main {
+    background: var(--fond-carte);
+    color: var(--texte-principal);
   }
 }
