@@ -1,183 +1,80 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title id="titrePrincipal">Dictionnaire Tadaksahak Multilingue</title>
-  <link rel="icon" href="images/idaksahak_round.png" type="image/png" />
-  <meta name="description" content="Vocabulaire Tadaksahak en audio avec traduction multilingue." />
-  <meta property="og:title" content="Dictionnaire Tadaksahak Multilingue" />
-  <meta property="og:image" content="images/idaksahak_square_512.png" />
-  <link rel="stylesheet" href="style.css" />
-
-  <script>
-    const lang = navigator.language?.split("-")[0] || "fr";
-    const manifestURL = {
-      en: "manifest.en.json",
-      ar: "manifest.ar.json",
-      ru: "manifest.ru.json",
-      ha: "manifest.ha.json",
-      nl: "manifest.nl.json",
-      sv: "manifest.sv.json",
-      cs: "manifest.cs.json",
-      zh: "manifest.zh.json",
-      de: "manifest.de.json",
-      tr: "manifest.tr.json",
-      da: "manifest.da.json",
-      it: "manifest.it.json",
-      es: "manifest.es.json",
-      tz: "manifest.tz.json",
-      bm: "manifest.bm.json"
-    }[lang] || "manifest.json";
-
-    const link = document.createElement('link');
-    link.rel = 'manifest';
-    link.href = "./public/" + manifestURL;
-    document.head.appendChild(link);
-  </script>
+  <meta charset="UTF-8">
+  <title>Dictionnaire Tadaksahak Multilingue</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
-  <header class="logo" aria-label="Logo Tadaksahak"></header>
-
   <main>
-    <div class="logo" style="text-align: center;">
-      <img src="images/idaksahak_round.png" alt="Logo Tadaksahak rond" width="120" />
+    <h1 id="titre">Dictionnaire Tadaksahak Multilingue</h1>
+    <div id="lang-switcher">
+      <button onclick="changerLangueInterface('fr')">🇫🇷</button>
+      <button onclick="changerLangueInterface('en')">🇬🇧</button>
+      <button onclick="changerLangueInterface('ar')">🇸🇦</button>
+      <button onclick="changerLangueInterface('es')">🇪🇸</button>
+      <button onclick="changerLangueInterface('de')">🇩🇪</button>
+      <button onclick="changerLangueInterface('ru')">🇷🇺</button>
+      <button onclick="changerLangueInterface('it')">🇮🇹</button>
+      <button onclick="changerLangueInterface('pt')">🇵🇹</button>
+      <button onclick="changerLangueInterface('tr')">🇹🇷</button>
+      <button onclick="changerLangueInterface('zh')">🇨🇳</button>
+      <button onclick="changerLangueInterface('tamasheq')">ⴻⵣ</button>
+      <button onclick="changerLangueInterface('tamajaq')">ⵜⴰ</button>
+      <button onclick="changerLangueInterface('tadaksahak')">ⵜⴷ</button>
+      <button onclick="changerLangueInterface('songhay')">ⴰⵣ</button>
+      <button onclick="changerLangueInterface('zarma')">ⴼⴼ</button>
     </div>
-    <section style="margin-bottom: 1.5rem; text-align:center;">
-      <h1 id="titrePrincipal">Dictionnaire Tadaksahak Multilingue</h1>
-      <p id="presentation" class="presentation">
-        Ce projet est en cours de développement.<br>
-        Toute aide ou soutien est une source de motivation supplémentaire pour rendre la langue Tadaksahak accessible à tous, sur le numérique et en version physique.<br>
-        <span style="color: #4682b4;">Merci pour votre intérêt et votre soutien&nbsp;!</span>
-      </p>
-    </section>
 
-    <section>
-      <input
-        id="searchBar"
-        type="text"
-        placeholder="Rechercher un mot..."
-        oninput="rechercherMot()"
-        aria-label="Zone de recherche"
-        style="width: 100%; max-width: 400px; margin: auto; display: block;"
-      />
+    <!-- Barre de sélection de la langue de traduction (optionnel) -->
+    <div id="langue-mots" style="margin-bottom:1em;">
+      <button onclick="changerLangue('fr')">FR</button>
+      <button onclick="changerLangue('en')">EN</button>
+      <button onclick="changerLangue('ar')">AR</button>
+      <button onclick="changerLangue('es')">ES</button>
+      <button onclick="changerLangue('de')">DE</button>
+      <button onclick="changerLangue('ru')">RU</button>
+      <button onclick="changerLangue('it')">IT</button>
+      <button onclick="changerLangue('pt')">PT</button>
+      <button onclick="changerLangue('tr')">TR</button>
+      <button onclick="changerLangue('zh')">ZH</button>
+      <button onclick="changerLangue('tamasheq')">TAM</button>
+      <button onclick="changerLangue('tamajaq')">TAJ</button>
+      <button onclick="changerLangue('tadaksahak')">TDK</button>
+      <button onclick="changerLangue('songhay')">SGH</button>
+      <button onclick="changerLangue('zarma')">ZRM</button>
+    </div>
 
-      <article id="mot" role="region" aria-live="polite">
-        <h2 id="motTexte">...</h2>
-        <p id="definition">...</p>
+    <div style="margin-bottom:1em;">
+      <input type="text" id="searchBar" placeholder="Chercher un mot dans toutes les langues..." oninput="rechercherMot()" style="width:90%;max-width:340px;" />
+    </div>
 
-        <div class="lang-switch" aria-label="Changer la langue des traductions" style="margin-bottom: 0.7em;">
-          <button onclick="changerLangue('fr')" aria-label="Français">Fr</button>
-          <button onclick="changerLangue('en')" aria-label="Anglais">En</button>
-          <button onclick="changerLangue('ar')" aria-label="Arabe">ع</button>
-          <button onclick="changerLangue('tz')" aria-label="Tamajaq">ⵜ</button>
-          <button onclick="changerLangue('tr')" aria-label="Turc">Tr</button>
-          <button onclick="changerLangue('da')" aria-label="Danois">Da</button>
-          <button onclick="changerLangue('de')" aria-label="Allemand">De</button>
-          <button onclick="changerLangue('nl')" aria-label="Néerlandais">Nl</button>
-          <button onclick="changerLangue('sv')" aria-label="Suédois">Sv</button>
-          <button onclick="changerLangue('ru')" aria-label="Russe">Ru</button>
-          <button onclick="changerLangue('zh')" aria-label="Chinois">Zh</button>
-          <button onclick="changerLangue('cs')" aria-label="Tchèque">Cs</button>
-          <button onclick="changerLangue('ha')" aria-label="Haoussa">Ha</button>
-          <button onclick="changerLangue('es')" aria-label="Espagnol">Es</button>
-          <button onclick="changerLangue('it')" aria-label="Italien">It</button>
-          <button onclick="changerLangue('bm')" aria-label="Bambara">Bm</button>
-        </div>
-
-        <div class="lang-switch" aria-label="Changer la langue de l'interface">
-          <button onclick="changerLangueInterface('fr')" aria-label="Interface français">🇫🇷</button>
-          <button onclick="changerLangueInterface('en')" aria-label="Interface anglais">🇬🇧</button>
-          <button onclick="changerLangueInterface('ar')" aria-label="Interface arabe">🇸🇦</button>
-          <button onclick="changerLangueInterface('ru')" aria-label="Interface russe">🇷🇺</button>
-          <button onclick="changerLangueInterface('tz')" aria-label="Interface tamajaq">ⵜ</button>
-          <button onclick="changerLangueInterface('tr')" aria-label="Interface turc">🇹🇷</button>
-          <button onclick="changerLangueInterface('es')" aria-label="Interface espagnol">🇪🇸</button>
-          <button onclick="changerLangueInterface('zh')" aria-label="Interface chinois">🇨🇳</button>
-          <button onclick="changerLangueInterface('nl')" aria-label="Interface néerlandais">🇳🇱</button>
-          <button onclick="changerLangueInterface('de')" aria-label="Interface allemand">🇩🇪</button>
-          <button onclick="changerLangueInterface('cs')" aria-label="Interface tchèque">🇨🇿</button>
-          <button onclick="changerLangueInterface('da')" aria-label="Interface danois">🇩🇰</button>
-          <button onclick="changerLangueInterface('it')" aria-label="Interface italien">🇮🇹</button>
-          <button onclick="changerLangueInterface('ha')" aria-label="Interface haoussa">🇳🇬</button>
-          <button onclick="changerLangueInterface('sv')" aria-label="Interface suédois">🇸🇪</button>
-          <button onclick="changerLangueInterface('bm')" aria-label="Interface bambara">🇲🇱</button>
-        </div>
-
-        <p id="compteur">1 / ...</p>
-
-        <div id="audioButtons">
-          <button id="btnPlay" onclick="jouerTadaksahak()" aria-label="Écouter le mot" disabled style="opacity: 0.5; cursor: not-allowed;">▶️ Écouter</button>
-          <button id="btnReplay" onclick="rejouerMot()" aria-label="Réécouter le mot" disabled style="opacity: 0.5; cursor: not-allowed;">⟳ Rejouer</button>
-          <button id="btnAuto" onclick="lectureAuto()" aria-label="Lecture automatique" disabled style="opacity: 0.5; cursor: not-allowed;">▶️ Lecture auto</button>
-        </div>
-
-        <nav id="navigation" aria-label="Navigation entre les mots">
-          <button id="btnPrev" onclick="motPrecedent()" aria-label="Mot précédent">◀️ Précédent</button>
-          <button id="btnNext" onclick="motSuivant()" aria-label="Mot suivant">Suivant ▶️</button>
-        </nav>
-      </article>
-    </section>
-
-    <!-- Bannière d'installation PWA dynamique -->
-    <div id="installBanner" style="display:none; text-align:center; margin:1em 0;">
-      <span id="installBannerText">
-        Vous pouvez ajouter ce dictionnaire Tadaksahak à votre écran d'accueil pour l'utiliser comme une application !
-      </span>
-      <button id="installPWA" onclick="installerPWA()">Ajouter</button>
-      <button onclick="document.getElementById('installBanner').style.display='none';">✖</button>
-      <div id="instructionsIOS" style="font-size:0.9em; color:#4682b4; display:none;">
-        Sur iPhone/iPad : ouvrez le menu de partage de Safari puis choisissez « Sur l’écran d’accueil »
+    <div class="carte" style="margin-bottom:1em;">
+      <div id="motTexte" style="font-weight:bold;font-size:1.4em;margin-bottom:0.5em;">—</div>
+      <div id="definition" style="font-size:1.1em;margin-bottom:0.5em;">...</div>
+      <div id="compteur"></div>
+      <div style="margin-top:1em;">
+        <button id="btnPrev" onclick="motPrecedent()"></button>
+        <button id="btnNext" onclick="motSuivant()"></button>
+        <button id="btnPlay"></button>
+        <button id="btnReplay"></button>
+        <button id="btnAuto"></button>
       </div>
     </div>
 
-    <!-- Section Chat / Bot -->
-    <section aria-labelledby="chat-title" style="margin-top: 2rem;">
-      <h2 id="chat-title">Discussion avec Hamadine</h2>
-      <div id="chatWindow" class="chatbox" role="log" aria-live="polite"></div>
-      <div class="bot-intro" id="botIntro" style="padding: 0.5em 0; color: #0a5780; font-weight: bold;">
-        🤖 Salut, je suis Hamadine le bot Tadaksahak.<br>
-        Demandez-moi un mot et je vous le trouve rapidement&nbsp;!
+    <div class="carte">
+      <div id="chat-title" style="font-weight:bold;margin-bottom:0.5em;">Chat Tadaksahak</div>
+      <div id="chatWindow"></div>
+      <div style="display:flex;gap:0.4em;">
+        <input type="text" id="chatInput" placeholder="Tape ton mot ou ta question ici dans la langue de ton choix..." style="flex:1;" />
+        <button id="btnEnvoyer" onclick="envoyerMessage()"></button>
       </div>
-      <input
-        type="text"
-        id="chatInput"
-        placeholder="Tape ton mot ou ta question ici dans la langue de ton choix..."
-        onkeydown="if(event.key==='Enter') envoyerMessage()"
-        aria-label="Zone de saisie du chat"
-        style="width: 100%; max-width: 500px;"
-      />
-      <button id="btnEnvoyer" onclick="envoyerMessage()" aria-label="Envoyer le message">Envoyer</button>
-    </section>
+    </div>
   </main>
-
   <footer>
-    <p id="footerText">
-      &copy; 2025 • Tadaksahak Multilingue avec <strong>Hamadine</strong>.<br>
-      <span style="font-size: 0.98em;">Projet en évolution – toute suggestion ou contribution est la bienvenue pour soutenir la vitalité de la langue Tadaksahak !</span>
-    </p>
+    &copy; 2025 Dictionnaire Tadaksahak — Projet multilingue open source
   </footer>
-
-  <script src="app.js" defer></script>
-  <!-- Bloc Service Worker pour mise à jour auto -->
-  <script>
-    if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('./sw.js')
-        .then(reg => console.log("✅ Service Worker enregistré:", reg.scope))
-        .catch(err => console.error("❌ Erreur Service Worker:", err));
-    
-      navigator.serviceWorker.addEventListener('message', event => {
-        if (event.data && event.data.type === 'NEW_VERSION_AVAILABLE') {
-          // Option 1 : Demande à l'utilisateur
-          if (confirm("Une nouvelle version de l'application est disponible. Voulez-vous l'actualiser maintenant ?")) {
-            window.location.reload(true);
-          }
-          // Option 2 : Recharge automatique sans demander (décommente pour l'activer)
-          // window.location.reload(true);
-        }
-      });
-    }
-  </script>
+  <script src="App.js"></script>
 </body>
 </html>
