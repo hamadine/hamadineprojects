@@ -181,3 +181,44 @@ window.motSuivant = motSuivant;
 window.motPrecedent = motPrecedent;
 window.rechercherMot = rechercherMot;
 window.envoyerMessage = envoyerMessage;
+
+// --- Service Worker & Mise à jour automatique ---
+
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    let newWorker;
+    navigator.serviceWorker.register('/service-worker.js').then(reg => {
+      reg.addEventListener('updatefound', () => {
+        newWorker = reg.installing;
+        newWorker.addEventListener('statechange', () => {
+          if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
+            // Nouvelle version dispo !
+            showUpdateBanner();
+          }
+        });
+      });
+    });
+  });
+}
+
+// Affiche la bannière de mise à jour
+function showUpdateBanner() {
+  if (document.getElementById('sw-update-banner')) return;
+  const div = document.createElement('div');
+  div.id = "sw-update-banner";
+  div.style = "position:fixed;bottom:0;left:0;right:0;background:#1e88e5;color:white;padding:1em;text-align:center;z-index:99999;box-shadow:0 -2px 10px rgba(0,0,0,0.15);";
+  div.innerHTML = `
+    🔄 Nouvelle version disponible !
+    <button id="btn-refresh" style="margin-left:1em;font-weight:bold;">Recharger</button>
+    <button onclick="document.getElementById('sw-update-banner').remove()" style="margin-left:0.7em;">✖</button>
+  `;
+  document.body.appendChild(div);
+  document.getElementById('btn-refresh').onclick = () => {
+    if (navigator.serviceWorker.controller) {
+      navigator.serviceWorker.controller.postMessage('SKIP_WAITING');
+      window.location.reload(true);
+    } else {
+      window.location.reload(true);
+    }
+  };
+}
