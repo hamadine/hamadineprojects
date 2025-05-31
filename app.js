@@ -3,9 +3,7 @@ let mots = [];
 let motsFiltres = [];
 let index = 0;
 let interfaceTrads = {};
-let langueCourante = "fr"; // Langue de traduction des mots (si tu veux ajouter ce bouton plus tard)
-let langueInterface = "fr"; // Langue de l'interface
-let motsInconnus = JSON.parse(localStorage.getItem('motsInconnus') || '[]');
+let langueCourante = "fr"; // Langue de traduction des mots (si');
 let fuse; // Pour Fuse.js (recherche fuzzy)
 
 // --- Chargement des traductions d'interface ---
@@ -16,22 +14,11 @@ fetch("./data/interface-langue.json")
     appliquerTraductionsInterface();
   });
 
-// --- Chargement des mots + configuration Fuse ---
-fetch("./data/mots.json")
-  .then(res => res.json())
-  .then(data => {
-    mots = data;
-    motsFiltres = data;
+// --- Chargement des mots motsFiltres = data;
     // Configuration de Fuse.js pour recherche fuzzy sur toutes les langues et exemples
     fuse = new Fuse(mots, {
       keys: [
-        "mot", "fr", "en", "ar", "ru", "de", "es", "it", "nl", "da", "cs",
-        "exemple", "exemples"
-      ],
-      threshold: 0.4, // plus bas = plus strict, plus haut = plus tolérant
-      ignoreLocation: true,
-      minMatchCharLength: 2
-    });
+        "mot", "fr", "en", "ar", "ru", "de", "es", "it", "nl", "da", });
     afficherMot();
   });
 
@@ -40,38 +27,24 @@ fetch("./data/mots.json")
 function afficherMot() {
   const mot = motsFiltres[index] || {};
   document.getElementById("motTexte").innerText = mot.mot || "—";
-  document.getElementById("definition").innerText = mot[langueCourante] || "";
-  document.getElementById("compteur").innerText = `${motsFiltres.length ? (index + 1) : 0} / ${motsFiltres.length}`;
+  document.getElementById("definition").innerText = mot[langue `${motsFiltres.length ? (index + 1) : 0} / ${motsFiltres.length}`;
 }
 
 function appliquerTraductionsInterface() {
   const t = interfaceTrads[langueInterface] || interfaceTrads["fr"];
   if (!t) return;
-  // Utiliser innerText pour tout sauf section Histoire (HTML potentiellement)
-  const setText = (id, txt) => {
-    const el = document.getElementById(id);
-    if (el) el.innerText = txt;
-  };
-  setText("titre", t.titrePrincipal);
-  setText("footer-desc", t.footerText);
+  // Utiliser innerText setText("footer-desc", t.footerText);
   setText("btnPrev", "◀️ " + t.precedent);
   setText("btnNext", t.suivant + " ▶️");
   setText("chat-title", t.chatTitre);
   setText("btnEnvoyer", t.envoyer);
-  setText("histoire-title", t.histoireTitle);
-
-  // Section histoire - innerHTML pour supporter ponctuellement du HTML
-  const histoireMsg = document.getElementById("histoire-message");
+ histoireMsg = document.getElementById("histoire-message");
   if (histoireMsg) histoireMsg.innerHTML = t.histoireBientot;
 
   // Placeholders
   const searchBar = document.getElementById("searchBar");
   if (searchBar) searchBar.placeholder = t.searchPlaceholder;
-  const chatInput = document.getElementById("chatInput");
-  if (chatInput) chatInput.placeholder = t.placeholderChat || "";
-
-  // Direction RTL pour l'arabe
-  if(langueInterface === "ar") {
+  === "ar") {
     document.body.dir = "rtl";
   } else {
     document.body.dir = "ltr";
@@ -86,11 +59,6 @@ function changerLangue(langue) {
   afficherMot();
 }
 
-function changerLangueInterface(langue) {
-  langueInterface = langue;
-  appliquerTraductionsInterface();
-}
-
 function motSuivant() {
   if (!motsFiltres.length) return;
   index = (index + 1) % motsFiltres.length;
@@ -99,12 +67,7 @@ function motSuivant() {
 
 function motPrecedent() {
   if (!motsFiltres.length) return;
-  index = (index - 1 + motsFiltres.length) % motsFiltres.length;
-  afficherMot();
-}
-
-function rechercherMot() {
-  const q = document.getElementById("searchBar").value.trim().toLowerCase();
+  index = (index - 1 +.trim().toLowerCase();
   if (!q) {
     motsFiltres = mots;
     index = 0;
@@ -148,8 +111,7 @@ function envoyerMessage() {
     const motObj = result[0].item;
     let rep = `<b>${motObj.mot}</b> : ${motObj[langueCourante] || ""}`;
 
-    // Exemples : supporte "exemple" (string) et "exemples" (array)
-    if (motObj.exemples && Array.isArray(motObj.exemples) && motObj.exemples.length) {
+    // Exemples : supporte "exemple" (string) et "exemples"Obj.exemples.length) {
       rep += `<br><i>${t.exemple || "Exemple(s)"} :</i><ul>`;
       rep += motObj.exemples.map(ex => `<li>${ex}</li>`).join("");
       rep += "</ul>";
@@ -159,9 +121,10 @@ function envoyerMessage() {
 
     bot.innerHTML = rep;
   } else {
-    bot.textContent = t.reponseBotInconnu || "Hamadine : Merci ! Je travaille d’arrache-pied pour rendre plus de mots disponibles. Je viens d’apprendre ce mot de votre part.";
+    // Correction ici : utiliser t.reponseBot et NON t.reponseBotInconnu
+    bot.textContent = t.reponseBot || "Hamadine : Merci ! Je travaille d’arrache-pied pour rendre plus de mots disponibles. Je viens d’apprendre ce mot de votre part.";
     if (!motsInconnus.includes(message.toLowerCase())) {
-      motsInconnus.push(message.toLowerCase());
+      motsInconnus.push(message.toLower());
       localStorage.setItem('motsInconnus', JSON.stringify(motsInconnus));
     }
   }
