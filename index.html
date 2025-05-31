@@ -11,39 +11,28 @@
     .carte { margin-top: 2em; }
   </style>
 </head>
-<body>
-  <header>
     <h1 id="titre">Dictionnaire Tadaksahak Multilingue</h1>
     <!-- Sélecteur de langue d’interface -->
     <div style="margin-bottom:1em;">
       <button onclick="changerLangueInterface('fr')">FR</button>
-      <button onclick="changerLangueInterface('en')">EN</button>
-      <!-- Ajoute ici d’autres boutons pour d’autres langues -->
-    </div>
-  </header>
-
-  <main>
-    <!-- Barre de recherche -->
+      <button onclick de recherche -->
     <input type="text" id="searchBar" placeholder="Chercher un mot dans toutes les langues..." oninput="rechercherMot()" />
 
     <!-- Boutons pour navigation -->
     <div class="nav-buttons">
-      <button id="btnPrev" onclick="motPrecedent()">◀️ Précédent</button>
-      <button id="btnNext" onclick="motSuivant()">Suivant ▶️</button>
-    </div>
-
-    <!-- Zone affichage mot -->
-    <div id="motTexte" style="font-size:1.2em;font-weight:bold;"></div>
+      <button id="btnPrev" onclick="motPrecedent()">◀️="motTexte" style="font-size:1.2em;font-weight:bold;"></div>
     <div id="definition" style="margin-bottom:0.5em;"></div>
     <div id="compteur" style="color:#888;"></div>
 
-    <!-- Chat -->
-    <div class="carte">
-      <div id="chat-title" style="font-weight:bold;margin-bottom:0.5em;">Chat Tadaksahak</div>
+    <!-- Section Histoire -->
+    <section style=";">
+      <h2 id="histoire-title">Section Histoire</h2>
+      <div id="histoire-message" style="padding:2em;text-align:center;font-size:1.1em;color:#666;">
+        Très prochainement, retrouvez ici des textes historiques sur la culture Tadaksahak !
+="font-weight:bold;margin-bottom:0.5em;">Chat Tadaksahak</div>
       <div id="chatWindow"></div>
       <div style="display:flex;gap:0.4em;">
-        <input type="text" id="chatInput" placeholder="Tape ton mot ou ta question ici..." style="flex:1;" />
-        <button id="btnEnvoyer" onclick="envoyerMessage()">Envoyer</button>
+        <input type="text" id="chatInput" placeholder="Tape ton mot ou ta question ici="btnEnvoyer" onclick="envoyerMessage()">Envoyer</button>
       </div>
     </div>
   </main>
@@ -51,13 +40,11 @@
   <footer style="margin-top:2em;">
     <p id="footer-desc">
       © 2025 • Tadaksahak Multilingue avec Hamadine.
-    </p>
-    <p id="footer-motivation">
-      Projet en évolution – toute suggestion ou contribution est la bienvenue pour soutenir la vitalité de la langue Tadaksahak !
+    </ est la bienvenue pour soutenir la vitalité de la langue Tadaksahak !
     </p>
   </footer>
 
   <!-- JS principal -->
   <script src="app.js"></script>
 </body>
-</html>
+    </html>
