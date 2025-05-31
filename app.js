@@ -9,25 +9,20 @@ let fuse;
 // Chargement initial des données
 async function chargerDonnees() {
   try {
-    // Charger dictionnaire
     const motsData = await fetch('./data/mots.json').then(r => r.json());
     motsComplet = motsData;
     mots = [...motsData];
 
-    // Charger interface multilingue
     interfaceData = await fetch('./data/interface-langue.json').then(r => r.json());
 
-    // Activer langue interface par défaut
     changerLangueInterface(langueInterface);
 
-    // Initialiser recherche
     fuse = new Fuse(mots, {
-      keys: ['mot', ...Object.keys(mots[0]).filter(k => k.length === 2 || k.length === 3)], // Support multilingue
+      keys: ['mot', ...Object.keys(mots[0]).filter(k => k.length === 2 || k.length === 3)],
       includeScore: true,
       threshold: 0.4
     });
 
-    // Afficher premier mot
     afficherMot();
   } catch (err) {
     alert("Erreur lors du chargement des données : " + err.message);
@@ -84,7 +79,7 @@ function changerLangue(lang) {
   afficherMot();
 }
 
-// Changer langue interface (harmonisé avec nouvel index)
+// Changer langue interface
 function changerLangueInterface(lang) {
   langueInterface = lang;
   const t = interfaceData[lang] || interfaceData['fr'];
@@ -129,7 +124,7 @@ function changerLangueInterface(lang) {
 
   const histoireMessage = document.getElementById('histoire-message');
   if (histoireMessage) histoireMessage.innerHTML = t.histoireBientot || 
-    "Très bientôt, découvrez ici des textes historiques captivants qui vous plongeront au cœur de la culture Tadaksahak.";
+    "Très bientôt, découvrez ici des textes historiques captivants sur la culture Tadaksahak.";
 
   const archivesTitle = document.getElementById('archives-title');
   if (archivesTitle) archivesTitle.textContent = t.archivesTitle || "Section Archives";
@@ -148,7 +143,7 @@ function changerLangueInterface(lang) {
     Ensemble, faisons grandir ce patrimoine unique et transmettons-le aux générations futures ; contactez-nous pour participer ou soutenir cette initiative.
   `;
 
-  // Mémoriser pour usage dans le bot
+  // Mémorisation pour le bot
   window.reponseBot = t.reponseBot || "Mot introuvable.";
   window.nomUtilisateur = t.utilisateur || "Vous";
 }
@@ -177,17 +172,17 @@ function afficherMessage(auteur, texte) {
   chatWindow.scrollTop = chatWindow.scrollHeight;
 }
 
-// Audio - à personnaliser plus tard
+// Audio - stubs
 function jouerTadaksahak() {
-  console.log("Lecture du mot Tadaksahak (fonction à implémenter)");
+  console.log("Lecture du mot Tadaksahak (à implémenter)");
 }
 
 function rejouerMot() {
-  console.log("Relecture du mot (fonction à implémenter)");
+  console.log("Relecture du mot (à implémenter)");
 }
 
 function lectureAuto() {
-  console.log("Lecture automatique (fonction à implémenter)");
+  console.log("Lecture auto (à implémenter)");
 }
 
 // Init
