@@ -2,79 +2,62 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <title>Dictionnaire Tadaksahak Multilingue</title>
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <link rel="stylesheet" href="style.css">
+  <title id="titre">Dictionnaire Tadaksahak Multilingue</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body { font-family: sans-serif; max-width: 600px; margin: 2em auto; }
+    .nav-buttons { margin: 1em 0; display: flex; gap: 1em; }
+    #chatWindow { min-height: 80px; border: 1px solid #ddd; margin-bottom: 0.6em; padding: 0.5em; border-radius: 6px; background: #f8f8f8; }
+    .carte { margin-top: 2em; }
+  </style>
 </head>
 <body>
-  <main>
+  <header>
     <h1 id="titre">Dictionnaire Tadaksahak Multilingue</h1>
-    <div id="lang-switcher">
-      <button onclick="changerLangueInterface('fr')">🇫🇷</button>
-      <button onclick="changerLangueInterface('en')">🇬🇧</button>
-      <button onclick="changerLangueInterface('ar')">🇸🇦</button>
-      <button onclick="changerLangueInterface('es')">🇪🇸</button>
-      <button onclick="changerLangueInterface('de')">🇩🇪</button>
-      <button onclick="changerLangueInterface('ru')">🇷🇺</button>
-      <button onclick="changerLangueInterface('it')">🇮🇹</button>
-      <button onclick="changerLangueInterface('pt')">🇵🇹</button>
-      <button onclick="changerLangueInterface('tr')">🇹🇷</button>
-      <button onclick="changerLangueInterface('zh')">🇨🇳</button>
-      <button onclick="changerLangueInterface('tamasheq')">ⴻⵣ</button>
-      <button onclick="changerLangueInterface('tamajaq')">ⵜⴰ</button>
-      <button onclick="changerLangueInterface('tadaksahak')">ⵜⴷ</button>
-      <button onclick="changerLangueInterface('songhay')">ⴰⵣ</button>
-      <button onclick="changerLangueInterface('zarma')">ⴼⴼ</button>
-    </div>
-
-    <!-- Barre de sélection de la langue de traduction (optionnel) -->
-    <div id="langue-mots" style="margin-bottom:1em;">
-      <button onclick="changerLangue('fr')">FR</button>
-      <button onclick="changerLangue('en')">EN</button>
-      <button onclick="changerLangue('ar')">AR</button>
-      <button onclick="changerLangue('es')">ES</button>
-      <button onclick="changerLangue('de')">DE</button>
-      <button onclick="changerLangue('ru')">RU</button>
-      <button onclick="changerLangue('it')">IT</button>
-      <button onclick="changerLangue('pt')">PT</button>
-      <button onclick="changerLangue('tr')">TR</button>
-      <button onclick="changerLangue('zh')">ZH</button>
-      <button onclick="changerLangue('tamasheq')">TAM</button>
-      <button onclick="changerLangue('tamajaq')">TAJ</button>
-      <button onclick="changerLangue('tadaksahak')">TDK</button>
-      <button onclick="changerLangue('songhay')">SGH</button>
-      <button onclick="changerLangue('zarma')">ZRM</button>
-    </div>
-
+    <!-- Sélecteur de langue d’interface -->
     <div style="margin-bottom:1em;">
-      <input type="text" id="searchBar" placeholder="Chercher un mot dans toutes les langues..." oninput="rechercherMot()" style="width:90%;max-width:340px;" />
+      <button onclick="changerLangueInterface('fr')">FR</button>
+      <button onclick="changerLangueInterface('en')">EN</button>
+      <!-- Ajoute ici d’autres boutons pour d’autres langues -->
+    </div>
+  </header>
+
+  <main>
+    <!-- Barre de recherche -->
+    <input type="text" id="searchBar" placeholder="Chercher un mot dans toutes les langues..." oninput="rechercherMot()" />
+
+    <!-- Boutons pour navigation -->
+    <div class="nav-buttons">
+      <button id="btnPrev" onclick="motPrecedent()">◀️ Précédent</button>
+      <button id="btnNext" onclick="motSuivant()">Suivant ▶️</button>
     </div>
 
-    <div class="carte" style="margin-bottom:1em;">
-      <div id="motTexte" style="font-weight:bold;font-size:1.4em;margin-bottom:0.5em;">—</div>
-      <div id="definition" style="font-size:1.1em;margin-bottom:0.5em;">...</div>
-      <div id="compteur"></div>
-      <div style="margin-top:1em;">
-        <button id="btnPrev" onclick="motPrecedent()"></button>
-        <button id="btnNext" onclick="motSuivant()"></button>
-        <button id="btnPlay"></button>
-        <button id="btnReplay"></button>
-        <button id="btnAuto"></button>
-      </div>
-    </div>
+    <!-- Zone affichage mot -->
+    <div id="motTexte" style="font-size:1.2em;font-weight:bold;"></div>
+    <div id="definition" style="margin-bottom:0.5em;"></div>
+    <div id="compteur" style="color:#888;"></div>
 
+    <!-- Chat -->
     <div class="carte">
       <div id="chat-title" style="font-weight:bold;margin-bottom:0.5em;">Chat Tadaksahak</div>
       <div id="chatWindow"></div>
       <div style="display:flex;gap:0.4em;">
-        <input type="text" id="chatInput" placeholder="Tape ton mot ou ta question ici dans la langue de ton choix..." style="flex:1;" />
-        <button id="btnEnvoyer" onclick="envoyerMessage()"></button>
+        <input type="text" id="chatInput" placeholder="Tape ton mot ou ta question ici..." style="flex:1;" />
+        <button id="btnEnvoyer" onclick="envoyerMessage()">Envoyer</button>
       </div>
     </div>
   </main>
-  <footer>
-    &copy; 2025 Dictionnaire Tadaksahak — Projet multilingue open source
+
+  <footer style="margin-top:2em;">
+    <p id="footer-desc">
+      © 2025 • Tadaksahak Multilingue avec Hamadine.
+    </p>
+    <p id="footer-motivation">
+      Projet en évolution – toute suggestion ou contribution est la bienvenue pour soutenir la vitalité de la langue Tadaksahak !
+    </p>
   </footer>
-  <script src="App.js"></script>
+
+  <!-- JS principal -->
+  <script src="app.js"></script>
 </body>
 </html>
