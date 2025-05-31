@@ -1,7 +1,7 @@
 {
   "fr": {
     "titrePrincipal": "Dictionnaire Tadaksahak Multilingue",
-    "presentation": "Ce projet est en cours de développement.<br><strong>Toute aide ou soutien est une source de motivation supplémentaire</strong> pour rendre la langue Tadaksahak accessible à tous, sur le numérique et en version physique.<br><span style=\"color: #4682b4;\">Merci pour votre intérêt et votre soutien&nbsp;!</span>",
+    "presentation": "Ce projet est en cours de développement.<br>Toute aide ou soutien est une source de motivation supplémentaire pour rendre la langue Tadaksahak accessible à tous, sur le numérique et en version physique.<br><span style=\"color: #4682b4;\">Merci pour votre intérêt et votre soutien&nbsp;!</span>",
     "botIntro": "🤖 Salut, je suis Hamadine le bot Tadaksahak.<br>Demandez-moi un mot et je vous le trouve rapidement&nbsp;!",
     "footerText": "&copy; 2025 • Tadaksahak Multilingue avec <strong>Hamadine</strong>.<br><span style=\"font-size: 0.98em;\">Projet en évolution – toute suggestion ou contribution est la bienvenue pour soutenir la vitalité de la langue Tadaksahak !</span>",
     "precedent": "Précédent",
@@ -11,12 +11,17 @@
     "lectureAuto": "Lecture auto",
     "chatTitre": "Discussion avec Hamadine",
     "envoyer": "Envoyer",
-    "searchPlaceholder": "Rechercher un mot..."
+    "searchPlaceholder": "Rechercher un mot...",
+    "suggestionInstall": "Vous pouvez ajouter ce dictionnaire Tadaksahak à votre écran d'accueil pour l'utiliser comme une application !",
+    "ajouter": "Ajouter",
+    "instructionsIOS": "Sur iPhone/iPad : ouvrez le menu de partage de Safari puis choisissez « Sur l’écran d’accueil »",
+    "reponseBot": "Hamadine : Salut, je vous entends, mais ma base lexicale est encore en cours.",
+    "utilisateur": "Vous"
   },
   "en": {
     "titrePrincipal": "Tadaksahak Multilingual Dictionary",
-    "presentation": "This project is under development.<br><strong>Any help or support is an extra motivation</strong> to make the Tadaksahak language accessible to all, digitally and physically.<br><span style=\"color: #4682b4;\">Thank you for your interest and support!</span>",
-    "botIntro": "🤖 Hi, I'm Hamadine the Tadaksahak bot.<br>Ask me for a word and I'll find it quickly for you!",
+    "presentation": "This project is under development.<br>Any help or support is an extra motivation to make the Tadaksahak language accessible to all, digitally and physically.<br><span style=\"color: #4682b4;\">Thank you for your interest and support!</span>",
+    "botIntro": "🤖 Hi, I'm Hamadine, the Tadaksahak bot.<br>Ask me for a word and I'll find it quickly for you!",
     "footerText": "&copy; 2025 • Tadaksahak Multilingual with <strong>Hamadine</strong>.<br><span style=\"font-size: 0.98em;\">Project in progress – any suggestion or contribution is welcome to support the vitality of the Tadaksahak language!</span>",
     "precedent": "Previous",
     "suivant": "Next",
@@ -25,11 +30,16 @@
     "lectureAuto": "Auto-play",
     "chatTitre": "Chat with Hamadine",
     "envoyer": "Send",
-    "searchPlaceholder": "Search a word..."
+    "searchPlaceholder": "Search a word...",
+    "suggestionInstall": "You can add this Tadaksahak dictionary to your home screen to use it as an app!",
+    "ajouter": "Add",
+    "instructionsIOS": "On iPhone/iPad: open Safari's share menu and choose “Add to Home Screen”",
+    "reponseBot": "Hamadine: Hi, I hear you, but my lexical database is still being developed.",
+    "utilisateur": "You"
   },
   "ar": {
     "titrePrincipal": "قاموس تاداكساهاك متعدد اللغات",
-    "presentation": "هذا المشروع قيد التطوير.<br><strong>أي مساعدة أو دعم هو مصدر إضافي للتحفيز</strong> لجعل لغة تاداكساهاك متاحة للجميع رقميًا وورقيًا.<br><span style=\"color: #4682b4;\">شكرًا لاهتمامكم ودعمكم!</span>",
+    "presentation": "هذا المشروع قيد التطوير.<br>أي مساعدة أو دعم هو مصدر إضافي للتحفيز لجعل لغة تاداكساهاك متاحة للجميع رقميًا وورقيًا.<br><span style=\"color: #4682b4;\">شكرًا لاهتمامكم ودعمكم!</span>",
     "botIntro": "🤖 مرحبًا، أنا حمادين بوت تاداكساهاك.<br>اطلب مني كلمة وسأجدها بسرعة!",
     "footerText": "&copy; 2025 • تاداكساهاك متعدد اللغات مع <strong>حمادين</strong>.<br><span style=\"font-size: 0.98em;\">مشروع قيد التطوير – أي اقتراح أو مساهمة مرحب بها لدعم حيوية لغة تاداكساهاك!</span>",
     "precedent": "السابق",
@@ -39,12 +49,17 @@
     "lectureAuto": "تشغيل تلقائي",
     "chatTitre": "الدردشة مع حمدين",
     "envoyer": "إرسال",
-    "searchPlaceholder": "ابحث عن كلمة..."
+    "searchPlaceholder": "ابحث عن كلمة...",
+    "suggestionInstall": "يمكنك إضافة هذا القاموس التاداكساهاك إلى شاشتك الرئيسية لاستخدامه كتطبيق!",
+    "ajouter": "إضافة",
+    "instructionsIOS": "على iPhone/iPad: افتح قائمة المشاركة في سفاري ثم اختر «إضافة إلى الشاشة الرئيسية»",
+    "reponseBot": "حمادين: مرحبًا، أسمعك ولكن قاعدة بياناتي ما زالت قيد التطوير.",
+    "utilisateur": "أنت"
   },
   "ru": {
     "titrePrincipal": "Многоязычный словарь тадаксахак",
-    "presentation": "Этот проект находится в разработке.<br><strong>Любая помощь или поддержка — это дополнительная мотивация</strong> сделать язык тадаксахак доступным для всех, как в цифровом, так и в печатном виде.<br><span style=\"color: #4682b4;\">Спасибо за ваш интерес и поддержку!</span>",
-    "botIntro": "🤖 Привет, я Хамадин, бот тадаксахак.<br>Спросите меня слово, и я быстро его найду!",
+    "presentation": "Этот проект находится в разработке.<br>Любая помощь или поддержка — это дополнительная мотивация сделать язык тадаксахак доступным для всех, как в цифровом, так и в печатном виде.<br><span style=\"color: #4682b4;\">Спасибо за ваш интерес и поддержку!</span>",
+    "botIntro": "🤖 Привет, я Хамадин, бот Тадаксахак.<br>Спросите меня слово, и я быстро его найду!",
     "footerText": "&copy; 2025 • Многоязычный тадаксахак с <strong>Хамадином</strong>.<br><span style=\"font-size: 0.98em;\">Проект в разработке — любые предложения и помощь приветствуются для поддержки языка тадаксахак!</span>",
     "precedent": "Назад",
     "suivant": "Вперёд",
@@ -53,11 +68,16 @@
     "lectureAuto": "Автовоспроизведение",
     "chatTitre": "Чат с Хамадин",
     "envoyer": "Отправить",
-    "searchPlaceholder": "Поиск слова..."
+    "searchPlaceholder": "Поиск слова...",
+    "suggestionInstall": "Вы можете добавить этот словарь Тадаксахак на главный экран и использовать как приложение!",
+    "ajouter": "Добавить",
+    "instructionsIOS": "На iPhone/iPad: откройте меню «Поделиться» в Safari и выберите «На экран Домой»",
+    "reponseBot": "Хамадин: Привет, я вас слышу, но моя лексическая база ещё разрабатывается.",
+    "utilisateur": "Вы"
   },
   "nl": {
     "titrePrincipal": "Meertalige Tadaksahak Woordenboek",
-    "presentation": "Dit project is in ontwikkeling.<br><strong>Elke hulp of steun is extra motivatie</strong> om de Tadaksahak-taal voor iedereen toegankelijk te maken, digitaal en op papier.<br><span style=\"color: #4682b4;\">Dank voor uw interesse en steun!</span>",
+    "presentation": "Dit project is in ontwikkeling.<br>Elke hulp of steun is extra motivatie om de Tadaksahak-taal voor iedereen toegankelijk te maken, digitaal en op papier.<br><span style=\"color: #4682b4;\">Dank voor uw interesse en steun!</span>",
     "botIntro": "🤖 Hallo, ik ben Hamadine, de Tadaksahak-bot.<br>Vraag mij om een woord en ik vind het snel voor je!",
     "footerText": "&copy; 2025 • Meertalige Tadaksahak met <strong>Hamadine</strong>.<br><span style=\"font-size: 0.98em;\">Project in ontwikkeling – suggesties of bijdragen zijn welkom om de vitaliteit van de Tadaksahak-taal te ondersteunen!</span>",
     "precedent": "Vorige",
@@ -67,11 +87,16 @@
     "lectureAuto": "Automatisch afspelen",
     "chatTitre": "Chat met Hamadine",
     "envoyer": "Verzenden",
-    "searchPlaceholder": "Zoek een woord..."
+    "searchPlaceholder": "Zoek een woord...",
+    "suggestionInstall": "Je kunt dit Tadaksahak-woordenboek aan je startscherm toevoegen om het als een app te gebruiken!",
+    "ajouter": "Toevoegen",
+    "instructionsIOS": "Op iPhone/iPad: open het deelmenu van Safari en kies 'Zet op beginscherm'",
+    "reponseBot": "Hamadine: Hallo, ik hoor je, maar mijn lexicale database is nog in ontwikkeling.",
+    "utilisateur": "Jij"
   },
   "de": {
     "titrePrincipal": "Mehrsprachiges Tadaksahak-Wörterbuch",
-    "presentation": "Dieses Projekt ist in Entwicklung.<br><strong>Jede Hilfe oder Unterstützung ist zusätzliche Motivation</strong>, die Tadaksahak-Sprache allen zugänglich zu machen, digital und gedruckt.<br><span style=\"color: #4682b4;\">Danke für Ihr Interesse und Ihre Unterstützung!</span>",
+    "presentation": "Dieses Projekt ist in Entwicklung.<br>Jede Hilfe oder Unterstützung ist zusätzliche Motivation, die Tadaksahak-Sprache allen zugänglich zu machen, digital und gedruckt.<br><span style=\"color: #4682b4;\">Danke für Ihr Interesse und Ihre Unterstützung!</span>",
     "botIntro": "🤖 Hallo, ich bin Hamadine, der Tadaksahak-Bot.<br>Fragen Sie mich nach einem Wort und ich finde es schnell für Sie!",
     "footerText": "&copy; 2025 • Mehrsprachiges Tadaksahak mit <strong>Hamadine</strong>.<br><span style=\"font-size: 0.98em;\">Projekt in Entwicklung – Vorschläge oder Beiträge sind willkommen, um die Vitalität der Tadaksahak-Sprache zu unterstützen!</span>",
     "precedent": "Zurück",
@@ -81,12 +106,17 @@
     "lectureAuto": "Auto-Wiedergabe",
     "chatTitre": "Chat mit Hamadine",
     "envoyer": "Senden",
-    "searchPlaceholder": "Wort suchen..."
+    "searchPlaceholder": "Wort suchen...",
+    "suggestionInstall": "Sie können dieses Tadaksahak-Wörterbuch zum Startbildschirm hinzufügen und als App verwenden!",
+    "ajouter": "Hinzufügen",
+    "instructionsIOS": "Auf iPhone/iPad: Öffnen Sie das Teilen-Menü in Safari und wählen Sie „Zum Home-Bildschirm“",
+    "reponseBot": "Hamadine: Hallo, ich höre dich, aber meine Lexikaldatenbank wird noch entwickelt.",
+    "utilisateur": "Sie"
   },
   "da": {
     "titrePrincipal": "Tadaksahak Multisproget Ordbog",
-    "presentation": "Dette projekt er under udvikling.<br><strong>Al hjælp eller støtte er ekstra motivation</strong> for at gøre Tadaksahak-sproget tilgængeligt for alle, digitalt og fysisk.<br><span style=\"color: #4682b4;\">Tak for din interesse og støtte!</span>",
-    "botIntro": "🤖 Hej, jeg er Hamadine, Tadaksahak-botten.<br>Spørg mig om et ord, og jeg finder det hurtigt til dig!",
+    "presentation": "Dette projekt er under udvikling.<br>Al hjælp eller støtte er ekstra motivation for at gøre Tadaksahak-sproget tilgængeligt for alle, digitalt og fysisk.<br><span style=\"color: #4682b4;\">Tak for din interesse og støtte!</span>",
+    "botIntro": "🤖 Hej, jeg er Hamadine, Tadaksahak-botten.<br>Spørg mig om et ord og jeg finder det hurtigt til dig!",
     "footerText": "&copy; 2025 • Multisproget Tadaksahak med <strong>Hamadine</strong>.<br><span style=\"font-size: 0.98em;\">Projekt under udvikling – forslag eller bidrag er velkomne for at støtte Tadaksahak-sprogets vitalitet!</span>",
     "precedent": "Forrige",
     "suivant": "Næste",
@@ -95,11 +125,16 @@
     "lectureAuto": "Automatisk afspilning",
     "chatTitre": "Chat med Hamadine",
     "envoyer": "Send",
-    "searchPlaceholder": "Søg efter et ord..."
+    "searchPlaceholder": "Søg efter et ord...",
+    "suggestionInstall": "Du kan tilføje denne Tadaksahak-ordbog til din startskærm og bruge den som en app!",
+    "ajouter": "Tilføj",
+    "instructionsIOS": "På iPhone/iPad: Åbn delingsmenuen i Safari, og vælg 'Føj til hjemmeskærm'",
+    "reponseBot": "Hamadine: Hej, jeg hører dig, men min leksikale database er stadig under udvikling.",
+    "utilisateur": "Du"
   },
   "cs": {
     "titrePrincipal": "Vícejazyčný slovník Tadaksahak",
-    "presentation": "Tento projekt je ve vývoji.<br><strong>Každá pomoc nebo podpora je další motivací</strong>, aby byl jazyk Tadaksahak přístupný všem, digitálně i fyzicky.<br><span style=\"color: #4682b4;\">Děkujeme za váš zájem a podporu!</span>",
+    "presentation": "Tento projekt je ve vývoji.<br>Každá pomoc nebo podpora je další motivací, aby byl jazyk Tadaksahak přístupný všem, digitálně i fyzicky.<br><span style=\"color: #4682b4;\">Děkujeme za váš zájem a podporu!</span>",
     "botIntro": "🤖 Ahoj, jsem Hamadine, Tadaksahak-bot.<br>Zeptejte se mě na slovo a já ho rychle najdu!",
     "footerText": "&copy; 2025 • Vícejazyčný Tadaksahak s <strong>Hamadine</strong>.<br><span style=\"font-size: 0.98em;\">Projekt ve vývoji – jakýkoli návrh nebo příspěvek je vítán na podporu vitality jazyka Tadaksahak!</span>",
     "precedent": "Předchozí",
@@ -109,11 +144,16 @@
     "lectureAuto": "Automatické přehrávání",
     "chatTitre": "Chat s Hamadine",
     "envoyer": "Odeslat",
-    "searchPlaceholder": "Hledat slovo..."
+    "searchPlaceholder": "Hledat slovo...",
+    "suggestionInstall": "Tento slovník Tadaksahak si můžete přidat na domovskou obrazovku a používat jej jako aplikaci!",
+    "ajouter": "Přidat",
+    "instructionsIOS": "Na iPhone/iPad: otevřete nabídku sdílení v Safari a zvolte 'Přidat na plochu'",
+    "reponseBot": "Hamadine: Ahoj, slyším tě, ale moje lexikální báze je stále ve vývoji.",
+    "utilisateur": "Vy"
   },
   "bm": {
     "titrePrincipal": "Tadaksahak Ka Kuma Fɔlɔ Kan",
-    "presentation": "Kun bɛ kɛ minɛ.<br><strong>Fɛɛn bɛ dɛmɛ ye a kɛ kɔrɔ</strong> ka Tadaksahak kan kɛ fɔlɔ ye bɛɛ ye, minɛ ni sigida.<br><span style=\"color: #4682b4;\">I ni ce, i ni dɛmɛ!</span>",
+    "presentation": "Kun bɛ kɛ minɛ.<br>Fɛɛn bɛ dɛmɛ ye a kɛ kɔrɔ ka Tadaksahak kan kɛ fɔlɔ ye bɛɛ ye, minɛ ni sigida.<br><span style=\"color: #4682b4;\">I ni ce, i ni dɛmɛ!</span>",
     "botIntro": "🤖 Nba, n ye Hamadine Tadaksahak bot ye.<br>Ka fɔ kɔrɔ n na, n bɛ ka fɛ ko bɔ!",
     "footerText": "&copy; 2025 • Tadaksahak Ka Kuma Fɔlɔ Kan ni <strong>Hamadine</strong>.<br><span style=\"font-size: 0.98em;\">Kun bɛ kɛ minɛ – fɛɛn bɛ bɔ dɛmɛ ni dɔ ye Tadaksahak kan kɛ fɔlɔ!</span>",
     "precedent": "Kɔ́rɔ",
@@ -123,11 +163,16 @@
     "lectureAuto": "Ka nà kɛ sisan",
     "chatTitre": "Benkɛ Hamadine la",
     "envoyer": "Cɛ",
-    "searchPlaceholder": "Sɔ̀rɔ kɔ̀sɛbaya..."
+    "searchPlaceholder": "Sɔ̀rɔ kɔ̀sɛbaya...",
+    "suggestionInstall": "I bɛ sɔ̀rɔ ka Tadaksahak ka kuma fɔlɔ kan ka fɔlɔ ka sɛbɛnkan kɔnɔ!",
+    "ajouter": "Kunna",
+    "instructionsIOS": "iPhone/iPad la: A bɔ Safari la, bɔ share menu na, kà tɔ 'Ka dɔɔni ka kɛnɛ sɔrɔ'.",
+    "reponseBot": "Hamadine: N b'a min, a bɛ sii, n ka fɔlɔ kɛnɛ b'i kɛra.",
+    "utilisateur": "I"
   },
   "tz": {
     "titrePrincipal": "Amazigh Tadaksahak Imezdaɣen",
-    "presentation": "Aneggam agi tiddud.<br><strong>Amid n tallalt d azemz n umid</strong> ad yessekred tadaksahak i medden akk, deg uselkim d uselkim n tzemre.<br><span style=\"color: #4682b4;\">Tanemmirt i umid nwen!</span>",
+    "presentation": "Aneggam agi tiddud.<br>Amid n tallalt d azemz n umid ad yessekred tadaksahak i medden akk, deg uselkim d uselkim n tzemre.<br><span style=\"color: #4682b4;\">Tanemmirt i umid nwen!</span>",
     "botIntro": "🤖 Azul, nekk d Hamadine, bot n Tadaksahak.<br>Sut iyyid awal, ad s-awin igenni nniḍen!",
     "footerText": "&copy; 2025 • Tadaksahak Imezdaɣen s <strong>Hamadine</strong>.<br><span style=\"font-size: 0.98em;\">Aneggam agi tiddud – amid n tallalt d azemz n umid i tawuri n tadaksahak!</span>",
     "precedent": "Aɣerbaz",
@@ -137,11 +182,16 @@
     "lectureAuto": "Semmes awurman",
     "chatTitre": "Ameslay d Hamadine",
     "envoyer": "Azen",
-    "searchPlaceholder": "Nadi awal..."
+    "searchPlaceholder": "Nadi awal...",
+    "suggestionInstall": "Tzemre Tadaksahak tzemreɣ ad teskred deg ufran-ik ad tesqedem-d s w-app!",
+    "ajouter": "Rnu",
+    "instructionsIOS": "iPhone/iPad: Ldi menu n wummaḍ n Safari, ufer 'Rnu ɣer ufran agejdan'",
+    "reponseBot": "Hamadine: Azul, ssmɣi, lexique ur yettwafukk ara yakan.",
+    "utilisateur": "Ked"
   },
   "tr": {
     "titrePrincipal": "Tadaksahak Çok Dilli Sözlük",
-    "presentation": "Bu proje geliştirilmektedir.<br><strong>Her türlü yardım veya destek, tüm Tadaksahak dilini dijital ve fiziksel olarak erişilebilir kılmak için ek bir motivasyondur.</strong><br><span style=\"color: #4682b4;\">İlginiz ve desteğiniz için teşekkürler!</span>",
+    "presentation": "Bu proje geliştirilmektedir.<br>Her türlü yardım veya destek, Tadaksahak dilini dijital ve fiziksel olarak herkes için erişilebilir kılmak için ek bir motivasyondur.<br><span style=\"color: #4682b4;\">İlginiz ve desteğiniz için teşekkürler!</span>",
     "botIntro": "🤖 Merhaba, ben Tadaksahak botu Hamadine.<br>Bana bir kelime sor, hemen bulayım!",
     "footerText": "&copy; 2025 • Çok Dilli Tadaksahak ve <strong>Hamadine</strong>.<br><span style=\"font-size: 0.98em;\">Geliştirilen bir proje – Tadaksahak dilinin canlılığını desteklemek için her öneri veya katkı memnuniyetle karşılanır!</span>",
     "precedent": "Önceki",
@@ -151,11 +201,16 @@
     "lectureAuto": "Otomatik oynatma",
     "chatTitre": "Hamadine ile sohbet",
     "envoyer": "Gönder",
-    "searchPlaceholder": "Bir kelime ara..."
+    "searchPlaceholder": "Bir kelime ara...",
+    "suggestionInstall": "Bu Tadaksahak sözlüğünü ana ekranınıza ekleyip uygulama gibi kullanabilirsiniz!",
+    "ajouter": "Ekle",
+    "instructionsIOS": "iPhone/iPad'de: Safari paylaş menüsünü açın ve 'Ana Ekrana Ekle'yi seçin",
+    "reponseBot": "Hamadine: Merhaba, seni duyuyorum ama kelime tabanım geliştiriliyor.",
+    "utilisateur": "Sen"
   },
   "es": {
     "titrePrincipal": "Diccionario Multilingüe Tadaksahak",
-    "presentation": "Este proyecto está en desarrollo.<br><strong>Cualquier ayuda o apoyo es una motivación extra</strong> para hacer que el idioma Tadaksahak sea accesible para todos, digital y físicamente.<br><span style=\"color: #4682b4;\">¡Gracias por su interés y apoyo!</span>",
+    "presentation": "Este proyecto está en desarrollo.<br>Cualquier ayuda o apoyo es una motivación extra para hacer que el idioma Tadaksahak sea accesible para todos, digital y físicamente.<br><span style=\"color: #4682b4;\">¡Gracias por su interés y apoyo!</span>",
     "botIntro": "🤖 Hola, soy Hamadine el bot Tadaksahak.<br>¡Pídeme una palabra y te la encuentro rápido!",
     "footerText": "&copy; 2025 • Tadaksahak Multilingüe con <strong>Hamadine</strong>.<br><span style=\"font-size: 0.98em;\">Proyecto en evolución – ¡toda sugerencia o contribución es bienvenida para apoyar la vitalidad del idioma Tadaksahak!</span>",
     "precedent": "Anterior",
@@ -165,11 +220,16 @@
     "lectureAuto": "Reproducción automática",
     "chatTitre": "Chat con Hamadine",
     "envoyer": "Enviar",
-    "searchPlaceholder": "Buscar una palabra..."
+    "searchPlaceholder": "Buscar una palabra...",
+    "suggestionInstall": "¡Puedes añadir este diccionario Tadaksahak a tu pantalla de inicio y usarlo como aplicación!",
+    "ajouter": "Añadir",
+    "instructionsIOS": "En iPhone/iPad: abre el menú de compartir de Safari y elige 'Añadir a pantalla de inicio'",
+    "reponseBot": "Hamadine: Hola, te escucho, pero mi base léxica aún está en desarrollo.",
+    "utilisateur": "Tú"
   },
   "it": {
     "titrePrincipal": "Dizionario multilingue Tadaksahak",
-    "presentation": "Questo progetto è in fase di sviluppo.<br><strong>Ogni aiuto o sostegno è una motivazione in più</strong> per rendere la lingua Tadaksahak accessibile a tutti, digitalmente e fisicamente.<br><span style=\"color: #4682b4;\">Grazie per il vostro interesse e supporto!</span>",
+    "presentation": "Questo progetto è in fase di sviluppo.<br>Ogni aiuto o sostegno è una motivazione in più per rendere la lingua Tadaksahak accessibile a tutti, digitalmente e fisicamente.<br><span style=\"color: #4682b4;\">Grazie per il vostro interesse e supporto!</span>",
     "botIntro": "🤖 Ciao, sono Hamadine il bot Tadaksahak.<br>Chiedimi una parola e la troverò subito per te!",
     "footerText": "&copy; 2025 • Tadaksahak Multilingue con <strong>Hamadine</strong>.<br><span style=\"font-size: 0.98em;\">Progetto in evoluzione – ogni suggerimento o contributo è benvenuto per sostenere la vitalità della lingua Tadaksahak!</span>",
     "precedent": "Precedente",
@@ -179,11 +239,16 @@
     "lectureAuto": "Riproduzione automatica",
     "chatTitre": "Chatta con Hamadine",
     "envoyer": "Invia",
-    "searchPlaceholder": "Cerca una parola..."
+    "searchPlaceholder": "Cerca una parola...",
+    "suggestionInstall": "Puoi aggiungere questo dizionario Tadaksahak alla schermata principale e usarlo come app!",
+    "ajouter": "Aggiungi",
+    "instructionsIOS": "Su iPhone/iPad: apri il menu di condivisione di Safari e scegli 'Aggiungi a Home'",
+    "reponseBot": "Hamadine: Ciao, ti sento, ma la mia base lessicale è ancora in corso.",
+    "utilisateur": "Tu"
   },
   "ha": {
     "titrePrincipal": "Tadaksahak Mai Yare da yawa",
-    "presentation": "Wannan aikin yana ci gaba.<br><strong>Duk wani taimako ko goyon baya ƙarin ƙarfafawa ne</strong> domin Tadaksahak ta zama mai sauƙin samu ga kowa, ta yanar gizo da littafi.<br><span style=\"color: #4682b4;\">Na gode da sha'awar ku da goyon bayan ku!</span>",
+    "presentation": "Wannan aikin yana ci gaba.<br>Duk wani taimako ko goyon baya ƙarin ƙarfafawa ne domin Tadaksahak ta zama mai sauƙin samu ga kowa, ta yanar gizo da littafi.<br><span style=\"color: #4682b4;\">Na gode da sha'awar ku da goyon bayan ku!</span>",
     "botIntro": "🤖 Sannu, ni ne Hamadine bot na Tadaksahak.<br>Tambaye ni kalma, zan samo maka!",
     "footerText": "&copy; 2025 • Tadaksahak Mai Yare da yawa tare da <strong>Hamadine</strong>.<br><span style=\"font-size: 0.98em;\">Aikin yana ci gaba – duk wata shawara ko taimako ana maraba da shi domin raya harshen Tadaksahak!</span>",
     "precedent": "Na baya",
@@ -193,11 +258,16 @@
     "lectureAuto": "Karatu ta atomatik",
     "chatTitre": "Tattaunawa da Hamadine",
     "envoyer": "Aika",
-    "searchPlaceholder": "Nemo kalma..."
+    "searchPlaceholder": "Nemo kalma...",
+    "suggestionInstall": "Za ka iya ƙara wannan kundin Tadaksahak zuwa allon farko don amfani da shi kamar manhaja!",
+    "ajouter": "Ƙara",
+    "instructionsIOS": "A iPhone/iPad: buɗe menu na rabawa a Safari sannan zaɓi 'Add to Home Screen'",
+    "reponseBot": "Hamadine: Sannu, na ji ka, amma har yanzu ina gyara kundin kalmomi.",
+    "utilisateur": "Kai"
   },
   "sv": {
     "titrePrincipal": "Tadaksahak flerspråkig ordbok",
-    "presentation": "Detta projekt är under utveckling.<br><strong>All hjälp eller stöd är extra motivation</strong> för att göra Tadaksahak-språket tillgängligt för alla, digitalt och fysiskt.<br><span style=\"color: #4682b4;\">Tack för ditt intresse och stöd!</span>",
+    "presentation": "Detta projekt är under utveckling.<br>All hjälp eller stöd är extra motivation för att göra Tadaksahak-språket tillgängligt för alla, digitalt och fysiskt.<br><span style=\"color: #4682b4;\">Tack för ditt intresse och stöd!</span>",
     "botIntro": "🤖 Hej, jag är Hamadine Tadaksahak-bot.<br>Be mig om ett ord så hittar jag det snabbt åt dig!",
     "footerText": "&copy; 2025 • Flerspråkig Tadaksahak med <strong>Hamadine</strong>.<br><span style=\"font-size: 0.98em;\">Projekt under utveckling – alla förslag eller bidrag är välkomna för att stödja Tadaksahak-språkets vitalitet!</span>",
     "precedent": "Föregående",
@@ -207,20 +277,10 @@
     "lectureAuto": "Autospelning",
     "chatTitre": "Chatt med Hamadine",
     "envoyer": "Skicka",
-    "searchPlaceholder": "Sök ett ord..."
-  },
-  "zh": {
-    "titrePrincipal": "塔达克萨哈克多语言词典",
-    "presentation": "该项目正在开发中。<br><strong>任何帮助或支持都是额外的动力</strong>，让塔达克萨哈克语对所有人开放，无论是数字还是实体。<br><span style=\"color: #4682b4;\">感谢您的关注和支持！</span>",
-    "botIntro": "🤖 你好，我是塔达克萨哈克机器人 Hamadine。<br>问我一个词，我会很快帮你找到！",
-    "footerText": "&copy; 2025 • 多语言塔达克萨哈克与 <strong>Hamadine</strong>。<br><span style=\"font-size: 0.98em;\">项目正在发展中——欢迎任何建议或贡献以支持塔达克萨哈克语的活力！</span>",
-    "precedent": "上一页",
-    "suivant": "下一页",
-    "ecouter": "播放",
-    "rejouer": "重播",
-    "lectureAuto": "自动播放",
-    "chatTitre": "与Hamadine聊天",
-    "envoyer": "发送",
-    "searchPlaceholder": "搜索单词..."
+    "searchPlaceholder": "Sök ett ord...",
+    "suggestionInstall": "Du kan lägga till denna Tadaksahak-ordbok på din hemskärm och använda den som en app!",
+    "ajouter": "Lägg till",
+    "instructionsIOS": "På iPhone/iPad: Öppna delningsmenyn i Safari och välj 'Lägg till på hemskärmen'",
+    "reponseBot": "Hamadine: Hej, jag hör dig, men min ordlista är fortfarande under utveckling.",
+    "utilisateur": "Du"
   }
-}
