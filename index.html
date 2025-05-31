@@ -27,7 +27,8 @@
       da: "manifest.da.json",
       it: "manifest.it.json",
       es: "manifest.es.json",
-      tz: "manifest.tz.json"
+      tz: "manifest.tz.json",
+      bm: "manifest.bm.json"
     }[lang] || "manifest.json";
 
     const link = document.createElement('link');
@@ -45,8 +46,8 @@
       <img src="images/idaksahak_round.png" alt="Logo Tadaksahak rond" width="120" />
     </div>
     <section style="margin-bottom: 1.5rem; text-align:center;">
-      <h1 style="margin-bottom: 0.3em;">Dictionnaire Tadaksahak Multilingue</h1>
-      <p class="presentation" style="font-size: 1.1em;">
+      <h1 id="titrePrincipal">Dictionnaire Tadaksahak Multilingue</h1>
+      <p id="presentation" class="presentation">
         Ce projet est en cours de développement.<br>
         <strong>Toute aide ou soutien est une source de motivation supplémentaire</strong> pour rendre la langue Tadaksahak accessible à tous, sur le numérique et en version physique.<br>
         <span style="color: #4682b4;">Merci pour votre intérêt et votre soutien&nbsp;!</span>
@@ -83,6 +84,7 @@
           <button onclick="changerLangue('ha')" aria-label="Haoussa">Ha</button>
           <button onclick="changerLangue('es')" aria-label="Espagnol">Es</button>
           <button onclick="changerLangue('it')" aria-label="Italien">It</button>
+          <button onclick="changerLangue('bm')" aria-label="Bambara">Bm</button>
         </div>
 
         <div class="lang-switch" aria-label="Changer la langue de l'interface">
@@ -91,6 +93,17 @@
           <button onclick="changerLangueInterface('ar')" aria-label="Interface arabe">🇸🇦</button>
           <button onclick="changerLangueInterface('ru')" aria-label="Interface russe">🇷🇺</button>
           <button onclick="changerLangueInterface('tz')" aria-label="Interface tamajaq">ⵜ</button>
+          <button onclick="changerLangueInterface('tr')" aria-label="Interface turc">🇹🇷</button>
+          <button onclick="changerLangueInterface('es')" aria-label="Interface espagnol">🇪🇸</button>
+          <button onclick="changerLangueInterface('zh')" aria-label="Interface chinois">🇨🇳</button>
+          <button onclick="changerLangueInterface('nl')" aria-label="Interface néerlandais">🇳🇱</button>
+          <button onclick="changerLangueInterface('de')" aria-label="Interface allemand">🇩🇪</button>
+          <button onclick="changerLangueInterface('cs')" aria-label="Interface tchèque">🇨🇿</button>
+          <button onclick="changerLangueInterface('da')" aria-label="Interface danois">🇩🇰</button>
+          <button onclick="changerLangueInterface('it')" aria-label="Interface italien">🇮🇹</button>
+          <button onclick="changerLangueInterface('ha')" aria-label="Interface haoussa">🇳🇬</button>
+          <button onclick="changerLangueInterface('sv')" aria-label="Interface suédois">🇸🇪</button>
+          <button onclick="changerLangueInterface('bm')" aria-label="Interface bambara">🇲🇱</button>
         </div>
 
         <p id="compteur">1 / ...</p>
@@ -111,7 +124,7 @@
     <section aria-labelledby="chat-title" style="margin-top: 2rem;">
       <h2 id="chat-title">Chat Tadaksahak</h2>
       <div id="chatWindow" class="chatbox" role="log" aria-live="polite"></div>
-      <div class="bot-intro" style="padding: 0.5em 0; color: #0a5780; font-weight: bold;">
+      <div class="bot-intro" id="botIntro" style="padding: 0.5em 0; color: #0a5780; font-weight: bold;">
         🤖 Salut, je suis Hamadine le bot Tadaksahak.<br>
         Demandez-moi un mot et je vous le trouve rapidement&nbsp;!
       </div>
@@ -128,7 +141,7 @@
   </main>
 
   <footer>
-    <p>
+    <p id="footerText">
       &copy; 2025 • Tadaksahak Multilingue avec <strong>Hamadine</strong>.<br>
       <span style="font-size: 0.98em;">Projet en évolution – toute suggestion ou contribution est la bienvenue pour soutenir la vitalité de la langue Tadaksahak !</span>
     </p>
