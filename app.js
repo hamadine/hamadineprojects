@@ -1,184 +1,145 @@
-// --- Variables globales ---
+// Variables globales
 let mots = [];
-let motsFiltres = [];
-let index = 0;
-let interfaceTrads = {};
-let langueInterface = "fr";
-let langueCourante = "fr";
-let motsInconnus = JSON.parse(localStorage.getItem('motsInconnus') || '[]');
+let interfaceLangue = {};
+let indexMot = 0;
+let langueTrad = 'fr';
+let langueInterface = 'fr';
 let fuse;
 
-// --- Chargement des traductions d'interface ---
-fetch("./data/interface-langue.json")
-  .then(res => res.json())
-  .then(data => {
-    interfaceTrads = data;
-    appliquerTraductionsInterface();
+// Chargement initial de toutes les données
+async function chargerDonnees() {
+  // Chargement du dictionnaire
+  const motsData = await fetch('./data/mots.json').then(r => r.json());
+  mots = motsData;
+
+  // Chargement des textes d'interface
+  const interfaceData = await fetch('./data/interface-langue.json').then(r => r.json());
+  interfaceLangue = interfaceData;
+
+  // Initialiser Fuse.js pour la recherche floue
+  fuse = new Fuse(mots, {
+    keys: ['mot', ...Object.keys(mots[0]).filter(k => !['mot', 'cat'].includes(k))],
+    threshold: 0.3
   });
 
-// --- Chargement des mots + configuration Fuse ---
-fetch("./data/mots.json")
-  .then(res => res.json())
-  .then(data => {
-    mots = data;
-    motsFiltres = data;
-    fuse = new Fuse(mots, {
-      keys: [
-        "mot", "fr", "en", "ar", "ru", "de", "es", "it", "nl", "da", "cs",
-        "tr", "pt", "zh", "ja", "exemple", "exemples"
-      ],
-      threshold: 0.4,
-      ignoreLocation: true,
-      minMatchCharLength: 2
-    });
-    afficherMot();
-  });
+  // Appliquer la langue de l'interface détectée
+  changerLangueInterface(langueInterface);
 
-// --- Fonctions principales ---
-
-function afficherMot() {
-  const mot = motsFiltres[index] || {};
-  document.getElementById("motTexte").innerText = mot.mot || "—";
-  document.getElementById("definition").innerText = mot[langueCourante] || "";
-  document.getElementById("compteur").innerText = `${motsFiltres.length ? (index + 1) : 0} / ${motsFiltres.length}`;
-}
-
-function appliquerTraductionsInterface() {
-  const t = interfaceTrads[langueInterface] || interfaceTrads["fr"];
-  if (!t) return;
-  const setText = (id, txt) => {
-    const el = document.getElementById(id);
-    if (el) el.innerText = txt;
-  };
-  setText("titre", t.titrePrincipal);
-  setText("footer-desc", t.footerText);
-  setText("btnPrev", "◀️ " + t.precedent);
-  setText("btnNext", t.suivant + " ▶️");
-  setText("chat-title", t.chatTitre);
-  setText("btnEnvoyer", t.envoyer);
-  setText("histoire-title", t.histoireTitle);
-
-  // Section histoire - innerHTML pour supporter ponctuellement du HTML
-  const histoireMsg = document.getElementById("histoire-message");
-  if (histoireMsg) histoireMsg.innerHTML = t.histoireBientot;
-
-  // Placeholders
-  const searchBar = document.getElementById("searchBar");
-  if (searchBar) searchBar.placeholder = t.searchPlaceholder;
-  const chatInput = document.getElementById("chatInput");
-  if (chatInput) chatInput.placeholder = t.placeholderChat || "";
-
-  // Direction RTL pour l'arabe
-  document.body.dir = (langueInterface === "ar") ? "rtl" : "ltr";
-
-  // Titre de l'onglet navigateur
-  document.title = t.titrePrincipal;
-
-  // Mets à jour le mot affiché dans la nouvelle langue
+  // Afficher le premier mot
   afficherMot();
 }
 
-function changerLangue(langue) {
-  langueCourante = langue;
-  afficherMot();
+// Affichage d'un mot et de sa traduction
+function afficherMot(motIndex = indexMot) {
+  if (!mots.length) return;
+  indexMot = Math.max(0, Math.min(mots.length - 1, motIndex));
+  const mot = mots[indexMot];
+
+  document.getElementById('motTexte').textContent = mot.mot || '';
+  document.getElementById('definition').innerHTML = 
+    (mot[langueTrad] || '—') + (mot.cat ? ` <span style="color:#888;">(${mot.cat})</span>` : '');
+
+  document.getElementById('compteur').textContent = `${indexMot + 1} / ${mots.length}`;
+
+  // Gestion des boutons audio (à adapter selon support)
+  ['btnPlay', 'btnReplay', 'btnAuto'].forEach(id => {
+    const btn = document.getElementById(id);
+    if (btn) btn.disabled = true;
+  });
 }
 
-function changerLangueInterface(langue) {
-  langueInterface = langue;
-  appliquerTraductionsInterface();
+// Navigation
+function motPrecedent() {
+  if (indexMot > 0) afficherMot(indexMot - 1);
 }
 
 function motSuivant() {
-  if (!motsFiltres.length) return;
-  index = (index + 1) % motsFiltres.length;
-  afficherMot();
+  if (indexMot < mots.length - 1) afficherMot(indexMot + 1);
 }
 
-function motPrecedent() {
-  if (!motsFiltres.length) return;
-  index = (index - 1 + motsFiltres.length) % motsFiltres.length;
-  afficherMot();
-}
-
+// Recherche floue avec Fuse.js
 function rechercherMot() {
-  const t = interfaceTrads[langueInterface] || interfaceTrads["fr"];
-  const q = document.getElementById("searchBar").value.trim().toLowerCase();
-  if (!q) {
-    motsFiltres = mots;
-    index = 0;
+  const query = document.getElementById('searchBar').value.trim();
+  if (!query) {
     afficherMot();
     return;
   }
-  if (fuse) {
-    const results = fuse.search(q);
-    motsFiltres = results.map(r => r.item);
+  const resultats = fuse.search(query);
+  if (resultats.length) {
+    mots = resultats.map(r => r.item);
+    afficherMot(0);
   } else {
-    motsFiltres = mots.filter(m =>
-      Object.values(m).some(val =>
-        typeof val === 'string' && val.toLowerCase().includes(q)
-      )
-    );
-  }
-  index = 0;
-  afficherMot();
-  if (!motsFiltres.length) {
-    document.getElementById("motTexte").innerText = t.aucunResultat || "Aucun résultat";
-    document.getElementById("definition").innerText = "";
-    document.getElementById("compteur").innerText = "0 / 0";
+    document.getElementById('motTexte').textContent = 'Aucun résultat';
+    document.getElementById('definition').innerHTML = '';
+    document.getElementById('compteur').textContent = `0 / 0`;
   }
 }
 
-// --- Chat ---
+// Changer la langue de traduction
+function changerLangue(lang) {
+  langueTrad = lang;
+  afficherMot();
+}
+
+// Changer la langue de l'interface
+function changerLangueInterface(lang) {
+  langueInterface = lang;
+  // Applique toutes les traductions de l'interface
+  const t = interfaceLangue[lang] || interfaceLangue['fr'];
+  if (!t) return;
+  document.getElementById('titrePrincipal').textContent = t.titrePrincipal || "";
+  document.getElementById('presentation').innerHTML = t.presentation || "";
+  document.getElementById('btnPrev').textContent = `◀️ ${t.precedent || "Précédent"}`;
+  document.getElementById('btnNext').textContent = `${t.suivant || "Suivant"} ▶️`;
+  document.getElementById('btnPlay').textContent = `▶️ ${t.ecouter || "Écouter"}`;
+  document.getElementById('btnReplay').textContent = `⟳ ${t.rejouer || "Réécouter"}`;
+  document.getElementById('btnAuto').textContent = `▶️ ${t.lectureAuto || "Lecture auto"}`;
+  document.getElementById('chat-title').textContent = t.chatTitre || "Chat Tadaksahak";
+  document.getElementById('btnEnvoyer').textContent = t.envoyer || "Envoyer";
+  document.getElementById('footerText').innerHTML = t.footerText || "";
+  document.getElementById('searchBar').placeholder = t.searchPlaceholder || "Rechercher un mot...";
+  document.getElementById('botIntro').innerHTML = t.botIntro || "";
+  document.getElementById('histoire-title').textContent = t.histoireTitle || "Section Histoire";
+  document.getElementById('histoire-message').innerHTML = t.histoireBientot || "";
+  document.getElementById('chatInput').placeholder = t.placeholderChat || "";
+}
+
+// Gestion du chat bot (simulation)
 function envoyerMessage() {
-  const input = document.getElementById("chatInput");
+  const input = document.getElementById('chatInput');
   const message = input.value.trim();
   if (!message) return;
-  const t = interfaceTrads[langueInterface] || interfaceTrads["fr"] || {};
-  const chatWindow = document.getElementById("chatWindow");
+  afficherMessage('utilisateur', message);
 
-  // Affiche le message utilisateur
-  const div = document.createElement("div");
-  div.textContent = (t.utilisateur || "Vous") + " : " + message;
-  div.style.fontWeight = "bold";
-  chatWindow.appendChild(div);
+  // Réponse bot (simple ou random)
+  setTimeout(() => {
+    const t = interfaceLangue[langueInterface] || interfaceLangue['fr'];
+    afficherMessage('bot', t.reponseBot || "Je n'ai pas trouvé ce mot.");
+  }, 400);
 
-  let result = (fuse && message) ? fuse.search(message) : [];
-
-  const bot = document.createElement("div");
-  if (result.length > 0) {
-    const motObj = result[0].item;
-    let rep = `<b>${motObj.mot}</b> : ${motObj[langueCourante] || ""}`;
-
-    // Exemples : "exemple" (string) ou "exemples" (array)
-    if (motObj.exemples && Array.isArray(motObj.exemples) && motObj.exemples.length) {
-      rep += `<br><i>${t.exemple || "Exemple(s)"} :</i><ul>`;
-      rep += motObj.exemples.map(ex => `<li>${ex}</li>`).join("");
-      rep += "</ul>";
-    } else if (motObj.exemple) {
-      rep += `<br><i>${t.exemple || "Exemple"} :</i> ${motObj.exemple}`;
-    }
-    bot.innerHTML = rep;
-  } else {
-    bot.textContent = t.reponseBot || "Hamadine : Merci ! Je travaille d’arrache-pied pour rendre plus de mots disponibles. Je viens d’apprendre ce mot de votre part.";
-    if (!motsInconnus.includes(message.toLowerCase())) {
-      motsInconnus.push(message.toLowerCase());
-      localStorage.setItem('motsInconnus', JSON.stringify(motsInconnus));
-    }
-  }
-  chatWindow.appendChild(bot);
-
-  chatWindow.scrollTop = chatWindow.scrollHeight;
   input.value = "";
-  input.focus();
 }
 
-// --- Expose fonctions globalement pour HTML inline events ---
-window.changerLangue = changerLangue;
-window.changerLangueInterface = changerLangueInterface;
-window.motSuivant = motSuivant;
-window.motPrecedent = motPrecedent;
-window.rechercherMot = rechercherMot;
-window.envoyerMessage = envoyerMessage;
+// Afficher un message dans la fenêtre de chat
+function afficherMessage(auteur, texte) {
+  const chatWindow = document.getElementById('chatWindow');
+  const div = document.createElement('div');
+  div.className = auteur === 'bot' ? 'chat-bot' : 'chat-user';
+  div.innerHTML = `<strong>${auteur === 'bot' ? 'Hamadine' : 'Vous'} :</strong> ${texte}`;
+  chatWindow.appendChild(div);
+  chatWindow.scrollTop = chatWindow.scrollHeight;
+}
 
-// --- Application automatique des traductions à l'ouverture (sécurité) ---
-window.onload = appliquerTraductionsInterface;
+// Fonctions audio (à adapter selon ressources)
+function jouerTadaksahak() {
+  // Ton code pour jouer le son du mot
+}
+function rejouerMot() {
+  // Ton code pour rejouer le son
+}
+function lectureAuto() {
+  // Ton code pour lecture en boucle
+}
+
+// Initialisation au chargement
+window.addEventListener('DOMContentLoaded', chargerDonnees);
