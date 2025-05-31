@@ -10,12 +10,7 @@
     #chatWindow { min-height: 80px; border: 1px solid #ddd; margin-bottom: 0.6em; padding: 0.5em; border-radius: 6px; background: #f8f8f8; }
     .carte { margin-top: 2em; }
     .histoire-section { margin:2em 0; }
-    .histoire-message { padding:2em; text-align:center; font-size:1.1em; color:#666; }
-    .lang-btns button { padding: 0.3em 0.8em; }
-  </style>
-</head>
-<body>
-  <header>
+    .histoire-message { padding:2 <header>
     <h1 id="titre">Dictionnaire Tadaksahak Multilingue</h1>
     <div class="lang-btns" style="margin-bottom:1em;">
       <button onclick="changerLangueInterface('fr')">FR</button>
@@ -49,21 +44,18 @@
     </section>
 
     <div class="carte">
-      <div id="chat-title" style="font-weight:bold;margin-bottom:0.5em;">Discussion avec Hamadine</div>
-      <div id="chatWindow"></div>
-      <div style="display:flex;gap:0.4em;">
-        <input type="text" id="chatInput" placeholder="Tape ton mot ou ta question ici..." style="flex:1;" />
+      <div id="chat-title" style="font-weight:bold;margin-bottom:0.5em;">Discussion="text" id="chatInput" placeholder="Tape ton mot ou ta question ici..." style="flex:1;" />
         <button id="btnEnvoyer" onclick="envoyerMessage()">Envoyer</button>
       </div>
     </div>
   </main>
 
-  <footer style="margin-top:2em;">
-    <p id="footer-desc">
+  <footer style="margin-top:2">
       © 2025 • Tadaksahak Multilingue avec Hamadine.
     </p>
   </footer>
 
+  <script src="https://cdn.jsdelivr.net/npm/fuse.js/dist/fuse.js"></script>
   <script src="app.js"></script>
 </body>
-</html>
+  </html>
