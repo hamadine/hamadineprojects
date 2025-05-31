@@ -3,7 +3,7 @@ let mots = [];
 let motsFiltres = [];
 let index = 0;
 let interfaceTrads = {};
-let langueCourante = "fr"; // Langue de traduction des mots
+let langueCourante = "fr"; // Langue de traduction des mots (si tu veux ajouter ce bouton plus tard)
 let langueInterface = "fr"; // Langue de l'interface
 let motsInconnus = JSON.parse(localStorage.getItem('motsInconnus') || '[]');
 
@@ -15,7 +15,7 @@ fetch("./data/interface-langue.json")
     appliquerTraductionsInterface();
   });
 
-// --- Chargement des mots (exemple minimal, à adapter selon ton format) ---
+// --- Chargement des mots ---
 fetch("./data/mots.json")
   .then(res => res.json())
   .then(data => {
@@ -36,23 +36,35 @@ function afficherMot() {
 function appliquerTraductionsInterface() {
   const t = interfaceTrads[langueInterface] || interfaceTrads["fr"];
   if (!t) return;
+  // Utiliser innerText pour tout sauf section Histoire (HTML potentiellement)
   const setText = (id, txt) => {
     const el = document.getElementById(id);
     if (el) el.innerText = txt;
   };
-  setText("titre", t.titre);
-  setText("footer-desc", t.footerDesc);
-  setText("footer-motivation", t.footerMotivation);
+  setText("titre", t.titrePrincipal);
+  setText("footer-desc", t.footerText);
   setText("btnPrev", "◀️ " + t.precedent);
   setText("btnNext", t.suivant + " ▶️");
   setText("chat-title", t.chatTitre);
   setText("btnEnvoyer", t.envoyer);
+  setText("histoire-title", t.histoireTitle);
+
+  // Section histoire - innerHTML pour supporter ponctuellement du HTML
+  const histoireMsg = document.getElementById("histoire-message");
+  if (histoireMsg) histoireMsg.innerHTML = t.histoireBientot;
 
   // Placeholders
   const searchBar = document.getElementById("searchBar");
   if (searchBar) searchBar.placeholder = t.searchPlaceholder;
   const chatInput = document.getElementById("chatInput");
-  if (chatInput) chatInput.placeholder = t.placeholderChat;
+  if (chatInput) chatInput.placeholder = t.placeholderChat || "";
+
+  // Direction RTL pour l'arabe
+  if(langueInterface === "ar") {
+    document.body.dir = "rtl";
+  } else {
+    document.body.dir = "ltr";
+  }
 }
 
 function changerLangue(langue) {
@@ -136,3 +148,6 @@ window.motSuivant = motSuivant;
 window.motPrecedent = motPrecedent;
 window.rechercherMot = rechercherMot;
 window.envoyerMessage = envoyerMessage;
+
+// --- Application automatique des traductions à l'ouverture (sécurité) ---
+window.onload = appliquerTraductionsInterface;
