@@ -19,27 +19,20 @@
       <img src="images/idaksahak_round.png" alt="Logo Tadaksahak rond" width="120" />
     </div>
 
-    <!-- Présentation dynamique longue -->
+    <!-- Présentation dynamique -->
     <section style="margin-bottom: 2em;">
-      <p id="textePresentation" style="font-size: 1.03em;">
-        Ce projet est bien plus qu’un simple développement : c’est une véritable aventure dédiée à la valorisation de la langue Tadaksahak.<br>
-        Chaque aide, chaque soutien, même le plus modeste, est une précieuse source d’inspiration et de motivation pour nous permettre de rendre cette langue unique accessible à tous, aussi bien sur les plateformes numériques que dans des supports physiques.<br><br>
-        Votre intérêt et votre soutien sont essentiels pour faire vivre et grandir ce projet. Ensemble, contribuons à préserver et diffuser la richesse du Tadaksahak, pour aujourd’hui et pour les générations futures. Merci de faire partie de cette belle aventure !<br><br>
-        <strong>Hamadine AG MOCTAR</strong>
-      </p>
+      <p id="textePresentation"></p>
     </section>
 
     <!-- Titre principal -->
-    <h1 id="titrePrincipal" style="text-align:center; font-size:2.1em; margin-bottom:0.7em;">
-      Dictionnaire Tadaksahak Multilingue
-    </h1>
+    <h1 id="titrePrincipal" style="text-align:center; font-size:2.1em; margin-bottom:0.7em;"></h1>
 
     <!-- Barre de recherche -->
     <section style="margin-bottom: 2em;">
       <input
         id="searchBar"
         type="text"
-        placeholder="Rechercher un mot..."
+        placeholder=""
         oninput="rechercherMot()"
         aria-label="Zone de recherche"
         style="width: 100%; max-width: 400px; margin: auto; display: block;"
@@ -48,7 +41,13 @@
       <h2 id="motTexte" style="margin-top:1.2em;">...</h2>
       <p id="definition">...</p>
 
-      <!-- Langue de traduction -->
+      <!-- Navigation déplacée ici -->
+      <nav id="navigation" aria-label="Navigation entre les mots" style="text-align:center; margin-top:1em;">
+        <button id="btnPrev" onclick="motPrecedent()"></button>
+        <button id="btnNext" onclick="motSuivant()"></button>
+      </nav>
+
+      <!-- Sélecteur de langue de traduction -->
       <div class="lang-switch" aria-label="Changer la langue des traductions" style="margin-bottom: 0.7em; text-align:center;">
         <button onclick="changerLangue('fr')">Fr</button>
         <button onclick="changerLangue('en')">En</button>
@@ -59,16 +58,16 @@
         <button onclick="changerLangue('es')">Es</button>
         <button onclick="changerLangue('de')">De</button>
         <button onclick="changerLangue('pt')">Pt</button>
-        <button onclick="changerLangue('tr')">Tr</button>
         <button onclick="changerLangue('ja')">Ja</button>
         <button onclick="changerLangue('ha')">Ha</button>
         <button onclick="changerLangue('taq')">Taq</button>
         <button onclick="changerLangue('tmh')">Tmh</button>
         <button onclick="changerLangue('ber')">Ber</button>
-        <button onclick="changerLangue('sw')">Sw</button>
+        <button onclick="changerLangue('bm')">Bm</button>
+        <button onclick="changerLangue('son')">Son</button>
       </div>
 
-      <!-- Langue de l'interface -->
+      <!-- Sélecteur de langue de l'interface -->
       <div class="lang-switch" aria-label="Changer la langue de l'interface" style="text-align:center;">
         <button onclick="changerLangueInterface('fr')">🇫🇷</button>
         <button onclick="changerLangueInterface('en')">🇬🇧</button>
@@ -79,59 +78,48 @@
         <button onclick="changerLangueInterface('es')">🇪🇸</button>
         <button onclick="changerLangueInterface('de')">🇩🇪</button>
         <button onclick="changerLangueInterface('pt')">🇵🇹</button>
-        <button onclick="changerLangueInterface('tr')">🇹🇷</button>
         <button onclick="changerLangueInterface('ja')">🇯🇵</button>
         <button onclick="changerLangueInterface('ha')">Ha</button>
         <button onclick="changerLangueInterface('taq')">Taq</button>
         <button onclick="changerLangueInterface('tmh')">Tmh</button>
         <button onclick="changerLangueInterface('ber')">Ber</button>
-        <button onclick="changerLangueInterface('sw')">Sw</button>
+        <button onclick="changerLangueInterface('bm')">Bm</button>
+        <button onclick="changerLangueInterface('son')">Son</button>
       </div>
 
-      <!-- Compteur de mots -->
+      <!-- Compteur -->
       <p id="compteur" style="text-align:center;">1 / ...</p>
 
       <!-- Contrôles audio -->
       <div id="audioButtons" style="text-align:center;">
-        <button id="btnPlay" onclick="jouerTadaksahak()">▶️ Écouter</button>
-        <button id="btnReplay" onclick="rejouerMot()" disabled style="opacity: 0.5;">⟳ Réécouter</button>
-        <button id="btnAuto" onclick="lectureAuto()" disabled style="opacity: 0.5;">▶️ Lecture auto</button>
+        <button id="btnPlay" onclick="jouerTadaksahak()"></button>
+        <button id="btnReplay" onclick="rejouerMot()" disabled style="opacity: 0.5;"></button>
+        <button id="btnAuto" onclick="lectureAuto()" disabled style="opacity: 0.5;"></button>
       </div>
-
-      <!-- Navigation entre les mots -->
-      <nav id="navigation" aria-label="Navigation entre les mots" style="text-align:center; margin-top:0.7em;">
-        <button id="btnPrev" onclick="motPrecedent()">◀️ Précédent</button>
-        <button id="btnNext" onclick="motSuivant()">Suivant ▶️</button>
-      </nav>
     </section>
 
     <!-- Zone chat -->
     <section aria-labelledby="chat-title" style="margin-top: 2rem;">
-      <h2 id="chat-title">Chat Tadaksahak</h2>
+      <h2 id="chat-title"></h2>
       <div id="chatWindow" class="chatbox" role="log" aria-live="polite"></div>
 
-      <div id="botIntro" style="margin: 1.5em 0; color: #0a5780; font-weight: bold;">
-        🤖 Salut, je suis Hamadine le bot Tadaksahak.<br>
-        Demandez-moi un mot et je vous le trouve rapidement&nbsp;!
-      </div>
+      <div id="botIntro" style="margin: 1.5em 0; color: #0a5780; font-weight: bold;"></div>
 
       <input
         type="text"
         id="chatInput"
-        placeholder="Tape ton mot ou ta question ici..."
+        placeholder=""
         onkeydown="if(event.key==='Enter') envoyerMessage()"
         aria-label="Zone de saisie du chat"
         style="width: 100%; max-width: 500px;"
       />
-      <button id="btnEnvoyer" onclick="envoyerMessage()">Envoyer</button>
+      <button id="btnEnvoyer" onclick="envoyerMessage()"></button>
     </section>
 
     <!-- Section Histoire -->
     <section>
-      <h2 id="histoire-title">Section Histoire</h2>
-      <p id="histoire-message">
-        Très bientôt, découvrez ici des textes historiques captivants qui vous plongeront au cœur de la culture Tadaksahak.
-      </p>
+      <h2 id="histoire-title"></h2>
+      <p id="histoire-message"></p>
     </section>
 
     <!-- Section Archives -->
@@ -143,13 +131,13 @@
     </section>
   </main>
 
-  <!-- Pied de page enrichi -->
+  <!-- Pied de page -->
   <footer>
     <section style="margin-bottom: 1em;">
-      <p id="footerContrib" style="max-width: 720px; margin: auto;">
+      <p id="footerContrib">
         Peu importe la forme ou la taille, chaque contribution — documents, témoignages, recherches ou idées — est précieuse pour enrichir notre projet.<br>
         Nous recherchons aussi des sponsors et partenaires engagés pour soutenir la valorisation de la langue et culture Tadaksahak.<br>
-        Ensemble, faisons grandir ce patrimoine unique et transmettons-le aux générations futures ; contactez-nous pour participer ou soutenir cette initiative.
+        Ensemble, faisons grandir ce patrimoine unique et transmettons-le aux générations futures.
       </p>
       <p style="margin:0.7em 0;">
         <a href="mailto:hamadineagmoctar@gmail.com" style="text-decoration:none; margin-right:1.5em;">
@@ -161,9 +149,7 @@
       </p>
       <div id="liensURL" style="margin-top:0.7em;"></div>
     </section>
-    <p id="footerText" style="margin-top:1.5em;">
-      © 2025 • Tadaksahak Multilingue avec Hamadine.
-    </p>
+    <p id="footerText"></p>
   </footer>
 </body>
 </html>
