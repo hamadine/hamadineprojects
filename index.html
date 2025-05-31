@@ -7,14 +7,21 @@
   <style>
     body { font-family: sans-serif; max-width: 600px; margin: 2em auto; }
     .nav-buttons { margin: 1em 0; display: flex; gap: 1em; }
-    #chatWindow { min-height: 80px; border: 1px solid #ddd; margin-bottom: 0.6em { margin-top: 2em; }
+    #chatWindow { min-height: 80px; border: 1px solid #ddd; margin-bottom: 0.6em; border-radius: 6px; background: #f8f8f8;}
+    .carte { margin-top: 2em; }
     .histoire-section { margin:2em 0; }
     .histoire-message { padding:2em; text-align:center; font-size:1.1em; color:#666; }
-    .lang-btns button { padding: 0.3em  onclick="changerLangueInterface('en')">EN</button>
+    .lang-btns button { padding: </h1>
+    <div class="lang-btns" style="margin-bottom:1em;">
+      <button onclick="changerLangueInterface('fr')">FR</button>
+      <button onclick="changerLangueInterface('en')">EN</button>
       <button onclick="changerLangueInterface('ar')">AR</button>
       <button onclick="changerLangueInterface('ru')">RU</button>
       <button onclick="changerLangueInterface('de')">DE</button>
-     </button>
+      <button onclick="changerLangueInterface('es')">ES</button>
+      <button onclick="changerLangueInterface('it')">IT</button>
+      <button onclick="changerLangueInterface('nl')">NL</button>
+      <button onclick="changerLangueInterface('da')">DA</button>
       <button onclick="changerLangueInterface('cs')">CS</button>
     </div>
   </header>
@@ -22,10 +29,9 @@
   <main>
     <input type="text" id="searchBar" placeholder="Rechercher un mot..." oninput="rechercherMot()" />
     <div class="nav-buttons">
-      <button id="btnPrev" onclick="motPrecedent()">◀️ Précédent</button>
-      <button id="btnNext" onclick="motSuivant()">Suivant ▶️</button>
+      <button id="btnPrev" onclick="motPrecedent()">◀️ Pr="btnNext" onclick="motSuivant()">Suivant ▶️</button>
     </div>
-    <div id="motTexte" style="font-size:;font-weight:bold;"></div>
+    <div id="motTexte" style="font-size:1.2em;font-weight:bold;"></div>
     <div id="definition" style="margin-bottom:0.5em;"></div>
     <div id="compteur" style="color:#888;"></div>
 
@@ -41,7 +47,7 @@
       <div id="chatWindow"></div>
       <div style="display:flex;gap:0.4em;">
         <input type="text" id="chatInput" placeholder="Tape ton mot ou ta question ici..." style="flex:1;" />
-        <button id="btnEnvoyer" onclick="envoyerMessage()">Envoyer</button>
+        <button id="btnEnvoyer" onclick="envoyerMessageEnvoyer</button>
       </div>
     </div>
   </main>
@@ -55,4 +61,4 @@
   <script src="https://cdn.jsdelivr.net/npm/fuse.js/dist/fuse.js"></script>
   <script src="app.js"></script>
 </body>
-  </html>
+                       </html>
