@@ -52,7 +52,7 @@
         <button id="btnNext" onclick="motSuivant()"></button>
       </nav>
 
-      <!-- Sélecteur de langue de traduction -->
+      <!-- Sélecteur de langue de traduction (COHÉRENT AVEC ton JSON) -->
       <div class="lang-switch" aria-label="Changer la langue des traductions" style="margin-bottom: 0.7em; text-align:center;">
         <button onclick="changerLangue('fr')">Fr</button>
         <button onclick="changerLangue('en')">En</button>
@@ -66,7 +66,7 @@
         <button onclick="changerLangue('cs')">Cs</button>
       </div>
 
-      <!-- Sélecteur de langue de l'interface -->
+      <!-- Sélecteur de langue de l'interface (COHÉRENT AVEC ton JSON) -->
       <div class="lang-switch" aria-label="Changer la langue de l'interface" style="text-align:center;">
         <button onclick="changerLangueInterface('fr')">🇫🇷</button>
         <button onclick="changerLangueInterface('en')">🇬🇧</button>
@@ -124,7 +124,7 @@
     </section>
   </main>
 
-  <!-- Pied de page -->
+  <!-- Pied de page harmonisé -->
   <footer>
     <section style="margin-bottom: 1em;">
       <p id="footerContrib">
@@ -134,10 +134,12 @@
       </p>
       <p style="margin:0.7em 0;">
         <a href="mailto:hamadineagmoctar@gmail.com" style="text-decoration:none; margin-right:1.5em;">
-          <img src="images/gmail.png" alt="Gmail" style="height:1.1em;vertical-align:middle; margin-right:0.3em;">hamadineagmoctar@gmail.com
+          <img src="images/gmail.png" alt="Gmail" style="height:1.1em;vertical-align:middle; margin-right:0.3em;">
+          <span id="contactGmail">Gmail</span>hamadineagmoctar@gmail.com
         </a>
         <a href="https://wa.me/22786762903" target="_blank" style="text-decoration:none;">
-          <img src="images/whatsapp.png" alt="WhatsApp" style="height:1.1em;vertical-align:middle; margin-right:0.3em;">+227 86762903
+          <img src="images/whatsapp.png" alt="WhatsApp" style="height:1.1em;vertical-align:middle; margin-right:0.3em;">
+          <span id="contactWhatsApp">WhatsApp</span>+227 86762903
         </a>
       </p>
       <div id="liensURL" style="margin-top:0.7em;"></div>
