@@ -38,15 +38,13 @@
 </head>
 
 <body>
-  <header class="logo" aria-label="Logo Tadaksahak">
-    <!-- Titre ou logo -->
-  </header>
+  <header class="logo" aria-label="Logo Tadaksahak"></header>
 
   <main>
     <div class="logo" style="text-align: center;">
       <img src="images/idaksahak_round.png" alt="Logo Tadaksahak rond" width="120" />
-       </div>
-   <section style="margin-bottom: 1.5rem; text-align:center;">
+    </div>
+    <section style="margin-bottom: 1.5rem; text-align:center;">
       <h1 style="margin-bottom: 0.3em;">Dictionnaire Tadaksahak Multilingue</h1>
       <p class="presentation" style="font-size: 1.1em;">
         Ce projet est en cours de développement.<br>
@@ -98,14 +96,14 @@
         <p id="compteur">1 / ...</p>
 
         <div id="audioButtons">
-          <button onclick="jouerTadaksahak()" aria-label="Écouter le mot" disabled style="opacity: 0.5; cursor: not-allowed;">▶️ Écouter</button>
-          <button onclick="rejouerMot()" aria-label="Réécouter le mot" disabled style="opacity: 0.5; cursor: not-allowed;">⟳ Rejouer</button>
-          <button onclick="lectureAuto()" aria-label="Lecture automatique" disabled style="opacity: 0.5; cursor: not-allowed;">▶️ Lecture auto</button>
+          <button id="btnPlay" onclick="jouerTadaksahak()" aria-label="Écouter le mot" disabled style="opacity: 0.5; cursor: not-allowed;">▶️ Écouter</button>
+          <button id="btnReplay" onclick="rejouerMot()" aria-label="Réécouter le mot" disabled style="opacity: 0.5; cursor: not-allowed;">⟳ Rejouer</button>
+          <button id="btnAuto" onclick="lectureAuto()" aria-label="Lecture automatique" disabled style="opacity: 0.5; cursor: not-allowed;">▶️ Lecture auto</button>
         </div>
 
         <nav id="navigation" aria-label="Navigation entre les mots">
-          <button onclick="motPrecedent()" aria-label="Mot précédent">◀️ Précédent</button>
-          <button onclick="motSuivant()" aria-label="Mot suivant">Suivant ▶️</button>
+          <button id="btnPrev" onclick="motPrecedent()" aria-label="Mot précédent">◀️ Précédent</button>
+          <button id="btnNext" onclick="motSuivant()" aria-label="Mot suivant">Suivant ▶️</button>
         </nav>
       </article>
     </section>
@@ -125,7 +123,7 @@
         aria-label="Zone de saisie du chat"
         style="width: 100%; max-width: 500px;"
       />
-      <button onclick="envoyerMessage()" aria-label="Envoyer le message">Envoyer</button>
+      <button id="btnEnvoyer" onclick="envoyerMessage()" aria-label="Envoyer le message">Envoyer</button>
     </section>
   </main>
 
