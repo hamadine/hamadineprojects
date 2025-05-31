@@ -142,6 +142,55 @@ footer a:hover {
   text-decoration: underline;
 }
 
+/* === Effet Tempête de Sable du Désert Nocturne === */
+
+body .sandstorm, 
+body .sandstorm2, 
+body .sandstorm3 {
+  pointer-events: none;
+  position: fixed;
+  inset: 0;
+  z-index: 3;
+  mix-blend-mode: lighten;
+  opacity: 0.15;
+}
+
+body .sandstorm {
+  background: repeating-radial-gradient(circle at 10% 80%, #f1d9b7 0 0.8px, transparent 1.2px 100px),
+              repeating-radial-gradient(circle at 80% 30%, #fffbe6 0 1px, transparent 1.5px 120px),
+              repeating-radial-gradient(circle at 60% 60%, #e5c18c 0 0.7px, transparent 1px 80px);
+  animation: sandstorm-move 14s linear infinite;
+}
+
+body .sandstorm2 {
+  background: repeating-radial-gradient(circle at 20% 50%, #e5c18c 0 1.2px, transparent 2px 80px),
+              repeating-radial-gradient(circle at 90% 70%, #fffbe6cc 0 1px, transparent 1.5px 60px);
+  opacity: 0.1;
+  animation: sandstorm-move2 26s linear infinite;
+}
+
+body .sandstorm3 {
+  background: repeating-radial-gradient(circle at 40% 90%, #ffd 0 1.1px, transparent 2px 50px),
+              repeating-radial-gradient(circle at 55% 12%, #ffe7be 0 1px, transparent 1.5px 80px);
+  opacity: 0.07;
+  animation: sandstorm-move3 40s linear infinite;
+}
+
+@keyframes sandstorm-move {
+  0%   { background-position: 0 0, 0 0, 0 0;}
+  100% { background-position: 90vw 5vh, 120vw -10vh, 80vw 20vh;}
+}
+
+@keyframes sandstorm-move2 {
+  0%   { background-position: 0 0, 0 0;}
+  100% { background-position: -60vw 30vh, -40vw -18vh;}
+}
+
+@keyframes sandstorm-move3 {
+  0%   { background-position: 0 0, 0 0;}
+  100% { background-position: 50vw -10vh, 90vw 20vh;}
+}
+
 /* Responsive */
 @media (max-width: 600px) {
   main {
@@ -151,4 +200,4 @@ footer a:hover {
   input[type="text"] {
     width: 100%;
   }
-}
+  }
