@@ -1,5 +1,9 @@
 {
   "fr": {
+    "titrePrincipal": "Dictionnaire Tadaksahak Multilingue",
+    "presentation": "Ce projet est en cours de développement.<br><strong>Toute aide ou soutien est une source de motivation supplémentaire</strong> pour rendre la langue Tadaksahak accessible à tous, sur le numérique et en version physique.<br><span style=\"color: #4682b4;\">Merci pour votre intérêt et votre soutien&nbsp;!</span>",
+    "botIntro": "🤖 Salut, je suis Hamadine le bot Tadaksahak.<br>Demandez-moi un mot et je vous le trouve rapidement&nbsp;!",
+    "footerText": "&copy; 2025 • Tadaksahak Multilingue avec <strong>Hamadine</strong>.<br><span style=\"font-size: 0.98em;\">Projet en évolution – toute suggestion ou contribution est la bienvenue pour soutenir la vitalité de la langue Tadaksahak !</span>",
     "precedent": "Précédent",
     "suivant": "Suivant",
     "ecouter": "Écouter",
@@ -10,6 +14,10 @@
     "searchPlaceholder": "Rechercher un mot..."
   },
   "en": {
+    "titrePrincipal": "Tadaksahak Multilingual Dictionary",
+    "presentation": "This project is under development.<br><strong>Any help or support is an extra motivation</strong> to make the Tadaksahak language accessible to all, digitally and physically.<br><span style=\"color: #4682b4;\">Thank you for your interest and support!</span>",
+    "botIntro": "🤖 Hi, I'm Hamadine the Tadaksahak bot.<br>Ask me for a word and I'll find it quickly for you!",
+    "footerText": "&copy; 2025 • Tadaksahak Multilingual with <strong>Hamadine</strong>.<br><span style=\"font-size: 0.98em;\">Project in progress – any suggestion or contribution is welcome to support the vitality of the Tadaksahak language!</span>",
     "precedent": "Previous",
     "suivant": "Next",
     "ecouter": "Play",
@@ -20,6 +28,10 @@
     "searchPlaceholder": "Search a word..."
   },
   "ar": {
+    "titrePrincipal": "قاموس تاداكساهاك متعدد اللغات",
+    "presentation": "هذا المشروع قيد التطوير.<br><strong>أي مساعدة أو دعم هو مصدر إضافي للتحفيز</strong> لجعل لغة تاداكساهاك متاحة للجميع رقميًا وورقيًا.<br><span style=\"color: #4682b4;\">شكرًا لاهتمامكم ودعمكم!</span>",
+    "botIntro": "🤖 مرحبًا، أنا حمادين بوت تاداكساهاك.<br>اطلب مني كلمة وسأجدها بسرعة!",
+    "footerText": "&copy; 2025 • تاداكساهاك متعدد اللغات مع <strong>حمادين</strong>.<br><span style=\"font-size: 0.98em;\">مشروع قيد التطوير – أي اقتراح أو مساهمة مرحب بها لدعم حيوية لغة تاداكساهاك!</span>",
     "precedent": "السابق",
     "suivant": "التالي",
     "ecouter": "استمع",
@@ -30,6 +42,10 @@
     "searchPlaceholder": "ابحث عن كلمة..."
   },
   "ru": {
+    "titrePrincipal": "Многоязычный словарь тадаксахак",
+    "presentation": "Этот проект находится в разработке.<br><strong>Любая помощь или поддержка — это дополнительная мотивация</strong> сделать язык тадаксахак доступным для всех, как в цифровом, так и в печатном виде.<br><span style=\"color: #4682b4;\">Спасибо за ваш интерес и поддержку!</span>",
+    "botIntro": "🤖 Привет, я Хамадин, бот тадаксахак.<br>Спросите меня слово, и я быстро его найду!",
+    "footerText": "&copy; 2025 • Многоязычный тадаксахак с <strong>Хамадином</strong>.<br><span style=\"font-size: 0.98em;\">Проект в разработке — любые предложения и помощь приветствуются для поддержки языка тадаксахак!</span>",
     "precedent": "Назад",
     "suivant": "Вперёд",
     "ecouter": "Прослушать",
@@ -40,6 +56,10 @@
     "searchPlaceholder": "Поиск слова..."
   },
   "nl": {
+    "titrePrincipal": "Meertalige Tadaksahak Woordenboek",
+    "presentation": "Dit project is in ontwikkeling.<br><strong>Elke hulp of steun is extra motivatie</strong> om de Tadaksahak-taal voor iedereen toegankelijk te maken, digitaal en op papier.<br><span style=\"color: #4682b4;\">Dank voor uw interesse en steun!</span>",
+    "botIntro": "🤖 Hallo, ik ben Hamadine, de Tadaksahak-bot.<br>Vraag mij om een woord en ik vind het snel voor je!",
+    "footerText": "&copy; 2025 • Meertalige Tadaksahak met <strong>Hamadine</strong>.<br><span style=\"font-size: 0.98em;\">Project in ontwikkeling – suggesties of bijdragen zijn welkom om de vitaliteit van de Tadaksahak-taal te ondersteunen!</span>",
     "precedent": "Vorige",
     "suivant": "Volgende",
     "ecouter": "Afspelen",
@@ -50,6 +70,10 @@
     "searchPlaceholder": "Zoek een woord..."
   },
   "de": {
+    "titrePrincipal": "Mehrsprachiges Tadaksahak-Wörterbuch",
+    "presentation": "Dieses Projekt ist in Entwicklung.<br><strong>Jede Hilfe oder Unterstützung ist zusätzliche Motivation</strong>, die Tadaksahak-Sprache allen zugänglich zu machen, digital und gedruckt.<br><span style=\"color: #4682b4;\">Danke für Ihr Interesse und Ihre Unterstützung!</span>",
+    "botIntro": "🤖 Hallo, ich bin Hamadine, der Tadaksahak-Bot.<br>Fragen Sie mich nach einem Wort und ich finde es schnell für Sie!",
+    "footerText": "&copy; 2025 • Mehrsprachiges Tadaksahak mit <strong>Hamadine</strong>.<br><span style=\"font-size: 0.98em;\">Projekt in Entwicklung – Vorschläge oder Beiträge sind willkommen, um die Vitalität der Tadaksahak-Sprache zu unterstützen!</span>",
     "precedent": "Zurück",
     "suivant": "Weiter",
     "ecouter": "Abspielen",
@@ -60,6 +84,10 @@
     "searchPlaceholder": "Wort suchen..."
   },
   "da": {
+    "titrePrincipal": "Tadaksahak Multisproget Ordbog",
+    "presentation": "Dette projekt er under udvikling.<br><strong>Al hjælp eller støtte er ekstra motivation</strong> for at gøre Tadaksahak-sproget tilgængeligt for alle, digitalt og fysisk.<br><span style=\"color: #4682b4;\">Tak for din interesse og støtte!</span>",
+    "botIntro": "🤖 Hej, jeg er Hamadine, Tadaksahak-botten.<br>Spørg mig om et ord, og jeg finder det hurtigt til dig!",
+    "footerText": "&copy; 2025 • Multisproget Tadaksahak med <strong>Hamadine</strong>.<br><span style=\"font-size: 0.98em;\">Projekt under udvikling – forslag eller bidrag er velkomne for at støtte Tadaksahak-sprogets vitalitet!</span>",
     "precedent": "Forrige",
     "suivant": "Næste",
     "ecouter": "Afspil",
@@ -70,6 +98,10 @@
     "searchPlaceholder": "Søg efter et ord..."
   },
   "cs": {
+    "titrePrincipal": "Vícejazyčný slovník Tadaksahak",
+    "presentation": "Tento projekt je ve vývoji.<br><strong>Každá pomoc nebo podpora je další motivací</strong>, aby byl jazyk Tadaksahak přístupný všem, digitálně i fyzicky.<br><span style=\"color: #4682b4;\">Děkujeme za váš zájem a podporu!</span>",
+    "botIntro": "🤖 Ahoj, jsem Hamadine, Tadaksahak-bot.<br>Zeptejte se mě na slovo a já ho rychle najdu!",
+    "footerText": "&copy; 2025 • Vícejazyčný Tadaksahak s <strong>Hamadine</strong>.<br><span style=\"font-size: 0.98em;\">Projekt ve vývoji – jakýkoli návrh nebo příspěvek je vítán na podporu vitality jazyka Tadaksahak!</span>",
     "precedent": "Předchozí",
     "suivant": "Další",
     "ecouter": "Přehrát",
@@ -80,6 +112,10 @@
     "searchPlaceholder": "Hledat slovo..."
   },
   "bm": {
+    "titrePrincipal": "Tadaksahak Ka Kuma Fɔlɔ Kan",
+    "presentation": "Kun bɛ kɛ minɛ.<br><strong>Fɛɛn bɛ dɛmɛ ye a kɛ kɔrɔ</strong> ka Tadaksahak kan kɛ fɔlɔ ye bɛɛ ye, minɛ ni sigida.<br><span style=\"color: #4682b4;\">I ni ce, i ni dɛmɛ!</span>",
+    "botIntro": "🤖 Nba, n ye Hamadine Tadaksahak bot ye.<br>Ka fɔ kɔrɔ n na, n bɛ ka fɛ ko bɔ!",
+    "footerText": "&copy; 2025 • Tadaksahak Ka Kuma Fɔlɔ Kan ni <strong>Hamadine</strong>.<br><span style=\"font-size: 0.98em;\">Kun bɛ kɛ minɛ – fɛɛn bɛ bɔ dɛmɛ ni dɔ ye Tadaksahak kan kɛ fɔlɔ!</span>",
     "precedent": "Kɔ́rɔ",
     "suivant": "Kalan",
     "ecouter": "Nà",
@@ -90,6 +126,10 @@
     "searchPlaceholder": "Sɔ̀rɔ kɔ̀sɛbaya..."
   },
   "tz": {
+    "titrePrincipal": "Amazigh Tadaksahak Imezdaɣen",
+    "presentation": "Aneggam agi tiddud.<br><strong>Amid n tallalt d azemz n umid</strong> ad yessekred tadaksahak i medden akk, deg uselkim d uselkim n tzemre.<br><span style=\"color: #4682b4;\">Tanemmirt i umid nwen!</span>",
+    "botIntro": "🤖 Azul, nekk d Hamadine, bot n Tadaksahak.<br>Sut iyyid awal, ad s-awin igenni nniḍen!",
+    "footerText": "&copy; 2025 • Tadaksahak Imezdaɣen s <strong>Hamadine</strong>.<br><span style=\"font-size: 0.98em;\">Aneggam agi tiddud – amid n tallalt d azemz n umid i tawuri n tadaksahak!</span>",
     "precedent": "Aɣerbaz",
     "suivant": "Asnaw",
     "ecouter": "Semmes",
@@ -100,6 +140,10 @@
     "searchPlaceholder": "Nadi awal..."
   },
   "tr": {
+    "titrePrincipal": "Tadaksahak Çok Dilli Sözlük",
+    "presentation": "Bu proje geliştirilmektedir.<br><strong>Her türlü yardım veya destek, tüm Tadaksahak dilini dijital ve fiziksel olarak erişilebilir kılmak için ek bir motivasyondur.</strong><br><span style=\"color: #4682b4;\">İlginiz ve desteğiniz için teşekkürler!</span>",
+    "botIntro": "🤖 Merhaba, ben Tadaksahak botu Hamadine.<br>Bana bir kelime sor, hemen bulayım!",
+    "footerText": "&copy; 2025 • Çok Dilli Tadaksahak ve <strong>Hamadine</strong>.<br><span style=\"font-size: 0.98em;\">Geliştirilen bir proje – Tadaksahak dilinin canlılığını desteklemek için her öneri veya katkı memnuniyetle karşılanır!</span>",
     "precedent": "Önceki",
     "suivant": "Sonraki",
     "ecouter": "Dinle",
@@ -110,6 +154,10 @@
     "searchPlaceholder": "Bir kelime ara..."
   },
   "es": {
+    "titrePrincipal": "Diccionario Multilingüe Tadaksahak",
+    "presentation": "Este proyecto está en desarrollo.<br><strong>Cualquier ayuda o apoyo es una motivación extra</strong> para hacer que el idioma Tadaksahak sea accesible para todos, digital y físicamente.<br><span style=\"color: #4682b4;\">¡Gracias por su interés y apoyo!</span>",
+    "botIntro": "🤖 Hola, soy Hamadine el bot Tadaksahak.<br>¡Pídeme una palabra y te la encuentro rápido!",
+    "footerText": "&copy; 2025 • Tadaksahak Multilingüe con <strong>Hamadine</strong>.<br><span style=\"font-size: 0.98em;\">Proyecto en evolución – ¡toda sugerencia o contribución es bienvenida para apoyar la vitalidad del idioma Tadaksahak!</span>",
     "precedent": "Anterior",
     "suivant": "Siguiente",
     "ecouter": "Escuchar",
@@ -120,6 +168,10 @@
     "searchPlaceholder": "Buscar una palabra..."
   },
   "it": {
+    "titrePrincipal": "Dizionario multilingue Tadaksahak",
+    "presentation": "Questo progetto è in fase di sviluppo.<br><strong>Ogni aiuto o sostegno è una motivazione in più</strong> per rendere la lingua Tadaksahak accessibile a tutti, digitalmente e fisicamente.<br><span style=\"color: #4682b4;\">Grazie per il vostro interesse e supporto!</span>",
+    "botIntro": "🤖 Ciao, sono Hamadine il bot Tadaksahak.<br>Chiedimi una parola e la troverò subito per te!",
+    "footerText": "&copy; 2025 • Tadaksahak Multilingue con <strong>Hamadine</strong>.<br><span style=\"font-size: 0.98em;\">Progetto in evoluzione – ogni suggerimento o contributo è benvenuto per sostenere la vitalità della lingua Tadaksahak!</span>",
     "precedent": "Precedente",
     "suivant": "Successivo",
     "ecouter": "Ascolta",
@@ -130,6 +182,10 @@
     "searchPlaceholder": "Cerca una parola..."
   },
   "ha": {
+    "titrePrincipal": "Tadaksahak Mai Yare da yawa",
+    "presentation": "Wannan aikin yana ci gaba.<br><strong>Duk wani taimako ko goyon baya ƙarin ƙarfafawa ne</strong> domin Tadaksahak ta zama mai sauƙin samu ga kowa, ta yanar gizo da littafi.<br><span style=\"color: #4682b4;\">Na gode da sha'awar ku da goyon bayan ku!</span>",
+    "botIntro": "🤖 Sannu, ni ne Hamadine bot na Tadaksahak.<br>Tambaye ni kalma, zan samo maka!",
+    "footerText": "&copy; 2025 • Tadaksahak Mai Yare da yawa tare da <strong>Hamadine</strong>.<br><span style=\"font-size: 0.98em;\">Aikin yana ci gaba – duk wata shawara ko taimako ana maraba da shi domin raya harshen Tadaksahak!</span>",
     "precedent": "Na baya",
     "suivant": "Na gaba",
     "ecouter": "Saurara",
@@ -140,6 +196,10 @@
     "searchPlaceholder": "Nemo kalma..."
   },
   "sv": {
+    "titrePrincipal": "Tadaksahak flerspråkig ordbok",
+    "presentation": "Detta projekt är under utveckling.<br><strong>All hjälp eller stöd är extra motivation</strong> för att göra Tadaksahak-språket tillgängligt för alla, digitalt och fysiskt.<br><span style=\"color: #4682b4;\">Tack för ditt intresse och stöd!</span>",
+    "botIntro": "🤖 Hej, jag är Hamadine Tadaksahak-bot.<br>Be mig om ett ord så hittar jag det snabbt åt dig!",
+    "footerText": "&copy; 2025 • Flerspråkig Tadaksahak med <strong>Hamadine</strong>.<br><span style=\"font-size: 0.98em;\">Projekt under utveckling – alla förslag eller bidrag är välkomna för att stödja Tadaksahak-språkets vitalitet!</span>",
     "precedent": "Föregående",
     "suivant": "Nästa",
     "ecouter": "Spela",
@@ -150,6 +210,10 @@
     "searchPlaceholder": "Sök ett ord..."
   },
   "zh": {
+    "titrePrincipal": "塔达克萨哈克多语言词典",
+    "presentation": "该项目正在开发中。<br><strong>任何帮助或支持都是额外的动力</strong>，让塔达克萨哈克语对所有人开放，无论是数字还是实体。<br><span style=\"color: #4682b4;\">感谢您的关注和支持！</span>",
+    "botIntro": "🤖 你好，我是塔达克萨哈克机器人 Hamadine。<br>问我一个词，我会很快帮你找到！",
+    "footerText": "&copy; 2025 • 多语言塔达克萨哈克与 <strong>Hamadine</strong>。<br><span style=\"font-size: 0.98em;\">项目正在发展中——欢迎任何建议或贡献以支持塔达克萨哈克语的活力！</span>",
     "precedent": "上一页",
     "suivant": "下一页",
     "ecouter": "播放",
