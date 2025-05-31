@@ -1,99 +1,122 @@
- lang="fr">
+<!DOCTYPE html>
+<html lang="fr">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Dictionnaire Tadaksahak Multilingue</title>
+  <title id="pageTitle">Dictionnaire Tadaksahak Multilingue</title>
 
   <link rel="icon" href="images/idaksahak_round.png" type="image/png" />
   <meta name="description" content="Vocabulaire Tadaksahak en audio avec traduction multilingue." />
   <script src="https://cdn.jsdelivr.net/npm/fuse.js/dist/fuse.js"></script>
-  <script defer src="app.js"></script"></header>
+  <script defer src="app.js"></script>
+</head>
 
+<body>
   <main>
+    <!-- Logo -->
     <div class="logo" style="text-align: center;">
       <img src="images/idaksahak_round.png" alt="Logo Tadaksahak rond" width="120" />
     </div>
-    <section style="margin-bottom: 1.5rem; motivation supplémentaire</strong> pour rendre la langue Tadaksahak accessible à tous, sur le numérique et en version physique.<br>
+
+    <!-- Titre principal -->
+    <h1 id="titrePrincipal">Dictionnaire Tadaksahak Multilingue</h1>
+
+    <!-- Présentation dynamique -->
+    <section style="margin-bottom: 1.5rem;">
+      <p id="textePresentation">
+        Ce projet est en cours de développement.<br>
+        Toute aide ou soutien est une source de motivation supplémentaire pour rendre la langue Tadaksahak accessible à tous, sur le numérique et en version physique.<br>
         <span style="color: #4682b4;">Merci pour votre intérêt et votre soutien&nbsp;!</span>
       </p>
     </section>
 
+    <!-- Barre de recherche -->
     <section>
       <input
         id="searchBar"
         type="text"
-        placeholder="Chercher un mot dans toutes les langues..."
+        placeholder="Rechercher un mot..."
         oninput="rechercherMot()"
         aria-label="Zone de recherche"
-        style="width: 100%; max-width: 400px; margin: auto; display: blockmot" role="region" aria-live="polite">
-        <h2 id="motTexte">...</h2>
-        <p id="definition">...</p>
+        style="width: 100%; max-width: 400px; margin: auto; display: block;"
+      />
 
-        <div class="lang-switch" aria-label="Changer la langue des traductions" style="margin-bottom: 0.7em;">
-         ="Arabe">ع</button>
-          <button onclick="changerLangue('tz')" aria-label="Tamajaq">ⵜ</button>
-          <button onclick="changerLangue('tr')" aria-label="Turc">Tr</button>
-          <button onclick="changerLangue('da')" aria-label="D onclick="changerLangue('sv')" aria-label="Suédois">Sv</button>
-          <button onclick="changerLangue('ru')" aria-label="Russe">Ru</button>
-          <button onclick="changerLangue('zh')" aria-label="Chinois">Zh</button>
-          <button onclick="changerLangue('it')" aria-label="Italien">It</button>
-          <button onclick="changerLangue('bm')" aria-label="Bambara">Bm</button>
-        </div>
+      <h2 id="motTexte">...</h2>
+      <p id="definition">...</p>
 
-        <div class="lang-switch" aria-label="Changer la langue de l'interface">
-          <button onclick="button onclick="changerLangueInterface('ar')" aria-label="Interface arabe">🇸🇦</button>
-          <button onclick="changerLangueInterface('ru')" aria-label="Interface russe">🇷🇺</button>
-          <button onclick="changerLangueInterface('tz')" aria-label="Interface tamajaq">ⵜ</button>
-          <button onclick="changerLangueInterface('tr')" aria-label="Interface turc">🇹🇷</button>
-          <button onclick="changerLangueInterface('es')" aria-label="Interface espagnol">🇪🇸</button>
-          <button onclick="changerLangueInterface('zh')" aria-label🇳</button>
-          <button onclick="changerLangueInterface('nl')" aria-label="Interface néerlandais">🇳🇱</button>
-          <button onclick="changerLangueInterface('de')" aria-label="Interface allemand">🇩🇪</button>
-          <button onclick="changerLangueInterface('cs')" aria-label="Interface tchèque">🇨🇿</button>
-          <button onclick="changerLangueInterface('da')" aria-label="Interface danois">🇩🇰</button>
-          <button onclick="changerLangueInterface('it')" aria-label="Interface italien">🇮🇹</button>
-          <button onclick="changerLangueInterface('ha')" aria-label="Interface haoussa">🇳🇬</button>
-          <button onclick="changerLangueInterface('sv')" aria-label="Interface suédois">🇸🇪</button>
-          <button onclick="changerLangueInterface('bm')" aria-label="Interface bambara">🇲🇱</button>
-        </div>
+      <!-- Langue de traduction -->
+      <div class="lang-switch" aria-label="Changer la langue des traductions" style="margin-bottom: 0.7em;">
+        <button onclick="changerLangue('fr')">Fr</button>
+        <button onclick="changerLangue('en')">En</button>
+        <button onclick="changerLangue('ar')">ع</button>
+        <button onclick="changerLangue('ru')">Ru</button>
+        <button onclick="changerLangue('zh')">Zh</button>
+        <button onclick="changerLangue('it')">It</button>
+        <button onclick="changerLangue('es')">Es</button>
+        <button onclick="changerLangue('de')">De</button>
+      </div>
 
-        <p id="compteur">1 / ...</p>
+      <!-- Langue de l'interface -->
+      <div class="lang-switch" aria-label="Changer la langue de l'interface">
+        <button onclick="changerLangueInterface('fr')">🇫🇷</button>
+        <button onclick="changerLangueInterface('en')">🇬🇧</button>
+        <button onclick="changerLangueInterface('ar')">🇸🇦</button>
+        <button onclick="changerLangueInterface('ru')">🇷🇺</button>
+        <button onclick="changerLangueInterface('zh')">🇨🇳</button>
+        <button onclick="changerLangueInterface('it')">🇮🇹</button>
+        <button onclick="changerLangueInterface('es')">🇪🇸</button>
+        <button onclick="changerLangueInterface('de')">🇩🇪</button>
+      </div>
 
-        <div id="audioButtons">
-          <button id="btnPlay" onclick="jouerTadaksahak()" aria-label.5; cursor: not-allowed;">▶️ Écouter</button>
-          <button id="btnReplay" onclick="rejouerMot()" aria-label="Réécouter le mot" disabled style="opacity: 0.5; cursor: not-allowed;">⟳ Rejouer</button>
-          <button id="btnAuto" onclick="lectureAuto()" aria-label="Lecture automatique" disabled style="opacity: 0.5; cursor: not-allowed;">▶️ Lecture auto</button>
-        </div>
+      <!-- Compteur de mots -->
+      <p id="compteur">1 / ...</p>
 
-        <nav id="navigation" aria-label="Navigation entre les mots">
-          <button id="-label="Mot précédent">◀️ Précédent</button>
-          <button id="btnNext" onclick="motSuivant()" aria-label="Mot suivant">Suivant ▶️</button>
-        </nav>
-      </article>
+      <!-- Contrôles audio -->
+      <div id="audioButtons">
+        <button id="btnPlay" onclick="jouerTadaksahak()">▶️ Écouter</button>
+        <button id="btnReplay" onclick="rejouerMot()" disabled style="opacity: 0.5;">⟳ Réécouter</button>
+        <button id="btnAuto" onclick="lectureAuto()" disabled style="opacity: 0.5;">▶️ Lecture auto</button>
+      </div>
+
+      <!-- Navigation entre les mots -->
+      <nav id="navigation" aria-label="Navigation entre les mots">
+        <button id="btnPrev" onclick="motPrecedent()">◀️ Précédent</button>
+        <button id="btnNext" onclick="motSuivant()">Suivant ▶️</button>
+      </nav>
     </section>
 
+    <!-- Zone chat -->
     <section aria-labelledby="chat-title" style="margin-top: 2rem;">
       <h2 id="chat-title">Chat Tadaksahak</h2>
       <div id="chatWindow" class="chatbox" role="log" aria-live="polite"></div>
-      <div class="bot-intro" id="botIntro" style="5em 0; color: #0a5780; font-weight: bold;">
+
+      <div id="botIntro" style="margin: 1.5em 0; color: #0a5780; font-weight: bold;">
         🤖 Salut, je suis Hamadine le bot Tadaksahak.<br>
         Demandez-moi un mot et je vous le trouve rapidement&nbsp;!
       </div>
+
       <input
         type="text"
         id="chatInput"
-        placeholder="Tape ton mot ou ta question ici dans la langue de ton choix..."
+        placeholder="Tape ton mot ou ta question ici..."
         onkeydown="if(event.key==='Enter') envoyerMessage()"
         aria-label="Zone de saisie du chat"
         style="width: 100%; max-width: 500px;"
       />
-      <button id="btnEnvoyer" onclick="envoyerMessage()" aria-label="Envoyer le message">Envoyer</button>
+      <button id="btnEnvoyer" onclick="envoyerMessage()">Envoyer</button>
+    </section>
+
+    <!-- Section Histoire optionnelle -->
+    <section>
+      <h2 id="histoire-title">Section Histoire</h2>
+      <p id="histoire-message">Très prochainement, retrouvez ici des textes historiques sur la culture Tadaksahak !</p>
     </section>
   </main>
 
+  <!-- Pied de page -->
   <footer>
     <p id="footerText">
-      &copy; 2025 • Tadaksahak Multilingue avec <strong>H0.98em;">Projet en évolution – toute suggestion ou contribution est la bienvenue pour soutenir la vitalité de la langue Tadaksahak !</span>
+      © 2025 • Tadaksahak Multilingue avec Hamadine.
     </p>
   </footer>
 </body>
