@@ -160,12 +160,23 @@
   </footer>
 
   <script src="app.js" defer></script>
+  <!-- Bloc Service Worker pour mise à jour auto -->
   <script>
-    if ("serviceWorker" in navigator) {
-      navigator.serviceWorker
-        .register("./sw.js")
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('./sw.js')
         .then(reg => console.log("✅ Service Worker enregistré:", reg.scope))
         .catch(err => console.error("❌ Erreur Service Worker:", err));
+    
+      navigator.serviceWorker.addEventListener('message', event => {
+        if (event.data && event.data.type === 'NEW_VERSION_AVAILABLE') {
+          // Option 1 : Demande à l'utilisateur
+          if (confirm("Une nouvelle version de l'application est disponible. Voulez-vous l'actualiser maintenant ?")) {
+            window.location.reload(true);
+          }
+          // Option 2 : Recharge automatique sans demander (décommente pour l'activer)
+          // window.location.reload(true);
+        }
+      });
     }
   </script>
 </body>
