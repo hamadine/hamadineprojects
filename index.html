@@ -11,36 +11,46 @@
     .carte { margin-top: 2em; }
     .histoire-section { margin:2em 0; }
     .histoire-message { padding:2em; text-align:center; font-size:1.1em; color:#666; }
-    .lang-btns button, .lang-mot-btn { padding: 0.</h1>
+    .lang-btns button, .lang-mot-btn { padding: 0.3em 0.8em; margin-right:0.3em; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1 id="titre">Dictionnaire</h1>
     <div class="lang-btns" style="margin-bottom:1em;">
       <button onclick="changerLangueInterface('fr')">FR</button>
       <button onclick="changerLangueInterface('en')">EN</button>
-      <button onclick="changerLangueInterface('ar">DE</button>
+      <button onclick="changerLangueInterface('arRU</button>
+      <button onclick="changerLangueInterface('de')">DE</button>
       <button onclick="changerLangueInterface('es')">ES</button>
       <button onclick="changerLangueInterface('it')">IT</button>
       <button onclick="changerLangueInterface('nl')">NL</button>
-      <button onclick="changerLangueInterface('="changerLangueInterface('cs')">CS</button>
+      <button onclick="changerLangueInterface('da')">DA</button>
+      <button onclick="changerLangueInterface('cs')">CS</button>
     </div>
     <!-- Boutons pour la langue de traduction des mots, générés dynamiquement -->
     <div id="lang-mots-btns" style="margin-bottom:1em;"></div>
   </header>
 
   <main>
-    <="rechercherMot()" />
+    <input type="text" id="searchBar" placeholder="Rechercher un mot..." oninput="rechercherMot()" />
     <div class="nav-buttons">
       <button id="btnPrev" onclick="motPrecedent()">◀️ Précédent</button>
       <button id="btnNext" onclick="motSuivant()">Suivant ▶️</button>
     </div>
-    <div:#888;"></div>
+    <div id="motTexte" style="font-size:1.2em;font-weight:bold;"></div>
+    <div id="definition" style="margin-bottom:0.5em;"></div>
+    <div id="compteur" style="color:#888;"></div>
 
-    <section class="histoire-section">
-      <h2 id="histoire-title">Section Histoire</h2>
-      <div id="histoire-message" class="histoire-message">
-        Très prochainement, retrouvez ici des textes historiques sur la culture Tadaksahak !
-     ;margin-bottom:0.5em;">Discussion avec Hamadine</div>
+    <section class="histoire-section culture Tadaksahak !
+      </div>
+    </section>
+
+    <div class="carte">
+      <div id="chat-title" style="font-weight:bold;margin-bottom:0.5em;">Discussion avec Hamadine</div>
       <div id="chatWindow"></div>
       <div style="display:flex;gap:0.4em;">
-        <input type="text" id="chatInput" placeholder="Tape ton mot ou ta question ici..." style="flex: />
+        <input type="text" id="chatInput" placeholder="Tape ton mot ou ta question ici..." style="flex:1;" />
         <button id="btnEnvoyer" onclick="envoyerMessage()">Envoyer</button>
       </div>
     </div>
@@ -48,7 +58,11 @@
 
   <footer style="margin-top:2em;">
     <p id="footer-desc">
-      © 2025 • Tadaksahak Multilingue avec.jsdelivr.net/npm/fuse.js/dist/fuse.js"></script>
+      © 2025 • Tadaksahak Multilingue avec Hamadine.
+    </p>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/fuse.js/dist/fuse.js"></script>
   <script src="app.js"></script>
 </body>
-  </html>
+</html>
