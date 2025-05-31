@@ -7,24 +7,9 @@
 
   <link rel="icon" href="images/idaksahak_round.png" type="image/png" />
   <meta name="description" content="Vocabulaire Tadaksahak en audio avec traduction multilingue." />
+  <link rel="stylesheet" href="style.css" />
   <script src="https://cdn.jsdelivr.net/npm/fuse.js/dist/fuse.js"></script>
   <script defer src="app.js"></script>
-  <style>
-    body { font-family: sans-serif; background: #fafcff; color: #222; margin: 0; }
-    main { max-width: 700px; margin: auto; padding: 1.5em 1em 2em 1em; background: #fff; min-height: 90vh; }
-    .logo img { border-radius: 50%; }
-    .lang-switch button { margin: 0 2px 4px 2px; padding: 0.3em 0.8em; border-radius: 7px; border: 1px solid #c0c0c0; background: #f7f7fa; cursor: pointer;}
-    .lang-switch button:focus { outline: 2px solid #4682b4; }
-    #audioButtons button { margin: 0 4px; }
-    #navigation button { margin: 0 4px; }
-    .chatbox { min-height: 60px; border: 1px solid #cfe2f3; background: #f7fbfe; border-radius: 7px; margin-bottom: 1em; padding: 0.6em; }
-    footer { background: #e9f1fa; margin-top: 2em; padding: 1.5em 0 1em 0; text-align: center; }
-    footer a { color: #0a5780; }
-    @media (max-width: 600px) {
-      main { padding: 0.5em; }
-      #chatInput { max-width: 100%; }
-    }
-  </style>
 </head>
 
 <body>
@@ -63,7 +48,7 @@
       <h2 id="motTexte" style="margin-top:1.2em;">...</h2>
       <p id="definition">...</p>
 
-      <!-- Langue de traduction (16 langues) -->
+      <!-- Langue de traduction -->
       <div class="lang-switch" aria-label="Changer la langue des traductions" style="margin-bottom: 0.7em; text-align:center;">
         <button onclick="changerLangue('fr')">Fr</button>
         <button onclick="changerLangue('en')">En</button>
@@ -83,7 +68,7 @@
         <button onclick="changerLangue('sw')">Sw</button>
       </div>
 
-      <!-- Langue de l'interface (16 langues avec drapeaux ou codes) -->
+      <!-- Langue de l'interface -->
       <div class="lang-switch" aria-label="Changer la langue de l'interface" style="text-align:center;">
         <button onclick="changerLangueInterface('fr')">🇫🇷</button>
         <button onclick="changerLangueInterface('en')">🇬🇧</button>
@@ -174,11 +159,7 @@
           <img src="images/whatsapp.png" alt="WhatsApp" style="height:1.1em;vertical-align:middle; margin-right:0.3em;">+227 86762903
         </a>
       </p>
-      <!-- Section liens URL -->
-      <div id="liensURL" style="margin-top:0.7em;">
-        <!-- Exemples de liens partenaires -->
-        <!-- <a href="https://tadaksahak.org" target="_blank">Tadaksahak.org</a> -->
-      </div>
+      <div id="liensURL" style="margin-top:0.7em;"></div>
     </section>
     <p id="footerText" style="margin-top:1.5em;">
       © 2025 • Tadaksahak Multilingue avec Hamadine.
