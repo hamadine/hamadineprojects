@@ -9,29 +9,48 @@
   <meta name="description" content="Vocabulaire Tadaksahak en audio avec traduction multilingue." />
   <script src="https://cdn.jsdelivr.net/npm/fuse.js/dist/fuse.js"></script>
   <script defer src="app.js"></script>
+  <style>
+    body { font-family: sans-serif; background: #fafcff; color: #222; margin: 0; }
+    main { max-width: 700px; margin: auto; padding: 1.5em 1em 2em 1em; background: #fff; min-height: 90vh; }
+    .logo img { border-radius: 50%; }
+    .lang-switch button { margin: 0 2px 4px 2px; padding: 0.3em 0.8em; border-radius: 7px; border: 1px solid #c0c0c0; background: #f7f7fa; cursor: pointer;}
+    .lang-switch button:focus { outline: 2px solid #4682b4; }
+    #audioButtons button { margin: 0 4px; }
+    #navigation button { margin: 0 4px; }
+    .chatbox { min-height: 60px; border: 1px solid #cfe2f3; background: #f7fbfe; border-radius: 7px; margin-bottom: 1em; padding: 0.6em; }
+    footer { background: #e9f1fa; margin-top: 2em; padding: 1.5em 0 1em 0; text-align: center; }
+    footer a { color: #0a5780; }
+    @media (max-width: 600px) {
+      main { padding: 0.5em; }
+      #chatInput { max-width: 100%; }
+    }
+  </style>
 </head>
 
 <body>
   <main>
     <!-- Logo -->
-    <div class="logo" style="text-align: center;">
+    <div class="logo" style="text-align: center; margin-bottom: 1em;">
       <img src="images/idaksahak_round.png" alt="Logo Tadaksahak rond" width="120" />
     </div>
 
-    <!-- Titre principal -->
-    <h1 id="titrePrincipal">Dictionnaire Tadaksahak Multilingue</h1>
-
-    <!-- Présentation dynamique -->
-    <section style="margin-bottom: 1.5rem;">
-      <p id="textePresentation">
-        Ce projet est en cours de développement.<br>
-        Toute aide ou soutien est une source de motivation supplémentaire pour rendre la langue Tadaksahak accessible à tous, sur le numérique et en version physique.<br>
-        <span style="color: #4682b4;">Merci pour votre intérêt et votre soutien&nbsp;!</span>
+    <!-- Présentation dynamique longue -->
+    <section style="margin-bottom: 2em;">
+      <p id="textePresentation" style="font-size: 1.03em;">
+        Ce projet est bien plus qu’un simple développement : c’est une véritable aventure dédiée à la valorisation de la langue Tadaksahak.<br>
+        Chaque aide, chaque soutien, même le plus modeste, est une précieuse source d’inspiration et de motivation pour nous permettre de rendre cette langue unique accessible à tous, aussi bien sur les plateformes numériques que dans des supports physiques.<br><br>
+        Votre intérêt et votre soutien sont essentiels pour faire vivre et grandir ce projet. Ensemble, contribuons à préserver et diffuser la richesse du Tadaksahak, pour aujourd’hui et pour les générations futures. Merci de faire partie de cette belle aventure !<br><br>
+        <strong>Hamadine AG MOCTAR</strong>
       </p>
     </section>
 
+    <!-- Titre principal -->
+    <h1 id="titrePrincipal" style="text-align:center; font-size:2.1em; margin-bottom:0.7em;">
+      Dictionnaire Tadaksahak Multilingue
+    </h1>
+
     <!-- Barre de recherche -->
-    <section>
+    <section style="margin-bottom: 2em;">
       <input
         id="searchBar"
         type="text"
@@ -41,11 +60,11 @@
         style="width: 100%; max-width: 400px; margin: auto; display: block;"
       />
 
-      <h2 id="motTexte">...</h2>
+      <h2 id="motTexte" style="margin-top:1.2em;">...</h2>
       <p id="definition">...</p>
 
-      <!-- Langue de traduction -->
-      <div class="lang-switch" aria-label="Changer la langue des traductions" style="margin-bottom: 0.7em;">
+      <!-- Langue de traduction (16 langues) -->
+      <div class="lang-switch" aria-label="Changer la langue des traductions" style="margin-bottom: 0.7em; text-align:center;">
         <button onclick="changerLangue('fr')">Fr</button>
         <button onclick="changerLangue('en')">En</button>
         <button onclick="changerLangue('ar')">ع</button>
@@ -54,10 +73,18 @@
         <button onclick="changerLangue('it')">It</button>
         <button onclick="changerLangue('es')">Es</button>
         <button onclick="changerLangue('de')">De</button>
+        <button onclick="changerLangue('pt')">Pt</button>
+        <button onclick="changerLangue('tr')">Tr</button>
+        <button onclick="changerLangue('ja')">Ja</button>
+        <button onclick="changerLangue('ha')">Ha</button>
+        <button onclick="changerLangue('taq')">Taq</button>
+        <button onclick="changerLangue('tmh')">Tmh</button>
+        <button onclick="changerLangue('ber')">Ber</button>
+        <button onclick="changerLangue('sw')">Sw</button>
       </div>
 
-      <!-- Langue de l'interface -->
-      <div class="lang-switch" aria-label="Changer la langue de l'interface">
+      <!-- Langue de l'interface (16 langues avec drapeaux ou codes) -->
+      <div class="lang-switch" aria-label="Changer la langue de l'interface" style="text-align:center;">
         <button onclick="changerLangueInterface('fr')">🇫🇷</button>
         <button onclick="changerLangueInterface('en')">🇬🇧</button>
         <button onclick="changerLangueInterface('ar')">🇸🇦</button>
@@ -66,20 +93,28 @@
         <button onclick="changerLangueInterface('it')">🇮🇹</button>
         <button onclick="changerLangueInterface('es')">🇪🇸</button>
         <button onclick="changerLangueInterface('de')">🇩🇪</button>
+        <button onclick="changerLangueInterface('pt')">🇵🇹</button>
+        <button onclick="changerLangueInterface('tr')">🇹🇷</button>
+        <button onclick="changerLangueInterface('ja')">🇯🇵</button>
+        <button onclick="changerLangueInterface('ha')">Ha</button>
+        <button onclick="changerLangueInterface('taq')">Taq</button>
+        <button onclick="changerLangueInterface('tmh')">Tmh</button>
+        <button onclick="changerLangueInterface('ber')">Ber</button>
+        <button onclick="changerLangueInterface('sw')">Sw</button>
       </div>
 
       <!-- Compteur de mots -->
-      <p id="compteur">1 / ...</p>
+      <p id="compteur" style="text-align:center;">1 / ...</p>
 
       <!-- Contrôles audio -->
-      <div id="audioButtons">
+      <div id="audioButtons" style="text-align:center;">
         <button id="btnPlay" onclick="jouerTadaksahak()">▶️ Écouter</button>
         <button id="btnReplay" onclick="rejouerMot()" disabled style="opacity: 0.5;">⟳ Réécouter</button>
         <button id="btnAuto" onclick="lectureAuto()" disabled style="opacity: 0.5;">▶️ Lecture auto</button>
       </div>
 
       <!-- Navigation entre les mots -->
-      <nav id="navigation" aria-label="Navigation entre les mots">
+      <nav id="navigation" aria-label="Navigation entre les mots" style="text-align:center; margin-top:0.7em;">
         <button id="btnPrev" onclick="motPrecedent()">◀️ Précédent</button>
         <button id="btnNext" onclick="motSuivant()">Suivant ▶️</button>
       </nav>
@@ -106,16 +141,46 @@
       <button id="btnEnvoyer" onclick="envoyerMessage()">Envoyer</button>
     </section>
 
-    <!-- Section Histoire optionnelle -->
+    <!-- Section Histoire -->
     <section>
       <h2 id="histoire-title">Section Histoire</h2>
-      <p id="histoire-message">Très prochainement, retrouvez ici des textes historiques sur la culture Tadaksahak !</p>
+      <p id="histoire-message">
+        Très bientôt, découvrez ici des textes historiques captivants qui vous plongeront au cœur de la culture Tadaksahak.
+      </p>
+    </section>
+
+    <!-- Section Archives -->
+    <section>
+      <h2 id="archives-title">Section Archives</h2>
+      <p id="archives-message">
+        Nous mettrons prochainement à votre disposition des documents anciens précieux, témoins de l’histoire de la communauté.
+      </p>
     </section>
   </main>
 
-  <!-- Pied de page -->
+  <!-- Pied de page enrichi -->
   <footer>
-    <p id="footerText">
+    <section style="margin-bottom: 1em;">
+      <p id="footerContrib" style="max-width: 720px; margin: auto;">
+        Peu importe la forme ou la taille, chaque contribution — documents, témoignages, recherches ou idées — est précieuse pour enrichir notre projet.<br>
+        Nous recherchons aussi des sponsors et partenaires engagés pour soutenir la valorisation de la langue et culture Tadaksahak.<br>
+        Ensemble, faisons grandir ce patrimoine unique et transmettons-le aux générations futures ; contactez-nous pour participer ou soutenir cette initiative.
+      </p>
+      <p style="margin:0.7em 0;">
+        <a href="mailto:hamadineagmoctar@gmail.com" style="text-decoration:none; margin-right:1.5em;">
+          <img src="images/gmail.png" alt="Gmail" style="height:1.1em;vertical-align:middle; margin-right:0.3em;">hamadineagmoctar@gmail.com
+        </a>
+        <a href="https://wa.me/22786762903" target="_blank" style="text-decoration:none;">
+          <img src="images/whatsapp.png" alt="WhatsApp" style="height:1.1em;vertical-align:middle; margin-right:0.3em;">+227 86762903
+        </a>
+      </p>
+      <!-- Section liens URL -->
+      <div id="liensURL" style="margin-top:0.7em;">
+        <!-- Exemples de liens partenaires -->
+        <!-- <a href="https://tadaksahak.org" target="_blank">Tadaksahak.org</a> -->
+      </div>
+    </section>
+    <p id="footerText" style="margin-top:1.5em;">
       © 2025 • Tadaksahak Multilingue avec Hamadine.
     </p>
   </footer>
