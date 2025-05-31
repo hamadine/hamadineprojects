@@ -6,6 +6,7 @@ let interfaceTrads = {};
 let langueCourante = "fr"; // Langue de traduction des mots (si tu veux ajouter ce bouton plus tard)
 let langueInterface = "fr"; // Langue de l'interface
 let motsInconnus = JSON.parse(localStorage.getItem('motsInconnus') || '[]');
+let fuse; // Pour Fuse.js (recherche fuzzy)
 
 // --- Chargement des traductions d'interface ---
 fetch("./data/interface-langue.json")
@@ -15,12 +16,22 @@ fetch("./data/interface-langue.json")
     appliquerTraductionsInterface();
   });
 
-// --- Chargement des mots ---
+// --- Chargement des mots + configuration Fuse ---
 fetch("./data/mots.json")
   .then(res => res.json())
   .then(data => {
     mots = data;
     motsFiltres = data;
+    // Configuration de Fuse.js pour recherche fuzzy sur toutes les langues et exemples
+    fuse = new Fuse(mots, {
+      keys: [
+        "mot", "fr", "en", "ar", "ru", "de", "es", "it", "nl", "da", "cs",
+        "exemple", "exemples"
+      ],
+      threshold: 0.4, // plus bas = plus strict, plus haut = plus tolérant
+      ignoreLocation: true,
+      minMatchCharLength: 2
+    });
     afficherMot();
   });
 
@@ -65,6 +76,9 @@ function appliquerTraductionsInterface() {
   } else {
     document.body.dir = "ltr";
   }
+
+  // Titre de l'onglet navigateur
+  document.title = t.titrePrincipal;
 }
 
 function changerLangue(langue) {
@@ -97,11 +111,17 @@ function rechercherMot() {
     afficherMot();
     return;
   }
-  motsFiltres = mots.filter(m =>
-    Object.values(m).some(val =>
-      typeof val === 'string' && val.toLowerCase().includes(q)
-    )
-  );
+  // Utilisation de Fuse pour la recherche floue dans la liste principale
+  if (fuse) {
+    const results = fuse.search(q);
+    motsFiltres = results.map(r => r.item);
+  } else {
+    motsFiltres = mots.filter(m =>
+      Object.values(m).some(val =>
+        typeof val === 'string' && val.toLowerCase().includes(q)
+      )
+    );
+  }
   index = 0;
   afficherMot();
 }
@@ -112,21 +132,32 @@ function envoyerMessage() {
   const message = input.value.trim();
   if (!message) return;
   const t = interfaceTrads[langueInterface] || interfaceTrads["fr"] || {};
+  const chatWindow = document.getElementById("chatWindow");
+
+  // Affiche le message utilisateur
   const div = document.createElement("div");
   div.textContent = (t.utilisateur || "Vous") + " : " + message;
   div.style.fontWeight = "bold";
-  document.getElementById("chatWindow").appendChild(div);
+  chatWindow.appendChild(div);
 
-  // Vérifier si le mot/phrase existe dans le dictionnaire
-  let motTrouve = mots.some(m =>
-    Object.values(m).some(val =>
-      typeof val === 'string' && val.toLowerCase() === message.toLowerCase()
-    )
-  );
+  // Recherche fuzzy dans le dictionnaire
+  let result = (fuse && message) ? fuse.search(message) : [];
 
   const bot = document.createElement("div");
-  if (motTrouve) {
-    bot.textContent = t.reponseBotTrouve || "Hamadine : Mot trouvé dans le dictionnaire !";
+  if (result.length > 0) {
+    const motObj = result[0].item;
+    let rep = `<b>${motObj.mot}</b> : ${motObj[langueCourante] || ""}`;
+
+    // Exemples : supporte "exemple" (string) et "exemples" (array)
+    if (motObj.exemples && Array.isArray(motObj.exemples) && motObj.exemples.length) {
+      rep += `<br><i>${t.exemple || "Exemple(s)"} :</i><ul>`;
+      rep += motObj.exemples.map(ex => `<li>${ex}</li>`).join("");
+      rep += "</ul>";
+    } else if (motObj.exemple) {
+      rep += `<br><i>${t.exemple || "Exemple"} :</i> ${motObj.exemple}`;
+    }
+
+    bot.innerHTML = rep;
   } else {
     bot.textContent = t.reponseBotInconnu || "Hamadine : Merci ! Je travaille d’arrache-pied pour rendre plus de mots disponibles. Je viens d’apprendre ce mot de votre part.";
     if (!motsInconnus.includes(message.toLowerCase())) {
@@ -134,9 +165,9 @@ function envoyerMessage() {
       localStorage.setItem('motsInconnus', JSON.stringify(motsInconnus));
     }
   }
-  document.getElementById("chatWindow").appendChild(bot);
+  chatWindow.appendChild(bot);
 
-  document.getElementById("chatWindow").scrollTop = document.getElementById("chatWindow").scrollHeight;
+  chatWindow.scrollTop = chatWindow.scrollHeight;
   input.value = "";
   input.focus();
 }
