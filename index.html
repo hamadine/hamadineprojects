@@ -3,8 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Dictionnaire Tadaksahak Multilingue</title>
-
+  <title id="titrePrincipal">Dictionnaire Tadaksahak Multilingue</title>
   <link rel="icon" href="images/idaksahak_round.png" type="image/png" />
   <meta name="description" content="Vocabulaire Tadaksahak en audio avec traduction multilingue." />
   <meta property="og:title" content="Dictionnaire Tadaksahak Multilingue" />
@@ -49,7 +48,7 @@
       <h1 id="titrePrincipal">Dictionnaire Tadaksahak Multilingue</h1>
       <p id="presentation" class="presentation">
         Ce projet est en cours de développement.<br>
-        <strong>Toute aide ou soutien est une source de motivation supplémentaire</strong> pour rendre la langue Tadaksahak accessible à tous, sur le numérique et en version physique.<br>
+        Toute aide ou soutien est une source de motivation supplémentaire pour rendre la langue Tadaksahak accessible à tous, sur le numérique et en version physique.<br>
         <span style="color: #4682b4;">Merci pour votre intérêt et votre soutien&nbsp;!</span>
       </p>
     </section>
@@ -58,7 +57,7 @@
       <input
         id="searchBar"
         type="text"
-        placeholder="Chercher un mot dans toutes les langues..."
+        placeholder="Rechercher un mot..."
         oninput="rechercherMot()"
         aria-label="Zone de recherche"
         style="width: 100%; max-width: 400px; margin: auto; display: block;"
@@ -121,8 +120,21 @@
       </article>
     </section>
 
+    <!-- Bannière d'installation PWA dynamique -->
+    <div id="installBanner" style="display:none; text-align:center; margin:1em 0;">
+      <span id="installBannerText">
+        Vous pouvez ajouter ce dictionnaire Tadaksahak à votre écran d'accueil pour l'utiliser comme une application !
+      </span>
+      <button id="installPWA" onclick="installerPWA()">Ajouter</button>
+      <button onclick="document.getElementById('installBanner').style.display='none';">✖</button>
+      <div id="instructionsIOS" style="font-size:0.9em; color:#4682b4; display:none;">
+        Sur iPhone/iPad : ouvrez le menu de partage de Safari puis choisissez « Sur l’écran d’accueil »
+      </div>
+    </div>
+
+    <!-- Section Chat / Bot -->
     <section aria-labelledby="chat-title" style="margin-top: 2rem;">
-      <h2 id="chat-title">Chat Tadaksahak</h2>
+      <h2 id="chat-title">Discussion avec Hamadine</h2>
       <div id="chatWindow" class="chatbox" role="log" aria-live="polite"></div>
       <div class="bot-intro" id="botIntro" style="padding: 0.5em 0; color: #0a5780; font-weight: bold;">
         🤖 Salut, je suis Hamadine le bot Tadaksahak.<br>
