@@ -6,6 +6,7 @@ let interfaceTrads = {};
 let langueCourante = "fr"; // Langue de traduction des mots
 let langueInterface = "fr"; // Langue de l'interface
 let deferredPrompt = null;
+let motsInconnus = JSON.parse(localStorage.getItem('motsInconnus') || '[]');
 
 // --- Chargement des traductions d'interface ---
 fetch("./data/interface-langue.json")
@@ -91,6 +92,7 @@ function appliquerTraductionsInterface() {
     const el = document.getElementById(id);
     if (el) el.innerText = txt;
   };
+  setText("titre", t.titre || "Dictionnaire Tadaksahak Multilingue"); // Ajout du titre !
   setText("btnPrev", "◀️ " + (t.precedent || "Précédent"));
   setText("btnNext", (t.suivant || "Suivant") + " ▶️");
   setText("btnPlay", "▶️ " + (t.ecouter || "Écouter"));
@@ -160,8 +162,23 @@ function envoyerMessage() {
   div.style.fontWeight = "bold";
   document.getElementById("chatWindow").appendChild(div);
 
+  // Vérifier si le mot/phrase existe dans le dictionnaire
+  let motTrouve = mots.some(m =>
+    Object.values(m).some(val =>
+      typeof val === 'string' && val.toLowerCase() === message.toLowerCase()
+    )
+  );
+
   const bot = document.createElement("div");
-  bot.textContent = t.reponseBot || "Hamadine : Salut, je vous entends, mais ma base lexicale est encore en cours.";
+  if (motTrouve) {
+    bot.textContent = t.reponseBot || "Hamadine : Mot trouvé dans le dictionnaire !";
+  } else {
+    bot.textContent = "Hamadine : Merci ! Je travaille d’arrache-pied pour rendre plus de mots disponibles. Je viens d’apprendre ce mot de votre part.";
+    if (!motsInconnus.includes(message.toLowerCase())) {
+      motsInconnus.push(message.toLowerCase());
+      localStorage.setItem('motsInconnus', JSON.stringify(motsInconnus));
+    }
+  }
   document.getElementById("chatWindow").appendChild(bot);
 
   document.getElementById("chatWindow").scrollTop = document.getElementById("chatWindow").scrollHeight;
@@ -222,3 +239,9 @@ function showUpdateBanner() {
     }
   };
 }
+
+// --- (Optionnel) Voir les mots inconnus (pour admin) ---
+function afficherMotsInconnus() {
+  alert("Mots inconnus rapportés :\n" + motsInconnus.join(", "));
+}
+window.afficherMotsInconnus = afficherMotsInconnus;
