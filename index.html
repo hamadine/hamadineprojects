@@ -7,37 +7,9 @@
 
   <link rel="icon" href="images/idaksahak_round.png" type="image/png" />
   <meta name="description" content="Vocabulaire Tadaksahak en audio avec traduction multilingue." />
-  <meta property="og:title" content="Dictionnaire Tadaksahak Multilingue" />
-  <meta property="og:image" content="images/idaksahak_square_512.png" />
-  <link rel="stylesheet" href="style.css" />
-
-  <script>
-    const lang = navigator.language?.split("-")[0] || "fr";
-    const manifestURL = {
-      en: "manifest.en.json",
-      ar: "manifest.ar.json",
-      ru: "manifest.ru.json",
-      ha: "manifest.ha.json",
-      nl: "manifest.nl.json",
-      sv: "manifest.sv.json",
-      cs: "manifest.cs.json",
-      zh: "manifest.zh.json",
-      de: "manifest.de.json",
-      tr: "manifest.tr.json",
-      da: "manifest.da.json",
-      it: "manifest.it.json",
-      es: "manifest.es.json",
-      tz: "manifest.tz.json",
-      bm: "manifest.bm.json"
-    }[lang] || "manifest.json";
-
-    const link = document.createElement('link');
-    link.rel = 'manifest';
-    link.href = "./public/" + manifestURL;
-    document.head.appendChild(link);
-  </script>
+ ="https://cdn.jsdelivr.net/npm/fuse.js/dist/fuse.js"></script>
+  <script defer src="app.js"></script>
 </head>
-
 <body>
   <header class="logo" aria-label="Logo Tadaksahak"></header>
 
@@ -46,10 +18,7 @@
       <img src="images/idaksahak_round.png" alt="Logo Tadaksahak rond" width="120" />
     </div>
     <section style="margin-bottom: 1.5rem; text-align:center;">
-      <h1 id="titrePrincipal">Dictionnaire Tadaksahak Multilingue</h1>
-      <p id="presentation" class="presentation">
-        Ce projet est en cours de développement.<br>
-        <strong>Toute aide ou soutien est une source de motivation supplémentaire</strong> pour rendre la langue Tadaksahak accessible à tous, sur le numérique et en version physique.<br>
+      <h1 id="titrePrincipal">Dictionnaire Tadaks Tadaksahak accessible à tous, sur le numérique et en version physique.<br>
         <span style="color: #4682b4;">Merci pour votre intérêt et votre soutien&nbsp;!</span>
       </p>
     </section>
@@ -80,8 +49,7 @@
           <button onclick="changerLangue('sv')" aria-label="Suédois">Sv</button>
           <button onclick="changerLangue('ru')" aria-label="Russe">Ru</button>
           <button onclick="changerLangue('zh')" aria-label="Chinois">Zh</button>
-          <button onclick="changerLangue('cs')" aria-label="Tchèque">Cs</button>
-          <button onclick="changerLangue('ha')" aria-label="Haoussa">Ha</button>
+')" aria-label="Haoussa">Ha</button>
           <button onclick="changerLangue('es')" aria-label="Espagnol">Es</button>
           <button onclick="changerLangue('it')" aria-label="Italien">It</button>
           <button onclick="changerLangue('bm')" aria-label="Bambara">Bm</button>
@@ -121,13 +89,9 @@
       </article>
     </section>
 
-    <section aria-labelledby="chat-title" style="margin-top: 2rem;">
-      <h2 id="chat-title">Chat Tadaksahak</h2>
+    <section aria-labelledby="chat-title" style="margin-top: 2">Chat Tadaksahak</h2>
       <div id="chatWindow" class="chatbox" role="log" aria-live="polite"></div>
-      <div class="bot-intro" id="botIntro" style="padding: 0.5em 0; color: #0a5780; font-weight: bold;">
-        🤖 Salut, je suis Hamadine le bot Tadaksahak.<br>
-        Demandez-moi un mot et je vous le trouve rapidement&nbsp;!
-      </div>
+      <div class="bot-intro" id="botIntro" style="padding: 0.5em 0; color: #0a5780; font </div>
       <input
         type="text"
         id="chatInput"
@@ -136,25 +100,15 @@
         aria-label="Zone de saisie du chat"
         style="width: 100%; max-width: 500px;"
       />
-      <button id="btnEnvoyer" onclick="envoyerMessage()" aria-label="Envoyer le message">Envoyer</button>
+      <button id="btnEnvoyer" onclick="envoyerMessage()" ariaEnvoyer</button>
     </section>
   </main>
 
   <footer>
     <p id="footerText">
       &copy; 2025 • Tadaksahak Multilingue avec <strong>Hamadine</strong>.<br>
-      <span style="font-size: 0.98em;">Projet en évolution – toute suggestion ou contribution est la bienvenue pour soutenir la vitalité de la langue Tadaksahak !</span>
+      <span style="font-size: 0.98em;"> la langue Tadaksahak !</span>
     </p>
   </footer>
-
-  <script src="app.js" defer></script>
-  <script>
-    if ("serviceWorker" in navigator) {
-      navigator.serviceWorker
-        .register("./sw.js")
-        .then(reg => console.log("✅ Service Worker enregistré:", reg.scope))
-        .catch(err => console.error("❌ Erreur Service Worker:", err));
-    }
-  </script>
 </body>
-</html>
+      </html>
