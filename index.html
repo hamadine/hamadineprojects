@@ -17,7 +17,6 @@
 <body>
   <header>
     <h1 id="titre">Dictionnaire Tadaksahak Multilingue</h1>
-    <!-- Sélecteur de langue d’interface -->
     <div class="lang-btns" style="margin-bottom:1em;">
       <button onclick="changerLangueInterface('fr')">FR</button>
       <button onclick="changerLangueInterface('en')">EN</button>
@@ -27,41 +26,26 @@
       <button onclick="changerLangueInterface('es')">ES</button>
       <button onclick="changerLangueInterface('it')">IT</button>
       <button onclick="changerLangueInterface('nl')">NL</button>
-      <button onclick="changerLangueInterface('da')">DA</button>
-      <button onclick="changerLangueInterface('cs')">CS</button>
+      <button onclick="changerLangueInterface('dabutton onclick="changerLangueInterface('cs')">CS</button>
     </div>
   </header>
 
   <main>
-    <!-- Barre de recherche -->
     <input type="text" id="searchBar" placeholder="Rechercher un mot..." oninput="rechercherMot()" />
-
-    <!-- Boutons pour navigation -->
     <div class="nav-buttons">
-      <button id="btnPrev" onclick="motPrecedent()">◀️ Précédent</button>
+      <button id◀️ Précédent</button>
       <button id="btnNext" onclick="motSuivant()">Suivant ▶️</button>
     </div>
-
-    <!-- Zone affichage mot -->
     <div id="motTexte" style="font-size:1.2em;font-weight:bold;"></div>
-    <div id="definition" style="margin-bottom:0.5em;"></div>
-    <div id="compteur" style="color:#888;"></div>
-
-    <!-- Section Histoire -->
-    <section class="histoire-section">
+    <div id="definition" style <section class="histoire-section">
       <h2 id="histoire-title">Section Histoire</h2>
       <div id="histoire-message" class="histoire-message">
         Très prochainement, retrouvez ici des textes historiques sur la culture Tadaksahak !
       </div>
-    </section>
-
-    <!-- Chat -->
-    <div class="carte">
-      <div id="chat-title" style="font-weight:bold;margin-bottom:0.5em;">Discussion avec Hamadine</div>
+    </section;margin-bottom:0.5em;">Discussion avec Hamadine</div>
       <div id="chatWindow"></div>
       <div style="display:flex;gap:0.4em;">
-        <input type="text" id="chatInput" placeholder="Tape ton mot ou ta question ici..." style="flex:1;" />
-        <button id="btnEnvoyer" onclick="envoyerMessage()">Envoyer</button>
+        <input type="text" id="chatInput" placeholder="Tape ton mot ou ta question ici..." style="flex:()">Envoyer</button>
       </div>
     </div>
   </main>
@@ -72,166 +56,6 @@
     </p>
   </footer>
 
-  <script>
-    // Fichier de traduction centralisé (extrait pour 10 langues)
-    const interfaceTrads = {
-      "fr": {
-        "titrePrincipal": "Dictionnaire Tadaksahak Multilingue",
-        "footerText": "© 2025 • Tadaksahak Multilingue avec Hamadine.",
-        "precedent": "Précédent",
-        "suivant": "Suivant",
-        "chatTitre": "Discussion avec Hamadine",
-        "envoyer": "Envoyer",
-        "searchPlaceholder": "Rechercher un mot...",
-        "histoireTitle": "Section Histoire",
-        "histoireBientot": "Très prochainement, retrouvez ici des textes historiques sur la culture Tadaksahak !",
-        "placeholderChat": "Tape ton mot ou ta question ici..."
-      },
-      "en": {
-        "titrePrincipal": "Tadaksahak Multilingual Dictionary",
-        "footerText": "© 2025 • Tadaksahak Multilingual with Hamadine.",
-        "precedent": "Previous",
-        "suivant": "Next",
-        "chatTitre": "Chat with Hamadine",
-        "envoyer": "Send",
-        "searchPlaceholder": "Search a word...",
-        "histoireTitle": "History Section",
-        "histoireBientot": "Coming soon: discover historical texts about Tadaksahak culture right here!",
-        "placeholderChat": "Type your word or question here..."
-      },
-      "ar": {
-        "titrePrincipal": "قاموس تاداكساهاك متعدد اللغات",
-        "footerText": "© 2025 • تاداكساهاك متعدد اللغات مع حمادين.",
-        "precedent": "السابق",
-        "suivant": "التالي",
-        "chatTitre": "الدردشة مع حمدين",
-        "envoyer": "إرسال",
-        "searchPlaceholder": "ابحث عن كلمة...",
-        "histoireTitle": "قسم التاريخ",
-        "histoireBientot": "قريباً جداً، ستجدون هنا نصوصاً تاريخية عن ثقافة تاداكساهاك!",
-        "placeholderChat": "اكتب كلمتك أو سؤالك هنا..."
-      },
-      "ru": {
-        "titrePrincipal": "Многоязычный словарь тадаксахак",
-        "footerText": "© 2025 • Многоязычный тадаксахак с Хамадином.",
-        "precedent": "Назад",
-        "suivant": "Вперёд",
-        "chatTitre": "Чат с Хамадин",
-        "envoyer": "Отправить",
-        "searchPlaceholder": "Поиск слова...",
-        "histoireTitle": "Раздел История",
-        "histoireBientot": "Скоро здесь появятся исторические тексты о культуре тадаксахак!",
-        "placeholderChat": "Введите слово или вопрос здесь..."
-      },
-      "de": {
-        "titrePrincipal": "Mehrsprachiges Tadaksahak-Wörterbuch",
-        "footerText": "© 2025 • Mehrsprachiges Tadaksahak mit Hamadine.",
-        "precedent": "Zurück",
-        "suivant": "Weiter",
-        "chatTitre": "Chat mit Hamadine",
-        "envoyer": "Senden",
-        "searchPlaceholder": "Wort suchen...",
-        "histoireTitle": "Geschichtsbereich",
-        "histoireBientot": "In Kürze finden Sie hier historische Texte über die Tadaksahak-Kultur!",
-        "placeholderChat": "Geben Sie hier Ihr Wort oder Ihre Frage ein..."
-      },
-      "es": {
-        "titrePrincipal": "Diccionario Multilingüe Tadaksahak",
-        "footerText": "© 2025 • Tadaksahak Multilingüe con Hamadine.",
-        "precedent": "Anterior",
-        "suivant": "Siguiente",
-        "chatTitre": "Chat con Hamadine",
-        "envoyer": "Enviar",
-        "searchPlaceholder": "Buscar una palabra...",
-        "histoireTitle": "Sección Historia",
-        "histoireBientot": "¡Muy pronto encontrarás aquí textos históricos sobre la cultura Tadaksahak!",
-        "placeholderChat": "Escribe tu palabra o pregunta aquí..."
-      },
-      "it": {
-        "titrePrincipal": "Dizionario multilingue Tadaksahak",
-        "footerText": "© 2025 • Tadaksahak Multilingue con Hamadine.",
-        "precedent": "Precedente",
-        "suivant": "Successivo",
-        "chatTitre": "Chatta con Hamadine",
-        "envoyer": "Invia",
-        "searchPlaceholder": "Cerca una parola...",
-        "histoireTitle": "Sezione Storia",
-        "histoireBientot": "Presto troverai qui testi storici sulla cultura Tadaksahak!",
-        "placeholderChat": "Scrivi qui la tua parola o domanda..."
-      },
-      "nl": {
-        "titrePrincipal": "Meertalige Tadaksahak Woordenboek",
-        "footerText": "© 2025 • Meertalige Tadaksahak met Hamadine.",
-        "precedent": "Vorige",
-        "suivant": "Volgende",
-        "chatTitre": "Chat met Hamadine",
-        "envoyer": "Verzenden",
-        "searchPlaceholder": "Zoek een woord...",
-        "histoireTitle": "Geschiedenis Sectie",
-        "histoireBientot": "Binnenkort vind je hier historische teksten over de Tadaksahak-cultuur!",
-        "placeholderChat": "Typ hier je woord of vraag..."
-      },
-      "da": {
-        "titrePrincipal": "Tadaksahak Multisproget Ordbog",
-        "footerText": "© 2025 • Multisproget Tadaksahak med Hamadine.",
-        "precedent": "Forrige",
-        "suivant": "Næste",
-        "chatTitre": "Chat med Hamadine",
-        "envoyer": "Send",
-        "searchPlaceholder": "Søg efter et ord...",
-        "histoireTitle": "Historieafsnit",
-        "histoireBientot": "Snart finder du her historiske tekster om Tadaksahak-kulturen!",
-        "placeholderChat": "Skriv dit ord eller spørgsmål her..."
-      },
-      "cs": {
-        "titrePrincipal": "Vícejazyčný slovník Tadaksahak",
-        "footerText": "© 2025 • Vícejazyčný Tadaksahak s Hamadine.",
-        "precedent": "Předchozí",
-        "suivant": "Další",
-        "chatTitre": "Chat s Hamadine",
-        "envoyer": "Odeslat",
-        "searchPlaceholder": "Hledat slovo...",
-        "histoireTitle": "Sekce Historie",
-        "histoireBientot": "Již brzy zde najdete historické texty o kultuře Tadaksahak!",
-        "placeholderChat": "Napište zde své slovo nebo dotaz..."
-      }
-    };
-
-    let langueInterface = "fr";
-
-    function appliquerTraductionsInterface() {
-      const t = interfaceTrads[langueInterface] || interfaceTrads["fr"];
-      document.getElementById("titre").textContent = t.titrePrincipal;
-      document.getElementById("footer-desc").textContent = t.footerText;
-      document.getElementById("btnPrev").textContent = "◀️ " + t.precedent;
-      document.getElementById("btnNext").textContent = t.suivant + " ▶️";
-      document.getElementById("chat-title").textContent = t.chatTitre;
-      document.getElementById("btnEnvoyer").textContent = t.envoyer;
-      document.getElementById("histoire-title").textContent = t.histoireTitle;
-      document.getElementById("histoire-message").textContent = t.histoireBientot;
-      document.getElementById("searchBar").placeholder = t.searchPlaceholder;
-      document.getElementById("chatInput").placeholder = t.placeholderChat;
-      // Optionnel : changer la direction du texte pour l'arabe
-      if(langueInterface === "ar") {
-        document.body.dir = "rtl";
-      } else {
-        document.body.dir = "ltr";
-      }
-    }
-
-    function changerLangueInterface(code) {
-      langueInterface = code;
-      appliquerTraductionsInterface();
-    }
-
-    // Init à l’ouverture de la page
-    window.onload = appliquerTraductionsInterface;
-
-    // Fonctions fictives pour la démo (à remplacer par ton code réel)
-    function rechercherMot() {}
-    function motPrecedent() {}
-    function motSuivant() {}
-    function envoyerMessage() {}
-  </script>
+  <script src="app.js"></script>
 </body>
 </html>
