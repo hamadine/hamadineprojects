@@ -13,6 +13,11 @@
 </head>
 
 <body>
+  <!-- Effet spécial tempête de sable -->
+  <div class="sandstorm"></div>
+  <div class="sandstorm2"></div>
+  <div class="sandstorm3"></div>
+
   <main>
     <!-- Logo -->
     <div class="logo" style="text-align: center; margin-bottom: 1em;">
@@ -41,7 +46,7 @@
       <h2 id="motTexte" style="margin-top:1.2em;">...</h2>
       <p id="definition">...</p>
 
-      <!-- Navigation déplacée ici -->
+      <!-- Navigation -->
       <nav id="navigation" aria-label="Navigation entre les mots" style="text-align:center; margin-top:1em;">
         <button id="btnPrev" onclick="motPrecedent()"></button>
         <button id="btnNext" onclick="motSuivant()"></button>
@@ -53,18 +58,12 @@
         <button onclick="changerLangue('en')">En</button>
         <button onclick="changerLangue('ar')">ع</button>
         <button onclick="changerLangue('ru')">Ru</button>
-        <button onclick="changerLangue('zh')">Zh</button>
-        <button onclick="changerLangue('it')">It</button>
-        <button onclick="changerLangue('es')">Es</button>
         <button onclick="changerLangue('de')">De</button>
-        <button onclick="changerLangue('pt')">Pt</button>
-        <button onclick="changerLangue('ja')">Ja</button>
-        <button onclick="changerLangue('ha')">Ha</button>
-        <button onclick="changerLangue('taq')">Taq</button>
-        <button onclick="changerLangue('tmh')">Tmh</button>
-        <button onclick="changerLangue('ber')">Ber</button>
-        <button onclick="changerLangue('bm')">Bm</button>
-        <button onclick="changerLangue('son')">Son</button>
+        <button onclick="changerLangue('es')">Es</button>
+        <button onclick="changerLangue('it')">It</button>
+        <button onclick="changerLangue('nl')">Nl</button>
+        <button onclick="changerLangue('da')">Da</button>
+        <button onclick="changerLangue('cs')">Cs</button>
       </div>
 
       <!-- Sélecteur de langue de l'interface -->
@@ -73,18 +72,12 @@
         <button onclick="changerLangueInterface('en')">🇬🇧</button>
         <button onclick="changerLangueInterface('ar')">🇸🇦</button>
         <button onclick="changerLangueInterface('ru')">🇷🇺</button>
-        <button onclick="changerLangueInterface('zh')">🇨🇳</button>
-        <button onclick="changerLangueInterface('it')">🇮🇹</button>
-        <button onclick="changerLangueInterface('es')">🇪🇸</button>
         <button onclick="changerLangueInterface('de')">🇩🇪</button>
-        <button onclick="changerLangueInterface('pt')">🇵🇹</button>
-        <button onclick="changerLangueInterface('ja')">🇯🇵</button>
-        <button onclick="changerLangueInterface('ha')">Ha</button>
-        <button onclick="changerLangueInterface('taq')">Taq</button>
-        <button onclick="changerLangueInterface('tmh')">Tmh</button>
-        <button onclick="changerLangueInterface('ber')">Ber</button>
-        <button onclick="changerLangueInterface('bm')">Bm</button>
-        <button onclick="changerLangueInterface('son')">Son</button>
+        <button onclick="changerLangueInterface('es')">🇪🇸</button>
+        <button onclick="changerLangueInterface('it')">🇮🇹</button>
+        <button onclick="changerLangueInterface('nl')">🇳🇱</button>
+        <button onclick="changerLangueInterface('da')">🇩🇰</button>
+        <button onclick="changerLangueInterface('cs')">🇨🇿</button>
       </div>
 
       <!-- Compteur -->
