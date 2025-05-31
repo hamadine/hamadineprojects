@@ -1,3 +1,4 @@
+// --- Variables globales ---
 let mots = [];
 let motsFiltres = [];
 let index = 0;
@@ -6,7 +7,7 @@ let langueCourante = "fr"; // Langue de traduction des mots
 let langueInterface = "fr"; // Langue de l'interface
 let deferredPrompt = null;
 
-// --- Chargement des traductions de l'interface ---
+// --- Chargement des traductions d'interface ---
 fetch("./data/interface-langue.json")
   .then(res => res.json())
   .then(data => {
@@ -23,19 +24,17 @@ fetch("./data/mots.json")
     afficherMot();
   });
 
-// --- Suggestion d'installation PWA après 2 visites ---
+// --- Gestion bannière installation PWA ---
 function checkInstallSuggestion() {
   let visites = parseInt(localStorage.getItem('tadaksahak_visites') || '0', 10) + 1;
   localStorage.setItem('tadaksahak_visites', visites);
-  // Affiche la suggestion après 2 visites, si non déjà installée
   if (visites >= 3 && !window.matchMedia('(display-mode: standalone)').matches) {
     afficherBanniereInstall();
   }
 }
 
-// Affiche une bannière d'installation personnalisée
 function afficherBanniereInstall() {
-  if (document.getElementById('banniere-install')) return; // évite doublon
+  if (document.getElementById('banniere-install')) return;
   const div = document.createElement('div');
   div.id = "banniere-install";
   div.style = "position:fixed;bottom:0;left:0;right:0;background:#4682b4;color:white;padding:1em;text-align:center;z-index:9999;box-shadow:0 -2px 8px rgba(0,0,0,0.1);";
@@ -52,23 +51,19 @@ function afficherBanniereInstall() {
         div.remove();
       });
     } else {
-      // Fallback instructions pour iOS
       alert(traduireTexte("instructionsIOS", "Sur iPhone/iPad : ouvrez le menu de partage de Safari puis choisissez « Sur l’écran d’accueil »"));
       div.remove();
     }
   };
 }
 
-// Intercepte l'événement beforeinstallprompt (PWA Android/Chrome)
 window.addEventListener('beforeinstallprompt', e => {
   e.preventDefault();
   deferredPrompt = e;
-  // Affiche la bannière si on a passé le seuil de visites
   if (parseInt(localStorage.getItem('tadaksahak_visites')||'0',10) >= 3) {
     afficherBanniereInstall();
   }
 });
-
 window.addEventListener('DOMContentLoaded', checkInstallSuggestion);
 
 // --- Fonctions principales ---
@@ -78,7 +73,7 @@ function afficherMot() {
   document.getElementById("motTexte").innerText = mot.mot || "—";
   document.getElementById("definition").innerText = mot[langueCourante] || "";
   document.getElementById("compteur").innerText = `${motsFiltres.length ? (index + 1) : 0} / ${motsFiltres.length}`;
-  // Désactive les boutons audio (adapte si tu ajoutes l’audio plus tard)
+  // Désactive les boutons audio si pas d'audio (adapte si tu ajoutes l’audio plus tard)
   ["btnPlay", "btnReplay", "btnAuto"].forEach(id => {
     const btn = document.getElementById(id);
     if (btn) {
@@ -92,8 +87,10 @@ function afficherMot() {
 function appliquerTraductionsInterface() {
   const t = interfaceTrads[langueInterface] || interfaceTrads["fr"];
   if (!t) return;
-  // Adaptation des textes d'interface
-  const setText = (id, txt) => { if(document.getElementById(id)) document.getElementById(id).innerText = txt; };
+  const setText = (id, txt) => {
+    const el = document.getElementById(id);
+    if (el) el.innerText = txt;
+  };
   setText("btnPrev", "◀️ " + (t.precedent || "Précédent"));
   setText("btnNext", (t.suivant || "Suivant") + " ▶️");
   setText("btnPlay", "▶️ " + (t.ecouter || "Écouter"));
@@ -101,8 +98,16 @@ function appliquerTraductionsInterface() {
   setText("btnAuto", "▶️ " + (t.lectureAuto || "Lecture auto"));
   setText("chat-title", t.chatTitre || "Chat Tadaksahak");
   setText("btnEnvoyer", t.envoyer || "Envoyer");
-  if(document.getElementById("searchBar")) document.getElementById("searchBar").placeholder = t.searchPlaceholder || "Chercher un mot dans toutes les langues...";
-  if(document.getElementById("chatInput")) document.getElementById("chatInput").placeholder = t.placeholderChat || "Tape ton mot ou ta question ici dans la langue de ton choix...";
+  // Placeholders
+  const searchBar = document.getElementById("searchBar");
+  if (searchBar) searchBar.placeholder = t.searchPlaceholder || "Chercher un mot dans toutes les langues...";
+  const chatInput = document.getElementById("chatInput");
+  if (chatInput) chatInput.placeholder = t.placeholderChat || "Tape ton mot ou ta question ici dans la langue de ton choix...";
+  // Mise à jour bannière install si affichée
+  if(document.getElementById('banniere-install')) {
+    document.getElementById('banniere-install').remove();
+    afficherBanniereInstall();
+  }
 }
 
 function changerLangue(langue) {
@@ -113,26 +118,20 @@ function changerLangue(langue) {
 function changerLangueInterface(langue) {
   langueInterface = langue;
   appliquerTraductionsInterface();
-  // Mettre à jour la bannière si elle est affichée
-  if(document.getElementById('banniere-install')) {
-    document.getElementById('banniere-install').remove();
-    afficherBanniereInstall();
-  }
 }
 
-// --- Navigation ---
 function motSuivant() {
   if (!motsFiltres.length) return;
   index = (index + 1) % motsFiltres.length;
   afficherMot();
 }
+
 function motPrecedent() {
   if (!motsFiltres.length) return;
   index = (index - 1 + motsFiltres.length) % motsFiltres.length;
   afficherMot();
 }
 
-// --- Recherche ---
 function rechercherMot() {
   const q = document.getElementById("searchBar").value.trim().toLowerCase();
   if (!q) {
@@ -155,15 +154,12 @@ function envoyerMessage() {
   const input = document.getElementById("chatInput");
   const message = input.value.trim();
   if (!message) return;
-
   const t = interfaceTrads[langueInterface] || interfaceTrads["fr"] || {};
-  // Message utilisateur
   const div = document.createElement("div");
   div.textContent = (t.utilisateur || "Vous") + " : " + message;
   div.style.fontWeight = "bold";
   document.getElementById("chatWindow").appendChild(div);
 
-  // Réponse bot (simple, statique, traduite si tu veux)
   const bot = document.createElement("div");
   bot.textContent = t.reponseBot || "Hamadine : Salut, je vous entends, mais ma base lexicale est encore en cours.";
   document.getElementById("chatWindow").appendChild(bot);
@@ -178,7 +174,7 @@ function traduireTexte(cle, defaut) {
   return (interfaceTrads[langueInterface] && interfaceTrads[langueInterface][cle]) || defaut || cle;
 }
 
-// --- Expose les fonctions globalement pour HTML inline events ---
+// --- Expose fonctions globalement pour HTML inline events ---
 window.changerLangue = changerLangue;
 window.changerLangueInterface = changerLangueInterface;
 window.motSuivant = motSuivant;
