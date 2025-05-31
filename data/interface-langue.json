@@ -19,7 +19,8 @@
     "utilisateur": "Vous",
     "histoireTitle": "Section Histoire",
     "histoireBientot": "Très prochainement, retrouvez ici des textes historiques sur la culture Tadaksahak !",
-    "placeholderChat": "Tape ton mot ou ta question ici..."
+    "placeholderChat": "Tape ton mot ou ta question ici...",
+    "exemple": "Exemple"
   },
   "en": {
     "titrePrincipal": "Tadaksahak Multilingual Dictionary",
@@ -37,11 +38,12 @@
     "suggestionInstall": "You can add this Tadaksahak dictionary to your home screen to use it as an app!",
     "ajouter": "Add",
     "instructionsIOS": "On iPhone/iPad: open Safari's share menu and choose “Add to Home Screen”",
-    "reponseBot": "Hamadine: Hi, I hear you, but my lexical database is still being developed.",
+    "reponseBot": "Hamadine: Hi, I couldn't find this word, but my lexical database is still being developed. I'm recording your request for future updates. Please continue with the available words.",
     "utilisateur": "You",
     "histoireTitle": "History Section",
     "histoireBientot": "Coming soon: discover historical texts about Tadaksahak culture right here!",
-    "placeholderChat": "Type your word or question here..."
+    "placeholderChat": "Type your word or question here...",
+    "exemple": "Example"
   },
   "ar": {
     "titrePrincipal": "قاموس تاداكساهاك متعدد اللغات",
@@ -59,11 +61,12 @@
     "suggestionInstall": "يمكنك إضافة هذا القاموس التاداكساهاك إلى شاشتك الرئيسية لاستخدامه كتطبيق!",
     "ajouter": "إضافة",
     "instructionsIOS": "على iPhone/iPad: افتح قائمة المشاركة في سفاري ثم اختر «إضافة إلى الشاشة الرئيسية»",
-    "reponseBot": "حمادين: مرحبًا، أسمعك ولكن قاعدة بياناتي ما زالت قيد التطوير.",
+    "reponseBot": "حمادين: لم أجد هذه الكلمة، لكن قاعدة بياناتي قيد التطوير. تم تسجيل طلبك للتحديثات القادمة. تابع مع الكلمات المتوفرة.",
     "utilisateur": "أنت",
     "histoireTitle": "قسم التاريخ",
     "histoireBientot": "قريباً جداً، ستجدون هنا نصوصاً تاريخية عن ثقافة تاداكساهاك!",
-    "placeholderChat": "اكتب كلمتك أو سؤالك هنا..."
+    "placeholderChat": "اكتب كلمتك أو سؤالك هنا...",
+    "exemple": "مثال"
   },
   "ru": {
     "titrePrincipal": "Многоязычный словарь тадаксахак",
@@ -81,11 +84,12 @@
     "suggestionInstall": "Вы можете добавить этот словарь Тадаксахак на главный экран и использовать как приложение!",
     "ajouter": "Добавить",
     "instructionsIOS": "На iPhone/iPad: откройте меню «Поделиться» в Safari и выберите «На экран Домой»",
-    "reponseBot": "Хамадин: Привет, я вас слышу, но моя лексическая база ещё разрабатывается.",
+    "reponseBot": "Хамадин: Я не нашёл это слово, но моя база ещё разрабатывается. Записал ваш запрос для будущих обновлений. Используйте доступные слова.",
     "utilisateur": "Вы",
     "histoireTitle": "Раздел История",
     "histoireBientot": "Скоро здесь появятся исторические тексты о культуре тадаксахак!",
-    "placeholderChat": "Введите слово или вопрос здесь..."
+    "placeholderChat": "Введите слово или вопрос здесь...",
+    "exemple": "Пример"
   },
   "de": {
     "titrePrincipal": "Mehrsprachiges Tadaksahak-Wörterbuch",
@@ -103,11 +107,12 @@
     "suggestionInstall": "Sie können dieses Tadaksahak-Wörterbuch zum Startbildschirm hinzufügen und als App verwenden!",
     "ajouter": "Hinzufügen",
     "instructionsIOS": "Auf iPhone/iPad: Öffnen Sie das Teilen-Menü in Safari und wählen Sie „Zum Home-Bildschirm“",
-    "reponseBot": "Hamadine: Hallo, ich höre dich, aber meine Lexikaldatenbank wird noch entwickelt.",
+    "reponseBot": "Hamadine: Ich habe dieses Wort nicht gefunden, aber meine Datenbank wird noch entwickelt. Ich habe Ihre Anfrage für zukünftige Updates gespeichert. Verwenden Sie die verfügbaren Wörter.",
     "utilisateur": "Sie",
     "histoireTitle": "Geschichtsbereich",
     "histoireBientot": "In Kürze finden Sie hier historische Texte über die Tadaksahak-Kultur!",
-    "placeholderChat": "Geben Sie hier Ihr Wort oder Ihre Frage ein..."
+    "placeholderChat": "Geben Sie hier Ihr Wort oder Ihre Frage ein...",
+    "exemple": "Beispiel"
   },
   "es": {
     "titrePrincipal": "Diccionario Multilingüe Tadaksahak",
@@ -125,11 +130,12 @@
     "suggestionInstall": "¡Puedes añadir este diccionario Tadaksahak a tu pantalla de inicio y usarlo como aplicación!",
     "ajouter": "Añadir",
     "instructionsIOS": "En iPhone/iPad: abre el menú de compartir de Safari y elige 'Añadir a pantalla de inicio'",
-    "reponseBot": "Hamadine: Hola, te escucho, pero mi base léxica aún está en desarrollo.",
+    "reponseBot": "Hamadine: No encontré esta palabra, pero mi base léxica aún está en desarrollo. Tu solicitud ha sido registrada para actualizaciones futuras. Continúa con las palabras disponibles.",
     "utilisateur": "Tú",
     "histoireTitle": "Sección Historia",
     "histoireBientot": "¡Muy pronto encontrarás aquí textos históricos sobre la cultura Tadaksahak!",
-    "placeholderChat": "Escribe tu palabra o pregunta aquí..."
+    "placeholderChat": "Escribe tu palabra o pregunta aquí...",
+    "exemple": "Ejemplo"
   },
   "it": {
     "titrePrincipal": "Dizionario multilingue Tadaksahak",
@@ -147,11 +153,12 @@
     "suggestionInstall": "Puoi aggiungere questo dizionario Tadaksahak alla schermata principale e usarlo come app!",
     "ajouter": "Aggiungi",
     "instructionsIOS": "Su iPhone/iPad: apri il menu di condivisione di Safari e scegli 'Aggiungi a Home'",
-    "reponseBot": "Hamadine: Ciao, ti sento, ma la mia base lessicale è ancora in corso.",
+    "reponseBot": "Hamadine: Non ho trovato questa parola, ma il mio database è ancora in sviluppo. La tua richiesta è stata registrata per aggiornamenti futuri. Continua con le parole disponibili.",
     "utilisateur": "Tu",
     "histoireTitle": "Sezione Storia",
     "histoireBientot": "Presto troverai qui testi storici sulla cultura Tadaksahak!",
-    "placeholderChat": "Scrivi qui la tua parola o domanda..."
+    "placeholderChat": "Scrivi qui la tua parola o domanda...",
+    "exemple": "Esempio"
   },
   "nl": {
     "titrePrincipal": "Meertalige Tadaksahak Woordenboek",
@@ -169,11 +176,12 @@
     "suggestionInstall": "Je kunt dit Tadaksahak-woordenboek aan je startscherm toevoegen om het als een app te gebruiken!",
     "ajouter": "Toevoegen",
     "instructionsIOS": "Op iPhone/iPad: open het deelmenu van Safari en kies 'Zet op beginscherm'",
-    "reponseBot": "Hamadine: Hallo, ik hoor je, maar mijn lexicale database is nog in ontwikkeling.",
+    "reponseBot": "Hamadine: Ik heb dit woord niet gevonden, maar mijn lexicale database wordt nog ontwikkeld. Je verzoek is geregistreerd voor toekomstige updates. Gebruik de beschikbare woorden.",
     "utilisateur": "Jij",
     "histoireTitle": "Geschiedenis Sectie",
     "histoireBientot": "Binnenkort vind je hier historische teksten over de Tadaksahak-cultuur!",
-    "placeholderChat": "Typ hier je woord of vraag..."
+    "placeholderChat": "Typ hier je woord of vraag...",
+    "exemple": "Voorbeeld"
   },
   "da": {
     "titrePrincipal": "Tadaksahak Multisproget Ordbog",
@@ -191,11 +199,12 @@
     "suggestionInstall": "Du kan tilføje denne Tadaksahak-ordbog til din startskærm og bruge den som en app!",
     "ajouter": "Tilføj",
     "instructionsIOS": "På iPhone/iPad: Åbn delingsmenuen i Safari, og vælg 'Føj til hjemmeskærm'",
-    "reponseBot": "Hamadine: Hej, jeg hører dig, men min leksikale database er stadig under udvikling.",
+    "reponseBot": "Hamadine: Jeg fandt ikke dette ord, men min leksikale database er stadig under udvikling. Din forespørgsel er registreret til fremtidige opdateringer. Fortsæt med de tilgængelige ord.",
     "utilisateur": "Du",
     "histoireTitle": "Historieafsnit",
     "histoireBientot": "Snart finder du her historiske tekster om Tadaksahak-kulturen!",
-    "placeholderChat": "Skriv dit ord eller spørgsmål her..."
+    "placeholderChat": "Skriv dit ord eller spørgsmål her...",
+    "exemple": "Eksempel"
   },
   "cs": {
     "titrePrincipal": "Vícejazyčný slovník Tadaksahak",
@@ -213,10 +222,11 @@
     "suggestionInstall": "Tento slovník Tadaksahak si můžete přidat na domovskou obrazovku a používat jej jako aplikaci!",
     "ajouter": "Přidat",
     "instructionsIOS": "Na iPhone/iPad: otevřete nabídku sdílení v Safari a zvolte 'Přidat na plochu'",
-    "reponseBot": "Hamadine: Ahoj, slyším tě, ale moje lexikální báze je stále ve vývoji.",
+    "reponseBot": "Hamadine: Toto slovo jsem nenašel, ale moje lexikální báze se stále vyvíjí. Vaše požadavky jsou zaznamenány pro budoucí aktualizace. Pokračujte s dostupnými slovy.",
     "utilisateur": "Vy",
     "histoireTitle": "Sekce Historie",
     "histoireBientot": "Již brzy zde najdete historické texty o kultuře Tadaksahak!",
-    "placeholderChat": "Napište zde své slovo nebo dotaz..."
+    "placeholderChat": "Napište zde své slovo nebo dotaz...",
+    "exemple": "Příklad"
   }
 }
