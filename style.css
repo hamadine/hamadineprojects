@@ -1,4 +1,3 @@
-/* === Tadaksahak Mystique Style.css — Livre Ouvert Réaliste === */
 :root {
   --night-blue: #0d1b2a;
   --deep-shadow: #1b263b;
@@ -30,7 +29,6 @@ body::before {
   animation: moveStars 200s linear infinite;
   z-index: 0;
 }
-
 @keyframes moveStars {
   from { transform: translateY(0); }
   to { transform: translateY(-1000px); }
@@ -50,23 +48,11 @@ body::after {
   opacity: 0.8;
   z-index: 1;
 }
-
 @keyframes cometFly {
-  0% {
-    transform: translateX(0) translateY(0) scale(1) rotate(45deg);
-    opacity: 0;
-  }
-  10% {
-    opacity: 1;
-  }
-  50% {
-    transform: translateX(120vw) translateY(100vh) scale(1.3) rotate(45deg);
-    opacity: 0;
-  }
-  100% {
-    transform: translateX(120vw) translateY(100vh) scale(1.3) rotate(45deg);
-    opacity: 0;
-  }
+  0%   { transform: translateX(0) translateY(0) scale(1) rotate(45deg); opacity: 0; }
+  10%  { opacity: 1; }
+  50%  { transform: translateX(120vw) translateY(100vh) scale(1.3) rotate(45deg); opacity: 0; }
+  100% { transform: translateX(120vw) translateY(100vh) scale(1.3) rotate(45deg); opacity: 0; }
 }
 
 main {
@@ -143,7 +129,6 @@ footer a:hover {
 }
 
 /* === Effet Tempête de Sable du Désert Nocturne === */
-
 body .sandstorm, 
 body .sandstorm2, 
 body .sandstorm3 {
@@ -161,167 +146,171 @@ body .sandstorm {
               repeating-radial-gradient(circle at 60% 60%, #e5c18c 0 0.7px, transparent 1px 80px);
   animation: sandstorm-move 14s linear infinite;
 }
-
 body .sandstorm2 {
   background: repeating-radial-gradient(circle at 20% 50%, #e5c18c 0 1.2px, transparent 2px 80px),
               repeating-radial-gradient(circle at 90% 70%, #fffbe6cc 0 1px, transparent 1.5px 60px);
   opacity: 0.1;
   animation: sandstorm-move2 26s linear infinite;
 }
-
 body .sandstorm3 {
   background: repeating-radial-gradient(circle at 40% 90%, #ffd 0 1.1px, transparent 2px 50px),
               repeating-radial-gradient(circle at 55% 12%, #ffe7be 0 1px, transparent 1.5px 80px);
   opacity: 0.07;
   animation: sandstorm-move3 40s linear infinite;
 }
-
 @keyframes sandstorm-move {
   0%   { background-position: 0 0, 0 0, 0 0;}
   100% { background-position: 90vw 5vh, 120vw -10vh, 80vw 20vh;}
 }
-
 @keyframes sandstorm-move2 {
   0%   { background-position: 0 0, 0 0;}
   100% { background-position: -60vw 30vh, -40vw -18vh;}
 }
-
 @keyframes sandstorm-move3 {
   0%   { background-position: 0 0, 0 0;}
   100% { background-position: 50vw -10vh, 90vw 20vh;}
 }
 
-/* === Livre Ouvert Réaliste === */
+/* === Livre Ouvert Réaliste, bien séparé === */
 .opened-book-container {
   display: flex;
   justify-content: center;
   align-items: flex-start;
   margin: 28px auto 12px auto;
-  width: 138px;
-  height: 90px;
+  width: 220px;
+  height: 120px;
   position: relative;
   z-index: 10;
 }
 
 .opened-book {
   position: relative;
-  width: 128px;
-  height: 80px;
+  width: 210px;
+  height: 110px;
   display: flex;
   align-items: stretch;
   background: none;
 }
 
 .book-page {
-  width: 54px;
-  height: 74px;
+  width: 92px;
+  height: 104px;
   background: linear-gradient(120deg, #fffbe6 75%, #f3e3bb 100%);
-  border-radius: 7px 0 7px 12px;
-  box-shadow: 0 2px 7px #0002;
-  border: 1.7px solid #e5c18c;
+  border-radius: 11px 0 11px 23px;
+  box-shadow: 0 2px 8px #0002;
+  border: 2px solid #e5c18c;
   display: flex;
   align-items: center;
   justify-content: center;
   font-family: 'Georgia', 'Times New Roman', serif;
-  font-size: 1.08em;
+  font-size: 1.35em;
   color: #9e7a3b;
   text-shadow: 0 1px 0 #fffbe6cc, 0 0.5px 0 #fff;
   position: relative;
   background-repeat: repeat-y;
-  background-size: 100% 7px;
+  background-size: 100% 11px;
+  padding: 0 10px;
+  overflow: hidden;
 }
 
 .left-page {
   border-right: none;
-  border-top-right-radius: 10px;
-  border-bottom-right-radius: 15px;
-  border-top-left-radius: 11px;
-  border-bottom-left-radius: 10px;
+  border-top-right-radius: 14px;
+  border-bottom-right-radius: 19px;
+  border-top-left-radius: 18px;
+  border-bottom-left-radius: 14px;
   margin-right: 0;
-  box-shadow: 2px 0 5px #d0bc98 inset;
+  box-shadow: 3px 0 7px #d0bc98 inset;
+  justify-content: flex-end;
+  text-align: right;
 }
 
 .right-page {
   border-left: none;
-  border-top-left-radius: 10px;
-  border-bottom-left-radius: 15px;
-  border-top-right-radius: 11px;
-  border-bottom-right-radius: 10px;
+  border-top-left-radius: 14px;
+  border-bottom-left-radius: 19px;
+  border-top-right-radius: 18px;
+  border-bottom-right-radius: 14px;
   margin-left: 0;
-  box-shadow: -2px 0 5px #d0bc98 inset;
+  box-shadow: -3px 0 7px #d0bc98 inset;
+  justify-content: flex-start;
+  text-align: left;
 }
 
 .book-binding {
-  width: 12px;
-  height: 78px;
+  width: 22px;
+  height: 108px;
   background: linear-gradient(90deg, #bfae9c 35%, #e5c18c 80%, #c9ada7 100%);
   margin: 0;
-  border-radius: 6px;
-  box-shadow: 0 0 6px #bfae9c88 inset, 0 2px 6px #0001;
+  border-radius: 12px;
+  box-shadow: 0 0 9px #bfae9c88 inset, 0 2px 8px #0001;
   z-index: 2;
   align-self: center;
-  border: 1.2px solid #bfae9c;
+  border: 1.6px solid #bfae9c;
   position: relative;
   top: 1px;
 }
 
 .book-title {
-  font-size: 1.18em;
+  font-size: 1.22em;
   font-weight: bold;
-  letter-spacing: 0.5px;
+  letter-spacing: 1px;
   color: #ad8b49;
   text-shadow: 0 1px 0 #fffbe6, 0 0.5px 0 #fff;
   font-family: 'Georgia', 'Times New Roman', serif;
+  padding-right: 6px;
 }
 
 .book-author {
-  font-size: 1em;
+  font-size: 1.07em;
   color: #7d6032;
   font-family: 'Georgia', 'Times New Roman', serif;
-  letter-spacing: 0.3px;
+  letter-spacing: 0.5px;
   font-style: italic;
+  padding-left: 6px;
 }
 
 .book-shadow {
   position: absolute;
-  left: 12px;
-  bottom: -10px;
-  width: 104px;
-  height: 15px;
+  left: 18px;
+  bottom: -15px;
+  width: 164px;
+  height: 22px;
   border-radius: 50%;
   background: radial-gradient(ellipse at center, #0005 60%, transparent 100%);
   z-index: 0;
-  filter: blur(2.5px);
-  opacity: 0.43;
+  filter: blur(3px);
+  opacity: 0.39;
   pointer-events: none;
 }
 
 @media (max-width: 600px) {
   .opened-book-container {
-    width: 86px;
-    height: 58px;
-    margin: 16px auto 8px auto;
+    width: 120px;
+    height: 68px;
+    margin: 14px auto 8px auto;
   }
   .opened-book {
-    width: 78px;
-    height: 40px;
+    width: 110px;
+    height: 48px;
   }
   .book-page {
-    width: 32px;
-    height: 38px;
-    font-size: 0.76em;
-    border-radius: 4px 0 5px 8px;
+    width: 44px;
+    height: 44px;
+    font-size: 0.7em;
+    border-radius: 6px 0 7px 10px;
+    padding: 0 4px;
   }
   .book-binding {
-    width: 7px;
-    height: 37px;
-    border-radius: 3.5px;
+    width: 8px;
+    height: 44px;
+    border-radius: 4px;
     top: 0.5px;
   }
   .book-shadow {
-    left: 6px;
-    bottom: -4px;
-    width: 64px;
-    height: 7px;
+    left: 8px;
+    bottom: -5px;
+    width: 78px;
+    height: 10px;
   }
 }
