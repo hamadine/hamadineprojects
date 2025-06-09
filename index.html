@@ -29,12 +29,37 @@
   </div>
 
   <main>
+    <!-- Logo -->
     <div class="logo" style="text-align: center; margin-bottom: 1em;">
       <img src="images/idaksahak_round.png" alt="Logo Tadaksahak rond" width="120" />
     </div>
 
+    <!-- Présentation -->
     <section style="margin-bottom: 2em;"><p id="textePresentation"></p></section>
     <h1 id="titrePrincipal" style="text-align:center; font-size:2.1em; margin-bottom:0.7em;"></h1>
+
+    <!-- Sélecteur de langue moderne -->
+    <div class="langue-select-container">
+      <button id="langueActuelle" class="langue-btn">Langue : FR ⌄</button>
+      <div id="langueListe" class="langue-panel">
+        <button onclick="changerLangueInterface('fr')">Français</button>
+        <button onclick="changerLangueInterface('en')">English</button>
+        <button onclick="changerLangueInterface('ar')">العربية</button>
+        <button onclick="changerLangueInterface('ru')">Русский</button>
+        <button onclick="changerLangueInterface('de')">Deutsch</button>
+        <button onclick="changerLangueInterface('es')">Español</button>
+        <button onclick="changerLangueInterface('it')">Italiano</button>
+        <button onclick="changerLangueInterface('nl')">Nederlands</button>
+        <button onclick="changerLangueInterface('da')">Dansk</button>
+        <button onclick="changerLangueInterface('cs')">Čeština</button>
+        <button onclick="changerLangueInterface('pt')">Português</button>
+        <button onclick="changerLangueInterface('tr')">Türkçe</button>
+        <button onclick="changerLangueInterface('ja')">日本語</button>
+        <button onclick="changerLangueInterface('zh')">中文</button>
+        <button onclick="changerLangueInterface('hi')">हिन्दी</button>
+        <button onclick="changerLangueInterface('sw')">Kiswahili</button>
+      </div>
+    </div>
 
     <!-- Recherche -->
     <section style="margin-bottom: 2em;">
@@ -43,13 +68,10 @@
       <p id="definition">...</p>
 
       <!-- Navigation -->
-      <nav id="navigation" aria-label="Navigation entre les mots" style="text-align:center; margin-top:1em;">
+      <nav id="navigation" style="text-align:center; margin-top:1em;">
         <button id="btnPrev" onclick="motPrecedent()"></button>
         <button id="btnNext" onclick="motSuivant()"></button>
       </nav>
-
-      <!-- 🌐 Sélecteur de langue -->
-      <button id="openLangModal" class="lang-btn-trigger">🌐 Choisir la langue</button>
 
       <p id="compteur" style="text-align:center;">1 / ...</p>
 
@@ -103,57 +125,42 @@
     <p id="footerText"></p>
   </footer>
 
-  <!-- 🌐 MODAL langue -->
-  <div id="langModal" class="modal-overlay">
-    <div class="modal-box">
-      <h2>Sélectionner la langue de l'application</h2>
-      <div class="lang-circle-group" id="langSelector"></div>
-      <button id="closeLangModal" class="modal-close">Terminer</button>
-    </div>
-  </div>
-
-  <!-- JS MODAL langue -->
+  <!-- JS pour dropdown langue -->
   <script>
-    const supportedLangs = {
-      fr: { name: "Français", flag: "fr" },
-      en: { name: "English", flag: "gb" },
-      ar: { name: "العربية", flag: "sa" },
-      ru: { name: "Русский", flag: "ru" },
-      de: { name: "Deutsch", flag: "de" },
-      es: { name: "Español", flag: "es" },
-      it: { name: "Italiano", flag: "it" },
-      nl: { name: "Nederlands", flag: "nl" },
-      da: { name: "Dansk", flag: "dk" },
-      cs: { name: "Čeština", flag: "cz" },
-      pt: { name: "Português", flag: "pt" },
-      tr: { name: "Türkçe", flag: "tr" },
-      ja: { name: "日本語", flag: "jp" },
-      zh: { name: "中文", flag: "cn" },
-      hi: { name: "हिन्दी", flag: "in" },
-      sw: { name: "Kiswahili", flag: "tz" }
-    };
+    const btnLangue = document.getElementById('langueActuelle');
+    const panelLangue = document.getElementById('langueListe');
 
-    const modal = document.getElementById("langModal");
-    const selector = document.getElementById("langSelector");
-
-    for (const [code, data] of Object.entries(supportedLangs)) {
-      const btn = document.createElement("button");
-      btn.className = "lang-circle";
-      btn.onclick = () => changerLangueInterface(code);
-      btn.innerHTML = `
-        <img src="https://flagcdn.com/${data.flag}.svg" alt="${data.name}" />
-        <span>${code.toUpperCase()}</span>
-      `;
-      selector.appendChild(btn);
-    }
-
-    document.getElementById("openLangModal").onclick = () => modal.classList.add("show");
-    document.getElementById("closeLangModal").onclick = () => modal.classList.remove("show");
-
-    window.addEventListener("DOMContentLoaded", () => {
-      const lang = navigator.language.slice(0, 2).toLowerCase();
-      if (supportedLangs[lang]) changerLangueInterface(lang);
+    btnLangue.addEventListener('click', (e) => {
+      panelLangue.classList.toggle('show');
+      e.stopPropagation();
     });
+
+    document.addEventListener('click', (e) => {
+      if (!panelLangue.contains(e.target) && !btnLangue.contains(e.target)) {
+        panelLangue.classList.remove('show');
+      }
+    });
+
+    // Activation visuelle
+    const style = document.createElement("style");
+    style.innerHTML = `.langue-panel.show { display: block; }`;
+    document.head.appendChild(style);
+
+    // Auto-détection navigateur
+    window.addEventListener('DOMContentLoaded', () => {
+      const lang = navigator.language.slice(0, 2).toLowerCase();
+      const supported = ['fr','en','ar','ru','de','es','it','nl','da','cs','pt','tr','ja','zh','hi','sw'];
+      if (supported.includes(lang)) {
+        changerLangueInterface(lang);
+        btnLangue.textContent = "Langue : " + lang.toUpperCase() + " ⌄";
+      }
+    });
+
+    // Mise à jour du bouton
+    function changerLangueInterface(code) {
+      // Ton implémentation actuelle dans app.js prendra le relais ici
+      btnLangue.textContent = "Langue : " + code.toUpperCase() + " ⌄";
+    }
   </script>
 </body>
 </html>
