@@ -76,6 +76,13 @@ function rechercherMot() {
 // Langues
 function changerLangueInterface(lang) {
   langueInterface = lang;
+
+  // Mettre à jour le texte du bouton
+  const btnLangue = document.getElementById('langueActuelle');
+  if (btnLangue) {
+    btnLangue.textContent = `Langue : ${lang.toUpperCase()} ⌄`;
+  }
+
   const t = interfaceData[lang] || interfaceData['fr'];
   if (!t) return;
 
@@ -86,9 +93,7 @@ function changerLangueInterface(lang) {
 
   const presentation = document.getElementById('textePresentation');
   if (presentation) {
-    presentation.innerHTML = t.presentation || `
-      Très bientôt, découvrez ici une aventure collaborative dédiée à la langue Tadaksahak !
-    `;
+    presentation.innerHTML = t.presentation || `Très bientôt, découvrez ici une aventure collaborative dédiée à la langue Tadaksahak !`;
   }
 
   const btnPlay = document.getElementById('btnPlay');
@@ -113,22 +118,19 @@ function changerLangueInterface(lang) {
   if (chatInput) chatInput.placeholder = t.placeholderChat || "";
 
   const botIntro = document.getElementById('botIntro');
-  if (botIntro) botIntro.innerHTML = t.botIntro || 
-    "🤖 Salut, je suis Hamadine le bot Tadaksahak.<br>Demandez-moi un mot et je vous le trouve rapidement&nbsp;!";
+  if (botIntro) botIntro.innerHTML = t.botIntro || "🤖 Salut, je suis Hamadine le bot Tadaksahak.<br>Demandez-moi un mot et je vous le trouve rapidement&nbsp;!";
 
   const histoireTitle = document.getElementById('histoire-title');
   if (histoireTitle) histoireTitle.textContent = t.histoireTitle || "Section Histoire";
 
   const histoireMessage = document.getElementById('histoire-message');
-  if (histoireMessage) histoireMessage.innerHTML = t.histoireBientot || 
-    "Très bientôt, découvrez ici des textes historiques captivants sur la culture Tadaksahak.";
+  if (histoireMessage) histoireMessage.innerHTML = t.histoireBientot || "Très bientôt, découvrez ici des textes historiques captivants sur la culture Tadaksahak.";
 
   const archivesTitle = document.getElementById('archives-title');
   if (archivesTitle) archivesTitle.textContent = t.archivesTitle || "Section Archives";
 
   const archivesMessage = document.getElementById('archives-message');
-  if (archivesMessage) archivesMessage.innerHTML = t.archivesBientot || 
-    "Nous mettrons prochainement à votre disposition des documents anciens précieux.";
+  if (archivesMessage) archivesMessage.innerHTML = t.archivesBientot || "Nous mettrons prochainement à votre disposition des documents anciens précieux.";
 
   const footer = document.getElementById('footerText');
   if (footer) footer.innerHTML = t.footerText || "© 2025 • Tadaksahak Multilingue avec Hamadine.";
@@ -136,7 +138,7 @@ function changerLangueInterface(lang) {
   const footerContrib = document.getElementById('footerContrib');
   if (footerContrib) footerContrib.innerHTML = t.footerContrib || "";
 
-  // Mémo bot
+  // Mémorisation réponse chatbot
   window.reponseBot = t.reponseBot || "Mot introuvable.";
   window.nomUtilisateur = t.utilisateur || "Vous";
 }
@@ -178,27 +180,7 @@ function lectureAuto() {
   console.log("Lecture auto (à implémenter)");
 }
 
-// 🌐 Langues Dropdown : CORRIGÉ & SÉCURISÉ
-function initDropdownLangues() {
-  const toggleBtn = document.getElementById("toggleLangues");
-  const panel = document.getElementById("languesPanel");
-
-  if (!toggleBtn || !panel) return;
-
-  toggleBtn.addEventListener("click", (e) => {
-    panel.classList.toggle("show");
-    e.stopPropagation();
-  });
-
-  document.addEventListener("click", (e) => {
-    if (!panel.contains(e.target) && !toggleBtn.contains(e.target)) {
-      panel.classList.remove("show");
-    }
-  });
-}
-
-// ✅ Init global blindé
+// ✅ Initialisation propre
 window.addEventListener('DOMContentLoaded', () => {
-  initDropdownLangues();   // d'abord l'UI
-  chargerDonnees();        // ensuite les données
+  chargerDonnees(); // L'UI dropdown n'est plus utilisée
 });
