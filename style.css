@@ -44,112 +44,76 @@ footer {
   margin-top: 2em;
 }
 
-/* 🌐 Bouton d’ouverture modal */
-.lang-btn-trigger {
-  padding: 0.8em 1.5em;
+/* 🌐 Sélecteur de langue type My Nita */
+.langue-select-container {
+  position: relative;
+  text-align: right;
+  margin: 1.5em auto;
+  max-width: 800px;
+}
+
+.langue-btn {
+  background: var(--clay);
+  color: white;
+  border: none;
+  padding: 0.6em 1.2em;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s;
   font-size: 1em;
-  font-weight: bold;
-  background: var(--clay);
-  color: var(--sunlight);
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  margin-bottom: 2em;
-  transition: all 0.3s ease;
 }
 
-.lang-btn-trigger:hover {
+.langue-btn:hover {
   background: var(--sunburn);
-  color: white;
 }
 
-/* 🌐 MODAL Langue */
-.modal-overlay {
-  position: fixed;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.4);
+.langue-panel {
   display: none;
-  align-items: center;
-  justify-content: center;
-  z-index: 9999;
-}
-
-.modal-overlay.show {
-  display: flex;
-}
-
-.modal-box {
+  position: absolute;
+  right: 0;
   background: var(--sunlight);
-  padding: 2em;
-  border-radius: 20px;
-  max-width: 95%;
-  width: 600px;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
-  text-align: center;
-}
-
-/* Langues boutons cercles */
-.lang-circle-group {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1em;
-  justify-content: center;
-  margin: 2em 0;
-}
-
-.lang-circle {
-  background: var(--desert-gold);
-  border: 3px solid transparent;
-  border-radius: 50%;
-  width: 85px;
-  height: 85px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  transition: all 0.3s ease;
-  cursor: pointer;
-  font-weight: bold;
-  color: var(--text-dark);
-}
-
-.lang-circle:hover {
-  border-color: var(--sunburn);
-  background: var(--clay);
-  color: white;
-}
-
-.lang-circle img {
-  width: 30px;
-  height: auto;
-  margin-bottom: 5px;
-  border-radius: 3px;
-}
-
-/* Bouton fermer modal */
-.modal-close {
-  background: var(--clay);
-  color: white;
-  border: none;
-  padding: 0.7em 1.5em;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
   border-radius: 8px;
-  font-weight: bold;
+  margin-top: 0.5em;
+  z-index: 999;
+  width: max-content;
+  max-height: 300px;
+  overflow-y: auto;
+  min-width: 180px;
+}
+
+.langue-panel button {
+  display: block;
+  width: 100%;
+  padding: 0.5em 1em;
+  background: transparent;
+  border: none;
+  text-align: left;
+  font-weight: 500;
+  color: var(--text-dark);
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: background 0.2s ease;
+  font-size: 0.95em;
 }
 
-.modal-close:hover {
-  background: var(--sunburn);
+.langue-panel button:hover {
+  background-color: var(--desert-gold);
 }
 
-/* 📱 Responsive cercles */
-@media (max-width: 600px) {
-  .lang-circle {
-    width: 70px;
-    height: 70px;
-    font-size: 0.8em;
+/* ✅ Responsive pour mobile */
+@media (max-width: 480px) {
+  .langue-btn {
+    font-size: 0.95em;
+    padding: 0.5em 1em;
   }
-  .modal-box {
-    padding: 1.2em;
+
+  .langue-panel {
+    min-width: 160px;
+    font-size: 0.9em;
+  }
+
+  .langue-panel button {
+    padding: 0.4em 0.8em;
   }
 }
