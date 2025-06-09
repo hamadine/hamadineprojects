@@ -73,13 +73,12 @@ function rechercherMot() {
   }
 }
 
-// Changer langue de traduction
+// Langues
 function changerLangue(lang) {
   langueTrad = lang;
   afficherMot();
 }
 
-// Changer langue interface
 function changerLangueInterface(lang) {
   langueInterface = lang;
   const t = interfaceData[lang] || interfaceData['fr'];
@@ -97,40 +96,21 @@ function changerLangueInterface(lang) {
     Merci pour votre intérêt et rendez-vous très bientôt pour de nouvelles fonctionnalités et ressources !
   `;
 
-  const btnPlay = document.getElementById('btnPlay');
-  if (btnPlay) btnPlay.textContent = `▶️ ${t.ecouter || "Écouter"}`;
-  const btnReplay = document.getElementById('btnReplay');
-  if (btnReplay) btnReplay.textContent = `⟳ ${t.rejouer || "Réécouter"}`;
-  const btnAuto = document.getElementById('btnAuto');
-  if (btnAuto) btnAuto.textContent = `▶️ ${t.lectureAuto || "Lecture auto"}`;
-  const btnEnvoyer = document.getElementById('btnEnvoyer');
-  if (btnEnvoyer) btnEnvoyer.textContent = t.envoyer || "Envoyer";
+  document.getElementById('btnPlay').textContent = `▶️ ${t.ecouter || "Écouter"}`;
+  document.getElementById('btnReplay').textContent = `⟳ ${t.rejouer || "Réécouter"}`;
+  document.getElementById('btnAuto').textContent = `▶️ ${t.lectureAuto || "Lecture auto"}`;
+  document.getElementById('btnEnvoyer').textContent = t.envoyer || "Envoyer";
 
-  const chatTitle = document.getElementById('chat-title');
-  if (chatTitle) chatTitle.textContent = t.chatTitre || "Chat Tadaksahak";
-
-  const searchBar = document.getElementById('searchBar');
-  if (searchBar) searchBar.placeholder = t.searchPlaceholder || "";
-
-  const chatInput = document.getElementById('chatInput');
-  if (chatInput) chatInput.placeholder = t.placeholderChat || "";
-
-  const botIntro = document.getElementById('botIntro');
-  if (botIntro) botIntro.innerHTML = t.botIntro || 
+  document.getElementById('chat-title').textContent = t.chatTitre || "Chat Tadaksahak";
+  document.getElementById('searchBar').placeholder = t.searchPlaceholder || "";
+  document.getElementById('chatInput').placeholder = t.placeholderChat || "";
+  document.getElementById('botIntro').innerHTML = t.botIntro || 
     "🤖 Salut, je suis Hamadine le bot Tadaksahak.<br>Demandez-moi un mot et je vous le trouve rapidement&nbsp;!";
-
-  const histoireTitle = document.getElementById('histoire-title');
-  if (histoireTitle) histoireTitle.textContent = t.histoireTitle || "Section Histoire";
-
-  const histoireMessage = document.getElementById('histoire-message');
-  if (histoireMessage) histoireMessage.innerHTML = t.histoireBientot || 
+  document.getElementById('histoire-title').textContent = t.histoireTitle || "Section Histoire";
+  document.getElementById('histoire-message').innerHTML = t.histoireBientot || 
     "Très bientôt, découvrez ici des textes historiques captivants sur la culture Tadaksahak.";
-
-  const archivesTitle = document.getElementById('archives-title');
-  if (archivesTitle) archivesTitle.textContent = t.archivesTitle || "Section Archives";
-
-  const archivesMessage = document.getElementById('archives-message');
-  if (archivesMessage) archivesMessage.innerHTML = t.archivesBientot || 
+  document.getElementById('archives-title').textContent = t.archivesTitle || "Section Archives";
+  document.getElementById('archives-message').innerHTML = t.archivesBientot || 
     "Nous mettrons prochainement à votre disposition des documents anciens précieux, témoins de l’histoire de la communauté.";
 
   const footer = document.getElementById('footerText');
@@ -143,7 +123,7 @@ function changerLangueInterface(lang) {
     Ensemble, faisons grandir ce patrimoine unique et transmettons-le aux générations futures ; contactez-nous pour participer ou soutenir cette initiative.
   `;
 
-  // Mémorisation pour le bot
+  // Mémo bot
   window.reponseBot = t.reponseBot || "Mot introuvable.";
   window.nomUtilisateur = t.utilisateur || "Vous";
 }
@@ -185,5 +165,19 @@ function lectureAuto() {
   console.log("Lecture auto (à implémenter)");
 }
 
-// Init
-window.addEventListener('DOMContentLoaded', chargerDonnees);
+// Panneau déroulant Langues 🌐
+function initDropdownLangues() {
+  const toggleBtn = document.getElementById("toggleLangues");
+  const panel = document.getElementById("languesPanel");
+  if (toggleBtn && panel) {
+    toggleBtn.addEventListener("click", () => {
+      panel.classList.toggle("show");
+    });
+  }
+}
+
+// Init global
+window.addEventListener('DOMContentLoaded', () => {
+  chargerDonnees();
+  initDropdownLangues();
+});
