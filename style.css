@@ -16,7 +16,6 @@ body {
   background-image: radial-gradient(circle at top right, #fefae0 0%, #f4e2d8 100%);
   overflow-x: hidden;
 
-  /* ✅ Fix #2 : pour pousser le footer en bas même avec peu de contenu */
   display: flex;
   flex-direction: column;
   min-height: 100vh;
@@ -29,9 +28,6 @@ main {
   background-color: rgba(255, 248, 225, 0.95);
   border-radius: 12px;
   box-shadow: 0 0 20px rgba(173, 136, 95, 0.2);
-  z-index: 2;
-
-  /* ✅ Fix #2 */
   flex: 1;
 }
 
@@ -40,7 +36,16 @@ h1, h2, h3 {
   text-align: center;
 }
 
-/* 🌐 Lang Panel Fix (animation + toggle) ✅ Fix #1 */
+footer {
+  text-align: center;
+  padding: 2em 1em;
+  background: var(--dune-brown);
+  color: #fff;
+  border-top: 4px solid var(--sunburn);
+  margin-top: 2em;
+}
+
+/* 🌐 Panneau Langues */
 #languesPanel {
   display: block;
   max-height: 0;
@@ -81,6 +86,7 @@ h1, h2, h3 {
   color: var(--sunlight);
 }
 
+/* Boutons de sélection de langue */
 .lang-switch {
   display: flex;
   flex-wrap: wrap;
@@ -91,29 +97,33 @@ h1, h2, h3 {
 
 .lang-switch button {
   background-color: var(--desert-gold);
-  color: var(--text-dark) !important;
+  color: var(--text-dark);
   border: none;
-  padding: 0.5em 1em;
+  padding: 0.5em 1.2em;
   font-weight: bold;
   border-radius: 6px;
   cursor: pointer;
   transition: all 0.2s ease;
-  font-size: 1em;
+  font-size: 0.95em;
+  white-space: nowrap;
+  max-width: 100%;
+  flex: 1 1 auto;
+  min-width: 90px;
+  text-align: center;
+
+  font-family: 'Segoe UI', sans-serif;
 }
 
 .lang-switch button:hover {
   background-color: var(--sunburn);
-  color: #fff !important;
-}
-
-/* Footer collé en bas */
-footer {
-  text-align: center;
-  padding: 2em 1em;
-  background: var(--dune-brown);
   color: #fff;
-  border-top: 4px solid var(--sunburn);
-  margin-top: 2em;
 }
 
-/* Autres styles (chatbox, audio, etc.) restent inchangés */
+/* Responsive */
+@media (max-width: 480px) {
+  .lang-switch button {
+    font-size: 0.85em;
+    padding: 0.4em 0.8em;
+    min-width: 70px;
+  }
+}
