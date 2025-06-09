@@ -87,10 +87,7 @@ function changerLangueInterface(lang) {
   const presentation = document.getElementById('textePresentation');
   if (presentation) {
     presentation.innerHTML = t.presentation || `
-      Très bientôt, découvrez ici une aventure collaborative dédiée à la langue Tadaksahak ! 
-      Vous trouverez sur cette page un dictionnaire interactif multilingue, pensé pour tous les amoureux et curieux de cette culture unique.<br><br>
-      Rejoignez-nous prochainement pour explorer, apprendre et contribuer ensemble à la préservation et à la transmission du Tadaksahak, aussi bien en ligne que sur des supports physiques.<br><br>
-      Merci pour votre intérêt et rendez-vous très bientôt pour de nouvelles fonctionnalités et ressources !
+      Très bientôt, découvrez ici une aventure collaborative dédiée à la langue Tadaksahak !
     `;
   }
 
@@ -131,17 +128,13 @@ function changerLangueInterface(lang) {
 
   const archivesMessage = document.getElementById('archives-message');
   if (archivesMessage) archivesMessage.innerHTML = t.archivesBientot || 
-    "Nous mettrons prochainement à votre disposition des documents anciens précieux, témoins de l’histoire de la communauté.";
+    "Nous mettrons prochainement à votre disposition des documents anciens précieux.";
 
   const footer = document.getElementById('footerText');
   if (footer) footer.innerHTML = t.footerText || "© 2025 • Tadaksahak Multilingue avec Hamadine.";
 
   const footerContrib = document.getElementById('footerContrib');
-  if (footerContrib) footerContrib.innerHTML = t.footerContrib || `
-    Peu importe la forme ou la taille, chaque contribution — documents, témoignages, recherches ou idées — est précieuse pour enrichir notre projet.<br>
-    Nous recherchons aussi des sponsors et partenaires engagés pour soutenir la valorisation de la langue et culture Tadaksahak.<br>
-    Ensemble, faisons grandir ce patrimoine unique et transmettons-le aux générations futures ; contactez-nous pour participer ou soutenir cette initiative.
-  `;
+  if (footerContrib) footerContrib.innerHTML = t.footerContrib || "";
 
   // Mémo bot
   window.reponseBot = t.reponseBot || "Mot introuvable.";
@@ -185,19 +178,27 @@ function lectureAuto() {
   console.log("Lecture auto (à implémenter)");
 }
 
-// Panneau déroulant Langues 🌐
+// 🌐 Langues Dropdown : CORRIGÉ & SÉCURISÉ
 function initDropdownLangues() {
   const toggleBtn = document.getElementById("toggleLangues");
   const panel = document.getElementById("languesPanel");
-  if (toggleBtn && panel) {
-    toggleBtn.addEventListener("click", () => {
-      panel.classList.toggle("show");
-    });
-  }
+
+  if (!toggleBtn || !panel) return;
+
+  toggleBtn.addEventListener("click", (e) => {
+    panel.classList.toggle("show");
+    e.stopPropagation();
+  });
+
+  document.addEventListener("click", (e) => {
+    if (!panel.contains(e.target) && !toggleBtn.contains(e.target)) {
+      panel.classList.remove("show");
+    }
+  });
 }
 
-// Init global
+// ✅ Init global blindé
 window.addEventListener('DOMContentLoaded', () => {
-  chargerDonnees();
-  initDropdownLangues();
+  initDropdownLangues();   // d'abord l'UI
+  chargerDonnees();        // ensuite les données
 });
