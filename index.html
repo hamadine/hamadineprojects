@@ -13,12 +13,12 @@
 </head>
 
 <body>
-  <!-- Effet spécial tempête de sable -->
+  <!-- Effet spécial -->
   <div class="sandstorm"></div>
   <div class="sandstorm2"></div>
   <div class="sandstorm3"></div>
 
-  <!-- Livre ouvert réaliste Tadaksahak -->
+  <!-- Livre -->
   <div class="opened-book-container" aria-label="Livre ouvert Tadaksahak">
     <div class="opened-book">
       <div class="book-page left-page"><span class="book-title">Adak</span></div>
@@ -29,12 +29,10 @@
   </div>
 
   <main>
-    <!-- Logo -->
     <div class="logo" style="text-align: center; margin-bottom: 1em;">
       <img src="images/idaksahak_round.png" alt="Logo Tadaksahak rond" width="120" />
     </div>
 
-    <!-- Présentation -->
     <section style="margin-bottom: 2em;"><p id="textePresentation"></p></section>
     <h1 id="titrePrincipal" style="text-align:center; font-size:2.1em; margin-bottom:0.7em;"></h1>
 
@@ -44,49 +42,46 @@
       <h2 id="motTexte" style="margin-top:1.2em;">...</h2>
       <p id="definition">...</p>
 
-      <!-- Navigation -->
       <nav id="navigation" aria-label="Navigation entre les mots" style="text-align:center; margin-top:1em;">
         <button id="btnPrev" onclick="motPrecedent()"></button>
         <button id="btnNext" onclick="motSuivant()"></button>
       </nav>
 
-      <!-- 🌐 Panneau langues -->
+      <!-- 🌐 Choix des langues -->
       <div class="language-dropdown" style="text-align: center; margin-bottom: 1.5em;">
         <button id="toggleLangues" class="langues-toggle">🌐 Langues</button>
         <div id="languesPanel">
           <h3>Langue de traduction</h3>
           <div class="lang-switch">
-            <button onclick="changerLangue('fr')">Fr</button>
-            <button onclick="changerLangue('en')">En</button>
-            <button onclick="changerLangue('ar')">ع</button>
-            <button onclick="changerLangue('ru')">Ru</button>
-            <button onclick="changerLangue('de')">De</button>
-            <button onclick="changerLangue('es')">Es</button>
-            <button onclick="changerLangue('it')">It</button>
-            <button onclick="changerLangue('nl')">Nl</button>
-            <button onclick="changerLangue('da')">Da</button>
-            <button onclick="changerLangue('cs')">Cs</button>
+            <button onclick="changerLangue('fr')">Français</button>
+            <button onclick="changerLangue('en')">English</button>
+            <button onclick="changerLangue('ar')">Arabe</button>
+            <button onclick="changerLangue('ru')">Russe</button>
+            <button onclick="changerLangue('de')">Allemand</button>
+            <button onclick="changerLangue('es')">Espagnol</button>
+            <button onclick="changerLangue('it')">Italien</button>
+            <button onclick="changerLangue('nl')">Néerlandais</button>
+            <button onclick="changerLangue('da')">Danois</button>
+            <button onclick="changerLangue('cs')">Tchèque</button>
           </div>
           <h3>Langue de l'interface</h3>
           <div class="lang-switch">
-            <button onclick="changerLangueInterface('fr')">🇫🇷</button>
-            <button onclick="changerLangueInterface('en')">🇬🇧</button>
-            <button onclick="changerLangueInterface('ar')">🇸🇦</button>
-            <button onclick="changerLangueInterface('ru')">🇷🇺</button>
-            <button onclick="changerLangueInterface('de')">🇩🇪</button>
-            <button onclick="changerLangueInterface('es')">🇪🇸</button>
-            <button onclick="changerLangueInterface('it')">🇮🇹</button>
-            <button onclick="changerLangueInterface('nl')">🇳🇱</button>
-            <button onclick="changerLangueInterface('da')">🇩🇰</button>
-            <button onclick="changerLangueInterface('cs')">🇨🇿</button>
+            <button onclick="changerLangueInterface('fr')">Français</button>
+            <button onclick="changerLangueInterface('en')">English</button>
+            <button onclick="changerLangueInterface('ar')">Arabe</button>
+            <button onclick="changerLangueInterface('ru')">Russe</button>
+            <button onclick="changerLangueInterface('de')">Allemand</button>
+            <button onclick="changerLangueInterface('es')">Espagnol</button>
+            <button onclick="changerLangueInterface('it')">Italien</button>
+            <button onclick="changerLangueInterface('nl')">Néerlandais</button>
+            <button onclick="changerLangueInterface('da')">Danois</button>
+            <button onclick="changerLangueInterface('cs')">Tchèque</button>
           </div>
         </div>
       </div>
 
-      <!-- Compteur -->
       <p id="compteur" style="text-align:center;">1 / ...</p>
 
-      <!-- Audio -->
       <div id="audioButtons" style="text-align:center;">
         <button id="btnPlay" onclick="jouerTadaksahak()"></button>
         <button id="btnReplay" onclick="rejouerMot()" disabled style="opacity: 0.5;"></button>
@@ -103,15 +98,11 @@
       <button id="btnEnvoyer" onclick="envoyerMessage()"></button>
     </section>
 
-    <!-- Histoire -->
     <section><h2 id="histoire-title"></h2><p id="histoire-message"></p></section>
 
-    <!-- Archives -->
     <section>
       <h2 id="archives-title">Section Archives</h2>
-      <p id="archives-message">
-        Nous mettrons prochainement à votre disposition des documents anciens précieux, témoins de l’histoire de la communauté.
-      </p>
+      <p id="archives-message">Nous mettrons prochainement à votre disposition des documents anciens précieux, témoins de l’histoire de la communauté.</p>
     </section>
   </main>
 
@@ -126,11 +117,11 @@
       <p style="margin:0.7em 0;">
         <a href="mailto:hamadineagmoctar@gmail.com" style="text-decoration:none; margin-right:1.5em;">
           <img src="images/Gmail.png" alt="Gmail" style="height:1.1em;vertical-align:middle; margin-right:0.3em;">
-          <span id="contact">Gmail</span>hamadineagmoctar@gmail.com
+          <span id="contact">Gmail</span> hamadineagmoctar@gmail.com
         </a>
         <a href="https://wa.me/22786762903" target="_blank" style="text-decoration:none;">
           <img src="images/whatsapp.png" alt="WhatsApp" style="height:1.1em;vertical-align:middle; margin-right:0.3em;">
-          <span id="contactWhatsApp">WhatsApp</span>+227 86762903
+          <span id="contactWhatsApp">WhatsApp</span> +227 86762903
         </a>
       </p>
       <div id="liensURL" style="margin-top:0.7em;"></div>
@@ -138,7 +129,7 @@
     <p id="footerText"></p>
   </footer>
 
-  <!-- JS toggle langue -->
+  <!-- JS pour ouverture/fermeture du menu langues -->
   <script>
     document.addEventListener("DOMContentLoaded", () => {
       const toggleBtn = document.getElementById("toggleLangues");
