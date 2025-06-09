@@ -1,33 +1,82 @@
 :root {
-  --night-blue: #0d1b2a;
-  --deep-shadow: #1b263b;
-  --mid-blue: #415a77;
-  --sand-accent: #c9ada7;
-  --light-sand: #fefae0;
-  --text-light: #e0e1dd;
-  --highlight: #94a9c9;
+  --sun-sand: #f4e2d8;
+  --desert-gold: #e8c07d;
+  --dune-brown: #b38766;
+  --clay: #a47449;
+  --sunburn: #d6683c;
+  --sunlight: #fff8e1;
+  --text-dark: #2b1d0e;
 }
 
 body {
   margin: 0;
   font-family: 'Segoe UI', sans-serif;
-  background: var(--night-blue);
-  color: var(--text-light);
+  background: var(--sun-sand);
+  color: var(--text-dark);
+  background-image: radial-gradient(circle at top right, #fefae0 0%, #f4e2d8 100%);
+  overflow-x: hidden;
 }
 
+/* --- Layout Principal --- */
 main {
   max-width: 800px;
   margin: auto;
   padding: 2em;
-  background-color: rgba(13, 27, 42, 0.88);
+  background-color: rgba(255, 248, 225, 0.95);
   border-radius: 12px;
-  box-shadow: 0 0 20px rgba(255, 255, 255, 0.05);
+  box-shadow: 0 0 20px rgba(173, 136, 95, 0.2);
   z-index: 2;
 }
 
-h1 {
-  color: var(--light-sand);
+h1, h2, h3 {
+  color: var(--clay);
   text-align: center;
+}
+
+/* --- Logo --- */
+.logo img {
+  border-radius: 50%;
+  border: 3px solid var(--desert-gold);
+}
+
+/* --- Barre de recherche --- */
+#searchBar {
+  padding: 0.6em 1em;
+  border: 2px solid var(--dune-brown);
+  border-radius: 8px;
+  font-size: 1em;
+  margin-bottom: 1em;
+}
+
+/* --- Résultats --- */
+#motTexte {
+  font-size: 1.5em;
+  font-weight: bold;
+  color: var(--clay);
+  text-align: center;
+  margin-top: 1.5em;
+}
+
+#definition {
+  text-align: center;
+  font-size: 1.1em;
+  color: var(--text-dark);
+}
+
+/* --- Navigation --- */
+#navigation button {
+  background-color: var(--dune-brown);
+  color: white;
+  border: none;
+  margin: 0 0.4em;
+  padding: 0.4em 0.8em;
+  font-weight: bold;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+#navigation button:hover {
+  background-color: var(--sunburn);
 }
 
 /* 🌐 LANG PANEL */
@@ -37,8 +86,8 @@ h1 {
 }
 
 .langues-toggle {
-  background-color: var(--mid-blue);
-  color: var(--light-sand);
+  background-color: var(--clay);
+  color: var(--sunlight);
   border: none;
   font-weight: bold;
   padding: 0.6em 1.2em;
@@ -48,17 +97,16 @@ h1 {
 }
 
 .langues-toggle:hover {
-  background-color: var(--highlight);
-  color: var(--night-blue);
+  background-color: var(--sunburn);
+  color: var(--sunlight);
 }
 
-.langues-panel,
 #languesPanel {
-  display: none;
+  visibility: hidden;
   opacity: 0;
   transform: translateY(-10px);
   transition: opacity 0.3s ease, transform 0.3s ease;
-  background: #fefae0;
+  background: var(--sunlight);
   border-radius: 10px;
   padding: 1em;
   margin-top: 1em;
@@ -69,18 +117,16 @@ h1 {
   z-index: 5;
 }
 
-.langues-panel.show,
 #languesPanel.show {
-  display: block;
+  visibility: visible;
   opacity: 1;
   transform: translateY(0);
 }
 
-.langues-panel h3,
 #languesPanel h3 {
   margin-bottom: 0.5em;
   font-size: 1.1em;
-  color: #333;
+  color: var(--text-dark);
   text-align: center;
 }
 
@@ -93,8 +139,8 @@ h1 {
 }
 
 .lang-switch button {
-  background-color: var(--sand-accent);
-  color: #1a1a1a !important;
+  background-color: var(--desert-gold);
+  color: var(--text-dark) !important;
   border: none;
   padding: 0.5em 1em;
   font-weight: bold;
@@ -105,5 +151,125 @@ h1 {
 }
 
 .lang-switch button:hover {
-  background-color: #e5c18c;
+  background-color: var(--sunburn);
+  color: #fff !important;
+}
+
+/* --- Chatbot --- */
+.chatbox {
+  background: var(--sunlight);
+  color: var(--text-dark);
+  padding: 1em;
+  border-radius: 8px;
+  margin-top: 1em;
+  max-height: 200px;
+  overflow-y: auto;
+  box-shadow: 0 0 8px rgba(0,0,0,0.1);
+}
+
+.message {
+  margin-bottom: 0.5em;
+}
+
+.message strong {
+  color: var(--clay);
+}
+
+/* --- Input Chat --- */
+#chatInput {
+  margin-top: 1em;
+  padding: 0.6em 1em;
+  border: 2px solid var(--dune-brown);
+  border-radius: 8px;
+  width: 100%;
+  font-size: 1em;
+}
+
+#btnEnvoyer {
+  margin-top: 0.5em;
+  background-color: var(--clay);
+  color: white;
+  padding: 0.5em 1em;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+#btnEnvoyer:hover {
+  background-color: var(--sunburn);
+}
+
+/* --- Audio buttons --- */
+#audioButtons button {
+  background-color: var(--desert-gold);
+  color: var(--text-dark);
+  margin: 0.3em;
+  padding: 0.5em 1em;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+}
+
+#audioButtons button:hover {
+  background-color: var(--sunburn);
+  color: white;
+}
+
+/* --- Footer --- */
+footer {
+  text-align: center;
+  padding: 2em 1em;
+  background: var(--dune-brown);
+  color: #fff;
+  border-top: 4px solid var(--sunburn);
+}
+
+footer a {
+  color: #fff;
+  text-decoration: underline;
+}
+
+footer a:hover {
+  text-decoration: none;
+}
+
+/* --- Sandstorm FX --- */
+.sandstorm,
+.sandstorm2,
+.sandstorm3 {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 200%;
+  height: 100%;
+  background-image: url('images/sandstorm.png');
+  background-repeat: repeat;
+  opacity: 0.05;
+  animation: sandstorm 100s linear infinite;
+  pointer-events: none;
+  z-index: 0;
+}
+
+@keyframes sandstorm {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+/* --- Responsive --- */
+@media (max-width: 600px) {
+  main {
+    padding: 1em;
+  }
+
+  #languesPanel {
+    width: 90%;
+  }
+
+  #searchBar, #chatInput {
+    width: 100%;
+  }
+
+  .lang-switch {
+    flex-direction: column;
+  }
 }
