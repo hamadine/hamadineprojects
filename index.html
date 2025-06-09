@@ -7,10 +7,7 @@
 
   <link rel="icon" href="images/idaksahak_round.png" type="image/png" />
   <meta name="description" content="Vocabulaire Tadaksahak en audio avec traduction multilingue." />
-
-  <!-- ✅ Nouveau thème désert -->
   <link rel="stylesheet" href="style.css" />
-
   <script src="https://cdn.jsdelivr.net/npm/fuse.js/dist/fuse.js"></script>
   <script defer src="app.js"></script>
 </head>
@@ -21,16 +18,12 @@
   <div class="sandstorm2"></div>
   <div class="sandstorm3"></div>
 
-  <!-- Livre ouvert réaliste Tadaksahak bien séparé -->
+  <!-- Livre ouvert réaliste Tadaksahak -->
   <div class="opened-book-container" aria-label="Livre ouvert Tadaksahak">
     <div class="opened-book">
-      <div class="book-page left-page">
-        <span class="book-title">Adak</span>
-      </div>
+      <div class="book-page left-page"><span class="book-title">Adak</span></div>
       <div class="book-binding"></div>
-      <div class="book-page right-page">
-        <span class="book-author">sahak</span>
-      </div>
+      <div class="book-page right-page"><span class="book-author">sahak</span></div>
       <div class="book-shadow"></div>
     </div>
   </div>
@@ -41,25 +34,13 @@
       <img src="images/idaksahak_round.png" alt="Logo Tadaksahak rond" width="120" />
     </div>
 
-    <!-- Présentation dynamique -->
-    <section style="margin-bottom: 2em;">
-      <p id="textePresentation"></p>
-    </section>
-
-    <!-- Titre principal -->
+    <!-- Présentation -->
+    <section style="margin-bottom: 2em;"><p id="textePresentation"></p></section>
     <h1 id="titrePrincipal" style="text-align:center; font-size:2.1em; margin-bottom:0.7em;"></h1>
 
-    <!-- Barre de recherche -->
+    <!-- Recherche -->
     <section style="margin-bottom: 2em;">
-      <input
-        id="searchBar"
-        type="text"
-        placeholder=""
-        oninput="rechercherMot()"
-        aria-label="Zone de recherche"
-        style="width: 100%; max-width: 400px; margin: auto; display: block;"
-      />
-
+      <input id="searchBar" type="text" placeholder="" oninput="rechercherMot()" aria-label="Zone de recherche" style="width: 100%; max-width: 400px; margin: auto; display: block;" />
       <h2 id="motTexte" style="margin-top:1.2em;">...</h2>
       <p id="definition">...</p>
 
@@ -69,7 +50,7 @@
         <button id="btnNext" onclick="motSuivant()"></button>
       </nav>
 
-      <!-- 🌐 Panel Langues Centralisé -->
+      <!-- 🌐 Panneau langues -->
       <div class="language-dropdown" style="text-align: center; margin-bottom: 1.5em;">
         <button id="toggleLangues" class="langues-toggle">🌐 Langues</button>
         <div id="languesPanel">
@@ -105,7 +86,7 @@
       <!-- Compteur -->
       <p id="compteur" style="text-align:center;">1 / ...</p>
 
-      <!-- Contrôles audio -->
+      <!-- Audio -->
       <div id="audioButtons" style="text-align:center;">
         <button id="btnPlay" onclick="jouerTadaksahak()"></button>
         <button id="btnReplay" onclick="rejouerMot()" disabled style="opacity: 0.5;"></button>
@@ -113,31 +94,19 @@
       </div>
     </section>
 
-    <!-- Zone chat -->
+    <!-- Chat -->
     <section aria-labelledby="chat-title" style="margin-top: 2rem;">
       <h2 id="chat-title"></h2>
       <div id="chatWindow" class="chatbox" role="log" aria-live="polite"></div>
-
       <div id="botIntro" style="margin: 1.5em 0; color: #0a5780; font-weight: bold;"></div>
-
-      <input
-        type="text"
-        id="chatInput"
-        placeholder=""
-        onkeydown="if(event.key==='Enter') envoyerMessage()"
-        aria-label="Zone de saisie du chat"
-        style="width: 100%; max-width: 500px;"
-      />
+      <input type="text" id="chatInput" placeholder="" onkeydown="if(event.key==='Enter') envoyerMessage()" aria-label="Zone de saisie du chat" style="width: 100%; max-width: 500px;" />
       <button id="btnEnvoyer" onclick="envoyerMessage()"></button>
     </section>
 
-    <!-- Section Histoire -->
-    <section>
-      <h2 id="histoire-title"></h2>
-      <p id="histoire-message"></p>
-    </section>
+    <!-- Histoire -->
+    <section><h2 id="histoire-title"></h2><p id="histoire-message"></p></section>
 
-    <!-- Section Archives -->
+    <!-- Archives -->
     <section>
       <h2 id="archives-title">Section Archives</h2>
       <p id="archives-message">
@@ -146,7 +115,7 @@
     </section>
   </main>
 
-  <!-- Pied de page harmonisé -->
+  <!-- Footer -->
   <footer>
     <section style="margin-bottom: 1em;">
       <p id="footerContrib">
@@ -169,17 +138,15 @@
     <p id="footerText"></p>
   </footer>
 
-  <!-- Script dropdown + auto-hide -->
+  <!-- JS toggle langue -->
   <script>
     document.addEventListener("DOMContentLoaded", () => {
       const toggleBtn = document.getElementById("toggleLangues");
       const panel = document.getElementById("languesPanel");
-
       toggleBtn.addEventListener("click", (e) => {
         panel.classList.toggle("show");
         e.stopPropagation();
       });
-
       document.addEventListener("click", (e) => {
         if (!panel.contains(e.target) && !toggleBtn.contains(e.target)) {
           panel.classList.remove("show");
