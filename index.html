@@ -3,86 +3,147 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Dictionnaire Tadaksahak Multilingue</title>
+  <title id="pageTitle">Dictionnaire Tadaksahak Multilingue</title>
+
+  <link rel="icon" href="images/idaksahak_round.png" type="image/png" />
+  <meta name="description" content="Vocabulaire Tadaksahak en audio avec traduction multilingue." />
   <link rel="stylesheet" href="style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/fuse.js/dist/fuse.js"></script>
+  <script defer src="app.js"></script>
 </head>
+
 <body>
+  <!-- Effet spécial -->
+  <div class="sandstorm"></div>
+  <div class="sandstorm2"></div>
+  <div class="sandstorm3"></div>
 
-  <h1 id="appTitle">Tadaksahak Multilingue</h1>
-
-  <!-- Bouton d'ouverture -->
-  <button id="openLangModal" class="lang-btn-trigger">🌐 Choisir la langue</button>
-
-  <!-- Modale -->
-  <div id="langModal" class="modal-overlay">
-    <div class="modal-box">
-      <h2>Sélectionner la langue de l'application</h2>
-      <div class="lang-circle-group" id="langSelector">
-        <!-- Langues insérées dynamiquement -->
-      </div>
-      <button id="closeLangModal" class="modal-close">Terminer</button>
+  <!-- Livre -->
+  <div class="opened-book-container" aria-label="Livre ouvert Tadaksahak">
+    <div class="opened-book">
+      <div class="book-page left-page"><span class="book-title">Adak</span></div>
+      <div class="book-binding"></div>
+      <div class="book-page right-page"><span class="book-author">sahak</span></div>
+      <div class="book-shadow"></div>
     </div>
   </div>
 
-  <!-- Texte d'exemple -->
-  <p id="welcomeText">Bienvenue dans le dictionnaire Tadaksahak !</p>
+  <main>
+    <div class="logo" style="text-align: center; margin-bottom: 1em;">
+      <img src="images/idaksahak_round.png" alt="Logo Tadaksahak rond" width="120" />
+    </div>
 
+    <section style="margin-bottom: 2em;"><p id="textePresentation"></p></section>
+    <h1 id="titrePrincipal" style="text-align:center; font-size:2.1em; margin-bottom:0.7em;"></h1>
+
+    <!-- Recherche -->
+    <section style="margin-bottom: 2em;">
+      <input id="searchBar" type="text" placeholder="" oninput="rechercherMot()" aria-label="Zone de recherche" style="width: 100%; max-width: 400px; margin: auto; display: block;" />
+      <h2 id="motTexte" style="margin-top:1.2em;">...</h2>
+      <p id="definition">...</p>
+
+      <nav id="navigation" aria-label="Navigation entre les mots" style="text-align:center; margin-top:1em;">
+        <button id="btnPrev" onclick="motPrecedent()"></button>
+        <button id="btnNext" onclick="motSuivant()"></button>
+      </nav>
+
+      <!-- 🌐 Choix des langues -->
+      <div class="language-dropdown" style="text-align: center; margin-bottom: 1.5em;">
+        <button id="toggleLangues" class="langues-toggle">🌐 Langues</button>
+        <div id="languesPanel">
+          <h3>Langue de traduction</h3>
+          <div class="lang-switch">
+            <button onclick="changerLangue('fr')">Français</button>
+            <button onclick="changerLangue('en')">English</button>
+            <button onclick="changerLangue('ar')">Arabe</button>
+            <button onclick="changerLangue('ru')">Russe</button>
+            <button onclick="changerLangue('de')">Allemand</button>
+            <button onclick="changerLangue('es')">Espagnol</button>
+            <button onclick="changerLangue('it')">Italien</button>
+            <button onclick="changerLangue('nl')">Néerlandais</button>
+            <button onclick="changerLangue('da')">Danois</button>
+            <button onclick="changerLangue('cs')">Tchèque</button>
+          </div>
+          <h3>Langue de l'interface</h3>
+          <div class="lang-switch">
+            <button onclick="changerLangueInterface('fr')">Français</button>
+            <button onclick="changerLangueInterface('en')">English</button>
+            <button onclick="changerLangueInterface('ar')">Arabe</button>
+            <button onclick="changerLangueInterface('ru')">Russe</button>
+            <button onclick="changerLangueInterface('de')">Allemand</button>
+            <button onclick="changerLangueInterface('es')">Espagnol</button>
+            <button onclick="changerLangueInterface('it')">Italien</button>
+            <button onclick="changerLangueInterface('nl')">Néerlandais</button>
+            <button onclick="changerLangueInterface('da')">Danois</button>
+            <button onclick="changerLangueInterface('cs')">Tchèque</button>
+          </div>
+        </div>
+      </div>
+
+      <p id="compteur" style="text-align:center;">1 / ...</p>
+
+      <div id="audioButtons" style="text-align:center;">
+        <button id="btnPlay" onclick="jouerTadaksahak()"></button>
+        <button id="btnReplay" onclick="rejouerMot()" disabled style="opacity: 0.5;"></button>
+        <button id="btnAuto" onclick="lectureAuto()" disabled style="opacity: 0.5;"></button>
+      </div>
+    </section>
+
+    <!-- Chat -->
+    <section aria-labelledby="chat-title" style="margin-top: 2rem;">
+      <h2 id="chat-title"></h2>
+      <div id="chatWindow" class="chatbox" role="log" aria-live="polite"></div>
+      <div id="botIntro" style="margin: 1.5em 0; color: #0a5780; font-weight: bold;"></div>
+      <input type="text" id="chatInput" placeholder="" onkeydown="if(event.key==='Enter') envoyerMessage()" aria-label="Zone de saisie du chat" style="width: 100%; max-width: 500px;" />
+      <button id="btnEnvoyer" onclick="envoyerMessage()"></button>
+    </section>
+
+    <section><h2 id="histoire-title"></h2><p id="histoire-message"></p></section>
+
+    <section>
+      <h2 id="archives-title">Section Archives</h2>
+      <p id="archives-message">Nous mettrons prochainement à votre disposition des documents anciens précieux, témoins de l’histoire de la communauté.</p>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <section style="margin-bottom: 1em;">
+      <p id="footerContrib">
+        Peu importe la forme ou la taille, chaque contribution — documents, témoignages, recherches ou idées — est précieuse pour enrichir notre projet.<br>
+        Nous recherchons aussi des sponsors et partenaires engagés pour soutenir la valorisation de la langue et culture Tadaksahak.<br>
+        Ensemble, faisons grandir ce patrimoine unique et transmettons-le aux générations futures.
+      </p>
+      <p style="margin:0.7em 0;">
+        <a href="mailto:hamadineagmoctar@gmail.com" style="text-decoration:none; margin-right:1.5em;">
+          <img src="images/Gmail.png" alt="Gmail" style="height:1.1em;vertical-align:middle; margin-right:0.3em;">
+          <span id="contact">Gmail</span> hamadineagmoctar@gmail.com
+        </a>
+        <a href="https://wa.me/22786762903" target="_blank" style="text-decoration:none;">
+          <img src="images/whatsapp.png" alt="WhatsApp" style="height:1.1em;vertical-align:middle; margin-right:0.3em;">
+          <span id="contactWhatsApp">WhatsApp</span> +227 86762903
+        </a>
+      </p>
+      <div id="liensURL" style="margin-top:0.7em;"></div>
+    </section>
+    <p id="footerText"></p>
+  </footer>
+
+  <!-- JS pour ouverture/fermeture du menu langues -->
   <script>
-    const supportedLangs = {
-      fr: { name: "Français", flag: "fr", message: "Bienvenue dans le dictionnaire Tadaksahak !" },
-      en: { name: "English", flag: "gb", message: "Welcome to the Tadaksahak Dictionary!" },
-      ar: { name: "العربية", flag: "sa", message: "مرحبًا بك في قاموس تاداكساهاك!" },
-      ru: { name: "Русский", flag: "ru", message: "Добро пожаловать в словарь Тадаксахак!" },
-      de: { name: "Deutsch", flag: "de", message: "Willkommen im Tadaksahak-Wörterbuch!" },
-      es: { name: "Español", flag: "es", message: "¡Bienvenido al diccionario Tadaksahak!" },
-      it: { name: "Italiano", flag: "it", message: "Benvenuto nel dizionario Tadaksahak!" },
-      nl: { name: "Nederlands", flag: "nl", message: "Welkom bij het Tadaksahak-woordenboek!" },
-      da: { name: "Dansk", flag: "dk", message: "Velkommen til Tadaksahak-ordbogen!" },
-      cs: { name: "Čeština", flag: "cz", message: "Vítejte ve slovníku Tadaksahak!" },
-      pt: { name: "Português", flag: "pt", message: "Bem-vindo ao dicionário Tadaksahak!" },
-      tr: { name: "Türkçe", flag: "tr", message: "Tadaksahak sözlüğüne hoş geldiniz!" },
-      ja: { name: "日本語", flag: "jp", message: "タダクサハク辞書へようこそ！" },
-      zh: { name: "中文", flag: "cn", message: "欢迎使用Tadaksahak词典！" },
-      hi: { name: "हिन्दी", flag: "in", message: "तड़क्सहक शब्दकोश में आपका स्वागत है!" },
-      sw: { name: "Kiswahili", flag: "tz", message: "Karibu kwenye kamusi ya Tadaksahak!" }
-    };
-
-    let currentLang = "fr";
-
-    const modal = document.getElementById("langModal");
-    const selector = document.getElementById("langSelector");
-    const welcomeText = document.getElementById("welcomeText");
-
-    // Générer les boutons dynamiquement
-    for (const [code, data] of Object.entries(supportedLangs)) {
-      const btn = document.createElement("button");
-      btn.className = "lang-circle";
-      btn.onclick = () => setLang(code);
-      btn.innerHTML = `
-        <img src="https://flagcdn.com/${data.flag}.svg" alt="${data.name}">
-        <span>${code.toUpperCase()}</span>
-      `;
-      selector.appendChild(btn);
-    }
-
-    // Appliquer une langue
-    function setLang(code) {
-      currentLang = code;
-      document.documentElement.lang = code;
-      welcomeText.textContent = supportedLangs[code].message || welcomeText.textContent;
-      modal.classList.remove("show");
-    }
-
-    // Auto-détection au chargement
-    window.addEventListener("DOMContentLoaded", () => {
-      const browserLang = navigator.language.slice(0, 2).toLowerCase();
-      if (supportedLangs[browserLang]) setLang(browserLang);
+    document.addEventListener("DOMContentLoaded", () => {
+      const toggleBtn = document.getElementById("toggleLangues");
+      const panel = document.getElementById("languesPanel");
+      toggleBtn.addEventListener("click", (e) => {
+        panel.classList.toggle("show");
+        e.stopPropagation();
+      });
+      document.addEventListener("click", (e) => {
+        if (!panel.contains(e.target) && !toggleBtn.contains(e.target)) {
+          panel.classList.remove("show");
+        }
+      });
     });
-
-    // Gestion modale
-    document.getElementById("openLangModal").onclick = () => modal.classList.add("show");
-    document.getElementById("closeLangModal").onclick = () => modal.classList.remove("show");
   </script>
-
 </body>
 </html>
