@@ -74,43 +74,63 @@ function rechercherMot() {
 }
 
 // Langues
-function changerLangue(lang) {
-  langueTrad = lang;
-  afficherMot();
-}
-
 function changerLangueInterface(lang) {
   langueInterface = lang;
   const t = interfaceData[lang] || interfaceData['fr'];
   if (!t) return;
 
   document.title = t.titrePrincipal || "";
+
   const titrePrincipal = document.getElementById('titrePrincipal');
   if (titrePrincipal) titrePrincipal.textContent = t.titrePrincipal || "";
 
   const presentation = document.getElementById('textePresentation');
-  if (presentation) presentation.innerHTML = t.presentation || `
-    Très bientôt, découvrez ici une aventure collaborative dédiée à la langue Tadaksahak ! 
-    Vous trouverez sur cette page un dictionnaire interactif multilingue, pensé pour tous les amoureux et curieux de cette culture unique.<br><br>
-    Rejoignez-nous prochainement pour explorer, apprendre et contribuer ensemble à la préservation et à la transmission du Tadaksahak, aussi bien en ligne que sur des supports physiques.<br><br>
-    Merci pour votre intérêt et rendez-vous très bientôt pour de nouvelles fonctionnalités et ressources !
-  `;
+  if (presentation) {
+    presentation.innerHTML = t.presentation || `
+      Très bientôt, découvrez ici une aventure collaborative dédiée à la langue Tadaksahak ! 
+      Vous trouverez sur cette page un dictionnaire interactif multilingue, pensé pour tous les amoureux et curieux de cette culture unique.<br><br>
+      Rejoignez-nous prochainement pour explorer, apprendre et contribuer ensemble à la préservation et à la transmission du Tadaksahak, aussi bien en ligne que sur des supports physiques.<br><br>
+      Merci pour votre intérêt et rendez-vous très bientôt pour de nouvelles fonctionnalités et ressources !
+    `;
+  }
 
-  document.getElementById('btnPlay').textContent = `▶️ ${t.ecouter || "Écouter"}`;
-  document.getElementById('btnReplay').textContent = `⟳ ${t.rejouer || "Réécouter"}`;
-  document.getElementById('btnAuto').textContent = `▶️ ${t.lectureAuto || "Lecture auto"}`;
-  document.getElementById('btnEnvoyer').textContent = t.envoyer || "Envoyer";
+  const btnPlay = document.getElementById('btnPlay');
+  if (btnPlay) btnPlay.textContent = `▶️ ${t.ecouter || "Écouter"}`;
 
-  document.getElementById('chat-title').textContent = t.chatTitre || "Chat Tadaksahak";
-  document.getElementById('searchBar').placeholder = t.searchPlaceholder || "";
-  document.getElementById('chatInput').placeholder = t.placeholderChat || "";
-  document.getElementById('botIntro').innerHTML = t.botIntro || 
+  const btnReplay = document.getElementById('btnReplay');
+  if (btnReplay) btnReplay.textContent = `⟳ ${t.rejouer || "Réécouter"}`;
+
+  const btnAuto = document.getElementById('btnAuto');
+  if (btnAuto) btnAuto.textContent = `▶️ ${t.lectureAuto || "Lecture auto"}`;
+
+  const btnEnvoyer = document.getElementById('btnEnvoyer');
+  if (btnEnvoyer) btnEnvoyer.textContent = t.envoyer || "Envoyer";
+
+  const chatTitle = document.getElementById('chat-title');
+  if (chatTitle) chatTitle.textContent = t.chatTitre || "Chat Tadaksahak";
+
+  const searchBar = document.getElementById('searchBar');
+  if (searchBar) searchBar.placeholder = t.searchPlaceholder || "";
+
+  const chatInput = document.getElementById('chatInput');
+  if (chatInput) chatInput.placeholder = t.placeholderChat || "";
+
+  const botIntro = document.getElementById('botIntro');
+  if (botIntro) botIntro.innerHTML = t.botIntro || 
     "🤖 Salut, je suis Hamadine le bot Tadaksahak.<br>Demandez-moi un mot et je vous le trouve rapidement&nbsp;!";
-  document.getElementById('histoire-title').textContent = t.histoireTitle || "Section Histoire";
-  document.getElementById('histoire-message').innerHTML = t.histoireBientot || 
+
+  const histoireTitle = document.getElementById('histoire-title');
+  if (histoireTitle) histoireTitle.textContent = t.histoireTitle || "Section Histoire";
+
+  const histoireMessage = document.getElementById('histoire-message');
+  if (histoireMessage) histoireMessage.innerHTML = t.histoireBientot || 
     "Très bientôt, découvrez ici des textes historiques captivants sur la culture Tadaksahak.";
-  document.getElementById('archives-title').textContent = t.archivesTitle || "Section Archives";
-  document.getElementById('archives-message').innerHTML = t.archivesBientot || 
+
+  const archivesTitle = document.getElementById('archives-title');
+  if (archivesTitle) archivesTitle.textContent = t.archivesTitle || "Section Archives";
+
+  const archivesMessage = document.getElementById('archives-message');
+  if (archivesMessage) archivesMessage.innerHTML = t.archivesBientot || 
     "Nous mettrons prochainement à votre disposition des documents anciens précieux, témoins de l’histoire de la communauté.";
 
   const footer = document.getElementById('footerText');
