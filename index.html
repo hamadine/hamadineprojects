@@ -5,162 +5,127 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title id="pageTitle">Dictionnaire Tadaksahak Multilingue</title>
 
+  <!-- Sécurité : Politique de contenu -->
+  <meta http-equiv="Content-Security-Policy"
+        content="default-src 'self'; 
+                 script-src 'self' https://cdn.jsdelivr.net; 
+                 style-src 'self' 'unsafe-inline'; 
+                 img-src 'self' data:; 
+                 font-src 'self'; 
+                 connect-src 'self'; 
+                 object-src 'none'; 
+                 base-uri 'none'; 
+                 form-action 'self';" />
+
+  <!-- Favicon -->
   <link rel="icon" href="images/idaksahak_round.png" type="image/png" />
+
+  <!-- SEO protection en phase de développement -->
+  <meta name="robots" content="noindex, nofollow" />
+
+  <!-- Description -->
   <meta name="description" content="Vocabulaire Tadaksahak en audio avec traduction multilingue." />
+
+  <!-- CSS -->
   <link rel="stylesheet" href="style.css" />
-  <script src="https://cdn.jsdelivr.net/npm/fuse.js/dist/fuse.js"></script>
+
+  <!-- JS sécurisé via CDN avec intégrité -->
+  <script src="https://cdn.jsdelivr.net/npm/fuse.js/dist/fuse.js"
+          integrity="sha384-vérifie_ce_hash_ou_fourni_le"
+          crossorigin="anonymous"></script>
+
+  <!-- Script local -->
   <script defer src="app.js"></script>
 </head>
 
 <body>
-  <!-- Effets spéciaux -->
-  <div class="sandstorm"></div>
-  <div class="sandstorm2"></div>
-  <div class="sandstorm3"></div>
-
-  <!-- Livre -->
-  <div class="opened-book-container" aria-label="Livre ouvert Tadaksahak">
-    <div class="opened-book">
-      <div class="book-page left-page"><span class="book-title">Adak</span></div>
-      <div class="book-binding"></div>
-      <div class="book-page right-page"><span class="book-author">sahak</span></div>
-      <div class="book-shadow"></div>
-    </div>
-  </div>
+  <header style="text-align:center; margin-bottom:2em;">
+    <img src="images/idaksahak_round.png" alt="Logo Tadaksahak" width="120" />
+  </header>
 
   <main>
-    <!-- Logo -->
-    <div class="logo" style="text-align: center; margin-bottom: 1em;">
-      <img src="images/idaksahak_round.png" alt="Logo Tadaksahak rond" width="120" />
-    </div>
+    <section>
+      <h1 id="titrePrincipal"></h1>
+      <p id="textePresentation"></p>
+    </section>
 
-    <!-- Présentation -->
-    <section style="margin-bottom: 2em;"><p id="textePresentation"></p></section>
-    <h1 id="titrePrincipal" style="text-align:center; font-size:2.1em; margin-bottom:0.7em;"></h1>
-
-    <!-- Sélecteur de langue moderne -->
+    <!-- Langues -->
     <div class="langue-select-container">
-      <button id="langueActuelle" class="langue-btn">Langue : FR ⌄</button>
-      <div id="langueListe" class="langue-panel">
-        <button onclick="changerLangueInterface('fr')">Français</button>
-        <button onclick="changerLangueInterface('en')">English</button>
-        <button onclick="changerLangueInterface('ar')">العربية</button>
-        <button onclick="changerLangueInterface('ru')">Русский</button>
-        <button onclick="changerLangueInterface('de')">Deutsch</button>
-        <button onclick="changerLangueInterface('es')">Español</button>
-        <button onclick="changerLangueInterface('it')">Italiano</button>
-        <button onclick="changerLangueInterface('nl')">Nederlands</button>
-        <button onclick="changerLangueInterface('da')">Dansk</button>
-        <button onclick="changerLangueInterface('cs')">Čeština</button>
-        <button onclick="changerLangueInterface('pt')">Português</button>
-        <button onclick="changerLangueInterface('tr')">Türkçe</button>
-        <button onclick="changerLangueInterface('ja')">日本語</button>
-        <button onclick="changerLangueInterface('zh')">中文</button>
-        <button onclick="changerLangueInterface('hi')">हिन्दी</button>
-        <button onclick="changerLangueInterface('sw')">Kiswahili</button>
+      <button id="langueActuelle" class="langue-btn" aria-haspopup="true" aria-expanded="false">Langue : FR ⌄</button>
+      <div id="langueListe" class="langue-panel" role="menu" hidden>
+        <!-- Boutons de langue générés par JS -->
       </div>
     </div>
 
     <!-- Recherche -->
-    <section style="margin-bottom: 2em;">
-      <input id="searchBar" type="text" placeholder="" oninput="rechercherMot()" aria-label="Zone de recherche" style="width: 100%; max-width: 400px; margin: auto; display: block;" />
-      <h2 id="motTexte" style="margin-top:1.2em;">...</h2>
-      <p id="definition">...</p>
-
-      <!-- Navigation -->
-      <nav id="navigation" style="text-align:center; margin-top:1em;">
-        <button id="btnPrev" onclick="motPrecedent()"></button>
-        <button id="btnNext" onclick="motSuivant()"></button>
-      </nav>
-
-      <p id="compteur" style="text-align:center;">1 / ...</p>
-
-      <!-- Audio -->
-      <div id="audioButtons" style="text-align:center;">
-        <button id="btnPlay" onclick="jouerTadaksahak()"></button>
-        <button id="btnReplay" onclick="rejouerMot()" disabled style="opacity: 0.5;"></button>
-        <button id="btnAuto" onclick="lectureAuto()" disabled style="opacity: 0.5;"></button>
+    <section>
+      <input id="searchBar" type="text" placeholder="Cherchez un mot..." oninput="rechercherMotDebounce()" />
+      <h2 id="motTexte"></h2>
+      <p id="definition"></p>
+      <p id="compteur"></p>
+      <div id="audioButtons">
+        <button id="btnPlay"></button>
+        <button id="btnReplay" disabled style="opacity: 0.5;"></button>
+        <button id="btnAuto" disabled style="opacity: 0.5;"></button>
       </div>
+      <nav>
+        <button id="btnPrev"></button>
+        <button id="btnNext"></button>
+      </nav>
     </section>
 
     <!-- Chat -->
-    <section aria-labelledby="chat-title" style="margin-top: 2rem;">
+    <section aria-labelledby="chat-title">
       <h2 id="chat-title"></h2>
       <div id="chatWindow" class="chatbox" role="log" aria-live="polite"></div>
-      <div id="botIntro" style="margin: 1.5em 0; color: #0a5780; font-weight: bold;"></div>
-      <input type="text" id="chatInput" placeholder="" onkeydown="if(event.key==='Enter') envoyerMessage()" aria-label="Zone de saisie du chat" style="width: 100%; max-width: 500px;" />
-      <button id="btnEnvoyer" onclick="envoyerMessage()"></button>
+      <div id="botIntro" class="chat-intro"></div>
+      <input type="text" id="chatInput" placeholder="" aria-label="Zone de saisie du chat" />
+      <button id="btnEnvoyer"></button>
     </section>
 
-    <!-- Histoire -->
-    <section><h2 id="histoire-title"></h2><p id="histoire-message"></p></section>
-
-    <!-- Archives -->
+    <!-- Histoire & Archives -->
     <section>
-      <h2 id="archives-title">Section Archives</h2>
-      <p id="archives-message">Nous mettrons prochainement à votre disposition des documents anciens précieux, témoins de l’histoire de la communauté.</p>
+      <h2 id="histoire-title"></h2>
+      <p id="histoire-message"></p>
+    </section>
+
+    <section>
+      <h2 id="archives-title"></h2>
+      <p id="archives-message"></p>
     </section>
   </main>
 
   <!-- Footer -->
   <footer>
-    <section style="margin-bottom: 1em;">
-      <p id="footerContrib">
-        Peu importe la forme ou la taille, chaque contribution — documents, témoignages, recherches ou idées — est précieuse pour enrichir notre projet.<br>
-        Nous recherchons aussi des sponsors et partenaires engagés pour soutenir la valorisation de la langue et culture Tadaksahak.<br>
-        Ensemble, faisons grandir ce patrimoine unique et transmettons-le aux générations futures.
-      </p>
-      <p style="margin:0.7em 0;">
-        <a href="mailto:hamadineagmoctar@gmail.com" style="text-decoration:none; margin-right:1.5em;">
-          <img src="images/Gmail.png" alt="Gmail" style="height:1.1em;vertical-align:middle; margin-right:0.3em;">
-          <span id="contact">Gmail</span> hamadineagmoctar@gmail.com
-        </a>
-        <a href="https://wa.me/22786762903" target="_blank" style="text-decoration:none;">
-          <img src="images/whatsapp.png" alt="WhatsApp" style="height:1.1em;vertical-align:middle; margin-right:0.3em;">
-          <span id="contactWhatsApp">WhatsApp</span> +227 86762903
-        </a>
-      </p>
-      <div id="liensURL" style="margin-top:0.7em;"></div>
-    </section>
+    <p id="footerContrib"></p>
+    <p>
+      <a href="mailto:hamadineagmoctar@gmail.com">
+        <img src="images/Gmail.png" alt="Gmail" style="height:1em;"> hamadineagmoctar@gmail.com
+      </a>
+      |
+      <a href="https://wa.me/22786762903" target="_blank" rel="noopener noreferrer">
+        <img src="images/whatsapp.png" alt="WhatsApp" style="height:1em;"> +227 86762903
+      </a>
+    </p>
     <p id="footerText"></p>
   </footer>
 
-  <!-- JS pour dropdown langue -->
+  <!-- JS sécurisé pour dropdown langue -->
   <script>
     const btnLangue = document.getElementById('langueActuelle');
     const panelLangue = document.getElementById('langueListe');
-
     btnLangue.addEventListener('click', (e) => {
-      panelLangue.classList.toggle('show');
+      const expanded = panelLangue.hasAttribute('hidden');
+      panelLangue.toggleAttribute('hidden');
+      btnLangue.setAttribute('aria-expanded', expanded ? 'true' : 'false');
       e.stopPropagation();
     });
-
     document.addEventListener('click', (e) => {
       if (!panelLangue.contains(e.target) && !btnLangue.contains(e.target)) {
-        panelLangue.classList.remove('show');
+        panelLangue.setAttribute('hidden', '');
+        btnLangue.setAttribute('aria-expanded', 'false');
       }
     });
-
-    // Activation visuelle
-    const style = document.createElement("style");
-    style.innerHTML = `.langue-panel.show { display: block; }`;
-    document.head.appendChild(style);
-
-    // Auto-détection navigateur
-    window.addEventListener('DOMContentLoaded', () => {
-      const lang = navigator.language.slice(0, 2).toLowerCase();
-      const supported = ['fr','en','ar','ru','de','es','it','nl','da','cs','pt','tr','ja','zh','hi','sw'];
-      if (supported.includes(lang)) {
-        changerLangueInterface(lang);
-        btnLangue.textContent = "Langue : " + lang.toUpperCase() + " ⌄";
-      }
-    });
-
-    // Mise à jour du bouton
-    function changerLangueInterface(code) {
-      // Ton implémentation actuelle dans app.js prendra le relais ici
-      btnLangue.textContent = "Langue : " + code.toUpperCase() + " ⌄";
-    }
   </script>
 </body>
 </html>
