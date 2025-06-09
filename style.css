@@ -15,7 +15,6 @@ body {
   color: var(--text-dark);
   background-image: radial-gradient(circle at top right, #fefae0 0%, #f4e2d8 100%);
   overflow-x: hidden;
-
   display: flex;
   flex-direction: column;
   min-height: 100vh;
@@ -45,85 +44,112 @@ footer {
   margin-top: 2em;
 }
 
-/* 🌐 Panneau Langues */
-#languesPanel {
-  display: block;
-  max-height: 0;
-  opacity: 0;
-  overflow: hidden;
-  transform: translateY(-10px);
-  transition: max-height 0.3s ease, opacity 0.3s ease, transform 0.3s ease;
-  background: var(--sunlight);
-  border-radius: 10px;
-  padding: 1em;
-  margin-top: 1em;
-  max-width: 600px;
-  margin-left: auto;
-  margin-right: auto;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
-  z-index: 5;
-}
-
-#languesPanel.show {
-  max-height: 999px;
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.langues-toggle {
-  background-color: var(--clay);
+/* 🌐 Bouton d’ouverture modal */
+.lang-btn-trigger {
+  padding: 0.8em 1.5em;
+  font-size: 1em;
+  font-weight: bold;
+  background: var(--clay);
   color: var(--sunlight);
   border: none;
-  font-weight: bold;
-  padding: 0.6em 1.2em;
-  cursor: pointer;
   border-radius: 8px;
+  cursor: pointer;
+  margin-bottom: 2em;
   transition: all 0.3s ease;
 }
 
-.langues-toggle:hover {
-  background-color: var(--sunburn);
-  color: var(--sunlight);
+.lang-btn-trigger:hover {
+  background: var(--sunburn);
+  color: white;
 }
 
-/* Boutons de sélection de langue */
-.lang-switch {
+/* 🌐 MODAL Langue */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+.modal-overlay.show {
+  display: flex;
+}
+
+.modal-box {
+  background: var(--sunlight);
+  padding: 2em;
+  border-radius: 20px;
+  max-width: 95%;
+  width: 600px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+  text-align: center;
+}
+
+/* Langues boutons cercles */
+.lang-circle-group {
   display: flex;
   flex-wrap: wrap;
+  gap: 1em;
   justify-content: center;
-  gap: 0.5em;
-  margin-bottom: 1.2em;
+  margin: 2em 0;
 }
 
-.lang-switch button {
-  background-color: var(--desert-gold);
-  color: var(--text-dark);
-  border: none;
-  padding: 0.5em 1.2em;
-  font-weight: bold;
-  border-radius: 6px;
+.lang-circle {
+  background: var(--desert-gold);
+  border: 3px solid transparent;
+  border-radius: 50%;
+  width: 85px;
+  height: 85px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.3s ease;
   cursor: pointer;
-  transition: all 0.2s ease;
-  font-size: 0.95em;
-  white-space: nowrap;
-  max-width: 100%;
-  flex: 1 1 auto;
-  min-width: 90px;
-  text-align: center;
-
-  font-family: 'Segoe UI', sans-serif;
+  font-weight: bold;
+  color: var(--text-dark);
 }
 
-.lang-switch button:hover {
-  background-color: var(--sunburn);
-  color: #fff;
+.lang-circle:hover {
+  border-color: var(--sunburn);
+  background: var(--clay);
+  color: white;
 }
 
-/* Responsive */
-@media (max-width: 480px) {
-  .lang-switch button {
-    font-size: 0.85em;
-    padding: 0.4em 0.8em;
-    min-width: 70px;
+.lang-circle img {
+  width: 30px;
+  height: auto;
+  margin-bottom: 5px;
+  border-radius: 3px;
+}
+
+/* Bouton fermer modal */
+.modal-close {
+  background: var(--clay);
+  color: white;
+  border: none;
+  padding: 0.7em 1.5em;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.modal-close:hover {
+  background: var(--sunburn);
+}
+
+/* 📱 Responsive cercles */
+@media (max-width: 600px) {
+  .lang-circle {
+    width: 70px;
+    height: 70px;
+    font-size: 0.8em;
+  }
+  .modal-box {
+    padding: 1.2em;
   }
 }
