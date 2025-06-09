@@ -7,70 +7,12 @@
 
   <link rel="icon" href="images/idaksahak_round.png" type="image/png" />
   <meta name="description" content="Vocabulaire Tadaksahak en audio avec traduction multilingue." />
+
+  <!-- ✅ Nouveau thème désert -->
   <link rel="stylesheet" href="style.css" />
+
   <script src="https://cdn.jsdelivr.net/npm/fuse.js/dist/fuse.js"></script>
   <script defer src="app.js"></script>
-
-  <style>
-    #languesPanel {
-      background-color: #f0f0f0;
-      padding: 1em;
-      border-radius: 8px;
-      margin-top: 0.7em;
-      max-width: 500px;
-      margin-left: auto;
-      margin-right: auto;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-      display: none;
-      opacity: 0;
-      transform: translateY(-10px);
-      transition: opacity 0.3s ease, transform 0.3s ease;
-      z-index: 10;
-    }
-
-    #languesPanel.show {
-      display: block;
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    .lang-switch {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.5em;
-      justify-content: center;
-    }
-
-    .lang-switch button {
-      background-color: #c9ada7;
-      color: #1a1a1a;
-      border: none;
-      font-weight: bold;
-      padding: 0.5em 1em;
-      border-radius: 6px;
-      cursor: pointer;
-    }
-
-    .lang-switch button:hover {
-      background-color: #e5c18c;
-    }
-
-    .langues-toggle {
-      background-color: #415a77;
-      color: #fefae0;
-      border: none;
-      font-weight: bold;
-      padding: 0.6em 1.2em;
-      cursor: pointer;
-      border-radius: 8px;
-      transition: all 0.3s ease;
-    }
-
-    .langues-toggle:hover {
-      background-color: #94a9c9;
-      color: #0d1b2a;
-    }
-  </style>
 </head>
 
 <body>
