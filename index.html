@@ -10,6 +10,37 @@
   <link rel="stylesheet" href="style.css" />
   <script src="https://cdn.jsdelivr.net/npm/fuse.js/dist/fuse.js"></script>
   <script defer src="app.js"></script>
+
+  <style>
+    /* Animation panneau langues */
+    #languesPanel {
+      background-color: #f0f0f0;
+      padding: 1em;
+      border-radius: 8px;
+      margin-top: 0.7em;
+      max-width: 500px;
+      margin-left: auto;
+      margin-right: auto;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      display: none;
+      opacity: 0;
+      transform: translateY(-10px);
+      transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+
+    #languesPanel.show {
+      display: block;
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .lang-switch {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5em;
+      justify-content: center;
+    }
+  </style>
 </head>
 
 <body>
@@ -66,32 +97,37 @@
         <button id="btnNext" onclick="motSuivant()"></button>
       </nav>
 
-      <!-- Sélecteur de langue de traduction -->
-      <div class="lang-switch" aria-label="Changer la langue des traductions" style="margin-bottom: 0.7em; text-align:center;">
-        <button onclick="changerLangue('fr')">Fr</button>
-        <button onclick="changerLangue('en')">En</button>
-        <button onclick="changerLangue('ar')">ع</button>
-        <button onclick="changerLangue('ru')">Ru</button>
-        <button onclick="changerLangue('de')">De</button>
-        <button onclick="changerLangue('es')">Es</button>
-        <button onclick="changerLangue('it')">It</button>
-        <button onclick="changerLangue('nl')">Nl</button>
-        <button onclick="changerLangue('da')">Da</button>
-        <button onclick="changerLangue('cs')">Cs</button>
-      </div>
-
-      <!-- Sélecteur de langue de l'interface -->
-      <div class="lang-switch" aria-label="Changer la langue de l'interface" style="text-align:center;">
-        <button onclick="changerLangueInterface('fr')">🇫🇷</button>
-        <button onclick="changerLangueInterface('en')">🇬🇧</button>
-        <button onclick="changerLangueInterface('ar')">🇸🇦</button>
-        <button onclick="changerLangueInterface('ru')">🇷🇺</button>
-        <button onclick="changerLangueInterface('de')">🇩🇪</button>
-        <button onclick="changerLangueInterface('es')">🇪🇸</button>
-        <button onclick="changerLangueInterface('it')">🇮🇹</button>
-        <button onclick="changerLangueInterface('nl')">🇳🇱</button>
-        <button onclick="changerLangueInterface('da')">🇩🇰</button>
-        <button onclick="changerLangueInterface('cs')">🇨🇿</button>
+      <!-- 🌐 Panel Langues Centralisé -->
+      <div class="language-dropdown" style="text-align: center; margin-bottom: 1.5em;">
+        <button id="toggleLangues">🌐 Langues</button>
+        <div id="languesPanel">
+          <h3>Langue de traduction</h3>
+          <div class="lang-switch">
+            <button onclick="changerLangue('fr')">Fr</button>
+            <button onclick="changerLangue('en')">En</button>
+            <button onclick="changerLangue('ar')">ع</button>
+            <button onclick="changerLangue('ru')">Ru</button>
+            <button onclick="changerLangue('de')">De</button>
+            <button onclick="changerLangue('es')">Es</button>
+            <button onclick="changerLangue('it')">It</button>
+            <button onclick="changerLangue('nl')">Nl</button>
+            <button onclick="changerLangue('da')">Da</button>
+            <button onclick="changerLangue('cs')">Cs</button>
+          </div>
+          <h3>Langue de l'interface</h3>
+          <div class="lang-switch">
+            <button onclick="changerLangueInterface('fr')">🇫🇷</button>
+            <button onclick="changerLangueInterface('en')">🇬🇧</button>
+            <button onclick="changerLangueInterface('ar')">🇸🇦</button>
+            <button onclick="changerLangueInterface('ru')">🇷🇺</button>
+            <button onclick="changerLangueInterface('de')">🇩🇪</button>
+            <button onclick="changerLangueInterface('es')">🇪🇸</button>
+            <button onclick="changerLangueInterface('it')">🇮🇹</button>
+            <button onclick="changerLangueInterface('nl')">🇳🇱</button>
+            <button onclick="changerLangueInterface('da')">🇩🇰</button>
+            <button onclick="changerLangueInterface('cs')">🇨🇿</button>
+          </div>
+        </div>
       </div>
 
       <!-- Compteur -->
@@ -160,5 +196,17 @@
     </section>
     <p id="footerText"></p>
   </footer>
+
+  <!-- Script pour animation dropdown -->
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const toggleBtn = document.getElementById("toggleLangues");
+      const panel = document.getElementById("languesPanel");
+
+      toggleBtn.addEventListener("click", () => {
+        panel.classList.toggle("show");
+      });
+    });
+  </script>
 </body>
 </html>
