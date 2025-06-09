@@ -30,6 +30,7 @@ h1 {
   text-align: center;
 }
 
+/* 🌐 LANG PANEL */
 .language-dropdown {
   text-align: center;
   margin-top: 2em;
@@ -51,7 +52,8 @@ h1 {
   color: var(--night-blue);
 }
 
-.langues-panel {
+.langues-panel,
+#languesPanel {
   display: none;
   opacity: 0;
   transform: translateY(-10px);
@@ -67,13 +69,15 @@ h1 {
   z-index: 5;
 }
 
-.langues-panel.show {
+.langues-panel.show,
+#languesPanel.show {
   display: block;
   opacity: 1;
   transform: translateY(0);
 }
 
-.langues-panel h3 {
+.langues-panel h3,
+#languesPanel h3 {
   margin-bottom: 0.5em;
   font-size: 1.1em;
   color: #333;
