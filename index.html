@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title id="pageTitle">Dictionnaire Tadaksahak Multilingue</title>
 
-  <!-- Sécurité : Politique de contenu -->
+  <!-- Sécurité & SEO -->
   <meta http-equiv="Content-Security-Policy"
         content="default-src 'self'; 
                  script-src 'self' https://cdn.jsdelivr.net; 
@@ -16,25 +16,21 @@
                  object-src 'none'; 
                  base-uri 'none'; 
                  form-action 'self';" />
+  <meta name="robots" content="noindex, nofollow" />
+  <meta name="description" content="Dictionnaire Tadaksahak en audio avec traduction multilingue." />
 
   <!-- Favicon -->
   <link rel="icon" href="images/idaksahak_round.png" type="image/png" />
 
-  <!-- SEO protection en phase de développement -->
-  <meta name="robots" content="noindex, nofollow" />
-
-  <!-- Description -->
-  <meta name="description" content="Vocabulaire Tadaksahak en audio avec traduction multilingue." />
-
   <!-- CSS -->
   <link rel="stylesheet" href="style.css" />
 
-  <!-- JS sécurisé via CDN avec intégrité -->
-  <script src="https://cdn.jsdelivr.net/npm/fuse.js/dist/fuse.js"
-          integrity="sha384-vérifie_ce_hash_ou_fourni_le"
+  <!-- JS (Fuse.js pour la recherche floue) -->
+  <script src="https://cdn.jsdelivr.net/npm/fuse.js/dist/fuse.min.js"
+          integrity=""
           crossorigin="anonymous"></script>
 
-  <!-- Script local -->
+  <!-- Script principal -->
   <script defer src="app.js"></script>
 </head>
 
@@ -44,54 +40,59 @@
   </header>
 
   <main>
+    <!-- Présentation -->
     <section>
-      <h1 id="titrePrincipal"></h1>
-      <p id="textePresentation"></p>
+      <h1 id="titrePrincipal">Tadaksahak Dictionary</h1>
+      <p id="textePresentation">Chargement...</p>
     </section>
 
-    <!-- Langues -->
+    <!-- Sélecteur de langue -->
     <div class="langue-select-container">
       <button id="langueActuelle" class="langue-btn" aria-haspopup="true" aria-expanded="false">Langue : FR ⌄</button>
       <div id="langueListe" class="langue-panel" role="menu" hidden>
-        <!-- Boutons de langue générés par JS -->
+        <!-- Généré dynamiquement -->
       </div>
     </div>
 
-    <!-- Recherche -->
+    <!-- Zone de recherche -->
     <section>
       <input id="searchBar" type="text" placeholder="Cherchez un mot..." oninput="rechercherMotDebounce()" />
-      <h2 id="motTexte"></h2>
-      <p id="definition"></p>
-      <p id="compteur"></p>
+      <h2 id="motTexte">—</h2>
+      <p id="definition">—</p>
+      <p id="compteur">0 / 0</p>
+
+      <!-- Audio -->
       <div id="audioButtons">
-        <button id="btnPlay"></button>
-        <button id="btnReplay" disabled style="opacity: 0.5;"></button>
-        <button id="btnAuto" disabled style="opacity: 0.5;"></button>
+        <button id="btnPlay" onclick="jouerTadaksahak()">Écouter</button>
+        <button id="btnReplay" onclick="rejouerMot()" disabled style="opacity: 0.5;">Réécouter</button>
+        <button id="btnAuto" onclick="lectureAuto()" disabled style="opacity: 0.5;">Lecture auto</button>
       </div>
+
+      <!-- Navigation -->
       <nav>
-        <button id="btnPrev"></button>
-        <button id="btnNext"></button>
+        <button id="btnPrev" onclick="motPrecedent()">⏮️</button>
+        <button id="btnNext" onclick="motSuivant()">⏭️</button>
       </nav>
     </section>
 
-    <!-- Chat -->
+    <!-- Chatbot -->
     <section aria-labelledby="chat-title">
-      <h2 id="chat-title"></h2>
+      <h2 id="chat-title">Chat Tadaksahak</h2>
       <div id="chatWindow" class="chatbox" role="log" aria-live="polite"></div>
-      <div id="botIntro" class="chat-intro"></div>
-      <input type="text" id="chatInput" placeholder="" aria-label="Zone de saisie du chat" />
-      <button id="btnEnvoyer"></button>
+      <div id="botIntro" class="chat-intro">🤖 Salut, je suis Hamadine, le bot Tadaksahak.</div>
+      <input type="text" id="chatInput" placeholder="Tapez un mot ici..." aria-label="Zone de saisie du chat" />
+      <button id="btnEnvoyer" onclick="envoyerMessage()">Envoyer</button>
     </section>
 
-    <!-- Histoire & Archives -->
+    <!-- Sections futures -->
     <section>
-      <h2 id="histoire-title"></h2>
-      <p id="histoire-message"></p>
+      <h2 id="histoire-title">Histoire</h2>
+      <p id="histoire-message">Très bientôt, découvrez ici des textes historiques captivants sur la culture Tadaksahak.</p>
     </section>
 
     <section>
-      <h2 id="archives-title"></h2>
-      <p id="archives-message"></p>
+      <h2 id="archives-title">Archives</h2>
+      <p id="archives-message">Nous mettrons prochainement à votre disposition des documents anciens précieux.</p>
     </section>
   </main>
 
@@ -107,10 +108,10 @@
         <img src="images/whatsapp.png" alt="WhatsApp" style="height:1em;"> +227 86762903
       </a>
     </p>
-    <p id="footerText"></p>
+    <p id="footerText">© 2025 • Tadaksahak Multilingue avec Hamadine.</p>
   </footer>
 
-  <!-- JS sécurisé pour dropdown langue -->
+  <!-- Script inline pour gestion du menu langue -->
   <script>
     const btnLangue = document.getElementById('langueActuelle');
     const panelLangue = document.getElementById('langueListe');
