@@ -10,6 +10,7 @@ let fuse;
 async function chargerDonnees() {
   try {
     const motsData = await fetch('./data/mots.json').then(r => r.json());
+    if (!motsData.length) throw new Error("La liste de mots est vide.");
     motsComplet = motsData;
     mots = [...motsData];
 
@@ -52,7 +53,13 @@ function motSuivant() {
   if (indexMot < mots.length - 1) afficherMot(indexMot + 1);
 }
 
-// Recherche
+// Recherche avec debounce
+let debounceTimeout;
+function rechercherMotDebounce() {
+  clearTimeout(debounceTimeout);
+  debounceTimeout = setTimeout(rechercherMot, 300);
+}
+
 function rechercherMot() {
   const query = document.getElementById('searchBar').value.trim();
   if (!query) {
@@ -77,11 +84,8 @@ function rechercherMot() {
 function changerLangueInterface(lang) {
   langueInterface = lang;
 
-  // Mettre à jour le texte du bouton
   const btnLangue = document.getElementById('langueActuelle');
-  if (btnLangue) {
-    btnLangue.textContent = `Langue : ${lang.toUpperCase()} ⌄`;
-  }
+  if (btnLangue) btnLangue.textContent = `Langue : ${lang.toUpperCase()} ⌄`;
 
   const t = interfaceData[lang] || interfaceData['fr'];
   if (!t) return;
@@ -143,7 +147,7 @@ function changerLangueInterface(lang) {
   window.nomUtilisateur = t.utilisateur || "Vous";
 }
 
-// Chat
+// Chatbot intelligent Tadaksahak
 function envoyerMessage() {
   const input = document.getElementById('chatInput');
   const message = input.value.trim();
@@ -153,8 +157,23 @@ function envoyerMessage() {
   input.value = '';
 
   setTimeout(() => {
-    afficherMessage('bot', window.reponseBot);
-  }, 500);
+    const motsTrouves = motsComplet.filter(m =>
+      m.mot.toLowerCase().includes(message.toLowerCase())
+    );
+
+    if (motsTrouves.length === 0) {
+      afficherMessage('bot', window.reponseBot);
+      return;
+    }
+
+    let reponse = motsTrouves.map(m => {
+      const def = m[langueTrad] || '—';
+      const cat = m.cat ? ` <span style="color:#888;">(${m.cat})</span>` : '';
+      return `<strong>${m.mot}</strong> : ${def}${cat}`;
+    }).join('<br><br>');
+
+    afficherMessage('bot', reponse);
+  }, 300);
 }
 
 function afficherMessage(auteur, texte) {
@@ -180,7 +199,7 @@ function lectureAuto() {
   console.log("Lecture auto (à implémenter)");
 }
 
-// ✅ Initialisation propre
+// Initialisation
 window.addEventListener('DOMContentLoaded', () => {
-  chargerDonnees(); // L'UI dropdown n'est plus utilisée
+  chargerDonnees();
 });
