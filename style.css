@@ -6,6 +6,7 @@
   --sunburn: #d6683c;
   --sunlight: #fff8e1;
   --text-dark: #2b1d0e;
+  --white: #ffffff;
 }
 
 body {
@@ -39,12 +40,13 @@ footer {
   text-align: center;
   padding: 2em 1em;
   background: var(--dune-brown);
-  color: #fff;
+  color: var(--white);
   border-top: 4px solid var(--sunburn);
   margin-top: 2em;
+  font-size: 0.95em;
 }
 
-/* 🌐 Sélecteur de langue type My Nita */
+/* 🌐 Sélecteur de langue */
 .langue-select-container {
   position: relative;
   text-align: right;
@@ -54,22 +56,24 @@ footer {
 
 .langue-btn {
   background: var(--clay);
-  color: white;
+  color: var(--white);
   border: none;
   padding: 0.6em 1.2em;
   border-radius: 6px;
   font-weight: bold;
   cursor: pointer;
-  transition: background 0.3s;
+  transition: background 0.3s, box-shadow 0.2s;
   font-size: 1em;
 }
 
-.langue-btn:hover {
+.langue-btn:hover,
+.langue-btn:focus-visible {
   background: var(--sunburn);
+  box-shadow: 0 0 0 3px rgba(214, 104, 60, 0.3);
+  outline: none;
 }
 
 .langue-panel {
-  display: none;
   position: absolute;
   right: 0;
   background: var(--sunlight);
@@ -81,6 +85,10 @@ footer {
   max-height: 300px;
   overflow-y: auto;
   min-width: 180px;
+}
+
+.langue-panel[hidden] {
+  display: none;
 }
 
 .langue-panel button {
@@ -97,11 +105,13 @@ footer {
   font-size: 0.95em;
 }
 
-.langue-panel button:hover {
+.langue-panel button:hover,
+.langue-panel button:focus-visible {
   background-color: var(--desert-gold);
+  outline: none;
 }
 
-/* ✅ Responsive pour mobile */
+/* ✅ Responsive mobile */
 @media (max-width: 480px) {
   .langue-btn {
     font-size: 0.95em;
