@@ -26,9 +26,7 @@
   <link rel="stylesheet" href="style.css" />
 
   <!-- JS (Fuse.js pour la recherche floue) -->
-  <script src="https://cdn.jsdelivr.net/npm/fuse.js/dist/fuse.min.js"
-          integrity=""
-          crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/fuse.js/dist/fuse.min.js" crossorigin="anonymous"></script>
 
   <!-- Script principal -->
   <script defer src="app.js"></script>
@@ -56,7 +54,7 @@
 
     <!-- Zone de recherche -->
     <section>
-      <input id="searchBar" type="text" placeholder="Cherchez un mot..." oninput="rechercherMotDebounce()" />
+      <input id="searchBar" type="text" placeholder="Cherchez un mot..." oninput="rechercherMotDebounce()" aria-label="Recherche" />
       <h2 id="motTexte">—</h2>
       <p id="definition">—</p>
       <p id="compteur">0 / 0</p>
@@ -70,8 +68,8 @@
 
       <!-- Navigation -->
       <nav>
-        <button id="btnPrev" onclick="motPrecedent()">⏮️</button>
-        <button id="btnNext" onclick="motSuivant()">⏭️</button>
+        <button id="btnPrev" onclick="motPrecedent()" aria-label="Mot précédent">⏮️</button>
+        <button id="btnNext" onclick="motSuivant()" aria-label="Mot suivant">⏭️</button>
       </nav>
     </section>
 
@@ -111,22 +109,29 @@
     <p id="footerText">© 2025 • Tadaksahak Multilingue avec Hamadine.</p>
   </footer>
 
-  <!-- Script inline pour gestion du menu langue -->
+  <!-- Script inline pour menu de langue + fix lang dynamique -->
   <script>
     const btnLangue = document.getElementById('langueActuelle');
     const panelLangue = document.getElementById('langueListe');
+
     btnLangue.addEventListener('click', (e) => {
       const expanded = panelLangue.hasAttribute('hidden');
       panelLangue.toggleAttribute('hidden');
       btnLangue.setAttribute('aria-expanded', expanded ? 'true' : 'false');
       e.stopPropagation();
     });
+
     document.addEventListener('click', (e) => {
       if (!panelLangue.contains(e.target) && !btnLangue.contains(e.target)) {
         panelLangue.setAttribute('hidden', '');
         btnLangue.setAttribute('aria-expanded', 'false');
       }
     });
+
+    // 🌍 Ajout recommandé pour accessibilité linguistique dynamique
+    window.changerLangueHTML = function(lang) {
+      document.documentElement.lang = lang;
+    };
   </script>
 </body>
 </html>
