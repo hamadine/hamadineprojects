@@ -2,7 +2,7 @@ let motsComplet = [];
 let mots = [];
 let interfaceData = {};
 let indexMot = 0;
-let langueTrad = 'fr';
+let langueTrad = localStorage.getItem('langueTrad') || 'fr';
 let langueInterface = 'fr';
 let fuse;
 
@@ -24,7 +24,8 @@ async function chargerDonnees() {
       threshold: 0.4
     });
 
-    afficherMot();
+    indexMot = parseInt(localStorage.getItem('motIndex')) || 0;
+    afficherMot(indexMot);
   } catch (err) {
     alert("Erreur lors du chargement des données : " + err.message);
   }
@@ -35,6 +36,7 @@ function afficherMot(motIndex = indexMot) {
   if (!mots.length) return;
 
   indexMot = Math.max(0, Math.min(mots.length - 1, motIndex));
+  localStorage.setItem('motIndex', indexMot);
   const mot = mots[indexMot];
 
   document.getElementById('motTexte').textContent = mot.mot || '';
@@ -85,7 +87,7 @@ function changerLangueInterface(lang) {
   langueInterface = lang;
 
   const btnLangue = document.getElementById('langueActuelle');
-  if (btnLangue) btnLangue.textContent = `Langue : ${lang.toUpperCase()} ⌄`;
+  if (btnLangue) btnLangue.textContent = `Langue : ${langueTrad.toUpperCase()} ⌄`;
 
   const t = interfaceData[lang] || interfaceData['fr'];
   if (!t) return;
@@ -145,6 +147,29 @@ function changerLangueInterface(lang) {
   // Mémorisation réponse chatbot
   window.reponseBot = t.reponseBot || "Mot introuvable.";
   window.nomUtilisateur = t.utilisateur || "Vous";
+
+  initialiserMenuLangue();
+}
+
+// Menu dynamique des langues
+function initialiserMenuLangue() {
+  const panel = document.getElementById('langueListe');
+  panel.innerHTML = '';
+
+  const languesDispo = Object.keys(interfaceData);
+  languesDispo.forEach(code => {
+    const btn = document.createElement('button');
+    btn.textContent = code.toUpperCase();
+    btn.className = 'langue-btn';
+    btn.onclick = () => {
+      langueTrad = code;
+      localStorage.setItem('langueTrad', code);
+      changerLangueInterface(langueInterface);
+      panel.setAttribute('hidden', '');
+      afficherMot();
+    };
+    panel.appendChild(btn);
+  });
 }
 
 // Chatbot intelligent Tadaksahak
@@ -167,10 +192,14 @@ function envoyerMessage() {
     }
 
     let reponse = motsTrouves.map(m => {
-      const def = m[langueTrad] || '—';
+      const traductions = Object.entries(m)
+        .filter(([k]) => k !== 'mot' && k !== 'cat')
+        .map(([lang, def]) => `<strong>${lang.toUpperCase()}</strong>: ${def}`)
+        .join('<br>');
+
       const cat = m.cat ? ` <span style="color:#888;">(${m.cat})</span>` : '';
-      return `<strong>${m.mot}</strong> : ${def}${cat}`;
-    }).join('<br><br>');
+      return `<strong>${m.mot}</strong>${cat}<br>${traductions}`;
+    }).join('<hr>');
 
     afficherMessage('bot', reponse);
   }, 300);
@@ -188,11 +217,14 @@ function afficherMessage(auteur, texte) {
 
 // Audio - stubs
 function jouerTadaksahak() {
-  console.log("Lecture du mot Tadaksahak (à implémenter)");
+  const mot = mots[indexMot];
+  if (!mot || !mot.mot) return;
+  const audio = new Audio(`./audio/${mot.mot}.mp3`);
+  audio.play();
 }
 
 function rejouerMot() {
-  console.log("Relecture du mot (à implémenter)");
+  jouerTadaksahak();
 }
 
 function lectureAuto() {
