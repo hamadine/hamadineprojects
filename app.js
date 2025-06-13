@@ -9,12 +9,12 @@ let fuse;
 // Chargement initial des données
 async function chargerDonnees() {
   try {
-    const motsData = await fetch('./data/mots.json').then(r => r.json());
+    const motsData = await fetch('data/mots.json').then(r => r.json());
     if (!motsData.length) throw new Error("La liste de mots est vide.");
     motsComplet = motsData;
     mots = [...motsData];
 
-    interfaceData = await fetch('./data/interface-langue.json').then(r => r.json());
+    interfaceData = await fetch('data/interface-langue.json').then(r => r.json());
 
     changerLangueInterface(langueInterface);
 
