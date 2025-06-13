@@ -34,12 +34,15 @@
       <p id="textePresentation">Chargement...</p>
     </section>
 
-    <!-- Sélecteur de langue -->
+    <!-- Sélecteurs de langue -->
     <div class="langue-select-container">
-      <button id="langueActuelle" class="langue-btn" aria-haspopup="true" aria-expanded="false">Langue : FR ⌄</button>
-      <div id="langueListe" class="langue-panel" role="menu" hidden>
-        <!-- Généré dynamiquement -->
-      </div>
+      <!-- Bouton interface -->
+      <button id="btnLangueInterface" class="langue-btn" aria-haspopup="true" aria-expanded="false">Interface : FR ⌄</button>
+      <div id="menuLangueInterface" class="langue-panel" role="menu" hidden></div>
+
+      <!-- Bouton traduction -->
+      <button id="btnLangueTrad" class="langue-btn" aria-haspopup="true" aria-expanded="false">Traduction : FR ⌄</button>
+      <div id="menuLangueTrad" class="langue-panel" role="menu" hidden></div>
     </div>
 
     <!-- Zone de recherche -->
@@ -99,29 +102,30 @@
     <p id="footerText">© 2025 • Tadaksahak Multilingue avec Hamadine.</p>
   </footer>
 
-  <!-- Script inline corrigé pour menu langue -->
+  <!-- Script inline pour afficher/masquer les menus -->
   <script>
     window.addEventListener('DOMContentLoaded', () => {
-      const btnLangue = document.getElementById('langueActuelle');
-      const panelLangue = document.getElementById('langueListe');
+      const toggleMenu = (btnId, menuId) => {
+        const btn = document.getElementById(btnId);
+        const panel = document.getElementById(menuId);
 
-      btnLangue.addEventListener('click', (e) => {
-        const expanded = panelLangue.hasAttribute('hidden');
-        panelLangue.toggleAttribute('hidden');
-        btnLangue.setAttribute('aria-expanded', expanded ? 'true' : 'false');
-        e.stopPropagation();
-      });
+        btn.addEventListener('click', (e) => {
+          const expanded = panel.hasAttribute('hidden');
+          panel.toggleAttribute('hidden');
+          btn.setAttribute('aria-expanded', expanded ? 'true' : 'false');
+          e.stopPropagation();
+        });
 
-      document.addEventListener('click', (e) => {
-        if (!panelLangue.contains(e.target) && !btnLangue.contains(e.target)) {
-          panelLangue.setAttribute('hidden', '');
-          btnLangue.setAttribute('aria-expanded', 'false');
-        }
-      });
-
-      window.changerLangueHTML = function(lang) {
-        document.documentElement.lang = lang;
+        document.addEventListener('click', (e) => {
+          if (!panel.contains(e.target) && !btn.contains(e.target)) {
+            panel.setAttribute('hidden', '');
+            btn.setAttribute('aria-expanded', 'false');
+          }
+        });
       };
+
+      toggleMenu('btnLangueInterface', 'menuLangueInterface');
+      toggleMenu('btnLangueTrad', 'menuLangueTrad');
     });
   </script>
 </body>
