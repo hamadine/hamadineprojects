@@ -109,29 +109,30 @@
     <p id="footerText">© 2025 • Tadaksahak Multilingue avec Hamadine.</p>
   </footer>
 
-  <!-- Script inline pour menu de langue + fix lang dynamique -->
+  <!-- Script inline corrigé pour menu langue -->
   <script>
-    const btnLangue = document.getElementById('langueActuelle');
-    const panelLangue = document.getElementById('langueListe');
+    window.addEventListener('DOMContentLoaded', () => {
+      const btnLangue = document.getElementById('langueActuelle');
+      const panelLangue = document.getElementById('langueListe');
 
-    btnLangue.addEventListener('click', (e) => {
-      const expanded = panelLangue.hasAttribute('hidden');
-      panelLangue.toggleAttribute('hidden');
-      btnLangue.setAttribute('aria-expanded', expanded ? 'true' : 'false');
-      e.stopPropagation();
+      btnLangue.addEventListener('click', (e) => {
+        const expanded = panelLangue.hasAttribute('hidden');
+        panelLangue.toggleAttribute('hidden');
+        btnLangue.setAttribute('aria-expanded', expanded ? 'true' : 'false');
+        e.stopPropagation();
+      });
+
+      document.addEventListener('click', (e) => {
+        if (!panelLangue.contains(e.target) && !btnLangue.contains(e.target)) {
+          panelLangue.setAttribute('hidden', '');
+          btnLangue.setAttribute('aria-expanded', 'false');
+        }
+      });
+
+      window.changerLangueHTML = function(lang) {
+        document.documentElement.lang = lang;
+      };
     });
-
-    document.addEventListener('click', (e) => {
-      if (!panelLangue.contains(e.target) && !btnLangue.contains(e.target)) {
-        panelLangue.setAttribute('hidden', '');
-        btnLangue.setAttribute('aria-expanded', 'false');
-      }
-    });
-
-    // 🌍 Ajout recommandé pour accessibilité linguistique dynamique
-    window.changerLangueHTML = function(lang) {
-      document.documentElement.lang = lang;
-    };
   </script>
 </body>
 </html>
