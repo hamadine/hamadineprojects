@@ -2,11 +2,15 @@ let motsComplet = [];
 let mots = [];
 let interfaceData = {};
 let indexMot = 0;
+
+// Détection des langues par défaut
+const langueNavigateur = navigator.language.slice(0, 2) || 'fr';
 let langueTrad = localStorage.getItem('langueTrad') || 'fr';
-let langueInterface = 'fr';
+let langueInterface = localStorage.getItem('langueInterface') || langueNavigateur;
+
 let fuse;
 
-// Chargement initial des données
+// Chargement initial
 async function chargerDonnees() {
   try {
     const motsData = await fetch('data/mots.json').then(r => r.json());
@@ -15,6 +19,9 @@ async function chargerDonnees() {
     mots = [...motsData];
 
     interfaceData = await fetch('data/interface-langue.json').then(r => r.json());
+
+    if (!interfaceData[langueInterface]) langueInterface = 'fr';
+    if (!Object.keys(mots[0]).includes(langueTrad)) langueTrad = 'fr';
 
     changerLangueInterface(langueInterface);
 
@@ -31,10 +38,9 @@ async function chargerDonnees() {
   }
 }
 
-// Afficher un mot
+// Affichage du mot
 function afficherMot(motIndex = indexMot) {
   if (!mots.length) return;
-
   indexMot = Math.max(0, Math.min(mots.length - 1, motIndex));
   localStorage.setItem('motIndex', indexMot);
   const mot = mots[indexMot];
@@ -42,7 +48,6 @@ function afficherMot(motIndex = indexMot) {
   document.getElementById('motTexte').textContent = mot.mot || '';
   document.getElementById('definition').innerHTML =
     (mot[langueTrad] || '—') + (mot.cat ? ` <span style="color:#888;">(${mot.cat})</span>` : '');
-
   document.getElementById('compteur').textContent = `${indexMot + 1} / ${mots.length}`;
 }
 
@@ -50,18 +55,16 @@ function afficherMot(motIndex = indexMot) {
 function motPrecedent() {
   if (indexMot > 0) afficherMot(indexMot - 1);
 }
-
 function motSuivant() {
   if (indexMot < mots.length - 1) afficherMot(indexMot + 1);
 }
 
-// Recherche avec debounce
+// Recherche
 let debounceTimeout;
 function rechercherMotDebounce() {
   clearTimeout(debounceTimeout);
   debounceTimeout = setTimeout(rechercherMot, 300);
 }
-
 function rechercherMot() {
   const query = document.getElementById('searchBar').value.trim();
   if (!query) {
@@ -69,7 +72,6 @@ function rechercherMot() {
     afficherMot(0);
     return;
   }
-
   const resultats = fuse.search(query);
   if (resultats.length) {
     mots = resultats.map(r => r.item);
@@ -82,97 +84,97 @@ function rechercherMot() {
   }
 }
 
-// Langues
+// Changer la langue d’interface
 function changerLangueInterface(lang) {
   langueInterface = lang;
-
-  const btnLangue = document.getElementById('langueActuelle');
-  if (btnLangue) btnLangue.textContent = `Langue : ${langueTrad.toUpperCase()} ⌄`;
+  localStorage.setItem('langueInterface', lang);
 
   const t = interfaceData[lang] || interfaceData['fr'];
   if (!t) return;
 
   document.title = t.titrePrincipal || "";
+  document.documentElement.lang = lang;
 
-  const titrePrincipal = document.getElementById('titrePrincipal');
-  if (titrePrincipal) titrePrincipal.textContent = t.titrePrincipal || "";
+  const ids = {
+    titrePrincipal: t.titrePrincipal,
+    textePresentation: t.presentation,
+    btnPlay: `▶️ ${t.ecouter}`,
+    btnReplay: `⟳ ${t.rejouer}`,
+    btnAuto: `▶️ ${t.lectureAuto}`,
+    btnEnvoyer: t.envoyer,
+    'chat-title': t.chatTitre,
+    searchBar: t.searchPlaceholder,
+    chatInput: t.placeholderChat,
+    botIntro: t.botIntro,
+    'histoire-title': t.histoireTitle,
+    'histoire-message': t.histoireBientot,
+    'archives-title': t.archivesTitle,
+    'archives-message': t.archivesBientot,
+    footerText: t.footerText,
+    footerContrib: t.footerContrib
+  };
 
-  const presentation = document.getElementById('textePresentation');
-  if (presentation) {
-    presentation.innerHTML = t.presentation || `Très bientôt, découvrez ici une aventure collaborative dédiée à la langue Tadaksahak !`;
+  for (const [id, content] of Object.entries(ids)) {
+    const el = document.getElementById(id);
+    if (el) {
+      if (id === "searchBar" || id === "chatInput") {
+        el.placeholder = content;
+      } else {
+        el.innerHTML = content;
+      }
+    }
   }
 
-  const btnPlay = document.getElementById('btnPlay');
-  if (btnPlay) btnPlay.textContent = `▶️ ${t.ecouter || "Écouter"}`;
+  document.getElementById('btnLangueInterface').textContent = `Interface : ${lang.toUpperCase()} ⌄`;
+  document.getElementById('btnLangueTrad').textContent = `Traduction : ${langueTrad.toUpperCase()} ⌄`;
 
-  const btnReplay = document.getElementById('btnReplay');
-  if (btnReplay) btnReplay.textContent = `⟳ ${t.rejouer || "Réécouter"}`;
-
-  const btnAuto = document.getElementById('btnAuto');
-  if (btnAuto) btnAuto.textContent = `▶️ ${t.lectureAuto || "Lecture auto"}`;
-
-  const btnEnvoyer = document.getElementById('btnEnvoyer');
-  if (btnEnvoyer) btnEnvoyer.textContent = t.envoyer || "Envoyer";
-
-  const chatTitle = document.getElementById('chat-title');
-  if (chatTitle) chatTitle.textContent = t.chatTitre || "Chat Tadaksahak";
-
-  const searchBar = document.getElementById('searchBar');
-  if (searchBar) searchBar.placeholder = t.searchPlaceholder || "";
-
-  const chatInput = document.getElementById('chatInput');
-  if (chatInput) chatInput.placeholder = t.placeholderChat || "";
-
-  const botIntro = document.getElementById('botIntro');
-  if (botIntro) botIntro.innerHTML = t.botIntro || "🤖 Salut, je suis Hamadine le bot Tadaksahak.<br>Demandez-moi un mot et je vous le trouve rapidement&nbsp;!";
-
-  const histoireTitle = document.getElementById('histoire-title');
-  if (histoireTitle) histoireTitle.textContent = t.histoireTitle || "Section Histoire";
-
-  const histoireMessage = document.getElementById('histoire-message');
-  if (histoireMessage) histoireMessage.innerHTML = t.histoireBientot || "Très bientôt, découvrez ici des textes historiques captivants sur la culture Tadaksahak.";
-
-  const archivesTitle = document.getElementById('archives-title');
-  if (archivesTitle) archivesTitle.textContent = t.archivesTitle || "Section Archives";
-
-  const archivesMessage = document.getElementById('archives-message');
-  if (archivesMessage) archivesMessage.innerHTML = t.archivesBientot || "Nous mettrons prochainement à votre disposition des documents anciens précieux.";
-
-  const footer = document.getElementById('footerText');
-  if (footer) footer.innerHTML = t.footerText || "© 2025 • Tadaksahak Multilingue avec Hamadine.";
-
-  const footerContrib = document.getElementById('footerContrib');
-  if (footerContrib) footerContrib.innerHTML = t.footerContrib || "";
-
-  // Mémorisation réponse chatbot
   window.reponseBot = t.reponseBot || "Mot introuvable.";
   window.nomUtilisateur = t.utilisateur || "Vous";
 
-  initialiserMenuLangue();
+  initialiserMenusLangues();
 }
 
-// Menu dynamique des langues
-function initialiserMenuLangue() {
-  const panel = document.getElementById('langueListe');
-  panel.innerHTML = '';
+// Changer la langue de traduction
+function changerLangueTraduction(lang) {
+  langueTrad = lang;
+  localStorage.setItem('langueTrad', lang);
+  document.getElementById('btnLangueTrad').textContent = `Traduction : ${langueTrad.toUpperCase()} ⌄`;
+  afficherMot();
+}
 
-  const languesDispo = Object.keys(interfaceData);
-  languesDispo.forEach(code => {
+// Menus des langues
+function initialiserMenusLangues() {
+  const panelInterface = document.getElementById('menuLangueInterface');
+  const panelTrad = document.getElementById('menuLangueTrad');
+
+  panelInterface.innerHTML = '';
+  panelTrad.innerHTML = '';
+
+  Object.keys(interfaceData).forEach(code => {
     const btn = document.createElement('button');
     btn.textContent = code.toUpperCase();
     btn.className = 'langue-btn';
     btn.onclick = () => {
-      langueTrad = code;
-      localStorage.setItem('langueTrad', code);
-      changerLangueInterface(langueInterface);
-      panel.setAttribute('hidden', '');
-      afficherMot();
+      changerLangueInterface(code);
+      panelInterface.setAttribute('hidden', '');
     };
-    panel.appendChild(btn);
+    panelInterface.appendChild(btn);
+  });
+
+  const languesTraduction = Object.keys(motsComplet[0]).filter(k => k.length <= 3 && k !== 'mot' && k !== 'cat');
+  languesTraduction.forEach(code => {
+    const btn = document.createElement('button');
+    btn.textContent = code.toUpperCase();
+    btn.className = 'langue-btn';
+    btn.onclick = () => {
+      changerLangueTraduction(code);
+      panelTrad.setAttribute('hidden', '');
+    };
+    panelTrad.appendChild(btn);
   });
 }
 
-// Chatbot intelligent Tadaksahak
+// Chatbot
 function envoyerMessage() {
   const input = document.getElementById('chatInput');
   const message = input.value.trim();
@@ -215,23 +217,22 @@ function afficherMessage(auteur, texte) {
   chatWindow.scrollTop = chatWindow.scrollHeight;
 }
 
-// Audio - stubs
+// Audio
 function jouerTadaksahak() {
   const mot = mots[indexMot];
   if (!mot || !mot.mot) return;
   const audio = new Audio(`./audio/${mot.mot}.mp3`);
+  audio.onerror = () => alert("Audio non disponible.");
   audio.play();
 }
-
 function rejouerMot() {
   jouerTadaksahak();
 }
-
 function lectureAuto() {
-  console.log("Lecture auto (à implémenter)");
+  alert("Lecture automatique à venir !");
 }
 
-// Initialisation
+// Démarrage
 window.addEventListener('DOMContentLoaded', () => {
   chargerDonnees();
 });
