@@ -60,6 +60,17 @@ a:hover {
   text-decoration: underline;
 }
 
+/* 🎯 Liens de téléchargement dans les sections */
+ul li a {
+  color: #b30000;
+  font-weight: bold;
+}
+
+ul li a:hover {
+  color: #ff1a1a;
+  text-decoration: underline;
+}
+
 /* 🌐 Sélecteur de langue */
 .langue-select-container {
   position: relative;
@@ -245,4 +256,4 @@ nav button:disabled {
     width: 100%;
     margin-bottom: 0.5em;
   }
-  }
+}
