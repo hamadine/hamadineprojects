@@ -256,4 +256,13 @@ nav button:disabled {
     width: 100%;
     margin-bottom: 0.5em;
   }
+main a {
+  color: #b30000;
+  font-weight: bold;
 }
+
+main a:hover {
+  color: #ff1a1a;
+  text-decoration: underline;
+}
+ }
