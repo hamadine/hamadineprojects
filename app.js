@@ -174,36 +174,75 @@ function initialiserMenusLangues() {
   });
 }
 
-// Chatbot
+// Chatbot enrichi
 function envoyerMessage() {
   const input = document.getElementById('chatInput');
-  const message = input.value.trim();
+  const message = input.value.trim().toLowerCase();
   if (!message) return;
 
   afficherMessage('utilisateur', message);
   input.value = '';
 
   setTimeout(() => {
-    const motsTrouves = motsComplet.filter(m =>
-      m.mot.toLowerCase().includes(message.toLowerCase())
+    const correspondances = motsComplet.filter(mot =>
+      Object.entries(mot).some(([cle, valeur]) =>
+        cle !== 'cat' && typeof valeur === 'string' && valeur.toLowerCase() === message
+      )
     );
 
-    if (motsTrouves.length === 0) {
-      afficherMessage('bot', window.reponseBot);
+    if (correspondances.length > 0) {
+      let reponse = correspondances.map(m => {
+        const autres = motsComplet.filter(
+          x => x.mot === m.mot && x !== m
+        );
+
+        const traductions = Object.entries(m)
+          .filter(([k]) => k !== 'mot' && k !== 'cat')
+          .map(([lang, val]) => `<strong>${lang.toUpperCase()}</strong>: ${val}`)
+          .join('<br>');
+
+        const homonymes = autres.map(h =>
+          Object.entries(h)
+            .filter(([k]) => k !== 'mot' && k !== 'cat')
+            .map(([lang, val]) => `<strong>${lang.toUpperCase()}</strong>: ${val}`)
+            .join('<br>') +
+          (h.cat ? ` <span style="color:#888;">(${h.cat})</span>` : '')
+        ).join('<hr>');
+
+        return `<strong>${m.mot}</strong> <span style="color:#888;">(${m.cat || ''})</span><br>${traductions}`
+          + (homonymes ? `<hr><em>Autres sens ou homonymes :</em><br>${homonymes}` : '');
+      }).join('<hr>');
+
+      afficherMessage('bot', reponse);
       return;
     }
 
-    let reponse = motsTrouves.map(m => {
-      const traductions = Object.entries(m)
-        .filter(([k]) => k !== 'mot' && k !== 'cat')
-        .map(([lang, def]) => `<strong>${lang.toUpperCase()}</strong>: ${def}`)
-        .join('<br>');
+    // Recherche floue avec Fuse.js
+    const fuseInverse = new Fuse(motsComplet, {
+      keys: Object.keys(motsComplet[0]).filter(k => k !== 'cat'),
+      threshold: 0.4,
+      includeScore: true
+    });
 
-      const cat = m.cat ? ` <span style="color:#888;">(${m.cat})</span>` : '';
-      return `<strong>${m.mot}</strong>${cat}<br>${traductions}`;
-    }).join('<hr>');
+    const resultats = fuseInverse.search(message);
 
-    afficherMessage('bot', reponse);
+    if (resultats.length) {
+      const suggestions = resultats.slice(0, 3).map(r => {
+        const m = r.item;
+        const t = Object.entries(m)
+          .filter(([k]) => k !== 'cat')
+          .map(([lang, val]) => `<strong>${lang.toUpperCase()}</strong>: ${val}`)
+          .join('<br>');
+        return `${t}${m.cat ? ` <span style="color:#888;">(${m.cat})</span>` : ''}`;
+      }).join('<hr>');
+
+      afficherMessage('bot', `Je n’ai pas trouvé ce mot exactement, mais peut-être vouliez-vous dire :<br>${suggestions}`);
+    } else {
+      const texte = `Désolé, ce mot n’est pas encore disponible.<br><br>
+      🤖 Hamadine travaille d’arrache-pied pour enrichir sa base lexicale, actuellement en développement.<br>
+      Ce mot a été noté pour améliorer le dictionnaire. Merci pour votre contribution 🙏`;
+      afficherMessage('bot', texte);
+    }
   }, 300);
 }
 
