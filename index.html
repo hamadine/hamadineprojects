@@ -5,20 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title id="pageTitle">Dictionnaire Tadaksahak Multilingue</title>
 
-  <!-- Référencement -->
   <meta name="robots" content="noindex, nofollow" />
   <meta name="description" content="Dictionnaire Tadaksahak en audio avec traduction multilingue." />
-
-  <!-- Favicon -->
   <link rel="icon" href="images/idaksahak_round.png" type="image/png" />
-
-  <!-- Feuille de style -->
   <link rel="stylesheet" href="style.css" />
-
-  <!-- JS (Fuse.js pour la recherche floue) -->
   <script src="https://cdn.jsdelivr.net/npm/fuse.js/dist/fuse.min.js" crossorigin="anonymous"></script>
-
-  <!-- Script principal -->
   <script defer src="app.js"></script>
 </head>
 
@@ -36,11 +27,8 @@
 
     <!-- Sélecteurs de langue -->
     <div class="langue-select-container">
-      <!-- Bouton interface -->
       <button id="btnLangueInterface" class="langue-btn" aria-haspopup="true" aria-expanded="false">Interface : FR ⌄</button>
       <div id="menuLangueInterface" class="langue-panel" role="menu" hidden></div>
-
-      <!-- Bouton traduction -->
       <button id="btnLangueTrad" class="langue-btn" aria-haspopup="true" aria-expanded="false">Traduction : FR ⌄</button>
       <div id="menuLangueTrad" class="langue-panel" role="menu" hidden></div>
     </div>
@@ -52,14 +40,12 @@
       <p id="definition">—</p>
       <p id="compteur">0 / 0</p>
 
-      <!-- Audio -->
       <div id="audioButtons">
         <button id="btnPlay" onclick="jouerTadaksahak()">Écouter</button>
         <button id="btnReplay" onclick="rejouerMot()" disabled style="opacity: 0.5;">Réécouter</button>
         <button id="btnAuto" onclick="lectureAuto()" disabled style="opacity: 0.5;">Lecture auto</button>
       </div>
 
-      <!-- Navigation -->
       <nav>
         <button id="btnPrev" onclick="motPrecedent()" aria-label="Mot précédent">⏮️</button>
         <button id="btnNext" onclick="motSuivant()" aria-label="Mot suivant">⏭️</button>
@@ -75,27 +61,42 @@
       <button id="btnEnvoyer" onclick="envoyerMessage()">Envoyer</button>
     </section>
 
-    <!-- Sections futures -->
+    <!-- Section Histoire -->
     <section>
       <h2 id="histoire-title">Histoire</h2>
-      <p id="histoire-message">Très bientôt, découvrez ici des textes historiques captivants sur la culture Tadaksahak.</p>
+      <p id="histoire-message">
+        Découvrez ici des textes historiques captivants sur la culture Tadaksahak.
+      </p>
+      <ul>
+        <li>
+          📘 <a href="documents/histoire-contribution-idaksahak.docx" download>
+            Contribution à la connaissance de la communauté Idaksahak
+          </a>
+        </li>
+      </ul>
     </section>
 
+    <!-- Section Archives -->
     <section>
       <h2 id="archives-title">Archives</h2>
-      <p id="archives-message">Nous mettrons prochainement à votre disposition des documents anciens précieux.</p>
+      <p id="archives-message">
+        Accédez à des documents anciens précieux sur la langue, la culture et l'organisation Idaksahak.
+      </p>
+      <ul>
+        <li>📜 <a href="documents/archives-declaration-anderamboukar.pdf" download>Déclaration d’Anderamboukar</a></li>
+        <li>📜 <a href="documents/archives-resolution-generale.pdf" download>Résolution générale</a></li>
+        <li>📜 <a href="documents/archives-bureau-executif.pdf" download>Bureau Exécutif</a></li>
+        <li>📜 <a href="documents/archives-conseil-orientation.pdf" download>Conseil d’Orientation</a></li>
+        <li>📜 <a href="documents/archives-rapport-succinct.docx" download>Rapport succinct</a></li>
+      </ul>
     </section>
   </main>
 
-  <!-- Footer -->
   <footer>
     <p id="footerContrib"></p>
-
-    <!-- Logo carré juste au-dessus des contacts -->
     <div style="text-align: center; margin-bottom: 1em;">
       <img src="images/idaksahak_square512.png" alt="Logo Tadaksahak carré" width="100" height="100" style="border-radius: 12px;" />
     </div>
-
     <p>
       <a href="mailto:hamadineagmoctar@gmail.com">
         <img src="images/Gmail.png" alt="Gmail" style="height:1em;"> hamadineagmoctar@gmail.com
@@ -108,7 +109,6 @@
     <p id="footerText">© 2025 • Tadaksahak Multilingue avec Hamadine.</p>
   </footer>
 
-  <!-- Script inline pour menus langues -->
   <script>
     window.addEventListener('DOMContentLoaded', () => {
       const toggleMenu = (btnId, menuId) => {
