@@ -19,13 +19,11 @@
   </header>
 
   <main>
-    <!-- Présentation -->
     <section>
       <h1 id="titrePrincipal">Tadaksahak Dictionary</h1>
       <p id="textePresentation">Chargement...</p>
     </section>
 
-    <!-- Sélecteurs de langue -->
     <div class="langue-select-container">
       <button id="btnLangueInterface" class="langue-btn" aria-haspopup="true" aria-expanded="false">Interface : FR ⌄</button>
       <div id="menuLangueInterface" class="langue-panel" role="menu" hidden></div>
@@ -33,26 +31,22 @@
       <div id="menuLangueTrad" class="langue-panel" role="menu" hidden></div>
     </div>
 
-    <!-- Zone de recherche -->
     <section>
       <input id="searchBar" type="text" placeholder="Cherchez un mot..." oninput="rechercherMotDebounce()" aria-label="Recherche" />
       <h2 id="motTexte">—</h2>
       <p id="definition">—</p>
       <p id="compteur">0 / 0</p>
-
       <div id="audioButtons">
         <button id="btnPlay" onclick="jouerTadaksahak()">Écouter</button>
         <button id="btnReplay" onclick="rejouerMot()" disabled style="opacity: 0.5;">Réécouter</button>
         <button id="btnAuto" onclick="lectureAuto()" disabled style="opacity: 0.5;">Lecture auto</button>
       </div>
-
       <nav>
         <button id="btnPrev" onclick="motPrecedent()" aria-label="Mot précédent">⏮️</button>
         <button id="btnNext" onclick="motSuivant()" aria-label="Mot suivant">⏭️</button>
       </nav>
     </section>
 
-    <!-- Chatbot -->
     <section aria-labelledby="chat-title">
       <h2 id="chat-title">Chat Tadaksahak</h2>
       <div id="chatWindow" class="chatbox" role="log" aria-live="polite"></div>
@@ -61,7 +55,6 @@
       <button id="btnEnvoyer" onclick="envoyerMessage()">Envoyer</button>
     </section>
 
-    <!-- Section Histoire -->
     <section>
       <h2 id="histoire-title">Histoire</h2>
       <p id="histoire-message">
@@ -76,7 +69,6 @@
       </ul>
     </section>
 
-    <!-- Section Archives -->
     <section>
       <h2 id="archives-title">Archives</h2>
       <p id="archives-message">
@@ -88,6 +80,20 @@
         <li>📜 <a href="documents/archives-bureau-executif.pdf" download>Bureau Exécutif</a></li>
         <li>📜 <a href="documents/archives-conseil-orientation.pdf" download>Conseil d’Orientation</a></li>
         <li>📜 <a href="documents/archives-rapport-succinct.docx" download>Rapport succinct</a></li>
+      </ul>
+    </section>
+
+    <section>
+      <h2 id="linguistique-title">Linguistique</h2>
+      <p id="linguistique-message">
+        Études approfondies sur la morphologie verbale et les structures grammaticales du Tadaksahak.
+      </p>
+      <ul>
+        <li>
+          📄 <a href="documents/linguistique-silewp2002-morphologie.pdf" download>
+            Morphologie verbale du Tadaksahak – N. & R. Christiansen (SIL, 2002)
+          </a>
+        </li>
       </ul>
     </section>
   </main>
@@ -108,31 +114,5 @@
     </p>
     <p id="footerText">© 2025 • Tadaksahak Multilingue avec Hamadine.</p>
   </footer>
-
-  <script>
-    window.addEventListener('DOMContentLoaded', () => {
-      const toggleMenu = (btnId, menuId) => {
-        const btn = document.getElementById(btnId);
-        const panel = document.getElementById(menuId);
-
-        btn.addEventListener('click', (e) => {
-          const expanded = panel.hasAttribute('hidden');
-          panel.toggleAttribute('hidden');
-          btn.setAttribute('aria-expanded', expanded ? 'true' : 'false');
-          e.stopPropagation();
-        });
-
-        document.addEventListener('click', (e) => {
-          if (!panel.contains(e.target) && !btn.contains(e.target)) {
-            panel.setAttribute('hidden', '');
-            btn.setAttribute('aria-expanded', 'false');
-          }
-        });
-      };
-
-      toggleMenu('btnLangueInterface', 'menuLangueInterface');
-      toggleMenu('btnLangueTrad', 'menuLangueTrad');
-    });
-  </script>
 </body>
 </html>
