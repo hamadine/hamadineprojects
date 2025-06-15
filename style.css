@@ -1,23 +1,9 @@
-:root {
-  --sun-sand: #f4e2d8;
-  --desert-gold: #e8c07d;
-  --dune-brown: #b38766;
-  --clay: #a47449;
-  --sunburn: #d6683c;
-  --sunlight: #fff8e1;
-  --text-dark: #2b1d0e;
-  --white: #ffffff;
-  --shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-}
-
-/* ====== Structure générale ====== */
-
+/* ====== STRUCTURE ====== */
 body {
   margin: 0;
   font-family: 'Segoe UI', sans-serif;
-  background: var(--sun-sand);
+  background: var(--blue-light);
   color: var(--text-dark);
-  background-image: radial-gradient(circle at top right, #fefae0 0%, #f4e2d8 100%);
   overflow-x: hidden;
   display: flex;
   flex-direction: column;
@@ -28,14 +14,14 @@ main {
   max-width: 860px;
   margin: auto;
   padding: 2em 1.5em;
-  background-color: rgba(255, 248, 225, 0.96);
+  background-color: var(--white);
   border-radius: 12px;
   box-shadow: var(--shadow);
   flex: 1;
 }
 
 h1, h2, h3 {
-  color: var(--clay);
+  color: var(--blue-dark);
   text-align: center;
 }
 
@@ -43,20 +29,25 @@ p {
   line-height: 1.6;
 }
 
-/* ====== Header & Footer ====== */
-
+/* ====== HEADER / FOOTER ====== */
 .site-header {
   text-align: center;
-  margin-bottom: 2em;
+  background: var(--blue-mid);
+  padding: 1.2em 0;
+}
+.site-header img {
+  background: var(--white);
+  border-radius: 50%;
+  padding: 0.5em;
+  box-shadow: var(--shadow);
 }
 
 .site-footer {
   text-align: center;
   padding: 2em 1em;
-  background: var(--dune-brown);
+  background: var(--blue-dark);
   color: var(--white);
-  border-top: 4px solid var(--sunburn);
-  margin-top: 2em;
+  border-top: 4px solid var(--blue-mid);
   font-size: 0.95em;
 }
 
@@ -64,246 +55,176 @@ p {
   color: var(--white);
   text-decoration: none;
 }
-
 .site-footer a:hover {
   text-decoration: underline;
 }
 
-.logo-footer img {
-  border-radius: 12px;
-  margin-bottom: 0.5em;
-}
-
-/* ====== Liens et téléchargements ====== */
-
-ul li a {
-  color: #b30000;
-  font-weight: bold;
-}
-
-ul li a:hover {
-  color: #ff1a1a;
-  text-decoration: underline;
-}
-
-.ressource-section h2::before {
-  content: "📁 ";
-  color: var(--clay);
-}
-
-#linguistique-title::before {
-  content: "🧾 ";
-}
-
-/* ====== Sélecteurs de langue ====== */
-
+/* ====== LANGUE SELECTEURS ====== */
 .langue-select-container {
   display: flex;
   justify-content: center;
-  gap: 1em;
   flex-wrap: wrap;
-  margin: 1.5em 0;
+  gap: 1em;
+  margin: 2em 0;
 }
-
-.langue-group {
-  position: relative;
-}
-
 .langue-btn {
-  background: var(--clay);
+  background: var(--blue-dark);
   color: var(--white);
   border: none;
   padding: 0.6em 1.2em;
-  border-radius: 6px;
+  border-radius: 8px;
   font-weight: bold;
   cursor: pointer;
-  transition: background 0.3s, box-shadow 0.2s;
-  font-size: 1em;
+  transition: background 0.3s, box-shadow 0.3s;
 }
-
-.langue-btn:hover,
-.langue-btn:focus-visible {
-  background: var(--sunburn);
-  box-shadow: 0 0 0 3px rgba(214, 104, 60, 0.3);
-  outline: none;
+.langue-btn:hover {
+  background: var(--blue-mid);
+  box-shadow: var(--shadow);
 }
 
 .langue-panel {
   position: absolute;
   right: 0;
-  background: var(--sunlight);
-  box-shadow: var(--shadow);
+  background: var(--white);
+  border: 1px solid var(--blue-mid);
   border-radius: 8px;
+  box-shadow: var(--shadow);
   margin-top: 0.5em;
-  z-index: 999;
-  width: max-content;
-  max-height: 300px;
-  overflow-y: auto;
+  z-index: 10;
   min-width: 180px;
-  border: 1px solid var(--desert-gold);
-  padding: 0.3em 0;
+  overflow-y: auto;
+  max-height: 300px;
 }
-
-.langue-panel[hidden] {
-  display: none;
-  opacity: 0;
-  pointer-events: none;
-}
-
 .langue-panel button {
-  display: block;
   width: 100%;
-  padding: 0.5em 1em;
-  background: transparent;
-  border: none;
   text-align: left;
-  font-weight: 500;
+  padding: 0.5em 1em;
+  border: none;
+  background: transparent;
   color: var(--text-dark);
-  cursor: pointer;
-  transition: background 0.2s ease;
-  font-size: 0.95em;
+  font-weight: 500;
+}
+.langue-panel button:hover {
+  background: var(--blue-light);
 }
 
-.langue-panel button:hover,
-.langue-panel button:focus-visible {
-  background-color: var(--desert-gold);
-  outline: none;
-}
-
-/* ====== Recherche ====== */
-
+/* ====== RECHERCHE ====== */
 #searchBar {
   width: 100%;
   padding: 0.8em 1em;
   font-size: 1em;
-  border: 2px solid var(--clay);
-  border-radius: 6px;
+  border: 2px solid var(--blue-dark);
+  border-radius: 8px;
   margin-bottom: 1em;
   background: var(--white);
-  color: var(--text-dark);
-  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+  box-shadow: inset 0 1px 3px rgba(0,0,0,0.1);
 }
 
-/* ====== Boutons audio + navigation regroupés ====== */
-
+/* ====== BOUTONS ====== */
 .button-group {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
   gap: 0.6em;
-  margin: 1em 0;
+  margin: 1.2em 0;
 }
-
 .button-group button {
-  background: var(--clay);
+  background: var(--blue-dark);
   color: var(--white);
   border: none;
   padding: 0.6em 1.2em;
-  border-radius: 6px;
-  font-size: 0.95em;
+  border-radius: 8px;
   font-weight: 600;
-  cursor: pointer;
-  transition: background 0.3s, transform 0.1s ease;
+  transition: background 0.3s, box-shadow 0.3s;
 }
-
 .button-group button:hover {
-  background: var(--sunburn);
+  background: var(--blue-mid);
+  box-shadow: var(--shadow);
 }
-
 .button-group button:disabled {
   opacity: 0.5;
   cursor: not-allowed;
 }
 
-/* ====== Chatbot ====== */
+/* ====== LIENS ET FICHIERS ====== */
+ul li a {
+  color: var(--red-download);
+  font-weight: bold;
+}
+ul li a:hover {
+  color: var(--red-hover);
+  text-decoration: underline;
+}
+.ressource-section {
+  background: var(--white);
+  padding: 1.2em;
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+  margin-bottom: 2em;
+}
 
+/* ====== CHATBOT ====== */
 .chatbox {
   background: var(--white);
   border-radius: 10px;
-  border: 1px solid var(--clay);
+  border: 1px solid var(--blue-mid);
   padding: 1em;
   margin: 1em 0;
   max-height: 250px;
   overflow-y: auto;
 }
-
 .message {
   margin: 0.5em 0;
-  line-height: 1.5;
 }
-
 .message.bot {
-  color: var(--clay);
+  color: var(--blue-dark);
 }
-
 .message.utilisateur {
   font-weight: bold;
   text-align: right;
-  color: var(--text-dark);
 }
-
 .chat-intro {
-  margin-bottom: 1em;
+  margin-bottom: 0.8em;
   font-style: italic;
-  font-size: 0.95em;
   color: #555;
 }
-
 .chat-input-container {
   display: flex;
   gap: 0.5em;
   margin-top: 0.5em;
 }
-
 #chatInput {
   flex: 1;
   padding: 0.6em;
-  border: 2px solid var(--clay);
+  border: 2px solid var(--blue-dark);
   border-radius: 6px;
   font-size: 1em;
 }
-
 #btnEnvoyer {
-  background: var(--clay);
+  background: var(--blue-dark);
   color: var(--white);
   border: none;
   padding: 0.6em 1.2em;
   border-radius: 6px;
   font-weight: 600;
-  cursor: pointer;
-  transition: background 0.3s;
 }
-
 #btnEnvoyer:hover {
-  background: var(--sunburn);
+  background: var(--blue-mid);
 }
 
-/* ====== Responsive mobile ====== */
-
+/* ====== RESPONSIVE ====== */
 @media (max-width: 768px) {
-  main {
-    padding: 1.2em 1em;
-  }
-
   .langue-select-container {
     flex-direction: column;
     align-items: center;
   }
-
-  .chat-input-container {
-    flex-direction: column;
-  }
-
+  .chat-input-container,
   .button-group {
     flex-direction: column;
     align-items: stretch;
   }
-
-  .button-group button {
-    width: 100%;
-  }
-
+  .button-group button,
   #btnEnvoyer {
     width: 100%;
   }
-  }
+}
