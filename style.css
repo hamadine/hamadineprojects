@@ -10,6 +10,8 @@
   --shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
+/* ====== Structure générale ====== */
+
 body {
   margin: 0;
   font-family: 'Segoe UI', sans-serif;
@@ -41,7 +43,14 @@ p {
   line-height: 1.6;
 }
 
-footer {
+/* ====== Header & Footer ====== */
+
+.site-header {
+  text-align: center;
+  margin-bottom: 2em;
+}
+
+.site-footer {
   text-align: center;
   padding: 2em 1em;
   background: var(--dune-brown);
@@ -51,16 +60,22 @@ footer {
   font-size: 0.95em;
 }
 
-a {
+.site-footer a {
   color: var(--white);
   text-decoration: none;
 }
 
-a:hover {
+.site-footer a:hover {
   text-decoration: underline;
 }
 
-/* 🎯 Liens de téléchargement dans les sections */
+.logo-footer img {
+  border-radius: 12px;
+  margin-bottom: 0.5em;
+}
+
+/* ====== Liens et téléchargements ====== */
+
 ul li a {
   color: #b30000;
   font-weight: bold;
@@ -71,12 +86,27 @@ ul li a:hover {
   text-decoration: underline;
 }
 
-/* 🌐 Sélecteur de langue */
+.ressource-section h2::before {
+  content: "📁 ";
+  color: var(--clay);
+}
+
+#linguistique-title::before {
+  content: "🧾 ";
+}
+
+/* ====== Sélecteurs de langue ====== */
+
 .langue-select-container {
+  display: flex;
+  justify-content: center;
+  gap: 1em;
+  flex-wrap: wrap;
+  margin: 1.5em 0;
+}
+
+.langue-group {
   position: relative;
-  text-align: right;
-  margin: 1.5em auto;
-  max-width: 800px;
 }
 
 .langue-btn {
@@ -110,7 +140,8 @@ ul li a:hover {
   max-height: 300px;
   overflow-y: auto;
   min-width: 180px;
-  transition: opacity 0.2s ease;
+  border: 1px solid var(--desert-gold);
+  padding: 0.3em 0;
 }
 
 .langue-panel[hidden] {
@@ -139,7 +170,8 @@ ul li a:hover {
   outline: none;
 }
 
-/* 🔎 Barre de recherche */
+/* ====== Recherche ====== */
+
 #searchBar {
   width: 100%;
   padding: 0.8em 1em;
@@ -152,10 +184,17 @@ ul li a:hover {
   box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
-/* 🎵 Boutons audio et navigation */
-#audioButtons button,
-nav button,
-#btnEnvoyer {
+/* ====== Boutons audio + navigation regroupés ====== */
+
+.button-group {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.6em;
+  margin: 1em 0;
+}
+
+.button-group button {
   background: var(--clay);
   color: var(--white);
   border: none;
@@ -163,24 +202,21 @@ nav button,
   border-radius: 6px;
   font-size: 0.95em;
   font-weight: 600;
-  margin: 0.4em;
   cursor: pointer;
   transition: background 0.3s, transform 0.1s ease;
 }
 
-#audioButtons button:hover,
-nav button:hover,
-#btnEnvoyer:hover {
+.button-group button:hover {
   background: var(--sunburn);
 }
 
-#audioButtons button:disabled,
-nav button:disabled {
+.button-group button:disabled {
   opacity: 0.5;
   cursor: not-allowed;
 }
 
-/* 🗨️ Chatbot */
+/* ====== Chatbot ====== */
+
 .chatbox {
   background: var(--white);
   border-radius: 10px;
@@ -213,56 +249,61 @@ nav button:disabled {
   color: #555;
 }
 
+.chat-input-container {
+  display: flex;
+  gap: 0.5em;
+  margin-top: 0.5em;
+}
+
 #chatInput {
-  width: calc(100% - 120px);
+  flex: 1;
   padding: 0.6em;
   border: 2px solid var(--clay);
   border-radius: 6px;
   font-size: 1em;
-  margin-top: 0.5em;
 }
 
 #btnEnvoyer {
-  vertical-align: top;
+  background: var(--clay);
+  color: var(--white);
+  border: none;
+  padding: 0.6em 1.2em;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s;
 }
 
-/* ✅ Responsive mobile */
-@media (max-width: 480px) {
-  .langue-btn {
-    font-size: 0.95em;
-    padding: 0.5em 1em;
+#btnEnvoyer:hover {
+  background: var(--sunburn);
+}
+
+/* ====== Responsive mobile ====== */
+
+@media (max-width: 768px) {
+  main {
+    padding: 1.2em 1em;
   }
 
-  .langue-panel {
-    min-width: 160px;
-    font-size: 0.9em;
+  .langue-select-container {
+    flex-direction: column;
+    align-items: center;
   }
 
-  .langue-panel button {
-    padding: 0.4em 0.8em;
+  .chat-input-container {
+    flex-direction: column;
   }
 
-  #chatInput {
+  .button-group {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .button-group button {
     width: 100%;
-    margin-bottom: 0.5em;
   }
 
   #btnEnvoyer {
     width: 100%;
   }
-
-  #audioButtons button,
-  nav button {
-    width: 100%;
-    margin-bottom: 0.5em;
   }
-main a {
-  color: #b30000;
-  font-weight: bold;
-}
-
-main a:hover {
-  color: #ff1a1a;
-  text-decoration: underline;
-}
- }
