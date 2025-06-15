@@ -10,26 +10,27 @@
     "searchPlaceholder": "Rechercher un mot...",
     "titrePrincipal": "Dictionnaire Tadaksahak Multilingue",
     "presentation": "Très bientôt, découvrez ici une aventure collaborative dédiée à la langue Tadaksahak !",
-    "placeholderChat": "Écrivez un mot ici...",
+    "placeholderChat": "Écrivez un mot ici pour lancer une recherche complète et rapide",
     "botIntro": "🤖 Salut, je suis Hamadine le bot Tadaksahak.<br>Demandez-moi un mot et je vous le trouve rapidement&nbsp;!",
-    "botIntelligence": {
+    "botIntelligence":{
+      "salutations_triggers": ["salut", "bonjour", "bonsoir", "salem", "salam", "hello", "salutations", "coucou"],
       "salutations": ["Bonjour à toi !", "Bienvenue sur le dictionnaire Tadaksahak.", "Salam ! Que puis-je faire pour toi ?"],
       "remerciements": ["Avec plaisir !", "Je suis heureux de t’aider.", "Merci pour ton intérêt !"],
       "insulte": "Merci de rester respectueux. Je suis ici pour aider avec bienveillance.",
       "faq": {
         "qui es-tu": "Je suis Hamadine, le bot Tadaksahak.",
-        "c’est quoi tadaksahak": "Le Tadaksahak est une langue du nord du Mali.",
+        "c’est quoi tadaksahak": "Le *Tadaksahak* est une langue parlée par la communauté *Idaksahak*, un peuple pasteur nomade principalement situé dans le *nord du Mali* (régions de *Ménaka* et *Gao*) et également présent dans l’est du *Niger*.",
         "qui a fait ce site": "Ce site a été conçu par Hamadine Ag Moctar.",
-        "comment ça va": "Je vais très bien, merci ! Et toi ?"
+        "comment ça va": "Je vais très bien, merci ! Et toi ?.", 
       }
     },
     "histoireTitle": "Section Histoire",
-    "histoireBientot": "Très bientôt, découvrez ici des textes historiques captivants sur la culture Tadaksahak.",
+    "histoireBientot": "Découvrez ici des textes historiques captivants sur la culture Tadaksahak.",
     "archivesTitle": "Section Archives",
-    "archivesBientot": "Nous mettrons prochainement à votre disposition des documents anciens précieux.",
+    "archivesBientot": "Consultez des articles historiques sur les Idaksahak.",
     "footerText": "© 2025 • Tadaksahak Multilingue avec Hamadine.",
     "footerContrib": "",
-    "reponseBot": "Mot introuvable.",
+    "reponseBot": "Ma base lexicale est en développement et le mot que vous cherchez sera bientôt disponible.",
     "utilisateur": "Vous"
   },
   "en": {
@@ -43,26 +44,27 @@
     "searchPlaceholder": "Search a word...",
     "titrePrincipal": "Tadaksahak Multilingual Dictionary",
     "presentation": "Coming soon: a collaborative adventure about the Tadaksahak language!",
-    "placeholderChat": "Type a word here...",
+    "placeholderChat": "Type a word here to start a fast and complete search.",
     "botIntro": "🤖 Hi! I’m Hamadine, the Tadaksahak bot.<br>Ask me a word and I’ll find it instantly!",
     "botIntelligence": {
-      "salutations": ["Hello there!", "Welcome to the Tadaksahak dictionary.", "Salam! What can I help you with?"],
+      "salutations_triggers": ["hi", "hello", "good evening", "salem", "salam", "hello", "greetings", "hey"]
+      "salutations": ["Hello there!", "Hey there", "Welcome to the Tadaksahak dictionary.", "Salam! What can I help you with?"],
       "remerciements": ["You're welcome!", "Glad to help.", "Thank you for your interest!"],
       "insulte": "Please remain respectful. I’m here to help kindly.",
       "faq": {
         "who are you": "I'm Hamadine, the Tadaksahak bot.",
-        "what is tadaksahak": "Tadaksahak is a language from northern Mali.",
+        "what is tadaksahak": "*Tadaksahak* is a language spoken by the *Idaksahak* community, a nomadic pastoralist people mainly located in the *northern regions of Mali* (particularly *Ménaka* and *Gao*), and also present in the eastern part of *Niger*.",
         "who made this site": "This site was created by Hamadine Ag Moctar.",
         "how are you": "I'm doing great, thank you! And you?"
       }
     },
     "histoireTitle": "History Section",
-    "histoireBientot": "Soon, explore fascinating historical texts about Tadaksahak culture.",
+    "histoireBientot": "Discover captivating historical texts about Tadaksahak culture here.",
     "archivesTitle": "Archives Section",
-    "archivesBientot": "We will soon offer you valuable old documents.",
+    "archivesBientot": "Explore historical articles about the Idaksahak.",
     "footerText": "© 2025 • Tadaksahak Multilingual with Hamadine.",
     "footerContrib": "",
-    "reponseBot": "Word not found.",
+    "reponseBot": "My lexical database is under development, and the word you are looking for will be available soon.",
     "utilisateur": "You"
   },
   "ar": {
@@ -73,12 +75,13 @@
     "lectureAuto": "تشغيل تلقائي",
     "chatTitre": "الدردشة مع حمدين",
     "envoyer": "إرسال",
-    "searchPlaceholder": "ابحث عن كلمة...",
+    "searchPlaceholder": "اكتب كلمة هنا...",
     "titrePrincipal": "قاموس تداكساهاك متعدد اللغات",
     "presentation": "قريبًا جدًا، اكتشفوا مغامرة تعاونية مخصصة للغة التداكساهاك!",
-    "placeholderChat": "اكتب كلمة هنا...",
+    "placeholderChat": "اكتب كلمة هنا لبدء بحث سريع وشامل.",
     "botIntro": "🤖 مرحبًا، أنا حمدين، روبوت تداكساهاك.<br>اطلب مني أي كلمة وسأجدها فورًا!",
     "botIntelligence": {
+    "salutations_triggers":["مرحبا", "أهلاً", "مساء الخير", "سلام", "السلام", "أهلاً", "تحيات", "هاي"], 
       "salutations": ["مرحبًا بك!", "أهلًا في قاموس تداكساهاك.", "سلام! كيف أساعدك؟"],
       "remerciements": ["على الرحب والسعة!", "سعيد بمساعدتك.", "شكرًا لاهتمامك!"],
       "insulte": "يرجى البقاء محترمًا. أنا هنا للمساعدة بأدب.",
@@ -89,13 +92,13 @@
         "كيف حالك": "أنا بخير جدًا، شكرًا! وأنت؟"
       }
     },
-    "histoireTitle": "قسم التاريخ",
-    "histoireBientot": "قريبًا، اكتشفوا نصوصًا تاريخية رائعة عن ثقافة التداكساهاك.",
+    "histoireTitle": "قسم التاريخ"
+    "histoireBientot": "اكتشف هنا نصوصًا تاريخية رائعة حول ثقافة التادكساهاك.",
     "archivesTitle": "قسم الأرشيف",
-    "archivesBientot": "سنقدم لكم قريبًا وثائق قديمة ثمينة.",
+    "archivesBientot": "استكشف مقالات تاريخية حول الإيداكسهك.",
     "footerText": "© 2025 • تداكساهاك متعدد اللغات مع حمدين.",
     "footerContrib": "",
-    "reponseBot": "لم يتم العثور على الكلمة.",
+    "reponseBot": "قاعدة البيانات المعجمية الخاصة بي قيد التطوير، والكلمة التي تبحث عنها ستكون متاحة قريبًا.",
     "utilisateur": "أنت"
   },
   "tz": {
