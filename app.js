@@ -1,3 +1,5 @@
+// === BOT INTELLIGENT COMPLET — CORRIGÉ & AMÉLIORÉ ===
+
 let motsComplet = [];
 let mots = [];
 let interfaceData = {};
@@ -125,7 +127,7 @@ function changerLangueInterface(lang) {
     if (el) el.tagName === "INPUT" ? el.placeholder = content : el.innerHTML = content;
   }
 
-  document.getElementById('btnLangueInterface').textContent = `Interface : ${nomsLangues[langueInterface] || lang.toUpperCase()} ⌄`;
+  document.getElementById('btnLangueInterface').textContent = `Interface : ${nomsLangues[langueInterface] || langueInterface.toUpperCase()} ⌄`;
   document.getElementById('btnLangueTrad').textContent = `Traduction : ${nomsLangues[langueTrad] || langueTrad.toUpperCase()} ⌄`;
 
   window.reponseBot = t.reponseBot || "Mot introuvable.";
@@ -184,27 +186,45 @@ function envoyerMessage() {
   const botData = interfaceData[langueInterface]?.botIntelligence || interfaceData['fr'].botIntelligence;
   const { salutations = [], remerciements = [], insultes = [], faq = {}, inconnu, reponseMot } = botData;
 
-  if (salutations.includes(message)) return afficherMessage('bot', botData.salutationsRandom || "Bonjour !");
-  if (remerciements.includes(message)) return afficherMessage('bot', botData.remerciementsRandom || "Merci !");
-  if (insultes.some(word => message.includes(word))) return afficherMessage('bot', botData.insulte || "Merci de rester respectueux.");
-
-  for (const question in faq) {
-    if (message.includes(question)) return afficherMessage('bot', faq[question]);
+  if (salutations.includes(message)) {
+    afficherMessage('bot', botData.salutationsRandom || "Bonjour !");
+    return;
   }
 
-  // 🔥 Amélioration : question "comment on dit X en Y ?"
+  if (remerciements.includes(message)) {
+    afficherMessage('bot', botData.remerciementsRandom || "Merci !");
+    return;
+  }
+
+  if (insultes.some(word => message.includes(word))) {
+    afficherMessage('bot', botData.insulte || "Merci de rester respectueux.");
+    return;
+  }
+
+  for (const question in faq) {
+    if (message.includes(question)) {
+      afficherMessage('bot', faq[question]);
+      return;
+    }
+  }
+
+  // 🔥 Ajout : "comment on dit X en Y ?"
   const regexTrad = /comment on dit (.+?) en ([a-z]+)/i;
   const match = message.match(regexTrad);
   if (match) {
     const motCherche = match[1].trim();
     const langueCible = match[2].trim().substring(0, 2);
 
-    const entree = motsComplet.find(m => m.fr?.toLowerCase() === motCherche || m.mot?.toLowerCase() === motCherche);
+    const entree = motsComplet.find(m =>
+      m.fr?.toLowerCase() === motCherche || m.mot?.toLowerCase() === motCherche
+    );
+
     if (entree && entree[langueCible]) {
-      return afficherMessage('bot', `${motCherche} en ${nomsLangues[langueCible] || langueCible.toUpperCase()} se dit : <strong>${entree[langueCible]}</strong>`);
+      afficherMessage('bot', `${motCherche} en ${nomsLangues[langueCible] || langueCible.toUpperCase()} se dit : <strong>${entree[langueCible]}</strong>`);
     } else {
-      return afficherMessage('bot', "Je n’ai pas trouvé ce mot ou cette langue.");
+      afficherMessage('bot', "Je n’ai pas trouvé ce mot ou cette langue.");
     }
+    return;
   }
 
   traiterRecherche(message, reponseMot, inconnu);
