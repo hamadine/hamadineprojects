@@ -13,7 +13,7 @@ const nomsLangues = {
   fr: "Français",
   en: "English",
   ar: "العربية",
-  tz: "Tadaksahak",
+  tz: "Tamazight",
   tr: "Türkçe",
   da: "Dansk",
   de: "Deutsch",
@@ -246,9 +246,9 @@ function envoyerMessage() {
           .join('<br>');
         return `${t}${m.cat ? ` <span style="color:#888;">(${m.cat})</span>` : ''}`;
       }).join('<hr>');
-      afficherMessage('bot', `Je n’ai pas trouvé ce mot exactement, mais peut-être vouliez-vous dire :<br>${suggestions}`);
+      afficherMessage('bot', `Je n’ai pas trouvé ce mot exactement, mais je vous propose ceci et je note votre recherche pour la prochaine mise à jour. Merci pour votre contribution.:<br>${suggestions}`);
     } else {
-      afficherMessage('bot', `Désolé, ce mot n’est pas encore disponible.<br><br>🤖 Hamadine travaille d’arrache-pied pour enrichir sa base lexicale.<br>Ce mot a été noté pour amélioration. Merci 🙏`);
+      afficherMessage('bot', `Désolé, ce mot n’est pas encore disponible.<br><br>🤖 Je travaille d’arrache-pied pour enrichir la base lexicale et votre requête est noté pour la prochaine mise à jour. Continuez avec les mots existants.<br>Ce mot a été noté pour amélioration. Merci 🙏`);
     }
   }, 300);
 }
