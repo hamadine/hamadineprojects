@@ -11,10 +11,10 @@
   --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
-/* ===== Structure ===== */
+/* ===== Structure générale ===== */
 body {
   margin: 0;
-  font-family: 'Segoe UI', sans-serif;
+  font-family: 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
   background: var(--blue-light);
   color: var(--text-dark);
   display: flex;
@@ -76,7 +76,7 @@ p {
   margin-bottom: 0.5em;
 }
 
-/* ===== Liens de ressources ===== */
+/* ===== Ressources ===== */
 ul li a {
   color: var(--red-download);
   font-weight: bold;
@@ -100,7 +100,7 @@ ul li a:hover {
   content: "🧾 ";
 }
 
-/* ===== Sélecteurs de langue ===== */
+/* ===== Sélecteurs de langues ===== */
 .langue-section {
   background: var(--blue-mid);
   padding: 1em 0;
@@ -179,7 +179,8 @@ ul li a:hover {
   gap: 0.6em;
   margin: 1.2em 0;
 }
-.button-group button {
+.button-group button,
+#btnEnvoyer {
   background: var(--blue-dark);
   color: var(--white);
   border: none;
@@ -188,7 +189,8 @@ ul li a:hover {
   font-weight: 600;
   transition: background 0.3s, box-shadow 0.3s;
 }
-.button-group button:hover {
+.button-group button:hover,
+#btnEnvoyer:hover {
   background: var(--blue-mid);
   box-shadow: var(--shadow);
 }
@@ -220,7 +222,7 @@ ul li a:hover {
 .chat-intro {
   margin-bottom: 0.8em;
   font-style: italic;
-  color: #555;
+  color: #444;
 }
 .chat-input-container {
   display: flex;
@@ -234,16 +236,12 @@ ul li a:hover {
   border-radius: 6px;
   font-size: 1em;
 }
-#btnEnvoyer {
-  background: var(--blue-dark);
-  color: var(--white);
-  border: none;
-  padding: 0.6em 1.2em;
-  border-radius: 6px;
-  font-weight: 600;
-}
-#btnEnvoyer:hover {
-  background: var(--blue-mid);
+
+/* ===== Focus clavier ===== */
+button:focus,
+input:focus {
+  outline: 3px solid var(--blue-mid);
+  outline-offset: 2px;
 }
 
 /* ===== Responsive ===== */
@@ -261,4 +259,4 @@ ul li a:hover {
   #btnEnvoyer {
     width: 100%;
   }
-  }
+}
