@@ -13,16 +13,16 @@
     "placeholderChat": "Écrivez un mot ici...",
     "botIntro": "🤖 Salut, je suis Hamadine le bot Tadaksahak.<br>Demandez-moi un mot et je vous le trouve rapidement&nbsp;!",
     "botIntelligence": {
-  "salutations": ["Bonjour à toi !", "Bienvenue sur le dictionnaire Tadaksahak.", "Salam ! Que puis-je faire pour toi ?"],
-  "remerciements": ["Avec plaisir !", "Je suis heureux de t’aider.", "Merci pour ton intérêt !"],
-  "insulte": "Merci de rester respectueux. Je suis ici pour aider avec bienveillance.",
-  "faq": {
-    "qui es-tu": "Je suis Hamadine, le bot Tadaksahak.",
-    "c’est quoi tadaksahak": "Le Tadaksahak est une langue du nord du Mali.",
-    "qui a fait ce site": "Ce site a été conçu par Hamadine Ag Moctar.",
-    "comment ça va": "Je vais très bien, merci ! Et toi ?"
-  }
-    }
+      "salutations": ["Bonjour à toi !", "Bienvenue sur le dictionnaire Tadaksahak.", "Salam ! Que puis-je faire pour toi ?"],
+      "remerciements": ["Avec plaisir !", "Je suis heureux de t’aider.", "Merci pour ton intérêt !"],
+      "insulte": "Merci de rester respectueux. Je suis ici pour aider avec bienveillance.",
+      "faq": {
+        "qui es-tu": "Je suis Hamadine, le bot Tadaksahak.",
+        "c’est quoi tadaksahak": "Le Tadaksahak est une langue du nord du Mali.",
+        "qui a fait ce site": "Ce site a été conçu par Hamadine Ag Moctar.",
+        "comment ça va": "Je vais très bien, merci ! Et toi ?"
+      }
+    },
     "histoireTitle": "Section Histoire",
     "histoireBientot": "Très bientôt, découvrez ici des textes historiques captivants sur la culture Tadaksahak.",
     "archivesTitle": "Section Archives",
@@ -45,6 +45,17 @@
     "presentation": "Coming soon: a collaborative adventure about the Tadaksahak language!",
     "placeholderChat": "Type a word here...",
     "botIntro": "🤖 Hi! I’m Hamadine, the Tadaksahak bot.<br>Ask me a word and I’ll find it instantly!",
+    "botIntelligence": {
+      "salutations": ["Hello there!", "Welcome to the Tadaksahak dictionary.", "Salam! What can I help you with?"],
+      "remerciements": ["You're welcome!", "Glad to help.", "Thank you for your interest!"],
+      "insulte": "Please remain respectful. I’m here to help kindly.",
+      "faq": {
+        "who are you": "I'm Hamadine, the Tadaksahak bot.",
+        "what is tadaksahak": "Tadaksahak is a language from northern Mali.",
+        "who made this site": "This site was created by Hamadine Ag Moctar.",
+        "how are you": "I'm doing great, thank you! And you?"
+      }
+    },
     "histoireTitle": "History Section",
     "histoireBientot": "Soon, explore fascinating historical texts about Tadaksahak culture.",
     "archivesTitle": "Archives Section",
@@ -67,6 +78,17 @@
     "presentation": "قريبًا جدًا، اكتشفوا مغامرة تعاونية مخصصة للغة التداكساهاك!",
     "placeholderChat": "اكتب كلمة هنا...",
     "botIntro": "🤖 مرحبًا، أنا حمدين، روبوت تداكساهاك.<br>اطلب مني أي كلمة وسأجدها فورًا!",
+    "botIntelligence": {
+      "salutations": ["مرحبًا بك!", "أهلًا في قاموس تداكساهاك.", "سلام! كيف أساعدك؟"],
+      "remerciements": ["على الرحب والسعة!", "سعيد بمساعدتك.", "شكرًا لاهتمامك!"],
+      "insulte": "يرجى البقاء محترمًا. أنا هنا للمساعدة بأدب.",
+      "faq": {
+        "من أنت": "أنا حمدين، روبوت تداكساهاك.",
+        "ما هي تداكساهاك": "التداكساهاك هي لغة من شمال مالي.",
+        "من صنع هذا الموقع": "تم إنشاء هذا الموقع من قبل حمدين آغ مكتار.",
+        "كيف حالك": "أنا بخير جدًا، شكرًا! وأنت؟"
+      }
+    },
     "histoireTitle": "قسم التاريخ",
     "histoireBientot": "قريبًا، اكتشفوا نصوصًا تاريخية رائعة عن ثقافة التداكساهاك.",
     "archivesTitle": "قسم الأرشيف",
@@ -89,6 +111,17 @@
     "presentation": "Ad ttwala amawal n Tidaksahak deg umawal akked idrimen.",
     "placeholderChat": "Aru awal...",
     "botIntro": "🤖 Azul! Nekki Hamadine, ameslay Tadaksahak.<br>Ini awal, ad fkem-it.",
+    "botIntelligence": {
+      "salutations": ["Azul fell-awen!", "Ameslay iḍelli n Tidaksahak.", "Salam! Man d-ttwacemm?"],
+      "remerciements": ["Tanemmirt!", "Semḥu fell-awen.", "Tanemmirt i ttwaziḍ!"],
+      "insulte": "Ssemḥ ad teddu s lrɛi. Nekki d ameslay ad ak-uffɛa azal uḥeṛṛi.",
+      "faq": {
+        "mann nek": "Nekki Hamadine, ameslay Tadaksahak.",
+        "ma d tadaksahak": "Tadaksahak d tmazight n uɣerbaz n Mali.",
+        "man iḍenz-a tama": "Tama-agi yerna yessefk d Hamadine Ag Moctar.",
+        "ma didas": "Dreɣ ad rim iḥemm, tanemmirt! Kecḥ?"
+      }
+    },
     "histoireTitle": "Taɣult n umazray",
     "histoireBientot": "Ad ttwala isalen n umazray n Tidaksahak.",
     "archivesTitle": "Taɣult n yixeddimen",
@@ -111,10 +144,21 @@
     "presentation": "Yakında Tadaksahak dili için işbirlikçi bir macera sizi bekliyor!",
     "placeholderChat": "Buraya kelime yaz...",
     "botIntro": "🤖 Merhaba, ben Hamadine, Tadaksahak botu.<br>Bana bir kelime sor, hemen bulayım!",
+    "botIntelligence": {
+      "salutations": ["Merhaba!", "Tadaksahak sözlüğüne hoş geldiniz.", "Salam! Size nasıl yardımcı olabilirim?"],
+      "remerciements": ["Rica ederim!", "Yardımcı olabildiğime sevindim.", "İlginiz için teşekkürler!"],
+      "insulte": "Lütfen saygılı olun. Ben buradayım nazikçe yardım etmek için.",
+      "faq": {
+        "sen kimsin": "Ben Hamadine, Tadaksahak botuyum.",
+        "tadaksahak nedir": "Tadaksahak, Mali'nin kuzeyinde konuşulan bir dildir.",
+        "bu siteyi kim yaptı": "Bu site Hamadine Ag Moctar tarafından yapıldı.",
+        "nasılsın": "Ben çok iyiyim, teşekkürler! Ya sen?"
+      }
+    },
     "histoireTitle": "Tarih Bölümü",
     "histoireBientot": "Yakında Tadaksahak kültürü hakkında büyüleyici metinleri keşfedin.",
     "archivesTitle": "Arşivler",
-    "archivesBientot": "Yakında eski değerli belgeler sunacağız.",
+    "archivesBientot": "Yakında değerli eski belgeler sunacağız.",
     "footerText": "© 2025 • Hamadine ile Çok Dilli Tadaksahak.",
     "footerContrib": "",
     "reponseBot": "Kelime bulunamadı.",
@@ -133,6 +177,17 @@
     "presentation": "Snart lancerer vi et samarbejdsprojekt om Tadaksahak-sproget!",
     "placeholderChat": "Skriv et ord her...",
     "botIntro": "🤖 Hej, jeg er Hamadine, din Tadaksahak-bot.<br>Skriv et ord, og jeg finder det!",
+    "botIntelligence": {
+      "salutations": ["Hej med dig!", "Velkommen til Tadaksahak-ordbogen.", "Salam! Hvordan kan jeg hjælpe dig?"],
+      "remerciements": ["Selv tak!", "Glad for at hjælpe.", "Tak for din interesse!"],
+      "insulte": "Vær venlig at forblive respektfuld. Jeg er her for at hjælpe venligt.",
+      "faq": {  
+        "hvem er du": "Jeg er Hamadine, Tadaksahak-botten.",
+        "hvad er tadaksahak": "Tadaksahak er et sprog fra det nordlige Mali.",
+        "hvem lavede dette site": "Denne side er lavet af Hamadine Ag Moctar.",
+        "hvordan går det": "Jeg har det fantastisk, tak! Og dig?"  
+      }
+    },
     "histoireTitle": "Historieafdeling",
     "histoireBientot": "Snart kan du læse spændende tekster om Tadaksahak-kulturen.",
     "archivesTitle": "Arkiv",
@@ -155,10 +210,21 @@
     "presentation": "Bald beginnt hier ein kollaboratives Projekt über die Tadaksahak-Sprache!",
     "placeholderChat": "Geben Sie ein Wort ein...",
     "botIntro": "🤖 Hallo, ich bin Hamadine, dein Tadaksahak-Bot.<br>Frag mich ein Wort, ich finde es sofort!",
+    "botIntelligence": {
+      "salutations": ["Hallo!", "Willkommen beim Tadaksahak-Wörterbuch.", "Salam! Wie kann ich dir helfen?"],
+      "remerciements": ["Gern geschehen!", "Freut mich zu helfen.", "Danke für dein Interesse!"],
+      "insulte": "Bitte bleibe respektvoll. Ich bin hier, um freundlich zu helfen.",
+      "faq": {
+        "wer bist du": "Ich bin Hamadine, der Tadaksahak-Bot.",
+        "was ist tadaksahak": "Tadaksahak ist eine Sprache im Norden Malis.",
+        "wer hat diese seite gemacht": "Diese Seite wurde von Hamadine Ag Moctar erstellt.",
+        "wie geht es dir": "Mir geht es sehr gut, danke! Und dir?"  
+      }
+    },
     "histoireTitle": "Geschichtsbereich",
     "histoireBientot": "Bald findest du hier faszinierende historische Texte über die Tadaksahak-Kultur.",
     "archivesTitle": "Archivbereich",
-    "archivesBientot": "Bald stellen wir euch wertvolle alte Dokumente zur Verfügung.",
+    "archivesBientot": "Bald stellen wir wertvolle alte Dokumente zur Verfügung.",
     "footerText": "© 2025 • Mehrsprachig Tadaksahak mit Hamadine.",
     "footerContrib": "",
     "reponseBot": "Wort nicht gefunden.",
@@ -177,6 +243,17 @@
     "presentation": "Binnenkort lanceren we een samenwerking over de Tadaksahak-taal!",
     "placeholderChat": "Typ hier een woord...",
     "botIntro": "🤖 Hallo, ik ben Hamadine, je Tadaksahak-bot.<br>Vraag me een woord, ik vind het!",
+    "botIntelligence": {
+      "salutations": ["Hallo daar!", "Welkom bij het Tadaksahak woordenboek.", "Salam! Waarmee kan ik je helpen?"],
+      "remerciements": ["Graag gedaan!", "Fijn om te helpen.", "Bedankt voor je interesse!"],
+      "insulte": "Blijf alsjeblieft respectvol. Ik ben hier om vriendelijk te helpen.",
+      "faq": {
+        "wie ben jij": "Ik ben Hamadine, de Tadaksahak-bot.",
+        "wat is tadaksahak": "Tadaksahak is een taal uit Noord-Mali.",
+        "wie heeft deze site gemaakt": "Deze site is gemaakt door Hamadine Ag Moctar.",
+        "hoe gaat het met je": "Het gaat geweldig, dank je! En met jou?"  
+      }
+    },
     "histoireTitle": "Geschiedenis",
     "histoireBientot": "Ontdek binnenkort boeiende historische teksten over de Tadaksahak-cultuur.",
     "archivesTitle": "Archief",
@@ -199,6 +276,17 @@
     "presentation": "Snart lanserar vi ett samarbetsprojekt om Tadaksahak-språket!",
     "placeholderChat": "Skriv ett ord här...",
     "botIntro": "🤖 Hej, jag är Hamadine, Tadaksahak-boten.<br>Fråga mig ett ord så hittar jag det direkt!",
+    "botIntelligence": {
+      "salutations": ["Hej där!", "Välkommen till Tadaksahak-ordboken.", "Salam! Hur kan jag hjälpa dig?"],
+      "remerciements": ["Varsågod!", "Glad att hjälpa till.", "Tack för ditt intresse!"],
+      "insulte": "Var snäll och var respektfull. Jag är här för att hjälpa vänligt.",
+      "faq": {
+        "vem är du": "Jag är Hamadine, Tadaksahak-boten.",
+        "vad är tadaksahak": "Tadaksahak är ett språk från norra Mali.",
+        "vem gjorde denna sida": "Denna sida skapades av Hamadine Ag Moctar.",
+        "hur mår du": "Jag mår väldigt bra, tack! Och du?"  
+      }
+    },
     "histoireTitle": "Historik",
     "histoireBientot": "Snart kommer du kunna läsa fascinerande historiska texter om Tadaksahak-kulturen.",
     "archivesTitle": "Arkiv",
@@ -218,14 +306,25 @@
     "envoyer": "Отправить",
     "searchPlaceholder": "Поиск слова...",
     "titrePrincipal": "Многоязычный словарь тадаксахак",
-    "presentation": "Скоро начнётся совместный проект, посвящённый языку тадаксахак.",
+    "presentation": "Скоро начнётся совместный проект, посвящённый языку тадаксахак.", 
     "placeholderChat": "Введите слово...",
     "botIntro": "🤖 Привет, я Хамадин, бот тадаксахак.<br>Напиши слово, я его найду!",
+    "botIntelligence": {
+      "salutations": ["Привет!", "Добро пожаловать в словарь Tadaksahak.", "Салам! Чем могу помочь?"],
+      "remerciements": ["Пожалуйста!", "Рад помочь.", "Спасибо за ваш интерес!"],
+      "insulte": "Пожалуйста, оставайтесь вежливым. Я здесь, чтобы помочь.",
+      "faq": {
+        "кто ты": "Я Хамадин, бот Tadaksahak.",
+        "что такое tadaksahak": "Tadaksahak — это язык севера Мали.",
+        "кто сделал этот сайт": "Этот сайт создан Hamadine Ag Moctar.",
+        "как дела": "У меня всё отлично, спасибо! А у тебя?"
+      }
+    },
     "histoireTitle": "История",
-    "histoireBientot": "Скоро вы сможете прочитать захватывающие исторические тексты о культуре тадаксахак.",
+    "histoireBientot": "Скоро вы сможете прочитать захватывающие исторические тексты о культуре Tadaksahak.",
     "archivesTitle": "Архив",
     "archivesBientot": "Мы скоро предоставим ценные старинные документы.",
-    "footerText": "© 2025 • Многоязычный тадаксахак с Хамадин.",
+    "footerText": "© 2025 • Многоязычный Tadaksahak с Хамадин.",
     "footerContrib": "",
     "reponseBot": "Слово не найдено.",
     "utilisateur": "Вы"
@@ -243,8 +342,19 @@
     "presentation": "即将推出：关于Tadaksahak语言的协作冒险！",
     "placeholderChat": "在此输入单词...",
     "botIntro": "🤖 你好，我是Hamadine，Tadaksahak 机器人。<br>告诉我一个单词，我来查找！",
+    "botIntelligence": {
+      "salutations": ["你好！", "欢迎使用 Tadaksahak 词典。", "Salam！我可以帮你什么？"],
+      "remerciements": ["不客气！", "很高兴帮忙。", "感谢你的关注！"],
+      "insulte": "请保持尊重。我在这里友善地帮助你。",
+      "faq": {
+        "你是谁": "我是 Hamadine，Tadaksahak 机器人。",
+        "什么是 tadaksahak": "Tadaksahak 是一种来自马里北部的语言。",
+        "谁制作了此网站": "该网站由 Hamadine Ag Moctar 制作。",
+        "你好吗": "我很好，谢谢！你呢？"
+      }
+    },
     "histoireTitle": "历史部分",
-    "histoireBientot": "很快你将看到有关Tadaksahak文化的精彩历史文本。",
+    "histoireBientot": "很快你将看到有关 Tadaksahak 文化的精彩历史文本。",
     "archivesTitle": "档案部分",
     "archivesBientot": "我们很快会提供宝贵的历史文献。",
     "footerText": "© 2025 • Tadaksahak 多语言项目 by Hamadine。",
@@ -253,26 +363,37 @@
     "utilisateur": "您"
   },
   "cs": {
-    "precedent": "Předchozí",
-    "suivant": "Další",
-    "ecouter": "Přehrát",
-    "rejouer": "Znovu",
-    "lectureAuto": "Automatické přehrávání",
-    "chatTitre": "Chat s Hamadine",
-    "envoyer": "Odeslat",
-    "searchPlaceholder": "Hledat slovo...",
-    "titrePrincipal": "Vícejazyčný slovník Tadaksahak",
-    "presentation": "Brzy spustíme společný projekt o jazyce Tadaksahak!",
-    "placeholderChat": "Zadejte slovo...",
-    "botIntro": "🤖 Ahoj, jsem Hamadine, bot jazyka Tadaksahak.<br>Napiš slovo a já ho najdu!",
-    "histoireTitle": "Historická sekce",
-    "histoireBientot": "Brzy si zde přečtete fascinující historické texty o kultuře Tadaksahak.",
-    "archivesTitle": "Sekce archivů",
-    "archivesBientot": "Brzy zpřístupníme cenné staré dokumenty.",
-    "footerText": "© 2025 • Vícejazyčný Tadaksahak s Hamadine.",
-    "footerContrib": "",
-    "reponseBot": "Slovo nenalezeno.",
-    "utilisateur": "Vy"
+    "precedent": "Předchozí",  
+    "suivant": "Další",  
+    "ecouter": "Přehrát",  
+    "rejouer": "Znovu",  
+    "lectureAuto": "Automatické přehrávání",  
+    "chatTitre": "Chat s Hamadine",  
+    "envoyer": "Odeslat",  
+    "searchPlaceholder": "Hledat slovo...",  
+    "titrePrincipal": "Vícejazyčný slovník Tadaksahak",  
+    "presentation": "Brzy spustíme společný projekt o jazyce Tadaksahak!",  
+    "placeholderChat": "Zadejte slovo...",  
+    "botIntro": "🤖 Ahoj, jsem Hamadine, bot jazyka Tadaksahak.<br>Napiš slovo a já ho najdu!",  
+    "botIntelligence": {  
+      "salutations": ["Ahoj!", "Vítej ve slovníku Tadaksahak.", "Salam! Jak ti mohu pomoci?"],  
+      "remerciements": ["Rádo se stalo!", "Rád pomohu.", "Děkuji za tvůj zájem!"],  
+      "insulte": "Prosím, buď zdvořilý/a. Jsem tu, abych pomohl přátelsky.",  
+      "faq": {  
+        "kdo jsi": "Jsem Hamadine, bot Tadaksahak.",  
+        "co je tadaksahak": "Tadaksahak je jazyk ze severního Mali.",  
+        "kdo vytvořil tento web": "Tento web vytvořil Hamadine Ag Moctar.",  
+        "jak se máš": "Mám se skvěle, děkuji! A ty?"  
+      }  
+    },  
+    "histoireTitle": "Historická sekce",  
+    "histoireBientot": "Brzy si zde přečtete fascinující historické texty o kultuře Tadaksahak.",  
+    "archivesTitle": "Sekce archivů",  
+    "archivesBientot": "Brzy zpřístupníme cenné staré dokumenty.",  
+    "footerText": "© 2025 • Vícejazyčný Tadaksahak s Hamadine.",  
+    "footerContrib": "",  
+    "reponseBot": "Slovo nenalezeno.",  
+    "utilisateur": "Vy"  
   },
   "ha": {
     "precedent": "Na baya",
@@ -287,6 +408,17 @@
     "presentation": "Nan ba da jimawa ba za mu fara haɗin gwiwa don koyon Tadaksahak!",
     "placeholderChat": "Rubuta kalma a nan...",
     "botIntro": "🤖 Sannu! Ni ne Hamadine bot na Tadaksahak.<br>Tambayi kalma, zan samo maka!",
+    "botIntelligence": {
+      "salutations": ["Sannu!", "Maraba zuwa kamus ɗin Tadaksahak.", "Salam! Yaya zan taimaka maka?"],
+      "remerciements": ["Babu laifi!", "Na yi farin cikin taimakawa.", "Na gode da sha’awarka!"],
+      "insulte": "Don Allah kasance mai girmamawa. Ina nan don taimaka da ladabi.",
+      "faq": {
+        "wanene kai": "Ni ne Hamadine, bot na Tadaksahak.",
+        "menene tadaksahak": "Tadaksahak harshe ne daga arewacin Mali.",
+        "wa ya yi wannan shafin": "Wannan shafin Hamadine Ag Moctar ya kirkiro.",
+        "ya ya jiki": "Ina lafiya sosai, na gode! Kai fa?"
+      }
+    },
     "histoireTitle": "Sashen Tarihi",
     "histoireBientot": "Nan ba da jimawa ba za ku iya karanta labaran tarihi na al'adun Tadaksahak.",
     "archivesTitle": "Sashen Takardu",
@@ -295,51 +427,5 @@
     "footerContrib": "",
     "reponseBot": "Ba a samo kalmar ba.",
     "utilisateur": "Kai"
-  },
-  "es": {
-    "precedent": "Anterior",
-    "suivant": "Siguiente",
-    "ecouter": "Escuchar",
-    "rejouer": "Repetir",
-    "lectureAuto": "Reproducción automática",
-    "chatTitre": "Chat con Hamadine",
-    "envoyer": "Enviar",
-    "searchPlaceholder": "Buscar una palabra...",
-    "titrePrincipal": "Diccionario multilingüe Tadaksahak",
-    "presentation": "¡Muy pronto, una aventura colaborativa sobre la lengua Tadaksahak!",
-    "placeholderChat": "Escribe una palabra aquí...",
-    "botIntro": "🤖 Hola, soy Hamadine, el bot Tadaksahak.<br>¡Dime una palabra y te la encuentro!",
-    "histoireTitle": "Sección Historia",
-    "histoireBientot": "Muy pronto, descubre textos históricos fascinantes sobre la cultura Tadaksahak.",
-    "archivesTitle": "Sección Archivos",
-    "archivesBientot": "Próximamente pondremos a tu disposición documentos antiguos valiosos.",
-    "footerText": "© 2025 • Tadaksahak multilingüe con Hamadine.",
-    "footerContrib": "",
-    "reponseBot": "Palabra no encontrada.",
-    "utilisateur": "Tú"
-  },
-  "it": {
-    "precedent": "Precedente",
-    "suivant": "Successivo",
-    "ecouter": "Ascolta",
-    "rejouer": "Riascolta",
-    "lectureAuto": "Riproduzione automatica",
-    "chatTitre": "Chatta con Hamadine",
-    "envoyer": "Invia",
-    "searchPlaceholder": "Cerca una parola...",
-    "titrePrincipal": "Dizionario multilingue Tadaksahak",
-    "presentation": "Presto una nuova avventura collaborativa sulla lingua Tadaksahak!",
-    "placeholderChat": "Scrivi una parola...",
-    "botIntro": "🤖 Ciao, sono Hamadine, il bot Tadaksahak.<br>Dimmi una parola e la troverò!",
-    "histoireTitle": "Sezione Storia",
-    "histoireBientot": "Presto troverai testi storici affascinanti sulla cultura Tadaksahak.",
-    "archivesTitle": "Sezione Archivi",
-    "archivesBientot": "Presto metteremo a disposizione preziosi documenti antichi.",
-    "footerText": "© 2025 • Tadaksahak multilingue con Hamadine.",
-    "footerContrib": "",
-    "reponseBot": "Parola non trovata.",
-    "utilisateur": "Tu"
   }
 }
-
-  
