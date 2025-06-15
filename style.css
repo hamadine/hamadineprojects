@@ -1,10 +1,22 @@
-/* ====== STRUCTURE ====== */
+:root {
+  --blue-light: #eaf6ff;
+  --blue-mid: #0077cc;
+  --blue-dark: #005fa3;
+  --text-dark: #1c2b36;
+  --white: #ffffff;
+  --red-download: #b30000;
+  --red-hover: #ff1a1a;
+  --desert-gold: #e8c07d;
+  --dune-brown: #a47449;
+  --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* ===== Structure ===== */
 body {
   margin: 0;
   font-family: 'Segoe UI', sans-serif;
   background: var(--blue-light);
   color: var(--text-dark);
-  overflow-x: hidden;
   display: flex;
   flex-direction: column;
   min-height: 100vh;
@@ -14,7 +26,7 @@ main {
   max-width: 860px;
   margin: auto;
   padding: 2em 1.5em;
-  background-color: var(--white);
+  background: var(--white);
   border-radius: 12px;
   box-shadow: var(--shadow);
   flex: 1;
@@ -29,86 +41,125 @@ p {
   line-height: 1.6;
 }
 
-/* ====== HEADER / FOOTER ====== */
+/* ===== Header ===== */
 .site-header {
+  background: var(--blue-dark);
   text-align: center;
-  background: var(--blue-mid);
-  padding: 1.2em 0;
+  padding: 1.5em 0;
 }
 .site-header img {
+  width: 100px;
   background: var(--white);
   border-radius: 50%;
   padding: 0.5em;
   box-shadow: var(--shadow);
 }
 
+/* ===== Footer ===== */
 .site-footer {
+  background: var(--desert-gold);
+  color: var(--text-dark);
   text-align: center;
   padding: 2em 1em;
-  background: var(--blue-dark);
-  color: var(--white);
-  border-top: 4px solid var(--blue-mid);
+  border-top: 4px solid var(--dune-brown);
   font-size: 0.95em;
 }
-
 .site-footer a {
-  color: var(--white);
-  text-decoration: none;
+  color: var(--text-dark);
+  font-weight: bold;
 }
 .site-footer a:hover {
   text-decoration: underline;
 }
+.logo-footer img {
+  border-radius: 12px;
+  margin-bottom: 0.5em;
+}
 
-/* ====== LANGUE SELECTEURS ====== */
+/* ===== Liens de ressources ===== */
+ul li a {
+  color: var(--red-download);
+  font-weight: bold;
+}
+ul li a:hover {
+  color: var(--red-hover);
+  text-decoration: underline;
+}
+.ressource-section {
+  background: var(--white);
+  padding: 1.2em;
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+  margin-bottom: 2em;
+}
+.ressource-section h2::before {
+  content: "📁 ";
+  color: var(--blue-dark);
+}
+#linguistique-title::before {
+  content: "🧾 ";
+}
+
+/* ===== Sélecteurs de langue ===== */
+.langue-section {
+  background: var(--blue-mid);
+  padding: 1em 0;
+  border-radius: 8px;
+  margin-bottom: 2em;
+  box-shadow: var(--shadow);
+}
 .langue-select-container {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
   gap: 1em;
-  margin: 2em 0;
+}
+.langue-group {
+  position: relative;
 }
 .langue-btn {
-  background: var(--blue-dark);
-  color: var(--white);
-  border: none;
+  background: var(--white);
+  color: var(--blue-dark);
+  border: 2px solid var(--blue-dark);
   padding: 0.6em 1.2em;
   border-radius: 8px;
   font-weight: bold;
   cursor: pointer;
-  transition: background 0.3s, box-shadow 0.3s;
+  transition: background 0.3s, box-shadow 0.2s;
 }
 .langue-btn:hover {
-  background: var(--blue-mid);
+  background: var(--blue-dark);
+  color: var(--white);
   box-shadow: var(--shadow);
 }
-
 .langue-panel {
   position: absolute;
   right: 0;
   background: var(--white);
   border: 1px solid var(--blue-mid);
-  border-radius: 8px;
   box-shadow: var(--shadow);
-  margin-top: 0.5em;
+  border-radius: 8px;
   z-index: 10;
   min-width: 180px;
-  overflow-y: auto;
   max-height: 300px;
+  overflow-y: auto;
 }
 .langue-panel button {
+  display: block;
   width: 100%;
-  text-align: left;
   padding: 0.5em 1em;
-  border: none;
   background: transparent;
-  color: var(--text-dark);
+  border: none;
+  text-align: left;
   font-weight: 500;
+  color: var(--text-dark);
+  cursor: pointer;
 }
 .langue-panel button:hover {
   background: var(--blue-light);
 }
 
-/* ====== RECHERCHE ====== */
+/* ===== Barre de recherche ===== */
 #searchBar {
   width: 100%;
   padding: 0.8em 1em;
@@ -120,7 +171,7 @@ p {
   box-shadow: inset 0 1px 3px rgba(0,0,0,0.1);
 }
 
-/* ====== BOUTONS ====== */
+/* ===== Boutons ===== */
 .button-group {
   display: flex;
   justify-content: center;
@@ -146,24 +197,7 @@ p {
   cursor: not-allowed;
 }
 
-/* ====== LIENS ET FICHIERS ====== */
-ul li a {
-  color: var(--red-download);
-  font-weight: bold;
-}
-ul li a:hover {
-  color: var(--red-hover);
-  text-decoration: underline;
-}
-.ressource-section {
-  background: var(--white);
-  padding: 1.2em;
-  border-radius: 12px;
-  box-shadow: var(--shadow);
-  margin-bottom: 2em;
-}
-
-/* ====== CHATBOT ====== */
+/* ===== Chatbot ===== */
 .chatbox {
   background: var(--white);
   border-radius: 10px;
@@ -212,7 +246,7 @@ ul li a:hover {
   background: var(--blue-mid);
 }
 
-/* ====== RESPONSIVE ====== */
+/* ===== Responsive ===== */
 @media (max-width: 768px) {
   .langue-select-container {
     flex-direction: column;
@@ -227,4 +261,4 @@ ul li a:hover {
   #btnEnvoyer {
     width: 100%;
   }
-}
+  }
