@@ -12,6 +12,17 @@
     "presentation": "Très bientôt, découvrez ici une aventure collaborative dédiée à la langue Tadaksahak !",
     "placeholderChat": "Écrivez un mot ici...",
     "botIntro": "🤖 Salut, je suis Hamadine le bot Tadaksahak.<br>Demandez-moi un mot et je vous le trouve rapidement&nbsp;!",
+    "botIntelligence": {
+  "salutations": ["Bonjour à toi !", "Bienvenue sur le dictionnaire Tadaksahak.", "Salam ! Que puis-je faire pour toi ?"],
+  "remerciements": ["Avec plaisir !", "Je suis heureux de t’aider.", "Merci pour ton intérêt !"],
+  "insulte": "Merci de rester respectueux. Je suis ici pour aider avec bienveillance.",
+  "faq": {
+    "qui es-tu": "Je suis Hamadine, le bot Tadaksahak.",
+    "c’est quoi tadaksahak": "Le Tadaksahak est une langue du nord du Mali.",
+    "qui a fait ce site": "Ce site a été conçu par Hamadine Ag Moctar.",
+    "comment ça va": "Je vais très bien, merci ! Et toi ?"
+  }
+    }
     "histoireTitle": "Section Histoire",
     "histoireBientot": "Très bientôt, découvrez ici des textes historiques captivants sur la culture Tadaksahak.",
     "archivesTitle": "Section Archives",
