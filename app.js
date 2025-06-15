@@ -3,22 +3,24 @@ let mots = [];
 let interfaceData = {};
 let indexMot = 0;
 
-// Détection des langues par défaut
 const langueNavigateur = navigator.language.slice(0, 2) || 'fr';
 let langueTrad = localStorage.getItem('langueTrad') || 'fr';
 let langueInterface = localStorage.getItem('langueInterface') || langueNavigateur;
 
-let fuse;
+let fuse = null;
 
-// Chargement initial
+// Chargement initial des données
 async function chargerDonnees() {
   try {
-    const motsData = await fetch('data/mots.json').then(r => r.json());
-    if (!motsData.length) throw new Error("La liste de mots est vide.");
-    motsComplet = motsData;
-    mots = [...motsData];
+    const [motsRes, interfaceRes] = await Promise.all([
+      axios.get('data/mots.json'),
+      axios.get('data/interface-langue.json')
+    ]);
 
-    interfaceData = await fetch('data/interface-langue.json').then(r => r.json());
+    motsComplet = motsRes.data;
+    mots = [...motsComplet];
+
+    interfaceData = interfaceRes.data;
 
     if (!interfaceData[langueInterface]) langueInterface = 'fr';
     if (!Object.keys(mots[0]).includes(langueTrad)) langueTrad = 'fr';
@@ -34,7 +36,8 @@ async function chargerDonnees() {
     indexMot = parseInt(localStorage.getItem('motIndex')) || 0;
     afficherMot(indexMot);
   } catch (err) {
-    alert("Erreur lors du chargement des données : " + err.message);
+    console.error("Erreur de chargement :", err);
+    alert("Erreur lors du chargement des données : " + (err.message || 'inconnue.'));
   }
 }
 
@@ -43,8 +46,8 @@ function afficherMot(motIndex = indexMot) {
   if (!mots.length) return;
   indexMot = Math.max(0, Math.min(mots.length - 1, motIndex));
   localStorage.setItem('motIndex', indexMot);
-  const mot = mots[indexMot];
 
+  const mot = mots[indexMot];
   document.getElementById('motTexte').textContent = mot.mot || '';
   document.getElementById('definition').innerHTML =
     (mot[langueTrad] || '—') + (mot.cat ? ` <span style="color:#888;">(${mot.cat})</span>` : '');
@@ -59,7 +62,7 @@ function motSuivant() {
   if (indexMot < mots.length - 1) afficherMot(indexMot + 1);
 }
 
-// Recherche
+// Recherche avec debounce
 let debounceTimeout;
 function rechercherMotDebounce() {
   clearTimeout(debounceTimeout);
@@ -72,6 +75,7 @@ function rechercherMot() {
     afficherMot(0);
     return;
   }
+
   const resultats = fuse.search(query);
   if (resultats.length) {
     mots = resultats.map(r => r.item);
@@ -142,7 +146,7 @@ function changerLangueTraduction(lang) {
   afficherMot();
 }
 
-// Menus des langues
+// Menus de sélection des langues
 function initialiserMenusLangues() {
   const panelInterface = document.getElementById('menuLangueInterface');
   const panelTrad = document.getElementById('menuLangueTrad');
@@ -174,7 +178,7 @@ function initialiserMenusLangues() {
   });
 }
 
-// Chatbot enrichi
+// Affichage dans le chat
 function envoyerMessage() {
   const input = document.getElementById('chatInput');
   const message = input.value.trim().toLowerCase();
@@ -184,23 +188,17 @@ function envoyerMessage() {
   input.value = '';
 
   setTimeout(() => {
-    const correspondances = motsComplet.filter(mot =>
-      Object.entries(mot).some(([cle, valeur]) =>
-        cle !== 'cat' && typeof valeur === 'string' && valeur.toLowerCase() === message
-      )
+    const exacts = motsComplet.filter(mot =>
+      Object.entries(mot).some(([k, v]) => k !== 'cat' && typeof v === 'string' && v.toLowerCase() === message)
     );
 
-    if (correspondances.length > 0) {
-      let reponse = correspondances.map(m => {
-        const autres = motsComplet.filter(
-          x => x.mot === m.mot && x !== m
-        );
-
+    if (exacts.length > 0) {
+      let reponse = exacts.map(m => {
+        const autres = motsComplet.filter(x => x.mot === m.mot && x !== m);
         const traductions = Object.entries(m)
           .filter(([k]) => k !== 'mot' && k !== 'cat')
           .map(([lang, val]) => `<strong>${lang.toUpperCase()}</strong>: ${val}`)
           .join('<br>');
-
         const homonymes = autres.map(h =>
           Object.entries(h)
             .filter(([k]) => k !== 'mot' && k !== 'cat')
@@ -208,16 +206,13 @@ function envoyerMessage() {
             .join('<br>') +
           (h.cat ? ` <span style="color:#888;">(${h.cat})</span>` : '')
         ).join('<hr>');
-
         return `<strong>${m.mot}</strong> <span style="color:#888;">(${m.cat || ''})</span><br>${traductions}`
           + (homonymes ? `<hr><em>Autres sens ou homonymes :</em><br>${homonymes}` : '');
       }).join('<hr>');
-
       afficherMessage('bot', reponse);
       return;
     }
 
-    // Recherche floue avec Fuse.js
     const fuseInverse = new Fuse(motsComplet, {
       keys: Object.keys(motsComplet[0]).filter(k => k !== 'cat'),
       threshold: 0.4,
@@ -235,13 +230,9 @@ function envoyerMessage() {
           .join('<br>');
         return `${t}${m.cat ? ` <span style="color:#888;">(${m.cat})</span>` : ''}`;
       }).join('<hr>');
-
       afficherMessage('bot', `Je n’ai pas trouvé ce mot exactement, mais peut-être vouliez-vous dire :<br>${suggestions}`);
     } else {
-      const texte = `Désolé, ce mot n’est pas encore disponible.<br><br>
-      🤖 Hamadine travaille d’arrache-pied pour enrichir sa base lexicale, actuellement en développement.<br>
-      Ce mot a été noté pour améliorer le dictionnaire. Merci pour votre contribution 🙏`;
-      afficherMessage('bot', texte);
+      afficherMessage('bot', `Désolé, ce mot n’est pas encore disponible.<br><br>🤖 Hamadine travaille d’arrache-pied pour enrichir sa base lexicale.<br>Ce mot a été noté pour amélioration. Merci 🙏`);
     }
   }, 300);
 }
@@ -271,7 +262,7 @@ function lectureAuto() {
   alert("Lecture automatique à venir !");
 }
 
-// Démarrage
+// Initialisation
 window.addEventListener('DOMContentLoaded', () => {
   chargerDonnees();
 });
