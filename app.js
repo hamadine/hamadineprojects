@@ -23,9 +23,6 @@ async function chargerDonnees() {
       axios.get('data/interface-langue.json')
     ]);
 
-    console.log("✅ Mots chargés :", motsRes.data.length);
-    console.log("✅ Langues chargées :", Object.keys(interfaceRes.data));
-
     motsComplet = motsRes.data;
     mots = [...motsComplet];
     interfaceData = interfaceRes.data;
@@ -77,7 +74,7 @@ function rechercherMotDebounce() {
 }
 
 function rechercherMot() {
-  const query = document.getElementById('searchBar').value.trim();
+  const query = document.getElementById('searchBar').value.trim().toLowerCase();
   if (!query) {
     mots = [...motsComplet];
     afficherMot(0);
@@ -193,6 +190,21 @@ function envoyerMessage() {
 
   for (const question in faq) {
     if (message.includes(question)) return afficherMessage('bot', faq[question]);
+  }
+
+  // 🔥 Amélioration : question "comment on dit X en Y ?"
+  const regexTrad = /comment on dit (.+?) en ([a-z]+)/i;
+  const match = message.match(regexTrad);
+  if (match) {
+    const motCherche = match[1].trim();
+    const langueCible = match[2].trim().substring(0, 2);
+
+    const entree = motsComplet.find(m => m.fr?.toLowerCase() === motCherche || m.mot?.toLowerCase() === motCherche);
+    if (entree && entree[langueCible]) {
+      return afficherMessage('bot', `${motCherche} en ${nomsLangues[langueCible] || langueCible.toUpperCase()} se dit : <strong>${entree[langueCible]}</strong>`);
+    } else {
+      return afficherMessage('bot', "Je n’ai pas trouvé ce mot ou cette langue.");
+    }
   }
 
   traiterRecherche(message, reponseMot, inconnu);
