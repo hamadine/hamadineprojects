@@ -235,7 +235,7 @@ for (const cle in t.faq) {
     input.value = '';
     return;
   }
-}
+  
   // Réponses intelligentes — base conversationnelle
 const salutations = ["bonjour", "salut", "salam", "hello", "hi", "azul", "bonsoir"];
 const remerciements = ["merci", "thanks", "tanemmirt", "shukran", "gracias"];
@@ -284,8 +284,8 @@ for (const question in faq) {
     afficherMessage('bot', faq[question]);
     input.value = '';
     return;
-  }
 }
+  
   if (!message) return;
 
   afficherMessage('utilisateur', message);
