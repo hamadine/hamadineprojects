@@ -3,20 +3,30 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title id="pageTitle">Dictionnaire Tadaksahak Multilingue</title>
+  <title>Dictionnaire Tadaksahak Multilingue</title>
   <meta name="robots" content="noindex, nofollow" />
-  <meta name="description" content="Dictionnaire Tadaksahak en audio avec traduction multilingue." />
+  <meta name="description" content="Dictionnaire Tadaksahak multilingue avec audio et chatbot intégré." />
   <link rel="icon" href="images/idaksahak_round.png" type="image/png" />
   <link rel="stylesheet" href="style.css" />
-  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/fuse.js/dist/fuse.min.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/fuse.js/dist/fuse.min.js" crossorigin="anonymous" defer></script>
   <script defer src="app.js"></script>
+  <style>
+    button:focus, input:focus {
+      outline: 3px solid var(--blue-mid);
+      outline-offset: 2px;
+    }
+    img {
+      max-width: 100%;
+      height: auto;
+    }
+  </style>
 </head>
 
 <body>
   <header class="site-header">
     <div class="header-wrapper">
-      <img src="images/idaksahak_round.png" alt="Logo Tadaksahak" class="logo-header" />
+      <img src="images/idaksahak_round.png" alt="Logo Tadaksahak" class="logo-header" loading="lazy" width="100" height="100" />
     </div>
   </header>
 
@@ -26,33 +36,33 @@
       <p id="textePresentation">Chargement...</p>
     </section>
 
-    <section class="langue-section">
+    <section class="langue-section" aria-label="Choix de la langue">
       <div class="langue-select-container">
         <div class="langue-group">
-          <button id="btnLangueInterface" class="langue-btn" aria-haspopup="true" aria-expanded="false">
+          <button id="btnLangueInterface" class="langue-btn" aria-haspopup="true" aria-expanded="false" aria-controls="menuLangueInterface">
             Interface : Français ⌄
           </button>
-          <div id="menuLangueInterface" class="langue-panel" role="menu" hidden></div>
+          <div id="menuLangueInterface" class="langue-panel" role="menu" hidden aria-labelledby="btnLangueInterface"></div>
         </div>
         <div class="langue-group">
-          <button id="btnLangueTrad" class="langue-btn" aria-haspopup="true" aria-expanded="false">
+          <button id="btnLangueTrad" class="langue-btn" aria-haspopup="true" aria-expanded="false" aria-controls="menuLangueTrad">
             Traduction : Français ⌄
           </button>
-          <div id="menuLangueTrad" class="langue-panel" role="menu" hidden></div>
+          <div id="menuLangueTrad" class="langue-panel" role="menu" hidden aria-labelledby="btnLangueTrad"></div>
         </div>
       </div>
     </section>
 
-    <section class="recherche">
-      <input id="searchBar" type="text" placeholder="Cherchez un mot..." aria-label="Recherche" oninput="rechercherMotDebounce()" />
+    <section class="recherche" aria-label="Recherche de mots">
+      <input id="searchBar" type="text" placeholder="Cherchez un mot..." aria-label="Barre de recherche" oninput="rechercherMotDebounce()" />
       <h2 id="motTexte">—</h2>
       <p id="definition">—</p>
       <p id="compteur">0 / 0</p>
 
       <div id="audioButtons" class="button-group">
-        <button id="btnPlay" onclick="jouerTadaksahak()">Écouter</button>
-        <button id="btnReplay" onclick="rejouerMot()" disabled>Réécouter</button>
-        <button id="btnAuto" onclick="lectureAuto()" disabled>Lecture auto</button>
+        <button id="btnPlay" onclick="jouerTadaksahak()">▶️ Écouter</button>
+        <button id="btnReplay" onclick="rejouerMot()" disabled>⟳ Réécouter</button>
+        <button id="btnAuto" onclick="lectureAuto()" disabled>▶️ Lecture auto</button>
       </div>
 
       <nav class="button-group" aria-label="Navigation des mots">
@@ -63,43 +73,39 @@
 
     <section class="chat-section" aria-labelledby="chat-title">
       <h2 id="chat-title">Chat Tadaksahak</h2>
-      <div id="chatWindow" class="chatbox" role="log" aria-live="polite"></div>
+      <div id="chatWindow" class="chatbox" role="log" aria-live="polite" aria-relevant="additions"></div>
       <div id="botIntro" class="chat-intro">🤖 Salut, je suis Hamadine, le bot Tadaksahak.</div>
       <div class="chat-input-container">
         <input type="text" id="chatInput" placeholder="Tapez un mot ici..." aria-label="Zone de saisie du chat" />
-        <button id="btnEnvoyer" onclick="envoyerMessage()">Envoyer</button>
+        <button id="btnEnvoyer" onclick="envoyerMessage()" aria-label="Envoyer un message">Envoyer</button>
       </div>
     </section>
 
     <section class="ressource-section">
-      <h2 id="histoire-title">Histoire</h2>
+      <h2 id="histoire-title">📘 Histoire</h2>
       <p id="histoire-message">Découvrez ici des textes historiques captivants sur la culture Tadaksahak.</p>
       <ul>
-        <li>📘 <a href="documents/histoire-contribution-idaksahak.docx" download>
-          Contribution à la connaissance de la communauté Idaksahak
-        </a></li>
+        <li><a href="documents/histoire-contribution-idaksahak.docx" download>Contribution à la connaissance de la communauté Idaksahak</a></li>
       </ul>
     </section>
 
     <section class="ressource-section">
-      <h2 id="archives-title">Archives</h2>
+      <h2 id="archives-title">📜 Archives</h2>
       <p id="archives-message">Accédez à des documents anciens précieux sur la langue, la culture et l'organisation Idaksahak.</p>
       <ul>
-        <li>📜 <a href="documents/archives-declaration-anderamboukar.pdf" download>Déclaration d’Anderamboukar</a></li>
-        <li>📜 <a href="documents/archives-resolution-generale.pdf" download>Résolution générale</a></li>
-        <li>📜 <a href="documents/archives-bureau-executif.pdf" download>Bureau Exécutif</a></li>
-        <li>📜 <a href="documents/archives-conseil-orientation.pdf" download>Conseil d’Orientation</a></li>
-        <li>📜 <a href="documents/archives-rapport-succinct.docx" download>Rapport succinct</a></li>
+        <li><a href="documents/archives-declaration-anderamboukar.pdf" download>Déclaration d’Anderamboukar</a></li>
+        <li><a href="documents/archives-resolution-generale.pdf" download>Résolution générale</a></li>
+        <li><a href="documents/archives-bureau-executif.pdf" download>Bureau Exécutif</a></li>
+        <li><a href="documents/archives-conseil-orientation.pdf" download>Conseil d’Orientation</a></li>
+        <li><a href="documents/archives-rapport-succinct.docx" download>Rapport succinct</a></li>
       </ul>
     </section>
 
     <section class="ressource-section">
-      <h2 id="linguistique-title">Linguistique</h2>
+      <h2 id="linguistique-title">🧾 Linguistique</h2>
       <p id="linguistique-message">Accédez à des ressources linguistiques sur la langue Tadaksahak.</p>
       <ul>
-        <li>📄 <a href="documents/linguistique-silewp2002.pdf" download>
-          Analyse linguistique Tadaksahak - SILEWP 2002
-        </a></li>
+        <li><a href="documents/linguistique-silewp2002.pdf" download>Analyse linguistique Tadaksahak - SILEWP 2002</a></li>
       </ul>
     </section>
   </main>
@@ -107,7 +113,7 @@
   <footer class="site-footer">
     <p id="footerContrib"></p>
     <div class="logo-footer">
-      <img src="images/idaksahak_square512.png" alt="Logo Tadaksahak carré" width="100" height="100" />
+      <img src="images/idaksahak_square512.png" alt="Logo Tadaksahak carré" width="100" height="100" loading="lazy" />
     </div>
     <p>
       <a href="mailto:hamadineagmoctar@gmail.com">
@@ -136,6 +142,13 @@
 
         document.addEventListener('click', (e) => {
           if (!panel.contains(e.target) && !btn.contains(e.target)) {
+            panel.setAttribute('hidden', '');
+            btn.setAttribute('aria-expanded', 'false');
+          }
+        });
+
+        btn.addEventListener('keydown', (e) => {
+          if (e.key === 'Escape') {
             panel.setAttribute('hidden', '');
             btn.setAttribute('aria-expanded', 'false');
           }
