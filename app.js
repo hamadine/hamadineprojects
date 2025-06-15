@@ -198,6 +198,44 @@ function initialiserMenusLangues() {
 function envoyerMessage() {
   const input = document.getElementById('chatInput');
   const message = input.value.trim().toLowerCase();
+  const t = interfaceData[langueInterface]?.botIntelligence || interfaceData['fr'].botIntelligence;
+
+// Déclencheurs simples
+const salutations = ["bonjour", "salut", "salam", "hello", "hi", "azul", "bonsoir"];
+const remerciements = ["merci", "thanks", "tanemmirt", "shukran", "gracias"];
+const insultes = ["con", "merde", "putain", "fuck", "shit", "idiot", "stupid"];
+
+// Réponse si salutation
+if (salutations.includes(message)) {
+  const reponse = t.salutations[Math.floor(Math.random() * t.salutations.length)];
+  afficherMessage('bot', reponse);
+  input.value = '';
+  return;
+}
+
+// Réponse si remerciement
+if (remerciements.includes(message)) {
+  const reponse = t.remerciements[Math.floor(Math.random() * t.remerciements.length)];
+  afficherMessage('bot', reponse);
+  input.value = '';
+  return;
+}
+
+// Réponse si insulte détectée
+if (insultes.some(mot => message.includes(mot))) {
+  afficherMessage('bot', t.insulte);
+  input.value = '';
+  return;
+}
+
+// FAQ intelligente : boucle sur les clés
+for (const cle in t.faq) {
+  if (message.includes(cle)) {
+    afficherMessage('bot', t.faq[cle]);
+    input.value = '';
+    return;
+  }
+}
   // Réponses intelligentes — base conversationnelle
 const salutations = ["bonjour", "salut", "salam", "hello", "hi", "azul", "bonsoir"];
 const remerciements = ["merci", "thanks", "tanemmirt", "shukran", "gracias"];
