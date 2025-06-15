@@ -198,6 +198,56 @@ function initialiserMenusLangues() {
 function envoyerMessage() {
   const input = document.getElementById('chatInput');
   const message = input.value.trim().toLowerCase();
+  // Réponses intelligentes — base conversationnelle
+const salutations = ["bonjour", "salut", "salam", "hello", "hi", "azul", "bonsoir"];
+const remerciements = ["merci", "thanks", "tanemmirt", "shukran", "gracias"];
+const insultes = ["con", "merde", "putain", "fuck", "shit", "idiot", "stupid"];
+const faq = {
+  "qui es-tu": "Je suis Hamadine, le bot Tadaksahak 🤖. Je t’aide à explorer notre langue !",
+  "c’est quoi tadaksahak": "Le Tadaksahak est une langue parlée au nord du Mali par les Idaksahak.",
+  "qui a fait ce site": "Ce site a été conçu par Hamadine Ag Moctar pour promouvoir, valoriser et faire connaître la langue Tadaksahak.",
+  "comment ça va": "Je vais très bien, merci 🙌 Et toi ?"
+  "je cherche un mot": "Je suis là pour vous aider à apprendre la langue Tadaksahak. Dites-moi lequel?",
+};
+
+if (salutations.includes(message)) {
+  const reponses = [
+    "👋 Bonjour à toi !",
+    "✨ Bienvenue sur le dictionnaire Tadaksahak.",
+    "😄 Salam ! Que puis-je faire pour toi ?",
+    "🟠 Demandes-moi le mot que tu cherche. S'il n'est pas disponible, il sera noté pour une prochaine mise à jour.",
+  ];
+  const reponse = reponses[Math.floor(Math.random() * reponses.length)];
+  afficherMessage('bot', reponse);
+  input.value = '';
+  return;
+}
+
+if (remerciements.includes(message)) {
+  const reponses = [
+    "🙏 Avec plaisir ! Reviens quand tu veux",
+    "😊 Je suis heureux de pouvoir t’aider.",
+    "🙌 Merci à toi pour l’intérêt que tu portes à notre langue."
+  ];
+  const reponse = reponses[Math.floor(Math.random() * reponses.length)];
+  afficherMessage('bot', reponse);
+  input.value = '';
+  return;
+}
+
+if (insultes.some(insulte => message.includes(insulte))) {
+  afficherMessage('bot', "🙏 Merci de rester respectueux. Je suis ici pour t'aider avec bienveillance.");
+  input.value = '';
+  return;
+}
+
+for (const question in faq) {
+  if (message.includes(question)) {
+    afficherMessage('bot', faq[question]);
+    input.value = '';
+    return;
+  }
+}
   if (!message) return;
 
   afficherMessage('utilisateur', message);
