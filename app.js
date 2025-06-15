@@ -235,7 +235,7 @@ function traiterRecherche(message, reponseMot, inconnu) {
 }  
   
 function afficherMessage(type, contenu) {  
-  const chatBox = document.getElementById('chatBox');  
+  const chatBox = document.getElementById('chatWindow');  
   const msg = document.createElement('div');  
   msg.className = `message ${type}`;  
   msg.innerHTML = `<strong>${type === 'utilisateur' ? window.nomUtilisateur : 'Bot'}:</strong> ${contenu}`;  
