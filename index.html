@@ -15,35 +15,34 @@
 
 <body>
   <header class="site-header">
-    <img src="images/idaksahak_round.png" alt="Logo Tadaksahak" width="120" />
+    <div class="header-wrapper">
+      <img src="images/idaksahak_round.png" alt="Logo Tadaksahak" class="logo-header" />
+    </div>
   </header>
 
   <main>
-    <!-- Présentation -->
     <section class="intro">
       <h1 id="titrePrincipal">Tadaksahak Dictionary</h1>
       <p id="textePresentation">Chargement...</p>
     </section>
 
-    <!-- Sélecteurs de langue -->
     <section class="langue-section">
       <div class="langue-select-container">
         <div class="langue-group">
           <button id="btnLangueInterface" class="langue-btn" aria-haspopup="true" aria-expanded="false">
-            Interface : FR ⌄
+            Interface : Français ⌄
           </button>
           <div id="menuLangueInterface" class="langue-panel" role="menu" hidden></div>
         </div>
         <div class="langue-group">
           <button id="btnLangueTrad" class="langue-btn" aria-haspopup="true" aria-expanded="false">
-            Traduction : FR ⌄
+            Traduction : Français ⌄
           </button>
           <div id="menuLangueTrad" class="langue-panel" role="menu" hidden></div>
         </div>
       </div>
     </section>
 
-    <!-- Recherche de mot -->
     <section class="recherche">
       <input id="searchBar" type="text" placeholder="Cherchez un mot..." aria-label="Recherche" oninput="rechercherMotDebounce()" />
       <h2 id="motTexte">—</h2>
@@ -62,19 +61,16 @@
       </nav>
     </section>
 
-    <!-- Chatbot -->
     <section class="chat-section" aria-labelledby="chat-title">
       <h2 id="chat-title">Chat Tadaksahak</h2>
       <div id="chatWindow" class="chatbox" role="log" aria-live="polite"></div>
       <div id="botIntro" class="chat-intro">🤖 Salut, je suis Hamadine, le bot Tadaksahak.</div>
-
       <div class="chat-input-container">
         <input type="text" id="chatInput" placeholder="Tapez un mot ici..." aria-label="Zone de saisie du chat" />
         <button id="btnEnvoyer" onclick="envoyerMessage()">Envoyer</button>
       </div>
     </section>
 
-    <!-- Section Histoire -->
     <section class="ressource-section">
       <h2 id="histoire-title">Histoire</h2>
       <p id="histoire-message">Découvrez ici des textes historiques captivants sur la culture Tadaksahak.</p>
@@ -85,7 +81,6 @@
       </ul>
     </section>
 
-    <!-- Section Archives -->
     <section class="ressource-section">
       <h2 id="archives-title">Archives</h2>
       <p id="archives-message">Accédez à des documents anciens précieux sur la langue, la culture et l'organisation Idaksahak.</p>
@@ -98,7 +93,6 @@
       </ul>
     </section>
 
-    <!-- Section Linguistique -->
     <section class="ressource-section">
       <h2 id="linguistique-title">Linguistique</h2>
       <p id="linguistique-message">Accédez à des ressources linguistiques sur la langue Tadaksahak.</p>
