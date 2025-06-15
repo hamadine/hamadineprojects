@@ -16,12 +16,38 @@ const nomsLangues = {
   
 let fuse = null;  
   
-async function chargerDonnees() {  
-  try {  
-    const [motsRes, interfaceRes] = await Promise.all([  
-      axios.get('data/mots.json'),  
-      axios.get('data/interface-langue.json')  
-    ]);  
+async function chargerDonnees() {
+  try {
+    const [motsRes, interfaceRes] = await Promise.all([
+      axios.get('data/mots.json'),
+      axios.get('data/interface-langue.json')
+    ]);
+
+    console.log("✅ Mots chargés :", motsRes.data.length);
+    console.log("✅ Langues chargées :", Object.keys(interfaceRes.data));
+
+    motsComplet = motsRes.data;
+    mots = [...motsComplet];
+    interfaceData = interfaceRes.data;
+
+    if (!interfaceData[langueInterface]) langueInterface = 'fr';
+    if (!Object.keys(mots[0] || {}).includes(langueTrad)) langueTrad = 'fr';
+
+    changerLangueInterface(langueInterface);
+
+    fuse = new Fuse(mots, {
+      keys: ['mot', ...Object.keys(mots[0]).filter(k => k.length <= 3 && k !== 'cat')],
+      includeScore: true,
+      threshold: 0.4
+    });
+
+    indexMot = parseInt(localStorage.getItem('motIndex')) || 0;
+    afficherMot(indexMot);
+  } catch (err) {
+    console.error("❌ Erreur de chargement :", err);
+    alert("Erreur lors du chargement des données JSON. Vérifiez que les fichiers sont bien dans le dossier /data/");
+  }
+}
   
     motsComplet = motsRes.data;  
     mots = [...motsComplet];  
