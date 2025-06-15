@@ -9,7 +9,25 @@ let langueInterface = localStorage.getItem('langueInterface') || langueNavigateu
 
 let fuse = null;
 
-// Chargement initial des données
+const nomsLangues = {
+  fr: "Français",
+  en: "English",
+  ar: "العربية",
+  tz: "Tadaksahak",
+  tr: "Türkçe",
+  da: "Dansk",
+  de: "Deutsch",
+  nl: "Nederlands",
+  sv: "Svenska",
+  ru: "Русский",
+  zh: "中文",
+  cs: "Čeština",
+  ha: "Hausa",
+  es: "Español",
+  it: "Italiano"
+};
+
+// Chargement initial
 async function chargerDonnees() {
   try {
     const [motsRes, interfaceRes] = await Promise.all([
@@ -19,7 +37,6 @@ async function chargerDonnees() {
 
     motsComplet = motsRes.data;
     mots = [...motsComplet];
-
     interfaceData = interfaceRes.data;
 
     if (!interfaceData[langueInterface]) langueInterface = 'fr';
@@ -41,7 +58,7 @@ async function chargerDonnees() {
   }
 }
 
-// Affichage du mot
+// Afficher mot
 function afficherMot(motIndex = indexMot) {
   if (!mots.length) return;
   indexMot = Math.max(0, Math.min(mots.length - 1, motIndex));
@@ -62,7 +79,7 @@ function motSuivant() {
   if (indexMot < mots.length - 1) afficherMot(indexMot + 1);
 }
 
-// Recherche avec debounce
+// Recherche
 let debounceTimeout;
 function rechercherMotDebounce() {
   clearTimeout(debounceTimeout);
@@ -75,7 +92,6 @@ function rechercherMot() {
     afficherMot(0);
     return;
   }
-
   const resultats = fuse.search(query);
   if (resultats.length) {
     mots = resultats.map(r => r.item);
@@ -88,7 +104,7 @@ function rechercherMot() {
   }
 }
 
-// Changer la langue d’interface
+// Changer langue interface
 function changerLangueInterface(lang) {
   langueInterface = lang;
   localStorage.setItem('langueInterface', lang);
@@ -129,8 +145,8 @@ function changerLangueInterface(lang) {
     }
   }
 
-  document.getElementById('btnLangueInterface').textContent = `Interface : ${lang.toUpperCase()} ⌄`;
-  document.getElementById('btnLangueTrad').textContent = `Traduction : ${langueTrad.toUpperCase()} ⌄`;
+  document.getElementById('btnLangueInterface').textContent = `Interface : ${nomsLangues[langueInterface] || langueInterface.toUpperCase()} ⌄`;
+  document.getElementById('btnLangueTrad').textContent = `Traduction : ${nomsLangues[langueTrad] || langueTrad.toUpperCase()} ⌄`;
 
   window.reponseBot = t.reponseBot || "Mot introuvable.";
   window.nomUtilisateur = t.utilisateur || "Vous";
@@ -138,15 +154,15 @@ function changerLangueInterface(lang) {
   initialiserMenusLangues();
 }
 
-// Changer la langue de traduction
+// Changer langue traduction
 function changerLangueTraduction(lang) {
   langueTrad = lang;
   localStorage.setItem('langueTrad', lang);
-  document.getElementById('btnLangueTrad').textContent = `Traduction : ${langueTrad.toUpperCase()} ⌄`;
+  document.getElementById('btnLangueTrad').textContent = `Traduction : ${nomsLangues[langueTrad] || langueTrad.toUpperCase()} ⌄`;
   afficherMot();
 }
 
-// Menus de sélection des langues
+// Menus de langues
 function initialiserMenusLangues() {
   const panelInterface = document.getElementById('menuLangueInterface');
   const panelTrad = document.getElementById('menuLangueTrad');
@@ -156,7 +172,7 @@ function initialiserMenusLangues() {
 
   Object.keys(interfaceData).forEach(code => {
     const btn = document.createElement('button');
-    btn.textContent = code.toUpperCase();
+    btn.textContent = nomsLangues[code] || code.toUpperCase();
     btn.className = 'langue-btn';
     btn.onclick = () => {
       changerLangueInterface(code);
@@ -168,7 +184,7 @@ function initialiserMenusLangues() {
   const languesTraduction = Object.keys(motsComplet[0]).filter(k => k.length <= 3 && k !== 'mot' && k !== 'cat');
   languesTraduction.forEach(code => {
     const btn = document.createElement('button');
-    btn.textContent = code.toUpperCase();
+    btn.textContent = nomsLangues[code] || code.toUpperCase();
     btn.className = 'langue-btn';
     btn.onclick = () => {
       changerLangueTraduction(code);
@@ -178,7 +194,7 @@ function initialiserMenusLangues() {
   });
 }
 
-// Affichage dans le chat
+// Chat
 function envoyerMessage() {
   const input = document.getElementById('chatInput');
   const message = input.value.trim().toLowerCase();
@@ -262,7 +278,7 @@ function lectureAuto() {
   alert("Lecture automatique à venir !");
 }
 
-// Initialisation
+// Démarrage
 window.addEventListener('DOMContentLoaded', () => {
   chargerDonnees();
 });
