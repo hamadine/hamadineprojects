@@ -1,4 +1,5 @@
-"fr": {
+{ 
+  "fr": {
   "precedent": "Précédent",
   "suivant": "Suivant",
   "ecouter": "Écouter",
@@ -269,8 +270,8 @@
   "footerContrib": "",
   "reponseBot": "Geen resultaat gevonden.",
   "utilisateur": "Jij"
-},
-"sv": {
+ },
+ "sv": {
   "precedent": "Föregående",
   "suivant": "Nästa",
   "ecouter": "Spela",
@@ -507,4 +508,5 @@
   "footerContrib": "",
   "reponseBot": "La mia base lessicale è in fase di sviluppo, la parola che cerchi sarà presto disponibile.",
   "utilisateur": "Tu"
+  }
 }
