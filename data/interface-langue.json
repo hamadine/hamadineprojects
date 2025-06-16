@@ -54,7 +54,7 @@
   "footerContrib": "",
   "reponseBot": "Ma base lexicale est en développement et le mot que vous cherchez sera bientôt disponible.",
   "utilisateur": "Vous"
-}
+},
 "en": {
   "precedent": "Previous",
   "suivant": "Next",
@@ -109,7 +109,7 @@
   "footerContrib": "",
   "reponseBot": "My lexical database is under development. The word you're looking for will be available soon.",
   "utilisateur": "You"
-}
+},
 "ar": {
   "precedent": "السابق",
   "suivant": "التالي",
@@ -163,7 +163,7 @@
   "footerContrib": "",
   "reponseBot": "قاعدة البيانات المعجمية قيد التطوير، والكلمة التي تبحث عنها ستكون متوفرة قريبًا.",
   "utilisateur": "أنت"
-}
+},
 "tz": {
   "precedent": "Aɣerbaz",
   "suivant": "Asnaw",
@@ -217,7 +217,7 @@
   "footerContrib": "",
   "reponseBot": "Ulac awal. Amawal yettuṛu ad yemmed-d.",
   "utilisateur": "Kech"
-}
+},
 "tr": {
   "precedent": "Önceki",
   "suivant": "Sonraki",
@@ -272,7 +272,7 @@
   "footerContrib": "",
   "reponseBot": "Sözlüğümüz hala geliştirme aşamasında. Aradığınız kelime yakında eklenecek.",
   "utilisateur": "Sen"
-}
+},
 "da": {
   "precedent": "Forrige",
   "suivant": "Næste",
@@ -326,7 +326,7 @@
   "footerContrib": "",
   "reponseBot": "Vores leksikale database er under udvikling. Ordet du leder efter vil være tilgængeligt snart.",
   "utilisateur": "Du"
-}
+},
 "de": {
   "precedent": "Vorherige",
   "suivant": "Nächste",
@@ -380,7 +380,7 @@
   "footerContrib": "",
   "reponseBot": "Unsere lexikalische Datenbank ist in Entwicklung. Das gesuchte Wort wird bald verfügbar sein.",
   "utilisateur": "Du"
-  }
+},
 "nl": {
   "precedent": "Vorige",
   "suivant": "Volgende",
@@ -434,7 +434,7 @@
   "footerContrib": "",
   "reponseBot": "Onze lexicale database is in ontwikkeling. Het woord dat je zoekt zal binnenkort beschikbaar zijn.",
   "utilisateur": "Jij"
-}
+},
 "sv": {
   "precedent": "Föregående",
   "suivant": "Nästa",
@@ -488,7 +488,7 @@
   "footerContrib": "",
   "reponseBot": "Vår lexikala databas utvecklas fortfarande. Ditt sökord kommer snart att finnas tillgängligt.",
   "utilisateur": "Du"
-}
+},
 "ru": {
   "precedent": "Назад",
   "suivant": "Вперёд",
@@ -542,7 +542,7 @@
   "footerContrib": "",
   "reponseBot": "Наша лексическая база в разработке. Искомое слово скоро будет доступно.",
   "utilisateur": "Вы"
-}
+},
 "zh": {
   "precedent": "上一页",
   "suivant": "下一页",
@@ -596,7 +596,7 @@
   "footerContrib": "",
   "reponseBot": "我们的词汇数据库正在开发中。您查询的词语很快会被添加。",
   "utilisateur": "您"
-}
+},
 "cs": {
   "precedent": "Předchozí",
   "suivant": "Další",
@@ -650,7 +650,7 @@
   "footerContrib": "",
   "reponseBot": "Naše lexikální databáze se stále vyvíjí. Hledané slovo bude brzy k dispozici.",
   "utilisateur": "Vy"
-}
+},
 "es": {
   "precedent": "Anterior",
   "suivant": "Siguiente",
@@ -704,7 +704,7 @@
   "footerContrib": "",
   "reponseBot": "Nuestra base de datos léxica está en desarrollo. La palabra buscada estará disponible pronto.",
   "utilisateur": "Tú"
-}
+},
 "it": {
   "precedent": "Precedente",
   "suivant": "Successivo",
