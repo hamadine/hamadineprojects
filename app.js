@@ -68,6 +68,7 @@ function motPrecedent() {
 function motSuivant() {
   if (indexMot < mots.length - 1) afficherMot(indexMot + 1);
 }
+
 let debounceTimeout;
 function rechercherMotDebounce() {
   clearTimeout(debounceTimeout);
@@ -93,7 +94,6 @@ function rechercherMot() {
     document.getElementById('compteur').textContent = `0 / 0`;
   }
 }
-
 function changerLangueInterface(lang) {
   langueInterface = lang;
   localStorage.setItem('langueInterface', lang);
@@ -141,6 +141,7 @@ function changerLangueTraduction(lang) {
   document.getElementById('btnLangueTrad').textContent = `Traduction : ${nomsLangues[lang] || lang.toUpperCase()} ⌄`;
   afficherMot();
 }
+
 function initialiserMenusLangues() {
   const panelInterface = document.getElementById('menuLangueInterface');
   const panelTrad = document.getElementById('menuLangueTrad');
@@ -158,9 +159,7 @@ function initialiserMenusLangues() {
     panelInterface.appendChild(btn);
   });
 
-  const languesTraduction = Object.keys(motsComplet[0] || {})
-    .filter(k => k.length <= 3 && k !== 'mot' && k !== 'cat');
-
+  const languesTraduction = Object.keys(motsComplet[0] || {}).filter(k => k.length <= 3 && k !== 'mot' && k !== 'cat');
   languesTraduction.forEach(code => {
     const btn = document.createElement('button');
     btn.textContent = nomsLangues[code] || code.toUpperCase();
@@ -192,28 +191,24 @@ function envoyerMessage() {
     reponseMot
   } = botData;
 
-  // — Salutations —
   if (salutations_triggers.some(trig => message.includes(trig))) {
     const rep = salutations[Math.floor(Math.random() * salutations.length)] || "Bonjour !";
     afficherMessage('bot', rep);
     return;
   }
 
-  // — Remerciements —
   if (remerciements.some(trig => message.includes(trig))) {
     const rep = remerciements[Math.floor(Math.random() * remerciements.length)] || "Avec plaisir !";
     afficherMessage('bot', rep);
     return;
   }
 
-  // — Insultes détectées —
-  const blacklist = ['con', 'idiot', 'stupide', 'fuck', 'pute', 'salaud', 'imbécile', 'ta mère', 'ton père', 'ta grand-mère', 'ton grand-père', 'chien', 'anibo', 'hanchi', 'drogué',];
+  const blacklist = botData.insultes || [];
   if (blacklist.some(bad => message.includes(bad))) {
     afficherMessage('bot', insulte);
     return;
   }
 
-  // — FAQ —
   for (const question in faq) {
     if (message.includes(question)) {
       afficherMessage('bot', faq[question]);
@@ -221,17 +216,21 @@ function envoyerMessage() {
     }
   }
 
-  // — "Comment on dit X en Y"
-  const regexTrad = /comment on dit (.+?) en ([a-z]+)/i;
-  const match = message.match(regexTrad);
+  const triggers = botData.triggers || {};
+  const reponses = botData.reponses || {};
+
+  for (const key in triggers) {
+    if (triggers[key].some(t => message.includes(t))) {
+      afficherMessage('bot', reponses[key] || reponses.mot_introuvable);
+      return;
+    }
+  }
+
+  const match = message.match(/comment on dit (.+?) en ([a-z]+)/i);
   if (match) {
     const motCherche = match[1].trim();
     const langueCible = match[2].trim().substring(0, 2);
-
-    const entree = motsComplet.find(m =>
-      m.fr?.toLowerCase() === motCherche || m.mot?.toLowerCase() === motCherche
-    );
-
+    const entree = motsComplet.find(m => m.fr?.toLowerCase() === motCherche || m.mot?.toLowerCase() === motCherche);
     if (entree && entree[langueCible]) {
       afficherMessage('bot', `${motCherche} en ${nomsLangues[langueCible] || langueCible.toUpperCase()} se dit : <strong>${entree[langueCible]}</strong>`);
     } else {
@@ -242,6 +241,7 @@ function envoyerMessage() {
 
   traiterRecherche(message, reponseMot, inconnu);
 }
+
 function traiterRecherche(message, reponseMot, inconnu) {
   setTimeout(() => {
     const exacts = motsComplet.filter(m =>
@@ -270,7 +270,7 @@ function traiterRecherche(message, reponseMot, inconnu) {
 
       afficherMessage('bot', réponses.join('<br><br>'));
     } else {
-      afficherMessage('bot', inconnu || "Je ne connais pas ce mot mais ma base lexicale est en développement, votre recherche sera prise en compte pour une prochaine mise à jour.");
+      afficherMessage('bot', inconnu || "Mot non trouvé.");
     }
   }, 400);
 }
