@@ -68,7 +68,6 @@ function motPrecedent() {
 function motSuivant() {
   if (indexMot < mots.length - 1) afficherMot(indexMot + 1);
 }
-
 let debounceTimeout;
 function rechercherMotDebounce() {
   clearTimeout(debounceTimeout);
@@ -142,7 +141,6 @@ function changerLangueTraduction(lang) {
   document.getElementById('btnLangueTrad').textContent = `Traduction : ${nomsLangues[lang] || lang.toUpperCase()} ⌄`;
   afficherMot();
 }
-
 function initialiserMenusLangues() {
   const panelInterface = document.getElementById('menuLangueInterface');
   const panelTrad = document.getElementById('menuLangueTrad');
@@ -184,23 +182,38 @@ function envoyerMessage() {
   input.value = '';
 
   const botData = interfaceData[langueInterface]?.botIntelligence || interfaceData['fr'].botIntelligence;
-  const { salutations = [], remerciements = [], insultes = [], faq = {}, inconnu, reponseMot } = botData;
+  const {
+    salutations = [],
+    salutations_triggers = [],
+    remerciements = [],
+    insulte = "Merci de rester respectueux.",
+    faq = {},
+    inconnu,
+    reponseMot
+  } = botData;
 
-  if (salutations.includes(message)) {
-    afficherMessage('bot', botData.salutationsRandom || "Bonjour !");
+  // — Salutations —
+  if (salutations_triggers.some(trig => message.includes(trig))) {
+    const rep = salutations[Math.floor(Math.random() * salutations.length)] || "Bonjour !";
+    afficherMessage('bot', rep);
     return;
   }
 
-  if (remerciements.includes(message)) {
-    afficherMessage('bot', botData.remerciementsRandom || "Merci !");
+  // — Remerciements —
+  if (remerciements.some(trig => message.includes(trig))) {
+    const rep = remerciements[Math.floor(Math.random() * remerciements.length)] || "Avec plaisir !";
+    afficherMessage('bot', rep);
     return;
   }
 
-  if (insultes.some(word => message.includes(word))) {
-    afficherMessage('bot', botData.insulte || "Merci de rester respectueux.");
+  // — Insultes détectées —
+  const blacklist = ['con', 'idiot', 'stupide', 'fuck', 'pute'];
+  if (blacklist.some(bad => message.includes(bad))) {
+    afficherMessage('bot', insulte);
     return;
   }
 
+  // — FAQ —
   for (const question in faq) {
     if (message.includes(question)) {
       afficherMessage('bot', faq[question]);
@@ -208,7 +221,7 @@ function envoyerMessage() {
     }
   }
 
-  // 🔥 Ajout : "comment on dit X en Y ?"
+  // — "Comment on dit X en Y"
   const regexTrad = /comment on dit (.+?) en ([a-z]+)/i;
   const match = message.match(regexTrad);
   if (match) {
@@ -229,7 +242,6 @@ function envoyerMessage() {
 
   traiterRecherche(message, reponseMot, inconnu);
 }
-
 function traiterRecherche(message, reponseMot, inconnu) {
   setTimeout(() => {
     const exacts = motsComplet.filter(m =>
