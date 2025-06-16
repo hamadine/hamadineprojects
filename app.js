@@ -207,7 +207,7 @@ function envoyerMessage() {
   }
 
   // — Insultes détectées —
-  const blacklist = ['con', 'idiot', 'stupide', 'fuck', 'pute'];
+  const blacklist = ['con', 'idiot', 'stupide', 'fuck', 'pute', 'salaud', 'imbécile', 'ta mère', 'ton père', 'ta grand-mère', 'ton grand-père', 'chien', 'anibo', 'hanchi', 'drogué',];
   if (blacklist.some(bad => message.includes(bad))) {
     afficherMessage('bot', insulte);
     return;
@@ -270,7 +270,7 @@ function traiterRecherche(message, reponseMot, inconnu) {
 
       afficherMessage('bot', réponses.join('<br><br>'));
     } else {
-      afficherMessage('bot', inconnu || "Je ne connais pas ce mot.");
+      afficherMessage('bot', inconnu || "Je ne connais pas ce mot mais ma base lexicale est en développement, votre recherche sera prise en compte pour une prochaine mise à jour.");
     }
   }, 400);
 }
