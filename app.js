@@ -241,14 +241,11 @@ function ajouterHistorique(type, contenu) {
 function restaurerHistorique() {
   historiqueChat.forEach(msg => afficherMessage(msg.type, msg.contenu));
 }
-
 function lireTexte(texte) {
-  if (window.speechSynthesis && window.matchMedia('(prefers-reduced-motion: no-preference)').matches) {
-    const utter = new SpeechSynthesisUtterance(texte.replace(/<[^>]*>/g, ''));
-    utter.lang = langueInterface;
-    utter.rate = 1;
-    speechSynthesis.speak(utter);
-  }
+  // Désactivé : ne lit plus le texte à voix haute
+  return;
+}
+
 }
 
 window.onload = chargerDonnees;
