@@ -22,11 +22,9 @@ async function chargerDonnees() {
       axios.get('data/mots.json'),
       axios.get('data/interface-langue.json')
     ]);
-
     motsComplet = motsRes.data;
     mots = [...motsComplet];
     interfaceData = interfaceRes.data;
-
     if (!interfaceData[langueInterface]) langueInterface = 'fr';
     if (!Object.keys(mots[0] || {}).includes(langueTrad)) langueTrad = 'fr';
 
@@ -42,16 +40,14 @@ async function chargerDonnees() {
     afficherMot(indexMot);
   } catch (err) {
     console.error("❌ Erreur de chargement :", err);
-    alert("Erreur lors du chargement des données JSON. Vérifiez que les fichiers sont bien dans le dossier /data/");
+    alert("Erreur lors du chargement des données JSON.");
   }
 }
 
 function afficherMot(motIndex = indexMot) {
   if (!mots.length) return;
-
   indexMot = Math.max(0, Math.min(mots.length - 1, motIndex));
   localStorage.setItem('motIndex', indexMot);
-
   const mot = mots[indexMot];
   document.getElementById('motTexte').textContent = mot.mot || '—';
   document.getElementById('definition').innerHTML =
@@ -66,7 +62,6 @@ function motPrecedent() {
 function motSuivant() {
   if (indexMot < mots.length - 1) afficherMot(indexMot + 1);
 }
-
 let debounceTimeout;
 function rechercherMotDebounce() {
   clearTimeout(debounceTimeout);
@@ -84,110 +79,26 @@ function rechercherMot() {
   const resultats = fuse.search(query);
   mots = resultats.map(r => r.item);
 
-  if (mots.length) {
-    afficherMot(0);
-  } else {
+  if (mots.length) afficherMot(0);
+  else {
     document.getElementById('motTexte').textContent = "Aucun résultat";
     document.getElementById('definition').textContent = "";
     document.getElementById('compteur').textContent = `0 / 0`;
   }
 }
 
-function changerLangueInterface(lang) {
-  langueInterface = lang;
-  localStorage.setItem('langueInterface', lang);
-
-  const t = interfaceData[lang] || interfaceData['fr'];
-  document.title = t.titrePrincipal || "";
-  document.documentElement.lang = lang;
-
-  const ids = {
-    titrePrincipal: t.titrePrincipal,
-    textePresentation: t.presentation,
-    btnPlay: `▶️ ${t.ecouter}`,
-    btnReplay: `⟳ ${t.rejouer}`,
-    btnAuto: `▶️ ${t.lectureAuto}`,
-    btnEnvoyer: t.envoyer,
-    'chat-title': t.chatTitre,
-    searchBar: t.searchPlaceholder,
-    chatInput: t.placeholderChat,
-    botIntro: t.botIntro,
-    'histoire-title': t.histoireTitle,
-    'histoire-message': t.histoireBientot,
-    'archives-title': t.archivesTitle,
-    'archives-message': t.archivesBientot,
-    footerText: t.footerText,
-    footerContrib: t.footerContrib
-  };
-
-  for (const [id, content] of Object.entries(ids)) {
-    const el = document.getElementById(id);
-    if (el) el.tagName === "INPUT" ? el.placeholder = content : el.innerHTML = content;
-  }
-
-  document.getElementById('btnLangueInterface').textContent = `Interface : ${nomsLangues[langueInterface] || langueInterface.toUpperCase()} ⌄`;
-  document.getElementById('btnLangueTrad').textContent = `Traduction : ${nomsLangues[langueTrad] || langueTrad.toUpperCase()} ⌄`;
-
-  window.reponseBot = t.reponseBot || "Mot introuvable.";
-  window.nomUtilisateur = t.utilisateur || "Vous";
-
-  initialiserMenusLangues();
-}
-
-function changerLangueTraduction(lang) {
-  langueTrad = lang;
-  localStorage.setItem('langueTrad', lang);
-  document.getElementById('btnLangueTrad').textContent = `Traduction : ${nomsLangues[lang] || lang.toUpperCase()} ⌄`;
-  afficherMot();
-}
-
-function initialiserMenusLangues() {
-  const panelInterface = document.getElementById('menuLangueInterface');
-  const panelTrad = document.getElementById('menuLangueTrad');
-  panelInterface.innerHTML = '';
-  panelTrad.innerHTML = '';
-
-  Object.keys(interfaceData).forEach(code => {
-    const btn = document.createElement('button');
-    btn.textContent = nomsLangues[code] || code.toUpperCase();
-    btn.className = 'langue-btn';
-    btn.onclick = () => {
-      changerLangueInterface(code);
-      panelInterface.setAttribute('hidden', '');
-    };
-    panelInterface.appendChild(btn);
-  });
-
-  const languesTraduction = Object.keys(motsComplet[0] || {}).filter(k => k.length <= 3 && k !== 'mot' && k !== 'cat');
-  languesTraduction.forEach(code => {
-    const btn = document.createElement('button');
-    btn.textContent = nomsLangues[code] || code.toUpperCase();
-    btn.className = 'langue-btn';
-    btn.onclick = () => {
-      changerLangueTraduction(code);
-      panelTrad.setAttribute('hidden', '');
-    };
-    panelTrad.appendChild(btn);
-  });
-}
-
 function envoyerMessage() {
   const input = document.getElementById('chatInput');
   const message = input.value.trim().toLowerCase();
   if (!message) return;
-
   afficherMessage('utilisateur', message);
   input.value = '';
 
   const botData = interfaceData[langueInterface]?.botIntelligence || interfaceData['fr'].botIntelligence;
   const {
-    salutations = [],
-    salutations_triggers = [],
-    remerciements = [],
-    insulte = "Merci de rester respectueux.",
-    faq = {},
-    inconnu,
-    reponseMot
+    salutations = [], salutations_triggers = [],
+    remerciements = [], insulte = "Merci de rester respectueux.",
+    faq = {}, reponseMot, inconnu
   } = botData;
 
   if (salutations_triggers.some(trig => message.includes(trig))) {
@@ -215,44 +126,19 @@ function envoyerMessage() {
     }
   }
 
-  const triggers = botData.triggers || {};
-  const reponses = botData.reponses || {};
-
-  for (const key in triggers) {
-    if (triggers[key].some(t => message.includes(t))) {
-      afficherMessage('bot', reponses[key] || reponses.mot_introuvable);
-      return;
-    }
-  }
-
-  const match = message.match(/comment on dit (.+?) en ([a-z]+)/i);
+  const match = message.match(/comment (on )?dit[- ]?on (.+?) en ([a-z]+)/i);
   if (match) {
-    const motCherche = match[1].trim();
-    const langueCible = match[2].trim().substring(0, 2);
-    const entree = motsComplet.find(m => m.fr?.toLowerCase() === motCherche || m.mot?.toLowerCase() === motCherche);
-    if (entree && entree[langueCible]) {
-      afficherMessage('bot', `${motCherche} en ${nomsLangues[langueCible] || langueCible.toUpperCase()} se dit : <strong>${entree[langueCible]}</strong>`);
-    } else {
-      afficherMessage('bot', "Je n’ai pas trouvé ce mot ou cette langue.");
-    }
-    return;
-  }
-
-  const matchDef = message.match(/(c['’]est quoi|quelle est la définition de)\s+(.+)/i);
-  if (matchDef) {
-    const motCherche = matchDef[2].trim();
+    const motCherche = match[2].trim();
+    const langueCible = match[3].trim().substring(0, 2);
     const entree = motsComplet.find(m =>
-      m.fr?.toLowerCase() === motCherche || m.mot?.toLowerCase() === motCherche
+      Object.values(m).some(val => typeof val === 'string' && val.toLowerCase() === motCherche)
     );
-
-    if (entree) {
-      const traductions = Object.entries(entree)
-        .filter(([k]) => k !== 'mot' && k !== 'cat')
-        .map(([lang, val]) => `<strong>${lang.toUpperCase()}</strong>: ${val}`)
-        .join('<br>');
-      afficherMessage('bot', `Voici les traductions de <strong>${motCherche}</strong> :<br>${traductions}`);
+    if (entree && entree[langueCible]) {
+      const traduction = entree[langueCible];
+      const cat = entree.cat ? ` (${entree.cat})` : "";
+      afficherMessage('bot', `<strong>${motCherche}</strong> en ${nomsLangues[langueCible]} se dit : <strong>${traduction}</strong>${cat}`);
     } else {
-      afficherMessage('bot', "Je ne connais pas ce mot, mais ma base lexicale est en développement.");
+      afficherMessage('bot', inconnu || "Ce mot n’est pas encore disponible. Notre base lexicale est en cours de développement.");
     }
     return;
   }
@@ -285,7 +171,6 @@ function traiterRecherche(message, reponseMot, inconnu) {
 
         return `${reponseMot || "Voici les traductions :"}<br>${traductions}${homonymes ? "<hr>" + homonymes : ''}`;
       });
-
       afficherMessage('bot', réponses.join('<br><br>'));
     } else {
       afficherMessage('bot', inconnu || "Mot non trouvé.");
