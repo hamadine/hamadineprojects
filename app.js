@@ -16,13 +16,13 @@ const nomsLangues = {
 };
 
 let fuse = null;
-
 async function chargerDonnees() {
   try {
     const [motsRes, interfaceRes] = await Promise.all([
       axios.get('data/mots.json'),
       axios.get('data/interface-langue.json')
     ]);
+
     motsComplet = motsRes.data;
     mots = [...motsComplet];
     interfaceData = interfaceRes.data;
@@ -46,26 +46,40 @@ async function chargerDonnees() {
     alert("Erreur lors du chargement des données JSON.");
   }
 }
-
 function changerLangueInterface(langue) {
   langueInterface = langue;
   localStorage.setItem('langueInterface', langue);
   document.documentElement.lang = langue;
+
+  const t = interfaceData[langueInterface] || interfaceData['fr'];
+
+  document.title = t.titrePrincipal;
+  document.getElementById('titrePrincipal').textContent = t.titrePrincipal;
+  document.getElementById('textePresentation').textContent = t.presentation;
+  document.getElementById('searchBar').placeholder = t.searchPlaceholder;
+  document.getElementById('btnEnvoyer').textContent = t.envoyer;
+  document.getElementById('chat-title').textContent = t.chatTitre;
+  document.getElementById('botIntro').innerHTML = t.botIntro;
+  document.getElementById('footerText').textContent = t.footerText;
+
+  window.reponseBot = t.reponseBot || "Mot introuvable.";
+  window.nomUtilisateur = t.utilisateur || "Vous";
 }
 
 function afficherMot(motIndex = indexMot) {
   if (!mots.length) return;
   indexMot = Math.max(0, Math.min(mots.length - 1, motIndex));
   localStorage.setItem('motIndex', indexMot);
+
   const mot = mots[indexMot];
   document.getElementById('motTexte').textContent = mot.mot || '—';
   document.getElementById('definition').innerHTML =
     (mot[langueTrad] || '—') +
     (mot.cat ? ` <span style="color:#888;">(${mot.cat})</span>` : '') +
     (mot.synonymes ? `<br><em>Synonymes :</em> ${mot.synonymes.join(', ')}` : '');
+
   document.getElementById('compteur').textContent = `${indexMot + 1} / ${mots.length}`;
 }
-
 function motPrecedent() {
   if (indexMot > 0) afficherMot(indexMot - 1);
 }
@@ -75,6 +89,7 @@ function motSuivant() {
 }
 
 let debounceTimeout;
+
 function rechercherMotDebounce() {
   clearTimeout(debounceTimeout);
   debounceTimeout = setTimeout(rechercherMot, 300);
@@ -106,11 +121,11 @@ function rechercherMot() {
     document.getElementById('compteur').textContent = `0 / 0`;
   }
 }
-
 function envoyerMessage() {
   const input = document.getElementById('chatInput');
   const message = input.value.trim().toLowerCase();
   if (!message) return;
+
   afficherMessage('utilisateur', message);
   ajouterHistorique('utilisateur', message);
   input.value = '';
@@ -166,15 +181,15 @@ function envoyerMessage() {
       afficherMessage('bot', msg);
       ajouterHistorique('bot', msg);
     } else {
-      afficherMessage('bot', inconnu || "Ce mot n’est pas encore disponible.");
-      ajouterHistorique('bot', inconnu || "Ce mot n’est pas encore disponible.");
+      const fallback = inconnu || "Ce mot n’est pas encore disponible.";
+      afficherMessage('bot', fallback);
+      ajouterHistorique('bot', fallback);
     }
     return;
   }
 
   traiterRecherche(message, reponseMot, inconnu, reponses, triggers);
 }
-
 function traiterRecherche(message, reponseMot, inconnu, reponses, triggers) {
   setTimeout(() => {
     const exacts = motsComplet.filter(m =>
@@ -198,14 +213,17 @@ function traiterRecherche(message, reponseMot, inconnu, reponses, triggers) {
             .join('<br>')
         ).join('<hr>');
 
-        return `${reponseMot || "Voici les traductions :"}<br>${traductions}${homonymes ? "<hr>" + homonymes : ''}`;
+        const msg = `${interfaceData[langueInterface]?.reponseBot || "Mot Tadaksahak disponible :"}<br>${traductions}${homonymes ? "<hr>" + homonymes : ''}`;
+        return msg;
       });
+
       const final = réponses.join('<br><br>');
       afficherMessage('bot', final);
       ajouterHistorique('bot', final);
     } else {
-      afficherMessage('bot', inconnu || "Mot non trouvé.");
-      ajouterHistorique('bot', inconnu || "Mot non trouvé.");
+      const fallback = inconnu || "Mot non trouvé.";
+      afficherMessage('bot', fallback);
+      ajouterHistorique('bot', fallback);
     }
   }, 400);
 }
@@ -229,7 +247,6 @@ function restaurerHistorique() {
   historiqueChat.forEach(msg => afficherMessage(msg.type, msg.contenu));
 }
 
-// 🔊 Lecture audio
 function lireTexte(texte) {
   if (window.speechSynthesis && window.matchMedia('(prefers-reduced-motion: no-preference)').matches) {
     const utter = new SpeechSynthesisUtterance(texte.replace(/<[^>]*>/g, ''));
