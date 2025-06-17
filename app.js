@@ -47,8 +47,8 @@ async function chargerDonnees() {
   }
 }
 function changerLangueInterface(langue) {
+  if (!interfaceData[langue]) langue = 'fr';
   langueInterface = langue;
-  localStorage.setItem('langueInterface', langue);
   document.documentElement.lang = langue;
 
   const t = interfaceData[langueInterface] || interfaceData['fr'];
@@ -102,12 +102,7 @@ function rechercherMot() {
     afficherMot(0);
     return;
   }
-
-  const cacheKey = `recherche_${query}`;
-  if (sessionStorage.getItem(cacheKey)) {
-    mots = JSON.parse(sessionStorage.getItem(cacheKey));
-    afficherMot(0);
-    return;
+// Recherche directe sans cache
   }
 
   const resultats = fuse.search(query);
