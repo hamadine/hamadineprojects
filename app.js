@@ -14,8 +14,8 @@ const nomsLangues = {
   sv: "Svenska", ru: "Русский", zh: "中文", cs: "Čeština",
   ha: "Hausa", es: "Español", it: "Italiano"
 };
-
 let fuse = null;
+
 async function chargerDonnees() {
   try {
     const [motsRes, interfaceRes] = await Promise.all([
@@ -45,7 +45,6 @@ async function chargerDonnees() {
     console.error("❌ Erreur de chargement :", err);
     alert("Erreur lors du chargement des données JSON.");
   }
-}
 function changerLangueInterface(langue) {
   if (!interfaceData[langue]) langue = 'fr';
   langueInterface = langue;
@@ -65,8 +64,7 @@ function changerLangueInterface(langue) {
   window.reponseBot = t.reponseBot || "Mot introuvable.";
   window.nomUtilisateur = t.utilisateur || "Vous";
 }
-
-function afficherMot(motIndex = indexMot) {
+  function afficherMot(motIndex = indexMot) {
   if (!mots.length) return;
   indexMot = Math.max(0, Math.min(mots.length - 1, motIndex));
   localStorage.setItem('motIndex', indexMot);
@@ -80,6 +78,7 @@ function afficherMot(motIndex = indexMot) {
 
   document.getElementById('compteur').textContent = `${indexMot + 1} / ${mots.length}`;
 }
+
 function motPrecedent() {
   if (indexMot > 0) afficherMot(indexMot - 1);
 }
@@ -87,8 +86,7 @@ function motPrecedent() {
 function motSuivant() {
   if (indexMot < mots.length - 1) afficherMot(indexMot + 1);
 }
-
-let debounceTimeout;
+  let debounceTimeout;
 
 function rechercherMotDebounce() {
   clearTimeout(debounceTimeout);
@@ -102,12 +100,9 @@ function rechercherMot() {
     afficherMot(0);
     return;
   }
-// Recherche directe sans cache
-  }
 
   const resultats = fuse.search(query);
   mots = resultats.map(r => r.item);
-  sessionStorage.setItem(cacheKey, JSON.stringify(mots));
 
   if (mots.length) afficherMot(0);
   else {
@@ -115,7 +110,6 @@ function rechercherMot() {
     document.getElementById('definition').textContent = "";
     document.getElementById('compteur').textContent = `0 / 0`;
   }
-}
 function envoyerMessage() {
   const input = document.getElementById('chatInput');
   const message = input.value.trim().toLowerCase();
@@ -185,6 +179,7 @@ function envoyerMessage() {
 
   traiterRecherche(message, reponseMot, inconnu, reponses, triggers);
 }
+
 function traiterRecherche(message, reponseMot, inconnu, reponses, triggers) {
   setTimeout(() => {
     const exacts = motsComplet.filter(m =>
@@ -221,8 +216,6 @@ function traiterRecherche(message, reponseMot, inconnu, reponses, triggers) {
       ajouterHistorique('bot', fallback);
     }
   }, 400);
-}
-
 function afficherMessage(type, contenu) {
   const chatBox = document.getElementById('chatWindow');
   const msg = document.createElement('div');
@@ -241,11 +234,9 @@ function ajouterHistorique(type, contenu) {
 function restaurerHistorique() {
   historiqueChat.forEach(msg => afficherMessage(msg.type, msg.contenu));
 }
-function lireTexte(texte) {
+  function lireTexte(texte) {
   // Désactivé : ne lit plus le texte à voix haute
   return;
-}
-
 }
 
 window.onload = chargerDonnees;
