@@ -1,5 +1,3 @@
-// === BOT INTELLIGENT COMPLET — CORRIGÉ & AMÉLIORÉ ===
-
 let motsComplet = [];
 let mots = [];
 let interfaceData = {};
@@ -94,6 +92,7 @@ function rechercherMot() {
     document.getElementById('compteur').textContent = `0 / 0`;
   }
 }
+
 function changerLangueInterface(lang) {
   langueInterface = lang;
   localStorage.setItem('langueInterface', lang);
@@ -235,6 +234,25 @@ function envoyerMessage() {
       afficherMessage('bot', `${motCherche} en ${nomsLangues[langueCible] || langueCible.toUpperCase()} se dit : <strong>${entree[langueCible]}</strong>`);
     } else {
       afficherMessage('bot', "Je n’ai pas trouvé ce mot ou cette langue.");
+    }
+    return;
+  }
+
+  const matchDef = message.match(/(c['’]est quoi|quelle est la définition de)\s+(.+)/i);
+  if (matchDef) {
+    const motCherche = matchDef[2].trim();
+    const entree = motsComplet.find(m =>
+      m.fr?.toLowerCase() === motCherche || m.mot?.toLowerCase() === motCherche
+    );
+
+    if (entree) {
+      const traductions = Object.entries(entree)
+        .filter(([k]) => k !== 'mot' && k !== 'cat')
+        .map(([lang, val]) => `<strong>${lang.toUpperCase()}</strong>: ${val}`)
+        .join('<br>');
+      afficherMessage('bot', `Voici les traductions de <strong>${motCherche}</strong> :<br>${traductions}`);
+    } else {
+      afficherMessage('bot', "Je ne connais pas ce mot, mais ma base lexicale est en développement.");
     }
     return;
   }
