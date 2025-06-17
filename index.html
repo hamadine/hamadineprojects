@@ -1,221 +1,164 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Dictionnaire Tadaksahak Multilingue</title>
-  <meta name="robots" content="noindex, nofollow" />
-  <meta name="description" content="Dictionnaire Tadaksahak multilingue avec audio et chatbot intégré." />
-  <link rel="icon" href="images/idaksahak_round.png" type="image/png" />
-  <link rel="stylesheet" href="style.css" />
-  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js" defer></script>
-  <script src="https://cdn.jsdelivr.net/npm/fuse.js/dist/fuse.min.js" crossorigin="anonymous" defer></script>
-  <script defer src="app.js"></script>
-</head>
-<body>
-<header class="site-header">
-  <div class="header-wrapper">
-    <img src="images/idaksahak_round.png" alt="Logo Tadaksahak" class="logo-header" loading="lazy" width="100" height="100" />
-  </div>
-</header>
 
-<section class="intro">
-  <h1>📚 Dictionnaire Tadaksahak Multilingue</h1>
-  <p>Un projet numérique de sauvegarde, valorisation et transmission de la langue <strong>Tadaksahak</strong>, porté par la voix de ses enfants.</p>
-  <blockquote>✊🏽 Créé par <strong>Hamadine</strong>, fils du désert, médiateur, bâtisseur de ponts entre langues et peuples.</blockquote>
-</section>
-
-<section class="dedicaces">
-  <h2>🤍 Dédicaces</h2>
-  <div>
-    <h3>🕊️ À Rose Walet Moussa</h3>
-    <p>Ma mère.<br>Elle n’a rien perdu. Elle m’a tout transmis.<br>Ce projet lui est dédié — parce que derrière chaque mot, chaque ligne de code, il y a sa lumière.<br>Ce dictionnaire n’est pas une langue seulement — c’est un <strong>héritage fragile</strong>, que je sauvegarde <strong>d’abord pour elle</strong>.</p>
-  </div>
-  <div>
-    <h3>🕊️ À mon père</h3>
-    <p>Il m’a élevé avec honneur.<br>Il m’a transmis ses valeurs, son exigence, sa droiture.<br>Polyvalent, discret, digne, <strong>il est la raison pour laquelle je suis devenu polyglotte</strong>.<br>Et même s’il croit avoir tout perdu,<br><strong>ce projet vient lui rendre hommage</strong>.<br>C’est un miroir de ce qu’il m’a donné, et une manière de lui dire que <strong>rien n’a été perdu</strong>.</p>
-  </div>
-  <div>
-    <h3>🕊️ Aux Martyrs Idaksahak</h3>
-    <p>
-      Ce n’est pas un outil numérique. C’est <strong>un tombeau vivant de mémoire</strong>.<br>
-      Je porte en moi Tamalat, ses cris, ses morts oubliés.<br>
-      Ce dictionnaire est leur voix quand il ne reste plus personne pour parler.
-    </p>
-  </div>
-
-  <div>
-    <h3>🕊️ À Tabalit</h3>
-    <p>
-      Mon épouse.<br>
-      Elle n’est pas de mon peuple, mais elle est <strong>tout ce que j’ai d’essentiel</strong>.<br>
-      Ce projet existe aussi parce qu’elle a cru en mes mots, même quand je n’y croyais plus.<br>
-      <strong>Elle est mon refuge, mon abri, et ce dictionnaire est aussi une déclaration d’amour.</strong>
-    </p>
-  </div>
-
-  <div>
-    <h3>🕊️ À Moussa Ag Acharatoumane</h3>
-    <p>
-      Il n’a pas crié, il n’a pas conquis. Il a <strong>écouté, protégé, rassemblé</strong>.<br>
-      Ce projet suit sa voie : <strong>donner voix aux sans-voix</strong>, créer des ponts dans la poussière.
-    </p>
-  </div>
-
-  <div>
-    <h3>🕊️ À Assimi Goïta</h3>
-    <p>
-      Président du Mali.<br>
-      Il a osé <strong>rompre les chaînes de l’impérialisme culturel</strong>.<br>
-      Ce dictionnaire est un <strong>acte de souveraineté culturelle</strong>, un pas vers la nationalisation de nos langues, de nos mémoires et de notre avenir.
-    </p>
-  </div>
-</section>
-
-<section class="a-propos">
-  <h2>🌍 À propos</h2>
-  <p>Le <strong>Dictionnaire Tadaksahak Multilingue</strong> est bien plus qu’un simple traducteur. C’est une <strong>plateforme de mémoire</strong>, un <strong>outil éducatif vivant</strong> et un <strong>acte de résistance culturelle</strong>.</p>
-  <ul>
-    <li>Découverte du vocabulaire Tadaksahak</li>
-    <li>Lecture et écoute audio des mots</li>
-    <li>Traduction en 15 langues (Français, Anglais, Arabe, Russe, Hausa, Néerlandais, Allemand, Chinois, Tchèque, Suédois, Espagnol, Tamazight, Danois, Turc, Italien)</li>
-    <li>Interface multilingue selon la langue maternelle</li>
-    <li>Chat-bot éducatif <strong>Hamadine</strong> pour dialoguer naturellement</li>
-  </ul>
-</section>
-
-<section class="tech">
-  <h2>🧩 Technologies</h2>
-  <ul>
-    <li>✅ HTML5, CSS3, JavaScript ES6</li>
-    <li>✅ PWA (Progressive Web App) – fonctionne offline</li>
-    <li>✅ Responsive mobile-first</li>
-    <li>✅ Acode & GitHub Pages compatible</li>
-    <li>✅ Manifestes multilingues dynamiques</li>
-    <li>✅ Mode sombre inspiré du ciel et du désert 🌌🏜️</li>
-  </ul>
-</section>
-
-<section class="licence">
-  <h2>📜 Licence</h2>
-  <p>
-    Ce projet est libre et ouvert. Toute personne respectueuse de la culture Tadaksahak peut contribuer, traduire ou améliorer.<br>
-    <strong>Aucune exploitation commerciale ni appropriation coloniale ne sera tolérée.</strong>
-  </p>
-</section>
-
-<section class="contact">
-  <h2>💬 Contact</h2>
-  <p>
-    Créé avec honneur par <strong>Hamadine</strong><br>
-    📍 Nord du Mali — Fils du désert, médiateur, survivant, transmetteur<br>
-    🌐 <a href="https://nomade-ishaq-terps-land.b12sites.com/index#accueil" target="_blank">Nomade - Ishaq Terps</a>
-  </p>
-</section>
-<section class="recherche" aria-label="Recherche de mots">
-  <input id="searchBar" type="text" placeholder="Cherchez un mot..." aria-label="Barre de recherche" oninput="rechercherMotDebounce()" />
-  <h2 id="motTexte">—</h2>
-  <p id="definition">—</p>
-  <p id="compteur">0 / 0</p>
-
-  <div id="audioButtons" class="button-group">
-    <button id="btnPlay" onclick="jouerTadaksahak()">▶️ Écouter</button>
-    <button id="btnReplay" onclick="rejouerMot()" disabled>⟳ Réécouter</button>
-    <button id="btnAuto" onclick="lectureAuto()" disabled>▶️ Lecture auto</button>
-  </div>
-
-  <nav class="button-group" aria-label="Navigation des mots">
-    <button id="btnPrev" onclick="motPrecedent()" aria-label="Mot précédent">⏮️</button>
-    <button id="btnNext" onclick="motSuivant()" aria-label="Mot suivant">⏭️</button>
-  </nav>
-</section>
-
-<section class="chat-section" aria-labelledby="chat-title">
-  <h2 id="chat-title">Chat Tadaksahak</h2>
-  <div id="chatWindow" class="chatbox" role="log" aria-live="polite" aria-relevant="additions"></div>
-  <div id="botIntro" class="chat-intro">🤖 Salut, je suis Hamadine, le bot Tadaksahak.</div>
-  <div class="chat-input-container">
-    <input type="text" id="chatInput" placeholder="Tapez un mot ici..." aria-label="Zone de saisie du chat" />
-    <button id="btnEnvoyer" onclick="envoyerMessage()" aria-label="Envoyer un message">Envoyer</button>
-  </div>
-</section>
-
-<section class="ressource-section">
-  <h2 id="histoire-title">📘 Histoire</h2>
-  <p id="histoire-message">Découvrez ici des textes historiques captivants sur la culture Tadaksahak.</p>
-  <ul>
-    <li><a href="documents/histoire-contribution-idaksahak.docx" download>Contribution à la connaissance de la communauté Idaksahak</a></li>
-  </ul>
-</section>
-
-<section class="ressource-section">
-  <h2 id="archives-title">📜 Archives</h2>
-  <p id="archives-message">Accédez à des documents anciens précieux sur la langue, la culture et l'organisation Idaksahak.</p>
-  <ul>
-    <li><a href="documents/archives-declaration-anderamboukar.pdf" download>Déclaration d’Anderamboukar</a></li>
-    <li><a href="documents/archives-resolution-generale.pdf" download>Résolution générale</a></li>
-    <li><a href="documents/archives-bureau-executif.pdf" download>Bureau Exécutif</a></li>
-    <li><a href="documents/archives-conseil-orientation.pdf" download>Conseil d’Orientation</a></li>
-    <li><a href="documents/archives-rapport-succinct.docx" download>Rapport succinct</a></li>
-  </ul>
-</section>
-
-<section class="ressource-section">
-  <h2 id="linguistique-title">🧾 Linguistique</h2>
-  <p id="linguistique-message">Accédez à des ressources linguistiques sur la langue Tadaksahak.</p>
-  <ul>
-    <li><a href="documents/linguistique-silewp2002.pdf" download>Analyse linguistique Tadaksahak - SILEWP 2002</a></li>
-  </ul>
-</section>
-
-<footer class="site-footer">
-  <p id="footerContrib"></p>
-  <div class="logo-footer">
-    <img src="images/idaksahak_square512.png" alt="Logo Tadaksahak carré" width="100" height="100" loading="lazy" />
-  </div>
-  <p>
-    <a href="mailto:hamadineagmoctar@gmail.com">
-      <img src="images/Gmail.png" alt="Gmail" style="height:1em;"> hamadineagmoctar@gmail.com
-    </a>
-    |
-    <a href="https://wa.me/22786762903" target="_blank" rel="noopener noreferrer">
-      <img src="images/whatsapp.png" alt="WhatsApp" style="height:1em;"> +227 86762903
-    </a>
-  </p>
-  <p id="footerText">© 2025 • Tadaksahak Multilingue avec Hamadine.</p>
-</footer>
-
-<script>
-  window.addEventListener('DOMContentLoaded', () => {
-    const toggleMenu = (btnId, menuId) => {
-      const btn = document.getElementById(btnId);
-      const panel = document.getElementById(menuId);
-
-      btn.addEventListener('click', (e) => {
-        const expanded = panel.hasAttribute('hidden');
-        panel.toggleAttribute('hidden');
-        btn.setAttribute('aria-expanded', expanded ? 'true' : 'false');
-        e.stopPropagation();
-      });
-
-      document.addEventListener('click', (e) => {
-        if (!panel.contains(e.target) && !btn.contains(e.target)) {
-          panel.setAttribute('hidden', '');
-          btn.setAttribute('aria-expanded', 'false');
-        }
-      });
-
-      btn.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape') {
-          panel.setAttribute('hidden', '');
-          btn.setAttribute('aria-expanded', 'false');
-        }
-      });
-    };
-
-    toggleMenu('btnLangueInterface', 'menuLangueInterface');
-    toggleMenu('btnLangueTrad', 'menuLangueTrad');
-  });
-</script>
-</body>
+<!DOCTYPE html>  
+<html lang="fr">  
+<head>  
+  <meta charset="UTF-8" />  
+  <meta name="viewport" content="width=device-width, initial-scale=1" />  
+  <title>Dictionnaire Tadaksahak Multilingue</title>  
+  <meta name="robots" content="noindex, nofollow" />  
+  <meta name="description" content="Dictionnaire Tadaksahak multilingue avec audio et chatbot intégré." />  
+  <link rel="icon" href="images/idaksahak_round.png" type="image/png" />  
+  <link rel="stylesheet" href="style.css" />  
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js" defer></script>  
+  <script src="https://cdn.jsdelivr.net/npm/fuse.js/dist/fuse.min.js" crossorigin="anonymous" defer></script>  
+  <script defer src="app.js"></script>  
+  <style>  
+    button:focus, input:focus {  
+      outline: 3px solid var(--blue-mid);  
+      outline-offset: 2px;  
+    }  
+    img {  
+      max-width: 100%;  
+      height: auto;  
+    }  
+  </style>  
+</head>  
+  
+<body>  
+  <header class="site-header">  
+    <div class="header-wrapper">  
+      <img src="images/idaksahak_round.png" alt="Logo Tadaksahak" class="logo-header" loading="lazy" width="100" height="100" />  
+    </div>  
+  </header>  
+  
+  <main>  
+    <section class="intro">  
+      <h1 id="titrePrincipal">Tadaksahak Dictionary</h1>  
+      <p id="textePresentation">Chargement...</p>  
+    </section>  
+  
+    <section class="langue-section" aria-label="Choix de la langue">  
+      <div class="langue-select-container">  
+        <div class="langue-group">  
+          <button id="btnLangueInterface" class="langue-btn" aria-haspopup="true" aria-expanded="false" aria-controls="menuLangueInterface">  
+            Interface : Français ⌄  
+          </button>  
+          <div id="menuLangueInterface" class="langue-panel" role="menu" hidden aria-labelledby="btnLangueInterface"></div>  
+        </div>  
+        <div class="langue-group">  
+          <button id="btnLangueTrad" class="langue-btn" aria-haspopup="true" aria-expanded="false" aria-controls="menuLangueTrad">  
+            Traduction : Français ⌄  
+          </button>  
+          <div id="menuLangueTrad" class="langue-panel" role="menu" hidden aria-labelledby="btnLangueTrad"></div>  
+        </div>  
+      </div>  
+    </section>  
+  
+    <section class="recherche" aria-label="Recherche de mots">  
+      <input id="searchBar" type="text" placeholder="Cherchez un mot..." aria-label="Barre de recherche" oninput="rechercherMotDebounce()" />  
+      <h2 id="motTexte">—</h2>  
+      <p id="definition">—</p>  
+      <p id="compteur">0 / 0</p>  
+  
+      <div id="audioButtons" class="button-group">  
+        <button id="btnPlay" onclick="jouerTadaksahak()">▶️ Écouter</button>  
+        <button id="btnReplay" onclick="rejouerMot()" disabled>⟳ Réécouter</button>  
+        <button id="btnAuto" onclick="lectureAuto()" disabled>▶️ Lecture auto</button>  
+      </div>  
+  
+      <nav class="button-group" aria-label="Navigation des mots">  
+        <button id="btnPrev" onclick="motPrecedent()" aria-label="Mot précédent">⏮️</button>  
+        <button id="btnNext" onclick="motSuivant()" aria-label="Mot suivant">⏭️</button>  
+      </nav>  
+    </section>  
+  
+    <section class="chat-section" aria-labelledby="chat-title">  
+      <h2 id="chat-title">Chat Tadaksahak</h2>  
+      <div id="chatWindow" class="chatbox" role="log" aria-live="polite" aria-relevant="additions"></div>  
+      <div id="botIntro" class="chat-intro">🤖 Salut, je suis Hamadine, le bot Tadaksahak.</div>  
+      <div class="chat-input-container">  
+        <input type="text" id="chatInput" placeholder="Tapez un mot ici..." aria-label="Zone de saisie du chat" />  
+        <button id="btnEnvoyer" onclick="envoyerMessage()" aria-label="Envoyer un message">Envoyer</button>  
+      </div>  
+    </section>  
+  
+    <section class="ressource-section">  
+      <h2 id="histoire-title">📘 Histoire</h2>  
+      <p id="histoire-message">Découvrez ici des textes historiques captivants sur la culture Tadaksahak.</p>  
+      <ul>  
+        <li><a href="documents/histoire-contribution-idaksahak.docx" download>Contribution à la connaissance de la communauté Idaksahak</a></li>  
+      </ul>  
+    </section>  
+  
+    <section class="ressource-section">  
+      <h2 id="archives-title">📜 Archives</h2>  
+      <p id="archives-message">Accédez à des documents anciens précieux sur la langue, la culture et l'organisation Idaksahak.</p>  
+      <ul>  
+        <li><a href="documents/archives-declaration-anderamboukar.pdf" download>Déclaration d’Anderamboukar</a></li>  
+        <li><a href="documents/archives-resolution-generale.pdf" download>Résolution générale</a></li>  
+        <li><a href="documents/archives-bureau-executif.pdf" download>Bureau Exécutif</a></li>  
+        <li><a href="documents/archives-conseil-orientation.pdf" download>Conseil d’Orientation</a></li>  
+        <li><a href="documents/archives-rapport-succinct.docx" download>Rapport succinct</a></li>  
+      </ul>  
+    </section>  
+  
+    <section class="ressource-section">  
+      <h2 id="linguistique-title">🧾 Linguistique</h2>  
+      <p id="linguistique-message">Accédez à des ressources linguistiques sur la langue Tadaksahak.</p>  
+      <ul>  
+        <li><a href="documents/linguistique-silewp2002.pdf" download>Analyse linguistique Tadaksahak - SILEWP 2002</a></li>  
+      </ul>  
+    </section>  
+  </main>  
+  
+  <footer class="site-footer">  
+    <p id="footerContrib"></p>  
+    <div class="logo-footer">  
+      <img src="images/idaksahak_square512.png" alt="Logo Tadaksahak carré" width="100" height="100" loading="lazy" />  
+    </div>  
+    <p>  
+      <a href="mailto:hamadineagmoctar@gmail.com">  
+        <img src="images/Gmail.png" alt="Gmail" style="height:1em;"> hamadineagmoctar@gmail.com  
+      </a>  
+      |  
+      <a href="https://wa.me/22786762903" target="_blank" rel="noopener noreferrer">  
+        <img src="images/whatsapp.png" alt="WhatsApp" style="height:1em;"> +227 86762903  
+      </a>  
+    </p>  
+    <p id="footerText">© 2025 • Tadaksahak Multilingue avec Hamadine.</p>  
+  </footer>  
+  
+  <script>  
+    window.addEventListener('DOMContentLoaded', () => {  
+      const toggleMenu = (btnId, menuId) => {  
+        const btn = document.getElementById(btnId);  
+        const panel = document.getElementById(menuId);  
+  
+        btn.addEventListener('click', (e) => {  
+          const expanded = panel.hasAttribute('hidden');  
+          panel.toggleAttribute('hidden');  
+          btn.setAttribute('aria-expanded', expanded ? 'true' : 'false');  
+          e.stopPropagation();  
+        });  
+  
+        document.addEventListener('click', (e) => {  
+          if (!panel.contains(e.target) && !btn.contains(e.target)) {  
+            panel.setAttribute('hidden', '');  
+            btn.setAttribute('aria-expanded', 'false');  
+          }  
+        });  
+  
+        btn.addEventListener('keydown', (e) => {  
+          if (e.key === 'Escape') {  
+            panel.setAttribute('hidden', '');  
+            btn.setAttribute('aria-expanded', 'false');  
+          }  
+        });  
+      };  
+  
+      toggleMenu('btnLangueInterface', 'menuLangueInterface');  
+      toggleMenu('btnLangueTrad', 'menuLangueTrad');  
+    });  
+  </script>  
+</body>  
 </html>
