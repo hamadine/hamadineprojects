@@ -45,6 +45,8 @@ async function chargerDonnees() {
     console.error("❌ Erreur de chargement :", err);
     alert("Erreur lors du chargement des données JSON.");
   }
+}
+
 function changerLangueInterface(langue) {
   if (!interfaceData[langue]) langue = 'fr';
   langueInterface = langue;
@@ -64,7 +66,8 @@ function changerLangueInterface(langue) {
   window.reponseBot = t.reponseBot || "Mot introuvable.";
   window.nomUtilisateur = t.utilisateur || "Vous";
 }
-  function afficherMot(motIndex = indexMot) {
+
+function afficherMot(motIndex = indexMot) {
   if (!mots.length) return;
   indexMot = Math.max(0, Math.min(mots.length - 1, motIndex));
   localStorage.setItem('motIndex', indexMot);
@@ -86,7 +89,8 @@ function motPrecedent() {
 function motSuivant() {
   if (indexMot < mots.length - 1) afficherMot(indexMot + 1);
 }
-  let debounceTimeout;
+
+let debounceTimeout;
 
 function rechercherMotDebounce() {
   clearTimeout(debounceTimeout);
@@ -110,6 +114,8 @@ function rechercherMot() {
     document.getElementById('definition').textContent = "";
     document.getElementById('compteur').textContent = `0 / 0`;
   }
+}
+
 function envoyerMessage() {
   const input = document.getElementById('chatInput');
   const message = input.value.trim().toLowerCase();
@@ -216,6 +222,8 @@ function traiterRecherche(message, reponseMot, inconnu, reponses, triggers) {
       ajouterHistorique('bot', fallback);
     }
   }, 400);
+}
+
 function afficherMessage(type, contenu) {
   const chatBox = document.getElementById('chatWindow');
   const msg = document.createElement('div');
@@ -234,9 +242,9 @@ function ajouterHistorique(type, contenu) {
 function restaurerHistorique() {
   historiqueChat.forEach(msg => afficherMessage(msg.type, msg.contenu));
 }
-  function lireTexte(texte) {
-  // Désactivé : ne lit plus le texte à voix haute
-  return;
+
+function lireTexte(texte) {
+  return; // lecture désactivée
 }
 
 window.onload = chargerDonnees;
