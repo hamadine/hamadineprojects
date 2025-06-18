@@ -16,6 +16,18 @@ const nomsLangues = {
 
 let fuse = null;
 
+function escapeHTML(str) {
+  return str.replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#039;' }[c]));
+}
+
+function debounce(fn, delay = 300) {
+  let timer;
+  return function (...args) {
+    clearTimeout(timer);
+    timer = setTimeout(() => fn.apply(this, args), delay);
+  };
+}
+
 async function chargerDonnees() {
   try {
     const [motsRes, interfaceRes] = await Promise.all([
@@ -31,11 +43,8 @@ async function chargerDonnees() {
 
     changerLangueInterface(langueInterface);
 
-    fuse = new Fuse(mots, {
-      keys: ['mot', ...Object.keys(mots[0]).filter(k => k.length <= 3 && k !== 'cat')],
-      includeScore: true,
-      threshold: 0.4
-    });
+    const fuseKeys = ['mot', ...Object.keys(mots[0]).filter(k => k.length <= 3 && k !== 'cat')];
+    fuse = new Fuse(mots, { keys: fuseKeys, includeScore: true, threshold: 0.4 });
 
     indexMot = parseInt(localStorage.getItem('motIndex')) || 0;
     afficherMot(indexMot);
@@ -50,16 +59,16 @@ function changerLangueInterface(langue) {
   localStorage.setItem('langueInterface', langue);
   document.documentElement.lang = langue;
 
-  const t = interfaceData[langueInterface] || interfaceData['fr'];
+  const t = interfaceData[langueInterface] || interfaceData.fr || {};
 
-  document.title = t.titrePrincipal;
-  document.getElementById('titrePrincipal').textContent = t.titrePrincipal;
-  document.getElementById('textePresentation').textContent = t.presentation;
-  document.getElementById('searchBar').placeholder = t.searchPlaceholder;
-  document.getElementById('btnEnvoyer').textContent = t.envoyer;
-  document.getElementById('chat-title').textContent = t.chatTitre;
-  document.getElementById('botIntro').innerHTML = t.botIntro;
-  document.getElementById('footerText').textContent = t.footerText;
+  document.title = t.titrePrincipal || "Dictionnaire";
+  document.getElementById('titrePrincipal').textContent = t.titrePrincipal || '';
+  document.getElementById('textePresentation').textContent = t.presentation || '';
+  document.getElementById('searchBar').placeholder = t.searchPlaceholder || '';
+  document.getElementById('btnEnvoyer').textContent = t.envoyer || 'Envoyer';
+  document.getElementById('chat-title').textContent = t.chatTitre || 'Chat';
+  document.getElementById('botIntro').textContent = t.botIntro || '';
+  document.getElementById('footerText').textContent = t.footerText || '';
 
   document.getElementById('btnLangueInterface').textContent = `Interface : ${nomsLangues[langueInterface] || langueInterface.toUpperCase()} ⌄`;
   document.getElementById('btnLangueTrad').textContent = `Traduction : ${nomsLangues[langueTrad] || langueTrad.toUpperCase()} ⌄`;
@@ -75,21 +84,9 @@ function afficherMot(motIndex = indexMot) {
   const mot = mots[indexMot];
   document.getElementById('motTexte').textContent = mot.mot || '—';
   document.getElementById('definition').innerHTML =
-    (mot[langueTrad] || '—') + (mot.cat ? ` <span style="color:#888;">(${mot.cat})</span>` : '');
+    escapeHTML(mot[langueTrad] || '—') +
+    (mot.cat ? ` <span style="color:#888;">(${escapeHTML(mot.cat)})</span>` : '');
   document.getElementById('compteur').textContent = `${indexMot + 1} / ${mots.length}`;
-}
-
-function motPrecedent() {
-  if (indexMot > 0) afficherMot(indexMot - 1);
-}
-function motSuivant() {
-  if (indexMot < mots.length - 1) afficherMot(indexMot + 1);
-}
-
-let debounceTimeout;
-function rechercherMotDebounce() {
-  clearTimeout(debounceTimeout);
-  debounceTimeout = setTimeout(rechercherMot, 300);
 }
 
 function rechercherMot() {
@@ -109,19 +106,20 @@ function rechercherMot() {
     document.getElementById('definition').textContent = "";
     document.getElementById('compteur').textContent = `0 / 0`;
   }
+}
+
 function envoyerMessage() {
   const input = document.getElementById('chatInput');
   const message = input.value.trim().toLowerCase();
   if (!message) return;
-  afficherMessage('utilisateur', message);
+  afficherMessage('utilisateur', escapeHTML(message));
   input.value = '';
 
-  const botData = interfaceData[langueInterface]?.botIntelligence || interfaceData['fr'].botIntelligence;
+  const botData = interfaceData[langueInterface]?.botIntelligence || interfaceData['fr'].botIntelligence || {};
   const {
     salutations = [], salutations_triggers = [],
-    remerciements = [], insulte = "Merci de rester respectueux.",
-    faq = {}, reponseMot, inconnu, triggers = {}, reponses = {},
-    insultes = []
+    remerciements = [], insultes = [], insulte = "Merci de rester respectueux.",
+    faq = {}, reponseMot, inconnu, reponses = {}
   } = botData;
 
   if (salutations_triggers.some(trig => message.includes(trig))) {
@@ -158,17 +156,17 @@ function envoyerMessage() {
     if (entree && entree[langueCible]) {
       const traduction = entree[langueCible];
       const cat = entree.cat ? ` (${entree.cat})` : "";
-      afficherMessage('bot', `<strong>${motCherche}</strong> en ${nomsLangues[langueCible]} se dit : <strong>${traduction}</strong>${cat}`);
+      afficherMessage('bot', `<strong>${escapeHTML(motCherche)}</strong> en ${nomsLangues[langueCible]} se dit : <strong>${escapeHTML(traduction)}</strong>${escapeHTML(cat)}`);
     } else {
-      afficherMessage('bot', inconnu || "Ce mot n’est pas encore disponible. Notre base lexicale est en cours de développement.");
+      afficherMessage('bot', inconnu || "Ce mot n’est pas encore disponible.");
     }
     return;
   }
 
-  traiterRecherche(message, reponseMot, inconnu, reponses, triggers);
+  traiterRecherche(message, reponseMot, inconnu, reponses);
 }
 
-function traiterRecherche(message, reponseMot, inconnu, reponses, triggers) {
+function traiterRecherche(message, reponseMot, inconnu) {
   setTimeout(() => {
     const exacts = motsComplet.filter(m =>
       Object.entries(m).some(([k, v]) =>
@@ -181,13 +179,13 @@ function traiterRecherche(message, reponseMot, inconnu, reponses, triggers) {
         const autres = motsComplet.filter(x => x.mot === m.mot && x !== m);
         const traductions = Object.entries(m)
           .filter(([k]) => k !== 'mot' && k !== 'cat')
-          .map(([lang, val]) => `<strong>${lang.toUpperCase()}</strong>: ${val}`)
+          .map(([lang, val]) => `<strong>${lang.toUpperCase()}</strong>: ${escapeHTML(val)}`)
           .join('<br>');
 
         const homonymes = autres.map(h =>
           Object.entries(h)
             .filter(([k]) => k !== 'mot' && k !== 'cat')
-            .map(([lang, val]) => `<strong>${lang.toUpperCase()}</strong>: ${val}`)
+            .map(([lang, val]) => `<strong>${lang.toUpperCase()}</strong>: ${escapeHTML(val)}`)
             .join('<br>')
         ).join('<hr>');
 
@@ -205,9 +203,15 @@ function afficherMessage(type, contenu) {
   const chatBox = document.getElementById('chatWindow');
   const msg = document.createElement('div');
   msg.className = `message ${type}`;
-  msg.innerHTML = `<strong>${type === 'utilisateur' ? (window.nomUtilisateur || 'Vous') : 'Bot'}:</strong> ${contenu}`;
+  msg.innerHTML = `<strong>${type === 'utilisateur' ? window.nomUtilisateur : 'Bot'}:</strong> ${contenu}`;
   chatBox.appendChild(msg);
   chatBox.scrollTop = chatBox.scrollHeight;
 }
 
-window.onload = chargerDonnees;
+window.addEventListener('DOMContentLoaded', () => {
+  chargerDonnees();
+  document.getElementById('searchBar').addEventListener('input', debounce(rechercherMot));
+  document.getElementById('btnEnvoyer').addEventListener('click', envoyerMessage);
+  document.getElementById('btnPrev').addEventListener('click', () => afficherMot(indexMot - 1));
+  document.getElementById('btnNext').addEventListener('click', () => afficherMot(indexMot + 1));
+});
