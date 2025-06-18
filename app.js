@@ -238,10 +238,8 @@ function restaurerHistorique() {
 }
 
 function lireTexte(texte) {
-  if (!window.speechSynthesis) return;
-  const utterance = new SpeechSynthesisUtterance(texte);
-  utterance.lang = langueInterface || 'fr-FR';
-  speechSynthesis.speak(utterance);
+  // Synthèse vocale désactivée
+  return;
 }
 
 window.onload = chargerDonnees;
