@@ -1,36 +1,45 @@
-const CACHE_NAME = 'tadaksahak-v1.0.0';
+const CACHE_NAME = 'tadaksahak-v1.0.1';
 const ASSETS = [
-  '/',
-  '/index.html',
-  '/App.js',
-  '/style.css',
-  '/data/interface-langue.json',
-  '/data/mots.json',
-  // Ajoute ici d'autres fichiers à mettre en cache
+  '/', '/index.html', '/app.js', '/menu.js', '/style.css',
+  '/data/mots.json', '/data/interface-langue.json',
+  '/manifest.webmanifest',
+
+  // Images
+  '/images/idaksahak_round.png',
+  '/images/idaksahak_square512.png',
+  '/images/Gmail.png',
+  '/images/whatsapp.png',
+
+  // Fallback
+  '/offline.html'
 ];
 
-// Installation : met en cache les fichiers essentiels
+// 📦 Installation : cache tous les assets essentiels
 self.addEventListener('install', event => {
-  self.skipWaiting(); // Passe immédiatement à l'état "activate"
+  self.skipWaiting();
   event.waitUntil(
     caches.open(CACHE_NAME).then(cache => cache.addAll(ASSETS))
   );
 });
 
-// Activation : clean les anciens caches
+// 🔄 Activation : nettoyage des anciens caches
 self.addEventListener('activate', event => {
   event.waitUntil(
     caches.keys().then(keys =>
-      Promise.all(keys.filter(key => key !== CACHE_NAME).map(key => caches.delete(key)))
+      Promise.all(keys
+        .filter(key => key !== CACHE_NAME)
+        .map(key => caches.delete(key))
+      )
     )
   );
   self.clients.claim();
 });
 
-// Stratégie de cache
+// 🌐 Stratégies de cache
 self.addEventListener('fetch', event => {
   const req = event.request;
-  // HTML : network-first
+
+  // Navigations HTML : stratégie network-first
   if (req.mode === 'navigate') {
     event.respondWith(
       fetch(req)
@@ -39,17 +48,30 @@ self.addEventListener('fetch', event => {
           caches.open(CACHE_NAME).then(cache => cache.put(req, resClone));
           return res;
         })
-        .catch(() => caches.match(req))
+        .catch(() => caches.match('/offline.html'))
     );
   } else {
-    // Autres : cache-first
+    // Autres (CSS, JS, images...) : stratégie cache-first
     event.respondWith(
-      caches.match(req).then(resp => resp || fetch(req))
+      caches.match(req)
+        .then(cached => cached || fetch(req)
+          .then(res => {
+            const resClone = res.clone();
+            caches.open(CACHE_NAME).then(cache => cache.put(req, resClone));
+            return res;
+          })
+        )
+        .catch(() => {
+          // Optionnel : gérer les erreurs d'image ou fichier
+          if (req.destination === 'image') {
+            return caches.match('/images/idaksahak_square512.png');
+          }
+        })
     );
   }
 });
 
-// --- Communication mise à jour ---
+// 🔄 Mise à jour immédiate si demandé
 self.addEventListener('message', event => {
   if (event.data === 'SKIP_WAITING') {
     self.skipWaiting();
