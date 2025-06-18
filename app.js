@@ -49,6 +49,23 @@ function changerLangueInterface(langue) {
   langueInterface = langue;
   localStorage.setItem('langueInterface', langue);
   document.documentElement.lang = langue;
+
+  const t = interfaceData[langueInterface] || interfaceData['fr'];
+
+  document.title = t.titrePrincipal;
+  document.getElementById('titrePrincipal').textContent = t.titrePrincipal;
+  document.getElementById('textePresentation').textContent = t.presentation;
+  document.getElementById('searchBar').placeholder = t.searchPlaceholder;
+  document.getElementById('btnEnvoyer').textContent = t.envoyer;
+  document.getElementById('chat-title').textContent = t.chatTitre;
+  document.getElementById('botIntro').innerHTML = t.botIntro;
+  document.getElementById('footerText').textContent = t.footerText;
+
+  document.getElementById('btnLangueInterface').textContent = `Interface : ${nomsLangues[langueInterface] || langueInterface.toUpperCase()} ⌄`;
+  document.getElementById('btnLangueTrad').textContent = `Traduction : ${nomsLangues[langueTrad] || langueTrad.toUpperCase()} ⌄`;
+
+  window.reponseBot = t.reponseBot || "Mot introuvable.";
+  window.nomUtilisateur = t.utilisateur || "Vous";
 }
 
 function afficherMot(motIndex = indexMot) {
@@ -65,7 +82,6 @@ function afficherMot(motIndex = indexMot) {
 function motPrecedent() {
   if (indexMot > 0) afficherMot(indexMot - 1);
 }
-
 function motSuivant() {
   if (indexMot < mots.length - 1) afficherMot(indexMot + 1);
 }
@@ -93,8 +109,6 @@ function rechercherMot() {
     document.getElementById('definition').textContent = "";
     document.getElementById('compteur').textContent = `0 / 0`;
   }
-}
-
 function envoyerMessage() {
   const input = document.getElementById('chatInput');
   const message = input.value.trim().toLowerCase();
@@ -106,7 +120,8 @@ function envoyerMessage() {
   const {
     salutations = [], salutations_triggers = [],
     remerciements = [], insulte = "Merci de rester respectueux.",
-    faq = {}, reponseMot, inconnu, triggers = {}, reponses = {}
+    faq = {}, reponseMot, inconnu, triggers = {}, reponses = {},
+    insultes = []
   } = botData;
 
   if (salutations_triggers.some(trig => message.includes(trig))) {
@@ -121,8 +136,7 @@ function envoyerMessage() {
     return;
   }
 
-  const blacklist = botData.insultes || [];
-  if (blacklist.some(bad => message.includes(bad))) {
+  if (insultes.some(bad => message.includes(bad))) {
     afficherMessage('bot', insulte);
     return;
   }
@@ -177,8 +191,9 @@ function traiterRecherche(message, reponseMot, inconnu, reponses, triggers) {
             .join('<br>')
         ).join('<hr>');
 
-        return `${reponseMot || "Voici les traductions :"}<br>${traductions}${homonymes ? "<hr>" + homonymes : ''}`;
+        return `${reponseMot || "Mot Tadaksahak disponible :"}<br>${traductions}${homonymes ? "<hr>" + homonymes : ''}`;
       });
+
       afficherMessage('bot', réponses.join('<br><br>'));
     } else {
       afficherMessage('bot', inconnu || "Mot non trouvé.");
