@@ -23,71 +23,64 @@ async function chargerDonnees() {
       axios.get('data/mots.json'),
       axios.get('data/interface-langue.json')
     ]);
-
-    motsComplet = motsRes.data || [];
+    motsComplet = motsRes.data;
     mots = [...motsComplet];
-    interfaceData = interfaceRes.data || {};
+    interfaceData = interfaceRes.data;
 
+    // Sécurité de langues
     if (!interfaceData[langueInterface]) langueInterface = 'fr';
-    if (!mots[0] || !Object.keys(mots[0]).includes(langueTrad)) langueTrad = 'fr';
+    if (!motsComplet.length || !Object.keys(motsComplet[0]).includes(langueTrad)) langueTrad = 'fr';
 
-    // Initialisation de l'interface + restauration chat
     changerLangueInterface(langueInterface);
-    restaurerHistorique();
 
     fuse = new Fuse(mots, {
-      keys: ['mot', ...Object.keys(mots[0] || {}).filter(k => k.length <= 3 && k !== 'cat')],
+      keys: ['mot', ...Object.keys(motsComplet[0] || {}).filter(k => k.length <= 3 && k !== 'cat')],
       includeScore: true,
       threshold: 0.4
     });
 
-    indexMot = parseInt(localStorage.getItem('motIndex')) || 0;
+    indexMot = parseInt(localStorage.getItem('motIndex'), 10) || 0;
     afficherMot(indexMot);
+    restaurerHistorique();
 
   } catch (err) {
-    console.error("❌ Erreur de chargement :", err);
-    alert("Erreur critique : impossible de charger les fichiers JSON.");
+    console.error("❌ Erreur chargement JSON :", err);
+    alert("Erreur lors du chargement des fichiers JSON. Vérifiez /data/mots.json et interface-langue.json");
   }
-}
-
-function sanitizeHTML(input) {
-  const div = document.createElement('div');
-  div.textContent = input;
-  return div.innerHTML;
 }
 
 function changerLangueInterface(langue) {
   if (!interfaceData[langue]) langue = 'fr';
   langueInterface = langue;
+  localStorage.setItem('langueInterface', langue);
+
+  const t = interfaceData[langue] || interfaceData['fr'];
+
   document.documentElement.lang = langue;
-
-  const t = interfaceData[langueInterface];
-  if (!t) return;
-
   document.title = t.titrePrincipal;
   document.getElementById('titrePrincipal').textContent = t.titrePrincipal;
   document.getElementById('textePresentation').textContent = t.presentation;
   document.getElementById('searchBar').placeholder = t.searchPlaceholder;
   document.getElementById('btnEnvoyer').textContent = t.envoyer;
   document.getElementById('chat-title').textContent = t.chatTitre;
-  document.getElementById('botIntro').innerHTML = sanitizeHTML(t.botIntro);
+  document.getElementById('botIntro').innerHTML = t.botIntro;
   document.getElementById('footerText').textContent = t.footerText;
 
   window.reponseBot = t.reponseBot || "Mot introuvable.";
   window.nomUtilisateur = t.utilisateur || "Vous";
 }
 
-function afficherMot(motIndex = indexMot) {
+function afficherMot(mIdx = indexMot) {
   if (!mots.length) return;
-  indexMot = Math.max(0, Math.min(mots.length - 1, motIndex));
+  indexMot = Math.max(0, Math.min(mots.length - 1, mIdx));
   localStorage.setItem('motIndex', indexMot);
-
   const mot = mots[indexMot];
+
   document.getElementById('motTexte').textContent = mot.mot || '—';
-  document.getElementById('definition').innerHTML =
-    (mot[langueTrad] || '—')
-    + (mot.cat ? ` <span style="color:#888;">(${mot.cat})</span>` : '')
-    + (mot.synonymes ? `<br><em>Synonymes :</em> ${mot.synonymes.join(', ')}` : '');
+  document.getElementById('definition').innerHTML = 
+    (mot[langueTrad] || '—') +
+    (mot.cat ? ` <span style="color:#888;">(${mot.cat})</span>` : '') +
+    (mot.synonymes ? `<br><em>Synonymes :</em> ${mot.synonymes.join(', ')}` : '');
 
   document.getElementById('compteur').textContent = `${indexMot + 1} / ${mots.length}`;
 }
@@ -102,16 +95,18 @@ function rechercherMotDebounce() {
 }
 
 function rechercherMot() {
-  const query = document.getElementById('searchBar').value.trim().toLowerCase();
-  if (!query) { mots = [...motsComplet]; afficherMot(0); return; }
-
-  const resultats = fuse.search(query);
-  mots = resultats.map(r => r.item);
-
+  const q = document.getElementById('searchBar').value.trim().toLowerCase();
+  if (!q) {
+    mots = [...motsComplet];
+    afficherMot(0);
+    return;
+  }
+  const results = fuse.search(q);
+  mots = results.map(r => r.item);
   if (mots.length) afficherMot(0);
   else {
     document.getElementById('motTexte').textContent = "❌ Aucun mot trouvé";
-    document.getElementById('definition').innerHTML = "<em>Essayez un autre mot ou vérifiez l’orthographe.</em>";
+    document.getElementById('definition').innerHTML = "<em>Essayez un autre mot ou vérifiez l'orthographe.</em>";
     document.getElementById('compteur').textContent = `0 / 0`;
   }
 }
@@ -120,54 +115,54 @@ function envoyerMessage() {
   const input = document.getElementById('chatInput');
   const message = input.value.trim().toLowerCase();
   if (!message) return;
-
-  afficherMessage('utilisateur', message); ajouterHistorique('utilisateur', message);
+  afficherMessage('utilisateur', message);
+  ajouterHistorique('utilisateur', message);
   input.value = '';
 
-  const botData = interfaceData[langueInterface]?.botIntelligence || interfaceData['fr']?.botIntelligence || {};
+  const bot = interfaceData[langueInterface]?.botIntelligence || interfaceData['fr'].botIntelligence;
   const {
-    salutations_triggers = [], salutations = [],
-    remerciements = [], insulte = "Merci de rester respectueux.",
-    insultes_triggers = [],
+    salutations = [], salutations_triggers = [],
+    remerciements = [], insultes = [],
+    insulte = "Merci de rester respectueux.",
     faq = {}, reponseMot, inconnu
-  } = botData;
+  } = bot;
 
-  if (salutations_triggers.some(t => message.includes(t))) {
-    const rep = salutations[Math.floor(Math.random() * salutations.length)] || "Bonjour !";
+  if (salutations_triggers.some(w => message.includes(w))) {
+    const rep = salutations[Math.floor(Math.random() * salutations.length)] || salutations[0] || "Bonjour !";
     afficherMessage('bot', rep); ajouterHistorique('bot', rep); return;
   }
 
-  if (remerciements.some(t => message.includes(t))) {
+  if (remerciements.some(w => message.includes(w))) {
     const rep = remerciements[Math.floor(Math.random() * remerciements.length)] || "Avec plaisir !";
     afficherMessage('bot', rep); ajouterHistorique('bot', rep); return;
   }
 
-  if (insultes_triggers.some(t => message.includes(t))) {
+  if (insultes.some(w => message.includes(w))) {
     afficherMessage('bot', insulte); ajouterHistorique('bot', insulte); return;
   }
 
-  for (const question in faq) {
-    if (message.includes(question)) {
-      const rep = faq[question];
-      afficherMessage('bot', rep); ajouterHistorique('bot', rep); return;
+  for (let q in faq) {
+    if (message.includes(q)) {
+      afficherMessage('bot', faq[q]);
+      ajouterHistorique('bot', faq[q]);
+      return;
     }
   }
 
-  const match = message.match(/comment (on )?dit[- ]?on (.+?) en ([a-z]{2})/i);
+  const match = message.match(/comment (?:on )?dit[- ]?on (.+?) en ([a-z]{2})/i);
   if (match) {
-    const motCherche = match[2].trim();
-    const langueCible = match[3].toLowerCase();
+    const [_, motCherche, langueCible] = match;
     const entree = motsComplet.find(m =>
-      Object.values(m).some(val => typeof val === 'string' && val.toLowerCase() === motCherche)
+      Object.values(m).some(v => typeof v === 'string' && v.toLowerCase() === motCherche)
     );
     if (entree && entree[langueCible]) {
-      const traduction = entree[langueCible];
+      const trad = entree[langueCible];
       const cat = entree.cat ? ` (${entree.cat})` : "";
-      const msg = `<strong>${motCherche}</strong> en ${nomsLangues[langueCible] || langueCible} se dit : <strong>${traduction}</strong>${cat}`;
-      afficherMessage('bot', msg); ajouterHistorique('bot', msg);
+      const resp = `<strong>${motCherche}</strong> en ${nomsLangues[langueCible]} : <strong>${trad}</strong>${cat}`;
+      afficherMessage('bot', resp); ajouterHistorique('bot', resp);
     } else {
-      const fallback = inconnu || "Ce mot n’est pas encore disponible.";
-      afficherMessage('bot', fallback); ajouterHistorique('bot', fallback);
+      const fb = inconnu || "Ce mot n’est pas encore disponible.";
+      afficherMessage('bot', fb); ajouterHistorique('bot', fb);
     }
     return;
   }
@@ -182,29 +177,40 @@ function traiterRecherche(message, reponseMot, inconnu) {
         k !== 'cat' && typeof v === 'string' && v.toLowerCase() === message
       )
     );
-
     if (exacts.length) {
-      const réponses = exacts.map(m => {
+      const msgs = exacts.map(m => {
+        const autres = motsComplet.filter(x => x.mot === m.mot && x !== m);
         const traductions = Object.entries(m)
-          .filter(([k]) => k !== 'mot' && k !== 'cat')
-          .map(([lang, val]) => `<strong>${lang.toUpperCase()}</strong>: ${val}`)
-          .join('<br>');
-        return `${window.reponseBot}<br>${traductions}`;
-      }).join('<br><br>');
-
-      afficherMessage('bot', réponses); ajouterHistorique('bot', réponses);
+          .filter(([k]) => !['mot', 'cat'].includes(k))
+          .map(([l,v]) => `<strong>${l.toUpperCase()}</strong>: ${v}`)
+          .join("<br>");
+        const hom = autres.map(h =>
+          Object.entries(h)
+            .filter(([k]) => !['mot','cat'].includes(k))
+            .map(([l,v]) => `<strong>${l.toUpperCase()}</strong>: ${v}`)
+            .join("<br>")
+        ).join("<hr>");
+        return `${window.reponseBot}<br>${traductions}${hom?'<hr>'+hom:''}`;
+      }).join("<br><br>");
+      afficherMessage('bot', msgs); ajouterHistorique('bot', msgs);
     } else {
-      const fallback = inconnu || "Mot non trouvé.";
-      afficherMessage('bot', fallback); ajouterHistorique('bot', fallback);
+      const fb = inconnu || "Mot non trouvé.";
+      afficherMessage('bot', fb); ajouterHistorique('bot', fb);
     }
-  }, 400);
+  }, 300);
+}
+
+function sanitize(txt) {
+  const d = document.createElement('div');
+  d.textContent = txt;
+  return d.innerHTML;
 }
 
 function afficherMessage(type, contenu) {
   const chatBox = document.getElementById('chatWindow');
   const msg = document.createElement('div');
   msg.className = `message ${type}`;
-  msg.innerHTML = `<strong>${type === 'utilisateur' ? window.nomUtilisateur : 'Bot'}:</strong> ${sanitizeHTML(contenu)}`;
+  msg.innerHTML = `<strong>${type==='utilisateur'?window.nomUtilisateur:'Bot'}:</strong> ${sanitize(contenu)}`;
   chatBox.appendChild(msg);
   chatBox.scrollTop = chatBox.scrollHeight;
 }
@@ -215,7 +221,7 @@ function ajouterHistorique(type, contenu) {
 }
 
 function restaurerHistorique() {
-  historiqueChat.forEach(msg => afficherMessage(msg.type, msg.contenu));
+  historiqueChat.forEach(({type, contenu}) => afficherMessage(type, contenu));
 }
 
-window.onload = chargerDonnees;
+window.addEventListener('DOMContentLoaded', chargerDonnees);
