@@ -14,6 +14,7 @@ const nomsLangues = {
   sv: "Svenska", ru: "Русский", zh: "中文", cs: "Čeština",
   ha: "Hausa", es: "Español", it: "Italiano"
 };
+
 let fuse = null;
 
 async function chargerDonnees() {
@@ -91,7 +92,6 @@ function motSuivant() {
 }
 
 let debounceTimeout;
-
 function rechercherMotDebounce() {
   clearTimeout(debounceTimeout);
   debounceTimeout = setTimeout(rechercherMot, 300);
@@ -110,8 +110,8 @@ function rechercherMot() {
 
   if (mots.length) afficherMot(0);
   else {
-    document.getElementById('motTexte').textContent = "Aucun résultat";
-    document.getElementById('definition').textContent = "";
+    document.getElementById('motTexte').textContent = "❌ Aucun mot trouvé";
+    document.getElementById('definition').innerHTML = "<em>Essayez un autre mot ou vérifiez l'orthographe.</em>";
     document.getElementById('compteur').textContent = `0 / 0`;
   }
 }
@@ -135,30 +135,22 @@ function envoyerMessage() {
 
   if (salutations_triggers.some(trig => message.includes(trig))) {
     const rep = salutations[Math.floor(Math.random() * salutations.length)] || "Bonjour !";
-    afficherMessage('bot', rep);
-    ajouterHistorique('bot', rep);
-    return;
+    afficherMessage('bot', rep); ajouterHistorique('bot', rep); return;
   }
 
   if (remerciements.some(trig => message.includes(trig))) {
     const rep = remerciements[Math.floor(Math.random() * remerciements.length)] || "Avec plaisir !";
-    afficherMessage('bot', rep);
-    ajouterHistorique('bot', rep);
-    return;
+    afficherMessage('bot', rep); ajouterHistorique('bot', rep); return;
   }
 
   if (insultes.some(bad => message.includes(bad))) {
-    afficherMessage('bot', insulte);
-    ajouterHistorique('bot', insulte);
-    return;
+    afficherMessage('bot', insulte); ajouterHistorique('bot', insulte); return;
   }
 
   for (const question in faq) {
     if (message.includes(question)) {
       const rep = faq[question];
-      afficherMessage('bot', rep);
-      ajouterHistorique('bot', rep);
-      return;
+      afficherMessage('bot', rep); ajouterHistorique('bot', rep); return;
     }
   }
 
@@ -173,12 +165,10 @@ function envoyerMessage() {
       const traduction = entree[langueCible];
       const cat = entree.cat ? ` (${entree.cat})` : "";
       const msg = `<strong>${motCherche}</strong> en ${nomsLangues[langueCible]} se dit : <strong>${traduction}</strong>${cat}`;
-      afficherMessage('bot', msg);
-      ajouterHistorique('bot', msg);
+      afficherMessage('bot', msg); ajouterHistorique('bot', msg);
     } else {
       const fallback = inconnu || "Ce mot n’est pas encore disponible.";
-      afficherMessage('bot', fallback);
-      ajouterHistorique('bot', fallback);
+      afficherMessage('bot', fallback); ajouterHistorique('bot', fallback);
     }
     return;
   }
@@ -209,26 +199,30 @@ function traiterRecherche(message, reponseMot, inconnu, reponses, triggers) {
             .join('<br>')
         ).join('<hr>');
 
-        const msg = `${interfaceData[langueInterface]?.reponseBot || "Mot Tadaksahak disponible :"}<br>${traductions}${homonymes ? "<hr>" + homonymes : ''}`;
+        const msg = `${window.reponseBot}<br>${traductions}${homonymes ? "<hr>" + homonymes : ''}`;
         return msg;
       });
 
       const final = réponses.join('<br><br>');
-      afficherMessage('bot', final);
-      ajouterHistorique('bot', final);
+      afficherMessage('bot', final); ajouterHistorique('bot', final);
     } else {
       const fallback = inconnu || "Mot non trouvé.";
-      afficherMessage('bot', fallback);
-      ajouterHistorique('bot', fallback);
+      afficherMessage('bot', fallback); ajouterHistorique('bot', fallback);
     }
   }, 400);
+}
+
+function sanitize(input) {
+  const div = document.createElement('div');
+  div.textContent = input;
+  return div.innerHTML;
 }
 
 function afficherMessage(type, contenu) {
   const chatBox = document.getElementById('chatWindow');
   const msg = document.createElement('div');
   msg.className = `message ${type}`;
-  msg.innerHTML = `<strong>${type === 'utilisateur' ? (window.nomUtilisateur || 'Vous') : 'Bot'}:</strong> ${contenu}`;
+  msg.innerHTML = `<strong>${type === 'utilisateur' ? window.nomUtilisateur || 'Vous' : 'Bot'}:</strong> ${sanitize(contenu)}`;
   chatBox.appendChild(msg);
   chatBox.scrollTop = chatBox.scrollHeight;
   lireTexte(contenu);
@@ -244,7 +238,10 @@ function restaurerHistorique() {
 }
 
 function lireTexte(texte) {
-  return; // lecture désactivée
+  if (!window.speechSynthesis) return;
+  const utterance = new SpeechSynthesisUtterance(texte);
+  utterance.lang = langueInterface || 'fr-FR';
+  speechSynthesis.speak(utterance);
 }
 
 window.onload = chargerDonnees;
