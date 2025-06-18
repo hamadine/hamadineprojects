@@ -75,8 +75,8 @@
   "footerContrib": "",
   "reponseBot": "Ma base lexicale est en développement. Le mot que vous cherchez sera bientôt disponible.",
   "utilisateur": "Vous"
-}
-"en": {
+  }
+  "en": {
   "precedent": "Previous",
   "suivant": "Next",
   "ecouter": "Listen",
@@ -151,7 +151,7 @@
   "reponseBot": "Our dictionary is growing. The word you asked for will be available soon.",
   "utilisateur": "You"
 }
-  "ar": {
+    "ar": {
     "precedent": "السابق",
     "suivant": "التالي",
     "ecouter": "استماع",
@@ -226,7 +226,7 @@
     "reponseBot": "قاموسنا ينمو. الكلمة التي طلبتها ستكون متاحة قريباً.",
     "utilisateur": "أنت"
   }
-  "es": {
+    "es": {
     "precedent": "Anterior",
     "suivant": "Siguiente",
     "ecouter": "Escuchar",
@@ -301,7 +301,7 @@
     "reponseBot": "Nuestro diccionario está creciendo. La palabra que buscaste estará disponible pronto.",
     "utilisateur": "Tú"
   }
-  "de": {
+    "de": {
     "precedent": "Zurück",
     "suivant": "Weiter",
     "ecouter": "Anhören",
@@ -376,7 +376,7 @@
     "reponseBot": "Unser Wörterbuch wächst. Das von dir gesuchte Wort wird bald verfügbar sein.",
     "utilisateur": "Du"
   }
-  "da": {
+    "da": {
     "precedent": "Forrige",
     "suivant": "Næste",
     "ecouter": "Lyt",
@@ -451,7 +451,7 @@
     "reponseBot": "Vores ordbog udvides. Det ord, du spurgte om, bliver snart tilgængeligt.",
     "utilisateur": "Du"
   }
-  "sv": {
+    "sv": {
     "precedent": "Föregående",
     "suivant": "Nästa",
     "ecouter": "Lyssna",
@@ -526,7 +526,7 @@
     "reponseBot": "Vår ordbok växer. Ordet du sökte kommer snart att finnas tillgängligt.",
     "utilisateur": "Du"
   }
-  "nl": {
+    "nl": {
     "precedent": "Vorige",
     "suivant": "Volgende",
     "ecouter": "Luisteren",
@@ -601,7 +601,7 @@
     "reponseBot": "Ons woordenboek groeit. Het woord dat je zocht is binnenkort beschikbaar.",
     "utilisateur": "Jij"
   }
-  "ru": {
+    "ru": {
     "precedent": "Предыдущий",
     "suivant": "Следующий",
     "ecouter": "Слушать",
@@ -676,7 +676,7 @@
     "reponseBot": "Наш словарь пополняется. Искомое тобой слово скоро появится.",
     "utilisateur": "Вы"
   }
-  "tr": {
+    "tr": {
     "precedent": "Önceki",
     "suivant": "Sonraki",
     "ecouter": "Dinle",
@@ -751,7 +751,7 @@
     "reponseBot": "Sözlüğümüz büyümeye devam ediyor. Sorduğun kelime yakında eklenecek.",
     "utilisateur": "Sen"
   }
-  "zh": {
+    "zh": {
     "precedent": "上一页",
     "suivant": "下一页",
     "ecouter": "播放",
@@ -826,7 +826,7 @@
     "reponseBot": "我们的词典正在不断扩展。你查找的词很快就会被添加。",
     "utilisateur": "你"
   }
-  "ha": {
+    "ha": {
     "precedent": "Na baya",
     "suivant": "Na gaba",
     "ecouter": "Saurara",
@@ -901,7 +901,7 @@
     "reponseBot": "Kamus ɗinmu yana kara girma. Kalmar da ka nema za ta kasance a nan ba da daɗewa ba.",
     "utilisateur": "Kai"
   }
-   "it": {
+    "it": {
     "precedent": "Precedente",
     "suivant": "Successivo",
     "ecouter": "Ascolta",
@@ -976,7 +976,1055 @@
     "reponseBot": "Il nostro dizionario è in espansione. La parola che hai cercato sarà presto disponibile.",
     "utilisateur": "Tu"
   }
-   "tm": {
+    "tm": {
+    "precedent": "Aɣerad",
+    "suivant": "Azeddi",
+    "ecouter": "Sema",
+    "rejouer": "Semat tikma",
+    "lectureAuto": "Asmeɣ tawura",
+    "chatTitre": "Asawal ak Hamadine",
+    "envoyer": "Azen",
+    "searchPlaceholder": "Nadi awal...",
+    "titrePrincipal": "Amawal n Tadaksahak s timditin",
+    "presentation": "Ad-ittawi: afaras n tmeddit i yalan i Tawalt Tadaksahak!",
+    "placeholderChat": "Sekcem awal dagi ad tgeḍ afaras awel",
+    "botIntro": "🤖 Azul, nekki d Hamadine, amnay Tadaksahak.<br>Marsa awal, ad awiɣ-it-ak!",
+    "botIntelligence": {
+      "salutations_triggers": [
+        "azul", "salam", "sawla", "hello", "hi", "ey", "selam", "tanaslemt"
+      ],
+      "salutations": [
+        "Azul!", "Ahlan s-d amawal n Tadaksahak.", "Ma tḥemmleḍ awal, ɣiɣ da i-km.",
+        "Aɣerfan a-k!", "Tebɣiḍ ad t-yesleḍ awal n Tadaksahak?"
+      ],
+      "remerciements": [
+        "tanemirt", "tanemmirt ɣef kull", "mersi", "tannɣart", "aslema"
+      ],
+      "insultes": [
+        "amawad", "amusna", "axetti", "amjaḥi", "ḥebla", "taqacut", "amḥay", "kḍi", "fukka", "ṭṭuf",
+        "assiḍ", "ḥmar", "akya", "tayri tḥemmleḍ", "aḥmaq", "acik", "awit", "ḍebḥek", "adeqqeḍ", "babur"
+      ],
+      "insulte": "Ma ulac aḥri. Nekki daɣ asleḥ ad-km t-ttafayt ✨.",
+      "faq": {
+        "who are you": "Nekki d Hamadine, amnay n Tawalt Tadaksahak.",
+        "what is tadaksahak": "Tadaksahak d awal n Idaksahak, imudan n Mali n-wassawen d Niger n-wadda.",
+        "who made this site": "Hamadine Ag Moctar i-sneɣa asaylu agi.",
+        "how are you": "Labas, tanemirt! Kečč?",
+        "what is idaksahak": "Idaksahak d imudan n awal Tadaksahak, yezrin di Sahra, iɛedren d Tuareg.",
+        "what’s your name": "Ism-iw d Hamadine, nekki d amnay-ik n Tadaksahak.",
+        "who created you": "Hamadine Ag Moctar i-sneɣa-y-iw ad-yeṭṭfey awal Tadaksahak.",
+        "what can you do": "Nekki ad k-meslay awal, ad k-sema d ad k-fesser awal n Tadaksahak.",
+        "which words can I search": "Tzemreḍ ad-tnegdeḍ awal ara tesnɛeḍ neɣ ad-seslay awal.",
+        "how many languages do you speak": "Ad-fekkem awal n Tadaksahak ɣer ugar n 15 awal."
+      },
+      "triggers": {
+        "definition": [
+          "ma d taɛrict n", "fesser", "ma t-tḥemmleḍ", "ma maʕna n", "tarict n"
+        ],
+        "langue": [
+          "tadaksahak", "awal tadaksahak", "awal n tadaksahak", "awal i tt-nnestma"
+        ],
+        "ethnie": [
+          "idaksahak", "agraw n idaksahak", "tameddurt n idaksahak", "imudan n mali", "manin idaksahak"
+        ],
+        "identite": [
+          "manek", "ma yella ism-ik", "ism-ik", "s-d man tamurt tett-id", "anwa i-sneɣ-k"
+        ],
+        "traduction": [
+          "amek ad-nni", "amettre", "sefsay", "ma d ... s ...", "ma yella awal-is s ..."
+        ]
+      },
+      "reponses": {
+        "definition_intro": "Tayri n awal agi d:",
+        "mot_introuvable": "Ulac awal-agi. Amawal-ik yellan deg uswir.",
+        "tadaksahak": "*Tadaksahak* d awal n imudan n Mali (Gao, Ménaka) d Niger n-wadda. Yella deg-s tadakli n awal Berber d Songhay.",
+        "idaksahak": "*Idaksahak* d imudan n Sahra, yezrin d Tuareg, s awal Tadaksahak.",
+        "identite": "Nekki d Hamadine, amnay-ik n awal Tadaksahak. S-al ma tebɣiḍ!"
+      }
+    },
+    "histoireTitle": "Tiṭṭawin n Tawarit",
+    "histoireBientot": "Ad-twaliḍ iwennaḍen n tawarit n Tameddurt Tadaksahak.",
+    "archivesTitle": "Tiṭṭawin n Iḥeqqiyen",
+    "archivesBientot": "Sken tawuriwin n agraw Idaksahak.",
+  {
+  "fr": {
+  "precedent": "Précédent",
+  "suivant": "Suivant",
+  "ecouter": "Écouter",
+  "rejouer": "Réécouter",
+  "lectureAuto": "Lecture auto",
+  "chatTitre": "Discussion avec Hamadine",
+  "envoyer": "Envoyer",
+  "searchPlaceholder": "Rechercher un mot...",
+  "titrePrincipal": "Dictionnaire Tadaksahak Multilingue",
+  "presentation": "Très bientôt, découvrez ici une aventure collaborative dédiée à la langue Tadaksahak !",
+  "placeholderChat": "Écrivez un mot ici pour lancer une recherche complète et rapide",
+  "botIntro": "🤖 Salut, je suis Hamadine le bot Tadaksahak.<br>Demandez-moi un mot et je vous le trouve rapidement&nbsp;!",
+  "botIntelligence": {
+    "salutations_triggers": [
+      "salut", "bonjour", "bonsoir", "salem", "salam", "hello", "yo", "hé", "coucou", "hey", "wesh"
+    ],
+    "salutations": [
+      "Bonjour à toi !", "Bienvenue sur le dictionnaire Tadaksahak.", "Salam ! Que puis-je faire pour toi ?",
+      "Heureux de te voir ici !", "Tu veux apprendre un mot Tadaksahak ?"
+    ],
+    "remerciements": [
+      "merci", "merci beaucoup", "c’est gentil", "je te remercie", "merci bien", "trop cool", "top", "respect"
+    ],
+    "insultes": [
+      "con", "idiot", "imbécile", "stupide", "crétin", "abruti", "débile", "connard", "connasse", "enfoiré", "salaud",
+      "salopard", "pute", "enculé", "fils de", "merdeux", "va chier", "nique", "bordel", "chiant", "dégage", "casse-toi",
+      "ta gueule", "ferme-la", "t’es nul", "va mourir", "gros naze", "gros con", "tarlouze", "baltringue"
+    ],
+    "insulte": "Merci de rester respectueux. Je suis ici pour t’aider avec bienveillance ✨.",
+    "faq": {
+      "qui es-tu": "Je suis Hamadine, le bot Tadaksahak.",
+      "c’est quoi tadaksahak": "Le *Tadaksahak* est une langue parlée par la communauté *Idaksahak*, un peuple pasteur nomade du *nord du Mali* (Ménaka, Gao) et de l’est du *Niger*.",
+      "qui a fait ce site": "Ce site a été conçu par Hamadine Ag Moctar.",
+      "comment ça va": "Je vais très bien, merci ! Et toi ?",
+      "c’est quoi idaksahak": "Les *Idaksahak* sont un peuple nomade pasteur du nord du Mali et de l’est du Niger, parlant le Tadaksahak. Culture riche, histoire profonde.",
+      "comment tu t'appelles": "Je m’appelle Hamadine, et je suis ton assistant linguistique Tadaksahak.",
+      "ton nom": "Je suis Hamadine, ravi de te rencontrer.",
+      "qui t’a créé": "Je suis une création de Hamadine Ag Moctar, pour transmettre la langue Tadaksahak.",
+      "que fais-tu": "Je t’aide à découvrir, écouter et traduire des mots en Tadaksahak.",
+      "quels mots je peux chercher": "Tu peux chercher n’importe quel mot connu dans le dictionnaire, ou me demander une traduction.",
+      "tu parles combien de langues": "Je peux traduire le Tadaksahak en plus de 15 langues différentes pour toi."
+    },
+    "triggers": {
+      "definition": [
+        "quelle est la définition de", "c’est quoi", "définis", "définition de", "que veut dire", "explique"
+      ],
+      "langue": [
+        "tadaksahak", "langue tadaksahak", "parle tadaksahak", "mot tadaksahak", "mot en tadaksahak"
+      ],
+      "ethnie": [
+        "idaksahak", "peuple idaksahak", "les idaksahak", "ethnie idaksahak", "culture idaksahak"
+      ],
+      "identite": [
+        "qui es-tu", "comment tu t’appelles", "ton nom", "t’es qui", "tu viens d’où", "d’où tu viens"
+      ],
+      "traduction": [
+        "comment on dit", "comment dit-on", "traduction de", "traduire", "dis-moi comment on dit", "c’est quoi en"
+      ]
+    },
+    "reponses": {
+      "definition_intro": "Voici la définition de",
+      "mot_introuvable": "Ce mot n’est pas encore disponible. Notre base lexicale est en cours de développement.",
+      "tadaksahak": "Le *Tadaksahak* est une langue afro-asiatique parlée par le peuple Idaksahak dans le nord du Mali (Ménaka, Gao) et l’est du Niger. Elle est influencée par les langues berbères et songhaï.",
+      "idaksahak": "Les *Idaksahak* sont une population nomade pastorale du nord du Mali, historiquement liée à l’Azawad. Ils pratiquent l’élevage, parlent le Tadaksahak, et sont culturellement connectés aux Touaregs.",
+      "identite": "Je suis Hamadine, ton assistant linguistique Tadaksahak. Pose-moi n’importe quelle question !"
+    }
+  },
+  "histoireTitle": "Section Histoire",
+  "histoireBientot": "Découvrez ici des textes historiques captivants sur la culture Tadaksahak.",
+  "archivesTitle": "Section Archives",
+  "archivesBientot": "Consultez des articles historiques sur les Idaksahak.",
+  "footerText": "© 2025 • Tadaksahak Multilingue avec Hamadine.",
+  "footerContrib": "",
+  "reponseBot": "Ma base lexicale est en développement. Le mot que vous cherchez sera bientôt disponible.",
+  "utilisateur": "Vous"
+  }
+  "en": {
+  "precedent": "Previous",
+  "suivant": "Next",
+  "ecouter": "Listen",
+  "rejouer": "Replay",
+  "lectureAuto": "Auto Play",
+  "chatTitre": "Chat with Hamadine",
+  "envoyer": "Send",
+  "searchPlaceholder": "Search a word...",
+  "titrePrincipal": "Multilingual Tadaksahak Dictionary",
+  "presentation": "Coming soon: discover a collaborative adventure dedicated to the Tadaksahak language!",
+  "placeholderChat": "Type a word here to launch a fast and complete search",
+  "botIntro": "🤖 Hi, I'm Hamadine, the Tadaksahak bot.<br>Ask me a word and I’ll find it for you!",
+  "botIntelligence": {
+    "salutations_triggers": [
+      "hi", "hello", "hey", "good morning", "good evening", "salam", "greetings", "yo", "sup"
+    ],
+    "salutations": [
+      "Hello there!", "Welcome to the Tadaksahak dictionary.", "Hi! How can I help you today?",
+      "Glad to see you here!", "Want to learn a new Tadaksahak word?"
+    ],
+    "remerciements": [
+      "thanks", "thank you", "appreciate it", "thanks a lot", "cheers", "much appreciated"
+    ],
+    "insultes": [
+      "stupid", "idiot", "dumb", "fool", "moron", "jerk", "asshole", "bastard", "bitch", "screw you",
+      "shut up", "fuck off", "retard", "go die", "piece of shit", "loser", "trash", "scum", "crap", "douchebag"
+    ],
+    "insulte": "Please remain respectful. I’m here to help with kindness ✨.",
+    "faq": {
+      "who are you": "I’m Hamadine, the Tadaksahak bot.",
+      "what is tadaksahak": "Tadaksahak is a language spoken by the *Idaksahak* community — nomadic herders mainly from northern *Mali* and eastern *Niger*.",
+      "who made this site": "This site was created by Hamadine Ag Moctar.",
+      "how are you": "I’m doing great, thank you! And you?",
+      "what is idaksahak": "*Idaksahak* are a nomadic pastoralist people from northern Mali and eastern Niger, with a rich culture and a deep connection to the Sahara.",
+      "what’s your name": "My name is Hamadine, and I’m your Tadaksahak language assistant.",
+      "who created you": "I was created by Hamadine Ag Moctar to preserve and share the Tadaksahak language.",
+      "what can you do": "I help you discover, listen to, and translate Tadaksahak words.",
+      "which words can I search": "You can search any word in the dictionary or ask me to translate one.",
+      "how many languages do you speak": "I can translate Tadaksahak into more than 15 languages for you."
+    },
+    "triggers": {
+      "definition": [
+        "what is the definition of", "define", "explain", "what does it mean", "meaning of", "definition of"
+      ],
+      "langue": [
+        "tadaksahak", "tadaksahak language", "speak tadaksahak", "word in tadaksahak"
+      ],
+      "ethnie": [
+        "idaksahak", "idaksahak people", "idaksahak culture", "nomads of mali", "who are idaksahak"
+      ],
+      "identite": [
+        "who are you", "what’s your name", "your name", "where are you from", "who made you"
+      ],
+      "traduction": [
+        "how do you say", "how to say", "translate", "translation of", "what is ... in"
+      ]
+    },
+    "reponses": {
+      "definition_intro": "Here is the definition of",
+      "mot_introuvable": "This word is not yet available. Our lexical database is growing.",
+      "tadaksahak": "*Tadaksahak* is an Afro-Asiatic language spoken in northern Mali (Gao, Ménaka) and eastern Niger. It is influenced by Berber and Songhai languages.",
+      "idaksahak": "*Idaksahak* are a pastoral nomadic people of northern Mali, historically linked to the Azawad. They speak Tadaksahak and are culturally close to the Tuaregs.",
+      "identite": "I'm Hamadine, your Tadaksahak language assistant. Ask me anything!"
+    }
+  },
+  "histoireTitle": "History Section",
+  "histoireBientot": "Discover captivating historical texts about Tadaksahak culture here.",
+  "archivesTitle": "Archives Section",
+  "archivesBientot": "Browse historical documents about the Idaksahak people.",
+  "footerText": "© 2025 • Multilingual Tadaksahak with Hamadine.",
+  "footerContrib": "",
+  "reponseBot": "Our dictionary is growing. The word you asked for will be available soon.",
+  "utilisateur": "You"
+}
+    "ar": {
+    "precedent": "السابق",
+    "suivant": "التالي",
+    "ecouter": "استماع",
+    "rejouer": "إعادة",
+    "lectureAuto": "تشغيل تلقائي",
+    "chatTitre": "الدردشة مع حمادين",
+    "envoyer": "إرسال",
+    "searchPlaceholder": "ابحث عن كلمة...",
+    "titrePrincipal": "قاموس تداكسهاك متعدد اللغات",
+    "presentation": "قريباً: اكتشف مغامرة تعاونية مخصصة للغة التداكسهاك!",
+    "placeholderChat": "اكتب كلمة هنا لبدء بحث سريع وشامل",
+    "botIntro": "🤖 مرحباً، أنا حمادين، بوت التداكسهاك.<br>اسألني عن كلمة وسأجدها لك!",
+    "botIntelligence": {
+      "salutations_triggers": [
+        "مرحباً", "السلام عليكم", "أهلاً", "صباح الخير", "مساء الخير", "تحياتي", "هاي", "كيف الحال"
+      ],
+      "salutations": [
+        "مرحباً بك!", "مرحباً في قاموس التداكسهاك.", "مرحباً! كيف يمكنني مساعدتك اليوم؟",
+        "سعيد برؤيتك هنا!", "هل تريد تعلم كلمة جديدة بالتداكسهاك؟"
+      ],
+      "remerciements": [
+        "شكراً", "شكرًا جزيلاً", "ممتن لك", "شكراً لك", "أقدر ذلك", "ممنون لك"
+      ],
+      "insultes": [
+        "غبي", "أحمق", "غباء", "أبله", "مغفل", "حقير", "وضيع", "لعين", "حقير", "اخرس",
+        "ابتعد", "توقف عن الكلام", "أبله", "اذهب تموت", "نذل", "خاسر", "قمامة", "سافل", "حقير", "حقير"
+      ],
+      "insulte": "يرجى الالتزام بالاحترام. أنا هنا لأساعد بلطف ✨.",
+      "faq": {
+        "who are you": "أنا حمادين، بوت التداكسهاك.",
+        "what is tadaksahak": "التداكسهاك هي لغة يتحدث بها مجتمع *الإداكسهاك* — رعاة رحل من شمال *مالي* وشرق *النيجر*.",
+        "who made this site": "تم إنشاء هذا الموقع بواسطة حمادين أغ مختار.",
+        "how are you": "أنا بخير، شكراً! وأنت؟",
+        "what is idaksahak": "*الإداكسهاك* هم شعب رعوي رحل من شمال مالي وشرق النيجر، لهم ثقافة غنية وارتباط عميق بالصحراء الكبرى.",
+        "what’s your name": "اسمي حمادين، وأنا مساعدك للغة التداكسهاك.",
+        "who created you": "تم إنشائي بواسطة حمادين أغ مختار للحفاظ على لغة التداكسهاك ومشاركتها.",
+        "what can you do": "أساعدك على اكتشاف والاستماع وترجمة كلمات التداكسهاك.",
+        "which words can I search": "يمكنك البحث عن أي كلمة في القاموس أو طلب الترجمة مني.",
+        "how many languages do you speak": "أستطيع ترجمة التداكسهاك إلى أكثر من 15 لغة."
+      },
+      "triggers": {
+        "definition": [
+          "ما تعريف", "عرف", "اشرح", "ماذا يعني", "معنى", "تعريف"
+        ],
+        "langue": [
+          "تداكسهاك", "لغة التداكسهاك", "تحدث التداكسهاك", "كلمة بالتداكسهاك"
+        ],
+        "ethnie": [
+          "إداكسهاك", "شعب إداكسهاك", "ثقافة إداكسهاك", "رحل مالي", "من هم الإداكسهاك"
+        ],
+        "identite": [
+          "من أنت", "ما اسمك", "اسمك", "من أين أنت", "من صنعك"
+        ],
+        "traduction": [
+          "كيف تقول", "كيفية قول", "ترجم", "ترجمة", "ما هي ... بـ"
+        ]
+      },
+      "reponses": {
+        "definition_intro": "إليك تعريف",
+        "mot_introuvable": "هذه الكلمة غير متوفرة حالياً. قاعدة بياناتنا تتوسع.",
+        "tadaksahak": "*التداكسهاك* هي لغة أفرو-آسيوية يتحدث بها شمال مالي (غاو، ميناكا) وشرق النيجر، وتأثرت باللغات البربرية والسونغاي.",
+        "idaksahak": "*الإداكسهاك* هم شعب رعوي رحل من شمال مالي، مرتبطون تاريخياً بالأزواد. يتحدثون التداكسهاك وثقافتهم قريبة من الطوارق.",
+        "identite": "أنا حمادين، مساعدك للغة التداكسهاك. اسألني أي شيء!"
+      }
+    },
+    "histoireTitle": "قسم التاريخ",
+    "histoireBientot": "اكتشف نصوصاً تاريخية جذابة عن ثقافة التداكسهاك هنا.",
+    "archivesTitle": "قسم الأرشيف",
+    "archivesBientot": "تصفح وثائق تاريخية عن شعب الإداكسهاك.",
+    "footerText": "© 2025 • قاموس التداكسهاك متعدد اللغات مع حمادين.",
+    "footerContrib": "",
+    "reponseBot": "قاموسنا ينمو. الكلمة التي طلبتها ستكون متاحة قريباً.",
+    "utilisateur": "أنت"
+  }
+    "es": {
+    "precedent": "Anterior",
+    "suivant": "Siguiente",
+    "ecouter": "Escuchar",
+    "rejouer": "Repetir",
+    "lectureAuto": "Reproducción automática",
+    "chatTitre": "Chat con Hamadine",
+    "envoyer": "Enviar",
+    "searchPlaceholder": "Busca una palabra...",
+    "titrePrincipal": "Diccionario Multilingüe Tadaksahak",
+    "presentation": "Próximamente: ¡descubre una aventura colaborativa dedicada al idioma Tadaksahak!",
+    "placeholderChat": "Escribe una palabra aquí para iniciar una búsqueda rápida y completa",
+    "botIntro": "🤖 Hola, soy Hamadine, el bot Tadaksahak.<br>¡Pregúntame una palabra y la encontraré para ti!",
+    "botIntelligence": {
+      "salutations_triggers": [
+        "hola", "buenos días", "buenas tardes", "buenas noches", "saludos", "qué tal", "hey", "qué pasa"
+      ],
+      "salutations": [
+        "¡Hola!", "Bienvenido al diccionario Tadaksahak.", "¡Hola! ¿En qué puedo ayudarte hoy?",
+        "¡Me alegra verte aquí!", "¿Quieres aprender una nueva palabra Tadaksahak?"
+      ],
+      "remerciements": [
+        "gracias", "muchas gracias", "te lo agradezco", "mil gracias", "agradecido", "muy agradecido"
+      ],
+      "insultes": [
+        "estúpido", "idiota", "tonto", "imbécil", "cretino", "jerk", "gilipollas", "cabron", "zorra", "vete a la mierda",
+        "cállate", "jódete", "retrasado", "vete a morir", "pedazo de mierda", "perdedor", "basura", "escoria", "mierda", "imbécil"
+      ],
+      "insulte": "Por favor, mantén el respeto. Estoy aquí para ayudar con amabilidad ✨.",
+      "faq": {
+        "who are you": "Soy Hamadine, el bot Tadaksahak.",
+        "what is tadaksahak": "El Tadaksahak es un idioma hablado por la comunidad *Idaksahak* — pastores nómadas principalmente del norte de *Malí* y el este de *Níger*.",
+        "who made this site": "Este sitio fue creado por Hamadine Ag Moctar.",
+        "how are you": "Estoy muy bien, ¡gracias! ¿Y tú?",
+        "what is idaksahak": "Los *Idaksahak* son un pueblo pastor nómada del norte de Malí y este de Níger, con una cultura rica y una profunda conexión con el Sahara.",
+        "what’s your name": "Me llamo Hamadine, y soy tu asistente de idioma Tadaksahak.",
+        "who created you": "Fui creado por Hamadine Ag Moctar para preservar y compartir el idioma Tadaksahak.",
+        "what can you do": "Te ayudo a descubrir, escuchar y traducir palabras en Tadaksahak.",
+        "which words can I search": "Puedes buscar cualquier palabra en el diccionario o pedirme que traduzca una.",
+        "how many languages do you speak": "Puedo traducir Tadaksahak a más de 15 idiomas para ti."
+      },
+      "triggers": {
+        "definition": [
+          "¿qué significa", "definir", "explicar", "qué quiere decir", "significado de", "definición de"
+        ],
+        "langue": [
+          "tadaksahak", "idioma tadaksahak", "hablar tadaksahak", "palabra en tadaksahak"
+        ],
+        "ethnie": [
+          "idaksahak", "pueblo idaksahak", "cultura idaksahak", "nómadas de malí", "quiénes son los idaksahak"
+        ],
+        "identite": [
+          "quién eres", "cómo te llamas", "tu nombre", "de dónde eres", "quién te creó"
+        ],
+        "traduction": [
+          "cómo se dice", "cómo decir", "traducir", "traducción de", "qué es ... en"
+        ]
+      },
+      "reponses": {
+        "definition_intro": "Aquí está la definición de",
+        "mot_introuvable": "Esta palabra aún no está disponible. Nuestra base de datos léxica está creciendo.",
+        "tadaksahak": "*Tadaksahak* es un idioma afroasiático hablado en el norte de Malí (Gao, Ménaka) y este de Níger. Está influenciado por las lenguas bereberes y songhai.",
+        "idaksahak": "Los *Idaksahak* son un pueblo nómada pastor del norte de Malí, históricamente vinculados al Azawad. Hablan Tadaksahak y están culturalmente cercanos a los tuareg.",
+        "identite": "Soy Hamadine, tu asistente del idioma Tadaksahak. ¡Pregúntame lo que quieras!"
+      }
+    },
+    "histoireTitle": "Sección de Historia",
+    "histoireBientot": "Descubre aquí textos históricos fascinantes sobre la cultura Tadaksahak.",
+    "archivesTitle": "Sección de Archivos",
+    "archivesBientot": "Consulta documentos históricos sobre el pueblo Idaksahak.",
+    "footerText": "© 2025 • Tadaksahak multilingüe con Hamadine.",
+    "footerContrib": "",
+    "reponseBot": "Nuestro diccionario está creciendo. La palabra que buscaste estará disponible pronto.",
+    "utilisateur": "Tú"
+  }
+    "de": {
+    "precedent": "Zurück",
+    "suivant": "Weiter",
+    "ecouter": "Anhören",
+    "rejouer": "Wiederholen",
+    "lectureAuto": "Automatische Wiedergabe",
+    "chatTitre": "Chat mit Hamadine",
+    "envoyer": "Senden",
+    "searchPlaceholder": "Suche ein Wort...",
+    "titrePrincipal": "Mehrsprachiges Tadaksahak-Wörterbuch",
+    "presentation": "Demnächst: Entdecke ein gemeinschaftliches Abenteuer, das der Tadaksahak-Sprache gewidmet ist!",
+    "placeholderChat": "Gib hier ein Wort ein, um eine schnelle und vollständige Suche zu starten",
+    "botIntro": "🤖 Hallo, ich bin Hamadine, der Tadaksahak-Bot.<br>Frag mich nach einem Wort und ich finde es für dich!",
+    "botIntelligence": {
+      "salutations_triggers": [
+        "hallo", "hi", "guten morgen", "guten abend", "grüße", "hey", "was geht", "servus"
+      ],
+      "salutations": [
+        "Hallo!", "Willkommen im Tadaksahak-Wörterbuch.", "Hi! Wie kann ich dir heute helfen?",
+        "Schön, dich hier zu sehen!", "Möchtest du ein neues Tadaksahak-Wort lernen?"
+      ],
+      "remerciements": [
+        "danke", "vielen dank", "dankeschön", "besten dank", "merci", "sehr nett"
+      ],
+      "insultes": [
+        "dumm", "idiot", "blöd", "trottel", "depp", "arschloch", "mistkerl", "bastard", "zicke", "verpiss dich",
+        "halt die klappe", "fick dich", "vollidiot", "geh sterben", "stück scheiße", "verlierer", "müll", "abschaum", "scheiße", "drecksack"
+      ],
+      "insulte": "Bitte bleib respektvoll. Ich bin hier, um freundlich zu helfen ✨.",
+      "faq": {
+        "who are you": "Ich bin Hamadine, der Tadaksahak-Bot.",
+        "what is tadaksahak": "Tadaksahak ist eine afroasiatische Sprache, die von der *Idaksahak*-Gemeinschaft gesprochen wird — nomadische Hirten hauptsächlich aus Nord-*Mali* und Ost-*Niger*.",
+        "who made this site": "Diese Seite wurde von Hamadine Ag Moctar erstellt.",
+        "how are you": "Mir geht es gut, danke! Und dir?",
+        "what is idaksahak": "*Idaksahak* sind ein nomadisches Hirtenvolk aus Nord-Mali und Ost-Niger mit einer reichen Kultur und enger Verbindung zur Sahara.",
+        "what’s your name": "Ich heiße Hamadine und bin dein Tadaksahak-Sprachassistent.",
+        "who created you": "Ich wurde von Hamadine Ag Moctar erschaffen, um die Tadaksahak-Sprache zu bewahren und zu teilen.",
+        "what can you do": "Ich helfe dir, Tadaksahak-Wörter zu entdecken, anzuhören und zu übersetzen.",
+        "which words can I search": "Du kannst jedes Wort im Wörterbuch suchen oder mich um eine Übersetzung bitten.",
+        "how many languages do you speak": "Ich kann Tadaksahak in mehr als 15 Sprachen für dich übersetzen."
+      },
+      "triggers": {
+        "definition": [
+          "was bedeutet", "definiere", "erkläre", "was heißt", "bedeutung von", "definition von"
+        ],
+        "langue": [
+          "tadaksahak", "tadaksahak sprache", "tadaksahak sprechen", "wort auf tadaksahak"
+        ],
+        "ethnie": [
+          "idaksahak", "idaksahak volk", "idaksahak kultur", "nomaden aus mali", "wer sind die idaksahak"
+        ],
+        "identite": [
+          "wer bist du", "wie heißt du", "dein name", "woher kommst du", "wer hat dich gemacht"
+        ],
+        "traduction": [
+          "wie sagt man", "wie sagt man auf", "übersetze", "übersetzung von", "was ist ... auf"
+        ]
+      },
+      "reponses": {
+        "definition_intro": "Hier ist die Definition von",
+        "mot_introuvable": "Dieses Wort ist noch nicht verfügbar. Unsere Lexikaldatenbank wächst.",
+        "tadaksahak": "*Tadaksahak* ist eine afroasiatische Sprache, die im Norden von Mali (Gao, Ménaka) und im Osten von Niger gesprochen wird. Sie ist von Berber- und Songhai-Sprachen beeinflusst.",
+        "idaksahak": "*Idaksahak* sind ein nomadisches Hirtenvolk aus Nord-Mali, historisch mit Azawad verbunden. Sie sprechen Tadaksahak und sind kulturell den Tuareg nahe.",
+        "identite": "Ich bin Hamadine, dein Tadaksahak-Sprachassistent. Frag mich alles!"
+      }
+    },
+    "histoireTitle": "Geschichtsbereich",
+    "histoireBientot": "Entdecke hier bald faszinierende historische Texte über die Tadaksahak-Kultur.",
+    "archivesTitle": "Archivbereich",
+    "archivesBientot": "Durchstöbere historische Dokumente über das Idaksahak-Volk.",
+    "footerText": "© 2025 • Mehrsprachiges Tadaksahak mit Hamadine.",
+    "footerContrib": "",
+    "reponseBot": "Unser Wörterbuch wächst. Das von dir gesuchte Wort wird bald verfügbar sein.",
+    "utilisateur": "Du"
+  }
+    "da": {
+    "precedent": "Forrige",
+    "suivant": "Næste",
+    "ecouter": "Lyt",
+    "rejouer": "Afspil igen",
+    "lectureAuto": "Autoafspilning",
+    "chatTitre": "Chat med Hamadine",
+    "envoyer": "Send",
+    "searchPlaceholder": "Søg efter et ord...",
+    "titrePrincipal": "Tadaksahak Flersproget Ordbog",
+    "presentation": "Kommer snart: Oplev et fælles eventyr dedikeret til Tadaksahak-sproget!",
+    "placeholderChat": "Skriv et ord her for at starte en hurtig og komplet søgning",
+    "botIntro": "🤖 Hej, jeg er Hamadine, Tadaksahak-botten.<br>Spørg mig om et ord, så finder jeg det for dig!",
+    "botIntelligence": {
+      "salutations_triggers": [
+        "hej", "hallo", "godmorgen", "godaften", "hejsa", "yo", "hvordan går det", "salaam"
+      ],
+      "salutations": [
+        "Hej med dig!", "Velkommen til Tadaksahak-ordbogen.", "Hej! Hvordan kan jeg hjælpe dig i dag?",
+        "Godt at se dig her!", "Vil du lære et nyt Tadaksahak-ord?"
+      ],
+      "remerciements": [
+        "tak", "mange tak", "tak skal du have", "tusind tak", "jeg sætter pris på det", "taknemmelig"
+      ],
+      "insultes": [
+        "dum", "idiot", "fjols", "nar", "tåbe", "røvhul", "lort", "taber", "klovn", "skrid",
+        "hold kæft", "fuck dig", "gå væk", "gå dø", "affald", "sæk lort", "dumrian", "pikhoved", "bitch", "møgsvin"
+      ],
+      "insulte": "Venligst hold en respektfuld tone. Jeg er her for at hjælpe med venlighed ✨.",
+      "faq": {
+        "who are you": "Jeg er Hamadine, Tadaksahak-botten.",
+        "what is tadaksahak": "Tadaksahak er et afro-asiatisk sprog, som tales af *Idaksahak*-samfundet — nomadiske hyrder hovedsageligt fra det nordlige *Mali* og østlige *Niger*.",
+        "who made this site": "Denne side er skabt af Hamadine Ag Moctar.",
+        "how are you": "Jeg har det godt, tak! Og du?",
+        "what is idaksahak": "*Idaksahak* er et nomadisk hyrdefolk fra det nordlige Mali og østlige Niger, med en rig kultur og stærk forbindelse til Sahara.",
+        "what’s your name": "Mit navn er Hamadine, og jeg er din Tadaksahak-sproghjælper.",
+        "who created you": "Jeg blev skabt af Hamadine Ag Moctar for at bevare og dele Tadaksahak-sproget.",
+        "what can you do": "Jeg hjælper dig med at opdage, lytte til og oversætte Tadaksahak-ord.",
+        "which words can I search": "Du kan søge på ethvert ord i ordbogen eller bede mig om at oversætte.",
+        "how many languages do you speak": "Jeg kan oversætte Tadaksahak til mere end 15 sprog for dig."
+      },
+      "triggers": {
+        "definition": [
+          "hvad betyder", "definér", "forklar", "hvad vil det sige", "betydningen af", "definition af"
+        ],
+        "langue": [
+          "tadaksahak", "tadaksahak-sprog", "tale tadaksahak", "ord på tadaksahak"
+        ],
+        "ethnie": [
+          "idaksahak", "idaksahak-folk", "idaksahak-kultur", "nomader i mali", "hvem er idaksahak"
+        ],
+        "identite": [
+          "hvem er du", "hvad hedder du", "dit navn", "hvor er du fra", "hvem har skabt dig"
+        ],
+        "traduction": [
+          "hvordan siger man", "hvordan udtaler man", "oversæt", "oversættelse af", "hvad er ... på"
+        ]
+      },
+      "reponses": {
+        "definition_intro": "Her er definitionen af",
+        "mot_introuvable": "Dette ord er endnu ikke tilgængeligt. Vores leksikon vokser stadig.",
+        "tadaksahak": "*Tadaksahak* er et afro-asiatisk sprog, der tales i det nordlige Mali (Gao, Ménaka) og østlige Niger. Det er påvirket af berbiske og songhai-sprog.",
+        "idaksahak": "*Idaksahak* er et nomadisk hyrdefolk fra det nordlige Mali, historisk forbundet med Azawad. De taler Tadaksahak og er kulturelt tæt på Tuaregerne.",
+        "identite": "Jeg er Hamadine, din Tadaksahak-sproghjælper. Spørg mig om hvad som helst!"
+      }
+    },
+    "histoireTitle": "Historieafsnit",
+    "histoireBientot": "Opdag spændende historiske tekster om Tadaksahak-kulturen her.",
+    "archivesTitle": "Arkivsektion",
+    "archivesBientot": "Gennemse historiske dokumenter om Idaksahak-folket.",
+    "footerText": "© 2025 • Flersproget Tadaksahak med Hamadine.",
+    "footerContrib": "",
+    "reponseBot": "Vores ordbog udvides. Det ord, du spurgte om, bliver snart tilgængeligt.",
+    "utilisateur": "Du"
+  }
+    "sv": {
+    "precedent": "Föregående",
+    "suivant": "Nästa",
+    "ecouter": "Lyssna",
+    "rejouer": "Spela igen",
+    "lectureAuto": "Autouppspelning",
+    "chatTitre": "Chatta med Hamadine",
+    "envoyer": "Skicka",
+    "searchPlaceholder": "Sök ett ord...",
+    "titrePrincipal": "Flerspråkigt Tadaksahak-lexikon",
+    "presentation": "Kommer snart: upptäck ett samarbetsäventyr tillägnat Tadaksahak-språket!",
+    "placeholderChat": "Skriv ett ord här för att starta en snabb och fullständig sökning",
+    "botIntro": "🤖 Hej, jag är Hamadine, Tadaksahak-boten.<br>Fråga mig om ett ord så hittar jag det åt dig!",
+    "botIntelligence": {
+      "salutations_triggers": [
+        "hej", "hallå", "god morgon", "god kväll", "tjena", "yo", "vad händer", "salam"
+      ],
+      "salutations": [
+        "Hej där!", "Välkommen till Tadaksahak-ordboken.", "Hej! Hur kan jag hjälpa dig idag?",
+        "Kul att se dig här!", "Vill du lära dig ett nytt Tadaksahak-ord?"
+      ],
+      "remerciements": [
+        "tack", "tack så mycket", "tackar", "många tack", "uppskattar det", "tacksam"
+      ],
+      "insultes": [
+        "dum", "idiot", "fåntratt", "dåre", "pucko", "rövhål", "skitstövel", "bastard", "fitta", "dra åt helvete",
+        "håll käften", "fuck dig", "efterbliven", "dra och dö", "skit", "förlorare", "skräp", "avskum", "idiot", "äckel"
+      ],
+      "insulte": "Var snäll och visa respekt. Jag är här för att hjälpa dig vänligt ✨.",
+      "faq": {
+        "who are you": "Jag är Hamadine, Tadaksahak-boten.",
+        "what is tadaksahak": "Tadaksahak är ett afroasiatiskt språk som talas av *Idaksahak*-folket — nomadiska herdar från norra *Mali* och östra *Niger*.",
+        "who made this site": "Den här sidan skapades av Hamadine Ag Moctar.",
+        "how are you": "Jag mår bra, tack! Och du?",
+        "what is idaksahak": "*Idaksahak* är ett nomadiskt herdefolk från norra Mali och östra Niger, med en rik kultur och stark koppling till Sahara.",
+        "what’s your name": "Mitt namn är Hamadine, och jag är din Tadaksahak-språkhjälpare.",
+        "who created you": "Jag skapades av Hamadine Ag Moctar för att bevara och dela Tadaksahak-språket.",
+        "what can you do": "Jag hjälper dig att upptäcka, lyssna på och översätta Tadaksahak-ord.",
+        "which words can I search": "Du kan söka efter vilket ord som helst i ordboken eller be mig översätta.",
+        "how many languages do you speak": "Jag kan översätta Tadaksahak till mer än 15 språk åt dig."
+      },
+      "triggers": {
+        "definition": [
+          "vad betyder", "definiera", "förklara", "vad menas med", "betydelsen av", "definition av"
+        ],
+        "langue": [
+          "tadaksahak", "tadaksahak-språket", "tala tadaksahak", "ord på tadaksahak"
+        ],
+        "ethnie": [
+          "idaksahak", "idaksahak-folket", "idaksahak-kulturen", "nomader i mali", "vilka är idaksahak"
+        ],
+        "identite": [
+          "vem är du", "vad heter du", "ditt namn", "var kommer du ifrån", "vem skapade dig"
+        ],
+        "traduction": [
+          "hur säger man", "hur uttalar man", "översätt", "översättning av", "vad är ... på"
+        ]
+      },
+      "reponses": {
+        "definition_intro": "Här är definitionen av",
+        "mot_introuvable": "Detta ord är ännu inte tillgängligt. Vår ordlista växer.",
+        "tadaksahak": "*Tadaksahak* är ett afroasiatiskt språk som talas i norra Mali (Gao, Ménaka) och östra Niger. Det är påverkat av berber- och songhai-språken.",
+        "idaksahak": "*Idaksahak* är ett nomadfolk från norra Mali, historiskt kopplade till Azawad. De talar Tadaksahak och är kulturellt nära tuaregerna.",
+        "identite": "Jag är Hamadine, din Tadaksahak-språkhjälpare. Fråga mig vad du vill!"
+      }
+    },
+    "histoireTitle": "Historiksektionen",
+    "histoireBientot": "Upptäck fascinerande historiska texter om Tadaksahak-kulturen här.",
+    "archivesTitle": "Arkivsektionen",
+    "archivesBientot": "Bläddra bland historiska dokument om Idaksahak-folket.",
+    "footerText": "© 2025 • Flerspråkigt Tadaksahak med Hamadine.",
+    "footerContrib": "",
+    "reponseBot": "Vår ordbok växer. Ordet du sökte kommer snart att finnas tillgängligt.",
+    "utilisateur": "Du"
+  }
+    "nl": {
+    "precedent": "Vorige",
+    "suivant": "Volgende",
+    "ecouter": "Luisteren",
+    "rejouer": "Opnieuw afspelen",
+    "lectureAuto": "Automatisch afspelen",
+    "chatTitre": "Chat met Hamadine",
+    "envoyer": "Versturen",
+    "searchPlaceholder": "Zoek een woord...",
+    "titrePrincipal": "Meertalige Tadaksahak-woordenboek",
+    "presentation": "Binnenkort: ontdek een gezamenlijk avontuur gewijd aan de Tadaksahak-taal!",
+    "placeholderChat": "Typ hier een woord om een snelle en volledige zoekopdracht te starten",
+    "botIntro": "🤖 Hallo, ik ben Hamadine, de Tadaksahak-bot.<br>Vraag me een woord en ik vind het voor je!",
+    "botIntelligence": {
+      "salutations_triggers": [
+        "hallo", "hoi", "hey", "goedemorgen", "goedenavond", "salaam", "groeten", "yo", "wat's up"
+      ],
+      "salutations": [
+        "Hallo daar!", "Welkom bij het Tadaksahak-woordenboek.", "Hoi! Hoe kan ik je vandaag helpen?",
+        "Leuk je hier te zien!", "Wil je een nieuw Tadaksahak-woord leren?"
+      ],
+      "remerciements": [
+        "bedankt", "dank je", "heel erg bedankt", "dank je wel", "dankbaar", "veel dank"
+      ],
+      "insultes": [
+        "stom", "idioot", "dom", "sukkel", "eikel", "lul", "klootzak", "bitch", "ga weg", "hou je bek",
+        "rot op", "fuck jou", "debiel", "ga dood", "stuk stront", "verliezer", "afval", "schorem", "crap", "douchebag"
+      ],
+      "insulte": "Blijf alsjeblieft respectvol. Ik ben hier om je vriendelijk te helpen ✨.",
+      "faq": {
+        "who are you": "Ik ben Hamadine, de Tadaksahak-bot.",
+        "what is tadaksahak": "Tadaksahak is een Afro-Aziatische taal die wordt gesproken door de *Idaksahak*-gemeenschap — nomadische herders uit Noord-*Mali* en Oost-*Niger*.",
+        "who made this site": "Deze site is gemaakt door Hamadine Ag Moctar.",
+        "how are you": "Met mij gaat het goed, dank je! En met jou?",
+        "what is idaksahak": "*Idaksahak* is een nomadisch volk uit Noord-Mali en Oost-Niger met een rijke cultuur en een diepe band met de Sahara.",
+        "what’s your name": "Mijn naam is Hamadine, jouw Tadaksahak-taalassistent.",
+        "who created you": "Ik ben gemaakt door Hamadine Ag Moctar om de Tadaksahak-taal te behouden en te delen.",
+        "what can you do": "Ik help je Tadaksahak-woorden te ontdekken, te beluisteren en te vertalen.",
+        "which words can I search": "Je kunt elk woord in het woordenboek zoeken of mij om een vertaling vragen.",
+        "how many languages do you speak": "Ik kan Tadaksahak voor je vertalen naar meer dan 15 talen."
+      },
+      "triggers": {
+        "definition": [
+          "wat is de definitie van", "definieer", "verklaar", "wat betekent", "betekenis van", "definitie van"
+        ],
+        "langue": [
+          "tadaksahak", "tadaksahak taal", "spreek tadaksahak", "woord in tadaksahak"
+        ],
+        "ethnie": [
+          "idaksahak", "idaksahak volk", "idaksahak cultuur", "nomaden uit mali", "wie zijn de idaksahak"
+        ],
+        "identite": [
+          "wie ben jij", "wat is jouw naam", "jouw naam", "waar kom je vandaan", "wie heeft je gemaakt"
+        ],
+        "traduction": [
+          "hoe zeg je", "hoe te zeggen", "vertaal", "vertaling van", "wat is ... in"
+        ]
+      },
+      "reponses": {
+        "definition_intro": "Hier is de definitie van",
+        "mot_introuvable": "Dit woord is nog niet beschikbaar. Onze lexicale database groeit.",
+        "tadaksahak": "*Tadaksahak* is een Afro-Aziatische taal die wordt gesproken in Noord-Mali (Gao, Ménaka) en Oost-Niger. De taal is beïnvloed door Berberse en Songhai-talen.",
+        "idaksahak": "*Idaksahak* is een nomadisch herdersvolk uit Noord-Mali, historisch verbonden met Azawad. Ze spreken Tadaksahak en zijn cultureel verwant aan de Toeareg.",
+        "identite": "Ik ben Hamadine, jouw Tadaksahak-taalassistent. Vraag me wat je wilt!"
+      }
+    },
+    "histoireTitle": "Geschiedenissectie",
+    "histoireBientot": "Ontdek hier binnenkort fascinerende historische teksten over de Tadaksahak-cultuur.",
+    "archivesTitle": "Archiefsectie",
+    "archivesBientot": "Blader door historische documenten over het Idaksahak-volk.",
+    "footerText": "© 2025 • Meertalig Tadaksahak met Hamadine.",
+    "footerContrib": "",
+    "reponseBot": "Ons woordenboek groeit. Het woord dat je zocht is binnenkort beschikbaar.",
+    "utilisateur": "Jij"
+  }
+    "ru": {
+    "precedent": "Предыдущий",
+    "suivant": "Следующий",
+    "ecouter": "Слушать",
+    "rejouer": "Повторить",
+    "lectureAuto": "Автовоспроизведение",
+    "chatTitre": "Чат с Хамадином",
+    "envoyer": "Отправить",
+    "searchPlaceholder": "Найти слово...",
+    "titrePrincipal": "Многоязычный словарь тадаксахак",
+    "presentation": "Скоро: откройте для себя совместное приключение, посвящённое языку тадаксахак!",
+    "placeholderChat": "Введите слово здесь, чтобы начать быстрый и полный поиск",
+    "botIntro": "🤖 Привет, я Хамадин, бот по тадаксахак.<br>Спроси у меня слово, и я найду его для тебя!",
+    "botIntelligence": {
+      "salutations_triggers": [
+        "привет", "здравствуй", "доброе утро", "добрый вечер", "салам", "хай", "йо", "здорово"
+      ],
+      "salutations": [
+        "Привет!", "Добро пожаловать в словарь тадаксахак.", "Здравствуйте! Чем могу помочь?",
+        "Рад вас видеть здесь!", "Хотите выучить новое слово на тадаксахак?"
+      ],
+      "remerciements": [
+        "спасибо", "большое спасибо", "благодарю", "очень благодарен", "очень признателен"
+      ],
+      "insultes": [
+        "дурак", "идиот", "тупой", "болван", "придурок", "ублюдок", "мразь", "сволочь", "заткнись", "пошёл нафиг",
+        "иди на х", "дебил", "сдохни", "дерьмо", "неудачник", "отброс", "тварь", "урод", "мудак", "стерва"
+      ],
+      "insulte": "Пожалуйста, соблюдайте вежливость. Я здесь, чтобы помочь с добротой ✨.",
+      "faq": {
+        "who are you": "Я Хамадин, бот тадаксахак.",
+        "what is tadaksahak": "Тадаксахак — афразийский язык, на котором говорит народ *идаксахак*, кочевые пастухи из северного *Мали* и восточного *Нигера*.",
+        "who made this site": "Этот сайт создан Хамадином Аг Моктаром.",
+        "how are you": "У меня всё хорошо, спасибо! А у тебя?",
+        "what is idaksahak": "*Идаксахак* — кочевой народ из северного Мали и восточного Нигера, с богатой культурой и сильной связью с Сахарой.",
+        "what’s your name": "Меня зовут Хамадин, я твой помощник по тадаксахак.",
+        "who created you": "Меня создал Хамадин Аг Моктар, чтобы сохранить и распространить язык тадаксахак.",
+        "what can you do": "Я помогаю находить, слушать и переводить слова на тадаксахак.",
+        "which words can I search": "Ты можешь искать любое слово в словаре или попросить меня перевести его.",
+        "how many languages do you speak": "Я могу переводить тадаксахак более чем на 15 языков."
+      },
+      "triggers": {
+        "definition": [
+          "что значит", "дай определение", "объясни", "что означает", "значение слова", "определение слова"
+        ],
+        "langue": [
+          "тадаксахак", "язык тадаксахак", "говорить на тадаксахак", "слово на тадаксахак"
+        ],
+        "ethnie": [
+          "идаксахак", "народ идаксахак", "культура идаксахак", "кочевники мали", "кто такие идаксахак"
+        ],
+        "identite": [
+          "кто ты", "как тебя зовут", "твоё имя", "откуда ты", "кто тебя создал"
+        ],
+        "traduction": [
+          "как сказать", "как перевести", "переведи", "перевод слова", "что такое ... на"
+        ]
+      },
+      "reponses": {
+        "definition_intro": "Вот определение слова",
+        "mot_introuvable": "Это слово пока недоступно. Наша лексическая база растёт.",
+        "tadaksahak": "*Тадаксахак* — афразийский язык, распространённый в северном Мали (Гао, Менака) и восточном Нигере. Он испытал влияние берберских и сонгайских языков.",
+        "idaksahak": "*Идаксахак* — кочевой народ из северного Мали, исторически связанный с Азавадом. Они говорят на тадаксахак и культурно близки туарегам.",
+        "identite": "Я Хамадин, твой языковой помощник по тадаксахак. Спрашивай что угодно!"
+      }
+    },
+    "histoireTitle": "Раздел истории",
+    "histoireBientot": "Скоро здесь появятся увлекательные исторические тексты о культуре тадаксахак.",
+    "archivesTitle": "Архивный раздел",
+    "archivesBientot": "Просматривай исторические документы о народе идаксахак.",
+    "footerText": "© 2025 • Многоязычный тадаксахак с Хамадином.",
+    "footerContrib": "",
+    "reponseBot": "Наш словарь пополняется. Искомое тобой слово скоро появится.",
+    "utilisateur": "Вы"
+  }
+    "tr": {
+    "precedent": "Önceki",
+    "suivant": "Sonraki",
+    "ecouter": "Dinle",
+    "rejouer": "Tekrar Oynat",
+    "lectureAuto": "Otomatik Oynatma",
+    "chatTitre": "Hamadine ile Sohbet",
+    "envoyer": "Gönder",
+    "searchPlaceholder": "Bir kelime ara...",
+    "titrePrincipal": "Çok Dilli Tadaksahak Sözlüğü",
+    "presentation": "Çok yakında: Tadaksahak diline adanmış ortak bir macerayı keşfedin!",
+    "placeholderChat": "Hızlı ve tam bir arama başlatmak için buraya bir kelime yazın",
+    "botIntro": "🤖 Merhaba, ben Tadaksahak botu Hamadine.<br>Bana bir kelime sor, senin için bulayım!",
+    "botIntelligence": {
+      "salutations_triggers": [
+        "merhaba", "selam", "günaydın", "iyi akşamlar", "hey", "yo", "naber", "selamun aleyküm"
+      ],
+      "salutations": [
+        "Merhaba!", "Tadaksahak sözlüğüne hoş geldin.", "Selam! Bugün sana nasıl yardımcı olabilirim?",
+        "Seni burada görmek güzel!", "Yeni bir Tadaksahak kelimesi öğrenmek ister misin?"
+      ],
+      "remerciements": [
+        "teşekkürler", "teşekkür ederim", "çok teşekkürler", "minnettarım", "sağ ol", "çok sağ ol"
+      ],
+      "insultes": [
+        "aptal", "salak", "gerizekalı", "ahmak", "eşek", "piç", "orospu", "defol", "kapa çeneni",
+        "siktir git", "geri zekalı", "öl", "bok", "ezik", "çöp", "pislik", "iğrenç", "dangalak", "mal"
+      ],
+      "insulte": "Lütfen saygılı olun. Yardım etmek için buradayım ✨.",
+      "faq": {
+        "who are you": "Ben Hamadine, Tadaksahak botuyum.",
+        "what is tadaksahak": "Tadaksahak, *Idaksahak* topluluğu tarafından konuşulan Afro-Asyatik bir dildir — özellikle kuzey *Mali* ve doğu *Nijer*'deki göçebe çobanlar.",
+        "who made this site": "Bu site Hamadine Ag Moctar tarafından oluşturuldu.",
+        "how are you": "Harikayım, teşekkür ederim! Ya sen?",
+        "what is idaksahak": "*Idaksahak*, kuzey Mali ve doğu Nijer'den gelen göçebe bir halktır. Zengin bir kültüre ve Sahra ile derin bir bağa sahiptirler.",
+        "what’s your name": "Adım Hamadine, Tadaksahak dil asistanınızım.",
+        "who created you": "Beni Tadaksahak dilini korumak ve paylaşmak için Hamadine Ag Moctar yarattı.",
+        "what can you do": "Tadaksahak kelimelerini keşfetmene, dinlemene ve çevirmene yardımcı oluyorum.",
+        "which words can I search": "Sözlükteki herhangi bir kelimeyi arayabilir veya benden çeviri isteyebilirsin.",
+        "how many languages do you speak": "Tadaksahak dilini senin için 15'ten fazla dile çevirebilirim."
+      },
+      "triggers": {
+        "definition": [
+          "tanımı nedir", "tanımla", "açıkla", "ne anlama gelir", "anlamı nedir", "kelime anlamı"
+        ],
+        "langue": [
+          "tadaksahak", "tadaksahak dili", "tadaksahak konuş", "tadaksahakça kelime"
+        ],
+        "ethnie": [
+          "idaksahak", "idaksahak halkı", "idaksahak kültürü", "mali göçebeleri", "idaksahak kimdir"
+        ],
+        "identite": [
+          "sen kimsin", "adın ne", "ismin ne", "nerelisin", "seni kim yaptı"
+        ],
+        "traduction": [
+          "nasıl denir", "nasıl söylenir", "çevir", "çevirisi nedir", "... ne demek"
+        ]
+      },
+      "reponses": {
+        "definition_intro": "İşte şu kelimenin tanımı:",
+        "mot_introuvable": "Bu kelime henüz mevcut değil. Sözlük veri tabanımız büyüyor.",
+        "tadaksahak": "*Tadaksahak*, kuzey Mali (Gao, Ménaka) ve doğu Nijer'de konuşulan Afro-Asyatik bir dildir. Berberi ve Songhay dillerinden etkilenmiştir.",
+        "idaksahak": "*Idaksahak*, Azawad ile tarihsel bağları olan, kuzey Mali'den göçebe bir çoban halkıdır. Tadaksahak dilini konuşurlar ve kültürel olarak Tuareglerle yakındırlar.",
+        "identite": "Ben Hamadine, Tadaksahak dil asistanınızım. Bana her şeyi sorabilirsiniz!"
+      }
+    },
+    "histoireTitle": "Tarih Bölümü",
+    "histoireBientot": "Tadaksahak kültürü hakkında etkileyici tarihi metinleri yakında burada keşfedin.",
+    "archivesTitle": "Arşiv Bölümü",
+    "archivesBientot": "Idaksahak halkına ait tarihî belgeleri inceleyin.",
+    "footerText": "© 2025 • Hamadine ile Çok Dilli Tadaksahak.",
+    "footerContrib": "",
+    "reponseBot": "Sözlüğümüz büyümeye devam ediyor. Sorduğun kelime yakında eklenecek.",
+    "utilisateur": "Sen"
+  }
+    "zh": {
+    "precedent": "上一页",
+    "suivant": "下一页",
+    "ecouter": "播放",
+    "rejouer": "重播",
+    "lectureAuto": "自动播放",
+    "chatTitre": "与 Hamadine 聊天",
+    "envoyer": "发送",
+    "searchPlaceholder": "搜索一个词...",
+    "titrePrincipal": "塔达克萨哈克语多语种词典",
+    "presentation": "即将上线：探索一个致力于塔达克萨哈克语言的合作冒险之旅！",
+    "placeholderChat": "在此输入一个词以开始快速完整的搜索",
+    "botIntro": "🤖 你好，我是 Hamadine，一名塔达克萨哈克语机器人。<br>告诉我一个词，我会为你找到它！",
+    "botIntelligence": {
+      "salutations_triggers": [
+        "你好", "嗨", "早上好", "晚上好", "您好", "yo", "哈喽", "萨拉姆", "问候"
+      ],
+      "salutations": [
+        "你好呀！", "欢迎使用塔达克萨哈克词典。", "您好！我能为您做什么？",
+        "很高兴见到你！", "想学一个新的塔达克萨哈克词汇吗？"
+      ],
+      "remerciements": [
+        "谢谢", "多谢", "非常感谢", "感谢你", "谢谢你", "感激不尽"
+      ],
+      "insultes": [
+        "傻瓜", "白痴", "笨蛋", "混蛋", "垃圾", "滚", "去死", "闭嘴", "婊子", "蠢货",
+        "操你", "去你的", "狗屎", "失败者", "人渣", "蠢材", "废物", "讨厌鬼", "王八蛋", "脑残"
+      ],
+      "insulte": "请保持礼貌。我在这里是为了友善地帮助你 ✨。",
+      "faq": {
+        "who are you": "我是 Hamadine，一名塔达克萨哈克语机器人。",
+        "what is tadaksahak": "塔达克萨哈克语是一种由 *伊达克萨哈克* 社区使用的阿非罗-亚细亚语系语言，主要分布在*马里北部*和*尼日尔东部*的游牧牧民中。",
+        "who made this site": "这个网站是由 Hamadine Ag Moctar 创建的。",
+        "how are you": "我很好，谢谢！你呢？",
+        "what is idaksahak": "*伊达克萨哈克* 是一个来自马里北部和尼日尔东部的游牧民族，他们拥有丰富的文化，并与撒哈拉有着深厚的联系。",
+        "what’s your name": "我叫 Hamadine，是你的塔达克萨哈克语言助手。",
+        "who created you": "我是由 Hamadine Ag Moctar 创建的，旨在保护和传播塔达克萨哈克语言。",
+        "what can you do": "我可以帮助你发现、聆听和翻译塔达克萨哈克词汇。",
+        "which words can I search": "你可以查找词典中的任何词，或者让我帮你翻译。",
+        "how many languages do you speak": "我可以将塔达克萨哈克语翻译成超过 15 种语言。"
+      },
+      "triggers": {
+        "definition": [
+          "…的定义是什么", "定义", "解释", "…是什么意思", "…的意思", "词语解释"
+        ],
+        "langue": [
+          "塔达克萨哈克", "塔达克萨哈克语言", "说塔达克萨哈克语", "塔达克萨哈克语单词"
+        ],
+        "ethnie": [
+          "伊达克萨哈克", "伊达克萨哈克人", "伊达克萨哈克文化", "马里的游牧民", "伊达克萨哈克是谁"
+        ],
+        "identite": [
+          "你是谁", "你叫什么名字", "你的名字", "你来自哪里", "谁创造了你"
+        ],
+        "traduction": [
+          "怎么说", "如何表达", "翻译", "…的翻译", "…用…怎么说"
+        ]
+      },
+      "reponses": {
+        "definition_intro": "这是关于这个词的定义：",
+        "mot_introuvable": "该词尚未收录。我们的词汇库正在不断扩展中。",
+        "tadaksahak": "*塔达克萨哈克语* 是一种分布在马里北部（加奥、梅纳卡）和尼日尔东部的阿非罗-亚细亚语。它受柏柏尔语和桑海语的影响。",
+        "idaksahak": "*伊达克萨哈克* 是一个历史上与阿扎瓦德有关的游牧牧民群体，主要分布在马里北部。他们说塔达克萨哈克语，并在文化上与图阿雷格人接近。",
+        "identite": "我是 Hamadine，你的塔达克萨哈克语言助手。随便问我任何问题吧！"
+      }
+    },
+    "histoireTitle": "历史部分",
+    "histoireBientot": "敬请期待，探索有关塔达克萨哈克文化的精彩历史文本。",
+    "archivesTitle": "档案部分",
+    "archivesBientot": "浏览有关伊达克萨哈克民族的历史文献。",
+    "footerText": "© 2025 • Hamadine 与您共建多语塔达克萨哈克。",
+    "footerContrib": "",
+    "reponseBot": "我们的词典正在不断扩展。你查找的词很快就会被添加。",
+    "utilisateur": "你"
+  }
+    "ha": {
+    "precedent": "Na baya",
+    "suivant": "Na gaba",
+    "ecouter": "Saurara",
+    "rejouer": "Sake kunnawa",
+    "lectureAuto": "Kunna ta atomatik",
+    "chatTitre": "Tattaunawa da Hamadine",
+    "envoyer": "Aika",
+    "searchPlaceholder": "Bincika kalma...",
+    "titrePrincipal": "Kamus ɗin Tadaksahak mai harsuna da dama",
+    "presentation": "Nan ba da jimawa ba: gano wani haɗin gwiwa don haɓaka yaren Tadaksahak!",
+    "placeholderChat": "Rubuta kalma a nan domin fara bincike mai sauri da cikakke",
+    "botIntro": "🤖 Sannu, ni ne Hamadine, bot ɗin Tadaksahak.<br>Tambaye ni kalma kuma zan samo maka!",
+    "botIntelligence": {
+      "salutations_triggers": [
+        "sannu", "salamu alaikum", "hello", "hi", "ina kwana", "ina yini", "yo", "hey"
+      ],
+      "salutations": [
+        "Sannu da zuwa!", "Maraba da zuwa kamus ɗin Tadaksahak.", "Sannu! Yaya zan taimake ka yau?",
+        "Ina farin cikin ganinka!", "Kana so ka koyi sabuwar kalmar Tadaksahak?"
+      ],
+      "remerciements": [
+        "na gode", "godiya", "nagode sosai", "ina godiya", "godiya kwarai"
+      ],
+      "insultes": [
+        "wawa", "mahaukaci", "jahili", "banza", "shege", "shashasha", "azzalumi", "karuwa", "karya", "mugu",
+        "kururu", "rashin hankali", "masaki", "ka mutu", "shirme", "lalatacce", "datti", "mara amfani", "shegiya"
+      ],
+      "insulte": "Don Allah ka kasance da mutunci. Ina nan don taimaka maka cikin ladabi ✨.",
+      "faq": {
+        "who are you": "Ni ne Hamadine, bot ɗin yaren Tadaksahak.",
+        "what is tadaksahak": "Tadaksahak yare ne daga cikin harsunan Afro-Asiatic da mutanen *Idaksahak* ke amfani da shi — makiyaya masu yawo daga arewacin *Mali* da gabashin *Nijar*.",
+        "who made this site": "Wannan shafin Hamadine Ag Moctar ya ƙirƙira shi.",
+        "how are you": "Lafiya lau, na gode! Kai fa?",
+        "what is idaksahak": "*Idaksahak* al'umma ce ta makiyaya masu yawo daga arewacin Mali da gabashin Nijar, masu al'adu masu yawa da alaƙa da hamadar Sahara.",
+        "what’s your name": "Suna na Hamadine, ni ne mai taimaka maka da yaren Tadaksahak.",
+        "who created you": "Hamadine Ag Moctar ne ya ƙirƙire ni don adana da yada yaren Tadaksahak.",
+        "what can you do": "Zan taimaka maka gano, saurara da fassara kalmomin Tadaksahak.",
+        "which words can I search": "Za ka iya bincika kowace kalma cikin kamus ko tambaye ni don fassara.",
+        "how many languages do you speak": "Ina iya fassara Tadaksahak zuwa fiye da harsuna 15."
+      },
+      "triggers": {
+        "definition": [
+          "menene ma'anar", "bayyana", "fassarawa", "menene", "ma’ana ta", "ta yaya ake fassara"
+        ],
+        "langue": [
+          "tadaksahak", "yaren tadaksahak", "ina jin tadaksahak", "kalma a tadaksahak"
+        ],
+        "ethnie": [
+          "idaksahak", "mutanen idaksahak", "al’adar idaksahak", "makiyayan mali", "waye idaksahak"
+        ],
+        "identite": [
+          "waye kai", "menene sunanka", "sunanka", "daga ina kake", "waye ya ƙirƙire ka"
+        ],
+        "traduction": [
+          "yaya ake cewa", "ta yaya za a ce", "fassara", "fassararsa", "menene ... a"
+        ]
+      },
+      "reponses": {
+        "definition_intro": "Ga ma’anar kalmar",
+        "mot_introuvable": "Ba mu da wannan kalmar tukuna. Kamus ɗinmu yana kara girma.",
+        "tadaksahak": "*Tadaksahak* yare ne na Afro-Asiatic da ake amfani da shi a arewacin Mali (Gao, Ménaka) da gabashin Nijar. Yana da tasirin harsunan Berber da Songhai.",
+        "idaksahak": "*Idaksahak* mutane ne makiyaya daga arewacin Mali da suka daɗe da dangantaka da yankin Azawad. Suna magana da Tadaksahak kuma suna da alaƙa da Tuareg.",
+        "identite": "Ni ne Hamadine, mai taimaka maka da yaren Tadaksahak. Tambaye ni duk abin da kake so!"
+      }
+    },
+    "histoireTitle": "Sashen Tarihi",
+    "histoireBientot": "Nan da nan za ka gano rubuce-rubucen tarihi masu ban sha’awa game da al’adun Tadaksahak.",
+    "archivesTitle": "Sashen Tarihi",
+    "archivesBientot": "Duba takardun tarihi game da mutanen Idaksahak.",
+    "footerText": "© 2025 • Tadaksahak mai harsuna da dama tare da Hamadine.",
+    "footerContrib": "",
+    "reponseBot": "Kamus ɗinmu yana kara girma. Kalmar da ka nema za ta kasance a nan ba da daɗewa ba.",
+    "utilisateur": "Kai"
+  }
+    "it": {
+    "precedent": "Precedente",
+    "suivant": "Successivo",
+    "ecouter": "Ascolta",
+    "rejouer": "Riascolta",
+    "lectureAuto": "Riproduzione automatica",
+    "chatTitre": "Chatta con Hamadine",
+    "envoyer": "Invia",
+    "searchPlaceholder": "Cerca una parola...",
+    "titrePrincipal": "Dizionario multilingue Tadaksahak",
+    "presentation": "Prossimamente: scopri un'avventura collaborativa dedicata alla lingua Tadaksahak!",
+    "placeholderChat": "Digita una parola qui per avviare una ricerca rapida e completa",
+    "botIntro": "🤖 Ciao, sono Hamadine, il bot del Tadaksahak.<br>Chiedimi una parola e la troverò per te!",
+    "botIntelligence": {
+      "salutations_triggers": [
+        "ciao", "salve", "buongiorno", "buonasera", "ehi", "yo", "hola", "saluti"
+      ],
+      "salutations": [
+        "Ciao!", "Benvenuto nel dizionario Tadaksahak.", "Ciao! Come posso aiutarti oggi?",
+        "Felice di vederti qui!", "Vuoi imparare una nuova parola Tadaksahak?"
+      ],
+      "remerciements": [
+        "grazie", "grazie mille", "ti ringrazio", "molte grazie", "apprezzo"
+      ],
+      "insultes": [
+        "stupido", "idiota", "scemo", "cretino", "stronzo", "bastardo", "vai via", "zitto",
+        "vaffanculo", "pezzo di merda", "fallito", "immondizia", "stronza", "deficiente", "rompiscatole"
+      ],
+      "insulte": "Per favore, sii rispettoso. Sono qui per aiutarti con gentilezza ✨.",
+      "faq": {
+        "who are you": "Sono Hamadine, il bot del Tadaksahak.",
+        "what is tadaksahak": "Il Tadaksahak è una lingua afroasiatica parlata dalla comunità *Idaksahak* — pastori nomadi del nord *Mali* e dell’est *Niger*.",
+        "who made this site": "Questo sito è stato creato da Hamadine Ag Moctar.",
+        "how are you": "Sto molto bene, grazie! E tu?",
+        "what is idaksahak": "*Idaksahak* è un popolo nomade del nord del Mali e dell’est del Niger, con una cultura ricca e un forte legame con il Sahara.",
+        "what’s your name": "Mi chiamo Hamadine, il tuo assistente linguistico Tadaksahak.",
+        "who created you": "Sono stato creato da Hamadine Ag Moctar per preservare e condividere la lingua Tadaksahak.",
+        "what can you do": "Ti aiuto a scoprire, ascoltare e tradurre parole in Tadaksahak.",
+        "which words can I search": "Puoi cercare qualsiasi parola nel dizionario o chiedermi una traduzione.",
+        "how many languages do you speak": "Posso tradurre il Tadaksahak in più di 15 lingue."
+      },
+      "triggers": {
+        "definition": [
+          "qual è la definizione di", "definisci", "spiega", "cosa significa", "significato di", "definizione di"
+        ],
+        "langue": [
+          "tadaksahak", "lingua tadaksahak", "parlare tadaksahak", "parola in tadaksahak"
+        ],
+        "ethnie": [
+          "idaksahak", "popolo idaksahak", "cultura idaksahak", "nomadi del mali", "chi sono gli idaksahak"
+        ],
+        "identite": [
+          "chi sei", "come ti chiami", "il tuo nome", "da dove vieni", "chi ti ha creato"
+        ],
+        "traduction": [
+          "come si dice", "come si pronuncia", "traduci", "traduzione di", "come si dice ... in"
+        ]
+      },
+      "reponses": {
+        "definition_intro": "Ecco la definizione di",
+        "mot_introuvable": "Questa parola non è ancora disponibile. Il nostro database è in espansione.",
+        "tadaksahak": "*Tadaksahak* è una lingua afroasiatica parlata nel nord del Mali (Gao, Ménaka) e nell’est del Niger. È influenzata dalle lingue berbere e songhai.",
+        "idaksahak": "*Idaksahak* è un popolo nomade del nord del Mali, storicamente legato all’Azawad. Parlano il Tadaksahak e sono culturalmente vicini ai Tuareg.",
+        "identite": "Sono Hamadine, il tuo assistente linguistico Tadaksahak. Chiedimi qualsiasi cosa!"
+      }
+    },
+    "histoireTitle": "Sezione Storia",
+    "histoireBientot": "Scopri qui affascinanti testi storici sulla cultura Tadaksahak.",
+    "archivesTitle": "Sezione Archivi",
+    "archivesBientot": "Consulta documenti storici sul popolo Idaksahak.",
+    "footerText": "© 2025 • Tadaksahak multilingue con Hamadine.",
+    "footerContrib": "",
+    "reponseBot": "Il nostro dizionario è in espansione. La parola che hai cercato sarà presto disponibile.",
+    "utilisateur": "Tu"
+  }
+    "tm": {
     "precedent": "Aɣerad",
     "suivant": "Azeddi",
     "ecouter": "Sema",
@@ -1047,6 +2095,12 @@
     "archivesTitle": "Tiṭṭawin n Iḥeqqiyen",
     "archivesBientot": "Sken tawuriwin n agraw Idaksahak.",
     "footerText": "© 2025 • Tadaksahak s timditin ak Hamadine.",
+    "footerContrib": "",
+    "reponseBot": "Amawal-ik yefka ad-yesɛa. Awal i-tesnɛeḍ ad yelli war taggara.",
+    "utilisateur": "Kečč"
+  }
+}
+  "footerText": "© 2025 • Tadaksahak s timditin ak Hamadine.",
     "footerContrib": "",
     "reponseBot": "Amawal-ik yefka ad-yesɛa. Awal i-tesnɛeḍ ad yelli war taggara.",
     "utilisateur": "Kečč"
