@@ -1,20 +1,16 @@
 const CACHE_NAME = 'tadaksahak-v1.0.1';
 const ASSETS = [
-  '/', '/index.html', '/app.js', '/menu.js', '/style.css',
+  '/', '/index.html', '/app.js', '/style.css',
   '/data/mots.json', '/data/interface-langue.json',
   '/manifest.webmanifest',
-
-  // Images
   '/images/idaksahak_round.png',
   '/images/idaksahak_square512.png',
   '/images/Gmail.png',
   '/images/whatsapp.png',
-
-  // Fallback
   '/offline.html'
 ];
 
-// 📦 Installation : cache tous les assets essentiels
+// Installation
 self.addEventListener('install', event => {
   self.skipWaiting();
   event.waitUntil(
@@ -22,58 +18,46 @@ self.addEventListener('install', event => {
   );
 });
 
-// 🔄 Activation : nettoyage des anciens caches
+// Activation
 self.addEventListener('activate', event => {
   event.waitUntil(
     caches.keys().then(keys =>
-      Promise.all(keys
-        .filter(key => key !== CACHE_NAME)
-        .map(key => caches.delete(key))
-      )
+      Promise.all(keys.filter(k => k !== CACHE_NAME).map(k => caches.delete(k)))
     )
   );
   self.clients.claim();
 });
 
-// 🌐 Stratégies de cache
+// Fetch
 self.addEventListener('fetch', event => {
   const req = event.request;
 
-  // Navigations HTML : stratégie network-first
   if (req.mode === 'navigate') {
     event.respondWith(
       fetch(req)
         .then(res => {
-          const resClone = res.clone();
-          caches.open(CACHE_NAME).then(cache => cache.put(req, resClone));
+          const clone = res.clone();
+          caches.open(CACHE_NAME).then(cache => cache.put(req, clone));
           return res;
         })
         .catch(() => caches.match('/offline.html'))
     );
   } else {
-    // Autres (CSS, JS, images...) : stratégie cache-first
     event.respondWith(
-      caches.match(req)
-        .then(cached => cached || fetch(req)
-          .then(res => {
-            const resClone = res.clone();
-            caches.open(CACHE_NAME).then(cache => cache.put(req, resClone));
-            return res;
-          })
-        )
-        .catch(() => {
-          // Optionnel : gérer les erreurs d'image ou fichier
-          if (req.destination === 'image') {
-            return caches.match('/images/idaksahak_square512.png');
-          }
+      caches.match(req).then(
+        cached => cached || fetch(req).then(res => {
+          const clone = res.clone();
+          caches.open(CACHE_NAME).then(cache => cache.put(req, clone));
+          return res;
         })
+      ).catch(() => {
+        if (req.destination === 'image') return caches.match('/images/idaksahak_square512.png');
+      })
     );
   }
 });
 
-// 🔄 Mise à jour immédiate si demandé
+// Mise à jour
 self.addEventListener('message', event => {
-  if (event.data === 'SKIP_WAITING') {
-    self.skipWaiting();
-  }
+  if (event.data === 'SKIP_WAITING') self.skipWaiting();
 });
