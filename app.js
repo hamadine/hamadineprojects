@@ -1,7 +1,7 @@
 let motsComplet = [];
 let mots = [];
 let interfaceData = {};
-let indexMot = 0;
+let indexMot = 0
 
 const langueNavigateur = navigator.language.slice(0, 2) || 'fr';
 let langueTrad = localStorage.getItem('langueTrad') || 'fr';
