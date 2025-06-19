@@ -17,7 +17,9 @@ const nomsLangues = {
 let fuse = null;
 
 function escapeHTML(str) {
-  return str.replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#039;' }[c]));
+  return str.replace(/[&<>"']/g, c => ({
+    '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#039;'
+  }[c]));
 }
 
 function debounce(fn, delay = 300) {
@@ -42,9 +44,13 @@ async function chargerDonnees() {
     if (!Object.keys(mots[0] || {}).includes(langueTrad)) langueTrad = 'fr';
 
     changerLangueInterface(langueInterface);
+    initialiserMenusLangues();
 
-    const fuseKeys = ['mot', ...Object.keys(mots[0]).filter(k => k.length <= 3 && k !== 'cat')];
-    fuse = new Fuse(mots, { keys: fuseKeys, includeScore: true, threshold: 0.4 });
+    fuse = new Fuse(mots, {
+      keys: ['mot', ...Object.keys(mots[0]).filter(k => k.length <= 3 && k !== 'cat')],
+      includeScore: true,
+      threshold: 0.4
+    });
 
     indexMot = parseInt(localStorage.getItem('motIndex')) || 0;
     afficherMot(indexMot);
@@ -59,16 +65,16 @@ function changerLangueInterface(langue) {
   localStorage.setItem('langueInterface', langue);
   document.documentElement.lang = langue;
 
-  const t = interfaceData[langueInterface] || interfaceData.fr || {};
+  const t = interfaceData[langueInterface] || interfaceData['fr'];
 
-  document.title = t.titrePrincipal || "Dictionnaire";
-  document.getElementById('titrePrincipal').textContent = t.titrePrincipal || '';
-  document.getElementById('textePresentation').textContent = t.presentation || '';
-  document.getElementById('searchBar').placeholder = t.searchPlaceholder || '';
-  document.getElementById('btnEnvoyer').textContent = t.envoyer || 'Envoyer';
-  document.getElementById('chat-title').textContent = t.chatTitre || 'Chat';
-  document.getElementById('botIntro').textContent = t.botIntro || '';
-  document.getElementById('footerText').textContent = t.footerText || '';
+  document.title = t.titrePrincipal;
+  document.getElementById('titrePrincipal').textContent = t.titrePrincipal;
+  document.getElementById('textePresentation').textContent = t.presentation;
+  document.getElementById('searchBar').placeholder = t.searchPlaceholder;
+  document.getElementById('btnEnvoyer').textContent = t.envoyer;
+  document.getElementById('chat-title').textContent = t.chatTitre;
+  document.getElementById('botIntro').innerHTML = t.botIntro;
+  document.getElementById('footerText').textContent = t.footerText;
 
   document.getElementById('btnLangueInterface').textContent = `Interface : ${nomsLangues[langueInterface] || langueInterface.toUpperCase()} ⌄`;
   document.getElementById('btnLangueTrad').textContent = `Traduction : ${nomsLangues[langueTrad] || langueTrad.toUpperCase()} ⌄`;
@@ -88,6 +94,15 @@ function afficherMot(motIndex = indexMot) {
     (mot.cat ? ` <span style="color:#888;">(${escapeHTML(mot.cat)})</span>` : '');
   document.getElementById('compteur').textContent = `${indexMot + 1} / ${mots.length}`;
 }
+
+function motPrecedent() {
+  if (indexMot > 0) afficherMot(indexMot - 1);
+}
+function motSuivant() {
+  if (indexMot < mots.length - 1) afficherMot(indexMot + 1);
+}
+
+const rechercherMotDebounce = debounce(rechercherMot);
 
 function rechercherMot() {
   const query = document.getElementById('searchBar').value.trim().toLowerCase();
@@ -115,11 +130,12 @@ function envoyerMessage() {
   afficherMessage('utilisateur', escapeHTML(message));
   input.value = '';
 
-  const botData = interfaceData[langueInterface]?.botIntelligence || interfaceData['fr'].botIntelligence || {};
+  const botData = interfaceData[langueInterface]?.botIntelligence || interfaceData['fr'].botIntelligence;
   const {
     salutations = [], salutations_triggers = [],
-    remerciements = [], insultes = [], insulte = "Merci de rester respectueux.",
-    faq = {}, reponseMot, inconnu, reponses = {}
+    remerciements = [], insulte = "Merci de rester respectueux.",
+    faq = {}, reponseMot, inconnu, triggers = {}, reponses = {},
+    insultes = []
   } = botData;
 
   if (salutations_triggers.some(trig => message.includes(trig))) {
@@ -163,10 +179,10 @@ function envoyerMessage() {
     return;
   }
 
-  traiterRecherche(message, reponseMot, inconnu, reponses);
+  traiterRecherche(message, reponseMot, inconnu, reponses, triggers);
 }
 
-function traiterRecherche(message, reponseMot, inconnu) {
+function traiterRecherche(message, reponseMot, inconnu, reponses, triggers) {
   setTimeout(() => {
     const exacts = motsComplet.filter(m =>
       Object.entries(m).some(([k, v]) =>
@@ -203,15 +219,65 @@ function afficherMessage(type, contenu) {
   const chatBox = document.getElementById('chatWindow');
   const msg = document.createElement('div');
   msg.className = `message ${type}`;
-  msg.innerHTML = `<strong>${type === 'utilisateur' ? window.nomUtilisateur : 'Bot'}:</strong> ${contenu}`;
+  msg.innerHTML = `<strong>${type === 'utilisateur' ? (window.nomUtilisateur || 'Vous') : 'Bot'}:</strong> ${contenu}`;
   chatBox.appendChild(msg);
   chatBox.scrollTop = chatBox.scrollHeight;
 }
 
+// ==== Langue UI: menu dynamique ====
+
+function genererMenuLangues(menuId, callback) {
+  const menu = document.getElementById(menuId);
+  menu.innerHTML = '';
+
+  Object.entries(nomsLangues).forEach(([code, label]) => {
+    const item = document.createElement('button');
+    item.className = 'langue-item';
+    item.setAttribute('role', 'menuitem');
+    item.textContent = label;
+    item.dataset.code = code;
+    item.addEventListener('click', () => {
+      callback(code);
+      menu.hidden = true;
+    });
+    menu.appendChild(item);
+  });
+}
+
+function initialiserMenusLangues() {
+  const btnInterface = document.getElementById('btnLangueInterface');
+  const btnTrad = document.getElementById('btnLangueTrad');
+  const menuInterface = document.getElementById('menuLangueInterface');
+  const menuTrad = document.getElementById('menuLangueTrad');
+
+  btnInterface.addEventListener('click', () => {
+    const hidden = menuInterface.hidden;
+    menuInterface.hidden = !hidden;
+    if (!hidden) return;
+    genererMenuLangues('menuLangueInterface', (code) => {
+      changerLangueInterface(code);
+      btnInterface.textContent = `Interface : ${nomsLangues[code]} ⌄`;
+    });
+  });
+
+  btnTrad.addEventListener('click', () => {
+    const hidden = menuTrad.hidden;
+    menuTrad.hidden = !hidden;
+    if (!hidden) return;
+    genererMenuLangues('menuLangueTrad', (code) => {
+      langueTrad = code;
+      localStorage.setItem('langueTrad', code);
+      btnTrad.textContent = `Traduction : ${nomsLangues[code]} ⌄`;
+      afficherMot(indexMot);
+    });
+  });
+}
+
+// ==== Initialisation ====
 window.addEventListener('DOMContentLoaded', () => {
   chargerDonnees();
-  document.getElementById('searchBar').addEventListener('input', debounce(rechercherMot));
+  document.getElementById('searchBar').addEventListener('input', rechercherMotDebounce);
   document.getElementById('btnEnvoyer').addEventListener('click', envoyerMessage);
-  document.getElementById('btnPrev').addEventListener('click', () => afficherMot(indexMot - 1));
-  document.getElementById('btnNext').addEventListener('click', () => afficherMot(indexMot + 1));
+  document.getElementById('btnPrev').addEventListener('click', motPrecedent);
+  document.getElementById('btnNext').addEventListener('click', motSuivant);
 });
