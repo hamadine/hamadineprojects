@@ -18,7 +18,7 @@ let fuse = null;
 
 function escapeHTML(str) {
   return str.replace(/[&<>"']/g, c => ({
-    '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#039;'
+    '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
   }[c]));
 }
 
@@ -91,7 +91,7 @@ function afficherMot(motIndex = indexMot) {
   document.getElementById('motTexte').textContent = mot.mot || '—';
   document.getElementById('definition').innerHTML =
     escapeHTML(mot[langueTrad] || '—') +
-    (mot.cat ? ` <span style="color:#888;">(${escapeHTML(mot.cat)})</span>` : '');
+    (mot.cat ? `<span style="color:#888;">(${escapeHTML(mot.cat)})</span>` : '');
   document.getElementById('compteur').textContent = `${indexMot + 1} / ${mots.length}`;
 }
 
@@ -119,7 +119,7 @@ function rechercherMot() {
   else {
     document.getElementById('motTexte').textContent = "Aucun résultat";
     document.getElementById('definition').textContent = "";
-    document.getElementById('compteur').textContent = `0 / 0`;
+    document.getElementById('compteur').textContent = "0 / 0";
   }
 }
 
@@ -224,7 +224,7 @@ function afficherMessage(type, contenu) {
   chatBox.scrollTop = chatBox.scrollHeight;
 }
 
-// ==== Langue UI: menu dynamique ====
+// ==== Menus Langues ====
 
 function genererMenuLangues(menuId, callback) {
   const menu = document.getElementById(menuId);
