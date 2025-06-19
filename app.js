@@ -8,7 +8,7 @@ let langueTrad = localStorage.getItem('langueTrad') || 'fr';
 let langueInterface = localStorage.getItem('langueInterface') || langueNavigateur;
 
 const nomsLangues = {
-  fr: "Français", en: "English", ar: "العربية", tz: "Tadaksahak",
+  fr: "Français", en: "English", ar: "العربية", tz: "Tamazight",
   tr: "Türkçe", da: "Dansk", de: "Deutsch", nl: "Nederlands",
   sv: "Svenska", ru: "Русский", zh: "中文", cs: "Čeština",
   ha: "Hausa", es: "Español", it: "Italiano"
@@ -21,6 +21,15 @@ function escapeHTML(str) {
     '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#039;'
   }[c]));
 }
+
+function debounce(fn, delay = 300) {
+  let timer;
+  return function (...args) {
+    clearTimeout(timer);
+    timer = setTimeout(() => fn.apply(this, args), delay);
+  };
+}
+
 async function chargerDonnees() {
   try {
     const [motsRes, interfaceRes] = await Promise.all([
@@ -49,7 +58,9 @@ async function chargerDonnees() {
     console.error("❌ Erreur de chargement :", err);
     alert("Erreur lors du chargement des données JSON.");
   }
-  function changerLangueInterface(langue) {
+}
+
+function changerLangueInterface(langue) {
   langueInterface = langue;
   localStorage.setItem('langueInterface', langue);
   document.documentElement.lang = langue;
@@ -65,8 +76,8 @@ async function chargerDonnees() {
   document.getElementById('botIntro').innerHTML = t.botIntro;
   document.getElementById('footerText').textContent = t.footerText;
 
-  document.getElementById('btnLangueInterface').textContent = `Interface : ${nomsLangues[langueInterface]} ⌄`;
-  document.getElementById('btnLangueTrad').textContent = `Traduction : ${nomsLangues[langueTrad]} ⌄`;
+  document.getElementById('btnLangueInterface').textContent = `Interface : ${nomsLangues[langueInterface] || langueInterface.toUpperCase()} ⌄`;
+  document.getElementById('btnLangueTrad').textContent = `Traduction : ${nomsLangues[langueTrad] || langueTrad.toUpperCase()} ⌄`;
 
   window.reponseBot = t.reponseBot || "Mot introuvable.";
   window.nomUtilisateur = t.utilisateur || "Vous";
@@ -90,13 +101,6 @@ function motPrecedent() {
 function motSuivant() {
   if (indexMot < mots.length - 1) afficherMot(indexMot + 1);
 }
-function debounce(fn, delay = 300) {
-  let timer;
-  return function (...args) {
-    clearTimeout(timer);
-    timer = setTimeout(() => fn.apply(this, args), delay);
-  };
-}
 
 const rechercherMotDebounce = debounce(rechercherMot);
 
@@ -115,9 +119,11 @@ function rechercherMot() {
   else {
     document.getElementById('motTexte').textContent = "Aucun résultat";
     document.getElementById('definition').textContent = "";
-    document.getElementById('compteur').textContent = "0 / 0";
+    document.getElementById('compteur').textContent = `0 / 0`;
   }
-  function envoyerMessage() {
+}
+
+function envoyerMessage() {
   const input = document.getElementById('chatInput');
   const message = input.value.trim().toLowerCase();
   if (!message) return;
@@ -156,44 +162,27 @@ function rechercherMot() {
     }
   }
 
-  // Gestion des requêtes "comment dit-on X en Y"
-  const matchTrad = message.match(/(?:comment (?:on )?dit[- ]?on|traduction de|signifie|en) (.+?) en ([a-z]+)/i);
-  if (matchTrad) {
-    const motCherche = matchTrad[1].trim();
-    const langueCible = matchTrad[2].trim().toLowerCase().substring(0, 2);
-    
+  const match = message.match(/comment (on )?dit[- ]?on (.+?) en ([a-z]+)/i);
+  if (match) {
+    const motCherche = match[2].trim();
+    const langueCible = match[3].trim().substring(0, 2);
     const entree = motsComplet.find(m =>
-      Object.entries(m).some(([k, v]) =>
-        k !== 'cat' && typeof v === 'string' && v.toLowerCase() === motCherche
-      )
+      Object.values(m).some(val => typeof val === 'string' && val.toLowerCase() === motCherche)
     );
-
-    if (entree) {
-      if (langueCible === 'tz') {
-        afficherMessage('bot', `<strong>${escapeHTML(motCherche)}</strong> en Tadaksahak se dit : <strong>${escapeHTML(entree.mot)}</strong>`);
-      } else if (entree[langueCible]) {
-        afficherMessage('bot',
-          `Mot Tadaksahak : <strong>${escapeHTML(entree.mot)}</strong><br><br>
-           <strong>${escapeHTML(motCherche)}</strong> en ${nomsLangues[langueCible] || langueCible.toUpperCase()} se dit : <strong>${escapeHTML(entree[langueCible])}</strong>`);
-      } else {
-        afficherMessage('bot', inconnu || "Ce mot n’est pas encore disponible dans cette langue.");
-      }
+    if (entree && entree[langueCible]) {
+      const traduction = entree[langueCible];
+      const cat = entree.cat ? ` (${entree.cat})` : "";
+      afficherMessage('bot', `<strong>${escapeHTML(motCherche)}</strong> en ${nomsLangues[langueCible]} se dit : <strong>${escapeHTML(traduction)}</strong>${escapeHTML(cat)}`);
     } else {
       afficherMessage('bot', inconnu || "Ce mot n’est pas encore disponible.");
     }
     return;
   }
 
-  const matchDef = message.match(/(définition|signifie) de (.+)/i);
-  if (matchDef) {
-    const motCherche = matchDef[2].trim();
-    traiterRecherche(motCherche, reponseMot, inconnu, reponses, triggers);
-    return;
-  }
-
   traiterRecherche(message, reponseMot, inconnu, reponses, triggers);
-  }
-  function traiterRecherche(message, reponseMot, inconnu, reponses, triggers) {
+}
+
+function traiterRecherche(message, reponseMot, inconnu, reponses, triggers) {
   setTimeout(() => {
     const exacts = motsComplet.filter(m =>
       Object.entries(m).some(([k, v]) =>
@@ -202,12 +191,7 @@ function rechercherMot() {
     );
 
     if (exacts.length) {
-      const uniques = new Set();
       const réponses = exacts.map(m => {
-        const identifiant = m.mot + m[langueTrad];
-        if (uniques.has(identifiant)) return '';
-        uniques.add(identifiant);
-
         const autres = motsComplet.filter(x => x.mot === m.mot && x !== m);
         const traductions = Object.entries(m)
           .filter(([k]) => k !== 'mot' && k !== 'cat')
@@ -221,8 +205,8 @@ function rechercherMot() {
             .join('<br>')
         ).join('<hr>');
 
-        return `${reponseMot || "Mot Tadaksahak disponible :"} <strong>${escapeHTML(m.mot)}</strong><br>${traductions}${homonymes ? "<hr>" + homonymes : ''}`;
-      }).filter(Boolean);
+        return `${reponseMot || "Mot Tadaksahak disponible :"}<br>${traductions}${homonymes ? "<hr>" + homonymes : ''}`;
+      });
 
       afficherMessage('bot', réponses.join('<br><br>'));
     } else {
@@ -239,6 +223,8 @@ function afficherMessage(type, contenu) {
   chatBox.appendChild(msg);
   chatBox.scrollTop = chatBox.scrollHeight;
 }
+
+// ==== Langue UI: menu dynamique ====
 
 function genererMenuLangues(menuId, callback) {
   const menu = document.getElementById(menuId);
@@ -287,6 +273,7 @@ function initialiserMenusLangues() {
   });
 }
 
+// ==== Initialisation ====
 window.addEventListener('DOMContentLoaded', () => {
   chargerDonnees();
   document.getElementById('searchBar').addEventListener('input', rechercherMotDebounce);
