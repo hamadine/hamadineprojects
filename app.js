@@ -58,8 +58,8 @@ async function chargerDonnees() {
     indexMot = parseInt(localStorage.getItem('motIndex')) || 0;
     afficherMot(indexMot);
   } catch (e) {
-    console.error("Erreur de chargement :", e);
-    alert("❌ Fichiers JSON manquants ou incorrects.");
+    console.error("❌ Erreur de chargement :", e);
+    alert("Erreur de chargement des fichiers JSON. Vérifie le dossier /data/");
   }
 }
 
@@ -84,7 +84,7 @@ function motSuivant() {
   if (indexMot < mots.length - 1) afficherMot(indexMot + 1);
 }
 
-function rechercherMot() {
+const rechercherMotDebounce = debounce(() => {
   const query = document.getElementById('searchBar').value.trim().toLowerCase();
   if (!query) {
     mots = [...motsComplet];
@@ -99,9 +99,7 @@ function rechercherMot() {
     document.getElementById('definition').textContent = "";
     document.getElementById('compteur').textContent = "0 / 0";
   }
-}
-
-const rechercherMotDebounce = debounce(rechercherMot);
+});
 
 function envoyerMessage() {
   const input = document.getElementById('chatInput');
@@ -111,6 +109,8 @@ function envoyerMessage() {
   input.value = '';
 
   const data = interfaceData[langueInterface]?.botIntelligence || interfaceData['fr'].botIntelligence;
+  if (!data) return afficherMessage('bot', "Configuration manquante.");
+
   const {
     salutations = [], salutations_triggers = [],
     remerciements = [], insultes = [],
@@ -144,7 +144,7 @@ function envoyerMessage() {
     const motCherche = match[2].trim();
     const langueCible = match[3].substring(0, 2);
     const entree = motsComplet.find(m =>
-      Object.entries(m).some(([k, v]) => k !== 'cat' && v.toLowerCase() === motCherche)
+      Object.entries(m).some(([k, v]) => k !== 'cat' && typeof v === 'string' && v.toLowerCase() === motCherche)
     );
 
     if (entree && entree[langueCible]) {
@@ -155,9 +155,8 @@ function envoyerMessage() {
     }
   }
 
-  // Fallback exact search
   const exacts = motsComplet.filter(m =>
-    Object.entries(m).some(([k, v]) => k !== 'cat' && v.toLowerCase() === message)
+    Object.entries(m).some(([k, v]) => k !== 'cat' && typeof v === 'string' && v.toLowerCase() === message)
   );
 
   if (exacts.length) {
@@ -173,9 +172,6 @@ function envoyerMessage() {
     return afficherMessage('bot', réponses.join('<br><br>'));
   }
 
-  afficherMessage('bot', inconnu);
-
-  // Histoire
   const resultats = (window.histoireDocs || []).filter(doc => {
     const msg = message.toLowerCase();
     return (doc.titre && doc.titre.toLowerCase().includes(msg)) ||
@@ -187,8 +183,10 @@ function envoyerMessage() {
     const bloc = resultats.map(doc =>
       `<strong>${escapeHTML(doc.titre)}</strong><br>${escapeHTML(doc.contenu)}`
     ).join('<br><br>');
-    afficherMessage('bot', bloc);
+    return afficherMessage('bot', bloc);
   }
+
+  afficherMessage('bot', inconnu);
 }
 
 function afficherMessage(type, contenu) {
