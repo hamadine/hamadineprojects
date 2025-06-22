@@ -17,11 +17,6 @@ const nomsLangues = {
 let fuse = null;
 let corpusHistoire = "";
 
-function chargerCorpusHistoire() {
-  const sections = document.querySelectorAll('[id^="chapitre-"]');
-  corpusHistoire = Array.from(sections).map(sec => sec.textContent).join("\n\n");
-}
-
 function escapeHTML(str) {
   return str.replace(/[&<>"']/g, c => ({
     '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
@@ -36,20 +31,23 @@ function debounce(fn, delay = 300) {
   };
 }
 
+function chargerCorpusHistoire() {
+  const sections = document.querySelectorAll('[id^="chapitre-"]');
+  corpusHistoire = Array.from(sections).map(sec => sec.textContent).join("\n\n");
+}
+
 async function chargerDonnees() {
   try {
-    const [motsRes, interfaceRes] = await Promise.all([
+    const [motsRes, interfaceRes, histoireRes] = await Promise.all([
       axios.get('data/mots.json'),
-      axios.get('data/interface-langue.json')
+      axios.get('data/interface-langue.json'),
       axios.get('data/histoire.json')
     ]);
-    motsComplet = motsRes.data;
-mots = [...motsComplet];
-interfaceData = interfaceRes.data;
-window.histoireDocs = histoireRes.data || [];
+
     motsComplet = motsRes.data;
     mots = [...motsComplet];
     interfaceData = interfaceRes.data;
+    window.histoireDocs = histoireRes.data || [];
 
     if (!interfaceData[langueInterface]) langueInterface = 'fr';
     if (!Object.keys(mots[0] || {}).includes(langueTrad)) langueTrad = 'fr';
@@ -70,30 +68,6 @@ window.histoireDocs = histoireRes.data || [];
     alert("Erreur lors du chargement des données JSON.");
   }
 }
-
-function changerLangueInterface(langue) {
-  langueInterface = langue;
-  localStorage.setItem('langueInterface', langue);
-  document.documentElement.lang = langue;
-
-  const t = interfaceData[langueInterface] || interfaceData['fr'];
-
-  document.title = t.titrePrincipal;
-  document.getElementById('titrePrincipal').textContent = t.titrePrincipal;
-  document.getElementById('textePresentation').textContent = t.presentation;
-  document.getElementById('searchBar').placeholder = t.searchPlaceholder;
-  document.getElementById('btnEnvoyer').textContent = t.envoyer;
-  document.getElementById('chat-title').textContent = t.chatTitre;
-  document.getElementById('botIntro').innerHTML = t.botIntro;
-  document.getElementById('footerText').textContent = t.footerText;
-
-  document.getElementById('btnLangueInterface').textContent = `Interface : ${nomsLangues[langueInterface] || langueInterface.toUpperCase()} ⌄`;
-  document.getElementById('btnLangueTrad').textContent = `Traduction : ${nomsLangues[langueTrad] || langueTrad.toUpperCase()} ⌄`;
-
-  window.reponseBot = t.reponseBot || "Mot introuvable.";
-  window.nomUtilisateur = t.utilisateur || "Vous";
-}
-
 function afficherMot(motIndex = indexMot) {
   if (!mots.length) return;
   indexMot = Math.max(0, Math.min(mots.length - 1, motIndex));
@@ -109,6 +83,7 @@ function afficherMot(motIndex = indexMot) {
 function motPrecedent() {
   if (indexMot > 0) afficherMot(indexMot - 1);
 }
+
 function motSuivant() {
   if (indexMot < mots.length - 1) afficherMot(indexMot + 1);
 }
@@ -169,7 +144,7 @@ function envoyerMessage() {
   for (const question in faq) {
     if (message.includes(question)) {
       afficherMessage('bot', faq[question]);
-      return; 
+      return;
     }
   }
 
@@ -236,23 +211,22 @@ function afficherMessage(type, contenu) {
   msg.innerHTML = `<strong>${type === 'utilisateur' ? (window.nomUtilisateur || 'Vous') : 'Bot'}:</strong> ${contenu}`;
   chatBox.appendChild(msg);
   chatBox.scrollTop = chatBox.scrollHeight;
-  // Recherche dans les documents historiques si rien n'a encore répondu
-const resultatsHistoire = window.histoireDocs.filter(doc => {
-  const contenu = doc.contenu.toLowerCase();
-  const titre = doc.titre.toLowerCase();
-  return contenu.includes(message) || titre.includes(message) || 
-         (doc.motsCles || []).some(motCle => message.includes(motCle.toLowerCase()));
-});
 
-if (resultatsHistoire.length) {
-  const reponses = resultatsHistoire.map(doc => 
-    `<strong>${escapeHTML(doc.titre)}</strong><br>${escapeHTML(doc.contenu)}`
-  );
-  afficherMessage('bot', reponses.join('<hr>'));
-  return;
+  const message = contenu.toLowerCase(); // pour analyse mots clés
+  const resultatsHistoire = window.histoireDocs.filter(doc => {
+    const contenu = doc.contenu.toLowerCase();
+    const titre = doc.titre.toLowerCase();
+    return contenu.includes(message) || titre.includes(message) || 
+           (doc.motsCles || []).some(motCle => message.includes(motCle.toLowerCase()));
+  });
+
+  if (resultatsHistoire.length) {
+    const reponses = resultatsHistoire.map(doc => 
+      `<strong>${escapeHTML(doc.titre)}</strong><br>${escapeHTML(doc.contenu)}`
+    );
+    afficherMessage('bot', reponses.join('<hr>'));
+  }
 }
-
-// ==== Menus Langues ====
 
 function genererMenuLangues(menuId, callback) {
   const menu = document.getElementById(menuId);
@@ -301,16 +275,32 @@ function initialiserMenusLangues() {
   });
 }
 
-// ==== Initialisation ====
+function changerLangueInterface(langue) {
+  langueInterface = langue;
+  localStorage.setItem('langueInterface', langue);
+  document.documentElement.lang = langue;
+
+  const t = interfaceData[langueInterface] || interfaceData['fr'];
+
+  document.title = t.titrePrincipal;
+  document.getElementById('titrePrincipal').textContent = t.titrePrincipal;
+  document.getElementById('textePresentation').textContent = t.presentation;
+  document.getElementById('searchBar').placeholder = t.searchPlaceholder;
+  document.getElementById('btnEnvoyer').textContent = t.envoyer;
+  document.getElementById('chat-title').textContent = t.chatTitre;
+  document.getElementById('botIntro').innerHTML = t.botIntro;
+  document.getElementById('footerText').textContent = t.footerText;
+
+  document.getElementById('btnLangueInterface').textContent = `Interface : ${nomsLangues[langueInterface] || langueInterface.toUpperCase()} ⌄`;
+  document.getElementById('btnLangueTrad').textContent = `Traduction : ${nomsLangues[langueTrad] || langueTrad.toUpperCase()} ⌄`;
+
+  window.reponseBot = t.reponseBot || "Mot introuvable.";
+  window.nomUtilisateur = t.utilisateur || "Vous";
+}
+
 window.addEventListener('DOMContentLoaded', () => {
   chargerDonnees();
-  document.getElementById('searchBar').addEventListener('input', rechercherMotDebounce);
-  document.getElementById('btnEnvoyer').addEventListener('click', envoyerMessage);
-  document.getElementById('btnPrev').addEventListener('click', motPrecedent);
-  document.getElementById('btnNext').addEventListener('click', motSuivant);
-  window.addEventListener('DOMContentLoaded', () => {
-  chargerDonnees();
-  chargerCorpusHistoire(); // <-- Ajoute ceci ici
+  chargerCorpusHistoire();
   document.getElementById('searchBar').addEventListener('input', rechercherMotDebounce);
   document.getElementById('btnEnvoyer').addEventListener('click', envoyerMessage);
   document.getElementById('btnPrev').addEventListener('click', motPrecedent);
