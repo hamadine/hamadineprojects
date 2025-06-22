@@ -213,21 +213,27 @@ function afficherMessage(type, contenu) {
   chatBox.scrollTop = chatBox.scrollHeight;
 
   const message = contenu.toLowerCase(); // pour analyse mots clés
-  const resultatsHistoire = window.histoireDocs.filter(doc => {
-    const contenu = doc.contenu.toLowerCase();
-    const titre = doc.titre.toLowerCase();
-    return contenu.includes(message) || titre.includes(message) || 
-           (doc.motsCles || []).some(motCle => message.includes(motCle.toLowerCase()));
-  });
+  // Recherche dans les documents historiques
+const resultatsHistoire = window.histoireDocs.filter(doc => {
+  const contenuDoc = doc.contenu.toLowerCase();
+  const titreDoc = doc.titre.toLowerCase();
+  return contenuDoc.includes(message) || titreDoc.includes(message) || 
+         (doc.motsCles || []).some(motCle => message.includes(motCle.toLowerCase()));
+});
 
-  if (resultatsHistoire.length) {
-    const reponses = resultatsHistoire.map(doc => 
-      `<strong>${escapeHTML(doc.titre)}</strong><br>${escapeHTML(doc.contenu)}`
-    );
-    afficherMessage('bot', reponses.join('<hr>'));
-  }
+if (resultatsHistoire.length) {
+  const reponses = resultatsHistoire.map(doc => 
+    `<strong>${escapeHTML(doc.titre)}</strong><br>${escapeHTML(doc.contenu)}`
+  );
+function afficherMessage(type, contenu) {
+  const chatBox = document.getElementById('chatWindow');
+  const msg = document.createElement('div');
+  msg.className = `message ${type}`;
+  msg.innerHTML = `<strong>${type === 'utilisateur' ? (window.nomUtilisateur || 'Vous') : 'Bot'}:</strong> ${contenu}`;
+  chatBox.appendChild(msg);
+  chatBox.scrollTop = chatBox.scrollHeight;
 }
-
+  
 function genererMenuLangues(menuId, callback) {
   const menu = document.getElementById(menuId);
   menu.innerHTML = '';
