@@ -68,6 +68,7 @@ async function chargerDonnees() {
     alert("Erreur lors du chargement des données JSON.");
   }
 }
+
 function afficherMot(motIndex = indexMot) {
   if (!mots.length) return;
   indexMot = Math.max(0, Math.min(mots.length - 1, motIndex));
@@ -212,28 +213,22 @@ function afficherMessage(type, contenu) {
   chatBox.appendChild(msg);
   chatBox.scrollTop = chatBox.scrollHeight;
 
-  const message = contenu.toLowerCase(); // pour analyse mots clés
-  // Recherche dans les documents historiques
-const resultatsHistoire = window.histoireDocs.filter(doc => {
-  const contenuDoc = doc.contenu.toLowerCase();
-  const titreDoc = doc.titre.toLowerCase();
-  return contenuDoc.includes(message) || titreDoc.includes(message) || 
-         (doc.motsCles || []).some(motCle => message.includes(motCle.toLowerCase()));
-});
+  const message = contenu.toLowerCase();
+  const resultatsHistoire = window.histoireDocs.filter(doc => {
+    const contenuDoc = doc.contenu.toLowerCase();
+    const titreDoc = doc.titre.toLowerCase();
+    return contenuDoc.includes(message) || titreDoc.includes(message) ||
+           (doc.motsCles || []).some(motCle => message.includes(motCle.toLowerCase()));
+  });
 
-if (resultatsHistoire.length) {
-  const reponses = resultatsHistoire.map(doc => 
-    `<strong>${escapeHTML(doc.titre)}</strong><br>${escapeHTML(doc.contenu)}`
-  );
-function afficherMessage(type, contenu) {
-  const chatBox = document.getElementById('chatWindow');
-  const msg = document.createElement('div');
-  msg.className = `message ${type}`;
-  msg.innerHTML = `<strong>${type === 'utilisateur' ? (window.nomUtilisateur || 'Vous') : 'Bot'}:</strong> ${contenu}`;
-  chatBox.appendChild(msg);
-  chatBox.scrollTop = chatBox.scrollHeight;
+  if (resultatsHistoire.length) {
+    const reponses = resultatsHistoire.map(doc =>
+      `<strong>${escapeHTML(doc.titre)}</strong><br>${escapeHTML(doc.contenu)}`
+    );
+    reponses.forEach(r => afficherMessage('bot', r));
+  }
 }
-  
+
 function genererMenuLangues(menuId, callback) {
   const menu = document.getElementById(menuId);
   menu.innerHTML = '';
