@@ -15,6 +15,12 @@ const nomsLangues = {
 };
 
 let fuse = null;
+let corpusHistoire = "";
+
+function chargerCorpusHistoire() {
+  const sections = document.querySelectorAll('[id^="chapitre-"]');
+  corpusHistoire = Array.from(sections).map(sec => sec.textContent).join("\n\n");
+}
 
 function escapeHTML(str) {
   return str.replace(/[&<>"']/g, c => ({
@@ -35,7 +41,12 @@ async function chargerDonnees() {
     const [motsRes, interfaceRes] = await Promise.all([
       axios.get('data/mots.json'),
       axios.get('data/interface-langue.json')
+      axios.get('data/histoire.json')
     ]);
+    motsComplet = motsRes.data;
+mots = [...motsComplet];
+interfaceData = interfaceRes.data;
+window.histoireDocs = histoireRes.data || [];
     motsComplet = motsRes.data;
     mots = [...motsComplet];
     interfaceData = interfaceRes.data;
@@ -158,7 +169,7 @@ function envoyerMessage() {
   for (const question in faq) {
     if (message.includes(question)) {
       afficherMessage('bot', faq[question]);
-      return;
+      return; 
     }
   }
 
@@ -225,6 +236,20 @@ function afficherMessage(type, contenu) {
   msg.innerHTML = `<strong>${type === 'utilisateur' ? (window.nomUtilisateur || 'Vous') : 'Bot'}:</strong> ${contenu}`;
   chatBox.appendChild(msg);
   chatBox.scrollTop = chatBox.scrollHeight;
+  // Recherche dans les documents historiques si rien n'a encore répondu
+const resultatsHistoire = window.histoireDocs.filter(doc => {
+  const contenu = doc.contenu.toLowerCase();
+  const titre = doc.titre.toLowerCase();
+  return contenu.includes(message) || titre.includes(message) || 
+         (doc.motsCles || []).some(motCle => message.includes(motCle.toLowerCase()));
+});
+
+if (resultatsHistoire.length) {
+  const reponses = resultatsHistoire.map(doc => 
+    `<strong>${escapeHTML(doc.titre)}</strong><br>${escapeHTML(doc.contenu)}`
+  );
+  afficherMessage('bot', reponses.join('<hr>'));
+  return;
 }
 
 // ==== Menus Langues ====
@@ -279,6 +304,13 @@ function initialiserMenusLangues() {
 // ==== Initialisation ====
 window.addEventListener('DOMContentLoaded', () => {
   chargerDonnees();
+  document.getElementById('searchBar').addEventListener('input', rechercherMotDebounce);
+  document.getElementById('btnEnvoyer').addEventListener('click', envoyerMessage);
+  document.getElementById('btnPrev').addEventListener('click', motPrecedent);
+  document.getElementById('btnNext').addEventListener('click', motSuivant);
+  window.addEventListener('DOMContentLoaded', () => {
+  chargerDonnees();
+  chargerCorpusHistoire(); // <-- Ajoute ceci ici
   document.getElementById('searchBar').addEventListener('input', rechercherMotDebounce);
   document.getElementById('btnEnvoyer').addEventListener('click', envoyerMessage);
   document.getElementById('btnPrev').addEventListener('click', motPrecedent);
