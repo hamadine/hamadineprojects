@@ -32,10 +32,12 @@ function debounce(fn, delay = 300) {
 
 async function chargerDonnees() {
   try {
+    const histoireFile = langueInterface === 'ar' ? 'histoire-ar.json' : 'histoire.json';
+
     const [motsRes, interfaceRes, histoireRes] = await Promise.all([
       axios.get('data/mots.json'),
       axios.get('data/interface-langue.json'),
-      axios.get('data/histoire.json')
+      axios.get(`data/${histoireFile}`)
     ]);
 
     motsComplet = motsRes.data;
@@ -116,7 +118,6 @@ function envoyerMessage() {
     remerciements = [], insultes = [],
     insulte = "Merci de rester respectueux.",
     faq = {}, reponseMot, inconnu = "Je ne comprends pas.",
-    triggers = {}, reponses = {}
   } = data;
 
   if (salutations_triggers.some(t => message.includes(t))) {
@@ -243,6 +244,8 @@ function changerLangueInterface(langue) {
   langueInterface = langue;
   localStorage.setItem('langueInterface', langue);
   document.documentElement.lang = langue;
+  document.body.dir = (langue === 'ar') ? 'rtl' : 'ltr';
+
   const t = interfaceData[langueInterface] || interfaceData['fr'];
 
   document.title = t.titrePrincipal;
