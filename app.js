@@ -111,8 +111,7 @@ function envoyerMessage() {
   input.value = '';
 
   const data = interfaceData[langueInterface]?.botIntelligence || interfaceData['fr'].botIntelligence;
-  if (!data) return afficherMessage('bot','bloc');
-}
+  if (!data) return afficherMessage('bot', "Je n'ai pas de réponses pour le moment.");
 
   const {
     salutations = [], salutations_triggers = [],
@@ -182,23 +181,26 @@ function envoyerMessage() {
   });
 
   if (resultats.length) {
-  const bloc = resultats.map(doc => {
-    const titreSanit = doc.titre
-      .normalize("NFD").replace(/[\u0300-\u036f]/g, "")
-      .replace(/[^\w\s-]/g, "")
-      .trim().replace(/\s+/g, '-').toLowerCase();
+    const bloc = resultats.map(doc => {
+      const titreSanit = doc.titre
+        .normalize("NFD").replace(/[\u0300-\u036f]/g, "")
+        .replace(/[^\w\s-]/g, "")
+        .trim().replace(/\s+/g, '-').toLowerCase();
 
-    const audioPath = `audio/${titreSanit}.mp3`;
+      const audioPath = `audio/${titreSanit}.mp3`;
 
-    return `
-      <strong>${escapeHTML(doc.titre)}</strong><br>
-      ${escapeHTML(doc.contenu)}<br><br>
-      <button onclick="jouerAudio('${audioPath}')">🔊 Écouter en Tadaksahak</button>
-    `;
-  }).join('<br><br>');
+      return `
+        <strong>${escapeHTML(doc.titre)}</strong><br>
+        ${escapeHTML(doc.contenu)}<br><br>
+        <button onclick="jouerAudio('${audioPath}')">🔊 Écouter en Tadaksahak</button>
+      `;
+    }).join('<br><br>');
 
-  return afficherMessage('bot', bloc);
+    return afficherMessage('bot', bloc);
   }
+
+  return afficherMessage('bot', inconnu);
+}
 
 function afficherMessage(type, contenu) {
   const chatBox = document.getElementById('chatWindow');
@@ -285,7 +287,7 @@ function activerMicroEtComparer() {
   if (!motAttendu) return;
 
   const recognition = new webkitSpeechRecognition();
-  recognition.lang = 'fr-FR'; // Peut être adapté selon les sons Tadaksahak
+  recognition.lang = 'fr-FR';
 
   recognition.onstart = () => {
     recoActive = true;
@@ -294,8 +296,6 @@ function activerMicroEtComparer() {
 
   recognition.onresult = (event) => {
     const result = event.results[0][0].transcript.trim().toLowerCase();
-    console.log("Tu as dit :", result);
-
     const correct = result === motAttendu;
     if (correct) {
       afficherMessage('bot', `✅ Bien dit ! Tu as prononcé <strong>${result}</strong> comme attendu.`);
@@ -304,7 +304,7 @@ function activerMicroEtComparer() {
     }
   };
 
-  recognition.onerror = (e) => {
+  recognition.onerror = () => {
     afficherMessage('bot', "❌ Erreur de reconnaissance vocale.");
   };
 
