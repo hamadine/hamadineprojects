@@ -173,12 +173,18 @@ function envoyerMessage() {
     return afficherMessage('bot', réponses.join('<br><br>'));
   }
 
-  const resultats = (window.histoireDocs || []).filter(doc => {
-    const msg = message.toLowerCase();
-    return (doc.titre && doc.titre.toLowerCase().includes(msg)) ||
-           (doc.contenu && doc.contenu.toLowerCase().includes(msg)) ||
-           (doc.motsCles || []).some(m => msg.includes(m.toLowerCase()));
-  });
+  if (resultats.length) {
+  const bloc = resultats.map(doc => {
+    const titreSanit = doc.titre.replace(/\s+/g, '-').toLowerCase();
+    const audioPath = `audio/${titreSanit}.mp3`;
+    return `
+      <strong>${escapeHTML(doc.titre)}</strong><br>
+      ${escapeHTML(doc.contenu)}<br><br>
+      <button onclick="jouerAudio('${audioPath}')">🔊 Écouter en Tadaksahak</button>
+    `;
+  }).join('<br><br>');
+  return afficherMessage('bot', bloc);
+  }
 
   if (resultats.length) {
     const bloc = resultats.map(doc =>
@@ -290,6 +296,13 @@ function activerMicroEtComparer() {
         langue !== 'cat' && typeof mot === 'string' && mot.toLowerCase() === result
       )
     );
+    function jouerAudio(path) {
+  const audio = new Audio(path);
+  audio.play().catch(err => {
+    alert("⚠️ Impossible de lire l'audio.");
+    console.error("Audio error:", err);
+  });
+    }
 
     if (entree) {
       const langueTrouvee = Object.entries(entree).find(([langue, mot]) =>
