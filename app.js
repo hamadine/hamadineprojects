@@ -111,7 +111,8 @@ function envoyerMessage() {
   input.value = '';
 
   const data = interfaceData[langueInterface]?.botIntelligence || interfaceData['fr'].botIntelligence;
-  if (!data) return afficherMessage('bot', "Configuration manquante.");
+  if (!data) return afficherMessage('bot','bloc');
+}
 
   const {
     salutations = [], salutations_triggers = [],
