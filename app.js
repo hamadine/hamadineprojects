@@ -263,10 +263,50 @@ function changerLangueInterface(langue) {
   window.nomUtilisateur = t.utilisateur || "Vous";
 }
 
+let recoActive = false;
+
+function activerMicroEtComparer() {
+  if (!('webkitSpeechRecognition' in window)) {
+    alert("🎤 Reconnaissance vocale non prise en charge sur ce navigateur.");
+    return;
+  }
+
+  const motAttendu = mots[indexMot]?.mot?.toLowerCase();
+  if (!motAttendu) return;
+
+  const recognition = new webkitSpeechRecognition();
+  recognition.lang = 'fr-FR'; // Peut être adapté selon les sons Tadaksahak
+
+  recognition.onstart = () => {
+    recoActive = true;
+    afficherMessage('bot', "🎙️ Parlez maintenant...");
+  };
+
+  recognition.onresult = (event) => {
+    const result = event.results[0][0].transcript.trim().toLowerCase();
+    console.log("Tu as dit :", result);
+
+    const correct = result === motAttendu;
+    if (correct) {
+      afficherMessage('bot', `✅ Bien dit ! Tu as prononcé <strong>${result}</strong> comme attendu.`);
+    } else {
+      afficherMessage('bot', `❌ Tu as dit : <strong>${result}</strong><br>🔁 Attendu : <strong>${motAttendu}</strong>`);
+    }
+  };
+
+  recognition.onerror = (e) => {
+    afficherMessage('bot', "❌ Erreur de reconnaissance vocale.");
+  };
+
+  recognition.onend = () => recoActive = false;
+  recognition.start();
+}
+
 window.addEventListener('DOMContentLoaded', () => {
   chargerDonnees();
   document.getElementById('searchBar').addEventListener('input', rechercherMotDebounce);
   document.getElementById('btnEnvoyer').addEventListener('click', envoyerMessage);
   document.getElementById('btnPrev').addEventListener('click', motPrecedent);
   document.getElementById('btnNext').addEventListener('click', motSuivant);
+  document.getElementById('btnPrononcer').addEventListener('click', activerMicroEtComparer);
 });
