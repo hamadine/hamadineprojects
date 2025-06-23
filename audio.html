@@ -1,1 +1,19 @@
-
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="Content-Security-Policy" content="
+    default-src 'self';
+    script-src 'self';
+    media-src * data: blob:;
+    object-src 'none';
+  ">
+  <title>Test Audio</title>
+</head>
+<body>
+  <h1>Test de lecture audio</h1>
+  <audio controls src="audio/religion-et-langue-chez-les-idaksahak.mp3">
+    Ton navigateur ne supporte pas l’audio HTML5.
+  </audio>
+</body>
+</html>
