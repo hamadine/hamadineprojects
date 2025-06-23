@@ -271,11 +271,10 @@ function activerMicroEtComparer() {
     return;
   }
 
-  const motAttendu = mots[indexMot]?.mot?.toLowerCase();
-  if (!motAttendu) return;
-
   const recognition = new webkitSpeechRecognition();
-  recognition.lang = 'fr-FR'; // Peut être adapté selon les sons Tadaksahak
+  recognition.lang = 'fr-FR'; // tu peux changer ça dynamiquement plus tard
+  recognition.interimResults = false;
+  recognition.maxAlternatives = 1;
 
   recognition.onstart = () => {
     recoActive = true;
@@ -286,19 +285,52 @@ function activerMicroEtComparer() {
     const result = event.results[0][0].transcript.trim().toLowerCase();
     console.log("Tu as dit :", result);
 
-    const correct = result === motAttendu;
-    if (correct) {
-      afficherMessage('bot', `✅ Bien dit ! Tu as prononcé <strong>${result}</strong> comme attendu.`);
+    const entree = motsComplet.find(m =>
+      Object.entries(m).some(([langue, mot]) =>
+        langue !== 'cat' && typeof mot === 'string' && mot.toLowerCase() === result
+      )
+    );
+
+    if (entree) {
+      const langueTrouvee = Object.entries(entree).find(([langue, mot]) =>
+        langue !== 'cat' && typeof mot === 'string' && mot.toLowerCase() === result
+      )?.[0];
+
+      let message = `🗣️ Mot reconnu : <strong>${escapeHTML(result)}</strong><br>`;
+      message += `🌍 Langue : <strong>${nomsLangues[langueTrouvee] || langueTrouvee}</strong><br>`;
+      message += `🔁 Traductions :<br>`;
+      Object.entries(entree).forEach(([k, v]) => {
+        if (k !== 'cat') {
+          message += `<strong>${k.toUpperCase()}</strong> : ${escapeHTML(v)}<br>`;
+        }
+      });
+      afficherMessage('bot', message);
     } else {
-      afficherMessage('bot', `❌ Tu as dit : <strong>${result}</strong><br>🔁 Attendu : <strong>${motAttendu}</strong>`);
+      const docs = (window.histoireDocs || []).filter(doc =>
+        (doc.titre && doc.titre.toLowerCase().includes(result)) ||
+        (doc.contenu && doc.contenu.toLowerCase().includes(result)) ||
+        (doc.motsCles || []).some(m => m.toLowerCase() === result)
+      );
+
+      if (docs.length) {
+        const msg = docs.map(doc =>
+          `<strong>${escapeHTML(doc.titre)}</strong><br>${escapeHTML(doc.contenu)}`
+        ).join('<br><br>');
+        afficherMessage('bot', msg);
+      } else {
+        afficherMessage('bot', `❌ Aucun mot ou document trouvé pour : <strong>${escapeHTML(result)}</strong>`);
+      }
     }
   };
 
-  recognition.onerror = (e) => {
+  recognition.onerror = () => {
     afficherMessage('bot', "❌ Erreur de reconnaissance vocale.");
   };
 
-  recognition.onend = () => recoActive = false;
+  recognition.onend = () => {
+    recoActive = false;
+  };
+
   recognition.start();
 }
 
