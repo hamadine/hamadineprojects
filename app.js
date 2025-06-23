@@ -182,20 +182,9 @@ function envoyerMessage() {
       ${escapeHTML(doc.contenu)}<br><br>
       <button onclick="jouerAudio('${audioPath}')">🔊 Écouter en Tadaksahak</button>
     `;
-  }).join('<br><br>');
-  return afficherMessage('bot', bloc);
-  }
-
-  if (resultats.length) {
-    const bloc = resultats.map(doc =>
-      `<strong>${escapeHTML(doc.titre)}</strong><br>${escapeHTML(doc.contenu)}`
-    ).join('<br><br>');
-    return afficherMessage('bot', bloc);
-  }
-
-  afficherMessage('bot', inconnu);
-}
-
+  })
+}   
+  
 function afficherMessage(type, contenu) {
   const chatBox = document.getElementById('chatWindow');
   const msg = document.createElement('div');
