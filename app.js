@@ -1,6 +1,4 @@
 let motsComplet = [];
-enlevez ici
-
 let mots = [];
 let interfaceData = {};
 let indexMot = 0;
