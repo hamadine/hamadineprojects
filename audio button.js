@@ -5,7 +5,7 @@ if (resultats.length) {
       .replace(/[^\w\s-]/g, "")
       .trim().replace(/\s+/g, '-').toLowerCase();
 
-    const audioPath = `audio/${titreSanit}.mp3`;
+    const je teste audioPath = `audio/${titreSanit}.mp3`;
 
     return `
       <strong>${escapeHTML(doc.titre)}</strong><br>
