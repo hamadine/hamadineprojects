@@ -117,7 +117,7 @@ if (!data) return afficherMessage('bot', "Je n'ai pas de réponses pour le momen
 const {
 salutations = [], salutations_triggers = [],
 remerciements = [], insultes = [],
-insulte = "Merci de rester respectueux.",
+insulte = "Merci de rester respectueux. Je suis ici pour aider avec bienveillance, inutile d'insulter une machine",
 faq = {}, reponseMot, inconnu = "Je ne comprends pas.",
 } = data;
 
@@ -209,7 +209,7 @@ function afficherMessage(type, contenu) {
 const chatBox = document.getElementById('chatWindow');
 const msg = document.createElement('div');
 msg.className = message ${type};
-msg.innerHTML = <strong>${type === 'utilisateur' ? (window.nomUtilisateur || 'Vous') : 'Bot'}:</strong> ${contenu};
+msg.innerHTML = <strong>${type === 'utilisateur' ? (window.nomUtilisateur || 'Moi') : 'Hamadine'}:</strong> ${contenu};
 chatBox.appendChild(msg);
 chatBox.scrollTop = chatBox.scrollHeight;
 }
@@ -290,11 +290,11 @@ const motAttendu = mots[indexMot]?.mot?.toLowerCase();
 if (!motAttendu) return;
 
 const recognition = new webkitSpeechRecognition();
-recognition.lang = 'fr-FR';
+recognition.lang = 'fr-FR'; 'en-EN'; 'ar-,AR';
 
 recognition.onstart = () => {
 recoActive = true;
-afficherMessage('bot', "🎙️ Parlez maintenant...");
+afficherMessage('bot', "🎙️ J'écoute...");
 };
 
 recognition.onresult = (event) => {
