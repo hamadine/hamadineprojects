@@ -239,3 +239,11 @@ window.addEventListener('DOMContentLoaded', () => {
   document.getElementById('btnNext').addEventListener('click', () => afficherMot(indexMot + 1));
   document.getElementById('btnPrononcer')?.addEventListener('click', activerMicroEtComparer);
 });
+document.querySelectorAll('.onglet').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.onglet').forEach(o => o.classList.remove('actif'));
+    document.querySelectorAll('.onglet-contenu').forEach(c => c.classList.remove('actif'));
+    btn.classList.add('actif');
+    document.getElementById(`tab-${btn.dataset.tab}`).classList.add('actif');
+  });
+});
