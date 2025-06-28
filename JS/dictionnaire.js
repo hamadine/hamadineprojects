@@ -1,35 +1,47 @@
+import axios from 'axios';
 import { escapeHTML } from './utils.js';
-import { getMots, getMotsComplet, setMots, getIndexMot, setIndexMot, langueTrad } from './data-loader.js';
 
-export function afficherMot(motIndex = getIndexMot()) {
-  const mots = getMots();
+export let motsComplet = [];
+export let mots = [];
+export let indexMot = 0;
+export let interfaceData = {};
+let langueTrad = localStorage.getItem('langueTrad') || 'fr';
+let langueInterface = localStorage.getItem('langueInterface') || (navigator.language || 'fr').slice(0, 2);
+
+export async function chargerDonnees() {
+  try {
+    const histoireFile = langueInterface === 'ar' ? 'histoire-ar.json' : 'histoire.json';
+    const [motsRes, interfaceRes, histoireRes] = await Promise.all([
+      axios.get('data/mots.json'),
+      axios.get('data/interface-langue.json'),
+      axios.get(`data/${histoireFile}`)
+    ]);
+
+    motsComplet = motsRes.data;
+    mots.length = 0;
+    mots.push(...motsComplet);
+    interfaceData = interfaceRes.data;
+    window.histoireDocs = histoireRes.data;
+
+    changerLangueInterface(langueInterface);
+    initialiserMenusLangues();
+
+    indexMot = parseInt(localStorage.getItem('motIndex')) || 0;
+    afficherMot(indexMot);
+  } catch (e) {
+    alert("Erreur de chargement des données.");
+    console.error(e);
+  }
+}
+
+export function afficherMot(motIndex = indexMot) {
   if (!mots.length) return;
-  const idx = Math.max(0, Math.min(mots.length - 1, motIndex));
-  setIndexMot(idx);
-  localStorage.setItem('motIndex', idx);
+  indexMot = Math.max(0, Math.min(mots.length - 1, motIndex));
+  localStorage.setItem('motIndex', indexMot);
 
-  const mot = mots[idx];
+  const mot = mots[indexMot];
   document.getElementById('motTexte').textContent = mot.mot || '—';
   document.getElementById('definition').innerHTML =
     escapeHTML(mot[langueTrad] || '—') + (mot.cat ? ` <span style="color:#888;">(${escapeHTML(mot.cat)})</span>` : '');
-  document.getElementById('compteur').textContent = `${idx + 1} / ${mots.length}`;
-}
-
-export function filtrerEtAfficherMot(query) {
-  const motsComplet = getMotsComplet();
-  const nettoyerTexte = str => str.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
-  const motsFiltres = query
-    ? motsComplet.filter(m =>
-        Object.values(m).some(val => typeof val === 'string' && nettoyerTexte(val).includes(nettoyerTexte(query)))
-      )
-    : [...motsComplet];
-
-  setMots(motsFiltres);
-  motsFiltres.length ? afficherMot(0) : afficherAucunResultat();
-}
-
-function afficherAucunResultat() {
-  document.getElementById('motTexte').textContent = "Aucun résultat";
-  document.getElementById('definition').textContent = "";
-  document.getElementById('compteur').textContent = "0 / 0";
+  document.getElementById('compteur').textContent = `${indexMot + 1} / ${mots.length}`;
 }
