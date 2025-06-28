@@ -3,240 +3,159 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Dictionnaire Tadaksahak Multilingue</title>
-  <meta name="robots" content="index, follow" />
-  <meta name="description" content="Dictionnaire Tadaksahak multilingue avec audio, traductions et chatbot éducatif intégré." />
+  <title>Dictionnaire Tadaksahak – Début d'une aventure culturelle</title>
+  <meta name="description" content="Début d'une aventure riche autour de la langue et culture Idaksahak." />
   <meta name="theme-color" content="#005fa3" />
-  <meta property="og:title" content="Dictionnaire Tadaksahak multilingue" />
-  <meta property="og:description" content="Un outil éducatif multilingue avec audio et chatbot." />
-  <meta property="og:image" content="images/idaksahak_round.png" />
-  <meta property="og:type" content="website" />
-  <meta property="og:locale" content="fr_FR" />
   <link rel="icon" href="images/idaksahak_round.png" type="image/png" />
   <link rel="manifest" href="manifest.webmanifest" />
   <link rel="stylesheet" href="style.css" />
-  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js" defer></script>
-  <script src="https://cdn.jsdelivr.net/npm/fuse.js/dist/fuse.min.js" defer crossorigin="anonymous"></script>
-  <script src="app.js" defer></script>
-  <style>
-    button:focus, input:focus {
-      outline: 3px solid var(--blue-mid);
-      outline-offset: 2px;
-    }
-    img {
-      max-width: 100%;
-      height: auto;
-    }
-  </style>
+  <script type="module" src="js/main.js" defer></script>
 </head>
 <body>
   <noscript>
-    <p style="text-align:center; color:red; font-weight:bold;">⚠️ Ce site nécessite JavaScript pour fonctionner correctement.</p>
+    <p style="text-align:center; color:red; font-weight:bold;">
+      ⚠️ Ce site nécessite JavaScript pour fonctionner correctement.
+    </p>
   </noscript>
 
   <header class="site-header">
-    <div class="header-wrapper">
-      <img src="images/idaksahak_round.png" alt="Logo Tadaksahak" class="logo-header" loading="lazy" width="100" height="100" />
-    </div>
+    <img src="images/idaksahak_round.png" alt="Logo Tadaksahak" class="logo-header" loading="lazy" />
   </header>
 
+  <nav class="tabs" aria-label="Sections principales">
+    <button class="tab-btn active" data-tab="dictionnaire">Dictionnaire</button>
+    <button class="tab-btn" data-tab="histoire">Histoire</button>
+    <button class="tab-btn" data-tab="chat">Chat</button>
+    <button class="tab-btn" data-tab="audio">Audio</button>
+    <button class="tab-btn" data-tab="photos">Photos</button>
+    <button class="tab-btn" data-tab="videos">Vidéos</button>
+    <button class="tab-btn" data-tab="rapports">Rapports</button>
+    <button class="tab-btn" data-tab="actualites" style="flex: 2;">📰 Actualités</button>
+    <button class="tab-btn" data-tab="livres">Livres</button>
+  </nav>
   <main>
-    
-    </section>
-    <section class="intro">
-      <h1 id="titrePrincipal">Tadaksahak Dictionary</h1>
-      <p id="textePresentation">Chargement...</p>
-    </section>
-
-    <!-- 🌍 Sélecteurs de langues dynamiques -->
-    <section class="langue-section" aria-label="Choix de la langue">
-      <div class="langue-select-container">
-        <div class="langue-group">
-          <button id="btnLangueInterface" class="langue-btn" aria-haspopup="true" aria-expanded="false" aria-controls="menuLangueInterface">
-            Interface : Français ⌄
-          </button>
-          <div id="menuLangueInterface" class="langue-panel" role="menu" hidden aria-labelledby="btnLangueInterface"></div>
-        </div>
-        <div class="langue-group">
-          <button id="btnLangueTrad" class="langue-btn" aria-haspopup="true" aria-expanded="false" aria-controls="menuLangueTrad">
-            Traduction : Français ⌄
-          </button>
-          <div id="menuLangueTrad" class="langue-panel" role="menu" hidden aria-labelledby="btnLangueTrad"></div>
+    <!-- Onglet Livres -->
+    <section id="livres" class="tab onglet-contenu">
+      <h2>📚 Livres intégrales sur les Idaksahak</h2>
+      <div class="livre-bloc">
+        <h3>📘 Contribution à la connaissance de la communauté Idaksahak</h3>
+        <p>Une étude fondamentale explorant l’histoire, l’identité et l’émancipation politique du peuple Idaksahak à travers trois langues.</p>
+        <div class="livre-langues">
+          <a class="read-btn" href="CONTRIBUTION-A-LA-CONNAISSANCE-DE-LA-COMMUNAUTE-IDAKSAHAK.html" target="_blank">🇫🇷 Lire (Français)</a>
+          <a class="read-btn" href="تاريخ-التحرر-الكامل-العربية.html" target="_blank">🇸🇦 اقرأ (العربية)</a>
+          <a class="read-btn" href="contribution-to-the-knowledge-of-the-idaksahak-community.html" target="_blank">🇬🇧 Read (English)</a>
         </div>
       </div>
     </section>
+    <!-- Onglet Dictionnaire -->
+<section id="dictionnaire" class="tab onglet-contenu active">
+  <h2>📖 Dictionnaire Tadaksahak</h2>
+  <div class="search-bar">
+    <input type="text" id="searchBar" placeholder="🔍 Cherchez un mot..." aria-label="Recherche dans le dictionnaire">
+  </div>
+  <div class="mot-resultat">
+    <h3 id="motTexte">—</h3>
+    <p id="definition">—</p>
+    <p id="compteur">0 / 0</p>
+  </div>
+  <div class="button-group dictionnaire-audio">
+    <button id="btnPlay" class="btn-icon">🔊 Écouter</button>
+    <button id="btnPrononcer" class="btn-icon">🎤 Dis-le</button>
+    <button id="btnReplay" class="btn-icon" disabled>🔁 Réécouter</button>
+    <button id="btnAuto" class="btn-icon" disabled>▶️ Lecture auto</button>
+  </div>
+  <div class="button-group dictionnaire-navigation">
+    <button id="btnPrev" class="btn-nav">⟸ Mot précédent</button>
+    <button id="btnNext" class="btn-nav">Mot suivant ⟹</button>
+  </div>
+</section>
 
-    <!-- 🔍 Zone de recherche -->
-    <section class="recherche" aria-label="Recherche de mots">
-      <input id="searchBar" type="text" placeholder="Cherchez un mot..." aria-label="Barre de recherche" />
-      <h2 id="motTexte">—</h2>
-      <p id="definition">—</p>
-      <p id="compteur">0 / 0</p>
-      <div id="audioButtons" class="button-group">
-        <button id="btnPlay">▶️ Écouter</button>
-        <button id="btnPrononcer">🎙️ Dis-le</button>
-        <button id="btnReplay" disabled>⟳ Réécouter</button>
-        <button id="btnAuto" disabled>▶️ Lecture auto</button>
-      </div>
-      <nav class="button-group" aria-label="Navigation des mots">
-        <button id="btnPrev" aria-label="Mot précédent">⏮️</button>
-        <button id="btnNext" aria-label="Mot suivant">⏭️</button>
-      </nav>
-    </section>
+<!-- Onglet Chat -->
+<section id="chat" class="tab onglet-contenu">
+  <h2>💬 Chat Tadaksahak</h2>
+  <div id="chatWindow" class="chatbox" role="log"></div>
+  <div id="botIntro" class="chat-intro">🤖 Salut, je suis Hamadine.</div>
+  <div class="chat-input-container">
+    <input type="text" id="chatInput" placeholder="Posez une question..." />
+    <button id="btnEnvoyer">Envoyer</button>
+  </div>
+</section>
 
-    <!-- 🤖 Chatbot éducatif -->
-    <section class="chat-section" aria-labelledby="chat-title">
-      <h2 id="chat-title">Chat Tadaksahak</h2>
-      <div id="chatWindow" class="chatbox" role="log" aria-live="polite" aria-relevant="additions"></div>
-      <div id="botIntro" class="chat-intro">🤖 Salut, je suis Hamadine, le bot Tadaksahak.</div>
-      <div class="chat-input-container">
-        <input type="text" id="chatInput" placeholder="Tapez un mot ici..." aria-label="Zone de saisie du chat" />
-        <button id="btnEnvoyer" aria-label="Envoyer un message">Envoyer</button>
-      </div>
-    </section>
-    <section id="histoire"> 
-    
-    <!-- 📘 Ressources -->
-    <section class="ressource-section" aria-labelledby="histoire-title">
-      <h2 id="histoire-title">📘 Histoire</h2>
-      <p id="histoire-message">Découvrez ici des textes historiques captivants sur la culture et l'histoire des Idaksahak.</p>
-      <ul>
-  <li><a href="تاريخ-التحرر-الكامل-العربية.html">تاريخ التحرر الكامل - العربية</a></li>
-  <li><a href="CONTRIBUTION-A-LA-CONNAISSANCE-DE-LA-COMMUNAUTE-IDAKSAHAK.html">CONTRIBUTION À LA CONNAISSANCE DE LA COMMUNAUTÉ IDAKSAHAK</a></li>
-        <ul>
-  <li><a href="Contribution à la connaissance de la communauté Idakssahak par le Géologue Ahmed-Mohamed AG GUIDI - Texte Intégral.html">Contribution à la connaissance de la communauté Idakssahak. 
-    Par le Géologue Ahmed-Mohamed AG GUIDI - Texte Intégral.<a/><li>
-  <li><a href="contribution-to-the-knowledge-of-the-idaksahak-community.html">contribution-to-the-knowledge-of-the-idaksahak-community</a></li>
-  <li><a href="مساهمة-في-معرفة-مجتمع-الإداكساهك.html">مساهمة في معرفة مجتمع الإداكساهك — النص الكامل بالعربية</a></li>
-  <li><a href="histoire-emancipation-integrale.html">L’émancipation politique des Idaksahak — Texte intégral</a></li>
-      </ul>
-    </section>
+<!-- Onglet Audio -->
+<section id="audio" class="tab onglet-contenu">
+  <h2>🎧 Audio Tadaksahak</h2>
+  <audio controls>
+    <source src="audio/exemple.mp3" type="audio/mpeg" />
+    Votre navigateur ne supporte pas l’audio.
+  </audio>
+</section>
 
-    <section class="ressource-section" aria-labelledby="archives-title">
-      <h2 id="archives-title">📜 Archives</h2>
-      <p id="archives-message">Accédez à des documents anciens précieux sur la langue, la culture et l'organisation Idaksahak.</p>
-      <ul>
-        <li><a href="documents/archives-declaration-anderamboukar.pdf" download>Déclaration d’Anderamboukar</a></li>
-        <li><a href="documents/archives-resolution-generale.pdf" download>Résolution générale</a></li>
-        <li><a href="documents/archives-bureau-executif.pdf" download>Bureau Exécutif</a></li>
-        <li><a href="documents/archives-conseil-orientation.pdf" download>Conseil d’Orientation</a></li>
-        <li><a href="documents/archives-rapport-succinct.docx" download>Rapport succinct</a></li>
-      </ul>
-    </section>
+<!-- Onglet Photos -->
+<section id="photos" class="tab onglet-contenu">
+  <h2>🖼️ Photos liées aux archives</h2>
+  <p>Galerie de photographies de documents, tampons, visas, etc.</p>
+</section>
 
-    <section class="ressource-section" aria-labelledby="linguistique-title">
-      <h2 id="linguistique-title">🧾 Linguistique</h2>
-      <p id="linguistique-message">Étude linguistique détaillée sur les verbes Tadaksahak :</p>
+<!-- Onglet Vidéos -->
+<section id="videos" class="tab onglet-contenu">
+  <h2>🎥 Vidéos historiques authentiques</h2>
+  <p>Intégration de vidéos YouTube / archives visuelles sur la culture Idaksahak.</p>
+</section>
 
-      <article style="background:#fff8e1; padding:1em; border-radius:8px; color:#2b1d0e;">
-        <h3 style="color:#a47449; text-align:center;">Some Verb Morphology Features of Tadaksahak</h3>
-        <p class="ref"><strong>Auteurs :</strong> Niels et Regula Christiansen<br>
-          <strong>Publié par :</strong> SIL International (2002)</p>
+<!-- Onglet Rapports -->
+<section id="rapports" class="tab onglet-contenu">
+  <h2>📄 Rapports et études</h2>
+  <p>Documents de la communauté internationale, ONG, droits humains…</p>
+</section>
 
-        <h4 style="color:#a47449;">Résumé</h4>
-        <p>Cette étude décrit les caractéristiques morphologiques des verbes en Tadaksahak...</p>
+<!-- Nouvel Onglet Actualités -->
+<section id="actualites" class="tab onglet-contenu">
+  <h2>🗞️ Actualités</h2>
+  <p>À venir : articles, événements, communiqués autour des Idaksahak.</p>
+</section>
+<script>
+  // Gestion des onglets principaux
+  document.querySelectorAll('.tab-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      // Retire les classes actives existantes
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
 
-        <h4 style="color:#a47449;">Introduction (Classification et Phonèmes)</h4>
-        <p>Tadaksahak est classé comme langue mixte...</p>
+      // Active l'onglet sélectionné
+      btn.classList.add('active');
+      document.getElementById(btn.dataset.tab).classList.add('active');
+    });
+  });
 
-        <h4 style="color:#a47449;">Formes Verbales (Comparatif)</h4>
-        <ul>
-          <li><strong>Songhay :</strong> suffixe causatif typique: -mch</li>
-          <li><strong>Tamasheq :</strong> utilisation de préfixes/reflexifs : r-, s-, m-</li>
-          <li><strong>Tadaksahak :</strong> préfixes causatifs (sV-), passifs (te-, tuwa-), réflexifs (me-, nem-)</li>
-        </ul>
+  // Carrousel historique
+  let idx = 0;
+  const slides = document.querySelectorAll('#carousel-histoire .slide');
+  if (slides.length) {
+    setInterval(() => changerSlide(1), 8000);
+  }
+  function changerSlide(dir) {
+    slides[idx].classList.remove('actif');
+    idx = (idx + dir + slides.length) % slides.length;
+    slides[idx].classList.add('actif');
+  }
 
-        <h4 style="color:#a47449;">Appendice : Exemples de Verbes</h4>
-        <ul>
-          <li><strong>adq</strong> → causative : <em>rdl˙dq</em> | <small>“être grand”</small></li>
-          <li><strong>j`x</strong> → causative : <em>rdacdc</em> | <small>“s’arrêter”</small></li>
-          <li><strong>Ó`</strong> → causative : <em>ÇhjÇ`</em> | <small>“manger”</small></li>
-        </ul>
+  // Sous-onglets des ressources (archives, linguistique…)
+  document.querySelectorAll('nav.subtabs > .subtab-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const parent = btn.closest('.ressource-section');
+      parent.querySelectorAll('.subtab-btn').forEach(b => b.classList.remove('active'));
+      parent.querySelectorAll('.subtab-content').forEach(c => c.classList.remove('active'));
+      btn.classList.add('active');
+      parent.querySelector(`#${btn.dataset.subtab}`).classList.add('active');
+    });
+  });
 
-        <h4 style="color:#a47449;">Références</h4>
-        <ul style="font-size:0.9em; color:#555;">
-          <li>Lacroix, Pierre-Francis. 1971</li>
-          <li>Nicolaï, Robert. 1981</li>
-          <li>Heath, Jeffrey. 1999</li>
-          <li>Prasse, Karl-G. et al. 1998</li>
-          <li>Rueck, Michael J., and Niels Christiansen. 1999</li>
-          <li>Stauffer, Daniel Ray. 1997</li>
-          <li>Tilmatine, Mohamed. 1991</li>
-        </ul>
-      </article>
-    </section>
-
-    <!-- 💡 README intégré -->
-    <section class="a-propos" aria-labelledby="a-propos-title">
-      <h2 id="a-propos-title">ℹ️ À propos / README</h2>
-      <p>Ce dictionnaire est un projet éducatif et culturel visant à :</p>
-      <ul>
-        <li>Sauvegarder la langue Tadaksahak</li>
-        <li>Offrir un outil de recherche audio et textuel multilingue</li>
-        <li>Proposer un chatbot éducatif intelligent</li>
-        <li>Promouvoir les valeurs culturelles des Idaksahak</li>
-        <li>Encourager la souveraineté linguistique numérique</li>
-      </ul>
-    </section>
-
-    <!-- 🤍 Dédicaces -->
-    <section class="dedicaces" aria-labelledby="dedicaces-title">
-      <h2 id="dedicaces-title">🤍 Dédicaces</h2>
-      <p>À toutes les voix du désert, vivantes et passées.</p>
-    </section>
-
-    <section class="tech" aria-labelledby="tech-title">
-      <h2 id="tech-title">🧩 Technologies</h2>
-      <ul>
-        <li>✅ HTML5, CSS3, JavaScript</li>
-        <li>✅ PWA (fonctionne hors-ligne)</li>
-        <li>✅ Manifestes multilingues</li>
-        <li>✅ Service Worker (offline first)</li>
-        <li>✅ Open source et extensible</li>
-      </ul>
-    </section>
-
-    <section class="licence" aria-labelledby="licence-title">
-      <h2 id="licence-title">📜 Licence</h2>
-      <p>
-        Projet libre et ouvert à toute contribution respectueuse.<br />
-        <strong>Aucune appropriation coloniale ne sera tolérée.</strong>
-      </p>
-    </section>
-
-    <section class="contact" aria-labelledby="contact-title">
-      <h2 id="contact-title">💬 Contact</h2>
-      <p>
-        Créé par <strong>Hamadine</strong><br />
-        📍 Nord du Mali — Nomade, médiateur, transmetteur<br />
-        🌐 <a href="https://nomade-ishaq-terps-land.b12sites.com/index#accueil" target="_blank">Nomade - Ishaq Terps</a>
-      </p>
-    </section>
-
-  </main>
-
-  <footer class="site-footer">
-    <p id="footerContrib"></p>
-    <div class="logo-footer">
-      <img src="images/idaksahak_square512.png" alt="Logo Tadaksahak carré" width="100" height="100" loading="lazy" />
-    </div>
-    <p>
-      <a href="mailto:hamadineagmoctar@gmail.com">
-        <img src="images/Gmail.png" alt="Gmail" style="height:1em;"> hamadineagmoctar@gmail.com
-      </a> |
-      <a href="https://wa.me/22786762903" target="_blank">
-        <img src="images/whatsapp.png" alt="WhatsApp" style="height:1em;"> +227 86762903
-      </a>
-    </p>
-    <p id="footerText">© 2025 • Tadaksahak Multilingue avec Hamadine.</p>
-  </footer>
-
-  <script>
-    if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('sw.js')
-        .then(reg => console.log('✅ Service Worker enregistré', reg.scope))
-        .catch(err => console.error('❌ Échec Service Worker:', err));
-    }
-  </script>
-</body>
-              </html>
+  // Sous-onglets pour les livres (fr, ar, en)
+  function openSubtab(evt, tabId) {
+    const section = document.getElementById('idaksahak-emancipation') || document;
+    section.querySelectorAll('.subtab-content').forEach(el => el.classList.remove('active'));
+    section.querySelectorAll('.subtab-btn').forEach(el => el.classList.remove('active'));
+    document.getElementById(tabId).classList.add('active');
+    evt.currentTarget.classList.add('active');
+  }
+</script>
