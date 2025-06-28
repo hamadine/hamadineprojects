@@ -1,35 +1,52 @@
 import { escapeHTML } from './utils.js';
-import { getMots, getMotsComplet, setMots, getIndexMot, setIndexMot, langueTrad } from './data-loader.js';
+import { changerLangueInterface } from './interface.js';
+import { afficherMot } from './dictionnaire.js';
 
-export function afficherMot(motIndex = getIndexMot()) {
-  const mots = getMots();
-  if (!mots.length) return;
-  const idx = Math.max(0, Math.min(mots.length - 1, motIndex));
-  setIndexMot(idx);
-  localStorage.setItem('motIndex', idx);
+export let motsComplet = [], mots = [], interfaceData = {}, indexMot = 0;
 
-  const mot = mots[idx];
-  document.getElementById('motTexte').textContent = mot.mot || '—';
-  document.getElementById('definition').innerHTML =
-    escapeHTML(mot[langueTrad] || '—') + (mot.cat ? ` <span style="color:#888;">(${escapeHTML(mot.cat)})</span>` : '');
-  document.getElementById('compteur').textContent = `${idx + 1} / ${mots.length}`;
+const langueNavigateur = navigator.language.slice(0, 2) || 'fr';
+export let langueTrad = localStorage.getItem('langueTrad') || 'fr';
+export let langueInterface = localStorage.getItem('langueInterface') || langueNavigateur;
+
+export async function chargerDonnees() {
+  try {
+    const histoireFile = langueInterface === 'ar' ? 'histoire-ar.json' : 'histoire.json';
+    const [motsRes, interfaceRes, histoireRes] = await Promise.all([
+      axios.get('data/mots.json'),
+      axios.get('data/interface-langue.json'),
+      axios.get(`data/${histoireFile}`)
+    ]);
+
+    motsComplet = motsRes.data;
+    mots = [...motsComplet];
+    interfaceData = interfaceRes.data;
+    window.histoireDocs = histoireRes.data;
+
+    changerLangueInterface(langueInterface);
+    indexMot = parseInt(localStorage.getItem('motIndex')) || 0;
+    afficherMot(indexMot);
+  } catch (e) {
+    alert("Erreur de chargement des données.");
+    console.error(e);
+  }
 }
 
-export function filtrerEtAfficherMot(query) {
-  const motsComplet = getMotsComplet();
-  const nettoyerTexte = str => str.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
-  const motsFiltres = query
-    ? motsComplet.filter(m =>
-        Object.values(m).some(val => typeof val === 'string' && nettoyerTexte(val).includes(nettoyerTexte(query)))
-      )
-    : [...motsComplet];
-
-  setMots(motsFiltres);
-  motsFiltres.length ? afficherMot(0) : afficherAucunResultat();
+export function getMots() {
+  return mots;
 }
 
-function afficherAucunResultat() {
-  document.getElementById('motTexte').textContent = "Aucun résultat";
-  document.getElementById('definition').textContent = "";
-  document.getElementById('compteur').textContent = "0 / 0";
+export function setMots(val) {
+  mots = val;
+}
+
+export function getMotsComplet() {
+  return motsComplet;
+}
+
+export function getIndexMot() {
+  return indexMot;
+}
+
+export function setIndexMot(val) {
+  indexMot = val;
 }
