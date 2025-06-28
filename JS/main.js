@@ -1,44 +1,42 @@
-import { initTabs } from './tabs.js';
-import { initSubtabs } from './subtabs.js';
-import { chargerDonnees, afficherMot, motsComplet, mots, indexMot } from './dictionnaire.js';
-import { envoyerMessage } from './chat.js';
-import { activerMicroEtComparer } from './audio.js';
-import { initCarousel } from './carousel.js';
-import { debounce, nettoyerTexte } from './utils.js'; // ✅ Nouvel import
+import {
+  chargerDonnees,
+  afficherMot,
+  indexMot,
+  mots,
+} from './dictionnaire.js';
+
+import { nettoyerTexte } from './utils.js';
 
 window.addEventListener('DOMContentLoaded', () => {
-  initTabs();
-  initSubtabs();
-  initCarousel();
+  // Chargement initial des données dictionnaire + interface
   chargerDonnees();
 
-  // 🔍 Recherche dans le dictionnaire
-  document.getElementById('searchBar')?.addEventListener('input', debounce(() => {
+  // Recherche temps réel dans le dictionnaire
+  document.getElementById('searchBar')?.addEventListener('input', () => {
     const query = nettoyerTexte(document.getElementById('searchBar').value.trim());
-    const filtrés = query
-      ? motsComplet.filter(m =>
-          Object.values(m).some(val => typeof val === 'string' && nettoyerTexte(val).includes(query))
-        )
-      : [...motsComplet];
+    if (!query) {
+      afficherMot(0);
+      return;
+    }
 
-    if (filtrés.length) {
+    const results = mots.filter(m =>
+      Object.values(m).some(val =>
+        typeof val === 'string' && nettoyerTexte(val).includes(query)
+      )
+    );
+
+    if (results.length) {
       mots.length = 0;
-      mots.push(...filtrés);
+      mots.push(...results);
       afficherMot(0);
     } else {
       document.getElementById('motTexte').textContent = "Aucun résultat";
       document.getElementById('definition').textContent = "";
       document.getElementById('compteur').textContent = "0 / 0";
     }
-  }));
+  });
 
-  // 💬 Chat
-  document.getElementById('btnEnvoyer')?.addEventListener('click', envoyerMessage);
-
-  // ⬅️➡️ Navigation dictionnaire
+  // Navigation mot précédent/suivant
   document.getElementById('btnPrev')?.addEventListener('click', () => afficherMot(indexMot - 1));
   document.getElementById('btnNext')?.addEventListener('click', () => afficherMot(indexMot + 1));
-
-  // 🎙️ Reconnaissance vocale
-  document.getElementById('btnPrononcer')?.addEventListener('click', activerMicroEtComparer);
 });
