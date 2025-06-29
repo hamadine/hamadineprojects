@@ -29,7 +29,8 @@ async function chargerDonnees() {
     const [motsRes, interfaceRes, histoireRes] = await Promise.all([
       axios.get('data/mots.json'),
       axios.get('data/interface-langue.json'),
-      axios.get('data/'histoire.json)
+      axios.get('data/histoire.json')
+      axios.get('data/histoire-ar.json')
     ]);
 
     motsComplet = motsRes.data;
