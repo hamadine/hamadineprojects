@@ -22,30 +22,39 @@
     où plusieurs ouvrages sont consultables en intégralité.
   </p>
     <div/>
-  <noscript>
+  script>
+    const lang = navigator.language?.split("-")[0] || "fr";
+    const manifestURL = {
+      en: "manifest.en.json",
+      ar: "manifest.ar.json",
+      ru: "manifest.ru.json",
+      ha: "manifest.ha.json",
+      nl: "manifest.nl.json",
+      sv: "manifest.sv.json",
+      cs: "manifest.cs.json",
+      zh: "manifest.zh.json",
+      de: "manifest.de.json",
+      tr: "manifest.tr.json",
+      da: "manifest.da.json",
+      it: "manifest.it.json",
+      es: "manifest.es.json",
+      tz: "manifest.tz.json",
+      bm: "manifest.bm.json"
+    }[lang] || "manifest.json";
+
+    const link = document.createElement('link');
+    link.rel = 'manifest';
+    link.href = "./public/" + manifestURL;
+    document.head.appendChild(link);
+    </script>
     <p style="text-align:center; color:red; font-weight:bold;">
       ⚠️ Ce site nécessite JavaScript pour fonctionner correctement.
     </p>
-  </noscript>
-
-  <header class="site-header">
+  
+      <header class="site-header">
     <img src="images/idaksahak_round.png" alt="Logo Tadaksahak" class="logo-header" loading="lazy" />
   </header>
-<section class="langue-section" aria-label="Choix de la langue">
-  <div class="langue-select-container">
-    <div class="langue-group">
-      <button id="btnLangueInterface" class="langue-btn" aria-haspopup="true" aria-expanded="false" aria-controls="menuLangueInterface">
-        Interface : Français ⌄
-      </button>
-      <div id="menuLangueInterface" class="langue-panel" role="menu" hidden aria-labelledby="btnLangueInterface"></div>
     </div>
-    <div class="langue-group">
-      <button id="btnLangueTrad" class="langue-btn" aria-haspopup="true" aria-expanded="false" aria-controls="menuLangueTrad">
-        Traduction : Français ⌄
-      </button>
-      <div id="menuLangueTrad" class="langue-panel" role="menu" hidden aria-labelledby="btnLangueTrad"></div>
-    </div>
-  </div>
 </section>
   <nav class="tabs" aria-label="Sections principales">
     <button class="tab-btn active" data-tab="dictionnaire">Dictionnaire</button>
@@ -149,12 +158,6 @@
   <p>À venir : articles, événements, communiqués autour des Idaksahak.</p>
 </section>
 <script>
-
-  <footer>
-    <p id="footerText">© 2025 • Tadaksahak Multilingue avec Hamadine.</p>
-  </footer>
-</body>
-</html>
   // Gestion des onglets principaux
   document.querySelectorAll('.tab-btn').forEach(btn => {
     btn.addEventListener('click', () => {
