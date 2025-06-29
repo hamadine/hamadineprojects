@@ -31,7 +31,22 @@
   <header class="site-header">
     <img src="images/idaksahak_round.png" alt="Logo Tadaksahak" class="logo-header" loading="lazy" />
   </header>
-
+<section class="langue-section" aria-label="Choix de la langue">
+  <div class="langue-select-container">
+    <div class="langue-group">
+      <button id="btnLangueInterface" class="langue-btn" aria-haspopup="true" aria-expanded="false" aria-controls="menuLangueInterface">
+        Interface : Français ⌄
+      </button>
+      <div id="menuLangueInterface" class="langue-panel" role="menu" hidden aria-labelledby="btnLangueInterface"></div>
+    </div>
+    <div class="langue-group">
+      <button id="btnLangueTrad" class="langue-btn" aria-haspopup="true" aria-expanded="false" aria-controls="menuLangueTrad">
+        Traduction : Français ⌄
+      </button>
+      <div id="menuLangueTrad" class="langue-panel" role="menu" hidden aria-labelledby="btnLangueTrad"></div>
+    </div>
+  </div>
+</section>
   <nav class="tabs" aria-label="Sections principales">
     <button class="tab-btn active" data-tab="dictionnaire">Dictionnaire</button>
     <button class="tab-btn" data-tab="histoire">Histoire</button>
