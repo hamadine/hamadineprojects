@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -11,6 +12,7 @@
   <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.6.2"></script>
   <script type="module" src="app.js"></script>
 </head>
+
 <body>
   <div class="site-notice">
     <p>🚧 Le site Tadaksahak est en cours d'amélioration. Certaines fonctionnalités peuvent être temporairement indisponibles.</p>
@@ -20,10 +22,10 @@
   <header class="site-header">
     <img src="images/idaksahak_round.png" alt="Logo Tadaksahak" class="logo-header" loading="lazy" />
     <div style="margin-top: 1em;">
-      <button id="btnLangueInterface">Interface : Français ⌄</button>
-      <div id="menuLangueInterface" hidden class="menu-langue"></div>
-      <button id="btnLangueTrad">Traduction : Français ⌄</button>
-      <div id="menuLangueTrad" hidden class="menu-langue"></div>
+      <button id="btnLangueInterface" aria-label="Changer la langue de l'interface">Interface : Français ⌄</button>
+      <div id="menuLangueInterface" hidden class="menu-langue" aria-labelledby="btnLangueInterface"></div>
+      <button id="btnLangueTrad" aria-label="Changer la langue de traduction">Traduction : Français ⌄</button>
+      <div id="menuLangueTrad" hidden class="menu-langue" aria-labelledby="btnLangueTrad"></div>
     </div>
   </header>
 
@@ -42,11 +44,11 @@
     <p style="text-align: right; font-style: italic;">— Hamadine AG MOCTAR</p>
 
     <!-- Onglet Dictionnaire -->
-    <section id="dictionnaire" class="tab onglet-contenu active">
+    <section id="dictionnaire" class="tab onglet-contenu active" aria-labelledby="titrePrincipal">
       <h2 data-i18n="titrePrincipal">📖 Dictionnaire Tadaksahak</h2>
       <p data-i18n="presentation"></p>
       <div class="search-bar">
-        <input type="text" id="searchBar" placeholder="" aria-label="Recherche dans le dictionnaire">
+        <input type="text" id="searchBar" placeholder="Recherchez un mot..." aria-label="Recherche dans le dictionnaire">
       </div>
       <div class="mot-resultat">
         <h3 id="motTexte">—</h3>
@@ -66,19 +68,19 @@
     </section>
 
     <!-- Onglet Chat -->
-    <section id="chat" class="tab onglet-contenu">
+    <section id="chat" class="tab onglet-contenu" aria-labelledby="chat-title">
       <h2 id="chat-title" data-i18n="chatTitre">💬 Chat Tadaksahak</h2>
-      <div id="chatWindow" class="chatbox" role="log"></div>
+      <div id="chatWindow" class="chatbox" role="log" aria-live="polite"></div>
       <div id="botIntro" class="chat-intro" data-i18n="botIntro">🤖 Salut, je suis Hamadine.</div>
       <div class="chat-input-container">
-        <input type="text" id="chatInput" placeholder="">
-        <button id="btnEnvoyer" data-i18n="envoyer">Envoyer</button>
+        <input type="text" id="chatInput" placeholder="Écrivez votre message..." aria-label="Entrée de chat">
+        <button id="btnEnvoyer" aria-label="Envoyer le message">Envoyer</button>
       </div>
     </section>
 
     <!-- Onglet Audio -->
-    <section id="audio" class="tab onglet-contenu">
-      <h2>🎧 Audios de traduction</h2>
+    <section id="audio" class="tab onglet-contenu" aria-labelledby="audio-title">
+      <h2 id="audio-title">🎧 Audios de traduction</h2>
       <p>Des enregistrements audios en Tadaksahak issus de documents traduits.</p>
       <audio controls>
         <source src="audio/exemple.mp3" type="audio/mpeg" />
@@ -87,42 +89,49 @@
     </section>
 
     <!-- Onglet Photos -->
-    <section id="photos" class="tab onglet-contenu">
-      <h2>🖼️ Galerie photographique</h2>
+    <section id="photos" class="tab onglet-contenu" aria-labelledby="photos-title">
+      <h2 id="photos-title">🖼️ Galerie photographique</h2>
       <p>Images historiques liées aux Idaksahak.</p>
+      <!-- Ajoutez ici les images comme nécessaire -->
     </section>
 
     <!-- Onglet Vidéos -->
-    <section id="videos" class="tab onglet-contenu">
-      <h2>🎥 Vidéos historiques authentiques</h2>
+    <section id="videos" class="tab onglet-contenu" aria-labelledby="videos-title">
+      <h2 id="videos-title">🎥 Vidéos historiques authentiques</h2>
       <p>Archives audiovisuelles.</p>
+      <!-- Ajoutez ici les vidéos comme nécessaire -->
     </section>
 
     <!-- Onglet Rapports -->
-    <section id="rapports" class="tab onglet-contenu">
-      <h2>📄 Rapports et études</h2>
+    <section id="rapports" class="tab onglet-contenu" aria-labelledby="rapports-title">
+      <h2 id="rapports-title">📄 Rapports et études</h2>
       <p>Rapports de l’ONU, ONG et autres acteurs internationaux.</p>
     </section>
 
     <!-- Onglet Actualités -->
-    <section id="actualites" class="tab onglet-contenu">
-      <h2>🗞️ Actualités</h2>
+    <section id="actualites" class="tab onglet-contenu" aria-labelledby="actualites-title">
+      <h2 id="actualites-title">🗞️ Actualités</h2>
       <p>À venir : articles, communiqués, événements.</p>
     </section>
 
     <!-- Onglet Livres -->
-    <section id="livres" class="tab onglet-contenu">
-      <h2>📚 Livres intégrales sur les Idaksahak</h2>
+    <section id="livres" class="tab onglet-contenu" aria-labelledby="livres-title">
+      <h2 id="livres-title">📚 Livres intégrales sur les Idaksahak</h2>
       <div class="livre-bloc">
         <h3>📘 Contribution à la connaissance de la communauté Idaksahak</h3>
         <p>Une étude fondamentale sur l’histoire, l’identité et l’émancipation politique.</p>
         <div class="livre-langues">
-          <a class="read-btn" href="CONTRIBUTION-A-LA-CONNAISSANCE-DE-LA-COMMUNAUTE-IDAKSAHAK.html" target="_blank">🇫🇷 Lire</a>
-          <a class="read-btn" href="تاريخ-التحرر-الكامل-العربية.html" target="_blank">🇸🇦 اقرأ</a>
-          <a class="read-btn" href="contribution-to-the-knowledge-of-the-idaksahak-community.html" target="_blank">🇬🇧 Read</a>
+          <a class="read-btn" href="CONTRIBUTION-A-LA-CONNAISSANCE-DE-LA-COMMUNAUTE-IDAKSAHAK.html" target="_blank" rel="noopener noreferrer">🇫🇷 Lire</a>
+          <a class="read-btn" href="تاريخ-التحرر-الكامل-العربية.html" target="_blank" rel="noopener noreferrer">🇸🇦 اقرأ</a>
+          <a class="read-btn" href="contribution-to-the-knowledge-of-the-idaksahak-community.html" target="_blank" rel="noopener noreferrer">🇬🇧 Read</a>
         </div>
       </div>
     </section>
   </main>
+
+  <!-- Message de chargement -->
+  <div id="loading" class="loading-indicator" hidden>Chargement...</div>
+  <div id="messageStatus" class="message-status" role="alert" aria-live="polite"></div>
 </body>
+
 </html>
