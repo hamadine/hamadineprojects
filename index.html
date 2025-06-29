@@ -9,68 +9,53 @@
   <link rel="icon" href="images/idaksahak_round.png" type="image/png" />
   <link rel="stylesheet" href="style.css" />
   <script type="module" src="app.js"></script>
-  
 </head>
 <body>
- <div class="site-notice">
-  <p>
-    🚧 Le site Tadaksahak est actuellement en cours d'amélioration.  
-    Certaines fonctionnalités peuvent être temporairement indisponibles.
-  </p>
-  <p>
-    En attendant la finalisation des travaux, nous vous invitons à découvrir la section <strong>📚 Livres</strong>, 
-    où plusieurs ouvrages sont consultables en intégralité.
-  </p>
-</div>
+  <div class="site-notice">
+    <p>🚧 Le site Tadaksahak est actuellement en cours d'amélioration. Certaines fonctionnalités peuvent être temporairement indisponibles.</p>
+    <p>En attendant la finalisation des travaux, nous vous invitons à découvrir la section <strong>📚 Livres</strong>, où plusieurs ouvrages sont consultables en intégralité.</p>
+  </div>
 
-<script>
-  const lang = navigator.language?.split("-")[0] || "fr";
-  const manifestURL = {
-    fr: "manifest.json",
-    en: "manifest.en.json",
-    ar: "manifest.ar.json",
-    ru: "manifest.ru.json",
-    ha: "manifest.ha.json",
-    nl: "manifest.nl.json",
-    sv: "manifest.sv.json",
-    cs: "manifest.cs.json",
-    zh: "manifest.zh.json",
-    de: "manifest.de.json",
-    tr: "manifest.tr.json",
-    da: "manifest.da.json",
-    it: "manifest.it.json",
-    es: "manifest.es.json",
-    tz: "manifest.tz.json"
-    // bm retiré ici, non défini dans nomsLangues
-  }[lang] || "manifest.json";
+  <noscript>
+    <p style="text-align:center; color:red; font-weight:bold;">
+      ⚠️ Ce site nécessite JavaScript pour fonctionner correctement.
+    </p>
+  </noscript>
 
-  const link = document.createElement('link');
-  link.rel = 'manifest';
-  link.href = "./public/" + manifestURL;
-  document.head.appendChild(link);
-</script>
+  <script>
+    const lang = navigator.language?.split("-")[0] || "fr";
+    const manifestURL = {
+      fr: "manifest.json", en: "manifest.en.json", ar: "manifest.ar.json",
+      ru: "manifest.ru.json", ha: "manifest.ha.json", nl: "manifest.nl.json",
+      sv: "manifest.sv.json", cs: "manifest.cs.json", zh: "manifest.zh.json",
+      de: "manifest.de.json", tr: "manifest.tr.json", da: "manifest.da.json",
+      it: "manifest.it.json", es: "manifest.es.json", tz: "manifest.tz.json"
+    }[lang] || "manifest.json";
 
-<p style="text-align:center; color:red; font-weight:bold;">
-  ⚠️ Ce site nécessite JavaScript pour fonctionner correctement.
-</p> 
+    const link = document.createElement('link');
+    link.rel = 'manifest';
+    link.href = "./public/" + manifestURL;
+    document.head.appendChild(link);
+  </script>
+
   <header class="site-header">
     <img src="images/idaksahak_round.png" alt="Logo Tadaksahak" class="logo-header" loading="lazy" />
   </header>
-    </div>
-</section>
+
   <nav class="tabs" aria-label="Sections principales">
-  <button class="tab-btn active" data-tab="dictionnaire">Dictionnaire</button>
-  <button class="tab-btn" data-tab="chat">Chat</button>
-  <button class="tab-btn" data-tab="audio">Audio</button>
-  <button class="tab-btn" data-tab="photos">Photos</button>
-  <button class="tab-btn" data-tab="videos">Vidéos</button>
-  <button class="tab-btn" data-tab="rapports">Rapports</button>
-  <button class="tab-btn" data-tab="actualites" style="flex: 2;">📰 Actualités</button>
-  <button class="tab-btn" data-tab="livres">Livres</button>
+    <button class="tab-btn active" data-tab="dictionnaire">Dictionnaire</button>
+    <button class="tab-btn" data-tab="chat">Chat</button>
+    <button class="tab-btn" data-tab="audio">Audio</button>
+    <button class="tab-btn" data-tab="photos">Photos</button>
+    <button class="tab-btn" data-tab="videos">Vidéos</button>
+    <button class="tab-btn" data-tab="rapports">Rapports</button>
+    <button class="tab-btn" data-tab="actualites" style="flex: 2;">📰 Actualités</button>
+    <button class="tab-btn" data-tab="livres">Livres</button>
   </nav>
   <main>
-     <p style="text-align: right; font-style: italic;">— Hamadine AG MOCTAR</p>
-    </div>
+    <!-- Citation auteur -->
+    <p style="text-align: right; font-style: italic;">— Hamadine AG MOCTAR</p>
+
     <!-- Onglet Livres -->
     <section id="livres" class="tab onglet-contenu">
       <h2>📚 Livres intégrales sur les Idaksahak</h2>
@@ -82,130 +67,127 @@
           <a class="read-btn" href="تاريخ-التحرر-الكامل-العربية.html" target="_blank">🇸🇦 اقرأ (العربية)</a>
           <a class="read-btn" href="contribution-to-the-knowledge-of-the-idaksahak-community.html" target="_blank">🇬🇧 Read (English)</a>
         </div>
-        </div>
+      </div>
+
       <div class="livre-bloc">
-  <h3>📘 L’émancipation politique des Idaksahak</h3>
-  <p>Une étude approfondie sur l’histoire, l’identité et l’émancipation politique du peuple Idaksahak.</p>
-  <div class="livre-langues">
-    <a class="read-btn" href="histoire-emancipation-politique-intégral.html" target="_blank" rel="noopener noreferrer">🇫🇷 Lire (Français)</a>
-    <a class="read-btn" href="التحرر-السياسي-للإداكسهاك-ar.html" target="_blank" rel="noopener noreferrer">🇸🇦 اقرأ (العربية)</a>
-  </div>
+        <h3>📘 L’émancipation politique des Idaksahak</h3>
+        <p>Une étude approfondie sur l’histoire, l’identité et l’émancipation politique du peuple Idaksahak.</p>
+        <div class="livre-langues">
+          <a class="read-btn" href="histoire-emancipation-politique-intégral.html" target="_blank">🇫🇷 Lire (Français)</a>
+          <a class="read-btn" href="التحرر-السياسي-للإداكسهاك-ar.html" target="_blank">🇸🇦 اقرأ (العربية)</a>
+        </div>
       </div>
     </section>
+
     <!-- Onglet Dictionnaire -->
-<section id="dictionnaire" class="tab onglet-contenu active">
-  <h2>📖 Dictionnaire Tadaksahak</h2>
-  <div class="search-bar">
-    <input type="text" id="searchBar" placeholder="" aria-label="Recherche dans le dictionnaire">
-  </div>
-  <div class="mot-resultat">
-    <h3 id="motTexte">—</h3>
-    <p id="definition">—</p>
-    <p id="compteur">0 / 0</p>
-  </div>
-  <div class="button-group dictionnaire-audio">
-    <button id="btnPlay" class="btn-icon">🔊 Écouter</button>
-    <button id="btnPrononcer" class="btn-icon">🎤 Dis-le</button>
-    <button id="btnReplay" class="btn-icon" disabled>🔁 Réécouter</button>
-    <button id="btnAuto" class="btn-icon" disabled>▶️ Lecture auto</button>
-  </div>
-  <div class="button-group dictionnaire-navigation">
-    <button id="btnPrev" class="btn-nav">⟸ Mot précédent</button>
-    <button id="btnNext" class="btn-nav">Mot suivant ⟹</button>
-  </div>
-</section>
-</section>
+    <section id="dictionnaire" class="tab onglet-contenu active">
+      <h2>📖 Dictionnaire Tadaksahak</h2>
+      <div class="search-bar">
+        <input type="text" id="searchBar" placeholder="" aria-label="Recherche dans le dictionnaire">
+      </div>
+      <div class="mot-resultat">
+        <h3 id="motTexte">—</h3>
+        <p id="definition">—</p>
+        <p id="compteur">0 / 0</p>
+      </div>
+      <div class="button-group dictionnaire-audio">
+        <button id="btnPlay" class="btn-icon">🔊 Écouter</button>
+        <button id="btnPrononcer" class="btn-icon">🎤 Dis-le</button>
+        <button id="btnReplay" class="btn-icon" disabled>🔁 Réécouter</button>
+        <button id="btnAuto" class="btn-icon" disabled>▶️ Lecture auto</button>
+      </div>
+      <div class="button-group dictionnaire-navigation">
+        <button id="btnPrev" class="btn-nav">⟸ Mot précédent</button>
+        <button id="btnNext" class="btn-nav">Mot suivant ⟹</button>
+      </div>
+    </section>
 
-<!-- Onglet Chat -->
- <section id="chat" class="tab onglet-contenu">
-  <h2 id="chat-title">💬 Chat Tadaksahak</h2>
-  <div id="chatWindow" class="chatbox" role="log"></div>
-  <div id="botIntro" class="chat-intro"></div>
-  <div class="chat-input-container">
-    <input type="text" id="chatInput" placeholder="">
-    <button id="btnEnvoyer"></button>
-  </div>
- </section>
-    
-</section>
-<!-- Onglet Audio -->
-<section id="audio" class="tab onglet-contenu">
-  <h2>🎧 Audios de traduction</h2>
-  <p>Cette section contiendra bientôt des enregistrements audios en Tadaksahak issus de documents traduits comme des livres, communiqués ou discours.</p>
-  
-  <audio controls>
-    <source src="audio/exemple.mp3" type="audio/mpeg" />
-    Votre navigateur ne supporte pas l’audio.
-  </audio>
-</section>
-    
-</section>
-<!-- Onglet Photos -->
-<section id="photos" class="tab onglet-contenu">
-  <h2>🖼️ Galerie photographique</h2>
-  <p>Cette section sera destinée à créer une mémoire d’images des événements historiques liés à la communauté Idaksahak.</p>
-</section>
+    <!-- Onglet Chat -->
+    <section id="chat" class="tab onglet-contenu">
+      <h2 id="chat-title">💬 Chat Tadaksahak</h2>
+      <div id="chatWindow" class="chatbox" role="log"></div>
+      <div id="botIntro" class="chat-intro"></div>
+      <div class="chat-input-container">
+        <input type="text" id="chatInput" placeholder="">
+        <button id="btnEnvoyer"></button>
+      </div>
+    </section>
+    <!-- Onglet Audio -->
+    <section id="audio" class="tab onglet-contenu">
+      <h2>🎧 Audios de traduction</h2>
+      <p>Cette section contiendra bientôt des enregistrements audios en Tadaksahak issus de documents traduits comme des livres, communiqués ou discours.</p>
+      <audio controls>
+        <source src="audio/exemple.mp3" type="audio/mpeg" />
+        Votre navigateur ne supporte pas l’audio.
+      </audio>
+    </section>
 
-<!-- Onglet Vidéos -->
-<section id="videos" class="tab onglet-contenu">
-  <h2>🎥 Vidéos historiques authentiques</h2>
-  <p>Intégration de vidéos YouTube / archives visuelles sur la culture Idaksahak.</p>
-</section>
+    <!-- Onglet Photos -->
+    <section id="photos" class="tab onglet-contenu">
+      <h2>🖼️ Galerie photographique</h2>
+      <p>Cette section sera destinée à créer une mémoire d’images des événements historiques liés à la communauté Idaksahak.</p>
+    </section>
 
-<!-- Onglet Rapports -->
-<section id="rapports" class="tab onglet-contenu">
-  <h2>📄 Rapports et études</h2>
-  <p> Très prochainement, des rapports des nations unies ainsi que des organismes internationaux de défense des droits humains seront mis à votre disposition ici. Une occasion d'avoir un aperçu global sur les Idaksahak.</p>
-</section>
+    <!-- Onglet Vidéos -->
+    <section id="videos" class="tab onglet-contenu">
+      <h2>🎥 Vidéos historiques authentiques</h2>
+      <p>Intégration de vidéos YouTube / archives visuelles sur la culture Idaksahak.</p>
+    </section>
 
-<!-- Nouvel Onglet Actualités -->
-<section id="actualites" class="tab onglet-contenu">
-  <h2>🗞️ Actualités</h2>
-  <p>À venir : articles, événements, communiqués autour des Idaksahak.</p>
-</section>
-<script>
-  // Gestion des onglets principaux
-  document.querySelectorAll('.tab-btn').forEach(btn => {
-    btn.addEventListener('click', () => {
-      // Retire les classes actives existantes
-      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-      document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+    <!-- Onglet Rapports -->
+    <section id="rapports" class="tab onglet-contenu">
+      <h2>📄 Rapports et études</h2>
+      <p>Très prochainement, des rapports des Nations Unies ainsi que des organismes internationaux de défense des droits humains seront mis à votre disposition ici. Une occasion d'avoir un aperçu global sur les Idaksahak.</p>
+    </section>
 
-      // Active l'onglet sélectionné
-      btn.classList.add('active');
-      document.getElementById(btn.dataset.tab).classList.add('active');
+    <!-- Onglet Actualités -->
+    <section id="actualites" class="tab onglet-contenu">
+      <h2>🗞️ Actualités</h2>
+      <p>À venir : articles, événements, communiqués autour des Idaksahak.</p>
+    </section>
+  </main>
+
+  <!-- JavaScript de gestion des onglets -->
+  <script>
+    document.querySelectorAll('.tab-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+        document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+        btn.classList.add('active');
+        document.getElementById(btn.dataset.tab).classList.add('active');
+      });
     });
-  });
 
-  // Carrousel historique
-  let idx = 0;
-  const slides = document.querySelectorAll('#carousel-histoire .slide');
-  if (slides.length) {
-    setInterval(() => changerSlide(1), 8000);
-  }
-  function changerSlide(dir) {
-    slides[idx].classList.remove('actif');
-    idx = (idx + dir + slides.length) % slides.length;
-    slides[idx].classList.add('actif');
-  }
+    // Carrousel historique (si utilisé)
+    let idx = 0;
+    const slides = document.querySelectorAll('#carousel-histoire .slide');
+    if (slides.length) {
+      setInterval(() => changerSlide(1), 8000);
+    }
+    function changerSlide(dir) {
+      slides[idx].classList.remove('actif');
+      idx = (idx + dir + slides.length) % slides.length;
+      slides[idx].classList.add('actif');
+    }
 
-  // Sous-onglets des ressources (archives, linguistique…)
-  document.querySelectorAll('nav.subtabs > .subtab-btn').forEach(btn => {
-    btn.addEventListener('click', () => {
-      const parent = btn.closest('.ressource-section');
-      parent.querySelectorAll('.subtab-btn').forEach(b => b.classList.remove('active'));
-      parent.querySelectorAll('.subtab-content').forEach(c => c.classList.remove('active'));
-      btn.classList.add('active');
-      parent.querySelector(`#${btn.dataset.subtab}`).classList.add('active');
+    // Sous-onglets dans les sections (si utilisés plus tard)
+    document.querySelectorAll('nav.subtabs > .subtab-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const parent = btn.closest('.ressource-section');
+        parent.querySelectorAll('.subtab-btn').forEach(b => b.classList.remove('active'));
+        parent.querySelectorAll('.subtab-content').forEach(c => c.classList.remove('active'));
+        btn.classList.add('active');
+        parent.querySelector(`#${btn.dataset.subtab}`).classList.add('active');
+      });
     });
-  });
 
-  // Sous-onglets pour les livres (fr, ar, en)
-  function openSubtab(evt, tabId) {
-    const section = document.getElementById('idaksahak-emancipation') || document;
-    section.querySelectorAll('.subtab-content').forEach(el => el.classList.remove('active'));
-    section.querySelectorAll('.subtab-btn').forEach(el => el.classList.remove('active'));
-    document.getElementById(tabId).classList.add('active');
-    evt.currentTarget.classList.add('active');
-  }
-</script>
+    function openSubtab(evt, tabId) {
+      const section = document.getElementById('idaksahak-emancipation') || document;
+      section.querySelectorAll('.subtab-content').forEach(el => el.classList.remove('active'));
+      section.querySelectorAll('.subtab-btn').forEach(el => el.classList.remove('active'));
+      document.getElementById(tabId).classList.add('active');
+      evt.currentTarget.classList.add('active');
+    }
+  </script>
+</body>
+</html>
