@@ -22,23 +22,7 @@
     </p>
   </noscript>
 
-  <script>
-    const lang = navigator.language?.split("-")[0] || "fr";
-    const manifestURL = {
-      fr: "manifest.json", en: "manifest.en.json", ar: "manifest.ar.json",
-      ru: "manifest.ru.json", ha: "manifest.ha.json", nl: "manifest.nl.json",
-      sv: "manifest.sv.json", cs: "manifest.cs.json", zh: "manifest.zh.json",
-      de: "manifest.de.json", tr: "manifest.tr.json", da: "manifest.da.json",
-      it: "manifest.it.json", es: "manifest.es.json", tz: "manifest.tz.json"
-    }[lang] || "manifest.json";
-
-    const link = document.createElement('link');
-    link.rel = 'manifest';
-    link.href = "./public/" + manifestURL;
-    document.head.appendChild(link);
-  </script>
-
-  <header class="site-header">
+   <header class="site-header">
     <img src="images/idaksahak_round.png" alt="Logo Tadaksahak" class="logo-header" loading="lazy" />
   </header>
 
@@ -146,48 +130,5 @@
       <p>À venir : articles, événements, communiqués autour des Idaksahak.</p>
     </section>
   </main>
-
-  <!-- JavaScript de gestion des onglets -->
-  <script>
-    document.querySelectorAll('.tab-btn').forEach(btn => {
-      btn.addEventListener('click', () => {
-        document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-        document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
-        btn.classList.add('active');
-        document.getElementById(btn.dataset.tab).classList.add('active');
-      });
-    });
-
-    // Carrousel historique (si utilisé)
-    let idx = 0;
-    const slides = document.querySelectorAll('#carousel-histoire .slide');
-    if (slides.length) {
-      setInterval(() => changerSlide(1), 8000);
-    }
-    function changerSlide(dir) {
-      slides[idx].classList.remove('actif');
-      idx = (idx + dir + slides.length) % slides.length;
-      slides[idx].classList.add('actif');
-    }
-
-    // Sous-onglets dans les sections (si utilisés plus tard)
-    document.querySelectorAll('nav.subtabs > .subtab-btn').forEach(btn => {
-      btn.addEventListener('click', () => {
-        const parent = btn.closest('.ressource-section');
-        parent.querySelectorAll('.subtab-btn').forEach(b => b.classList.remove('active'));
-        parent.querySelectorAll('.subtab-content').forEach(c => c.classList.remove('active'));
-        btn.classList.add('active');
-        parent.querySelector(`#${btn.dataset.subtab}`).classList.add('active');
-      });
-    });
-
-    function openSubtab(evt, tabId) {
-      const section = document.getElementById('idaksahak-emancipation') || document;
-      section.querySelectorAll('.subtab-content').forEach(el => el.classList.remove('active'));
-      section.querySelectorAll('.subtab-btn').forEach(el => el.classList.remove('active'));
-      document.getElementById(tabId).classList.add('active');
-      evt.currentTarget.classList.add('active');
-    }
-  </script>
 </body>
 </html>
