@@ -12,7 +12,7 @@
   <script type="module" src="app.js" defer></script>
 </head>
 <body>
-  <div class="site-notice">
+ <div class="site-notice">
   <p>
     🚧 Le site Tadaksahak est actuellement en cours d'amélioration.  
     Certaines fonctionnalités peuvent être temporairement indisponibles.
@@ -21,51 +21,52 @@
     En attendant la finalisation des travaux, nous vous invitons à découvrir la section <strong>📚 Livres</strong>, 
     où plusieurs ouvrages sont consultables en intégralité.
   </p>
-    <div/>
-  script>
-    const lang = navigator.language?.split("-")[0] || "fr";
-    const manifestURL = {
-      en: "manifest.en.json",
-      ar: "manifest.ar.json",
-      ru: "manifest.ru.json",
-      ha: "manifest.ha.json",
-      nl: "manifest.nl.json",
-      sv: "manifest.sv.json",
-      cs: "manifest.cs.json",
-      zh: "manifest.zh.json",
-      de: "manifest.de.json",
-      tr: "manifest.tr.json",
-      da: "manifest.da.json",
-      it: "manifest.it.json",
-      es: "manifest.es.json",
-      tz: "manifest.tz.json",
-      bm: "manifest.bm.json"
-    }[lang] || "manifest.json";
+</div>
 
-    const link = document.createElement('link');
-    link.rel = 'manifest';
-    link.href = "./public/" + manifestURL;
-    document.head.appendChild(link);
-    </script>
-    <p style="text-align:center; color:red; font-weight:bold;">
-      ⚠️ Ce site nécessite JavaScript pour fonctionner correctement.
-    </p>
-  
-      <header class="site-header">
+<script>
+  const lang = navigator.language?.split("-")[0] || "fr";
+  const manifestURL = {
+    fr: "manifest.json",
+    en: "manifest.en.json",
+    ar: "manifest.ar.json",
+    ru: "manifest.ru.json",
+    ha: "manifest.ha.json",
+    nl: "manifest.nl.json",
+    sv: "manifest.sv.json",
+    cs: "manifest.cs.json",
+    zh: "manifest.zh.json",
+    de: "manifest.de.json",
+    tr: "manifest.tr.json",
+    da: "manifest.da.json",
+    it: "manifest.it.json",
+    es: "manifest.es.json",
+    tz: "manifest.tz.json"
+    // bm retiré ici, non défini dans nomsLangues
+  }[lang] || "manifest.json";
+
+  const link = document.createElement('link');
+  link.rel = 'manifest';
+  link.href = "./public/" + manifestURL;
+  document.head.appendChild(link);
+</script>
+
+<p style="text-align:center; color:red; font-weight:bold;">
+  ⚠️ Ce site nécessite JavaScript pour fonctionner correctement.
+</p> 
+  <header class="site-header">
     <img src="images/idaksahak_round.png" alt="Logo Tadaksahak" class="logo-header" loading="lazy" />
   </header>
     </div>
 </section>
   <nav class="tabs" aria-label="Sections principales">
-    <button class="tab-btn active" data-tab="dictionnaire">Dictionnaire</button>
-    <button class="tab-btn" data-tab="histoire">Histoire</button>
-    <button class="tab-btn" data-tab="chat">Chat</button>
-    <button class="tab-btn" data-tab="audio">Audio</button>
-    <button class="tab-btn" data-tab="photos">Photos</button>
-    <button class="tab-btn" data-tab="videos">Vidéos</button>
-    <button class="tab-btn" data-tab="rapports">Rapports</button>
-    <button class="tab-btn" data-tab="actualites" style="flex: 2;">📰 Actualités</button>
-    <button class="tab-btn" data-tab="livres">Livres</button>
+  <button class="tab-btn active" data-tab="dictionnaire">Dictionnaire</button>
+  <button class="tab-btn" data-tab="chat">Chat</button>
+  <button class="tab-btn" data-tab="audio">Audio</button>
+  <button class="tab-btn" data-tab="photos">Photos</button>
+  <button class="tab-btn" data-tab="videos">Vidéos</button>
+  <button class="tab-btn" data-tab="rapports">Rapports</button>
+  <button class="tab-btn" data-tab="actualites" style="flex: 2;">📰 Actualités</button>
+  <button class="tab-btn" data-tab="livres">Livres</button>
   </nav>
   <main>
      <p style="text-align: right; font-style: italic;">— Hamadine AG MOCTAR</p>
@@ -95,7 +96,7 @@
 <section id="dictionnaire" class="tab onglet-contenu active">
   <h2>📖 Dictionnaire Tadaksahak</h2>
   <div class="search-bar">
-    <input type="text" id="searchBar" placeholder="🔍 Cherchez un mot..." aria-label="Recherche dans le dictionnaire">
+    <input type="text" id="searchBar" placeholder="" aria-label="Recherche dans le dictionnaire">
   </div>
   <div class="mot-resultat">
     <h3 id="motTexte">—</h3>
@@ -113,31 +114,36 @@
     <button id="btnNext" class="btn-nav">Mot suivant ⟹</button>
   </div>
 </section>
-
-<!-- Onglet Chat -->
-<section id="chat" class="tab onglet-contenu">
-  <h2>💬 Chat Tadaksahak</h2>
-  <div id="chatWindow" class="chatbox" role="log"></div>
-  <div id="botIntro" class="chat-intro">🤖 Salut, je suis Hamadine.</div>
-  <div class="chat-input-container">
-    <input type="text" id="chatInput" placeholder="Posez une question..." />
-    <button id="btnEnvoyer">Envoyer</button>
-  </div>
 </section>
 
+<!-- Onglet Chat -->
+ <section id="chat" class="tab onglet-contenu">
+  <h2 id="chat-title">💬 Chat Tadaksahak</h2>
+  <div id="chatWindow" class="chatbox" role="log"></div>
+  <div id="botIntro" class="chat-intro"></div>
+  <div class="chat-input-container">
+    <input type="text" id="chatInput" placeholder="">
+    <button id="btnEnvoyer"></button>
+  </div>
+ </section>
+    
+</section>
 <!-- Onglet Audio -->
 <section id="audio" class="tab onglet-contenu">
-  <h2>🎧 Audio Tadaksahak</h2>
+  <h2>🎧 Audios de traduction</h2>
+  <p>Cette section contiendra bientôt des enregistrements audios en Tadaksahak issus de documents traduits comme des livres, communiqués ou discours.</p>
+  
   <audio controls>
     <source src="audio/exemple.mp3" type="audio/mpeg" />
     Votre navigateur ne supporte pas l’audio.
   </audio>
 </section>
-
+    
+</section>
 <!-- Onglet Photos -->
 <section id="photos" class="tab onglet-contenu">
-  <h2>🖼️ Photos liées aux archives</h2>
-  <p>Galerie de photographies de documents, tampons, visas, etc.</p>
+  <h2>🖼️ Galerie photographique</h2>
+  <p>Cette section sera destinée à créer une mémoire d’images des événements historiques liés à la communauté Idaksahak.</p>
 </section>
 
 <!-- Onglet Vidéos -->
@@ -149,7 +155,7 @@
 <!-- Onglet Rapports -->
 <section id="rapports" class="tab onglet-contenu">
   <h2>📄 Rapports et études</h2>
-  <p>Documents de la communauté internationale, ONG, droits humains…</p>
+  <p> Très prochainement, des rapports des nations unies ainsi que des organismes internationaux de défense des droits humains seront mis à votre disposition ici. Une occasion d'avoir un aperçu global sur les Idaksahak.</p>
 </section>
 
 <!-- Nouvel Onglet Actualités -->
