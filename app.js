@@ -35,8 +35,7 @@ async function chargerDonnees() {
   try {
     afficherLog("🔄 Chargement de mots.json...");
     const motsRes = await axios.get('data/mots.json');
-    afficherLog("✅ mots.json chargé.");
-
+    
     afficherLog("🔄 Chargement de interface-langue.json...");
     const interfaceRes = await axios.get('data/interface-langue.json');
     afficherLog("✅ interface-langue.json chargé.");
@@ -190,6 +189,8 @@ function changerLangueInterface(code) {
 }
 
 window.addEventListener('DOMContentLoaded', () => {
+  afficherLog("🔄 Initialisation de l'application...");
+
   chargerDonnees();
 
   document.getElementById('searchBar').addEventListener('input', () => {
