@@ -4,6 +4,13 @@ let langueTrad = localStorage.getItem('langueTrad') || 'fr';
 let langueInterface = localStorage.getItem('langueInterface') || langueNavigateur;
 let fuse;
 
+function afficherLog(msg, type = 'info') {
+  const el = document.getElementById('messageStatus');
+  if (!el) return;
+  el.style.color = type === 'error' ? 'red' : 'green';
+  el.textContent = msg;
+  el.hidden = false;
+}
 const nomsLangues = {
   fr: "Français", en: "English", ar: "العربية", tz: "Tamazight", tr: "Türkçe", da: "Dansk",
   de: "Deutsch", nl: "Nederlands", sv: "Svenska", ru: "Русский", zh: "中文", cs: "Čeština",
@@ -26,12 +33,18 @@ function nettoyerTexte(str) {
 
 async function chargerDonnees() {
   try {
+    afficherLog("🔄 Chargement de mots.json...");
+    const motsRes = await axios.get('data/mots.json');
+    afficherLog("✅ mots.json chargé.");
+
+    afficherLog("🔄 Chargement de interface-langue.json...");
+    const interfaceRes = await axios.get('data/interface-langue.json');
+    afficherLog("✅ interface-langue.json chargé.");
+
     const histoireFile = langueInterface === 'ar' ? 'histoire-ar.json' : 'histoire.json';
-    const [motsRes, interfaceRes, histoireRes] = await Promise.all([
-      axios.get('data/mots.json'),
-      axios.get('data/interface-langue.json'),
-      axios.get(`data/${histoireFile}`)
-    ]);
+    afficherLog(`🔄 Chargement de ${histoireFile}...`);
+    const histoireRes = await axios.get(`data/${histoireFile}`);
+    afficherLog(`✅ ${histoireFile} chargé.`);
 
     motsComplet = motsRes.data;
     mots = [...motsComplet];
@@ -53,8 +66,8 @@ async function chargerDonnees() {
     indexMot = parseInt(localStorage.getItem('motIndex')) || 0;
     afficherMot(indexMot);
   } catch (e) {
+    afficherLog("❌ Échec du chargement JSON : " + e.message, 'error');
     console.error("❌ Erreur de chargement :", e);
-    alert("Erreur de chargement des fichiers JSON.");
   }
 }
 
