@@ -1,151 +1,131 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Dictionnaire Tadaksahak – Début d'une aventure culturelle</title>
-  <meta name="description" content="Début d'une aventure riche autour de la langue et culture Idaksahak." />
-  <meta name="theme-color" content="#005fa3" />
-  <link rel="icon" href="images/idaksahak_round.png" type="image/png" />
-  <link rel="stylesheet" href="style.css" />
+<!DOCTYPE html>  <html lang="fr">  
+<head>  
+  <meta charset="UTF-8" />  
+  <meta name="viewport" content="width=device-width, initial-scale=1" />  
+  <title>Dictionnaire Tadaksahak – Début d'une aventure culturelle</title>  
+  <meta name="description" content="Début d'une aventure riche autour de la langue et culture Idaksahak." />  
+  <meta name="theme-color" content="#005fa3" />  
+  <link rel="icon" href="images/idaksahak_round.png" type="image/png" />  
+  <link rel="stylesheet" href="style.css" />  
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>  
+<script type="module" src="app.js"></script> 
+</head>  
+<body>  
+  <!-- Message de maintenance -->  
+  <div class="site-notice" role="alert">  
+    <p>🚧 Le site Tadaksahak est actuellement en cours d'amélioration. Certaines fonctionnalités peuvent être temporairement indisponibles.</p>  
+    <p>En attendant la finalisation des travaux, nous vous invitons à découvrir la section <strong>📚 Livres</strong>, où plusieurs ouvrages sont consultables en intégralité.</p>  
+  </div>    <!-- Message pour les utilisateurs sans JavaScript -->    <noscript>  
+    <div class="js-warning" role="alert">  
+      <p>⚠️ Ce site nécessite JavaScript pour fonctionner correctement.</p>  
+    </div>  
+  </noscript>    <header class="site-header">  
+    <img src="images/idaksahak_round.png" alt="Logo Tadaksahak" class="logo-header" loading="lazy" />  
+  </header>    <nav class="tabs" aria-label="Navigation principale du site">  
+    <button class="tab-btn active" data-tab="dictionnaire">📖 Dictionnaire</button>  
+    <button class="tab-btn" data-tab="chat">💬 Chat</button>  
+    <button class="tab-btn" data-tab="audio">🎧 Audio</button>  
+    <button class="tab-btn" data-tab="photos">🖼️ Photos</button>  
+    <button class="tab-btn" data-tab="videos">🎥 Vidéos</button>  
+    <button class="tab-btn" data-tab="rapports">📄 Rapports</button>  
+    <button class="tab-btn" data-tab="actualites" style="flex: 2;">📰 Actualités</button>  
+    <button class="tab-btn" data-tab="livres">📚 Livres</button>  
+  </nav>    <main>  
+    <!-- Citation auteur -->  
+    <blockquote>  
+      <p style="text-align: right; font-style: italic;">— Hamadine AG MOCTAR</p>  
+    </blockquote>  <!-- Onglet Livres -->  
+<section id="livres" class="tab onglet-contenu">  
+  <h2>📚 Livres intégrales sur les Idaksahak</h2>  
+  <article class="livre-bloc">  
+    <h3>📘 Contribution à la connaissance de la communauté Idaksahak</h3>  
+    <p>Une étude fondamentale explorant l’histoire, l’identité et l’émancipation politique du peuple Idaksahak à travers trois langues.</p>  
+    <div class="livre-langues">  
+      <a class="read-btn" href="CONTRIBUTION-A-LA-CONNAISSANCE-DE-LA-COMMUNAUTE-IDAKSAHAK.html" target="_blank" rel="noopener noreferrer">🇫🇷 Lire (Français)</a>  
+      <a class="read-btn" href="تاريخ-التحرر-الكامل-العربية.html" target="_blank" rel="noopener noreferrer">🇸🇦 اقرأ (العربية)</a>  
+      <a class="read-btn" href="contribution-to-the-knowledge-of-the-idaksahak-community.html" target="_blank" rel="noopener noreferrer">🇬🇧 Read (English)</a>  
+    </div>  
+  </article>  
 
-  <!-- ✅ Ajouté : Axios pour chargement JSON -->
-  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <article class="livre-bloc">  
+    <h3>📘 L’émancipation politique des Idaksahak</h3>  
+    <p>Une étude approfondie sur l’histoire, l’identité et l’émancipation politique du peuple Idaksahak.</p>  
+    <div class="livre-langues">  
+      <a class="read-btn" href="histoire-emancipation-politique-intégral.html" target="_blank" rel="noopener noreferrer">🇫🇷 Lire (Français)</a>  
+      <a class="read-btn" href="التحرر-السياسي-للإداكسهاك-ar.html" target="_blank" rel="noopener noreferrer">🇸🇦 اقرأ (العربية)</a>  
+    </div>  
+  </article>  
+</section>  
 
-  <!-- ✅ Script principal unique (doublon supprimé) -->
-  <script type="module" src="app.js"></script>
-</head>
-<body>
-  <!-- Message de maintenance -->
-  <div class="site-notice" role="alert">
-    <p>🚧 Le site Tadaksahak est actuellement en cours d'amélioration. Certaines fonctionnalités peuvent être temporairement indisponibles.</p>
-    <p>En attendant la finalisation des travaux, nous vous invitons à découvrir la section <strong>📚 Livres</strong>, où plusieurs ouvrages sont consultables en intégralité.</p>
-  </div>
+<!-- Onglet Dictionnaire -->  
+<section id="dictionnaire" class="tab onglet-contenu active">  
+  <h2>📖 Dictionnaire Tadaksahak</h2>  
+  <div class="search-bar">  
+    <input type="text" id="searchBar" placeholder="Recherchez un mot..." aria-label="Recherche dans le dictionnaire">  
+  </div>  
+  <div class="mot-resultat">  
+    <h3 id="motTexte">—</h3>  
+    <p id="definition">—</p>  
+    <p id="compteur">0 / 0</p>  
+  </div>  
+  <div class="button-group dictionnaire-audio">  
+    <button id="btnPlay" class="btn-icon" aria-label="Écouter le mot">🔊 Écouter</button>  
+    <button id="btnPrononcer" class="btn-icon" aria-label="Prononcer le mot">🎤 Dis-le</button>  
+    <button id="btnReplay" class="btn-icon" disabled aria-label="Réécouter">🔁 Réécouter</button>  
+    <button id="btnAuto" class="btn-icon" disabled aria-label="Lecture automatique">▶️ Lecture auto</button>  
+  </div>  
+  <div class="button-group dictionnaire-navigation">  
+    <button id="btnPrev" class="btn-nav" aria-label="Mot précédent">⟸ Mot précédent</button>  
+    <button id="btnNext" class="btn-nav" aria-label="Mot suivant">Mot suivant ⟹</button>  
+  </div>  
+</section>  
 
-  <!-- Message pour les utilisateurs sans JavaScript -->
-  <noscript>
-    <div class="js-warning" role="alert">
-      <p>⚠️ Ce site nécessite JavaScript pour fonctionner correctement.</p>
-    </div>
-  </noscript>
+<!-- Onglet Chat -->  
+<section id="chat" class="tab onglet-contenu">  
+  <h2 id="chat-title">💬 Chat Tadaksahak</h2>  
+  <div id="chatWindow" class="chatbox" role="log" aria-live="polite"></div>  
+  <div id="botIntro" class="chat-intro" data-i18n="botIntro">🤖 Salut, je suis Hamadine.</div>  
+  <div class="chat-input-container">  
+    <input type="text" id="chatInput" placeholder="Écrivez votre message..." aria-label="Entrée du chat">  
+    <button id="btnEnvoyer" aria-label="Envoyer le message">Envoyer</button>  
+  </div>  
+</section>  
 
-  <header class="site-header">
-    <img src="images/idaksahak_round.png" alt="Logo Tadaksahak" class="logo-header" loading="lazy" />
-  </header>
+<!-- Onglet Audio -->  
+<section id="audio" class="tab onglet-contenu">  
+  <h2>🎧 Audios de traduction</h2>  
+  <p>Cette section contiendra bientôt des enregistrements audios en Tadaksahak issus de documents traduits comme des livres, communiqués ou discours.</p>  
+  <audio controls>  
+    <source src="audio/exemple.mp3" type="audio/mpeg" />  
+    Votre navigateur ne supporte pas l’audio.  
+  </audio>  
+</section>  
 
-  <nav class="tabs" aria-label="Navigation principale du site">
-    <button class="tab-btn active" data-tab="dictionnaire">📖 Dictionnaire</button>
-    <button class="tab-btn" data-tab="chat">💬 Chat</button>
-    <button class="tab-btn" data-tab="audio">🎧 Audio</button>
-    <button class="tab-btn" data-tab="photos">🖼️ Photos</button>
-    <button class="tab-btn" data-tab="videos">🎥 Vidéos</button>
-    <button class="tab-btn" data-tab="rapports">📄 Rapports</button>
-    <button class="tab-btn" data-tab="actualites" style="flex: 2;">📰 Actualités</button>
-    <button class="tab-btn" data-tab="livres">📚 Livres</button>
-  </nav>
+<!-- Onglet Photos -->  
+<section id="photos" class="tab onglet-contenu">  
+  <h2>🖼️ Galerie photographique</h2>  
+  <p>Cette section sera destinée à créer une mémoire d’images des événements historiques liés à la communauté Idaksahak.</p>  
+</section>  
 
-  <main>
-    <!-- Citation auteur -->
-    <blockquote>
-      <p style="text-align: right; font-style: italic;">— Hamadine AG MOCTAR</p>
-    </blockquote>
+<!-- Onglet Vidéos -->  
+<section id="videos" class="tab onglet-contenu">  
+  <h2>🎥 Vidéos historiques authentiques</h2>  
+  <p>Intégration de vidéos YouTube / archives visuelles sur la culture Idaksahak.</p>  
+</section>  
 
-    <!-- Onglet Livres -->
-    <section id="livres" class="tab onglet-contenu">
-      <h2>📚 Livres intégrales sur les Idaksahak</h2>
-      <article class="livre-bloc">
-        <h3>📘 Contribution à la connaissance de la communauté Idaksahak</h3>
-        <p>Une étude fondamentale explorant l’histoire, l’identité et l’émancipation politique du peuple Idaksahak à travers trois langues.</p>
-        <div class="livre-langues">
-          <a class="read-btn" href="CONTRIBUTION-A-LA-CONNAISSANCE-DE-LA-COMMUNAUTE-IDAKSAHAK.html" target="_blank" rel="noopener noreferrer">🇫🇷 Lire (Français)</a>
-          <a class="read-btn" href="تاريخ-التحرر-الكامل-العربية.html" target="_blank" rel="noopener noreferrer">🇸🇦 اقرأ (العربية)</a>
-          <a class="read-btn" href="contribution-to-the-knowledge-of-the-idaksahak-community.html" target="_blank" rel="noopener noreferrer">🇬🇧 Read (English)</a>
-        </div>
-      </article>
+<!-- Onglet Rapports -->  
+<section id="rapports" class="tab onglet-contenu">  
+  <h2>📄 Rapports et études</h2>  
+  <p>Très prochainement, des rapports des Nations Unies ainsi que des organismes internationaux de défense des droits humains seront mis à votre disposition ici. Une occasion d'avoir un aperçu global sur les Idaksahak.</p>  
+</section>  
 
-      <article class="livre-bloc">
-        <h3>📘 L’émancipation politique des Idaksahak</h3>
-        <p>Une étude approfondie sur l’histoire, l’identité et l’émancipation politique du peuple Idaksahak.</p>
-        <div class="livre-langues">
-          <a class="read-btn" href="histoire-emancipation-politique-intégral.html" target="_blank" rel="noopener noreferrer">🇫🇷 Lire (Français)</a>
-          <a class="read-btn" href="التحرر-السياسي-للإداكسهاك-ar.html" target="_blank" rel="noopener noreferrer">🇸🇦 اقرأ (العربية)</a>
-        </div>
-      </article>
-    </section>
+<!-- Onglet Actualités -->  
+<section id="actualites" class="tab onglet-contenu">  
+  <h2>🗞️ Actualités</h2>  
+  <p>À venir : articles, événements, communiqués autour des Idaksahak.</p>  
+</section>
 
-    <!-- Onglet Dictionnaire -->
-    <section id="dictionnaire" class="tab onglet-contenu active">
-      <h2>📖 Dictionnaire Tadaksahak</h2>
-      <div class="search-bar">
-        <input type="text" id="searchBar" placeholder="Recherchez un mot..." aria-label="Recherche dans le dictionnaire">
-      </div>
-      <div class="mot-resultat">
-        <h3 id="motTexte">—</h3>
-        <p id="definition">—</p>
-        <p id="compteur">0 / 0</p>
-      </div>
-      <div class="button-group dictionnaire-audio">
-        <button id="btnPlay" class="btn-icon" aria-label="Écouter le mot">🔊 Écouter</button>
-        <button id="btnPrononcer" class="btn-icon" aria-label="Prononcer le mot">🎤 Dis-le</button>
-        <button id="btnReplay" class="btn-icon" disabled aria-label="Réécouter">🔁 Réécouter</button>
-        <button id="btnAuto" class="btn-icon" disabled aria-label="Lecture automatique">▶️ Lecture auto</button>
-      </div>
-      <div class="button-group dictionnaire-navigation">
-        <button id="btnPrev" class="btn-nav" aria-label="Mot précédent">⟸ Mot précédent</button>
-        <button id="btnNext" class="btn-nav" aria-label="Mot suivant">Mot suivant ⟹</button>
-      </div>
-    </section>
-
-    <!-- Onglet Chat -->
-    <section id="chat" class="tab onglet-contenu">
-      <h2 id="chat-title">💬 Chat Tadaksahak</h2>
-      <div id="chatWindow" class="chatbox" role="log" aria-live="polite"></div>
-      <div id="botIntro" class="chat-intro" data-i18n="botIntro">🤖 Salut, je suis Hamadine.</div>
-      <div class="chat-input-container">
-        <input type="text" id="chatInput" placeholder="Écrivez votre message..." aria-label="Entrée du chat">
-        <button id="btnEnvoyer" aria-label="Envoyer le message">Envoyer</button>
-      </div>
-    </section>
-
-    <!-- Onglet Audio -->
-    <section id="audio" class="tab onglet-contenu">
-      <h2>🎧 Audios de traduction</h2>
-      <p>Cette section contiendra bientôt des enregistrements audios en Tadaksahak issus de documents traduits comme des livres, communiqués ou discours.</p>
-      <audio controls>
-        <source src="audio/exemple.mp3" type="audio/mpeg" />
-        Votre navigateur ne supporte pas l’audio.
-      </audio>
-    </section>
-
-    <!-- Onglet Photos -->
-    <section id="photos" class="tab onglet-contenu">
-      <h2>🖼️ Galerie photographique</h2>
-      <p>Cette section sera destinée à créer une mémoire d’images des événements historiques liés à la communauté Idaksahak.</p>
-    </section>
-
-    <!-- Onglet Vidéos -->
-    <section id="videos" class="tab onglet-contenu">
-      <h2>🎥 Vidéos historiques authentiques</h2>
-      <p>Intégration de vidéos YouTube / archives visuelles sur la culture Idaksahak.</p>
-    </section>
-
-    <!-- Onglet Rapports -->
-    <section id="rapports" class="tab onglet-contenu">
-      <h2>📄 Rapports et études</h2>
-      <p>Très prochainement, des rapports des Nations Unies ainsi que des organismes internationaux de défense des droits humains seront mis à votre disposition ici. Une occasion d'avoir un aperçu global sur les Idaksahak.</p>
-    </section>
-
-    <!-- Onglet Actualités -->
-    <section id="actualites" class="tab onglet-contenu">
-      <h2>🗞️ Actualités</h2>
-      <p>À venir : articles, événements, communiqués autour des Idaksahak.</p>
-    </section>
-  </main>
-
-  <!-- Zone de chargement et messages -->
-  <div id="loading" class="loading-indicator" hidden>Chargement...</div>
-
-  <!-- ✅ Ajouté : zone de log affichable dynamiquement -->
-  <div id="messageStatus" class="message-status" role="alert" aria-live="polite" hidden></div>
-</body>
+  </main>    <!-- Zone de chargement et messages -->    <div id="loading" class="loading-indicator" hidden>Chargement...</div>  
+  <div id="messageStatus" class="message-status" role="alert" aria-live="polite"></div>  
+</body>  
 </html>
