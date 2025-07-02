@@ -11,44 +11,39 @@ function afficherLog(msg, type = 'info') {
   el.textContent = msg;
   el.hidden = false;
 }
-const nomsLangues = {
-  fr: "Français", en: "English", ar: "العربية", tz: "Tamazight", tr: "Türkçe", da: "Dansk",
-  de: "Deutsch", nl: "Nederlands", sv: "Svenska", ru: "Русский", zh: "中文", cs: "Čeština",
-  ha: "Hausa", es: "Español", it: "Italiano"
-};
 
-const phrasesMultilingues = {
-  fr: /comment (on )?dit[- ]?on (.+?) en ([a-z]+)/i,
-  en: /how (do )?you say (.+?) in ([a-z]+)/i,
-  ar: /كيف (نقول|أقول|يقول) (.+?) (بال|في) ([a-z]+)/i
-};
-
-function escapeHTML(str) {
-  return str.replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
-}
-
-function nettoyerTexte(str) {
-  return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+function chargerJSON(url) {
+  return new Promise((resolve, reject) => {
+    const xhr = new XMLHttpRequest();
+    xhr.open('GET', url);
+    xhr.responseType = 'json';
+    xhr.onload = () => {
+      if (xhr.status >= 200 && xhr.status < 300) resolve(xhr.response);
+      else reject(new Error(`Erreur HTTP ${xhr.status} pour ${url}`));
+    };
+    xhr.onerror = () => reject(new Error(`Erreur réseau : ${url}`));
+    xhr.send();
+  });
 }
 
 async function chargerDonnees() {
   try {
     afficherLog("🔄 Chargement de mots.json...");
-    const motsRes = await axios.get('data/mots.json');
-    
+    const motsRes = await chargerJSON('data/mots.json');
+
     afficherLog("🔄 Chargement de interface-langue.json...");
-    const interfaceRes = await axios.get('data/interface-langue.json');
+    const interfaceRes = await chargerJSON('data/interface-langue.json');
     afficherLog("✅ interface-langue.json chargé.");
 
     const histoireFile = langueInterface === 'ar' ? 'histoire-ar.json' : 'histoire.json';
     afficherLog(`🔄 Chargement de ${histoireFile}...`);
-    const histoireRes = await axios.get(`data/${histoireFile}`);
+    const histoireRes = await chargerJSON(`data/${histoireFile}`);
     afficherLog(`✅ ${histoireFile} chargé.`);
 
-    motsComplet = motsRes.data;
+    motsComplet = motsRes;
     mots = [...motsComplet];
-    interfaceData = interfaceRes.data;
-    window.histoireDocs = histoireRes.data;
+    interfaceData = interfaceRes;
+    window.histoireDocs = histoireRes;
 
     if (!Object.keys(mots[0] || {}).includes(langueTrad)) langueTrad = 'fr';
     if (!interfaceData[langueInterface]) langueInterface = 'fr';
@@ -82,6 +77,26 @@ function afficherMot(motIndex = indexMot) {
     (mot.cat ? ` <span style="color:#888;">(${escapeHTML(mot.cat)})</span>` : '');
   document.getElementById('compteur').textContent = `${indexMot + 1} / ${mots.length}`;
 }
+
+function escapeHTML(str) {
+  return str.replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+}
+
+function nettoyerTexte(str) {
+  return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+}
+
+const nomsLangues = {
+  fr: "Français", en: "English", ar: "العربية", tz: "Tamazight", tr: "Türkçe", da: "Dansk",
+  de: "Deutsch", nl: "Nederlands", sv: "Svenska", ru: "Русский", zh: "中文", cs: "Čeština",
+  ha: "Hausa", es: "Español", it: "Italiano"
+};
+
+const phrasesMultilingues = {
+  fr: /comment (on )?dit[- ]?on (.+?) en ([a-z]+)/i,
+  en: /how (do )?you say (.+?) in ([a-z]+)/i,
+  ar: /كيف (نقول|أقول|يقول) (.+?) (بال|في) ([a-z]+)/i
+};
 
 function envoyerMessage() {
   const input = document.getElementById('chatInput');
