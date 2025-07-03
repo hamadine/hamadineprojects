@@ -13,7 +13,7 @@
 </head>
 <body>
   <div class="site-notice" role="alert">
-    <p>🚧 Le site du Dictionnaire Tadaksahak Multilingue est en train de connaître des travaux  d'amélioration, ces travaux. Certaines fonctionnalités peuvent être temporairement indisponibles.</p>
+    <p>🚧 Le site du Dictionnaire Tadaksahak Multilingue est en train de connaître des travaux d'amélioration. Certaines fonctionnalités peuvent être temporairement indisponibles.</p>
     <p>En attendant la finalisation des travaux, nous vous invitons à découvrir la section <strong>📚 Livres</strong>, où plusieurs ouvrages sont consultables en intégralité.</p>
   </div>
 
@@ -24,12 +24,19 @@
   </noscript>
 
   <header class="site-header">
- src="images/idaksahak_round.png" alt="Logo Tadaksahak" class="logo-header" loading="lazy" />
+    <img src="images/idaksahak_round.png" alt="Logo Tadaksahak" class="logo-header" loading="lazy" />
   </header>
 
   <button id="btnLangueInterface" aria-haspopup="menu" aria-expanded="false" aria-controls="menuLangueInterface">Interface : Français ⌄</button>
   <div id="menuLangueInterface" hidden role="menu" aria-label="Choix de la langue d'interface"></div>
-  <button id="btnLangueTrad" aria-haspopup="menu" aria-expanded="false" aria-controls="menuLangueTrad">Traduction : Français ⌄-btn" data-tab="photos" aria-selected="false" tabindex="-1" id="tab-photos">🖼️ Photos</button>
+  <button id="btnLangueTrad" aria-haspopup="menu" aria-expanded="false" aria-controls="menuLangueTrad">Traduction : Français ⌄</button>
+  <div id="menuLangueTrad" hidden role="menu" aria-label="Choix de la langue de traduction"></div>
+
+  <nav class="tabs" aria-label="Navigation principale du site">
+    <button class="tab-btn active" data-tab="dictionnaire" aria-selected="true" tabindex="0" id="tab-dictionnaire">📖 Dictionnaire</button>
+    <button class="tab-btn" data-tab="chat" aria-selected="false" tabindex="-1" id="tab-chat">💬 Chat</button>
+    <button class="tab-btn" data-tab="audio" aria-selected="false" tabindex="-1" id="tab-audio">🎧 Audio</button>
+    <button class="tab-btn" data-tab="photos" aria-selected="false" tabindex="-1" id="tab-photos">🖼️ Photos</button>
     <button class="tab-btn" data-tab="videos" aria-selected="false" tabindex="-1" id="tab-videos">🎥 Vidéos</button>
     <button class="tab-btn" data-tab="rapports" aria-selected="false" tabindex="-1" id="tab-rapports">📄 Rapports</button>
     <button class="tab-btn" data-tab="actualites" aria-selected="false" tabindex="-1" id="tab-actualites" style="flex: 2;">📰 Actualités</button>
