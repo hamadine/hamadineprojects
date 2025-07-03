@@ -228,4 +228,26 @@ window.addEventListener('DOMContentLoaded', () => {
   document.getElementById('btnPrev').addEventListener('click', () => afficherMot(indexMot - 1));
   document.getElementById('btnNext').addEventListener('click', () => afficherMot(indexMot + 1));
   document.getElementById('btnPrononcer')?.addEventListener('click', activerMicroEtComparer);
+  document.getElementById('btnPrononcer')?.addEventListener('click', activerMicroEtComparer);
+
+// --- Navigation par onglets ---
+document.querySelectorAll('.tab-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    // Désactive tous les boutons et onglets
+    document.querySelectorAll('.tab-btn').forEach(b => {
+      b.classList.remove('active');
+      b.setAttribute('aria-selected', 'false');
+      b.setAttribute('tabindex', '-1');
+    });
+    document.querySelectorAll('.onglet-contenu').forEach(tab => tab.hidden = true);
+
+    // Active le bon bouton et onglet
+    btn.classList.add('active');
+    btn.setAttribute('aria-selected', 'true');
+    btn.setAttribute('tabindex', '0');
+    const tabId = btn.dataset.tab;
+    const tabContent = document.getElementById(tabId);
+    if(tabContent) tabContent.hidden = false;
+  });
+});
 });
