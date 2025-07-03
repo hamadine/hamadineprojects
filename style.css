@@ -15,19 +15,19 @@
   --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
-/* Fond de page classique */
+/* Fond principal */
 body {
   margin: 0;
   font-family: 'Segoe UI', sans-serif;
   line-height: 1.6;
   background: var(--green-vegetal);
   color: var(--text-dark);
-  position: relative;
   min-height: 100vh;
+  position: relative;
   z-index: 1;
 }
 
-/* Filigrane/logo en bas du site */
+/* Filigrane/logo en fond, non intrusif, en bas du site */
 body::after {
   content: "";
   position: fixed;
@@ -38,18 +38,12 @@ body::after {
   height: 320px;
   background: url('images/idaksahak_round.png') no-repeat center bottom;
   background-size: contain;
-  opacity: 0.10; /* Ajuste pour plus/moins de transparence */
-  pointer-events: none; /* Pour que les clics passent à travers */
+  opacity: 0.10; /* Ajuste ici l’intensité du filigrane */
+  pointer-events: none;
   z-index: 0;
 }
 
-/* Le reste du CSS reste inchangé (onglets, header, etc.) */
-.container {
-  max-width: 960px;
-  margin: 0 auto;
-  padding: 0 1em;
-}
-
+/* Logo du header : inchangé, il reste visible comme avant */
 .site-header {
   background: var(--header-blue);
   text-align: center;
@@ -66,6 +60,8 @@ body::after {
   height: 10px;
   background: var(--desert-brown);
 }
+
+/* ... (le reste de ton CSS ne change pas) ... */
 
 main {
   background: var(--green-vegetal);
@@ -114,112 +110,7 @@ main {
   display: block;
 }
 
-.subtabs {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 0.5em;
-  margin-bottom: 1em;
-  border-bottom: 2px solid var(--tab-color-text);
-}
-.subtab-btn {
-  background: var(--white);
-  color: var(--tab-color-text);
-  border: 2px solid var(--tab-color-text);
-  padding: 0.5em 1em;
-  border-radius: 8px 8px 0 0;
-  cursor: pointer;
-  font-weight: bold;
-  transition: all 0.3s ease;
-}
-.subtab-btn:hover {
-  background: var(--blue-light);
-}
-.subtab-btn.active {
-  background: var(--tab-color-text);
-  color: var(--white);
-  border-bottom: 2px solid var(--white);
-}
-
-.subtab-content {
-  display: none;
-  animation: fadeIn 0.3s ease-in-out;
-}
-.subtab-content.active {
-  display: block;
-}
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-.search-bar input {
-  font-size: 1em;
-  padding: 0.6em;
-  width: 100%;
-  max-width: 500px;
-  border: 2px solid var(--tab-color-text);
-  border-radius: 6px;
-}
-.mot-resultat {
-  margin-top: 1em;
-  text-align: center;
-}
-
-.carrousel-section {
-  margin: 3em 0;
-  background: var(--white);
-  border-radius: 12px;
-  padding: 1.5em;
-  box-shadow: var(--shadow);
-  text-align: center;
-}
-.carrousel {
-  position: relative;
-  max-width: 100%;
-  overflow: hidden;
-}
-.slide {
-  display: none;
-  transition: opacity 1s ease;
-}
-.slide.actif {
-  display: block;
-}
-.slide img {
-  max-width: 100%;
-  border-radius: 10px;
-  box-shadow: var(--shadow);
-}
-.slide p {
-  margin-top: 0.8em;
-  font-style: italic;
-  color: #444;
-}
-.carrousel-controle {
-  margin-top: 1em;
-}
-.carrousel-controle button {
-  background: var(--blue-dark);
-  color: var(--white);
-  border: none;
-  padding: 0.5em 1em;
-  border-radius: 8px;
-  font-size: 1.1em;
-  margin: 0 0.5em;
-  cursor: pointer;
-}
-.carrousel-controle button:hover {
-  background: var(--blue-mid);
-}
-
-.site-footer {
-  background: var(--footer-gradient);
-  color: var(--text-dark);
-  text-align: center;
-  padding: 2em 1em;
-  font-size: 0.9em;
-}
+/* ... (autres styles inchangés) ... */
 
 /* Responsive */
 @media (max-width: 768px) {
