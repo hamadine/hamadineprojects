@@ -15,14 +15,35 @@
   --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
+/* Fond de page classique */
 body {
   margin: 0;
   font-family: 'Segoe UI', sans-serif;
   line-height: 1.6;
   background: var(--green-vegetal);
   color: var(--text-dark);
+  position: relative;
+  min-height: 100vh;
+  z-index: 1;
 }
 
+/* Filigrane/logo en bas du site */
+body::after {
+  content: "";
+  position: fixed;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%);
+  width: 320px;
+  height: 320px;
+  background: url('images/idaksahak_round.png') no-repeat center bottom;
+  background-size: contain;
+  opacity: 0.10; /* Ajuste pour plus/moins de transparence */
+  pointer-events: none; /* Pour que les clics passent à travers */
+  z-index: 0;
+}
+
+/* Le reste du CSS reste inchangé (onglets, header, etc.) */
 .container {
   max-width: 960px;
   margin: 0 auto;
@@ -82,14 +103,14 @@ main {
   box-shadow: inset 0 -3px 0 var(--desert-brown);
 }
 
-.tab {
+.tab, .onglet-contenu {
   display: none;
   background: var(--white);
   padding: 1.5em;
   border: 1px solid var(--tab-color-text);
   border-radius: 0 0 10px 10px;
 }
-.tab.active {
+.tab.active, .onglet-contenu.active {
   display: block;
 }
 
