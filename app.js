@@ -103,6 +103,7 @@ function envoyerMessage() {
   const brut = input.value.trim();
   const message = nettoyerTexte(brut);
   if (!message) return;
+
   afficherMessage('utilisateur', escapeHTML(brut));
   input.value = '';
 
@@ -229,7 +230,6 @@ window.addEventListener('DOMContentLoaded', () => {
   document.getElementById('btnPrev').addEventListener('click', () => afficherMot(indexMot - 1));
   document.getElementById('btnNext').addEventListener('click', () => afficherMot(indexMot + 1));
   document.getElementById('btnPrononcer')?.addEventListener('click', activerMicroEtComparer);
-  document.getElementById('btnPrononcer')?.addEventListener('click', activerMicroEtComparer);
 
   document.querySelectorAll('.tab-btn').forEach(btn => {
     btn.addEventListener('click', () => {
@@ -244,7 +244,11 @@ window.addEventListener('DOMContentLoaded', () => {
       btn.setAttribute('tabindex', '0');
       const tabId = btn.dataset.tab;
       const tabContent = document.getElementById(tabId);
-      if (tabContent) tabContent.hidden = false;
+      if (tabContent) {
+        tabContent.hidden = false;
+      } else {
+        console.warn(`⚠️ Aucune section trouvée pour l’onglet : ${tabId}`);
+      }
     });
   });
 });
