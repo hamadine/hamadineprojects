@@ -1,7 +1,7 @@
 let motsComplet = [], mots = [], interfaceData = {}, indexMot = 0;
-const langueNavigateur = navigator.language.slice(0, 2) || 'fr';
+const langueNavigateur = navigator.language.slice(0, 2);
 let langueTrad = localStorage.getItem('langueTrad') || 'fr';
-let langueInterface = localStorage.getItem('langueInterface') || langueNavigateur;
+let langueInterface = localStorage.getItem('langueInterface') || (langueNavigateur === 'en' ? 'en' : 'fr');
 let fuse;
 
 function afficherLog(msg, type = 'info') {
@@ -13,46 +13,34 @@ function afficherLog(msg, type = 'info') {
 }
 
 function chargerJSON(url) {
-  return new Promise((resolve, reject) => {
-    const xhr = new XMLHttpRequest();
-    xhr.open('GET', url);
-    xhr.responseType = 'json';
-    xhr.onload = () => {
-      if (xhr.status >= 200 && xhr.status < 300) resolve(xhr.response);
-      else reject(new Error(`Erreur HTTP ${xhr.status} pour ${url}`));
-    };
-    xhr.onerror = () => reject(new Error(`Erreur réseau : ${url}`));
-    xhr.send();
+  return fetch(url).then(r => {
+    if (!r.ok) throw new Error(`Erreur HTTP ${r.status}`);
+    return r.json();
   });
 }
 
 async function chargerDonnees() {
   try {
-    afficherLog("🔄 Chargement de mots.json...");
-    const motsRes = await chargerJSON('data/mots.json');
-
-    afficherLog("🔄 Chargement de interface-langue.json...");
-    const interfaceRes = await chargerJSON('data/interface-langue.json');
-    afficherLog("✅ interface-langue.json chargé.");
-
-    const histoireFile = langueInterface === 'ar' ? 'histoire-ar.json' : 'histoire.json';
-    afficherLog(`🔄 Chargement de ${histoireFile}...`);
-    const histoireRes = await chargerJSON(`data/${histoireFile}`);
-    afficherLog(`✅ ${histoireFile} chargé.`);
+    afficherLog("Chargement des données...");
+    const [motsRes, interfaceRes, histoireRes] = await Promise.all([
+      chargerJSON('data/mots.json'),
+      chargerJSON('data/interface-langue.json'),
+      chargerJSON(`data/${langueInterface === 'en' ? 'histoire-en.json' : 'histoire.json'}`)
+    ]);
 
     motsComplet = motsRes;
     mots = [...motsComplet];
     interfaceData = interfaceRes;
     window.histoireDocs = histoireRes;
 
-    if (!Object.keys(mots[0] || {}).includes(langueTrad)) langueTrad = 'fr';
+    if (!Object.keys(mots[0]).includes(langueTrad)) langueTrad = 'fr';
     if (!interfaceData[langueInterface]) langueInterface = 'fr';
 
     changerLangueInterface(langueInterface);
     initialiserMenusLangues();
 
     fuse = new Fuse(mots, {
-      keys: ['mot', ...Object.keys(mots[0]).filter(k => k !== 'cat' && k.length <= 3)],
+      keys: ['mot', 'fr', 'en'],
       includeScore: true,
       threshold: 0.4
     });
@@ -60,8 +48,8 @@ async function chargerDonnees() {
     indexMot = parseInt(localStorage.getItem('motIndex')) || 0;
     afficherMot(indexMot);
   } catch (e) {
-    afficherLog("❌ Échec du chargement JSON : " + e.message, 'error');
-    console.error("❌ Erreur de chargement :", e);
+    afficherLog("Erreur : " + e.message, 'error');
+    console.error(e);
   }
 }
 
@@ -82,64 +70,42 @@ function escapeHTML(str) {
   return str.replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 }
 
-function nettoyerTexte(str) {
-  return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
-}
-
-const nomsLangues = {
-  fr: "Français", en: "English", ar: "العربية", tz: "Tamazight", tr: "Türkçe", da: "Dansk",
-  de: "Deutsch", nl: "Nederlands", sv: "Svenska", ru: "Русский", zh: "中文", cs: "Čeština",
-  ha: "Hausa", es: "Español", it: "Italiano"
-};
-
-const phrasesMultilingues = {
-  fr: /comment (on )?dit[- ]?on (.+?) en ([a-z]+)/i,
-  en: /how (do )?you say (.+?) in ([a-z]+)/i,
-  ar: /كيف (نقول|أقول|يقول) (.+?) (بال|في) ([a-z]+)/i
-};
+const nomsLangues = { fr: "Français", en: "English" };
 
 function envoyerMessage() {
   const input = document.getElementById('chatInput');
-  const brut = input.value.trim();
-  const message = nettoyerTexte(brut);
+  const messageBrut = input.value.trim();
+  const message = nettoyerTexte(messageBrut);
   if (!message) return;
 
-  afficherMessage('utilisateur', escapeHTML(brut));
+  afficherMessage('utilisateur', escapeHTML(messageBrut));
   input.value = '';
 
-  const regex = phrasesMultilingues[langueInterface] || phrasesMultilingues.fr;
-  const match = brut.match(regex);
+  const langueCible = message.includes(" in ") ? "en" : "fr";
+  const motsSimilaires = fuse.search(message).slice(0, 3);
 
-  if (match) {
-    const motCherche = nettoyerTexte(match[2].trim());
-    const langueCible = (match[3] || match[4] || 'fr').slice(0, 2);
-    const entree = motsComplet.find(m =>
-      Object.values(m).some(val => typeof val === 'string' && nettoyerTexte(val) === motCherche)
-    );
-    if (entree && entree[langueCible]) {
-      const rep = `<strong>${escapeHTML(motCherche)}</strong> en ${nomsLangues[langueCible]} : <strong>${escapeHTML(entree[langueCible])}</strong><br>Mot Tadaksahak : <strong>${escapeHTML(entree.mot)}</strong>`;
-      return afficherMessage('bot', rep);
-    }
+  if (motsSimilaires.length) {
+    const mot = motsSimilaires[0].item;
+    const rep = `🔍 Résultat le plus proche : <strong>${mot.mot}</strong><br>Français : <strong>${mot.fr}</strong><br>Anglais : <strong>${mot.en}</strong>`;
+    return afficherMessage('bot', rep);
   }
 
   rechercherDansHistoire(message);
 }
 
 function rechercherDansHistoire(message) {
-  const results = (window.histoireDocs || []).filter(doc =>
+  const result = (window.histoireDocs || []).filter(doc =>
     nettoyerTexte(doc.titre).includes(message) ||
-    nettoyerTexte(doc.contenu).includes(message) ||
-    (doc.motsCles || []).some(m => nettoyerTexte(m).includes(message))
+    nettoyerTexte(doc.contenu).includes(message)
   );
 
-  if (results.length) {
-    const bloc = results.map(doc => {
-      const titreSanit = doc.titre.normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^\w\s-]/g, "").trim().replace(/\s+/g, '-').toLowerCase();
-      return `<strong>${escapeHTML(doc.titre)}</strong><br>${escapeHTML(doc.contenu)}<br><br><button onclick="jouerAudio('audio/${titreSanit}.mp3')">🔊 Écouter</button>`;
-    }).join('<br><br>');
+  if (result.length) {
+    const bloc = result.map(doc =>
+      `<strong>${escapeHTML(doc.titre)}</strong><br>${escapeHTML(doc.contenu)}`
+    ).join('<hr>');
     afficherMessage('bot', bloc);
   } else {
-    afficherMessage('bot', "❓ Mot inconnu.");
+    afficherMessage('bot', "❓ Je n’ai pas compris ce mot. Veux-tu reformuler ?");
   }
 }
 
@@ -152,9 +118,8 @@ function afficherMessage(type, contenu) {
   chatBox.scrollTop = chatBox.scrollHeight;
 }
 
-function jouerAudio(path) {
-  const audio = new Audio(path);
-  audio.play().catch(() => alert("⚠️ Audio indisponible."));
+function nettoyerTexte(str) {
+  return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
 }
 
 function initialiserMenusLangues() {
@@ -206,19 +171,12 @@ function changerLangueInterface(code) {
 }
 
 window.addEventListener('DOMContentLoaded', () => {
-  afficherLog("🔄 Initialisation de l'application...");
-
+  afficherLog("🔄 Initialisation...");
   chargerDonnees();
 
   document.getElementById('searchBar').addEventListener('input', () => {
     const query = nettoyerTexte(document.getElementById('searchBar').value.trim());
-    if (!query) {
-      mots = [...motsComplet];
-      afficherMot(0);
-      return;
-    }
-    const results = fuse.search(query);
-    mots = results.map(r => r.item);
+    mots = query ? fuse.search(query).map(r => r.item) : [...motsComplet];
     mots.length ? afficherMot(0) : (
       document.getElementById('motTexte').textContent = "Aucun résultat",
       document.getElementById('definition').textContent = "",
@@ -229,7 +187,6 @@ window.addEventListener('DOMContentLoaded', () => {
   document.getElementById('btnEnvoyer').addEventListener('click', envoyerMessage);
   document.getElementById('btnPrev').addEventListener('click', () => afficherMot(indexMot - 1));
   document.getElementById('btnNext').addEventListener('click', () => afficherMot(indexMot + 1));
-  document.getElementById('btnPrononcer')?.addEventListener('click', activerMicroEtComparer);
 
   document.querySelectorAll('.tab-btn').forEach(btn => {
     btn.addEventListener('click', () => {
@@ -247,7 +204,7 @@ window.addEventListener('DOMContentLoaded', () => {
       if (tabContent) {
         tabContent.hidden = false;
       } else {
-        console.warn(`⚠️ Aucune section trouvée pour l’onglet : ${tabId}`);
+        console.warn(`⚠️ Onglet introuvable : ${tabId}`);
       }
     });
   });
