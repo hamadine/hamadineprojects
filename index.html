@@ -27,11 +27,16 @@
     <img src="images/idaksahak_round.png" alt="Logo Tadaksahak" class="logo-header" loading="lazy" />
   </header>
 
-  <button id="btnLangueInterface" aria-haspopup="menu" aria-expanded="false" aria-controls="menuLangueInterface">Interface : Français ⌄</button>
-  <div id="menuLangueInterface" hidden role="menu" aria-label="Choix de la langue d'interface"></div>
-  <button id="btnLangueTrad" aria-haspopup="menu" aria-expanded="false" aria-controls="menuLangueTrad">Traduction : Français ⌄</button>
-  <div id="menuLangueTrad" hidden role="menu" aria-label="Choix de la langue de traduction"></div>
+  <!-- Boutons de langue stylisés comme les onglets -->
+  <div class="language-buttons" style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 1rem;">
+    <button id="btnLangueInterface" class="tab-btn" aria-haspopup="menu" aria-expanded="false" aria-controls="menuLangueInterface">Interface : Français ⌄</button>
+    <div id="menuLangueInterface" hidden role="menu" aria-label="Choix de la langue d'interface"></div>
 
+    <button id="btnLangueTrad" class="tab-btn" aria-haspopup="menu" aria-expanded="false" aria-controls="menuLangueTrad">Traduction : Français ⌄</button>
+    <div id="menuLangueTrad" hidden role="menu" aria-label="Choix de la langue de traduction"></div>
+  </div>
+
+  <!-- Navigation principale -->
   <nav class="tabs" aria-label="Navigation principale du site">
     <button class="tab-btn active" data-tab="dictionnaire" aria-selected="true" tabindex="0" id="tab-dictionnaire">📖 Dictionnaire</button>
     <button class="tab-btn" data-tab="chat" aria-selected="false" tabindex="-1" id="tab-chat">💬 Chat</button>
