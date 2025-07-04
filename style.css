@@ -1,134 +1,102 @@
 :root {
-  --header-blue: #004080;
-  --desert-brown: #a0522d;
-  --green-vegetal: #a8d5ba;
-  --footer-beige: #f5f5dc;
-  --footer-sky: #cce6ff;
-  --footer-gradient: linear-gradient(to right, var(--footer-beige), var(--footer-sky));
-  --white: #ffffff;
-  --text-dark: #1c2b36;
-  --tab-color-bg: #e0ecf4;
-  --tab-color-text: #004080;
-  --blue-light: #eaf6ff;
-  --blue-mid: #0077cc;
-  --blue-dark: #005fa3;
-  --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  --bleu-principal: #004080;
+  --desert-chaud: #c17d4b;
+  --vert-nature: #a8d5ba;
+  --jaune-sable: #f6e27a;
+  --texte-foncé: #1c2b36;
+  --blanc: #ffffff;
+  --fond-onglet: #e0ecf4;
+  --ombre: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
-/* Fond principal */
+/* Général */
 body {
   margin: 0;
   font-family: 'Segoe UI', sans-serif;
-  line-height: 1.6;
-  background: var(--green-vegetal);
-  color: var(--text-dark);
+  background: var(--vert-nature);
+  color: var(--texte-foncé);
   min-height: 100vh;
-  position: relative;
-  z-index: 1;
 }
 
-/* Filigrane/logo en fond */
+/* Logo en arrière-plan discret */
 body::after {
   content: "";
   position: fixed;
   left: 50%;
   bottom: 0;
   transform: translateX(-50%);
-  width: 320px;
-  height: 320px;
+  width: 300px;
+  height: 300px;
   background: url('images/idaksahak_round.png') no-repeat center bottom;
   background-size: contain;
-  opacity: 0.10;
+  opacity: 0.1;
   pointer-events: none;
-  z-index: 0;
 }
 
-/* En-tête */
+/* Header */
 .site-header {
-  background: var(--header-blue);
+  background: var(--bleu-principal);
   text-align: center;
   padding: 1.5em 0;
 }
-.site-header .logo-header {
+.logo-header {
   max-width: 120px;
   height: auto;
-  display: inline-block;
-}
-.site-header::after {
-  content: '';
-  display: block;
-  height: 10px;
-  background: var(--desert-brown);
 }
 
-/* Section principale */
-main {
-  background: var(--green-vegetal);
-  padding: 1em;
-  border-top: 5px solid var(--desert-brown);
-}
-
-/* Navigation par onglets */
+/* Tabs et navigation */
 .tabs {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
   gap: 0.5em;
-  padding: 0.5em;
-  background: var(--header-blue);
-  border-bottom: 3px solid var(--desert-brown);
+  background: var(--bleu-principal);
+  border-bottom: 4px solid var(--desert-chaud);
 }
-
 .tab-btn {
-  background: var(--tab-color-bg);
-  color: var(--tab-color-text);
+  background: var(--fond-onglet);
+  color: var(--bleu-principal);
   font-weight: bold;
   padding: 0.6em 1em;
-  border: 1px solid var(--tab-color-text);
+  border: 1px solid var(--bleu-principal);
   border-radius: 6px;
   transition: all 0.3s ease;
 }
 .tab-btn:hover {
-  background: var(--desert-brown);
-  color: var(--white);
+  background: var(--desert-chaud);
+  color: var(--blanc);
 }
 .tab-btn.active {
-  background: var(--tab-color-text);
-  color: var(--white);
-  border: 2px solid var(--white);
-  box-shadow: inset 0 -3px 0 var(--desert-brown);
+  background: var(--bleu-principal);
+  color: var(--blanc);
+  border: 2px solid var(--blanc);
+  box-shadow: inset 0 -3px 0 var(--desert-chaud);
 }
 
-/* Contenu des onglets (affichage contrôlé uniquement par l’attribut hidden dans le HTML) */
+/* Contenu des onglets */
 .onglet-contenu {
-  background: var(--white);
+  background: var(--blanc);
   padding: 1.5em;
-  border: 1px solid var(--tab-color-text);
+  border: 1px solid var(--bleu-principal);
   border-radius: 0 0 10px 10px;
+}
+
+/* Boutons */
+.btn-icon, .btn-nav {
+  background: var(--jaune-sable);
+  border: none;
+  padding: 0.5em 1em;
+  font-weight: bold;
+  cursor: pointer;
+}
+.btn-icon:hover, .btn-nav:hover {
+  background: var(--desert-chaud);
+  color: var(--blanc);
 }
 
 /* Responsive */
 @media (max-width: 768px) {
-  .tab-btn, .subtab-btn {
-    padding: 0.4em 0.8em;
-    font-size: 0.9em;
-    min-width: 44%;
-  }
-  .search-bar input {
-    width: 100%;
-    font-size: 1em;
-    padding: 0.6em;
-  }
-  .button-group {
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 0.5em;
-  }
-  .dictionnaire-navigation button {
-    width: 48%;
-    font-size: 0.9em;
-  }
-  iframe {
-    height: 800px;
+  .tab-btn {
+    flex: 1 1 48%;
   }
 }
