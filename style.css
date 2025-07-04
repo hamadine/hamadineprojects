@@ -27,7 +27,7 @@ body {
   z-index: 1;
 }
 
-/* Filigrane/logo en fond, non intrusif, en bas du site */
+/* Filigrane/logo en fond */
 body::after {
   content: "";
   position: fixed;
@@ -43,7 +43,7 @@ body::after {
   z-index: 0;
 }
 
-/* Logo du header */
+/* En-tête */
 .site-header {
   background: var(--header-blue);
   text-align: center;
@@ -61,14 +61,14 @@ body::after {
   background: var(--desert-brown);
 }
 
-/* Zone principale */
+/* Section principale */
 main {
   background: var(--green-vegetal);
   padding: 1em;
   border-top: 5px solid var(--desert-brown);
 }
 
-/* Navigation des onglets */
+/* Navigation par onglets */
 .tabs {
   display: flex;
   justify-content: center;
@@ -99,7 +99,7 @@ main {
   box-shadow: inset 0 -3px 0 var(--desert-brown);
 }
 
-/* Contenu des onglets (affichage contrôlé uniquement via l’attribut hidden du HTML) */
+/* Contenu des onglets (affichage contrôlé uniquement par l’attribut hidden dans le HTML) */
 .onglet-contenu {
   background: var(--white);
   padding: 1.5em;
