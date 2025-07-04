@@ -44,32 +44,6 @@
   </nav>
 
   <main>
-    <blockquote>
-      <p style="text-align: right; font-style: italic;">— Hamadine AG MOCTAR</p>
-    </blockquote>
-
-    <section id="livres" class="tab onglet-contenu" role="tabpanel" aria-labelledby="tab-livres">
-      <h2>📚 Livres intégrales sur les Idaksahak</h2>
-      <article class="livre-bloc">
-        <h3>📘 Contribution à la connaissance de la communauté Idaksahak</h3>
-        <p>Une étude fondamentale explorant l’histoire, l’identité et l’émancipation politique du peuple Idaksahak à travers trois langues.</p>
-        <div class="livre-langues">
-          <a class="read-btn" href="CONTRIBUTION-A-LA-CONNAISSANCE-DE-LA-COMMUNAUTE-IDAKSAHAK.html" target="_blank" rel="noopener noreferrer">🇫🇷 Lire (Français)</a>
-          <a class="read-btn" href="تاريخ-التحرر-الكامل-العربية.html" target="_blank" rel="noopener noreferrer">🇸🇦 اقرأ (العربية)</a>
-          <a class="read-btn" href="contribution-to-the-knowledge-of-the-idaksahak-community.html" target="_blank" rel="noopener noreferrer">🇬🇧 Read (English)</a>
-        </div>
-      </article>
-
-      <article class="livre-bloc">
-        <h3>📘 L’émancipation politique des Idaksahak</h3>
-        <p>Une étude approfondie sur l’histoire, l’identité et l’émancipation politique du peuple Idaksahak.</p>
-        <div class="livre-langues">
-          <a class="read-btn" href="histoire-emancipation-politique-intégral.html" target="_blank" rel="noopener noreferrer">🇫🇷 Lire (Français)</a>
-          <a class="read-btn" href="التحرر-السياسي-للإداكسهاك-ar.html" target="_blank" rel="noopener noreferrer">🇸🇦 اقرأ (العربية)</a>
-        </div>
-      </article>
-    </section>
-
     <section id="dictionnaire" class="tab onglet-contenu active" role="tabpanel" aria-labelledby="tab-dictionnaire">
       <h2>📖 Dictionnaire Tadaksahak</h2>
       <div class="search-bar">
@@ -92,7 +66,7 @@
       </div>
     </section>
 
-    <section id="chat" class="tab onglet-contenu" role="tabpanel" aria-labelledby="tab-chat">
+    <section id="chat" class="tab onglet-contenu" role="tabpanel" aria-labelledby="tab-chat" hidden>
       <h2 id="chat-title">💬 Chat Tadaksahak</h2>
       <div id="chatWindow" class="chatbox" role="log" aria-live="polite"></div>
       <div id="botIntro" class="chat-intro" data-i18n="botIntro">🤖 Salut, je suis Hamadine.</div>
@@ -102,7 +76,7 @@
       </div>
     </section>
 
-    <section id="audio" class="tab onglet-contenu" role="tabpanel" aria-labelledby="tab-audio">
+    <section id="audio" class="tab onglet-contenu" role="tabpanel" aria-labelledby="tab-audio" hidden>
       <h2>🎧 Audios de traduction</h2>
       <p>Cette section contiendra bientôt des enregistrements audios en Tadaksahak issus de documents traduits comme des livres, communiqués ou discours.</p>
       <audio controls>
@@ -111,24 +85,45 @@
       </audio>
     </section>
 
-    <section id="photos" class="tab onglet-contenu" role="tabpanel" aria-labelledby="tab-photos">
+    <section id="photos" class="tab onglet-contenu" role="tabpanel" aria-labelledby="tab-photos" hidden>
       <h2>🖼️ Galerie photographique</h2>
       <p>Cette section sera destinée à créer une mémoire d’images des événements historiques liés à la communauté Idaksahak.</p>
     </section>
 
-    <section id="videos" class="tab onglet-contenu" role="tabpanel" aria-labelledby="tab-videos">
+    <section id="videos" class="tab onglet-contenu" role="tabpanel" aria-labelledby="tab-videos" hidden>
       <h2>🎥 Vidéos historiques authentiques</h2>
       <p>Intégration de vidéos YouTube / archives visuelles sur la culture Idaksahak.</p>
     </section>
 
-    <section id="rapports" class="tab onglet-contenu" role="tabpanel" aria-labelledby="tab-rapports">
+    <section id="rapports" class="tab onglet-contenu" role="tabpanel" aria-labelledby="tab-rapports" hidden>
       <h2>📄 Rapports et études</h2>
-      <p>Très prochainement, des rapports des Nations Unies ainsi que des organismes internationaux de défense des droits humains seront mis à votre disposition ici. Une occasion d'avoir un aperçu global sur les Idaksahak.</p>
+      <p>Très prochainement, des rapports des Nations Unies ainsi que des organismes internationaux de défense des droits humains seront mis à votre disposition ici.</p>
     </section>
 
-    <section id="actualites" class="tab onglet-contenu" role="tabpanel" aria-labelledby="tab-actualites">
+    <section id="actualites" class="tab onglet-contenu" role="tabpanel" aria-labelledby="tab-actualites" hidden>
       <h2>🗞️ Actualités</h2>
       <p>À venir : articles, événements, communiqués autour des Idaksahak.</p>
+    </section>
+
+    <section id="livres" class="tab onglet-contenu" role="tabpanel" aria-labelledby="tab-livres" hidden>
+      <h2>📚 Livres intégrales sur les Idaksahak</h2>
+      <article class="livre-bloc">
+        <h3>📘 Contribution à la connaissance de la communauté Idaksahak</h3>
+        <p>Une étude fondamentale explorant l’histoire, l’identité et l’émancipation politique du peuple Idaksahak à travers trois langues.</p>
+        <div class="livre-langues">
+          <a class="read-btn" href="CONTRIBUTION-A-LA-CONNAISSANCE-DE-LA-COMMUNAUTE-IDAKSAHAK.html" target="_blank" rel="noopener noreferrer">🇫🇷 Lire (Français)</a>
+          <a class="read-btn" href="تاريخ-التحرر-الكامل-العربية.html" target="_blank" rel="noopener noreferrer">🇸🇦 اقرأ (العربية)</a>
+          <a class="read-btn" href="contribution-to-the-knowledge-of-the-idaksahak-community.html" target="_blank" rel="noopener noreferrer">🇬🇧 Read (English)</a>
+        </div>
+      </article>
+      <article class="livre-bloc">
+        <h3>📘 L’émancipation politique des Idaksahak</h3>
+        <p>Une étude approfondie sur l’histoire, l’identité et l’émancipation politique du peuple Idaksahak.</p>
+        <div class="livre-langues">
+          <a class="read-btn" href="histoire-emancipation-politique-intégral.html" target="_blank" rel="noopener noreferrer">🇫🇷 Lire (Français)</a>
+          <a class="read-btn" href="التحرر-السياسي-للإداكسهاك-ar.html" target="_blank" rel="noopener noreferrer">🇸🇦 اقرأ (العربية)</a>
+        </div>
+      </article>
     </section>
   </main>
 
