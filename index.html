@@ -13,8 +13,8 @@
 </head>
 <body>
   <div class="site-notice" role="alert">
-    <p>🚧 Le site du Dictionnaire Tadaksahak Multilingue est en train de connaître des travaux d'amélioration. Certaines fonctionnalités peuvent être temporairement indisponibles.</p>
-    <p>En attendant la finalisation des travaux, nous vous invitons à découvrir la section <strong>📚 Livres</strong>, où plusieurs ouvrages sont consultables en intégralité.</p>
+    <p>🚧 Le site du Dictionnaire Tadaksahak Multilingue est en cours d'amélioration. Certaines fonctionnalités peuvent être temporairement indisponibles.</p>
+    <p>En attendant, découvrez la section <strong>📚 Livres</strong> avec plusieurs ouvrages consultables en intégralité.</p>
   </div>
 
   <noscript>
@@ -27,24 +27,22 @@
     <img src="images/idaksahak_round.png" alt="Logo Tadaksahak" class="logo-header" loading="lazy" />
   </header>
 
-  <!-- Boutons de langue stylisés comme les onglets -->
-  <div class="language-buttons" style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 1rem;">
-    <button id="btnLangueInterface" class="tab-btn" aria-haspopup="menu" aria-expanded="false" aria-controls="menuLangueInterface">Interface : Français ⌄</button>
-    <div id="menuLangueInterface" hidden role="menu" aria-label="Choix de la langue d'interface"></div>
+  <section class="language-buttons" aria-label="Paramètres de langue" style="display: flex; gap: 1rem; justify-content: center; margin: 1rem auto;">
+    <button id="btnLangueInterface" class="tab-btn" aria-haspopup="true" aria-controls="menuLangueInterface">Interface : Français ⌄</button>
+    <div id="menuLangueInterface" hidden role="menu" aria-label="Langue d’interface"></div>
 
-    <button id="btnLangueTrad" class="tab-btn" aria-haspopup="menu" aria-expanded="false" aria-controls="menuLangueTrad">Traduction : Français ⌄</button>
-    <div id="menuLangueTrad" hidden role="menu" aria-label="Choix de la langue de traduction"></div>
-  </div>
+    <button id="btnLangueTrad" class="tab-btn" aria-haspopup="true" aria-controls="menuLangueTrad">Traduction : Français ⌄</button>
+    <div id="menuLangueTrad" hidden role="menu" aria-label="Langue de traduction"></div>
+  </section>
 
-  <!-- Navigation principale -->
-  <nav class="tabs" aria-label="Navigation principale du site">
+  <nav class="tabs" aria-label="Navigation principale">
     <button class="tab-btn active" data-tab="dictionnaire" aria-selected="true" tabindex="0" id="tab-dictionnaire">📖 Dictionnaire</button>
     <button class="tab-btn" data-tab="chat" aria-selected="false" tabindex="-1" id="tab-chat">💬 Chat</button>
     <button class="tab-btn" data-tab="audio" aria-selected="false" tabindex="-1" id="tab-audio">🎧 Audio</button>
     <button class="tab-btn" data-tab="photos" aria-selected="false" tabindex="-1" id="tab-photos">🖼️ Photos</button>
     <button class="tab-btn" data-tab="videos" aria-selected="false" tabindex="-1" id="tab-videos">🎥 Vidéos</button>
     <button class="tab-btn" data-tab="rapports" aria-selected="false" tabindex="-1" id="tab-rapports">📄 Rapports</button>
-    <button class="tab-btn" data-tab="actualites" aria-selected="false" tabindex="-1" id="tab-actualites" style="flex: 2;">📰 Actualités</button>
+    <button class="tab-btn" data-tab="actualites" aria-selected="false" tabindex="-1" id="tab-actualites">📰 Actualités</button>
     <button class="tab-btn" data-tab="livres" aria-selected="false" tabindex="-1" id="tab-livres">📚 Livres</button>
   </nav>
 
@@ -83,50 +81,38 @@
 
     <section id="audio" class="onglet-contenu" role="tabpanel" aria-labelledby="tab-audio" hidden>
       <h2>🎧 Audios de traduction</h2>
-      <p>Cette section contiendra bientôt des enregistrements audios en Tadaksahak issus de documents traduits comme des livres, communiqués ou discours.</p>
-      <audio controls>
-        <source src="audio/exemple.mp3" type="audio/mpeg" />
-        Votre navigateur ne supporte pas l’audio.
-      </audio>
+      <p>Des enregistrements Tadaksahak issus de livres ou discours seront bientôt disponibles.</p>
     </section>
 
     <section id="photos" class="onglet-contenu" role="tabpanel" aria-labelledby="tab-photos" hidden>
       <h2>🖼️ Galerie photographique</h2>
-      <p>Cette section sera destinée à créer une mémoire d’images des événements historiques liés à la communauté Idaksahak.</p>
+      <p>Mémoires en images des événements historiques Idaksahak.</p>
     </section>
 
     <section id="videos" class="onglet-contenu" role="tabpanel" aria-labelledby="tab-videos" hidden>
       <h2>🎥 Vidéos historiques authentiques</h2>
-      <p>Intégration de vidéos YouTube / archives visuelles sur la culture Idaksahak.</p>
+      <p>Archives audiovisuelles sur la culture Idaksahak.</p>
     </section>
 
     <section id="rapports" class="onglet-contenu" role="tabpanel" aria-labelledby="tab-rapports" hidden>
       <h2>📄 Rapports et études</h2>
-      <p>Très prochainement, des rapports des Nations Unies ainsi que des organismes internationaux de défense des droits humains seront mis à votre disposition ici.</p>
+      <p>Rapports des Nations Unies et d'organisations humanitaires à venir.</p>
     </section>
 
     <section id="actualites" class="onglet-contenu" role="tabpanel" aria-labelledby="tab-actualites" hidden>
       <h2>🗞️ Actualités</h2>
-      <p>À venir : articles, événements, communiqués autour des Idaksahak.</p>
+      <p>Articles, événements et communiqués sur les Idaksahak.</p>
     </section>
 
     <section id="livres" class="onglet-contenu" role="tabpanel" aria-labelledby="tab-livres" hidden>
-      <h2>📚 Livres intégrales sur les Idaksahak</h2>
+      <h2>📚 Livres sur les Idaksahak</h2>
       <article class="livre-bloc">
         <h3>📘 Contribution à la connaissance de la communauté Idaksahak</h3>
-        <p>Une étude fondamentale explorant l’histoire, l’identité et l’émancipation politique du peuple Idaksahak à travers trois langues.</p>
+        <p>Exploration de l’histoire et de l’émancipation du peuple Idaksahak en trois langues.</p>
         <div class="livre-langues">
-          <a class="read-btn" href="CONTRIBUTION-A-LA-CONNAISSANCE-DE-LA-COMMUNAUTE-IDAKSAHAK.html" target="_blank" rel="noopener noreferrer">🇫🇷 Lire (Français)</a>
-          <a class="read-btn" href="تاريخ-التحرر-الكامل-العربية.html" target="_blank" rel="noopener noreferrer">🇸🇦 اقرأ (العربية)</a>
-          <a class="read-btn" href="contribution-to-the-knowledge-of-the-idaksahak-community.html" target="_blank" rel="noopener noreferrer">🇬🇧 Read (English)</a>
-        </div>
-      </article>
-      <article class="livre-bloc">
-        <h3>📘 L’émancipation politique des Idaksahak</h3>
-        <p>Une étude approfondie sur l’histoire, l’identité et l’émancipation politique du peuple Idaksahak.</p>
-        <div class="livre-langues">
-          <a class="read-btn" href="histoire-emancipation-politique-intégral.html" target="_blank" rel="noopener noreferrer">🇫🇷 Lire (Français)</a>
-          <a class="read-btn" href="التحرر-السياسي-للإداكسهاك-ar.html" target="_blank" rel="noopener noreferrer">🇸🇦 اقرأ (العربية)</a>
+          <a class="read-btn" href="CONTRIBUTION-A-LA-CONNAISSANCE-DE-LA-COMMUNAUTE-IDAKSAHAK.html" target="_blank" rel="noopener noreferrer">🇫🇷 Lire</a>
+          <a class="read-btn" href="تاريخ-التحرر-الكامل-العربية.html" target="_blank" rel="noopener noreferrer">🇸🇦 اقرأ</a>
+          <a class="read-btn" href="contribution-to-the-knowledge-of-the-idaksahak-community.html" target="_blank" rel="noopener noreferrer">🇬🇧 Read</a>
         </div>
       </article>
     </section>
