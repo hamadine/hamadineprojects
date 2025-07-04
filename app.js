@@ -100,13 +100,14 @@ const phrasesMultilingues = {
 
 function envoyerMessage() {
   const input = document.getElementById('chatInput');
-  const message = nettoyerTexte(input.value.trim());
+  const brut = input.value.trim();
+  const message = nettoyerTexte(brut);
   if (!message) return;
-  afficherMessage('utilisateur', escapeHTML(input.value.trim()));
+  afficherMessage('utilisateur', escapeHTML(brut));
   input.value = '';
 
   const regex = phrasesMultilingues[langueInterface] || phrasesMultilingues.fr;
-  const match = input.value.match(regex);
+  const match = brut.match(regex);
 
   if (match) {
     const motCherche = nettoyerTexte(match[2].trim());
@@ -230,24 +231,20 @@ window.addEventListener('DOMContentLoaded', () => {
   document.getElementById('btnPrononcer')?.addEventListener('click', activerMicroEtComparer);
   document.getElementById('btnPrononcer')?.addEventListener('click', activerMicroEtComparer);
 
-// --- Navigation par onglets ---
-document.querySelectorAll('.tab-btn').forEach(btn => {
-  btn.addEventListener('click', () => {
-    // Désactive tous les boutons et onglets
-    document.querySelectorAll('.tab-btn').forEach(b => {
-      b.classList.remove('active');
-      b.setAttribute('aria-selected', 'false');
-      b.setAttribute('tabindex', '-1');
+  document.querySelectorAll('.tab-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.tab-btn').forEach(b => {
+        b.classList.remove('active');
+        b.setAttribute('aria-selected', 'false');
+        b.setAttribute('tabindex', '-1');
+      });
+      document.querySelectorAll('.onglet-contenu').forEach(tab => tab.hidden = true);
+      btn.classList.add('active');
+      btn.setAttribute('aria-selected', 'true');
+      btn.setAttribute('tabindex', '0');
+      const tabId = btn.dataset.tab;
+      const tabContent = document.getElementById(tabId);
+      if (tabContent) tabContent.hidden = false;
     });
-    document.querySelectorAll('.onglet-contenu').forEach(tab => tab.hidden = true);
-
-    // Active le bon bouton et onglet
-    btn.classList.add('active');
-    btn.setAttribute('aria-selected', 'true');
-    btn.setAttribute('tabindex', '0');
-    const tabId = btn.dataset.tab;
-    const tabContent = document.getElementById(tabId);
-    if(tabContent) tabContent.hidden = false;
   });
-});
 });
