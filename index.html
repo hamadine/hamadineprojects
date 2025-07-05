@@ -23,9 +23,9 @@
   </header>
 
   <section class="language-buttons" aria-label="Paramètres de langue">
-    <button id="btnLangueInterface" class="tab-btn" aria-haspopup="true" aria-controls="menuLangueInterface">Interface : Français ⌄</button>
+    <button id="btnLangueInterface" class="tab-btn" aria-haspopup="true" aria-controls="menuLangueInterface" aria-expanded="false">Interface : Français ⌄</button>
     <div id="menuLangueInterface" hidden role="menu" aria-label="Langue d’interface"></div>
-    <button id="btnLangueTrad" class="tab-btn" aria-haspopup="true" aria-controls="menuLangueTrad">Traduction : Français ⌄</button>
+    <button id="btnLangueTrad" class="tab-btn" aria-haspopup="true" aria-controls="menuLangueTrad" aria-expanded="false">Traduction : Français ⌄</button>
     <div id="menuLangueTrad" hidden role="menu" aria-label="Langue de traduction"></div>
   </section>
 
@@ -44,7 +44,7 @@
     <section id="dictionnaire" class="onglet-contenu" role="tabpanel" aria-labelledby="tab-dictionnaire">
       <h2>📖 Dictionnaire Tadaksahak</h2>
       <div class="search-bar">
-        <input type="text" id="searchBar" placeholder="Recherchez un mot…" aria-label="Recherche dans le dictionnaire">
+        <input type="text" id="searchBar" placeholder="Recherchez un mot…" aria-label="Recherche dans le dictionnaire" autocomplete="off">
       </div>
       <div class="mot-resultat">
         <h3 id="motTexte">—</h3>
@@ -68,7 +68,7 @@
       <div id="chatWindow" class="chatbox" role="log" aria-live="polite"></div>
       <div id="botIntro" class="chat-intro" data-i18n="botIntro">🤖 Salut, je suis Hamadine.</div>
       <div class="chat-input-container">
-        <input type="text" id="chatInput" placeholder="Écrivez votre message…" aria-label="Entrée du chat">
+        <input type="text" id="chatInput" placeholder="Écrivez votre message…" aria-label="Entrée du chat" autocomplete="off">
         <button id="btnEnvoyer" aria-label="Envoyer le message" data-i18n="envoyer">Envoyer</button>
       </div>
     </section>
@@ -100,7 +100,6 @@
 
     <section id="livres" class="onglet-contenu" role="tabpanel" aria-labelledby="tab-livres" hidden>
       <h2>📚 Livres sur les Idaksahak</h2>
-      
       <div style="margin:1em 0;">
         <label for="selectThemeLivres"><strong>🎨 Thème visuel :</strong></label>
         <select id="selectThemeLivres" aria-label="Choisir un thème pour la section Livres">
@@ -110,7 +109,6 @@
         </select>
       </div>
 
-      <!-- Liste de livres avec liens corrigés -->
       <div class="livre-bloc">
         <h2>📚 Grammaire du Tadaksahak</h2>
         <a href="Introduction-Tadaksahak.html" class="btn">Lire la grammaire complète</a>
