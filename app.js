@@ -137,7 +137,7 @@ function rechercherDansHistoire(clean) {
   }
 
   afficherMessage('bot', interfaceData[langueInterface]?.incompréhension ||
-    "❓ Je ne comprends pas encore ce mot. Essaie autre mot ou phrase !");
+    "❓ Je ne comprends pas encore ce mot. Essaie un autre mot ou une autre phrase !");
 }
 
 function afficherMessage(type, contenu) {
@@ -205,4 +205,28 @@ function changerLangueInterface(code) {
   document.getElementById('searchBar').placeholder = data.searchPlaceholder;
 }
 
-window.addEventListener('DOMContentLoaded', chargerDonnees);
+/* THÈME VISUEL */
+function appliquerThemeVisuel(theme) {
+  const body = document.body;
+  body.classList.remove('theme-clair', 'theme-vert', 'theme-sombre');
+  body.classList.add(`theme-${theme}`);
+  localStorage.setItem('themeLivres', theme);
+}
+
+function initialiserThemeVisuel() {
+  const select = document.getElementById('selectThemeLivres');
+  if (!select) return;
+
+  const theme = localStorage.getItem('themeLivres') || 'clair';
+  select.value = theme;
+  appliquerThemeVisuel(theme);
+
+  select.addEventListener('change', () => {
+    appliquerThemeVisuel(select.value);
+  });
+}
+
+window.addEventListener('DOMContentLoaded', () => {
+  chargerDonnees();
+  initialiserThemeVisuel();
+});
