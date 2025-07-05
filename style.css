@@ -16,9 +16,6 @@ body {
   background: var(--vert-nature);
   color: var(--texte-foncé);
   min-height: 100vh;
-}
-
-body {
   background-image: url('images/IMG-20250704-WA0049.jpg');
   background-size: cover;
   background-position: center;
@@ -94,37 +91,43 @@ body {
 }
 
 /* ========== THÈMES LIVRES ========== */
-#livres[data-theme="clair"] {
-  background: #e6f0ff;
-  color: #003366;
-}
-#livres[data-theme="clair"] .livre-bloc {
-  background: #ffffff;
-  border-left: 5px solid #3399ff;
-  padding: 1em;
-  border-radius: 8px;
+#livres {
+  padding: 2rem;
+  border-radius: 12px;
+  transition: background-color 0.4s ease, color 0.4s ease;
+  font-family: 'Segoe UI', 'Helvetica Neue', sans-serif;
 }
 
-#livres[data-theme="vert"] {
-  background: #eef8f1;
-  color: #215c3a;
-}
-#livres[data-theme="vert"] .livre-bloc {
-  background: #ffffff;
-  border-left: 5px solid #64b17b;
-  padding: 1em;
-  border-radius: 8px;
+#selectThemeLivres {
+  margin-top: 1em;
+  padding: 0.5em 1em;
+  font-size: 1em;
+  border-radius: 6px;
+  border: 1px solid #aaa;
+  background-color: #fff;
+  cursor: pointer;
 }
 
-#livres[data-theme="sombre"] {
-  background: #1a1a1a;
-  color: #f1f1f1;
+.livre-bloc {
+  margin-top: 2em;
+  padding: 1.5em;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  transition: background-color 0.4s ease, color 0.4s ease;
 }
-#livres[data-theme="sombre"] .livre-bloc {
-  background: #2a2a2a;
-  border-left: 5px solid #888;
-  padding: 1em;
-  border-radius: 8px;
+
+.livre-bloc h3 {
+  margin: 0 0 0.5em;
+  font-size: 1.3em;
+}
+
+.livre-bloc p {
+  margin: 0 0 1em;
+  font-size: 1em;
+}
+
+.livre-langues {
+  margin-top: 1em;
 }
 
 .read-btn {
@@ -136,8 +139,38 @@ body {
   background: var(--bleu-principal);
   color: white;
   text-decoration: none;
-  transition: background 0.3s ease;
+  transition: background 0.3s ease, opacity 0.2s ease;
 }
 .read-btn:hover {
   background: var(--desert-chaud);
+}
+
+/* Thème clair */
+#livres[data-theme="clair"] {
+  background: #e6f0ff;
+  color: #003366;
+}
+#livres[data-theme="clair"] .livre-bloc {
+  background: #ffffff;
+  border-left: 5px solid #3399ff;
+}
+
+/* Thème vert */
+#livres[data-theme="vert"] {
+  background: #eef8f1;
+  color: #215c3a;
+}
+#livres[data-theme="vert"] .livre-bloc {
+  background: #ffffff;
+  border-left: 5px solid #64b17b;
+}
+
+/* Thème sombre */
+#livres[data-theme="sombre"] {
+  background: #1a1a1a;
+  color: #f1f1f1;
+}
+#livres[data-theme="sombre"] .livre-bloc {
+  background: #2a2a2a;
+  border-left: 5px solid #888;
 }
