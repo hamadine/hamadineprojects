@@ -21,7 +21,7 @@ function chargerJSON(url) {
 
 async function chargerDonnees() {
   try {
-    afficherLog("Chargement des données...");
+    afficherLog("🔄 Chargement des données...");
     const [motsRes, interfaceRes, histoireRes] = await Promise.all([
       chargerJSON('data/mots.json'),
       chargerJSON('data/interface-langue.json'),
@@ -47,7 +47,7 @@ async function chargerDonnees() {
     indexMot = parseInt(localStorage.getItem('motIndex')) || 0;
     afficherMot(indexMot);
   } catch (e) {
-    afficherLog("Erreur : " + e.message, 'error');
+    afficherLog("Erreur : " + e.message, 'error');
     console.error(e);
   }
 }
@@ -58,15 +58,26 @@ function afficherMot(motIndex = indexMot) {
   localStorage.setItem('motIndex', indexMot);
 
   const mot = mots[indexMot];
-  document.getElementById('motTexte').textContent = mot.mot || '—';
-  document.getElementById('definition').innerHTML =
-    escapeHTML(mot[langueTrad] || '—') +
+  const txtEl = document.getElementById('motTexte');
+  const defEl = document.getElementById('definition');
+
+  txtEl.classList.remove('fade-in');
+  defEl.classList.remove('fade-in');
+  void txtEl.offsetWidth; // reset animation
+  void defEl.offsetWidth;
+
+  txtEl.textContent = mot.mot || '—';
+  defEl.innerHTML = escapeHTML(mot[langueTrad] || '—') +
     (mot.cat ? ` <span style="color:#888;">(${escapeHTML(mot.cat)})</span>` : '');
+
   document.getElementById('compteur').textContent = `${indexMot + 1} / ${mots.length}`;
+
+  txtEl.classList.add('fade-in');
+  defEl.classList.add('fade-in');
 }
 
 function escapeHTML(str) {
-  return str.replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+  return str.replace(/[&<>"']/g, c => ({ '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;' })[c]);
 }
 
 function envoyerMessage() {
@@ -80,30 +91,27 @@ function envoyerMessage() {
   const botData = interfaceData[langueInterface]?.botIntelligence || {};
   const faq = botData.faq || {};
 
-  // insultes
   if (botData.insultes?.some(i => clean.includes(nettoyerTexte(i)))) {
     return afficherMessage('bot', botData.insulte || "🙏 Merci de rester poli.");
   }
-  // salutations
   if (botData.salutations_triggers?.some(trigger => clean.includes(nettoyerTexte(trigger)))) {
     const rep = botData.salutations[Math.floor(Math.random() * botData.salutations.length)];
     return afficherMessage('bot', rep);
   }
-  // FAQ
   for (const q in faq) {
     if (clean.includes(nettoyerTexte(q))) {
       return afficherMessage('bot', faq[q]);
     }
   }
-  // Dictionnaire
+
   const res = fuse.search(txt).slice(0,1);
   if (res.length) {
     const m = res[0].item;
     return afficherMessage('bot',
-      `🔍 <strong>${m.mot}</strong><br>Français : <strong>${m.fr}</strong><br>Anglais : <strong>${m.en}</strong>`
+      `🔍 <strong>${m.mot}</strong><br>Français : <strong>${m.fr}</strong><br>Anglais : <strong>${m.en}</strong>`
     );
   }
-  // Histoire / triggers
+
   rechercherDansHistoire(clean);
 }
 
@@ -120,11 +128,10 @@ function rechercherDansHistoire(clean) {
       if (match) {
         return afficherMessage('bot',
           `<strong>${escapeHTML(match.titre)}</strong><br>${escapeHTML(match.contenu)}<br>` +
-          `<button class="btn-icon btn-ecouter" data-audio="${trigger}">🔊 Écouter en Tadaksahak</button>`
+          `<button class="btn-icon btn-ecouter" data-audio="${trigger}">🔊 Écouter</button>`
         );
-      } else {
-        return afficherMessage('bot', intro + `<br>❗ Aucun contenu disponible.`);
       }
+      return afficherMessage('bot', intro + `<br>❗ Aucun contenu disponible.`);
     }
   }
 
@@ -133,33 +140,37 @@ function rechercherDansHistoire(clean) {
     nettoyerTexte(d.contenu).includes(clean)
   );
   if (results.length) {
-    const bloc = results.map(d => `<strong>${escapeHTML(d.titre)}</strong><br>${escapeHTML(d.contenu)}`).join('<hr>');
-    return afficherMessage('bot', bloc);
+    const html = results.map(d =>
+      `<strong>${escapeHTML(d.titre)}</strong><br>${escapeHTML(d.contenu)}`
+    ).join('<hr>');
+    return afficherMessage('bot', html);
   }
 
   afficherMessage('bot', interfaceData[langueInterface]?.incompréhension ||
-    "❓ Je ne comprends pas encore ce mot. Essaie autre mot ou phrase !");
+    "❓ Je ne comprends pas encore ce mot. Essaie autre chose !");
 }
 
 function afficherMessage(type, contenu) {
   const chatBox = document.getElementById('chatWindow');
   const msg = document.createElement('div');
   msg.className = `message ${type}`;
-  msg.innerHTML = `<strong>${type === 'utilisateur' ? (interfaceData[langueInterface]?.utilisateur || 'Vous') : 'Bot'}:</strong> ${contenu}`;
+  msg.innerHTML = `<strong>${type === 'utilisateur' ? window.nomUtilisateur || 'Vous' : 'Bot'}:</strong> ${contenu}`;
   chatBox.appendChild(msg);
   chatBox.scrollTop = chatBox.scrollHeight;
 
   msg.querySelectorAll('.btn-ecouter').forEach(btn => {
     btn.addEventListener('click', () => {
-      const key = btn.dataset.audio;
-      const audio = new Audio(`audios/${key}.mp3`);
-      audio.play().catch(_ => alert("⚠️ Audio introuvable ou non pris en charge."));
+      const audio = new Audio(`audios/${btn.dataset.audio}.mp3`);
+      audio.play().catch(_ => alert("⚠️ Audio introuvable."));
     });
   });
 }
 
 function nettoyerTexte(str) {
-  return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^\w\s]/gi, "").toLowerCase();
+  return str.normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/[^\w\s]/gi, "")
+    .toLowerCase();
 }
 
 const nomsLangues = { fr: "Français", en: "English" };
@@ -172,19 +183,19 @@ function initialiserMenusLangues() {
     btn.addEventListener('click', () => {
       menu.hidden = !menu.hidden;
       if (!menu.hidden) {
-        menu.innerHTML = Object.entries(nomsLangues).map(([code, nom]) =>
-          `<button class="langue-item" data-code="${code}">${nom}</button>`
-        ).join('');
-        menu.querySelectorAll('button').forEach(b => {
+        menu.innerHTML = Object.entries(nomsLangues)
+          .map(([code, nom]) => `<button class="langue-item" data-code="${code}">${nom}</button>`)
+          .join('');
+        menu.querySelectorAll('.langue-item').forEach(b => {
           b.onclick = () => {
             const val = b.dataset.code;
             localStorage.setItem(type === 'Interface' ? 'langueInterface' : 'langueTrad', val);
             if (type === 'Interface') location.reload();
             else {
               langueTrad = val;
-              btn.textContent = `Traduction : ${nomsLangues[val]} ⌄`;
+              btn.textContent = `Traduction : ${nomsLangues[val]} ⌄`;
+              afficherMot(indexMot);
             }
-            afficherMot(indexMot);
             menu.hidden = true;
           };
         });
@@ -201,11 +212,8 @@ function changerLangueInterface(code) {
     const key = el.getAttribute('data-i18n');
     if (data[key]) el.textContent = data[key];
   });
-
-  document.getElementById('btnLangueInterface').textContent =
-    `Interface : ${nomsLangues[code]} ⌄`;
-  document.getElementById('btnLangueTrad').textContent =
-    `Traduction : ${nomsLangues[langueTrad]} ⌄`;
+  document.getElementById('btnLangueInterface').textContent = `Interface : ${nomsLangues[code]} ⌄`;
+  document.getElementById('btnLangueTrad').textContent = `Traduction : ${nomsLangues[langueTrad]} ⌄`;
   document.getElementById('chat-title').textContent = data.chatTitre;
   document.getElementById('botIntro').innerHTML = data.botIntro;
   document.getElementById('btnEnvoyer').textContent = data.envoyer;
@@ -228,6 +236,10 @@ window.addEventListener('DOMContentLoaded', () => {
     }
   });
 
+  document.getElementById('chatInput').addEventListener('keydown', e => {
+    if (e.key === 'Enter') envoyerMessage();
+  });
+
   document.getElementById('btnEnvoyer').addEventListener('click', envoyerMessage);
   document.getElementById('btnPrev').addEventListener('click', () => afficherMot(indexMot - 1));
   document.getElementById('btnNext').addEventListener('click', () => afficherMot(indexMot + 1));
@@ -243,10 +255,8 @@ window.addEventListener('DOMContentLoaded', () => {
       btn.classList.add('active');
       btn.setAttribute('aria-selected', 'true');
       btn.setAttribute('tabindex', '0');
-      const tabId = btn.dataset.tab;
-      const tabContent = document.getElementById(tabId);
-      if (tabContent) tabContent.hidden = false;
-      else console.warn(`⚠️ Onglet introuvable : ${tabId}`);
+      const tab = document.getElementById(btn.dataset.tab);
+      if (tab) tab.hidden = false;
     });
   });
 });
