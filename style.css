@@ -9,6 +9,7 @@
   --ombre: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
+/* RESET & BASE */
 * {
   box-sizing: border-box;
   margin: 0;
@@ -22,16 +23,14 @@ body {
   line-height: 1.6;
   min-height: 100vh;
   padding-bottom: 3rem;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
-/* Liens */
 a {
-  color: var(--bleu-principal);
+  color: inherit;
   text-decoration: none;
-}
-
-a:hover {
-  text-decoration: underline;
 }
 
 img {
@@ -43,7 +42,7 @@ img {
 /* HEADER */
 .site-header {
   background: var(--bleu-principal);
-  padding: 1em 0;
+  padding: 1.5em 0;
   text-align: center;
 }
 
@@ -52,16 +51,7 @@ img {
   margin: auto;
 }
 
-/* LANGUE & NAVIGATION */
-.language-buttons {
-  background-color: #dff0e6;
-  padding: 1em;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 1em;
-}
-
+/* NAVIGATION TABS */
 .tabs {
   display: flex;
   flex-wrap: wrap;
@@ -95,7 +85,7 @@ img {
   box-shadow: inset 0 -3px 0 var(--desert-chaud);
 }
 
-/* CONTENU */
+/* ZONE PRINCIPALE */
 main {
   padding: 1rem;
 }
@@ -104,78 +94,159 @@ main {
   background: var(--blanc);
   padding: 1.5em;
   border: 1px solid var(--bleu-principal);
-  border-radius: 10px;
+  border-radius: 0 0 10px 10px;
   margin-top: 1em;
   box-shadow: var(--ombre);
 }
 
-/* DICTIONNAIRE */
-.search-bar {
-  margin-bottom: 1em;
-  text-align: center;
-}
-
 .search-bar input {
   width: 100%;
-  max-width: 400px;
-  padding: 0.6em;
-  border: 1px solid #ccc;
-  border-radius: 6px;
+  padding: 0.7em;
   font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  margin-bottom: 1em;
 }
 
+/* DICTIONNAIRE MOTS */
 .mot-resultat {
   text-align: center;
-  margin: 1em 0;
+  margin-bottom: 1em;
 }
 
-.button-group {
+#motTexte {
+  font-size: 1.8rem;
+  margin-bottom: 0.3em;
+  font-weight: bold;
+}
+
+#definition {
+  font-size: 1.2rem;
+}
+
+#compteur {
+  color: #777;
+  font-size: 0.9rem;
+  margin-top: 0.5em;
+}
+
+/* ACTIONS DICTIONNAIRE */
+.dictionnaire-actions {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 0.6em;
+  gap: 0.4em;
   margin: 1em 0;
 }
 
-.btn-icon,
-.btn-nav {
-  background-color: var(--jaune-sable);
+.dictionnaire-actions button {
+  font-size: 1.1rem;
+  padding: 0.5em 0.8em;
   border: none;
-  padding: 0.6em 1.2em;
-  font-weight: bold;
+  background: var(--jaune-sable);
   border-radius: 6px;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: background 0.3s ease;
 }
 
-.btn-icon:hover,
-.btn-nav:hover {
-  background-color: var(--desert-chaud);
+.dictionnaire-actions button:hover {
+  background: var(--desert-chaud);
   color: var(--blanc);
 }
 
-/* CHAT */
-.chatbox {
-  border: 1px solid #ccc;
+.dictionnaire-actions button:disabled {
+  background: #ddd;
+  cursor: not-allowed;
+}
+
+/* LIVRES + THÈMES */
+#livres {
+  padding: 2rem;
+  border-radius: 12px;
+  transition: background-color 0.4s ease;
+}
+
+#selectThemeLivres {
+  margin-top: 1em;
+  padding: 0.5em 1em;
   border-radius: 6px;
+  background: #fff;
+  border: 1px solid #aaa;
+  cursor: pointer;
+}
+
+.livre-bloc {
+  background: #ffffff;
   padding: 1em;
+  border-left: 5px solid #3399ff;
+  margin-top: 1em;
+  box-shadow: var(--ombre);
+}
+
+.lire-grammaire {
+  background-color: #0077cc;
+  color: #fff;
+  padding: 0.5em 1em;
+  border-radius: 6px;
+  display: inline-block;
+  margin-top: 0.5em;
+  font-weight: bold;
+  transition: transform 0.2s ease;
+}
+
+.lire-grammaire:hover {
+  background: #005fa3;
+  transform: scale(1.03);
+}
+
+/* FOOTER */
+.site-footer {
+  background: var(--bleu-principal);
+  color: var(--blanc);
+  padding: 2em 1em;
+  text-align: center;
+}
+
+.footer-container {
+  max-width: 900px;
+  margin: auto;
+}
+
+.footer-link {
+  text-decoration: underline;
+  color: #f6e27a;
+}
+
+.footer-citation {
+  margin-top: 1em;
+  font-style: italic;
+  font-size: 1rem;
+  color: #ffd;
+}
+
+/* CHAT ZONE */
+.chatbox {
   max-height: 300px;
   overflow-y: auto;
-  background: #f9f9f9;
+  border: 1px solid #ccc;
+  padding: 1em;
+  background: #fafafa;
   margin-bottom: 1em;
+  border-radius: 8px;
 }
 
 .message {
-  margin: 0.5em 0;
+  margin-bottom: 0.5em;
 }
 
 .message.bot {
-  color: #004080;
+  background: #eef5ff;
+  padding: 0.5em;
+  border-radius: 5px;
 }
 
 .message.utilisateur {
   text-align: right;
-  color: #1c2b36;
 }
 
 .chat-input-container {
@@ -183,85 +254,48 @@ main {
   gap: 0.5em;
 }
 
-#chatInput {
+.chat-input-container input {
   flex: 1;
-  padding: 0.6em;
-  border: 1px solid #ccc;
+  padding: 0.5em;
   border-radius: 6px;
+  border: 1px solid #ccc;
 }
 
-#btnEnvoyer {
-  padding: 0.6em 1em;
+.chat-input-container button {
   background: var(--bleu-principal);
-  color: var(--blanc);
+  color: #fff;
+  padding: 0.5em 1em;
   border: none;
   border-radius: 6px;
-  font-weight: bold;
   cursor: pointer;
-}
-
-#btnEnvoyer:hover {
-  background: var(--desert-chaud);
-}
-
-/* LIVRES */
-.livre-bloc {
-  border-left: 5px solid var(--bleu-principal);
-  background: #fdfdfd;
-  padding: 1em;
-  margin-top: 1em;
-  border-radius: 6px;
-}
-
-.lire-grammaire {
-  background: var(--bleu-principal);
-  color: white;
-  padding: 0.6em 1em;
-  display: inline-block;
-  border-radius: 4px;
-  margin-top: 0.5em;
-}
-
-.lire-grammaire:hover {
-  background: var(--desert-chaud);
-  color: var(--blanc);
-}
-
-/* FOOTER */
-.site-footer {
-  background: #eee;
-  color: #333;
-  padding: 2em 1em;
-  font-size: 0.9em;
-  text-align: center;
-}
-
-.footer-container {
-  max-width: 800px;
-  margin: auto;
-}
-
-.footer-link {
-  color: var(--bleu-principal);
-  font-weight: bold;
-}
-
-.footer-citation {
-  font-style: italic;
-  color: #666;
-  margin-top: 1em;
 }
 
 /* RESPONSIVE */
 @media (max-width: 768px) {
   .tab-btn {
+    flex: 1 1 48%;
+    text-align: center;
+  }
+
+  .dictionnaire-actions {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .dictionnaire-actions button {
     flex: 1 1 45%;
   }
 
-  .btn-icon,
-  .btn-nav,
-  .lire-grammaire,
-  #btnEnvoyer {
+  .logo-header {
+    max-width: 90px;
+  }
+
+  .chat-input-container {
+    flex-direction: column;
+  }
+
+  .chat-input-container input,
+  .chat-input-container button {
     width: 100%;
   }
 }
