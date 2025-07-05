@@ -70,8 +70,6 @@ function escapeHTML(str) {
   return str.replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 }
 
-const nomsLangues = { fr: "Français", en: "English" };
-
 function envoyerMessage() {
   const input = document.getElementById('chatInput');
   const messageBrut = input.value.trim();
@@ -84,7 +82,7 @@ function envoyerMessage() {
   const motsSimilaires = fuse.search(message).slice(0, 3);
   if (motsSimilaires.length) {
     const mot = motsSimilaires[0].item;
-    const rep = `🔍 Résultat le plus proche : <strong>${mot.mot}</strong><br>Français : <strong>${mot.fr}</strong><br>Anglais : <strong>${mot.en}</strong>`;
+    const rep = `🔍 Résultat le plus proche : <strong>${mot.mot}</strong><br>Français : <strong>${mot.fr}</strong><br>Anglais : <strong>${mot.en}</strong>`;
     return afficherMessage('bot', rep);
   }
 
@@ -92,19 +90,46 @@ function envoyerMessage() {
 }
 
 function rechercherDansHistoire(message) {
-  const result = (window.histoireDocs || []).filter(doc =>
-    nettoyerTexte(doc.titre).includes(message) ||
-    nettoyerTexte(doc.contenu).includes(message)
-  );
+  const texteNettoye = message;
+  const langue = langueInterface;
+  const triggers = interfaceData[langue]?.chatTriggers || {};
+  const phrases = interfaceData[langue]?.chatPhrases || {};
 
-  if (result.length) {
-    const bloc = result.map(doc =>
+  // 1. Trigger exact
+  for (const [trigger, clePhrase] of Object.entries(triggers)) {
+    if (texteNettoye.includes(nettoyerTexte(trigger))) {
+      const reponseIntro = phrases[clePhrase] || `🔎 Voici ce que j’ai trouvé à propos de "${trigger}" :`;
+      const match = (window.histoireDocs || []).find(doc =>
+        nettoyerTexte(doc.titre + doc.contenu).includes(nettoyerTexte(trigger))
+      );
+      if (match) {
+        const contenu = `
+          <strong>${escapeHTML(match.titre)}</strong><br>
+          ${escapeHTML(match.contenu)}
+          <br><button class="btn-icon btn-ecouter" data-audio="${trigger}">🔊 Écouter en Tadaksahak</button>
+        `;
+        return afficherMessage('bot', contenu);
+      } else {
+        return afficherMessage('bot', reponseIntro + "<br>❗ Aucun contenu disponible pour l’instant.");
+      }
+    }
+  }
+
+  // 2. Recherche fallback dans histoireDocs
+  const resultats = (window.histoireDocs || []).filter(doc => {
+    const titre = nettoyerTexte(doc.titre);
+    const contenu = nettoyerTexte(doc.contenu);
+    return titre.includes(texteNettoye) || contenu.includes(texteNettoye);
+  });
+
+  if (resultats.length) {
+    const bloc = resultats.map(doc =>
       `<strong>${escapeHTML(doc.titre)}</strong><br>${escapeHTML(doc.contenu)}`
     ).join('<hr>');
-    afficherMessage('bot', bloc);
-  } else {
-    afficherMessage('bot', "❓ Je n’ai pas compris ce mot. Veux-tu reformuler ?");
+    return afficherMessage('bot', bloc);
   }
+
+  afficherMessage('bot', interfaceData[langue]?.incompréhension || "❓ Je n’ai pas compris ce mot. Tu peux réessayer ?");
 }
 
 function afficherMessage(type, contenu) {
@@ -114,11 +139,25 @@ function afficherMessage(type, contenu) {
   msg.innerHTML = `<strong>${type === 'utilisateur' ? (window.nomUtilisateur || 'Vous') : 'Bot'}:</strong> ${contenu}`;
   chatBox.appendChild(msg);
   chatBox.scrollTop = chatBox.scrollHeight;
+
+  // Lecture audio si bouton présent
+  msg.querySelectorAll('.btn-ecouter').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const key = btn.dataset.audio;
+      const audio = new Audio(`audios/${key}.mp3`);
+      audio.play().catch(err => {
+        console.warn("Erreur de lecture audio :", err);
+        alert("⚠️ Audio introuvable ou non pris en charge.");
+      });
+    });
+  });
 }
 
 function nettoyerTexte(str) {
-  return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+  return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^\w\s]/gi, "").toLowerCase();
 }
+
+const nomsLangues = { fr: "Français", en: "English" };
 
 function initialiserMenusLangues() {
   ['Interface', 'Trad'].forEach(type => {
@@ -175,11 +214,12 @@ window.addEventListener('DOMContentLoaded', () => {
   document.getElementById('searchBar').addEventListener('input', () => {
     const query = nettoyerTexte(document.getElementById('searchBar').value.trim());
     mots = query ? fuse.search(query).map(r => r.item) : [...motsComplet];
-    mots.length ? afficherMot(0) : (
-      document.getElementById('motTexte').textContent = "Aucun résultat",
-      document.getElementById('definition').textContent = "",
-      document.getElementById('compteur').textContent = "0 / 0"
-    );
+    if (mots.length) afficherMot(0);
+    else {
+      document.getElementById('motTexte').textContent = "Aucun résultat";
+      document.getElementById('definition').textContent = "";
+      document.getElementById('compteur').textContent = "0 / 0";
+    }
   });
 
   document.getElementById('btnEnvoyer').addEventListener('click', envoyerMessage);
@@ -199,11 +239,8 @@ window.addEventListener('DOMContentLoaded', () => {
       btn.setAttribute('tabindex', '0');
       const tabId = btn.dataset.tab;
       const tabContent = document.getElementById(tabId);
-      if (tabContent) {
-        tabContent.hidden = false;
-      } else {
-        console.warn(`⚠️ Onglet introuvable : ${tabId}`);
-      }
+      if (tabContent) tabContent.hidden = false;
+      else console.warn(`⚠️ Onglet introuvable : ${tabId}`);
     });
   });
 });
