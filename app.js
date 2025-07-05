@@ -21,8 +21,6 @@ const chargerJSON = url =>
 const chargerDonnees = async () => {
   try {
     afficherLog("Chargement des données...");
-
-    // Langue fichier histoire dynamique
     let fichierHistoire = `data/histoire-${langueInterface}.json`;
     if (langueInterface === 'fr') fichierHistoire = 'data/histoire.json';
 
@@ -41,7 +39,6 @@ const chargerDonnees = async () => {
     interfaceData = interfaceRes;
     window.histoireDocs = histoireRes;
 
-    // Langue de traduction désactivée si non disponible
     if (!Object.keys(mots[0]).includes(langueTrad)) {
       console.warn(`❗ La langue "${langueTrad}" n’est pas disponible dans mots.json. Passage à 'fr'.`);
       langueTrad = 'fr';
@@ -179,7 +176,7 @@ const afficherMessage = (type, contenu) => {
 const nomsLangues = { fr: "Français", en: "English", ar: "العربية" };
 
 const initialiserMenusLangues = () => {
-  const languesDispo = Object.keys(mots[0]).filter(k => k !== 'mot'); // => ['fr', 'en']
+  const languesDispo = Object.keys(mots[0]).filter(k => k !== 'mot' && k !== 'cat');
 
   ['Interface', 'Trad'].forEach(type => {
     const btn = document.getElementById(`btnLangue${type}`);
