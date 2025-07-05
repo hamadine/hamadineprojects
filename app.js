@@ -27,7 +27,6 @@ async function chargerDonnees() {
       chargerJSON('data/interface-langue.json'),
       chargerJSON(`data/${langueInterface === 'en' ? 'histoire-en.json' : 'histoire.json'}`)
     ]);
-
     motsComplet = motsRes;
     mots = [...motsComplet];
     interfaceData = interfaceRes;
@@ -72,83 +71,89 @@ function escapeHTML(str) {
 
 function envoyerMessage() {
   const input = document.getElementById('chatInput');
-  const messageBrut = input.value.trim();
-  const message = nettoyerTexte(messageBrut);
-  if (!message) return;
-
-  afficherMessage('utilisateur', escapeHTML(messageBrut));
+  const txt = input.value.trim();
+  if (!txt) return;
+  const clean = nettoyerTexte(txt);
   input.value = '';
+  afficherMessage('utilisateur', escapeHTML(txt));
 
-  const motsSimilaires = fuse.search(message).slice(0, 3);
-  if (motsSimilaires.length) {
-    const mot = motsSimilaires[0].item;
-    const rep = `🔍 Résultat le plus proche : <strong>${mot.mot}</strong><br>Français : <strong>${mot.fr}</strong><br>Anglais : <strong>${mot.en}</strong>`;
+  const botData = interfaceData[langueInterface]?.botIntelligence || {};
+  const faq = botData.faq || {};
+
+  // insultes
+  if (botData.insultes?.some(i => clean.includes(nettoyerTexte(i)))) {
+    return afficherMessage('bot', botData.insulte || "🙏 Merci de rester poli.");
+  }
+  // salutations
+  if (botData.salutations_triggers?.some(trigger => clean.includes(nettoyerTexte(trigger)))) {
+    const rep = botData.salutations[Math.floor(Math.random() * botData.salutations.length)];
     return afficherMessage('bot', rep);
   }
-
-  rechercherDansHistoire(message);
+  // FAQ
+  for (const q in faq) {
+    if (clean.includes(nettoyerTexte(q))) {
+      return afficherMessage('bot', faq[q]);
+    }
+  }
+  // Dictionnaire
+  const res = fuse.search(txt).slice(0,1);
+  if (res.length) {
+    const m = res[0].item;
+    return afficherMessage('bot',
+      `🔍 <strong>${m.mot}</strong><br>Français : <strong>${m.fr}</strong><br>Anglais : <strong>${m.en}</strong>`
+    );
+  }
+  // Histoire / triggers
+  rechercherDansHistoire(clean);
 }
 
-function rechercherDansHistoire(message) {
-  const texteNettoye = message;
-  const langue = langueInterface;
-  const triggers = interfaceData[langue]?.chatTriggers || {};
-  const phrases = interfaceData[langue]?.chatPhrases || {};
+function rechercherDansHistoire(clean) {
+  const trig = interfaceData[langueInterface]?.chatTriggers || {};
+  const phr = interfaceData[langueInterface]?.chatPhrases || {};
 
-  // 1. Trigger exact
-  for (const [trigger, clePhrase] of Object.entries(triggers)) {
-    if (texteNettoye.includes(nettoyerTexte(trigger))) {
-      const reponseIntro = phrases[clePhrase] || `🔎 Voici ce que j’ai trouvé à propos de "${trigger}" :`;
-      const match = (window.histoireDocs || []).find(doc =>
-        nettoyerTexte(doc.titre + doc.contenu).includes(nettoyerTexte(trigger))
+  for (const [trigger, key] of Object.entries(trig)) {
+    if (clean.includes(nettoyerTexte(trigger))) {
+      const intro = phr[key] || `🔎 Voici ce que j’ai trouvé sur "${trigger}" :`;
+      const match = window.histoireDocs.find(d =>
+        nettoyerTexte(d.titre + d.contenu).includes(nettoyerTexte(trigger))
       );
       if (match) {
-        const contenu = `
-          <strong>${escapeHTML(match.titre)}</strong><br>
-          ${escapeHTML(match.contenu)}
-          <br><button class="btn-icon btn-ecouter" data-audio="${trigger}">🔊 Écouter en Tadaksahak</button>
-        `;
-        return afficherMessage('bot', contenu);
+        return afficherMessage('bot',
+          `<strong>${escapeHTML(match.titre)}</strong><br>${escapeHTML(match.contenu)}<br>` +
+          `<button class="btn-icon btn-ecouter" data-audio="${trigger}">🔊 Écouter en Tadaksahak</button>`
+        );
       } else {
-        return afficherMessage('bot', reponseIntro + "<br>❗ Aucun contenu disponible pour l’instant.");
+        return afficherMessage('bot', intro + `<br>❗ Aucun contenu disponible.`);
       }
     }
   }
 
-  // 2. Recherche fallback dans histoireDocs
-  const resultats = (window.histoireDocs || []).filter(doc => {
-    const titre = nettoyerTexte(doc.titre);
-    const contenu = nettoyerTexte(doc.contenu);
-    return titre.includes(texteNettoye) || contenu.includes(texteNettoye);
-  });
-
-  if (resultats.length) {
-    const bloc = resultats.map(doc =>
-      `<strong>${escapeHTML(doc.titre)}</strong><br>${escapeHTML(doc.contenu)}`
-    ).join('<hr>');
+  const results = window.histoireDocs.filter(d =>
+    nettoyerTexte(d.titre).includes(clean) ||
+    nettoyerTexte(d.contenu).includes(clean)
+  );
+  if (results.length) {
+    const bloc = results.map(d => `<strong>${escapeHTML(d.titre)}</strong><br>${escapeHTML(d.contenu)}`).join('<hr>');
     return afficherMessage('bot', bloc);
   }
 
-  afficherMessage('bot', interfaceData[langue]?.incompréhension || "❓ Je n’ai pas compris ce mot. Tu peux réessayer ?");
+  afficherMessage('bot', interfaceData[langueInterface]?.incompréhension ||
+    "❓ Je ne comprends pas encore ce mot. Essaie autre mot ou phrase !");
 }
 
 function afficherMessage(type, contenu) {
   const chatBox = document.getElementById('chatWindow');
   const msg = document.createElement('div');
   msg.className = `message ${type}`;
-  msg.innerHTML = `<strong>${type === 'utilisateur' ? (window.nomUtilisateur || 'Vous') : 'Bot'}:</strong> ${contenu}`;
+  msg.innerHTML = `<strong>${type === 'utilisateur' ? (interfaceData[langueInterface]?.utilisateur || 'Vous') : 'Bot'}:</strong> ${contenu}`;
   chatBox.appendChild(msg);
   chatBox.scrollTop = chatBox.scrollHeight;
 
-  // Lecture audio si bouton présent
   msg.querySelectorAll('.btn-ecouter').forEach(btn => {
     btn.addEventListener('click', () => {
       const key = btn.dataset.audio;
       const audio = new Audio(`audios/${key}.mp3`);
-      audio.play().catch(err => {
-        console.warn("Erreur de lecture audio :", err);
-        alert("⚠️ Audio introuvable ou non pris en charge.");
-      });
+      audio.play().catch(_ => alert("⚠️ Audio introuvable ou non pris en charge."));
     });
   });
 }
@@ -164,7 +169,6 @@ function initialiserMenusLangues() {
     const btn = document.getElementById(`btnLangue${type}`);
     const menu = document.getElementById(`menuLangue${type}`);
     if (!btn || !menu) return;
-
     btn.addEventListener('click', () => {
       menu.hidden = !menu.hidden;
       if (!menu.hidden) {
@@ -179,8 +183,8 @@ function initialiserMenusLangues() {
             else {
               langueTrad = val;
               btn.textContent = `Traduction : ${nomsLangues[val]} ⌄`;
-              afficherMot(indexMot);
             }
+            afficherMot(indexMot);
             menu.hidden = true;
           };
         });
@@ -198,13 +202,15 @@ function changerLangueInterface(code) {
     if (data[key]) el.textContent = data[key];
   });
 
-  document.getElementById('btnLangueInterface').textContent = `Interface : ${nomsLangues[code]} ⌄`;
-  document.getElementById('btnLangueTrad').textContent = `Traduction : ${nomsLangues[langueTrad]} ⌄`;
-  document.getElementById('chat-title').textContent = data.chatTitre || "Chat Tadaksahak";
-  document.getElementById('botIntro').innerHTML = data.botIntro || "🤖 Salut, je suis Hamadine.";
-  document.getElementById('btnEnvoyer').textContent = data.envoyer || "Envoyer";
-  document.getElementById('searchBar').placeholder = data.searchPlaceholder || "Cherchez un mot...";
-  window.nomUtilisateur = data.utilisateur || "Vous";
+  document.getElementById('btnLangueInterface').textContent =
+    `Interface : ${nomsLangues[code]} ⌄`;
+  document.getElementById('btnLangueTrad').textContent =
+    `Traduction : ${nomsLangues[langueTrad]} ⌄`;
+  document.getElementById('chat-title').textContent = data.chatTitre;
+  document.getElementById('botIntro').innerHTML = data.botIntro;
+  document.getElementById('btnEnvoyer').textContent = data.envoyer;
+  document.getElementById('searchBar').placeholder = data.searchPlaceholder;
+  window.nomUtilisateur = data.utilisateur;
 }
 
 window.addEventListener('DOMContentLoaded', () => {
@@ -212,8 +218,8 @@ window.addEventListener('DOMContentLoaded', () => {
   chargerDonnees();
 
   document.getElementById('searchBar').addEventListener('input', () => {
-    const query = nettoyerTexte(document.getElementById('searchBar').value.trim());
-    mots = query ? fuse.search(query).map(r => r.item) : [...motsComplet];
+    const q = nettoyerTexte(document.getElementById('searchBar').value.trim());
+    mots = q ? fuse.search(q).map(r => r.item) : [...motsComplet];
     if (mots.length) afficherMot(0);
     else {
       document.getElementById('motTexte').textContent = "Aucun résultat";
