@@ -9,7 +9,6 @@
   --ombre: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
-/* RESET & BASE */
 * {
   box-sizing: border-box;
   margin: 0;
@@ -18,16 +17,21 @@
 
 body {
   font-family: 'Segoe UI', 'Helvetica Neue', sans-serif;
-  background-color: var(--desert-chaud);
+  background-color: var(--vert-nature);
   color: var(--texte-foncé);
   line-height: 1.6;
   min-height: 100vh;
   padding-bottom: 3rem;
 }
 
+/* Liens */
 a {
-  color: inherit;
+  color: var(--bleu-principal);
   text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
 }
 
 img {
@@ -39,7 +43,7 @@ img {
 /* HEADER */
 .site-header {
   background: var(--bleu-principal);
-  padding: 1.5em 0;
+  padding: 1em 0;
   text-align: center;
 }
 
@@ -48,7 +52,16 @@ img {
   margin: auto;
 }
 
-/* TABS NAVIGATION */
+/* LANGUE & NAVIGATION */
+.language-buttons {
+  background-color: #dff0e6;
+  padding: 1em;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1em;
+}
+
 .tabs {
   display: flex;
   flex-wrap: wrap;
@@ -82,7 +95,7 @@ img {
   box-shadow: inset 0 -3px 0 var(--desert-chaud);
 }
 
-/* MAIN CONTENT */
+/* CONTENU */
 main {
   padding: 1rem;
 }
@@ -91,221 +104,164 @@ main {
   background: var(--blanc);
   padding: 1.5em;
   border: 1px solid var(--bleu-principal);
-  border-radius: 0 0 10px 10px;
+  border-radius: 10px;
   margin-top: 1em;
   box-shadow: var(--ombre);
-  max-width: 900px;
-  margin-left: auto;
-  margin-right: auto;
 }
 
-/* DICTIONNAIRE + RECHERCHE */
+/* DICTIONNAIRE */
+.search-bar {
+  margin-bottom: 1em;
+  text-align: center;
+}
+
 .search-bar input {
   width: 100%;
-  padding: 0.8em;
-  font-size: 1rem;
-  border: 1px solid var(--bleu-principal);
+  max-width: 400px;
+  padding: 0.6em;
+  border: 1px solid #ccc;
   border-radius: 6px;
-  margin-bottom: 1rem;
+  font-size: 1rem;
 }
 
-.mot-resultat h3 {
-  font-size: 1.8rem;
-  color: var(--bleu-principal);
-  margin-bottom: 0.5rem;
+.mot-resultat {
+  text-align: center;
+  margin: 1em 0;
 }
 
-.mot-resultat p {
-  font-size: 1.1rem;
-  color: var(--texte-foncé);
-}
-
-.button-group.dictionnaire-audio,
-.button-group.dictionnaire-navigation {
+.button-group {
   display: flex;
-  flex-direction: column;
-  gap: 0.8em;
-}
-
-.button-group.dictionnaire-navigation {
-  flex-direction: row;
-  justify-content: space-between;
-}
-
-.button-group button {
-  width: 100%;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.6em;
+  margin: 1em 0;
 }
 
 .btn-icon,
-.btn-nav,
-.read-btn,
-.lire-grammaire {
+.btn-nav {
   background-color: var(--jaune-sable);
   border: none;
-  padding: 0.8em 1.2em;
+  padding: 0.6em 1.2em;
   font-weight: bold;
   border-radius: 6px;
   cursor: pointer;
   transition: all 0.3s ease;
-  margin: 0.2em 0;
-  display: inline-block;
-  color: var(--texte-foncé);
 }
 
 .btn-icon:hover,
-.btn-nav:hover,
-.read-btn:hover,
-.lire-grammaire:hover {
-  background-color: var(--bleu-principal);
+.btn-nav:hover {
+  background-color: var(--desert-chaud);
   color: var(--blanc);
 }
 
-.btn-icon:disabled,
-.btn-nav:disabled {
-  background-color: #e2e2e2;
-  color: #999;
-  cursor: not-allowed;
-}
-
-.lire-grammaire {
-  background-color: #0077cc;
-  color: #fff;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-.lire-grammaire:active {
-  transform: scale(0.97);
-}
-
-.read-btn {
-  background: var(--bleu-principal);
-  color: #fff;
-  margin-right: 0.5em;
-}
-
-/* LIVRES + THÈMES */
-#livres {
-  padding: 2rem;
-  border-radius: 12px;
-  transition: background-color 0.4s ease, color 0.4s ease;
-}
-
-#selectThemeLivres {
-  margin-top: 1em;
-  padding: 0.5em 1em;
+/* CHAT */
+.chatbox {
+  border: 1px solid #ccc;
   border-radius: 6px;
-  background: #fff;
-  border: 1px solid #aaa;
-  cursor: pointer;
+  padding: 1em;
+  max-height: 300px;
+  overflow-y: auto;
+  background: #f9f9f9;
+  margin-bottom: 1em;
 }
 
-/* Thèmes */
-#livres[data-theme="clair"] {
-  background: #e6f0ff;
-  color: #003366;
-}
-#livres[data-theme="clair"] .livre-bloc {
-  background: #ffffff;
-  border-left: 5px solid #3399ff;
+.message {
+  margin: 0.5em 0;
 }
 
-#livres[data-theme="vert"] {
-  background: #eef8f1;
-  color: #215c3a;
-}
-#livres[data-theme="vert"] .livre-bloc {
-  background: #ffffff;
-  border-left: 5px solid #64b17b;
+.message.bot {
+  color: #004080;
 }
 
-#livres[data-theme="sombre"] {
-  background: #1a1a1a;
-  color: #f1f1f1;
-}
-#livres[data-theme="sombre"] .livre-bloc {
-  background: #2a2a2a;
-  border-left: 5px solid #888;
-}
-
-/* LIVRE PAGE SEULE */
-body.livre-page {
-  font-family: 'Segoe UI', sans-serif;
-  line-height: 1.6;
-  padding: 1.5em;
-  max-width: 900px;
-  margin: auto;
-  background-color: #fdfdfd;
+.message.utilisateur {
+  text-align: right;
   color: #1c2b36;
 }
 
-body.livre-page h1,
-body.livre-page h2,
-body.livre-page h3 {
-  color: inherit;
+.chat-input-container {
+  display: flex;
+  gap: 0.5em;
+}
+
+#chatInput {
+  flex: 1;
+  padding: 0.6em;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+#btnEnvoyer {
+  padding: 0.6em 1em;
+  background: var(--bleu-principal);
+  color: var(--blanc);
+  border: none;
+  border-radius: 6px;
   font-weight: bold;
+  cursor: pointer;
 }
 
-body.livre-page[data-theme="clair"] {
-  background-color: #e6f0ff;
-  color: #003366;
+#btnEnvoyer:hover {
+  background: var(--desert-chaud);
 }
 
-body.livre-page[data-theme="vert"] {
-  background-color: #eef8f1;
-  color: #215c3a;
+/* LIVRES */
+.livre-bloc {
+  border-left: 5px solid var(--bleu-principal);
+  background: #fdfdfd;
+  padding: 1em;
+  margin-top: 1em;
+  border-radius: 6px;
 }
 
-body.livre-page[data-theme="sombre"] {
-  background-color: #121212;
-  color: #f1f1f1;
+.lire-grammaire {
+  background: var(--bleu-principal);
+  color: white;
+  padding: 0.6em 1em;
+  display: inline-block;
+  border-radius: 4px;
+  margin-top: 0.5em;
+}
+
+.lire-grammaire:hover {
+  background: var(--desert-chaud);
+  color: var(--blanc);
 }
 
 /* FOOTER */
 .site-footer {
-  background-color: var(--bleu-principal);
-  color: var(--blanc);
+  background: #eee;
+  color: #333;
+  padding: 2em 1em;
+  font-size: 0.9em;
   text-align: center;
-  padding: 2rem 1rem;
-  font-size: 0.95rem;
-  margin-top: 3rem;
 }
-.site-footer a.footer-link {
-  color: var(--jaune-sable);
-  text-decoration: underline;
+
+.footer-container {
+  max-width: 800px;
+  margin: auto;
 }
+
+.footer-link {
+  color: var(--bleu-principal);
+  font-weight: bold;
+}
+
 .footer-citation {
   font-style: italic;
-  margin-top: 1.5rem;
+  color: #666;
+  margin-top: 1em;
 }
 
 /* RESPONSIVE */
 @media (max-width: 768px) {
   .tab-btn {
-    flex: 1 1 48%;
-    text-align: center;
-  }
-
-  .onglet-contenu {
-    padding: 1rem;
-  }
-
-  .logo-header {
-    max-width: 90px;
+    flex: 1 1 45%;
   }
 
   .btn-icon,
   .btn-nav,
-  .read-btn,
-  .lire-grammaire {
+  .lire-grammaire,
+  #btnEnvoyer {
     width: 100%;
-    margin-bottom: 0.5em;
-  }
-
-  #selectThemeLivres {
-    width: 100%;
-  }
-
-  .button-group.dictionnaire-navigation {
-    flex-direction: column;
   }
 }
