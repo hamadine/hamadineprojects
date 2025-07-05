@@ -21,30 +21,49 @@ body {
 .tabs {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-around;
+  justify-content: center;
   background-color: #004b82;
-  padding: 10px 0;
+  padding: 10px;
+  border-top: 3px solid #00365f;
+  border-bottom: 3px solid #00365f;
+  box-shadow: inset 0 -1px 5px rgba(0, 0, 0, 0.1);
 }
 .tab-btn {
   background-color: #e0ebf4;
   border: none;
   border-radius: 8px;
-  margin: 5px;
-  padding: 10px 20px;
+  margin: 10px;
+  padding: 12px 20px;
   font-weight: bold;
   font-size: 1rem;
   cursor: pointer;
-  min-width: 40%;
-  max-width: 45%;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-  transition: background 0.2s;
+  min-width: 140px;
+  flex: 1 1 calc(45% - 20px);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  position: relative;
 }
 .tab-btn:hover {
   background-color: #d4e5f6;
 }
+.tab-btn:hover::after {
+  content: "";
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  right: 2px;
+  bottom: 2px;
+  border: 2px dashed #005fa3;
+  border-radius: 8px;
+  pointer-events: none;
+}
 .tab-btn.active {
   background-color: #ffffff;
   border: 2px solid #005fa3;
+}
+.tab-btn:active {
+  transform: scale(0.97);
+  background-color: #cde5ff;
 }
 
 /* Zone de contenu principale */
@@ -58,7 +77,7 @@ body {
   margin: 20px;
   padding: 15px;
   border-radius: 10px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
   text-align: center;
 }
 .search-bar input {
@@ -161,13 +180,13 @@ body {
   cursor: pointer;
 }
 
-/* Audio, Photos, Vidéos, Rapports, Actualités */
+/* Autres sections */
 #audio, #photos, #videos, #rapports, #actualites {
   background-color: #ffffff;
   border-radius: 10px;
   padding: 15px;
   margin: 20px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
 }
 
 /* Messages et statut */
@@ -194,12 +213,19 @@ body {
 
 /* Responsive */
 @media (max-width: 600px) {
+  .tabs {
+    flex-direction: column;
+    align-items: center;
+  }
   .tab-btn {
-    min-width: 80%;
-    max-width: 90%;
+    width: 90%;
   }
   .btn-icon, .btn-nav {
     min-width: 80%;
+  }
+  .button-group {
+    flex-direction: column;
+    align-items: center;
   }
   .chat-input-container {
     flex-direction: column;
