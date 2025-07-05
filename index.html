@@ -7,8 +7,59 @@
   <meta name="description" content="Début d'une aventure riche autour de la langue et culture Idaksahak." />
   <meta name="theme-color" content="#005fa3" />
   <link rel="icon" href="images/idaksahak_square.png" type="image/png" />
+ <link rel="stylesheet" href="style.css" />
+  .livre-bloc {
+  background: #f8fff5;
+  border: 2px solid #28a745;
+  border-radius: 12px;
+  padding: 2rem;
+  margin: 2rem auto;
+  max-width: 800px;
+  text-align: center;
+  box-shadow: 0 0 10px rgba(0,0,0,0.05);
+}
 
-  <link rel="stylesheet" href="style.css" />
+.livre-bloc .btn {
+  background: #28a745;
+  color: #fff;
+  padding: 0.7rem 1.5rem;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background 0.3s ease;
+}
+
+.livre-bloc .btn:hover {
+  background: #1e7e34;
+}
+
+.livre-langues {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.read-btn {
+  background: #003366;
+  color: #fff;
+  padding: 0.6rem 1.2rem;
+  border-radius: 6px;
+  font-weight: bold;
+  text-decoration: none;
+  transition: background 0.3s ease;
+}
+
+.read-btn:hover {
+  background: #002244;
+}
+
+@media screen and (max-width: 600px) {
+  .livre-langues {
+    flex-direction: column;
+    align-items: center;
+  }
+}
   <script type="module" src="app.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.6.2"></script>
 </head>
@@ -118,12 +169,15 @@
         </select>
       </div>
 
-      <article class="livre-bloc">
-        <h3>📘 Contribution à la connaissance de la communauté Idaksahak</h3>
-        <p>Exploration de l’histoire et de l’émancipation du peuple Idaksahak en trois langues.</p>
+        <div class="livre-bloc">
+  <h2>📚 Accédez à la Grammaire du Tadaksahak</h2>
+  <p>
+    Découvrez l’analyse linguistique complète de la langue Tadaksahak, rédigée par <strong>Regula Christiansen-Bolli</strong> (Université de Leiden, 2010).
+  </p>
+  <a href="livres.html" class="btn">Lire la grammaire complète</a>
+        </div>
         <div class="livre-langues">
-          <a class="read-btn" href="CONTRIBUTION-A-LA-CONNAISSANCE-DE-LA-COMMUNAUTE-IDAKSAHAK.html" target="_blank" rel="noopener noreferrer">🇫🇷 Lire</a>
-          <a class="read-btn" href="تاريخ-التحرر-الكامل-العربية.html" target="_blank" rel="noopener noreferrer">🇸🇦 اقرأ</a>
+           <a class="read-btn" href="تاريخ-التحرر-الكامل-العربية.html" target="_blank" rel="noopener noreferrer">🇸🇦 اقرأ</a>
           <a class="read-btn" href="contribution-to-the-knowledge-of-the-idaksahak-community.html" target="_blank" rel="noopener noreferrer">🇬🇧 Read</a>
         </div>
       </article>
