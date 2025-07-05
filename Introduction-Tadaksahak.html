@@ -1,132 +1,38 @@
- <!DOCTYPE html><html lang="fr">
+<!DOCTYPE html>
+<html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Grammaire du Tadaksahak – Regula Christiansen-Bolli</title>
-  <style>
-  body {
-    margin: 0;
-    font-family: "Segoe UI", Roboto, sans-serif;
-    line-height: 1.6;
-    background: linear-gradient(to bottom, #28a745 0%, #f1c40f 70%);
-    color: #000;
-    padding: 2rem;
-  }#livres { background-color: rgba(255, 255, 255, 0.95); border-radius: 12px; padding: 2rem; max-width: 1000px; margin: auto; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Grammaire du Tadaksahak – Regula Christiansen‑Bolli</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="livre-page" data-theme="clair">
 
-h1, h2 { color: #003366; text-align: center; }
+  <!-- 🔝 Toolbar fixe en haut -->
+  <div id="top-buttons">
+    <a href="#livres">🔝 Haut de page</a>
+    <a href="index.html">📚 Retour au Dictionnaire</a>
+  </div>
 
-h1 { font-size: 2.4rem; margin-bottom: 1rem; }
-
-h2 { font-size: 2rem; margin-top: 2rem; border-bottom: 2px solid #003366; padding-bottom: 0.3rem; }
-
-h3, h4 { color: #206a5d; }
-
-p, li { font-size: 1.05rem; color: #222; }
-
-table { width: 100%; border-collapse: collapse; margin: 1rem 0; background: #fff; }
-
-th, td { border: 1px solid #ccc; padding: 0.6rem; text-align: left; }
-
-th { background-color: #28a745; color: #fff; }
-
-a { color: #0066cc; text-decoration: none; }
-
-a:hover { text-decoration: underline; }
-
-ul { padding-left: 1.5rem; }
-
-@media screen and (max-width: 768px) { body { padding: 1rem; }
-
-#livres {
-  padding: 1rem;
-}
-
-h1 {
-  font-size: 1.8rem;
-}
-
-h2 {
-  font-size: 1.5rem;
-}
-
-} 
-
-#menu-lateral {
-  position: fixed;
-  top: 5rem;
-  left: 0;
-  width: 200px;
-  background: rgba(0, 51, 102, 0.9);
-  padding: 1rem;
-  z-index: 999;
-  border-radius: 0 12px 12px 0;
-}
-
-#menu-lateral ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-#menu-lateral li {
-  margin-bottom: 1rem;
-}
-
-#menu-lateral a {
-  color: #fff;
-  text-decoration: none;
-  font-weight: bold;
-  display: block;
-}
-
-#menu-lateral a:hover {
-  text-decoration: underline;
-}
-
-#top-buttons {
-  position: fixed;
-  top: 0;
-  right: 0;
-  background: #003366;
-  padding: 0.5rem 1rem;
-  border-radius: 0 0 0 12px;
-  z-index: 1000;
-}
-
-#top-buttons a {
-  color: #fff;
-  margin-left: 1rem;
-  font-weight: bold;
-  text-decoration: none;
-}
-
-#top-buttons a:hover {
-  text-decoration: underline;
-}
-
-/* Pour que le contenu ne soit pas caché */
-body {
-  margin-left: 220px;
-}
-
-</style>
-<!-- 🚀 Navigation rapide -->
-<nav id="menu-lateral">
-  <ul>
-    <li><a href="#introduction">1. Introduction</a></li>
-    <li><a href="#phonological-structure">2. Phonology</a></li>
-    <li><a href="#morphology">3. Morphology</a></li>
-    <li><a href="#syntax">4. Syntax</a></li>
-    <li><a href="#references">5. References</a></li>
-    <li><a href="#appendices">6–13. Annexes</a></li>
-  </ul>
-</nav>
-
-<!-- 🔝 Boutons fixes en haut -->
-<div id="top-buttons">
-  <a href="#livres">🔝 Haut de page</a>
-  <a href="index.html">📚 Retour au Dictionnaire</a>
-</div>
+  <!-- 🧭 Menu latéral -->
+  <nav id="menu-lateral">
+    <ul>
+      <li><a href="#introduction">1. Introduction</a></li>
+      <li><a href="#phonological-structure">2. Phonological Structure</a></li>
+      <li><a href="#morphology">3. Morphology</a></li>
+      <li><a href="#syntax">4. Syntax</a></li>
+      <li><a href="#references">5. References</a></li>
+      <li><a href="#appendices">6–13. Appendices</a></li>
+      <li><a href="#appendices">↳ 6. Appendix I: Texts</a></li>
+      <li><a href="#appendices">↳ 7. Appendix II: Verb Forms</a></li>
+      <li><a href="#appendices">↳ 8. Appendix III: Lexicon</a></li>
+      <li><a href="#appendices">↳ 9. Appendix IV: Songhay Cognates</a></li>
+      <li><a href="#appendices">↳ 10. Morpheme Index</a></li>
+      <li><a href="#appendices">↳ 11. Summary</a></li>
+      <li><a href="#appendices">↳ 12. Samenvatting</a></li>
+      <li><a href="#appendices">↳ 13. Curriculum Vitae</a></li>
+    </ul>
+  </nav>
 
 </head>
 <body>  <section id="livres">
@@ -220,7 +126,7 @@ body {
   </ul>
 </section>
 
-<!-- 📘 Chapitres 6–13 : Annexes -->
+<!-- 📘 Chapitres 6 : Annexes -->
 <section id="appendices">
   <h2>6–13. Annexes</h2>
 
