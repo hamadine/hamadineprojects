@@ -10,6 +10,7 @@
   <link rel="stylesheet" href="style.css" />
   <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.6.2"></script>
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script type="module" src="app.js"></script>
 </head>
 <body>
   <noscript>
@@ -24,99 +25,61 @@
 
   <section class="language-buttons" aria-label="Paramètres de langue">
     <button id="btnLangueInterface" class="tab-btn" aria-haspopup="true" aria-controls="menuLangueInterface">Interface : Français ⌄</button>
-    <div id="menuLangueInterface" hidden role="menu" aria-label="Langue d’interface"></div>
+    <div id="menuLangueInterface" hidden role="menu"></div>
     <button id="btnLangueTrad" class="tab-btn" aria-haspopup="true" aria-controls="menuLangueTrad">Traduction : Français ⌄</button>
-    <div id="menuLangueTrad" hidden role="menu" aria-label="Langue de traduction"></div>
+    <div id="menuLangueTrad" hidden role="menu"></div>
   </section>
 
   <nav class="tabs" aria-label="Navigation principale">
-    <button class="tab-btn active" data-tab="dictionnaire" aria-selected="true" tabindex="0" id="tab-dictionnaire">📖 Dictionnaire</button>
-    <button class="tab-btn" data-tab="chat" aria-selected="false" tabindex="-1" id="tab-chat">💬 Chat</button>
-    <button class="tab-btn" data-tab="audio" aria-selected="false" tabindex="-1" id="tab-audio">🎧 Audio</button>
-    <button class="tab-btn" data-tab="photos" aria-selected="false" tabindex="-1" id="tab-photos">🖼️ Photos</button>
-    <button class="tab-btn" data-tab="videos" aria-selected="false" tabindex="-1" id="tab-videos">🎥 Vidéos</button>
-    <button class="tab-btn" data-tab="rapports" aria-selected="false" tabindex="-1" id="tab-rapports">📄 Rapports</button>
-    <button class="tab-btn" data-tab="actualites" aria-selected="false" tabindex="-1" id="tab-actualites">📰 Actualités</button>
-    <button class="tab-btn" data-tab="livres" aria-selected="false" tabindex="-1" id="tab-livres">📚 Livres</button>
+    <button class="tab-btn active" data-tab="dictionnaire" aria-selected="true" id="tab-dictionnaire">📖 Dictionnaire</button>
+    <button class="tab-btn" data-tab="chat" aria-selected="false" id="tab-chat">💬 Chat</button>
+    <button class="tab-btn" data-tab="audio" aria-selected="false" id="tab-audio">🎧 Audio</button>
+    <button class="tab-btn" data-tab="photos" aria-selected="false" id="tab-photos">🖼️ Photos</button>
+    <button class="tab-btn" data-tab="videos" aria-selected="false" id="tab-videos">🎥 Vidéos</button>
+    <button class="tab-btn" data-tab="rapports" aria-selected="false" id="tab-rapports">📄 Rapports</button>
+    <button class="tab-btn" data-tab="actualites" aria-selected="false" id="tab-actualites">📰 Actualités</button>
+    <button class="tab-btn" data-tab="livres" aria-selected="false" id="tab-livres">📚 Livres</button>
   </nav>
 
   <main>
-    <!-- Dictionnaire -->
-    <section id="dictionnaire" class="onglet-contenu" role="tabpanel" aria-labelledby="tab-dictionnaire">
+    <!-- Section Dictionnaire -->
+    <section id="dictionnaire" class="onglet-contenu" role="tabpanel">
       <h2>📖 Dictionnaire Tadaksahak</h2>
-      <div class="search-bar">
-        <input type="text" id="searchBar" placeholder="Recherchez un mot..." aria-label="Recherche dans le dictionnaire">
-      </div>
-      <div class="mot-resultat">
+      <input type="text" id="searchBar" placeholder="Recherchez un mot..." aria-label="Recherche">
+      <div>
         <h3 id="motTexte">—</h3>
         <p id="definition">—</p>
         <p id="compteur">0 / 0</p>
-      </div>
-      <div class="dictionnaire-actions">
-        <button id="btnPlay" aria-label="Écouter">🔊</button>
-        <button id="btnPrononcer" aria-label="Dis-le">🎤</button>
-        <button id="btnReplay" disabled aria-label="Réécouter">🔁</button>
-        <button id="btnAuto" disabled aria-label="Lecture auto">▶️</button>
-        <button id="btnPrev" aria-label="Mot précédent">⬅️</button>
-        <button id="btnNext" aria-label="Mot suivant">➡️</button>
+        <div class="dictionnaire-actions">
+          <button id="btnPrev">⬅️</button>
+          <button id="btnNext">➡️</button>
+        </div>
       </div>
     </section>
 
-    <!-- Chat -->
-    <section id="chat" class="onglet-contenu" role="tabpanel" aria-labelledby="tab-chat" hidden>
+    <!-- Section Chat -->
+    <section id="chat" class="onglet-contenu" hidden>
       <h2 id="chat-title">💬 Chat Tadaksahak</h2>
       <div id="chatWindow" class="chatbox" role="log" aria-live="polite"></div>
       <div id="botIntro" class="chat-intro" data-i18n="botIntro">🤖 Salut, je suis Hamadine.</div>
       <div class="chat-input-container">
         <input type="text" id="chatInput" placeholder="Écrivez votre message..." aria-label="Entrée du chat">
-        <button id="btnEnvoyer" aria-label="Envoyer le message">Envoyer</button>
+        <button id="btnEnvoyer">Envoyer</button>
       </div>
-    </section>
-
-    <!-- Audio -->
-    <section id="audio" class="onglet-contenu" role="tabpanel" aria-labelledby="tab-audio" hidden>
-      <h2>🎧 Audios de traduction</h2>
-      <p>Des enregistrements Tadaksahak issus de livres ou discours seront bientôt disponibles.</p>
-    </section>
-
-    <!-- Photos -->
-    <section id="photos" class="onglet-contenu" role="tabpanel" aria-labelledby="tab-photos" hidden>
-      <h2>🖼️ Galerie photographique</h2>
-      <p>Mémoires en images des événements historiques Idaksahak.</p>
-    </section>
-
-    <!-- Vidéos -->
-    <section id="videos" class="onglet-contenu" role="tabpanel" aria-labelledby="tab-videos" hidden>
-      <h2>🎥 Vidéos historiques authentiques</h2>
-      <p>Archives audiovisuelles sur la culture Idaksahak.</p>
-    </section>
-
-    <!-- Rapports -->
-    <section id="rapports" class="onglet-contenu" role="tabpanel" aria-labelledby="tab-rapports" hidden>
-      <h2>📄 Rapports et études</h2>
-      <p>Rapports des Nations Unies et d'organisations humanitaires à venir.</p>
-    </section>
-
-    <!-- Actualités -->
-    <section id="actualites" class="onglet-contenu" role="tabpanel" aria-labelledby="tab-actualites" hidden>
-      <h2>🗞️ Actualités</h2>
-      <p>Articles, événements et communiqués sur les Idaksahak.</p>
     </section>
 
     <!-- Livres -->
-    <section id="livres" class="onglet-contenu" role="tabpanel" aria-labelledby="tab-livres" hidden>
+    <section id="livres" class="onglet-contenu" hidden>
       <h2>📚 Livres sur les Idaksahak</h2>
-      <div style="margin: 1em 0;">
-        <label for="selectThemeLivres"><strong>🎨 Thème visuel :</strong></label>
-        <select id="selectThemeLivres" aria-label="Choisir un thème pour la section Livres">
-          <option value="clair">Clair (bleu ciel)</option>
-          <option value="vert">Vert (naturel)</option>
-          <option value="sombre">Sombre (noir et blanc)</option>
-        </select>
-      </div>
+      <label for="selectThemeLivres"><strong>🎨 Thème visuel :</strong></label>
+      <select id="selectThemeLivres">
+        <option value="clair">Clair</option>
+        <option value="vert">Vert</option>
+        <option value="sombre">Sombre</option>
+      </select>
       <div class="livre-bloc">
-        <h2>📘 Grammaire du Tadaksahak</h2>
-        <p>Découvrez l’analyse linguistique complète de la langue Tadaksahak, rédigée par <strong>Regula Christiansen-Bolli</strong> (Université de Leiden, 2010).</p>
+        <h3>📘 Grammaire du Tadaksahak</h3>
+        <p>Analyse linguistique complète de la langue Tadaksahak par <strong>Regula Christiansen-Bolli</strong> (Université de Leiden, 2010).</p>
         <a href="Introduction-Tadaksahak.html" class="btn lire-grammaire" target="_blank" rel="noopener noreferrer">📘 Lire la grammaire complète</a>
       </div>
     </section>
@@ -135,5 +98,7 @@
       </blockquote>
     </div>
   </footer>
+
+  <div id="messageStatus" class="message-status" role="alert" aria-live="polite"></div>
 </body>
 </html>
