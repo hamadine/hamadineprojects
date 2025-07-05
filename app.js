@@ -27,6 +27,11 @@ async function chargerDonnees() {
       chargerJSON('data/interface-langue.json'),
       chargerJSON(`data/${langueInterface === 'en' ? 'histoire-en.json' : 'histoire.json'}`)
     ]);
+
+    if (!Array.isArray(motsRes) || motsRes.length === 0) {
+      throw new Error("⚠️ Le fichier mots.json est vide ou mal formé.");
+    }
+
     motsComplet = motsRes;
     mots = [...motsComplet];
     interfaceData = interfaceRes;
@@ -46,6 +51,7 @@ async function chargerDonnees() {
 
     indexMot = parseInt(localStorage.getItem('motIndex')) || 0;
     afficherMot(indexMot);
+    afficherLog("✅ Données chargées.");
   } catch (e) {
     afficherLog("Erreur : " + e.message, 'error');
     console.error(e);
