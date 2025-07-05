@@ -193,3 +193,15 @@
 <div class="retour">
   <a class="button" href="#top">⬆ Retour en haut</a>
 </div>
+<select id="themeSelect">
+  <option value="clair">Clair</option>
+  <option value="vert">Vert</option>
+  <option value="sombre">Sombre</option>
+</select>
+
+<script>
+  const select = document.getElementById('themeSelect');
+  const body = document.body;
+  select.value = body.dataset.theme;
+  select.onchange = e => body.setAttribute('data-theme', e.target.value);
+</script>
