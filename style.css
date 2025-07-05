@@ -92,3 +92,52 @@ body {
     flex: 1 1 48%;
   }
 }
+
+/* ========== THÈMES LIVRES ========== */
+#livres[data-theme="clair"] {
+  background: #e6f0ff;
+  color: #003366;
+}
+#livres[data-theme="clair"] .livre-bloc {
+  background: #ffffff;
+  border-left: 5px solid #3399ff;
+  padding: 1em;
+  border-radius: 8px;
+}
+
+#livres[data-theme="vert"] {
+  background: #eef8f1;
+  color: #215c3a;
+}
+#livres[data-theme="vert"] .livre-bloc {
+  background: #ffffff;
+  border-left: 5px solid #64b17b;
+  padding: 1em;
+  border-radius: 8px;
+}
+
+#livres[data-theme="sombre"] {
+  background: #1a1a1a;
+  color: #f1f1f1;
+}
+#livres[data-theme="sombre"] .livre-bloc {
+  background: #2a2a2a;
+  border-left: 5px solid #888;
+  padding: 1em;
+  border-radius: 8px;
+}
+
+.read-btn {
+  display: inline-block;
+  margin: 0.3em 0.5em 0 0;
+  padding: 0.4em 1em;
+  border-radius: 4px;
+  font-weight: bold;
+  background: var(--bleu-principal);
+  color: white;
+  text-decoration: none;
+  transition: background 0.3s ease;
+}
+.read-btn:hover {
+  background: var(--desert-chaud);
+}
