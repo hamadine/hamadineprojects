@@ -7,75 +7,67 @@
   <meta name="description" content="Début d'une aventure riche autour de la langue et culture Idaksahak." />
   <meta name="theme-color" content="#005fa3" />
   <link rel="icon" href="images/idaksahak_square.png" type="image/png" />
- <link rel="stylesheet" href="style.css" />
-  .livre-bloc {
-  background: #f8fff5;
-  border: 2px solid #28a745;
-  border-radius: 12px;
-  padding: 2rem;
-  margin: 2rem auto;
-  max-width: 800px;
-  text-align: center;
-  box-shadow: 0 0 10px rgba(0,0,0,0.05);
-}
-
-.livre-bloc .btn {
-  background: #28a745;
-  color: #fff;
-  padding: 0.7rem 1.5rem;
-  border-radius: 6px;
-  text-decoration: none;
-  font-weight: bold;
-  transition: background 0.3s ease;
-}
-
-.livre-bloc .btn:hover {
-  background: #1e7e34;
-}
-
-.livre-langues {
-  display: flex;
-  justify-content: center;
-  gap: 1rem;
-  margin-top: 1rem;
-}
-
-.read-btn {
-  background: #003366;
-  color: #fff;
-  padding: 0.6rem 1.2rem;
-  border-radius: 6px;
-  font-weight: bold;
-  text-decoration: none;
-  transition: background 0.3s ease;
-}
-
-.read-btn:hover {
-  background: #002244;
-}
-
-@media screen and (max-width: 600px) {
-  .livre-langues {
-    flex-direction: column;
-    align-items: center;
-  }
-}
+  <link rel="stylesheet" href="style.css" />
   <script type="module" src="app.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.6.2"></script>
+
+  <style>
+    .livre-bloc {
+      background: #f8fff5;
+      border: 2px solid #28a745;
+      border-radius: 12px;
+      padding: 2rem;
+      margin: 2rem auto;
+      max-width: 800px;
+      text-align: center;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+    }
+
+    .livre-bloc .btn {
+      background: #28a745;
+      color: #fff;
+      padding: 0.7rem 1.5rem;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: background 0.3s ease;
+    }
+
+    .livre-bloc .btn:hover {
+      background: #1e7e34;
+    }
+
+    .livre-langues {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .read-btn {
+      background: #003366;
+      color: #fff;
+      padding: 0.6rem 1.2rem;
+      border-radius: 6px;
+      font-weight: bold;
+      text-decoration: none;
+      transition: background 0.3s ease;
+    }
+
+    .read-btn:hover {
+      background: #002244;
+    }
+
+    @media screen and (max-width: 600px) {
+      .livre-langues {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+  </style>
 </head>
+
 <body>
-
-  <div class="site-notice" role="alert">
-    <p>🚧 Le site du Dictionnaire Tadaksahak Multilingue est en cours d'amélioration. Certaines fonctionnalités peuvent être temporairement indisponibles.</p>
-    <p>En attendant, découvrez la section <strong>📚 Livres</strong> avec plusieurs ouvrages consultables en intégralité.</p>
-  </div>
-
-  <noscript>
-    <div class="js-warning" role="alert">
-      <p>⚠️ Ce site nécessite JavaScript pour fonctionner correctement.</p>
-    </div>
-  </noscript>
-
   <header class="site-header">
     <img src="images/idaksahak_round.png" alt="Logo Tadaksahak" class="logo-header" loading="lazy" />
   </header>
@@ -89,21 +81,21 @@
   </section>
 
   <nav class="tabs" aria-label="Navigation principale">
-    <button class="tab-btn active" data-tab="dictionnaire" aria-selected="true" tabindex="0" id="tab-dictionnaire">📖 Dictionnaire</button>
-    <button class="tab-btn" data-tab="chat" aria-selected="false" tabindex="-1" id="tab-chat">💬 Chat</button>
-    <button class="tab-btn" data-tab="audio" aria-selected="false" tabindex="-1" id="tab-audio">🎧 Audio</button>
-    <button class="tab-btn" data-tab="photos" aria-selected="false" tabindex="-1" id="tab-photos">🖼️ Photos</button>
-    <button class="tab-btn" data-tab="videos" aria-selected="false" tabindex="-1" id="tab-videos">🎥 Vidéos</button>
-    <button class="tab-btn" data-tab="rapports" aria-selected="false" tabindex="-1" id="tab-rapports">📄 Rapports</button>
-    <button class="tab-btn" data-tab="actualites" aria-selected="false" tabindex="-1" id="tab-actualites">📰 Actualités</button>
-    <button class="tab-btn" data-tab="livres" aria-selected="false" tabindex="-1" id="tab-livres">📚 Livres</button>
+    <button class="tab-btn active" data-tab="dictionnaire" id="tab-dictionnaire">📖 Dictionnaire</button>
+    <button class="tab-btn" data-tab="chat" id="tab-chat">💬 Chat</button>
+    <button class="tab-btn" data-tab="audio" id="tab-audio">🎧 Audio</button>
+    <button class="tab-btn" data-tab="photos" id="tab-photos">🖼️ Photos</button>
+    <button class="tab-btn" data-tab="videos" id="tab-videos">🎥 Vidéos</button>
+    <button class="tab-btn" data-tab="rapports" id="tab-rapports">📄 Rapports</button>
+    <button class="tab-btn" data-tab="actualites" id="tab-actualites">📰 Actualités</button>
+    <button class="tab-btn" data-tab="livres" id="tab-livres">📚 Livres</button>
   </nav>
 
   <main>
     <section id="dictionnaire" class="onglet-contenu" role="tabpanel" aria-labelledby="tab-dictionnaire">
       <h2>📖 Dictionnaire Tadaksahak</h2>
       <div class="search-bar">
-        <input type="text" id="searchBar" placeholder="Recherchez un mot..." aria-label="Recherche dans le dictionnaire">
+        <input type="text" id="searchBar" placeholder="Recherchez un mot..." aria-label="Recherche dans le dictionnaire" />
       </div>
       <div class="mot-resultat">
         <h3 id="motTexte">—</h3>
@@ -123,11 +115,10 @@
     </section>
 
     <section id="chat" class="onglet-contenu" role="tabpanel" aria-labelledby="tab-chat" hidden>
-      <h2 id="chat-title">💬 Chat Tadaksahak</h2>
+      <h2>💬 Chat Tadaksahak</h2>
       <div id="chatWindow" class="chatbox" role="log" aria-live="polite"></div>
-      <div id="botIntro" class="chat-intro" data-i18n="botIntro">🤖 Salut, je suis Hamadine.</div>
       <div class="chat-input-container">
-        <input type="text" id="chatInput" placeholder="Écrivez votre message..." aria-label="Entrée du chat">
+        <input type="text" id="chatInput" placeholder="Écrivez votre message..." aria-label="Entrée du chat" />
         <button id="btnEnvoyer" aria-label="Envoyer le message">Envoyer</button>
       </div>
     </section>
@@ -153,38 +144,27 @@
     </section>
 
     <section id="actualites" class="onglet-contenu" role="tabpanel" aria-labelledby="tab-actualites" hidden>
-      <h2>🗞️ Actualités</h2>
+      <h2>📰 Actualités</h2>
       <p>Articles, événements et communiqués sur les Idaksahak.</p>
     </section>
 
     <section id="livres" class="onglet-contenu" role="tabpanel" aria-labelledby="tab-livres" hidden>
       <h2>📚 Livres sur les Idaksahak</h2>
-
-      <div style="margin: 1em 0;">
-        <label for="selectThemeLivres"><strong>🎨 Thème visuel :</strong></label>
-        <select id="selectThemeLivres" aria-label="Choisir un thème pour la section Livres">
-          <option value="clair">Clair (bleu ciel)</option>
-          <option value="vert">Vert (naturel)</option>
-          <option value="sombre">Sombre (noir et blanc)</option>
-        </select>
+      <div class="livre-bloc">
+        <h3>📘 Accédez à la Grammaire du Tadaksahak</h3>
+        <p>
+          Découvrez l’analyse linguistique complète de la langue Tadaksahak, rédigée par <strong>Regula Christiansen-Bolli</strong> (Université de Leiden, 2010).
+        </p>
+        <a href="livres.html" class="btn">Lire la grammaire complète</a>
       </div>
-
-        <div class="livre-bloc">
-  <h2>📚 Accédez à la Grammaire du Tadaksahak</h2>
-  <p>
-    Découvrez l’analyse linguistique complète de la langue Tadaksahak, rédigée par <strong>Regula Christiansen-Bolli</strong> (Université de Leiden, 2010).
-  </p>
-  <a href="livres.html" class="btn">Lire la grammaire complète</a>
-        </div>
-        <div class="livre-langues">
-           <a class="read-btn" href="تاريخ-التحرر-الكامل-العربية.html" target="_blank" rel="noopener noreferrer">🇸🇦 اقرأ</a>
-          <a class="read-btn" href="contribution-to-the-knowledge-of-the-idaksahak-community.html" target="_blank" rel="noopener noreferrer">🇬🇧 Read</a>
-        </div>
-      </article>
+      <div class="livre-langues">
+        <a class="read-btn" href="تاريخ-التحرر-الكامل-العربية.html" target="_blank">🇸🇦 اقرأ</a>
+        <a class="read-btn" href="contribution-to-the-knowledge-of-the-idaksahak-community.html" target="_blank">🇬🇧 Read</a>
+      </div>
     </section>
   </main>
 
   <div id="loading" class="loading-indicator" hidden>Chargement...</div>
   <div id="messageStatus" class="message-status" role="alert" aria-live="polite"></div>
 </body>
-          </html>
+</html>
