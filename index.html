@@ -9,12 +9,25 @@
   <link rel="icon" href="images/idaksahak_square.png" type="image/png" />
   
   <!-- Style fond d'écran amélioré -->
-  <style>
+  style>
+    :root {
+      --bleu-principal: #004080;
+      --desert-chaud: #c17d4b;
+      --vert-nature: #a8d5ba;
+      --jaune-sable: #f6e27a;
+      --texte-foncé: #1c2b36;
+      --blanc: #ffffff;
+      --fond-onglet: #e0ecf4;
+      --ombre: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
     html, body {
       margin: 0;
       padding: 0;
       height: 100%;
       font-family: 'Segoe UI', sans-serif;
+      color: var(--texte-foncé);
+      overflow-x: hidden;
       position: relative;
       z-index: 0;
     }
@@ -30,7 +43,7 @@
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
-      filter: brightness(0.4);
+      filter: brightness(0.5);
       z-index: -2;
     }
 
@@ -41,12 +54,109 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background: #a8d5ba; /* --vert-nature */
-      opacity: 0.5;
+      background: rgba(168, 213, 186, 0.4); /* --vert-nature */
       z-index: -1;
     }
-  </style
-  
+
+    .site-header {
+      background: var(--bleu-principal);
+      text-align: center;
+      padding: 1.5em 0;
+      box-shadow: var(--ombre);
+    }
+
+    .logo-header {
+      max-width: 140px;
+      height: auto;
+      margin: auto;
+      display: block;
+    }
+
+    .language-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.5em;
+      margin: 1rem auto;
+    }
+
+    .tab-btn {
+      background: var(--fond-onglet);
+      color: var(--bleu-principal);
+      font-weight: bold;
+      border: 1px solid var(--bleu-principal);
+      padding: 0.5em 1.2em;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-size: 1rem;
+    }
+
+    .tab-btn:hover {
+      background: var(--desert-chaud);
+      color: var(--blanc);
+    }
+
+    .tab-btn.active {
+      background: var(--bleu-principal);
+      color: var(--blanc);
+      border: 2px solid var(--blanc);
+    }
+
+    .tabs {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.3em;
+      background: var(--bleu-principal);
+      border-bottom: 4px solid var(--desert-chaud);
+      padding: 0.5em 0;
+    }
+
+    .onglet-contenu {
+      background: var(--blanc);
+      margin: 1em auto;
+      padding: 1.5em;
+      border-radius: 10px;
+      max-width: 800px;
+      box-shadow: var(--ombre);
+    }
+
+    .button-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5em;
+      justify-content: center;
+      margin-top: 1em;
+    }
+
+    .btn-icon, .btn-nav {
+      background: var(--jaune-sable);
+      border: none;
+      padding: 0.5em 1em;
+      font-weight: bold;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .btn-icon:hover, .btn-nav:hover {
+      background: var(--desert-chaud);
+      color: var(--blanc);
+    }
+
+    @media (max-width: 600px) {
+      .tab-btn, .btn-icon, .btn-nav {
+        font-size: 0.9rem;
+        flex: 1 1 45%;
+        text-align: center;
+      }
+
+      .onglet-contenu {
+        padding: 1em;
+        margin: 0.5em;
+      }
+    }
+</style>
   <link rel="stylesheet" href="style.css" />
   <script type="module" src="app.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.6.2"></script>
