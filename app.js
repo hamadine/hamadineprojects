@@ -21,10 +21,15 @@ const chargerJSON = url =>
 const chargerDonnees = async () => {
   try {
     afficherLog("Chargement des données...");
+
+    // Langue fichier histoire dynamique
+    let fichierHistoire = `data/histoire-${langueInterface}.json`;
+    if (langueInterface === 'fr') fichierHistoire = 'data/histoire.json';
+
     const [motsRes, interfaceRes, histoireRes] = await Promise.all([
       chargerJSON('data/mots.json'),
       chargerJSON('data/interface-langue.json'),
-      chargerJSON(`data/${langueInterface === 'en' ? 'histoire-en.json' : 'histoire.json'}`)
+      chargerJSON(fichierHistoire)
     ]);
 
     if (!Array.isArray(motsRes) || motsRes.length === 0) {
@@ -36,7 +41,12 @@ const chargerDonnees = async () => {
     interfaceData = interfaceRes;
     window.histoireDocs = histoireRes;
 
-    if (!Object.keys(mots[0]).includes(langueTrad)) langueTrad = 'fr';
+    // Langue de traduction désactivée si non disponible
+    if (!Object.keys(mots[0]).includes(langueTrad)) {
+      console.warn(`❗ La langue "${langueTrad}" n’est pas disponible dans mots.json. Passage à 'fr'.`);
+      langueTrad = 'fr';
+    }
+
     if (!interfaceData[langueInterface]) langueInterface = 'fr';
 
     changerLangueInterface(langueInterface);
@@ -166,9 +176,11 @@ const afficherMessage = (type, contenu) => {
   });
 };
 
-const nomsLangues = { fr: "Français", en: "English" };
+const nomsLangues = { fr: "Français", en: "English", ar: "العربية" };
 
 const initialiserMenusLangues = () => {
+  const languesDispo = Object.keys(mots[0]).filter(k => k !== 'mot'); // => ['fr', 'en']
+
   ['Interface', 'Trad'].forEach(type => {
     const btn = document.getElementById(`btnLangue${type}`);
     const menu = document.getElementById(`menuLangue${type}`);
@@ -177,8 +189,11 @@ const initialiserMenusLangues = () => {
     btn.addEventListener('click', () => {
       menu.hidden = !menu.hidden;
       if (!menu.hidden) {
-        menu.innerHTML = Object.entries(nomsLangues).map(([code, nom]) =>
-          `<button class="langue-item" data-code="${code}">${nom}</button>`).join('');
+        menu.innerHTML = Object.entries(nomsLangues).filter(([code]) => {
+          return type === 'Interface' || languesDispo.includes(code);
+        }).map(([code, nom]) =>
+          `<button class="langue-item" data-code="${code}">${nom}</button>`
+        ).join('');
 
         menu.querySelectorAll('button').forEach(b => {
           b.onclick = () => {
