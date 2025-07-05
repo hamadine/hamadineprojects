@@ -7,35 +7,29 @@ let fuse;
 function afficherLog(msg, type = 'info') {
   const el = document.getElementById('messageStatus');
   if (!el) return;
-  el.style.color = type === 'error' ? 'red' : 'green';
+  el.style.color = (type === 'error') ? 'red' : 'green';
   el.textContent = msg;
   el.hidden = false;
 }
 
-function chargerJSON(url) {
-  return fetch(url).then(r => {
-    if (!r.ok) throw new Error(`Erreur HTTP ${r.status}`);
-    return r.json();
-  });
-}
-
 async function chargerDonnees() {
   try {
-    afficherLog("Chargement des données...");
-    const [motsRes, interfaceRes, histoireRes] = await Promise.all([
-      chargerJSON('data/mots.json'),
-      chargerJSON('data/interface-langue.json'),
-      chargerJSON(`data/${langueInterface === 'en' ? 'histoire-en.json' : 'histoire.json'}`)
+    afficherLog("🔄 Chargement des données...");
+    const [motsRes, interfaceRes, histRes] = await Promise.all([
+      fetch('data/mots.json').then(r => r.ok ? r.json() : Promise.reject(`HTTP ${r.status}`)),
+      fetch('data/interface-langue.json').then(r => r.ok ? r.json() : Promise.reject(`HTTP ${r.status}`)),
+      fetch(`data/${langueInterface === 'en' ? 'histoire-en.json' : 'histoire.json'}`)
+        .then(r => r.ok ? r.json() : Promise.reject(`HTTP ${r.status}`))
     ]);
 
     if (!Array.isArray(motsRes) || motsRes.length === 0) {
-      throw new Error("⚠️ Le fichier mots.json est vide ou mal formé.");
+      throw new Error("⚠️ Le fichier data/mots.json est vide ou invalide.");
     }
 
     motsComplet = motsRes;
     mots = [...motsComplet];
     interfaceData = interfaceRes;
-    window.histoireDocs = histoireRes;
+    window.histoireDocs = histRes;
 
     if (!Object.keys(mots[0]).includes(langueTrad)) langueTrad = 'fr';
     if (!interfaceData[langueInterface]) langueInterface = 'fr';
@@ -51,16 +45,19 @@ async function chargerDonnees() {
 
     indexMot = parseInt(localStorage.getItem('motIndex')) || 0;
     afficherMot(indexMot);
-    afficherLog("✅ Données chargées.");
+    afficherLog("✅ Données chargées, dictionnaire prêt.");
   } catch (e) {
     afficherLog("Erreur : " + e.message, 'error');
     console.error(e);
   }
 }
 
-function afficherMot(motIndex = indexMot) {
-  if (!mots.length) return;
-  indexMot = Math.max(0, Math.min(mots.length - 1, motIndex));
+function afficherMot(idx = indexMot) {
+  if (!mots.length) {
+    afficherLog("🔍 Aucun mot à afficher.", 'error');
+    return;
+  }
+  indexMot = Math.max(0, Math.min(mots.length - 1, idx));
   localStorage.setItem('motIndex', indexMot);
 
   const mot = mots[indexMot];
@@ -72,7 +69,10 @@ function afficherMot(motIndex = indexMot) {
 }
 
 function escapeHTML(str) {
-  return str.replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+  return str.replace(/[&<>"']/g, c => ({
+    '&': '&amp;', '<': '&lt;', '>': '&gt;',
+    '"': '&quot;', "'": '&#39;'
+  })[c]);
 }
 
 function envoyerMessage() {
@@ -89,16 +89,12 @@ function envoyerMessage() {
   if (botData.insultes?.some(i => clean.includes(nettoyerTexte(i)))) {
     return afficherMessage('bot', botData.insulte || "🙏 Merci de rester poli.");
   }
-
-  if (botData.salutations_triggers?.some(trigger => clean.includes(nettoyerTexte(trigger)))) {
+  if (botData.salutations_triggers?.some(tr => clean.includes(nettoyerTexte(tr)))) {
     const rep = botData.salutations[Math.floor(Math.random() * botData.salutations.length)];
     return afficherMessage('bot', rep);
   }
-
   for (const q in faq) {
-    if (clean.includes(nettoyerTexte(q))) {
-      return afficherMessage('bot', faq[q]);
-    }
+    if (clean.includes(nettoyerTexte(q))) return afficherMessage('bot', faq[q]);
   }
 
   const res = fuse.search(txt).slice(0, 1);
@@ -108,17 +104,15 @@ function envoyerMessage() {
       `🔍 <strong>${m.mot}</strong><br>Français : <strong>${m.fr}</strong><br>Anglais : <strong>${m.en}</strong>`
     );
   }
-
   rechercherDansHistoire(clean);
 }
 
 function rechercherDansHistoire(clean) {
   const trig = interfaceData[langueInterface]?.chatTriggers || {};
   const phr = interfaceData[langueInterface]?.chatPhrases || {};
-
   for (const [trigger, key] of Object.entries(trig)) {
     if (clean.includes(nettoyerTexte(trigger))) {
-      const intro = phr[key] || `🔎 Voici ce que j’ai trouvé sur "${trigger}" :`;
+      const intro = phr[key] || `🔎 Voici ce que j’ai trouvé sur « ${trigger} » :`;
       const match = window.histoireDocs.find(d =>
         nettoyerTexte(d.titre + d.contenu).includes(nettoyerTexte(trigger))
       );
@@ -132,18 +126,18 @@ function rechercherDansHistoire(clean) {
       }
     }
   }
-
   const results = window.histoireDocs.filter(d =>
     nettoyerTexte(d.titre).includes(clean) ||
     nettoyerTexte(d.contenu).includes(clean)
   );
   if (results.length) {
-    const bloc = results.map(d => `<strong>${escapeHTML(d.titre)}</strong><br>${escapeHTML(d.contenu)}`).join('<hr>');
+    const bloc = results.map(d =>
+      `<strong>${escapeHTML(d.titre)}</strong><br>${escapeHTML(d.contenu)}`
+    ).join('<hr>');
     return afficherMessage('bot', bloc);
   }
-
   afficherMessage('bot', interfaceData[langueInterface]?.incompréhension ||
-    "❓ Je ne comprends pas encore ce mot. Essaie autre mot ou phrase !");
+    "❓ Je ne comprends pas encore ce mot. Essaie un autre mot ou phrase !");
 }
 
 function afficherMessage(type, contenu) {
@@ -154,21 +148,22 @@ function afficherMessage(type, contenu) {
   chatBox.appendChild(msg);
   chatBox.scrollTop = chatBox.scrollHeight;
 
-  msg.querySelectorAll('.btn-ecouter').forEach(btn => {
+  msg.querySelectorAll('.btn-ecouter').forEach(btn =>
     btn.addEventListener('click', () => {
       const key = btn.dataset.audio;
-      const audio = new Audio(`audios/${key}.mp3`);
-      audio.play().catch(_ => alert("⚠️ Audio introuvable ou non pris en charge."));
-    });
-  });
+      new Audio(`audios/${key}.mp3`).play().catch(_ =>
+        alert("⚠️ Audio introuvable ou non pris en charge.")
+      );
+    })
+  );
 }
 
 function nettoyerTexte(str) {
-  return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^\w\s]/gi, "").toLowerCase();
+  return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "")
+    .replace(/[^\w\s]/gi, "").toLowerCase();
 }
 
 const nomsLangues = { fr: "Français", en: "English" };
-
 function initialiserMenusLangues() {
   ['Interface', 'Trad'].forEach(type => {
     const btn = document.getElementById(`btnLangue${type}`);
@@ -177,21 +172,19 @@ function initialiserMenusLangues() {
     btn.addEventListener('click', () => {
       menu.hidden = !menu.hidden;
       if (!menu.hidden) {
-        menu.innerHTML = Object.entries(nomsLangues).map(([code, nom]) =>
-          `<button class="langue-item" data-code="${code}">${nom}</button>`
-        ).join('');
-        menu.querySelectorAll('button').forEach(b => {
-          b.onclick = () => {
-            const val = b.dataset.code;
-            localStorage.setItem(type === 'Interface' ? 'langueInterface' : 'langueTrad', val);
-            if (type === 'Interface') location.reload();
-            else {
-              langueTrad = val;
-              btn.textContent = `Traduction : ${nomsLangues[val]} ⌄`;
-              afficherMot(indexMot);
-            }
-            menu.hidden = true;
-          };
+        menu.innerHTML = Object.entries(nomsLangues)
+          .map(([code, nom]) => `<button class="langue-item" data-code="${code}">${nom}</button>`)
+          .join('');
+        menu.querySelectorAll('button').forEach(b => b.onclick = () => {
+          const val = b.dataset.code;
+          localStorage.setItem(type === 'Interface' ? 'langueInterface' : 'langueTrad', val);
+          if (type === 'Interface') location.reload();
+          else {
+            langueTrad = val;
+            btn.textContent = `Traduction : ${nomsLangues[val]} ⌄`;
+            afficherMot(indexMot);
+          }
+          menu.hidden = true;
         });
       }
     });
@@ -206,7 +199,6 @@ function changerLangueInterface(code) {
     const key = el.getAttribute('data-i18n');
     if (data[key]) el.textContent = data[key];
   });
-
   document.getElementById('btnLangueInterface').textContent =
     `Interface : ${nomsLangues[code]} ⌄`;
   document.getElementById('btnLangueTrad').textContent =
