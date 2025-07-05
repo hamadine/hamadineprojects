@@ -9,52 +9,76 @@
   --ombre: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
-/* Général */
-body {
+/* RESET & BASE */
+* {
+  box-sizing: border-box;
   margin: 0;
-  font-family: 'Segoe UI', sans-serif;
-  background: var(--vert-nature);
+  padding: 0;
+}
+
+body {
+  font-family: 'Segoe UI', 'Helvetica Neue', sans-serif;
+  background-color: var(--vert-nature);
   color: var(--texte-foncé);
+  line-height: 1.6;
   min-height: 100vh;
   background-image: url('images/IMG-20250704-WA0049.jpg');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+  padding-bottom: 3rem;
 }
 
-/* Header */
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* HEADER */
 .site-header {
   background: var(--bleu-principal);
-  text-align: center;
   padding: 1.5em 0;
-}
-.logo-header {
-  max-width: 120px;
-  height: auto;
+  text-align: center;
 }
 
-/* Tabs et navigation */
+.logo-header {
+  max-width: 120px;
+  margin: auto;
+}
+
+/* TABS NAVIGATION */
 .tabs {
   display: flex;
-  justify-content: center;
   flex-wrap: wrap;
-  gap: 0.5em;
+  justify-content: center;
   background: var(--bleu-principal);
   border-bottom: 4px solid var(--desert-chaud);
+  padding: 0.5em;
+  gap: 0.5em;
 }
+
 .tab-btn {
   background: var(--fond-onglet);
   color: var(--bleu-principal);
   font-weight: bold;
-  padding: 0.6em 1em;
+  padding: 0.6em 1.2em;
   border: 1px solid var(--bleu-principal);
   border-radius: 6px;
   transition: all 0.3s ease;
+  cursor: pointer;
 }
+
 .tab-btn:hover {
   background: var(--desert-chaud);
   color: var(--blanc);
 }
+
 .tab-btn.active {
   background: var(--bleu-principal);
   color: var(--blanc);
@@ -62,119 +86,113 @@ body {
   box-shadow: inset 0 -3px 0 var(--desert-chaud);
 }
 
-/* Contenu des onglets */
+/* MAIN CONTENT */
+main {
+  padding: 1rem;
+}
+
 .onglet-contenu {
   background: var(--blanc);
   padding: 1.5em;
   border: 1px solid var(--bleu-principal);
   border-radius: 0 0 10px 10px;
-}
-
-/* Boutons */
-.btn-icon, .btn-nav {
-  background: var(--jaune-sable);
-  border: none;
-  padding: 0.5em 1em;
-  font-weight: bold;
-  cursor: pointer;
-}
-.btn-icon:hover, .btn-nav:hover {
-  background: var(--desert-chaud);
-  color: var(--blanc);
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-  .tab-btn {
-    flex: 1 1 48%;
-  }
-}
-
-/* ========== THÈMES LIVRES ========== */
-#livres {
-  padding: 2rem;
-  border-radius: 12px;
-  transition: background-color 0.4s ease, color 0.4s ease;
-  font-family: 'Segoe UI', 'Helvetica Neue', sans-serif;
-}
-
-#selectThemeLivres {
   margin-top: 1em;
-  padding: 0.5em 1em;
-  font-size: 1em;
+  box-shadow: var(--ombre);
+}
+
+/* FORMES & BOUTONS */
+button, select, input {
+  font-family: inherit;
+  font-size: 1rem;
+}
+
+.btn-icon,
+.btn-nav,
+.read-btn,
+.lire-grammaire {
+  background-color: var(--jaune-sable);
+  border: none;
+  padding: 0.6em 1.2em;
+  font-weight: bold;
   border-radius: 6px;
-  border: 1px solid #aaa;
-  background-color: #fff;
   cursor: pointer;
+  transition: all 0.3s ease;
+  margin: 0.2em;
+  display: inline-block;
+}
+
+.btn-icon:hover,
+.btn-nav:hover,
+.read-btn:hover,
+.lire-grammaire:hover {
+  background-color: var(--desert-chaud);
+  color: var(--blanc);
 }
 
 .lire-grammaire {
   background-color: #0077cc;
   color: #fff;
-  padding: 0.75em 1.5em;
-  font-size: 1rem;
-  border: none;
-  border-radius: 6px;
-  text-decoration: none;
-  display: inline-block;
-  transition: background-color 0.3s ease;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-.lire-grammaire:hover {
-  background-color: #005fa3;
-}
-
-.lire-grammaire:focus {
-  outline: 2px solid #ffcc00;
-  outline-offset: 3px;
+.lire-grammaire:active {
+  transform: scale(0.97);
 }
 
 .read-btn {
-  display: inline-block;
-  margin: 0.3em 0.5em 0 0;
-  padding: 0.4em 1em;
-  border-radius: 4px;
-  font-weight: bold;
   background: var(--bleu-principal);
-  color: white;
-  text-decoration: none;
-  transition: background 0.3s ease, opacity 0.2s ease;
-}
-.read-btn:hover {
-  background: var(--desert-chaud);
+  color: #fff;
+  margin-right: 0.5em;
 }
 
-/* Thème clair */
+/* LIVRES + THÈMES */
+#livres {
+  padding: 2rem;
+  border-radius: 12px;
+  transition: background-color 0.4s ease, color 0.4s ease;
+}
+
+#selectThemeLivres {
+  margin-top: 1em;
+  padding: 0.5em 1em;
+  border-radius: 6px;
+  background: #fff;
+  border: 1px solid #aaa;
+  cursor: pointer;
+}
+
+/* Thèmes */
 #livres[data-theme="clair"] {
   background: #e6f0ff;
   color: #003366;
 }
+
 #livres[data-theme="clair"] .livre-bloc {
   background: #ffffff;
   border-left: 5px solid #3399ff;
 }
 
-/* Thème vert */
 #livres[data-theme="vert"] {
   background: #eef8f1;
   color: #215c3a;
 }
+
 #livres[data-theme="vert"] .livre-bloc {
   background: #ffffff;
   border-left: 5px solid #64b17b;
 }
 
-/* Thème sombre */
 #livres[data-theme="sombre"] {
   background: #1a1a1a;
   color: #f1f1f1;
 }
+
 #livres[data-theme="sombre"] .livre-bloc {
   background: #2a2a2a;
   border-left: 5px solid #888;
 }
-/* ===== STYLING PAGES DE LIVRES EN LECTURE DIRECTE ===== */
+
+/* LIVRE PAGE SEULE */
 body.livre-page {
   font-family: 'Segoe UI', sans-serif;
   line-height: 1.6;
@@ -183,7 +201,6 @@ body.livre-page {
   margin: auto;
   background-color: #fdfdfd;
   color: #1c2b36;
-  transition: background 0.3s ease, color 0.3s ease;
 }
 
 body.livre-page h1, 
@@ -193,30 +210,45 @@ body.livre-page h3 {
   font-weight: bold;
 }
 
-body.livre-page h1 {
-  font-size: 1.8em;
-  margin-bottom: 0.3em;
-}
-
-body.livre-page h2 {
-  font-size: 1.4em;
-  margin-top: 1.2em;
-}
-
-body.livre-page p {
-  margin-bottom: 1em;
-}
-
-/* Appliquer thèmes par data-theme */
 body.livre-page[data-theme="clair"] {
   background-color: #e6f0ff;
   color: #003366;
 }
+
 body.livre-page[data-theme="vert"] {
   background-color: #eef8f1;
   color: #215c3a;
 }
+
 body.livre-page[data-theme="sombre"] {
   background-color: #121212;
   color: #f1f1f1;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .tab-btn {
+    flex: 1 1 48%;
+    text-align: center;
+  }
+
+  .onglet-contenu {
+    padding: 1rem;
+  }
+
+  .logo-header {
+    max-width: 90px;
+  }
+
+  .btn-icon,
+  .btn-nav,
+  .read-btn,
+  .lire-grammaire {
+    width: 100%;
+    margin-bottom: 0.5em;
+  }
+
+  #selectThemeLivres {
+    width: 100%;
+  }
 }
