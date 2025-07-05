@@ -81,9 +81,7 @@ function envoyerMessage() {
   afficherMessage('utilisateur', escapeHTML(messageBrut));
   input.value = '';
 
-  const langueCible = message.includes(" in ") ? "en" : "fr";
   const motsSimilaires = fuse.search(message).slice(0, 3);
-
   if (motsSimilaires.length) {
     const mot = motsSimilaires[0].item;
     const rep = `🔍 Résultat le plus proche : <strong>${mot.mot}</strong><br>Français : <strong>${mot.fr}</strong><br>Anglais : <strong>${mot.en}</strong>`;
