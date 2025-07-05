@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Dictionnaire Tadaksahak</title>
-  <meta name="description" content="Un dictionnaire vivant et interactif de la langue Idaksahak." />
-  <meta name="theme-color" content="#004080" />
+  <title>Dictionnaire Tadaksahak – Début d'une aventure culturelle</title>
+  <meta name="description" content="Début d'une aventure riche autour de la langue et culture Idaksahak." />
+  <meta name="theme-color" content="#005fa3" />
   <link rel="icon" href="images/idaksahak_square.png" type="image/png" />
   <link rel="stylesheet" href="style.css" />
   <script type="module" src="app.js"></script>
@@ -14,7 +14,7 @@
 <body>
   <noscript>
     <div class="js-warning" role="alert">
-      ⚠️ JavaScript est requis pour afficher ce site correctement.
+      <p>⚠️ Ce site nécessite JavaScript pour fonctionner correctement.</p>
     </div>
   </noscript>
 
@@ -23,73 +23,109 @@
   </header>
 
   <section class="language-buttons" aria-label="Paramètres de langue">
-    <button id="btnLangueInterface" class="tab-btn" aria-haspopup="true">Interface : Français ⌄</button>
-    <div id="menuLangueInterface" hidden></div>
-    <button id="btnLangueTrad" class="tab-btn" aria-haspopup="true">Traduction : Français ⌄</button>
-    <div id="menuLangueTrad" hidden></div>
+    <button id="btnLangueInterface" class="tab-btn" aria-haspopup="true" aria-controls="menuLangueInterface">Interface : Français ⌄</button>
+    <div id="menuLangueInterface" hidden role="menu" aria-label="Langue d’interface"></div>
+    <button id="btnLangueTrad" class="tab-btn" aria-haspopup="true" aria-controls="menuLangueTrad">Traduction : Français ⌄</button>
+    <div id="menuLangueTrad" hidden role="menu" aria-label="Langue de traduction"></div>
   </section>
 
-  <nav class="tabs" aria-label="Navigation">
-    <button class="tab-btn active" data-tab="dictionnaire">📖 Dictionnaire</button>
-    <button class="tab-btn" data-tab="chat">💬 Chat</button>
-    <button class="tab-btn" data-tab="audio">🎧 Audio</button>
-    <button class="tab-btn" data-tab="photos">🖼️ Photos</button>
-    <button class="tab-btn" data-tab="videos">🎥 Vidéos</button>
-    <button class="tab-btn" data-tab="rapports">📄 Rapports</button>
-    <button class="tab-btn" data-tab="actualites">📰 Actualités</button>
-    <button class="tab-btn" data-tab="livres">📚 Livres</button>
+  <nav class="tabs" aria-label="Navigation principale">
+    <button class="tab-btn active" data-tab="dictionnaire" aria-selected="true" tabindex="0" id="tab-dictionnaire">📖 Dictionnaire</button>
+    <button class="tab-btn" data-tab="chat" aria-selected="false" tabindex="-1" id="tab-chat">💬 Chat</button>
+    <button class="tab-btn" data-tab="audio" aria-selected="false" tabindex="-1" id="tab-audio">🎧 Audio</button>
+    <button class="tab-btn" data-tab="photos" aria-selected="false" tabindex="-1" id="tab-photos">🖼️ Photos</button>
+    <button class="tab-btn" data-tab="videos" aria-selected="false" tabindex="-1" id="tab-videos">🎥 Vidéos</button>
+    <button class="tab-btn" data-tab="rapports" aria-selected="false" tabindex="-1" id="tab-rapports">📄 Rapports</button>
+    <button class="tab-btn" data-tab="actualites" aria-selected="false" tabindex="-1" id="tab-actualites">📰 Actualités</button>
+    <button class="tab-btn" data-tab="livres" aria-selected="false" tabindex="-1" id="tab-livres">📚 Livres</button>
   </nav>
 
   <main>
-    <section id="dictionnaire" class="onglet-contenu">
+    <!-- Dictionnaire -->
+    <section id="dictionnaire" class="onglet-contenu" role="tabpanel" aria-labelledby="tab-dictionnaire">
       <h2>📖 Dictionnaire Tadaksahak</h2>
       <div class="search-bar">
-        <input type="text" id="searchBar" placeholder="Recherchez un mot..." />
+        <input type="text" id="searchBar" placeholder="Recherchez un mot..." aria-label="Recherche dans le dictionnaire">
       </div>
       <div class="mot-resultat">
         <h3 id="motTexte">—</h3>
         <p id="definition">—</p>
         <p id="compteur">0 / 0</p>
       </div>
-      <div class="button-group">
-        <button id="btnPlay" class="btn-icon">🔊 Écouter</button>
-        <button id="btnPrononcer" class="btn-icon">🎤 Dis-le</button>
-        <button id="btnReplay" class="btn-icon" disabled>🔁 Réécouter</button>
-        <button id="btnAuto" class="btn-icon" disabled>▶️ Lecture auto</button>
-      </div>
-      <div class="button-group">
-        <button id="btnPrev" class="btn-nav">⟸ Mot précédent</button>
-        <button id="btnNext" class="btn-nav">Mot suivant ⟹</button>
+      <div class="dictionnaire-actions">
+        <button id="btnPlay" aria-label="Écouter">🔊</button>
+        <button id="btnPrononcer" aria-label="Dis-le">🎤</button>
+        <button id="btnReplay" disabled aria-label="Réécouter">🔁</button>
+        <button id="btnAuto" disabled aria-label="Lecture auto">▶️</button>
+        <button id="btnPrev" aria-label="Mot précédent">⬅️</button>
+        <button id="btnNext" aria-label="Mot suivant">➡️</button>
       </div>
     </section>
 
-    <section id="chat" class="onglet-contenu" hidden>
+    <!-- Chat -->
+    <section id="chat" class="onglet-contenu" role="tabpanel" aria-labelledby="tab-chat" hidden>
       <h2 id="chat-title">💬 Chat Tadaksahak</h2>
-      <div id="chatWindow" class="chatbox"></div>
-      <div id="botIntro" class="chat-intro">🤖 Salut, je suis Hamadine.</div>
+      <div id="chatWindow" class="chatbox" role="log" aria-live="polite"></div>
+      <div id="botIntro" class="chat-intro" data-i18n="botIntro">🤖 Salut, je suis Hamadine.</div>
       <div class="chat-input-container">
-        <input type="text" id="chatInput" placeholder="Écrivez votre message..." />
-        <button id="btnEnvoyer">Envoyer</button>
+        <input type="text" id="chatInput" placeholder="Écrivez votre message..." aria-label="Entrée du chat">
+        <button id="btnEnvoyer" aria-label="Envoyer le message">Envoyer</button>
       </div>
     </section>
 
-    <section id="livres" class="onglet-contenu" hidden>
-      <h2>📚 Livres</h2>
+    <!-- Audio -->
+    <section id="audio" class="onglet-contenu" role="tabpanel" aria-labelledby="tab-audio" hidden>
+      <h2>🎧 Audios de traduction</h2>
+      <p>Des enregistrements Tadaksahak issus de livres ou discours seront bientôt disponibles.</p>
+    </section>
+
+    <!-- Photos -->
+    <section id="photos" class="onglet-contenu" role="tabpanel" aria-labelledby="tab-photos" hidden>
+      <h2>🖼️ Galerie photographique</h2>
+      <p>Mémoires en images des événements historiques Idaksahak.</p>
+    </section>
+
+    <!-- Vidéos -->
+    <section id="videos" class="onglet-contenu" role="tabpanel" aria-labelledby="tab-videos" hidden>
+      <h2>🎥 Vidéos historiques authentiques</h2>
+      <p>Archives audiovisuelles sur la culture Idaksahak.</p>
+    </section>
+
+    <!-- Rapports -->
+    <section id="rapports" class="onglet-contenu" role="tabpanel" aria-labelledby="tab-rapports" hidden>
+      <h2>📄 Rapports et études</h2>
+      <p>Rapports des Nations Unies et d'organisations humanitaires à venir.</p>
+    </section>
+
+    <!-- Actualités -->
+    <section id="actualites" class="onglet-contenu" role="tabpanel" aria-labelledby="tab-actualites" hidden>
+      <h2>🗞️ Actualités</h2>
+      <p>Articles, événements et communiqués sur les Idaksahak.</p>
+    </section>
+
+    <!-- Livres -->
+    <section id="livres" class="onglet-contenu" role="tabpanel" aria-labelledby="tab-livres" hidden>
+      <h2>📚 Livres sur les Idaksahak</h2>
+      <div style="margin: 1em 0;">
+        <label for="selectThemeLivres"><strong>🎨 Thème visuel :</strong></label>
+        <select id="selectThemeLivres" aria-label="Choisir un thème pour la section Livres">
+          <option value="clair">Clair (bleu ciel)</option>
+          <option value="vert">Vert (naturel)</option>
+          <option value="sombre">Sombre (noir et blanc)</option>
+        </select>
+      </div>
       <div class="livre-bloc">
-        <h3>📘 Grammaire du Tadaksahak</h3>
-        <p>Rédigée par <strong>Regula Christiansen-Bolli</strong>, Leiden 2010.</p>
-        <a href="Introduction-Tadaksahak.html" class="lire-grammaire" target="_blank">📘 Lire la grammaire complète</a>
+        <h2>📘 Grammaire du Tadaksahak</h2>
+        <p>Découvrez l’analyse linguistique complète de la langue Tadaksahak, rédigée par <strong>Regula Christiansen-Bolli</strong> (Université de Leiden, 2010).</p>
+        <a href="Introduction-Tadaksahak.html" class="btn lire-grammaire" target="_blank" rel="noopener noreferrer">📘 Lire la grammaire complète</a>
       </div>
     </section>
   </main>
 
-  <div id="messageStatus" class="message-status" role="alert" hidden></div>
-
-  <footer class="site-footer">
+  <footer class="site-footer" role="contentinfo">
     <div class="footer-container">
       <p>
-        En ma qualité de <strong>passeur de mémoire</strong>, <strong>Hamadine AG MOCTAR</strong>, je me suis donné pour devoir moral et ambition intellectuelle de
-        <strong>rassembler, préserver et rendre accessible</strong> à tous le patrimoine <strong>linguistique, littéraire, culturel et historique</strong> de ma communauté <strong>Idaksahak</strong>.
+        En ma qualité de <strong>passeur de mémoire</strong>, <strong>Hamadine AG MOCTAR</strong>, je me suis donné pour devoir moral et ambition intellectuelle de <strong>rassembler, préserver et rendre accessible</strong> à tous le patrimoine <strong>linguistique, littéraire, culturel et historique</strong> de ma communauté <strong>Idaksahak</strong>.
       </p>
       <p>
         Cette <a href="presentation.html" class="footer-link">plateforme numérique</a> est pensée comme un <em>espace vivant de transmission</em>, un havre de savoirs enraciné dans la dignité des peuples du désert.
