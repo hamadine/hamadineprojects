@@ -1,121 +1,200 @@
-:root {
-  --bleu-principal: #004080;
-  --desert-chaud: #c17d4b;
-  --vert-nature: #a8d5ba;
-  --jaune-sable: #f6e27a;
-  --texte-foncé: #1c2b36;
-  --blanc: #ffffff;
-  --fond-onglet: #e0ecf4;
-  --ombre: 0 4px 12px rgba(0, 0, 0, 0.1);
-}
-
 /* RESET & BASE */
-* { box-sizing: border-box; margin: 0; padding: 0; }
-body {
-  font-family: 'Segoe UI', 'Helvetica Neue', sans-serif;
-  background-color: var(--vert-nature);
-  color: var(--texte-foncé);
-  line-height: 1.6;
-  min-height: 100vh;
-  padding-bottom: 3rem;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
-a { color: inherit; text-decoration: none; }
-img { max-width: 100%; height: auto; display: block; }
+html, body {
+  font-family: 'Segoe UI', sans-serif;
+  background: #f7f9fc;
+  color: #222;
+  line-height: 1.6;
+  scroll-behavior: smooth;
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
 
 /* HEADER */
 .site-header {
-  background: var(--bleu-principal);
-  padding: 1.5em 0;
+  background-color: #005fa3;
+  padding: 1rem;
   text-align: center;
 }
-.logo-header { max-width: 120px; margin: auto; }
+.logo-header {
+  height: 60px;
+}
 
-/* NAVIGATION TABS */
-.tabs {
-  display: flex; flex-wrap: wrap; justify-content: center;
-  background: var(--bleu-principal); border-bottom: 4px solid var(--desert-chaud);
-  padding: 0.5em; gap: 0.5em;
+/* LANGUE & NAV */
+.language-buttons {
+  text-align: center;
+  padding: 1em;
 }
 .tab-btn {
-  background: var(--fond-onglet); color: var(--bleu-principal);
-  font-weight: bold; padding: 0.6em 1.2em;
-  border: 1px solid var(--bleu-principal); border-radius: 6px;
-  transition: .3s; cursor: pointer;
+  margin: 0.5em;
+  padding: 0.6em 1em;
+  background: #005fa3;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
 }
-.tab-btn:hover { background: var(--desert-chaud); color: var(--blanc); }
 .tab-btn.active {
-  background: var(--bleu-principal); color: var(--blanc);
-  border: 2px solid var(--blanc); box-shadow: inset 0 -3px 0 var(--desert-chaud);
+  background-color: #004b82;
+}
+#menuLangueInterface,
+#menuLangueTrad {
+  background: white;
+  border: 1px solid #ccc;
+  margin-top: 0.3em;
+  padding: 0.5em;
+  position: absolute;
+  z-index: 1000;
+}
+
+/* TABS */
+.tabs {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  background: #e9f0f7;
+  padding: 0.5em 0;
+}
+.tabs .tab-btn {
+  margin: 0.25em;
 }
 
 /* MAIN CONTENT */
-main { padding: 1rem; }
-.onglet-contenu {
-  background: var(--blanc); padding: 1.5rem;
-  border: 1px solid var(--bleu-principal);
-  border-radius: 0 0 10px 10px; margin-top: 1em;
-  box-shadow: var(--ombre);
+main {
+  padding: 1em;
+  max-width: 900px;
+  margin: auto;
 }
-
-/* ACTION BUTTONS COMPACTES */
-.dictionnaire-actions {
-  display: flex; flex-wrap: wrap; gap: .3em;
+.onglet-contenu {
   margin-top: 1em;
 }
-.dictionnaire-actions button {
-  background: var(--jaune-sable); border: none;
-  padding: 0.5em; font-size: 1.2rem; border-radius: 6px;
-  cursor: pointer; transition: .3s;
+
+/* DICTIONNAIRE */
+#searchBar {
+  width: 100%;
+  padding: 0.7em;
+  margin-bottom: 1em;
+  border: 1px solid #ccc;
+  border-radius: 4px;
 }
-.dictionnaire-actions button:hover {
-  background: var(--desert-chaud); color: var(--blanc);
+.mot-resultat h3 {
+  font-size: 1.8em;
+  margin-bottom: 0.3em;
+}
+.dictionnaire-actions, .dictionnaire-navigation {
+  display: flex;
+  justify-content: center;
+  gap: 0.5em;
+  margin-top: 1em;
+}
+.dictionnaire-actions button,
+.dictionnaire-navigation button {
+  font-size: 1.2em;
+  background: #e2e6ea;
+  border: none;
+  padding: 0.5em 1em;
+  border-radius: 4px;
+  cursor: pointer;
 }
 
-/* LIVRES & THÈMES */
-#livres { padding: 2rem; border-radius: 12px;
-  transition: .4s; }
-#selectThemeLivres {
-  margin-top: 1em; padding: .5em 1em; border-radius: 6px;
-  background: #fff; border: 1px solid #aaa; cursor: pointer;
+/* CHAT */
+.chatbox {
+  background: #f0f0f0;
+  padding: 1em;
+  height: 250px;
+  overflow-y: auto;
+  margin-bottom: 1em;
 }
-.livre-bloc { margin-top: 1em; }
-.lire-grammaire {
-  display: inline-block; background-color: #0077cc; color: #fff;
-  padding: .75em 1.5em; border-radius: 6px; font-size: 1rem;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-  transition: .3s; text-decoration: none;
+.chat-intro {
+  font-style: italic;
+  margin-bottom: 0.5em;
 }
-.lire-grammaire:hover { background-color: #005fa3; }
-.lire-grammaire:active { transform: scale(0.97); }
+.message {
+  margin-bottom: 1em;
+}
+.message.bot {
+  color: #005fa3;
+}
+.chat-input-container {
+  display: flex;
+  gap: 0.5em;
+}
+#chatInput {
+  flex: 1;
+  padding: 0.5em;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+#btnEnvoyer {
+  padding: 0.5em 1em;
+  background: #005fa3;
+  color: white;
+  border: none;
+  border-radius: 4px;
+}
 
-/* THÈMES */
-#livres[data-theme="clair"] {
-  background: #e6f0ff; color: #003366;
+/* LIVRES */
+.livre-bloc {
+  border: 1px solid #ccc;
+  padding: 1em;
+  border-radius: 6px;
+  background: #ffffff;
 }
-#livres[data-theme="clair"] .livre-bloc { border-left: 5px solid #3399ff; }
-#livres[data-theme="vert"] {
-  background: #eef8f1; color: #215c3a;
+.livre-bloc h3 {
+  margin-bottom: 0.5em;
 }
-#livres[data-theme="vert"] .livre-bloc { border-left: 5px solid #64b17b; }
-#livres[data-theme="sombre"] {
-  background: #1a1a1a; color: #f1f1f1;
+.livre-bloc .btn {
+  display: inline-block;
+  margin-top: 0.5em;
+  padding: 0.5em 1em;
+  background: #005fa3;
+  color: white;
+  text-decoration: none;
+  border-radius: 4px;
 }
-#livres[data-theme="sombre"] .livre-bloc { border-left: 5px solid #888; }
+.read-btn {
+  margin-right: 1em;
+  text-decoration: none;
+}
 
 /* FOOTER */
 .site-footer {
-  background: var(--bleu-principal); color: var(--blanc);
-  padding: 2rem; text-align: center; font-size: .95rem;
+  background: #005fa3;
+  color: white;
+  padding: 2em 1em;
+  margin-top: 3em;
 }
-.footer-link { color: #ffd; text-decoration: underline; }
+.footer-container {
+  max-width: 900px;
+  margin: auto;
+}
 .footer-citation {
-  margin-top: 1rem; font-style: italic; opacity: .9;
+  font-style: italic;
+  border-left: 4px solid #fff;
+  padding-left: 1em;
+  margin-top: 1em;
+}
+
+/* UTILS */
+.message-status {
+  text-align: center;
+  font-weight: bold;
+  padding: 1em;
 }
 
 /* RESPONSIVE */
-@media (max-width: 768px) {
-  .tab-btn { flex: 1 1 48%; text-align: center; }
-  .logo-header { max-width: 90px; }
-  .dictionnaire-actions { justify-content: center; }
-  main { padding: .5rem; }
+@media (max-width: 600px) {
+  .tabs {
+    flex-direction: column;
+    align-items: center;
+  }
+  .chatbox {
+    height: 200px;
+  }
 }
