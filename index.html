@@ -44,7 +44,7 @@
     <section id="dictionnaire" class="onglet-contenu" role="tabpanel" aria-labelledby="tab-dictionnaire">
       <h2>📖 Dictionnaire Tadaksahak</h2>
       <div class="search-bar">
-        <input type="text" id="searchBar" placeholder="Recherchez un mot..." aria-label="Recherche dans le dictionnaire">
+        <input type="text" id="searchBar" placeholder="Recherchez un mot…" aria-label="Recherche dans le dictionnaire">
       </div>
       <div class="mot-resultat">
         <h3 id="motTexte">—</h3>
@@ -53,23 +53,23 @@
       </div>
       <div class="button-group dictionnaire-audio">
         <button id="btnPlay" class="btn-icon" aria-label="Écouter le mot">🔊 Écouter</button>
-        <button id="btnPrononcer" class="btn-icon" aria-label="Prononcer le mot">🎤 Dis-le</button>
+        <button id="btnPrononcer" class="btn-icon" aria-label="Prononcer le mot">🎤 Dis‑le</button>
         <button id="btnReplay" class="btn-icon" disabled aria-label="Réécouter">🔁 Réécouter</button>
-        <button id="btnAuto" class="btn-icon" disabled aria-label="Lecture automatique">▶️ Lecture auto</button>
+        <button id="btnAuto" class="btn-icon" disabled aria-label="Lecture auto">▶️ Lecture auto</button>
       </div>
       <div class="button-group dictionnaire-navigation">
-        <button id="btnPrev" class="btn-nav" aria-label="Mot précédent">⟸ Mot précédent</button>
-        <button id="btnNext" class="btn-nav" aria-label="Mot suivant">Mot suivant ⟹</button>
+        <button id="btnPrev" class="btn-nav" aria-label="Mot précédent">⟸</button>
+        <button id="btnNext" class="btn-nav" aria-label="Mot suivant">➡️</button>
       </div>
     </section>
 
     <section id="chat" class="onglet-contenu" role="tabpanel" aria-labelledby="tab-chat" hidden>
-      <h2 id="chat-title">💬 Chat Tadaksahak</h2>
+      <h2 id="chat-title" data-i18n="chatTitre">💬 Chat Tadaksahak</h2>
       <div id="chatWindow" class="chatbox" role="log" aria-live="polite"></div>
       <div id="botIntro" class="chat-intro" data-i18n="botIntro">🤖 Salut, je suis Hamadine.</div>
       <div class="chat-input-container">
-        <input type="text" id="chatInput" placeholder="Écrivez votre message..." aria-label="Entrée du chat">
-        <button id="btnEnvoyer" aria-label="Envoyer le message">Envoyer</button>
+        <input type="text" id="chatInput" placeholder="Écrivez votre message…" aria-label="Entrée du chat">
+        <button id="btnEnvoyer" aria-label="Envoyer le message" data-i18n="envoyer">Envoyer</button>
       </div>
     </section>
 
@@ -90,7 +90,7 @@
 
     <section id="rapports" class="onglet-contenu" role="tabpanel" aria-labelledby="tab-rapports" hidden>
       <h2>📄 Rapports et études</h2>
-      <p>Rapports des Nations Unies et d'organisations humanitaires à venir.</p>
+      <p>Rapports des Nations Unies et d’organisations humanitaires.</p>
     </section>
 
     <section id="actualites" class="onglet-contenu" role="tabpanel" aria-labelledby="tab-actualites" hidden>
@@ -100,7 +100,8 @@
 
     <section id="livres" class="onglet-contenu" role="tabpanel" aria-labelledby="tab-livres" hidden>
       <h2>📚 Livres sur les Idaksahak</h2>
-      <div style="margin: 1em 0;">
+      
+      <div style="margin:1em 0;">
         <label for="selectThemeLivres"><strong>🎨 Thème visuel :</strong></label>
         <select id="selectThemeLivres" aria-label="Choisir un thème pour la section Livres">
           <option value="clair">Clair (bleu ciel)</option>
@@ -109,32 +110,27 @@
         </select>
       </div>
 
+      <!-- Liste de livres avec liens corrigés -->
       <div class="livre-bloc">
-        <h2>📚 Accédez à la Grammaire du Tadaksahak</h2>
-        <p>Découvrez l’analyse linguistique complète de la langue Tadaksahak, rédigée par <strong>Regula Christiansen-Bolli</strong> (Université de Leiden, 2010).</p>
+        <h2>📚 Grammaire du Tadaksahak</h2>
         <a href="Introduction-Tadaksahak.html" class="btn">Lire la grammaire complète</a>
       </div>
-
       <div class="livre-bloc">
         <h2>📘 Histoire de l’émancipation intégrale</h2>
         <a href="histoire-emancipation-integrale.html" class="btn">Lire ce livre</a>
       </div>
-
       <div class="livre-bloc">
         <h2>📘 Contribution à la connaissance de la communauté Idaksahak</h2>
-        <a href="Contribution à la connaissance de la communauté Idakssahak par le Géologue Ahmed-Mohamed AG GUIDI - Texte Intégral.html" class="btn">Lire ce livre</a>
+        <a href="Contribution à la connaissance de la communauté Idaksahak par le Géologue Ahmed‑Mohamed AG GUIDI - Texte Intégral.html" class="btn">Lire ce livre</a>
       </div>
-
       <div class="livre-bloc">
         <h2>📘 Contribution to the Knowledge of the Idaksahak Community</h2>
         <a href="contribution-to-the-knowledge-of-the-idaksahak-community.html" class="btn">Read this book</a>
       </div>
-
       <div class="livre-bloc">
         <h2>📘 تاريخ التحرر الكامل (arabe)</h2>
         <a href="تاريخ-التحرر-الكامل-العربية.html" class="btn">قراءة الكتاب</a>
       </div>
-
       <div class="livre-bloc">
         <h2>📘 مساهمة في معرفة مجتمع الإداكساهك</h2>
         <a href="مساهمة-في-معرفة-مجتمع-الإداكساهك.html" class="btn">قراءة الكتاب</a>
