@@ -18,13 +18,10 @@
 
 body {
   font-family: 'Segoe UI', 'Helvetica Neue', sans-serif;
-  background-color: var(--vert-nature);
+  background-color: var(--desert-chaud);
   color: var(--texte-foncé);
   line-height: 1.6;
   min-height: 100vh;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
   padding-bottom: 3rem;
 }
 
@@ -97,12 +94,46 @@ main {
   border-radius: 0 0 10px 10px;
   margin-top: 1em;
   box-shadow: var(--ombre);
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-/* FORMES & BOUTONS */
-button, select, input {
-  font-family: inherit;
+/* DICTIONNAIRE + RECHERCHE */
+.search-bar input {
+  width: 100%;
+  padding: 0.8em;
   font-size: 1rem;
+  border: 1px solid var(--bleu-principal);
+  border-radius: 6px;
+  margin-bottom: 1rem;
+}
+
+.mot-resultat h3 {
+  font-size: 1.8rem;
+  color: var(--bleu-principal);
+  margin-bottom: 0.5rem;
+}
+
+.mot-resultat p {
+  font-size: 1.1rem;
+  color: var(--texte-foncé);
+}
+
+.button-group.dictionnaire-audio,
+.button-group.dictionnaire-navigation {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8em;
+}
+
+.button-group.dictionnaire-navigation {
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.button-group button {
+  width: 100%;
 }
 
 .btn-icon,
@@ -111,21 +142,29 @@ button, select, input {
 .lire-grammaire {
   background-color: var(--jaune-sable);
   border: none;
-  padding: 0.6em 1.2em;
+  padding: 0.8em 1.2em;
   font-weight: bold;
   border-radius: 6px;
   cursor: pointer;
   transition: all 0.3s ease;
-  margin: 0.2em;
+  margin: 0.2em 0;
   display: inline-block;
+  color: var(--texte-foncé);
 }
 
 .btn-icon:hover,
 .btn-nav:hover,
 .read-btn:hover,
 .lire-grammaire:hover {
-  background-color: var(--desert-chaud);
+  background-color: var(--bleu-principal);
   color: var(--blanc);
+}
+
+.btn-icon:disabled,
+.btn-nav:disabled {
+  background-color: #e2e2e2;
+  color: #999;
+  cursor: not-allowed;
 }
 
 .lire-grammaire {
@@ -165,7 +204,6 @@ button, select, input {
   background: #e6f0ff;
   color: #003366;
 }
-
 #livres[data-theme="clair"] .livre-bloc {
   background: #ffffff;
   border-left: 5px solid #3399ff;
@@ -175,7 +213,6 @@ button, select, input {
   background: #eef8f1;
   color: #215c3a;
 }
-
 #livres[data-theme="vert"] .livre-bloc {
   background: #ffffff;
   border-left: 5px solid #64b17b;
@@ -185,7 +222,6 @@ button, select, input {
   background: #1a1a1a;
   color: #f1f1f1;
 }
-
 #livres[data-theme="sombre"] .livre-bloc {
   background: #2a2a2a;
   border-left: 5px solid #888;
@@ -202,8 +238,8 @@ body.livre-page {
   color: #1c2b36;
 }
 
-body.livre-page h1, 
-body.livre-page h2, 
+body.livre-page h1,
+body.livre-page h2,
 body.livre-page h3 {
   color: inherit;
   font-weight: bold;
@@ -222,6 +258,24 @@ body.livre-page[data-theme="vert"] {
 body.livre-page[data-theme="sombre"] {
   background-color: #121212;
   color: #f1f1f1;
+}
+
+/* FOOTER */
+.site-footer {
+  background-color: var(--bleu-principal);
+  color: var(--blanc);
+  text-align: center;
+  padding: 2rem 1rem;
+  font-size: 0.95rem;
+  margin-top: 3rem;
+}
+.site-footer a.footer-link {
+  color: var(--jaune-sable);
+  text-decoration: underline;
+}
+.footer-citation {
+  font-style: italic;
+  margin-top: 1.5rem;
 }
 
 /* RESPONSIVE */
@@ -249,5 +303,9 @@ body.livre-page[data-theme="sombre"] {
 
   #selectThemeLivres {
     width: 100%;
+  }
+
+  .button-group.dictionnaire-navigation {
+    flex-direction: column;
   }
 }
