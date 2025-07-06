@@ -1270,5 +1270,901 @@
     "en":"Dirt (excrement)",
     "phon":null,
     "langue":null
+  },
+    {
+    "mot":"Lés",
+    "cat":"vi.",
+    "fr":"Être sale",
+    "en":"Dirty, to be",
+    "phon":null,
+    "langue":null
+  },
+  {
+    "mot":"Lés",
+    "cat":"vt.",
+    "fr":"Rendre sale",
+    "en":"Dirty, to make",
+    "phon":null,
+    "langue":null
+  },
+  {
+    "mot":"Lés",
+    "cat":"vi.",
+    "fr":"Être impur (religieux)",
+    "en":"Impure (religiously), to be",
+    "phon":null,
+    "langue":null
+  },
+  {
+    "mot":"Maaná",
+    "cat":"adv.",
+    "fr":"Où ? (+nom)",
+    "en":"Where? (+noun)",
+    "phon":null,
+    "langue":null
+  },
+  {
+    "mot":"Mammaní",
+    "cat":"n.",
+    "fr":"Odeur",
+    "en":"Odor",
+    "phon":null,
+    "langue":null
+  },
+  {
+    "mot":"Man ǝ́mmǝk aɣó ǝnda",
+    "cat":"question phrase",
+    "fr":"Comment ?",
+    "en":"How?",
+    "phon":null,
+    "langue":null
+  },
+  {
+    "mot":"May kay",
+    "cat":"idiom",
+    "fr":"Être grand (taille)",
+    "en":"Tall, to be",
+    "phon":null,
+    "langue":null
+  },
+  {
+    "mot":"Mo ka.",
+    "cat":"noun phrase.",
+    "fr":"Avant quelqu’un",
+    "en":"Before somebody",
+    "phon":null,
+    "langue":null
+  },
+  {
+    "mot":"Mán",
+    "cat":"vt.",
+    "fr":"Approcher",
+    "en":"Approach, to",
+    "phon":null,
+    "langue":null
+  },
+  {
+    "mot":"Mán",
+    "cat":"vi.",
+    "fr":"Être proche",
+    "en":"Near to, to be",
+    "phon":null,
+    "langue":null
+  },
+  {
+    "mot":"Mán n(e)",
+    "cat":"interrogative phrase",
+    "fr":"Où ? (+action)",
+    "en":"Where? (+action)",
+    "phon":null,
+    "langue":null
+  },
+  {
+    "mot":"Mân",
+    "cat":"n.",
+    "fr":"Nom",
+    "en":"Name",
+    "phon":null,
+    "langue":null
+  },
+  {
+    "mot":"Míya",
+    "cat":"n.",
+    "fr":"Mesure",
+    "en":"Measure",
+    "phon":null,
+    "langue":null
+  },
+  {
+    "mot":"Míya",
+    "cat":"n.",
+    "fr":"Bouche",
+    "en":"Mouth",
+    "phon":null,
+    "langue":null
+  },
+  {
+    "mot":"Míya",
+    "cat":"n.",
+    "fr":"Ouverture",
+    "en":"Opening",
+    "phon":null,
+    "langue":null
+  },
+  {
+    "mot":"Míya",
+    "cat":"n.",
+    "fr":"Bec (d’oiseau)",
+    "en":"Peak (bird)",
+    "phon":null,
+    "langue":null
+  },
+  {
+    "mot":"Míya kukú",
+    "cat":"n.",
+    "fr":"Moustique",
+    "en":"Mosquito",
+    "phon":null,
+    "langue":null
+  },
+  {
+    "mot":"Mó",
+    "cat":"vt.",
+    "fr":"Entendre (nouvelles)",
+    "en":"Hear (news), to",
+    "phon":null,
+    "langue":null
+  },
+  {
+    "mot":"Mó",
+    "cat":"vi.",
+    "fr":"Entendre (bruit)",
+    "en":"Hear (noise), to",
+    "phon":null,
+    "langue":null
+  },
+  {
+    "mot":"Mó céena",
+    "cat":"n.",
+    "fr":"Chacal",
+    "en":"Jackal",
+    "phon":null,
+    "langue":null
+  },
+  {
+    "mot":"Naaná",
+    "cat":"n.",
+    "fr":"Mère",
+    "en":"Mother",
+    "phon":null,
+    "langue":null
+  },
+  {
+    "mot":"Nana béeri",
+    "cat":"n.",
+    "fr":"Grand-mère",
+    "en":"Grandmother",
+    "phon":null,
+    "langue":null
+  },
+  {
+    "mot":"Nuun-én",
+    "cat":"npl.",
+    "fr":"Nuage",
+    "en":"Cloud",
+    "phon":null,
+    "langue":null
+  },
+  {
+    "mot":"Nuun-én",
+    "cat":"npl.",
+    "fr":"Fumée",
+    "en":"Smoke",
+    "phon":null,
+    "langue":null
+  },
+  {
+    "mot":"Ná",
+    "cat":"vt.",
+    "fr":"Donner",
+    "en":"Give, to",
+    "phon":null,
+    "langue":null
+  },
+  {
+    "mot":"Ná",
+    "cat":"n.",
+    "fr":"Don",
+    "en":"Giving",
+    "phon":null,
+    "langue":null
+  },
+  {
+    "mot":"Néeda",
+    "cat":"n.",
+    "fr":"Ici",
+    "en":"Here",
+    "phon":null,
+    "langue":null
+  },
+  {
+    "mot":"Nín",
+    "cat":"ind. Pron.",
+    "fr":"Tu",
+    "en":"You (sg)",
+    "phon":null,
+    "langue":null
+  },
+  {
+    "mot":"Surgóy",
+    "cat":"n.",
+    "fr":"Épouse",
+    "en":"Wife",
+    "phon":null,
+    "langue":null
+  },
+  {
+    "mot":"Surgóy",
+    "cat":"n.",
+    "fr":"Femme",
+    "en":"Woman",
+    "phon":null,
+    "langue":null
+  },
+  {
+    "mot":"Sénda",
+    "cat":"adv.",
+    "fr":"Là-bas",
+    "en":"There",
+    "phon":null,
+    "langue":null
+  },
+  {
+    "mot":"Sǝlál",
+    "cat":"vi.",
+    "fr":"Être lisse",
+    "en":"Smooth, to be",
+    "phon":null,
+    "langue":null
+  },
+  {
+    "mot":"T-a-lánkaw-t",
+    "cat":"n.",
+    "fr":"Queue",
+    "en":"Tail",
+    "phon":null,
+    "langue":null
+  },
+  {
+    "mot":"T-a-záazul-t",
+    "cat":"n.",
+    "fr":"Sable",
+    "en":"Sand",
+    "phon":null,
+    "langue":null
+  },
+  {
+    "mot":"T-aa-dás-t",
+    "cat":"n.",
+    "fr":"Moustique",
+    "en":"Mosquito",
+    "phon":null,
+    "langue":null
+  },
+  {
+    "mot":"T-í-nʒar",
+    "cat":"npl.",
+    "fr":"Nez",
+    "en":"Nose",
+    "phon":null,
+    "langue":null
+  },
+  {
+    "mot":"T-í-nʒar",
+    "cat":"npl.",
+    "fr":"Narines",
+    "en":"Nostrils",
+    "phon":null,
+    "langue":null
+  },
+  {
+    "mot":"Taaʃá",
+    "cat":"n.",
+    "fr":"Foie",
+    "en":"Liver",
+    "phon":null,
+    "langue":null
+  },
+  {
+    "mot":"Tárra nn ízzay",
+    "cat":"n.",
+    "fr":"Lion",
+    "en":"Lion",
+    "phon":null,
+    "langue":null
+  },
+  {
+    "mot":"Tínʒit",
+    "cat":"vi.",
+    "fr":"Éternuer",
+    "en":"Sneeze, to",
+    "phon":null,
+    "langue":null
+  },
+  {
+    "mot":"Tíŋ",
+    "cat":"vi.",
+    "fr":"Être lourd",
+    "en":"Heavy, to be (T)",
+    "phon":null,
+    "langue":null
+  },
+  {
+    "mot":"Tús",
+    "cat":"vt.",
+    "fr":"Effacer",
+    "en":"Wipe out, to",
+    "phon":null,
+    "langue":null
+  },
+  {
+    "mot":"Tús",
+    "cat":"vi.",
+    "fr":"Être effacé",
+    "en":"Wiped out, to be",
+    "phon":null,
+    "langue":null
+  },
+  {
+    "mot":"Tús",
+    "cat":"n.",
+    "fr":"Effacement",
+    "en":"Wiping out",
+    "phon":null,
+    "langue":null
+  },
+  {
+    "mot":"Wayní",
+    "cat":"n.",
+    "fr":"Soleil",
+    "en":"Sun",
+    "phon":null,
+    "langue":null
+  },
+  {
+    "mot":"Wí",
+    "cat":"vt.",
+    "fr":"Tuer",
+    "en":"Kill, to",
+    "phon":null,
+    "langue":null
+  },
+  {
+    "mot":"Wí",
+    "cat":"n.",
+    "fr":"Meurtre",
+    "en":"Killing",
+    "phon":null,
+    "langue":null
+  },
+  {
+    "mot":"Wǝ́l",
+    "cat":"n.",
+    "fr":"Cœur",
+    "en":"Heart",
+    "phon":null,
+    "langue":null
+  },
+  {
+    "mot":"Yaráɣ",
+    "cat":"vi.",
+    "fr":"Être jaune",
+    "en":"Yellow, to be",
+    "phon":null,
+    "langue":null
+  },
+  {
+    "mot":"Yaynáy",
+    "cat":"vi.",
+    "fr":"Être nouveau",
+    "en":"New, to be",
+    "phon":null,
+    "langue":null
+  },
+  {
+    "mot":"Yibrár",
+    "cat":"vi.",
+    "fr":"Être mauvais",
+    "en":"Bad, to be",
+    "phon":null,
+    "langue":null
+  },
+  {
+    "mot":"Yiddár",
+    "cat":"vi.",
+    "fr":"Être en vie",
+    "en":"Alive, to be",
+    "phon":null,
+    "langue":null
+  },
+  {
+    "mot":"Yiddár",
+    "cat":"vi.",
+    "fr":"Vivre",
+    "en":"Live, to",
+    "phon":null,
+    "langue":null
+  },
+  {
+    "mot":"Yilbák",
+    "cat":"vi.",
+    "fr":"Être maigre",
+    "en":"Lean, to be",
+    "phon":null,
+    "langue":null
+  },
+  {
+    "mot":"Yiltág",
+    "cat":"vi.",
+    "fr":"Être lourd",
+    "en":"Heavy, to be",
+    "phon":null,
+    "langue":null
+  },
+  {
+    "mot":"Yilwá",
+    "cat":"vi.",
+    "fr":"Être large",
+    "en":"Wide, to be",
+    "phon":null,
+    "langue":null
+  },
+  {
+    "mot":"Yiwál",
+    "cat":"vi.",
+    "fr":"Être tranchant",
+    "en":"Sharp (knife), to be",
+    "phon":null,
+    "langue":null
+  },
+  {
+    "mot":"Yordá",
+    "cat":"vi.",
+    "fr":"Penser (que)",
+    "en":"Think (that)",
+    "phon":null,
+    "langue":null
+  },
+  {
+    "mot":"Yéeri",
+    "cat":"vi.",
+    "fr":"Vomir",
+    "en":"Vomit, to",
+    "phon":null,
+    "langue":null
+  },
+  {
+    "mot":"Yéeri",
+    "cat":"n.",
+    "fr":"Vomissement",
+    "en":"Vomiting",
+    "phon":null,
+    "langue":null
+  },
+  {
+    "mot":"Yél",
+    "cat":"n.",
+    "fr":"Herbe",
+    "en":"Grass (green)",
+    "phon":null,
+    "langue":null
+  },
+  {
+    "mot":"Yíddǝr",
+    "cat":"vt.",
+    "fr":"Tenir",
+    "en":"Hold, to",
+    "phon":null,
+    "langue":null
+  },
+  {
+    "mot":"Yíniʃtaga",
+    "cat":"vi.",
+    "fr":"S’allonger sur le côté",
+    "en":"Lie on side, to",
+    "phon":null,
+    "langue":null
+  },
+  {
+    "mot":"Z-ǝ́kmǝz",
+    "cat":"vt.",
+    "fr":"Gratter",
+    "en":"Scratch, to",
+    "phon":null,
+    "langue":null
+  },
+  {
+    "mot":"Zaɣrí",
+    "cat":"n.",
+    "fr":"Jour",
+    "en":"Day",
+    "phon":null,
+    "langue":null
+  },
+  {
+    "mot":"Zálgat",
+    "cat":"n.",
+    "fr":"Gauche",
+    "en":"Left (side)",
+    "phon":null,
+    "langue":null
+  },
+  {
+    "mot":"d(a) á-ṣṣak",
+    "cat":"idiom",
+    "fr":"Chanter",
+    "en":"Sing, to",
+    "phon":null,
+    "langue":null
+  },
+  {
+    "mot":"káy",
+    "cat":"vi.",
+    "fr":"Être droit",
+    "en":"Upright, to be",
+    "phon":null,
+    "langue":null
+  },
+  {
+    "mot":"káy",
+    "cat":"n.",
+    "fr":"Posture droite",
+    "en":"Upright, being",
+    "phon":null,
+    "langue":null
+  },
+  {
+    "mot":"káy he be",
+    "cat":"idiom",
+    "fr":"Retenir quelque chose",
+    "en":"Withhold something, to",
+    "phon":null,
+    "langue":null
+  },
+  {
+    "mot":"mammaní kár borá",
+    "cat":"idiom",
+    "fr":"Sentir quelque chose",
+    "en":"Smell something, to",
+    "phon":null,
+    "langue":null
+  },
+  {
+    "mot":"Áa-har",
+    "cat":"n.",
+    "fr":"Lion",
+    "en":"Lion",
+    "phon":null,
+    "langue":null
+  },
+  {
+    "mot":"Áa-la",
+    "cat":"n.",
+    "fr":"Feuille",
+    "en":"Leaf",
+    "phon":null,
+    "langue":null
+  },
+  {
+    "mot":"Áa-la",
+    "cat":"n.",
+    "fr":"Thé (feuilles)",
+    "en":"Tea (leaves)",
+    "phon":null,
+    "langue":null
+  },
+  {
+    "mot":"Áadan-an",
+    "cat":"npl.",
+    "fr":"Tripes",
+    "en":"Guts",
+    "phon":null,
+    "langue":null
+  },
+  {
+    "mot":"Áari",
+    "cat":"ind. Pron.",
+    "fr":"Nous",
+    "en":"We",
+    "phon":null,
+    "langue":null
+  },
+  {
+    "mot":"Áaḍǝm",
+    "cat":"n.",
+    "fr":"Graine",
+    "en":"Seed",
+    "phon":null,
+    "langue":null
+  },
+  {
+    "mot":"Áfraw",
+    "cat":"n.",
+    "fr":"Aile",
+    "en":"Wing",
+    "phon":null,
+    "langue":null
+  },
+  {
+    "mot":"Ándi",
+    "cat":"ind. Pron.",
+    "fr":"Vous",
+    "en":"You (pl)",
+    "phon":null,
+    "langue":null
+  },
+  {
+    "mot":"Áyda",
+    "cat":"dem.",
+    "fr":"Ceci",
+    "en":"This",
+    "phon":null,
+    "langue":null
+  },
+  {
+    "mot":"Áŋga",
+    "cat":"ind. Pron.",
+    "fr":"Il\/elle",
+    "en":"He\/she\/it",
+    "phon":null,
+    "langue":null
+  },
+  {
+    "mot":"Ízzay",
+    "cat":"n.",
+    "fr":"Fruit",
+    "en":"Fruit",
+    "phon":null,
+    "langue":null
+  },
+  {
+    "mot":"Ízzay",
+    "cat":"n.",
+    "fr":"Fils",
+    "en":"Son",
+    "phon":null,
+    "langue":null
+  },
+  {
+    "mot":"Ízzay",
+    "cat":"n.",
+    "fr":"Jeune",
+    "en":"Young one",
+    "phon":null,
+    "langue":null
+  },
+  {
+    "mot":"Íŋgi",
+    "cat":"pron.",
+    "fr":"Eux",
+    "en":"Them",
+    "phon":null,
+    "langue":null
+  },
+  {
+    "mot":"Íŋgi",
+    "cat":"ind. Pron.",
+    "fr":"Ils\/elles",
+    "en":"They",
+    "phon":null,
+    "langue":null
+  },
+  {
+    "mot":"Óoda",
+    "cat":"dem.",
+    "fr":"Ceci",
+    "en":"This",
+    "phon":null,
+    "langue":null
+  },
+  {
+    "mot":"Ŋá",
+    "cat":"vt.",
+    "fr":"Mordre (animal)",
+    "en":"Bite (animal), to",
+    "phon":null,
+    "langue":null
+  },
+  {
+    "mot":"Ŋá",
+    "cat":"vt.",
+    "fr":"Détourner (argent)",
+    "en":"Use (money) fraudulently, to",
+    "phon":null,
+    "langue":null
+  },
+  {
+    "mot":"Ǝnda",
+    "cat":"prep.",
+    "fr":"Et (entre noms)",
+    "en":"And (between noun phrases)",
+    "phon":null,
+    "langue":null
+  },
+  {
+    "mot":"Ǝnda",
+    "cat":"clause particle",
+    "fr":"Si \/ quand",
+    "en":"If\/when",
+    "phon":null,
+    "langue":null
+  },
+  {
+    "mot":"Ǝnda",
+    "cat":"prep.",
+    "fr":"Avec (compagnie)",
+    "en":"With (company)",
+    "phon":null,
+    "langue":null
+  },
+  {
+    "mot":"Ǝnda",
+    "cat":"prep.",
+    "fr":"Avec (instrument)",
+    "en":"With (instrument)",
+    "phon":null,
+    "langue":null
+  },
+  {
+    "mot":"Ǝndár",
+    "cat":"conj.",
+    "fr":"Si (hypothétique)",
+    "en":"If (hypothetical)",
+    "phon":null,
+    "langue":null
+  },
+  {
+    "mot":"Ǝs-kábahar",
+    "cat":"conj.",
+    "fr":"Si \/ quand",
+    "en":"If\/when",
+    "phon":null,
+    "langue":null
+  },
+  {
+    "mot":"ʃ-iḍǝn",
+    "cat":"vt.",
+    "fr":"Compter",
+    "en":"Count, to",
+    "phon":null,
+    "langue":null
+  },
+  {
+    "mot":"ʃ-iḍǝn",
+    "cat":"n.",
+    "fr":"Comptage",
+    "en":"Counting",
+    "phon":null,
+    "langue":null
+  },
+  {
+    "mot":"ʃ-ǝ́nfǝʃ",
+    "cat":"vi.",
+    "fr":"Respirer",
+    "en":"Breathe, to",
+    "phon":null,
+    "langue":null
+  },
+  {
+    "mot":"ʃadíd",
+    "cat":"vi.",
+    "fr":"Être mince",
+    "en":"Thin, to be",
+    "phon":null,
+    "langue":null
+  },
+  {
+    "mot":"ʒén",
+    "cat":"vi.",
+    "fr":"Être vieux",
+    "en":"Old, to be",
+    "phon":null,
+    "langue":null
+  },
+  {
+    "mot":"ʒén",
+    "cat":"vt.",
+    "fr":"Vieillir",
+    "en":"Old, to make",
+    "phon":null,
+    "langue":null
+  },
+  {
+    "mot":"ʒíibit",
+    "cat":"vi.",
+    "fr":"Être sale",
+    "en":"Dirty, to be",
+    "phon":null,
+    "langue":null
+  },
+  {
+    "mot":"ṇám",
+    "cat":"vt.",
+    "fr":"Mordre",
+    "en":"Bite, to",
+    "phon":null,
+    "langue":null
+  },
+  {
+    "mot":"ṣót",
+    "cat":"n.",
+    "fr":"Saut",
+    "en":"Jump (n)",
+    "phon":null,
+    "langue":null
+  },
+  {
+    "mot":"ṣót",
+    "cat":"vt.",
+    "fr":"Sauter par-dessus",
+    "en":"Jump over, to",
+    "phon":null,
+    "langue":null
+  },
+  {
+    "mot":"ṭaatab",
+    "cat":"vt.",
+    "fr":"Coudre",
+    "en":"Sew, to",
+    "phon":null,
+    "langue":null
+  },
+  {
+    "mot":"ṭaatab",
+    "cat":"n.",
+    "fr":"Couture",
+    "en":"Sewing",
+    "phon":null,
+    "langue":null
+  },
+  {
+    "mot":"ṭay",
+    "cat":"vi.",
+    "fr":"Être vert",
+    "en":"Green (grass), to be",
+    "phon":null,
+    "langue":null
+  },
+  {
+    "mot":"ṭay",
+    "cat":"vi.",
+    "fr":"Être mouillé",
+    "en":"Wet, to be",
+    "phon":null,
+    "langue":null
+  },
+  {
+    "mot":"ṭay",
+    "cat":"vt.",
+    "fr":"Mouiller",
+    "en":"Wet, to make",
+    "phon":null,
+    "langue":null
+  },
+  {
+    "mot":"ṭay",
+    "cat":"n.",
+    "fr":"Humidité",
+    "en":"Wetness",
+    "phon":null,
+    "langue":null
+  },
+  {
+    "mot":"ṭóndi",
+    "cat":"n.",
+    "fr":"Batterie",
+    "en":"Battery",
+    "phon":null,
+    "langue":null
   }
 ]
