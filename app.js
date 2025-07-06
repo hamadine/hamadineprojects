@@ -25,10 +25,10 @@ const chargerDonnees = async () => {
     if (langueInterface === 'fr') fichierHistoire = 'data/histoire.json';
 
     const [motsRes, interfaceRes, histoireRes] = await Promise.all([
-      chargerJSON('data/mots.json'),
-      chargerJSON('data/interface-langue.json'),
-      chargerJSON(fichierHistoire)
-    ]);
+  chargerJSON('data/mots_final_489.json'),
+  chargerJSON('data/interface-langue.json'),
+  chargerJSON(fichierHistoire)
+]);
 
     if (!Array.isArray(motsRes) || motsRes.length === 0) {
       throw new Error("⚠️ Le fichier mots.json est vide ou mal formé.");
