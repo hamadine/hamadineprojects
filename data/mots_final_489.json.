@@ -1,0 +1,1274 @@
+[
+  {
+    "mot":"bɛːʃɛ",
+    "cat":"n.",
+    "fr":"aimer",
+    "en":"aimer",
+    "phon":"bɛːʃɛ",
+    "langue":"tadaksahak"
+  },
+  {
+    "mot":"dʒɛtɛ",
+    "cat":"n.",
+    "fr":"laver",
+    "en":"laver",
+    "phon":"dʒɛtɛ",
+    "langue":"tadaksahak"
+  },
+  {
+    "mot":"hɛːdalatan tʋɛːdʒɛt",
+    "cat":"n.",
+    "fr":"vert",
+    "en":"vert",
+    "phon":"hɛːdalatan tʋɛːdʒɛt",
+    "langue":"tadaksahak"
+  },
+  {
+    "mot":"kɔːrɛ",
+    "cat":"n.",
+    "fr":"chaud",
+    "en":"chaud",
+    "phon":"kɔːrɛ",
+    "langue":"tadaksahak"
+  },
+  {
+    "mot":"kʊːɗʊ",
+    "cat":"n.",
+    "fr":"être malade",
+    "en":"être malade",
+    "phon":"kʊːɗʊ",
+    "langue":"tadaksahak"
+  },
+  {
+    "mot":"sɑː",
+    "cat":"n.",
+    "fr":"cent",
+    "en":"cent",
+    "phon":"sɑː",
+    "langue":"tadaksahak"
+  },
+  {
+    "mot":"ʃɛʁɛ",
+    "cat":"n.",
+    "fr":"voir",
+    "en":"voir",
+    "phon":"ʃɛʁɛ",
+    "langue":"tadaksahak"
+  },
+  {
+    "mot":"ʃɪːmɪ",
+    "cat":"n.",
+    "fr":"vérité",
+    "en":"vérité",
+    "phon":"ʃɪːmɪ",
+    "langue":"tadaksahak"
+  },
+  {
+    "mot":"ʃʼɔtʼ",
+    "cat":"n.",
+    "fr":"sauter",
+    "en":"sauter",
+    "phon":"ʃʼɔtʼ",
+    "langue":"tadaksahak"
+  },
+  {
+    "mot":"ʈʼɛnɛsʼɛfɛʁt",
+    "cat":"n.",
+    "fr":"guérisseur",
+    "en":"guérisseur",
+    "phon":"ʈʼɛnɛsʼɛfɛʁt",
+    "langue":"tadaksahak"
+  },
+  {
+    "mot":"ʈʼɛtɛ",
+    "cat":"n.",
+    "fr":"porter",
+    "en":"porter",
+    "phon":"ʈʼɛtɛ",
+    "langue":"tadaksahak"
+  },
+  {
+    "mot":"ʈʼʊdʊ",
+    "cat":"n.",
+    "fr":"répondre",
+    "en":"répondre",
+    "phon":"ʈʼʊdʊ",
+    "langue":"tadaksahak"
+  },
+  {
+    "mot":"ʔæɡɪmɛn",
+    "cat":"n.",
+    "fr":"bon (qualité)",
+    "en":"bon (qualité)",
+    "phon":"ʔæɡɪmɛn",
+    "langue":"tadaksahak"
+  },
+  {
+    "mot":"ʔɛfɛʃɛ",
+    "cat":"n.",
+    "fr":"vouloir",
+    "en":"vouloir",
+    "phon":"ʔɛfɛʃɛ",
+    "langue":"tadaksahak"
+  },
+  {
+    "mot":"ʔɛjɛʁɛ",
+    "cat":"n.",
+    "fr":"écouter",
+    "en":"écouter",
+    "phon":"ʔɛjɛʁɛ",
+    "langue":"tadaksahak"
+  },
+  {
+    "mot":"ʔɛsɛwɛ",
+    "cat":"n.",
+    "fr":"aller",
+    "en":"aller",
+    "phon":"ʔɛsɛwɛ",
+    "langue":"tadaksahak"
+  },
+  {
+    "mot":"ʔɛtɛ",
+    "cat":"n.",
+    "fr":"dire",
+    "en":"dire",
+    "phon":"ʔɛtɛ",
+    "langue":"tadaksahak"
+  },
+  {
+    "mot":"ʔɛɓɛn",
+    "cat":"n.",
+    "fr":"pleurer",
+    "en":"pleurer",
+    "phon":"ʔɛɓɛn",
+    "langue":"tadaksahak"
+  },
+  {
+    "mot":"ʔɛʒɛːlɛɪ",
+    "cat":"n.",
+    "fr":"nouveau",
+    "en":"nouveau",
+    "phon":"ʔɛʒɛːlɛɪ",
+    "langue":"tadaksahak"
+  },
+  {
+    "mot":"ʔɛːkɔrʃɪn",
+    "cat":"n.",
+    "fr":"rugueux",
+    "en":"rugueux",
+    "phon":"ʔɛːkɔrʃɪn",
+    "langue":"tadaksahak"
+  },
+  {
+    "mot":"ʔɛːkɔz",
+    "cat":"n.",
+    "fr":"quatre",
+    "en":"quatre",
+    "phon":"ʔɛːkɔz",
+    "langue":"tadaksahak"
+  },
+  {
+    "mot":"ʔɪʒɪbrɛr",
+    "cat":"n.",
+    "fr":"mauvais",
+    "en":"mauvais",
+    "phon":"ʔɪʒɪbrɛr",
+    "langue":"tadaksahak"
+  },
+  {
+    "mot":"ʤʷɛwɛb",
+    "cat":"n.",
+    "fr":"répondre",
+    "en":"répondre",
+    "phon":"ʤʷɛwɛb",
+    "langue":"tadaksahak"
+  },
+  {
+    "mot":"ʧɛːnɛ",
+    "cat":"n.",
+    "fr":"petit",
+    "en":"petit",
+    "phon":"ʧɛːnɛ",
+    "langue":"tadaksahak"
+  },
+  {
+    "mot":"ʧʼɛn",
+    "cat":"n.",
+    "fr":"construire",
+    "en":"construire",
+    "phon":"ʧʼɛn",
+    "langue":"tadaksahak"
+  },
+  {
+    "mot":"(a)sénda",
+    "cat":"dem.",
+    "fr":"Celui-là",
+    "en":"That (one)",
+    "phon":null,
+    "langue":null
+  },
+  {
+    "mot":"A-bíji",
+    "cat":"n.",
+    "fr":"Chacal",
+    "en":"Jackal",
+    "phon":null,
+    "langue":null
+  },
+  {
+    "mot":"A-ffóoda",
+    "cat":"n.",
+    "fr":"Un",
+    "en":"One",
+    "phon":null,
+    "langue":null
+  },
+  {
+    "mot":"A-múudǝr",
+    "cat":"n.",
+    "fr":"Animal",
+    "en":"Animal",
+    "phon":null,
+    "langue":null
+  },
+  {
+    "mot":"A-rúuru",
+    "cat":"n.",
+    "fr":"Dos",
+    "en":"Back (body part)",
+    "phon":null,
+    "langue":null
+  },
+  {
+    "mot":"A-wátay",
+    "cat":"n.",
+    "fr":"Année",
+    "en":"Year",
+    "phon":null,
+    "langue":null
+  },
+  {
+    "mot":"A-yyár",
+    "cat":"n.",
+    "fr":"Mois",
+    "en":"Month",
+    "phon":null,
+    "langue":null
+  },
+  {
+    "mot":"A-yyár",
+    "cat":"n.",
+    "fr":"Lune",
+    "en":"Moon",
+    "phon":null,
+    "langue":null
+  },
+  {
+    "mot":"A-ɣázar",
+    "cat":"n.",
+    "fr":"Lac",
+    "en":"Lake",
+    "phon":null,
+    "langue":null
+  },
+  {
+    "mot":"A-ɣázar",
+    "cat":"n.",
+    "fr":"Étang (temporaire)",
+    "en":"Pond (temporary)",
+    "phon":null,
+    "langue":null
+  },
+  {
+    "mot":"Aarú",
+    "cat":"n.",
+    "fr":"Mari",
+    "en":"Husband",
+    "phon":null,
+    "langue":null
+  },
+  {
+    "mot":"Aarú",
+    "cat":"n.",
+    "fr":"Mâle",
+    "en":"Male",
+    "phon":null,
+    "langue":null
+  },
+  {
+    "mot":"Aarú",
+    "cat":"n.",
+    "fr":"Homme",
+    "en":"Man",
+    "phon":null,
+    "langue":null
+  },
+  {
+    "mot":"Agar",
+    "cat":"adj.",
+    "fr":"Mauvais",
+    "en":"Bad",
+    "phon":null,
+    "langue":null
+  },
+  {
+    "mot":"Aryén",
+    "cat":"npl.",
+    "fr":"Eau",
+    "en":"Water",
+    "phon":null,
+    "langue":null
+  },
+  {
+    "mot":"Aɣay",
+    "cat":"ind. Pron.",
+    "fr":"Je",
+    "en":"I",
+    "phon":null,
+    "langue":null
+  },
+  {
+    "mot":"Baabá",
+    "cat":"n.",
+    "fr":"Ancêtre paternel",
+    "en":"Ancestor (paternal)",
+    "phon":null,
+    "langue":null
+  },
+  {
+    "mot":"Baba béeri",
+    "cat":"n.",
+    "fr":"Grand-père",
+    "en":"Grandfather",
+    "phon":null,
+    "langue":null
+  },
+  {
+    "mot":"Babó",
+    "cat":"vi.",
+    "fr":"Être nombreux",
+    "en":"Numerous, to be",
+    "phon":null,
+    "langue":null
+  },
+  {
+    "mot":"Babó",
+    "cat":"vt.",
+    "fr":"Rendre nombreux",
+    "en":"Numerous, to make",
+    "phon":null,
+    "langue":null
+  },
+  {
+    "mot":"Barjí",
+    "cat":"n.",
+    "fr":"Écorce",
+    "en":"Bark",
+    "phon":null,
+    "langue":null
+  },
+  {
+    "mot":"Baŋgú",
+    "cat":"n.",
+    "fr":"Début",
+    "en":"Beginning",
+    "phon":null,
+    "langue":null
+  },
+  {
+    "mot":"Baŋgú",
+    "cat":"n.",
+    "fr":"Tête",
+    "en":"Head",
+    "phon":null,
+    "langue":null
+  },
+  {
+    "mot":"Biidí",
+    "cat":"n.",
+    "fr":"Os",
+    "en":"Bone (general)",
+    "phon":null,
+    "langue":null
+  },
+  {
+    "mot":"Booʃí",
+    "cat":"n.",
+    "fr":"Cendres",
+    "en":"Ashes",
+    "phon":null,
+    "langue":null
+  },
+  {
+    "mot":"Borá",
+    "cat":"n.",
+    "fr":"Personne",
+    "en":"Person",
+    "phon":null,
+    "langue":null
+  },
+  {
+    "mot":"Báarar",
+    "cat":"n.",
+    "fr":"Enfant",
+    "en":"Child",
+    "phon":null,
+    "langue":null
+  },
+  {
+    "mot":"Báy",
+    "cat":"vt.",
+    "fr":"Pouvoir (faire)",
+    "en":"Able, to be",
+    "phon":null,
+    "langue":null
+  },
+  {
+    "mot":"Báy",
+    "cat":"vt.",
+    "fr":"Savoir",
+    "en":"Know, to",
+    "phon":null,
+    "langue":null
+  },
+  {
+    "mot":"Bêr",
+    "cat":"vi.",
+    "fr":"Être grand",
+    "en":"Big, to be",
+    "phon":null,
+    "langue":null
+  },
+  {
+    "mot":"Bêr",
+    "cat":"vt.",
+    "fr":"Agrandir",
+    "en":"Big, to make",
+    "phon":null,
+    "langue":null
+  },
+  {
+    "mot":"Bêr",
+    "cat":"vi.",
+    "fr":"Être important",
+    "en":"Important, to be",
+    "phon":null,
+    "langue":null
+  },
+  {
+    "mot":"Bêr",
+    "cat":"n.",
+    "fr":"Aîné(e)",
+    "en":"Older sibling",
+    "phon":null,
+    "langue":null
+  },
+  {
+    "mot":"Bíibi",
+    "cat":"adj.",
+    "fr":"Noir",
+    "en":"Black",
+    "phon":null,
+    "langue":null
+  },
+  {
+    "mot":"Bíibi",
+    "cat":"n.",
+    "fr":"Noir (couleur)",
+    "en":"Black (color)",
+    "phon":null,
+    "langue":null
+  },
+  {
+    "mot":"Bíibi",
+    "cat":"vi.",
+    "fr":"Être noir",
+    "en":"Black, to be",
+    "phon":null,
+    "langue":null
+  },
+  {
+    "mot":"Bíibi",
+    "cat":"vt.",
+    "fr":"Noircir",
+    "en":"Blacken, to",
+    "phon":null,
+    "langue":null
+  },
+  {
+    "mot":"Bún",
+    "cat":"vi.",
+    "fr":"Être mort",
+    "en":"Dead, to be",
+    "phon":null,
+    "langue":null
+  },
+  {
+    "mot":"Bún",
+    "cat":"n.",
+    "fr":"Mort",
+    "en":"Death",
+    "phon":null,
+    "langue":null
+  },
+  {
+    "mot":"Bún",
+    "cat":"vi.",
+    "fr":"Mourir",
+    "en":"Die, to",
+    "phon":null,
+    "langue":null
+  },
+  {
+    "mot":"C(i) agúd",
+    "cat":"interrogative phrase",
+    "fr":"Quand ?",
+    "en":"When?",
+    "phon":null,
+    "langue":null
+  },
+  {
+    "mot":"Ceená",
+    "cat":"n.",
+    "fr":"Petite taille",
+    "en":"Small size",
+    "phon":null,
+    "langue":null
+  },
+  {
+    "mot":"Ceená",
+    "cat":"vi.",
+    "fr":"Être petit",
+    "en":"Small, to be",
+    "phon":null,
+    "langue":null
+  },
+  {
+    "mot":"Ceená",
+    "cat":"vt.",
+    "fr":"Rétrécir",
+    "en":"Small, to make",
+    "phon":null,
+    "langue":null
+  },
+  {
+    "mot":"Ci",
+    "cat":"interrogative pron.",
+    "fr":"Qui ? \/ Quoi ?",
+    "en":"Who?\/what?",
+    "phon":null,
+    "langue":null
+  },
+  {
+    "mot":"Ci ná hó be",
+    "cat":"interrogative phrase",
+    "fr":"Pourquoi ?",
+    "en":"Why?",
+    "phon":null,
+    "langue":null
+  },
+  {
+    "mot":"Ci ná-a",
+    "cat":"interrogative phrase",
+    "fr":"Qu’est-ce que c’est ?",
+    "en":"What is it?",
+    "phon":null,
+    "langue":null
+  },
+  {
+    "mot":"Ciidí",
+    "cat":"n.",
+    "fr":"Sel",
+    "en":"Salt",
+    "phon":null,
+    "langue":null
+  },
+  {
+    "mot":"Cijí",
+    "cat":"n.",
+    "fr":"Nuit",
+    "en":"Night",
+    "phon":null,
+    "langue":null
+  },
+  {
+    "mot":"Cindí",
+    "cat":"vi.",
+    "fr":"Se reposer",
+    "en":"Leave a rest, to",
+    "phon":null,
+    "langue":null
+  },
+  {
+    "mot":"Cindí",
+    "cat":"n.",
+    "fr":"Quelques",
+    "en":"Some",
+    "phon":null,
+    "langue":null
+  },
+  {
+    "mot":"Cáy",
+    "cat":"n.",
+    "fr":"Jambe \/ pied",
+    "en":"Leg \/ foot",
+    "phon":null,
+    "langue":null
+  },
+  {
+    "mot":"Cí",
+    "cat":"vt.",
+    "fr":"Dire",
+    "en":"Say, to",
+    "phon":null,
+    "langue":null
+  },
+  {
+    "mot":"Cí",
+    "cat":"v.",
+    "fr":"Vouloir",
+    "en":"Want, to",
+    "phon":null,
+    "langue":null
+  },
+  {
+    "mot":"Cíidaw",
+    "cat":"n.",
+    "fr":"Oiseau",
+    "en":"Bird (general)",
+    "phon":null,
+    "langue":null
+  },
+  {
+    "mot":"Daw",
+    "cat":"postp.",
+    "fr":"Chez (quelqu’un)",
+    "en":"At (somebody’s)",
+    "phon":null,
+    "langue":null
+  },
+  {
+    "mot":"Didá",
+    "cat":"n.",
+    "fr":"Marche",
+    "en":"Walk",
+    "phon":null,
+    "langue":null
+  },
+  {
+    "mot":"Didá",
+    "cat":"vi.",
+    "fr":"Marcher",
+    "en":"Walk, to",
+    "phon":null,
+    "langue":null
+  },
+  {
+    "mot":"Dudú",
+    "cat":"vt.",
+    "fr":"Verser",
+    "en":"Pour, to",
+    "phon":null,
+    "langue":null
+  },
+  {
+    "mot":"Dumbú",
+    "cat":"vt.",
+    "fr":"Couper",
+    "en":"Cut, to",
+    "phon":null,
+    "langue":null
+  },
+  {
+    "mot":"Dumbú",
+    "cat":"vt.",
+    "fr":"Tuer (animal)",
+    "en":"Kill (animal), to",
+    "phon":null,
+    "langue":null
+  },
+  {
+    "mot":"Fufú",
+    "cat":"n.",
+    "fr":"Froid (temps)",
+    "en":"Cold (weather)",
+    "phon":null,
+    "langue":null
+  },
+  {
+    "mot":"Fás",
+    "cat":"vt.",
+    "fr":"Creuser",
+    "en":"Dig, to",
+    "phon":null,
+    "langue":null
+  },
+  {
+    "mot":"Fás",
+    "cat":"n.",
+    "fr":"Creusement",
+    "en":"Digging",
+    "phon":null,
+    "langue":null
+  },
+  {
+    "mot":"Fóoda",
+    "cat":"num.",
+    "fr":"Un",
+    "en":"One",
+    "phon":null,
+    "langue":null
+  },
+  {
+    "mot":"Fúr",
+    "cat":"vi.",
+    "fr":"Souffler (vent)",
+    "en":"Blow (wind), to",
+    "phon":null,
+    "langue":null
+  },
+  {
+    "mot":"Garúura",
+    "cat":"n.",
+    "fr":"Solution verte",
+    "en":"Green solution",
+    "phon":null,
+    "langue":null
+  },
+  {
+    "mot":"Gazúl",
+    "cat":"vi.",
+    "fr":"Être court",
+    "en":"Short, to be",
+    "phon":null,
+    "langue":null
+  },
+  {
+    "mot":"Geení",
+    "cat":"n.",
+    "fr":"Poux (tête)",
+    "en":"Louse (head)",
+    "phon":null,
+    "langue":null
+  },
+  {
+    "mot":"Gimár",
+    "cat":"vi.",
+    "fr":"Chasser",
+    "en":"Hunt (game), to",
+    "phon":null,
+    "langue":null
+  },
+  {
+    "mot":"Giŋ-gimán",
+    "cat":"adj.",
+    "fr":"Bon",
+    "en":"Good",
+    "phon":null,
+    "langue":null
+  },
+  {
+    "mot":"Giŋ-gimán",
+    "cat":"adj.",
+    "fr":"Gentil",
+    "en":"Nice",
+    "phon":null,
+    "langue":null
+  },
+  {
+    "mot":"Goorá",
+    "cat":"vi.",
+    "fr":"S’asseoir",
+    "en":"Sit, to",
+    "phon":null,
+    "langue":null
+  },
+  {
+    "mot":"Goorá",
+    "cat":"n.",
+    "fr":"Position assise",
+    "en":"Sitting",
+    "phon":null,
+    "langue":null
+  },
+  {
+    "mot":"Guná",
+    "cat":"vt.",
+    "fr":"Voir",
+    "en":"See, to",
+    "phon":null,
+    "langue":null
+  },
+  {
+    "mot":"Guná",
+    "cat":"n.",
+    "fr":"Vue",
+    "en":"Sight",
+    "phon":null,
+    "langue":null
+  },
+  {
+    "mot":"Guŋgú",
+    "cat":"n.",
+    "fr":"Ventre",
+    "en":"Belly",
+    "phon":null,
+    "langue":null
+  },
+  {
+    "mot":"Gánda",
+    "cat":"n.",
+    "fr":"Pays",
+    "en":"Country",
+    "phon":null,
+    "langue":null
+  },
+  {
+    "mot":"Gánda",
+    "cat":"n.",
+    "fr":"Sol",
+    "en":"Ground",
+    "phon":null,
+    "langue":null
+  },
+  {
+    "mot":"Gánda ŋ karfú",
+    "cat":"n.",
+    "fr":"Serpent (espèce)",
+    "en":"Snake, sp",
+    "phon":null,
+    "langue":null
+  },
+  {
+    "mot":"Gónʃi",
+    "cat":"n.",
+    "fr":"Serpent",
+    "en":"Snake (general)",
+    "phon":null,
+    "langue":null
+  },
+  {
+    "mot":"Górgor",
+    "cat":"vi.",
+    "fr":"Rire",
+    "en":"Laugh, to",
+    "phon":null,
+    "langue":null
+  },
+  {
+    "mot":"Haab-én",
+    "cat":"npl.",
+    "fr":"Fourrure",
+    "en":"Fur",
+    "phon":null,
+    "langue":null
+  },
+  {
+    "mot":"Háamu",
+    "cat":"n.",
+    "fr":"Viande",
+    "en":"Meat",
+    "phon":null,
+    "langue":null
+  },
+  {
+    "mot":"Háw",
+    "cat":"vt.",
+    "fr":"Attacher",
+    "en":"Tether, to",
+    "phon":null,
+    "langue":null
+  },
+  {
+    "mot":"Háw",
+    "cat":"vi.",
+    "fr":"Être attaché",
+    "en":"Tethered, to be",
+    "phon":null,
+    "langue":null
+  },
+  {
+    "mot":"Hé",
+    "cat":"n.",
+    "fr":"Quelque chose",
+    "en":"(some)thing",
+    "phon":null,
+    "langue":null
+  },
+  {
+    "mot":"Héw",
+    "cat":"n.",
+    "fr":"Vent",
+    "en":"Wind",
+    "phon":null,
+    "langue":null
+  },
+  {
+    "mot":"Hímay",
+    "cat":"vt.",
+    "fr":"Laver",
+    "en":"Wash, to",
+    "phon":null,
+    "langue":null
+  },
+  {
+    "mot":"Hímay",
+    "cat":"vi.",
+    "fr":"Être lavé",
+    "en":"Washed, to be",
+    "phon":null,
+    "langue":null
+  },
+  {
+    "mot":"Hímay",
+    "cat":"n.",
+    "fr":"Lavage",
+    "en":"Washing",
+    "phon":null,
+    "langue":null
+  },
+  {
+    "mot":"Hór",
+    "cat":"vi.",
+    "fr":"S'amuser",
+    "en":"Amuse oneself, to",
+    "phon":null,
+    "langue":null
+  },
+  {
+    "mot":"Hór",
+    "cat":"n.",
+    "fr":"Jeu",
+    "en":"Game (play)",
+    "phon":null,
+    "langue":null
+  },
+  {
+    "mot":"Hór",
+    "cat":"vi.",
+    "fr":"Jouer",
+    "en":"Play, to",
+    "phon":null,
+    "langue":null
+  },
+  {
+    "mot":"Húbut",
+    "cat":"vt.",
+    "fr":"Tirer (objet lourd)",
+    "en":"Pull something heavy, to",
+    "phon":null,
+    "langue":null
+  },
+  {
+    "mot":"I-ʒínn-an",
+    "cat":"npl.",
+    "fr":"Ciel",
+    "en":"Sky",
+    "phon":null,
+    "langue":null
+  },
+  {
+    "mot":"Igdá ~ iddá ~ íd",
+    "cat":"conj.",
+    "fr":"Parce que",
+    "en":"Because",
+    "phon":null,
+    "langue":null
+  },
+  {
+    "mot":"Intáynawt",
+    "cat":"n.",
+    "fr":"Chacal",
+    "en":"Jackal",
+    "phon":null,
+    "langue":null
+  },
+  {
+    "mot":"Jinjí",
+    "cat":"n.",
+    "fr":"Cou",
+    "en":"Neck",
+    "phon":null,
+    "langue":null
+  },
+  {
+    "mot":"Ka",
+    "cat":"postp.",
+    "fr":"Parmi",
+    "en":"Among",
+    "phon":null,
+    "langue":null
+  },
+  {
+    "mot":"Ka",
+    "cat":"postp.",
+    "fr":"Être en impureté",
+    "en":"Impure (religiously), to be in",
+    "phon":null,
+    "langue":null
+  },
+  {
+    "mot":"Kambá",
+    "cat":"n.",
+    "fr":"Bras \/ main",
+    "en":"Arm \/ hand",
+    "phon":null,
+    "langue":null
+  },
+  {
+    "mot":"Karrós",
+    "cat":"vi.",
+    "fr":"Être étroit",
+    "en":"Narrow, to be",
+    "phon":null,
+    "langue":null
+  },
+  {
+    "mot":"Keení",
+    "cat":"vi.",
+    "fr":"Être allongé",
+    "en":"Laid down, to be",
+    "phon":null,
+    "langue":null
+  },
+  {
+    "mot":"Keení",
+    "cat":"n.",
+    "fr":"Sommeil",
+    "en":"Sleep",
+    "phon":null,
+    "langue":null
+  },
+  {
+    "mot":"Keení",
+    "cat":"vi.",
+    "fr":"Dormir",
+    "en":"Sleep, to",
+    "phon":null,
+    "langue":null
+  },
+  {
+    "mot":"Korrá",
+    "cat":"n.",
+    "fr":"Chaleur",
+    "en":"Heat",
+    "phon":null,
+    "langue":null
+  },
+  {
+    "mot":"Korrá",
+    "cat":"vi.",
+    "fr":"Être chaud",
+    "en":"Hot, to be (warm)",
+    "phon":null,
+    "langue":null
+  },
+  {
+    "mot":"Korrá",
+    "cat":"vt.",
+    "fr":"Chauffer",
+    "en":"Hot, to make",
+    "phon":null,
+    "langue":null
+  },
+  {
+    "mot":"Kud-én",
+    "cat":"npl.",
+    "fr":"Sang",
+    "en":"Blood",
+    "phon":null,
+    "langue":null
+  },
+  {
+    "mot":"Kukú",
+    "cat":"vi.",
+    "fr":"Être profond",
+    "en":"Deep, to be",
+    "phon":null,
+    "langue":null
+  },
+  {
+    "mot":"Kukú",
+    "cat":"vt.",
+    "fr":"Approfondir",
+    "en":"Deepen, to",
+    "phon":null,
+    "langue":null
+  },
+  {
+    "mot":"Kukú",
+    "cat":"n.",
+    "fr":"Longueur",
+    "en":"Length",
+    "phon":null,
+    "langue":null
+  },
+  {
+    "mot":"Kukú",
+    "cat":"vi.",
+    "fr":"Être long",
+    "en":"Long, to be",
+    "phon":null,
+    "langue":null
+  },
+  {
+    "mot":"Kurú-kuru",
+    "cat":"vt.",
+    "fr":"Brûler",
+    "en":"Burn, to",
+    "phon":null,
+    "langue":null
+  },
+  {
+    "mot":"Kurú-kuru",
+    "cat":"vi.",
+    "fr":"Être brûlé",
+    "en":"Burned, to be",
+    "phon":null,
+    "langue":null
+  },
+  {
+    "mot":"Kuurú",
+    "cat":"n.",
+    "fr":"Cuir",
+    "en":"Leather",
+    "phon":null,
+    "langue":null
+  },
+  {
+    "mot":"Kuurú",
+    "cat":"n.",
+    "fr":"Peau",
+    "en":"Skin",
+    "phon":null,
+    "langue":null
+  },
+  {
+    "mot":"Káamil",
+    "cat":"quantifier",
+    "fr":"Tout",
+    "en":"All",
+    "phon":null,
+    "langue":null
+  },
+  {
+    "mot":"Kár",
+    "cat":"vt.",
+    "fr":"Sculpter",
+    "en":"Carve (wooden spoon), to",
+    "phon":null,
+    "langue":null
+  },
+  {
+    "mot":"Kár",
+    "cat":"vt.",
+    "fr":"Frapper",
+    "en":"Hit, to",
+    "phon":null,
+    "langue":null
+  },
+  {
+    "mot":"Kár",
+    "cat":"vt.",
+    "fr":"Jouer (au foot)",
+    "en":"Play (football), to",
+    "phon":null,
+    "langue":null
+  },
+  {
+    "mot":"Kár",
+    "cat":"vt.",
+    "fr":"Jouer (instrument)",
+    "en":"Play (instrument), to",
+    "phon":null,
+    "langue":null
+  },
+  {
+    "mot":"Kár",
+    "cat":"vt.",
+    "fr":"Avertir (du danger)",
+    "en":"Warn (from danger), to",
+    "phon":null,
+    "langue":null
+  },
+  {
+    "mot":"Kóoray",
+    "cat":"adj.",
+    "fr":"Blanc",
+    "en":"White",
+    "phon":null,
+    "langue":null
+  },
+  {
+    "mot":"Kóoray",
+    "cat":"n.",
+    "fr":"Blanc (couleur)",
+    "en":"White (color)",
+    "phon":null,
+    "langue":null
+  },
+  {
+    "mot":"Kóoray",
+    "cat":"vi.",
+    "fr":"Être blanc",
+    "en":"White, to be",
+    "phon":null,
+    "langue":null
+  },
+  {
+    "mot":"Kós",
+    "cat":"vt.",
+    "fr":"Couper",
+    "en":"Cut, to",
+    "phon":null,
+    "langue":null
+  },
+  {
+    "mot":"Kós",
+    "cat":"vi.",
+    "fr":"Être coupé",
+    "en":"Cut, to be",
+    "phon":null,
+    "langue":null
+  },
+  {
+    "mot":"Kós",
+    "cat":"n.",
+    "fr":"Coupe",
+    "en":"Cutting",
+    "phon":null,
+    "langue":null
+  },
+  {
+    "mot":"Kóy",
+    "cat":"vt.",
+    "fr":"Partir pour",
+    "en":"Leave for, to",
+    "phon":null,
+    "langue":null
+  },
+  {
+    "mot":"Kóy-kat",
+    "cat":"vi.",
+    "fr":"Venir",
+    "en":"Come, to",
+    "phon":null,
+    "langue":null
+  },
+  {
+    "mot":"Kúkkuʒ-it",
+    "cat":"vi.",
+    "fr":"Se gratter",
+    "en":"Scratch, to",
+    "phon":null,
+    "langue":null
+  },
+  {
+    "mot":"Lés",
+    "cat":"n.",
+    "fr":"Saleté (excrément)",
+    "en":"Dirt (excrement)",
+    "phon":null,
+    "langue":null
+  }
+]
