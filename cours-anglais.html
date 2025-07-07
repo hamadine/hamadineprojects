@@ -4,76 +4,32 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Idaksahak – Aide Anglais</title>
+  <link rel="manifest" href="manifest.webmanifest"/>
   <style>
     :root {
       --main-color: #005fa3;
-      --light-bg: #f4f9ff;
-      --white: #fff;
-      --gray: #ccc;
+      --bg-color: #f4f9ff;
       --text-color: #2c3e50;
+      --card-bg: #fff;
+      --gray: #ccc;
     }
-    body {
-      font-family: 'Segoe UI', sans-serif;
-      background-color: var(--light-bg);
-      margin: 0;
-      padding: 2em;
-      color: var(--text-color);
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg-color: #121212;
+        --card-bg: #1e1e1e;
+        --text-color: #f1f1f1;
+        --gray: #444;
+      }
     }
-    h1, h2 {
-      color: var(--main-color);
-    }
-    .container {
-      max-width: 800px;
-      margin: auto;
-    }
-    .card {
-      background: var(--white);
-      border-radius: 10px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-      padding: 2em;
-      margin-bottom: 2em;
-    }
-    input, select, textarea {
-      width: 100%;
-      padding: 1em;
-      border: 1px solid var(--gray);
-      border-radius: 6px;
-      margin-bottom: 1em;
-      font-size: 1em;
-    }
-    button {
-      background: var(--main-color);
-      color: var(--white);
-      border: none;
-      padding: 1em 1.5em;
-      border-radius: 6px;
-      cursor: pointer;
-      font-size: 1em;
-    }
-    button:hover {
-      background: #004b86;
-    }
-    .floating-banner {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      background: var(--main-color);
-      color: white;
-      padding: 1em 1.5em;
-      border-radius: 10px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-      font-size: 0.95em;
-      z-index: 1000;
-    }
-    .cours-list a {
-      display: block;
-      color: var(--main-color);
-      text-decoration: none;
-      margin: 0.4em 0;
-    }
-    .cours-list a:hover {
-      text-decoration: underline;
-    }
+    body { font-family: 'Segoe UI', sans-serif; background: var(--bg-color); color: var(--text-color); margin:0; padding:2em; }
+    .container { max-width:800px; margin:auto; }
+    .card { background: var(--card-bg); border-radius:10px; box-shadow:0 2px 8px rgba(0,0,0,0.1); padding:2em; margin-bottom:2em; }
+    h1,h2 { color: var(--main-color); }
+    input, select, textarea { width:100%; padding:1em; border:1px solid var(--gray); border-radius:6px; margin-bottom:1em; background:transparent; color: var(--text-color); font-size:1em;}
+    button, .download-btn { background: var(--main-color); color:#fff; border:none; padding:1em 1.5em; border-radius:6px; cursor:pointer; font-size:1em; text-decoration:none; display:inline-block; transition: background .3s;}
+    button:hover, .download-btn:hover { background:#004b86; }
+    .download-btn { margin:0.5em 0; }
+    .banner { position:fixed; bottom:10px; left:10px; right:10px; background:#005fa3; color:#fff; padding:1em; text-align:center; border-radius:8px; display:none; z-index:9999; }
   </style>
 </head>
 <body>
@@ -81,12 +37,12 @@
     <h1>📘 Aide Anglais – Idaksahak</h1>
 
     <div class="card">
-      <h2>📝 Inscription gratuite</h2>
+      <h2>📝 Inscription obligatoire</h2>
       <form id="formInscription">
         <input id="nom" type="text" placeholder="Nom complet" required />
-        <input id="email" type="email" placeholder="Email ou numéro" required />
+        <input id="email" type="email" placeholder="Email" required />
         <select id="niveau" required>
-          <option value="">Niveau scolaire</option>
+          <option value="">Choisir votre niveau</option>
           <option value="college">Collège</option>
           <option value="lycee">Lycée</option>
         </select>
@@ -94,98 +50,73 @@
       </form>
     </div>
 
-    <section id="telechargements">
-      <h2>📥 Téléchargements de cours</h2>
-      <h3>Collège :</h3>
-      <ul>
-        <li><a href="docs/anglais_6e.pdf" download>📄 Anglais 6e</a></li>
-        <li><a href="docs/anglais_5e.pdf" download>📄 Anglais 5e</a></li>
-        <li><a href="docs/anglais_4e.pdf" download>📄 Anglais 4e</a></li>
-        <li><a href="docs/anglais_3e.pdf" download>📄 Anglais 3e</a></li>
-      </ul>
-      <h3>Lycée :</h3>
-      <ul>
-        <li><a href="docs/anglais_2nde.pdf" download>📄 Anglais 2nde</a></li>
-        <li><a href="docs/anglais_1ere.pdf" download>📄 Anglais 1ère</a></li>
-        <li><a href="docs/anglais_terminale.pdf" download>📄 Anglais Terminale</a></li>
-      </ul>
-    </section>
+    <div class="card" id="coursSection" hidden>
+      <h2>📥 Téléchargement de cours</h2>
+      <div class="cours-list">
+        <a href="docs/anglais_6e.pdf" download="" class="download-btn">📄 Anglais 6e</a>
+        <a href="docs/anglais_5e.pdf" download="" class="download-btn">📄 Anglais 5e</a>
+        <a href="docs/anglais_4e.pdf" download="" class="download-btn">📄 Anglais 4e</a>
+        <a href="docs/anglais_3e.pdf" download="" class="download-btn">📄 Anglais 3e</a>
+        <a href="docs/anglais_2nde.pdf" download="" class="download-btn">📄 Anglais 2nde</a>
+        <a href="docs/anglais_1ere.pdf" download="" class="download-btn">📄 Anglais 1ère</a>
+        <a href="docs/anglais_terminale.pdf" download="" class="download-btn">📄 Anglais Terminale</a>
+      </div>
+    </div>
 
     <div class="card">
-      <h2>📤 Envoie ton exercice</h2>
+      <h2>📤 Envoyer ton exercice (optionnel)</h2>
       <form id="formExercice">
-        <textarea id="exerciceMessage" placeholder="Ton exercice ici..." required></textarea>
+        <textarea id="exerciceMessage" rows="5" placeholder="Ton exercice ici..."></textarea>
         <button type="submit">Envoyer</button>
       </form>
     </div>
-
-    <div class="card">
-      <h2>💬 Chatbot éducatif (bientôt)</h2>
-      <p>Un assistant interactif sera bientôt disponible pour t’aider avec les cours en temps réel.</p>
-    </div>
   </div>
 
-  <div class="floating-banner">
-    🟢 Inscriptions ouvertes pour 2025-2026 !
+  <div id="confirmationBanner" class="banner">
+    ✅ Merci ! Tu recevras tes cours dans ta boîte mail sous peu.
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
   <script>
-    (function() {
-      emailjs.init("E4d6OcIOy2xokbr0M");
-    })();
+    emailjs.init("E4d6OcIOy2xokbr0M");
+    let userData = {};
 
     document.getElementById("formInscription").addEventListener("submit", e => {
       e.preventDefault();
       const nom = document.getElementById("nom").value.trim();
       const email = document.getElementById("email").value.trim();
       const niveau = document.getElementById("niveau").value;
-      const time = new Date().toLocaleString();
-
-      if (!nom || !email || !niveau) {
-        alert("❗ Remplis tous les champs.");
-        return;
+      if (nom && email && niveau) {
+        userData = { nom, email, niveau };
+        emailjs.send("service_avd1oes","__ejs-test-mail-service__",{
+          name: nom, email, niveau, message:"Demande de cours", time: new Date().toLocaleString()
+        }).then(()=> {
+          document.getElementById("coursSection").hidden = false;
+          document.getElementById("confirmationBanner").style.display = "block";
+          setTimeout(()=> document.getElementById("confirmationBanner").style.display = "none",10000);
+        });
       }
-
-      emailjs.send("service_avd1oes", "__ejs-inscription-service__", {
-        name: nom,
-        email: email,
-        niveau: niveau,
-        time: time
-      }).then(() => {
-        alert("✅ Inscription envoyée avec succès !");
-        document.getElementById("formInscription").reset();
-      }).catch(() => {
-        alert("❌ Une erreur est survenue lors de l'envoi.");
-      });
     });
 
     document.getElementById("formExercice").addEventListener("submit", e => {
       e.preventDefault();
-      const nom = document.getElementById("nom").value;
-      const email = document.getElementById("email").value;
-      const niveau = document.getElementById("niveau").value;
-      const message = document.getElementById("exerciceMessage").value.trim();
-      const time = new Date().toLocaleString();
-
-      if (!nom || !email || !niveau || !message) {
-        alert("❗ Veuillez d'abord remplir les champs d'inscription.");
+      const msg = document.getElementById("exerciceMessage").value.trim();
+      if (!userData.nom || !msg) {
+        alert("❗ Remplis l'inscription d'abord.");
         return;
       }
-
-      emailjs.send("service_avd1oes", "__ejs-exercice-service__", {
-        name: nom,
-        email: email,
-        niveau: niveau,
-        message: message,
-        time: time
-      }).then(() => {
-        alert("✅ Exercice envoyé avec succès !");
+      emailjs.send("service_avd1oes","__ejs-test-mail-service__",{
+        name: userData.nom, email:userData.email, niveau:userData.niveau, message:msg, time:new Date().toLocaleString()
+      }).then(()=> {
+        alert("✅ Exercice envoyé !");
         document.getElementById("formExercice").reset();
-      }).catch(() => {
-        alert("❌ Une erreur est survenue. Vérifie ta connexion.");
       });
     });
+
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('sw.js').then(()=> console.log("✅ SW enregistré"))
+      .catch(err=> console.error("❌ SW erreur",err));
+    }
   </script>
 </body>
 </html>
