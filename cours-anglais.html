@@ -92,11 +92,9 @@
         </select>
         <button type="submit">S'inscrire</button>
       </form>
-      <button onclick="afficherInscriptions()">📋 Voir les inscrits</button>
-      <div id="inscriptionsContainer" hidden></div>
     </div>
 
-    <div class="card">
+    <section id="telechargements">
       <h2>📥 Téléchargements de cours</h2>
       <h3>Collège :</h3>
       <ul>
@@ -111,12 +109,12 @@
         <li><a href="docs/anglais_1ere.pdf" download>📄 Anglais 1ère</a></li>
         <li><a href="docs/anglais_terminale.pdf" download>📄 Anglais Terminale</a></li>
       </ul>
-    </div>
+    </section>
 
     <div class="card">
       <h2>📤 Envoie ton exercice</h2>
       <form id="formExercice">
-        <textarea id="exerciceMessage" placeholder="Ex : Écris un petit texte en anglais..." required></textarea>
+        <textarea id="exerciceMessage" placeholder="Ton exercice ici..." required></textarea>
         <button type="submit">Envoyer</button>
       </form>
     </div>
@@ -142,14 +140,24 @@
       const nom = document.getElementById("nom").value.trim();
       const email = document.getElementById("email").value.trim();
       const niveau = document.getElementById("niveau").value;
-      if (nom && email && niveau) {
-        const inscriptions = JSON.parse(localStorage.getItem("inscriptions") || "[]");
-        inscriptions.push({ nom, email, niveau, date: new Date().toISOString() });
-        localStorage.setItem("inscriptions", JSON.stringify(inscriptions));
-        alert("✅ Merci pour votre inscription !");
-      } else {
+      const time = new Date().toLocaleString();
+
+      if (!nom || !email || !niveau) {
         alert("❗ Remplis tous les champs.");
+        return;
       }
+
+      emailjs.send("service_avd1oes", "__ejs-inscription-service__", {
+        name: nom,
+        email: email,
+        niveau: niveau,
+        time: time
+      }).then(() => {
+        alert("✅ Inscription envoyée avec succès !");
+        document.getElementById("formInscription").reset();
+      }).catch(() => {
+        alert("❌ Une erreur est survenue lors de l'envoi.");
+      });
     });
 
     document.getElementById("formExercice").addEventListener("submit", e => {
@@ -165,7 +173,7 @@
         return;
       }
 
-      emailjs.send("service_avd1oes", "__ejs-test-mail-service__", {
+      emailjs.send("service_avd1oes", "__ejs-exercice-service__", {
         name: nom,
         email: email,
         niveau: niveau,
@@ -178,15 +186,6 @@
         alert("❌ Une erreur est survenue. Vérifie ta connexion.");
       });
     });
-
-    function afficherInscriptions() {
-      const container = document.getElementById("inscriptionsContainer");
-      const inscriptions = JSON.parse(localStorage.getItem("inscriptions") || "[]");
-      container.hidden = false;
-      container.innerHTML = inscriptions.length
-        ? "<ul>" + inscriptions.map(i => `<li>${i.nom} (${i.email}) – ${i.niveau}</li>`).join('') + "</ul>"
-        : "<em>Aucune inscription enregistrée.</em>";
-    }
   </script>
 </body>
 </html>
