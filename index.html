@@ -265,20 +265,69 @@
   }
 }
 </style>
-
-<script>
-  // Disparition automatique au bout de 10 secondes
-  setTimeout(() => {
-    const banner = document.getElementById('inscriptionBanner');
-    if (banner) banner.style.display = 'none';
-  }, 10000);
-</script>
   <script>
+    // Disparition automatique bannière
+    setTimeout(() => {
+      const banner = document.getElementById('inscriptionBanner');
+      if (banner) banner.style.display = 'none';
+    }, 10000);
+  </script>
+
+  <!-- ✅ Service Worker + Installation PWA -->
+  <script>
+  let deferredPrompt;
+
+  window.addEventListener('beforeinstallprompt', (e) => {
+    e.preventDefault();
+    deferredPrompt = e;
+
+    const banner = document.createElement('div');
+    banner.innerHTML = `
+      <div style="position:fixed; bottom:0; left:0; right:0; background:#005fa3; color:white; padding:1em; text-align:center; z-index:9999;">
+        📲 Installez cette application pour un accès hors ligne et rapide !
+        <button id="installBtn" style="margin-left:1em; padding:0.5em 1em; background:white; color:#005fa3; border:none; border-radius:5px; font-weight:bold;">Installer</button>
+        <span onclick="this.parentNode.remove()" style="margin-left:1em; cursor:pointer;">❌</span>
+      </div>
+    `;
+    document.body.appendChild(banner);
+
+    document.getElementById('installBtn').addEventListener('click', () => {
+      banner.remove();
+      deferredPrompt.prompt();
+      deferredPrompt.userChoice.then(choice => {
+        if (choice.outcome === 'accepted') {
+          console.log("✅ Installation acceptée");
+        } else {
+          console.log("❌ Installation refusée");
+        }
+        deferredPrompt = null;
+      });
+    });
+  });
+
+  // Enregistrement SW + mise à jour
   if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('/sw.js')
-      .then(() => console.log("✅ Service Worker actif"))
-      .catch(err => console.error("❌ Erreur Service Worker :", err));
+    navigator.serviceWorker.register('/sw.js').then(registration => {
+      console.log("✅ Service Worker actif");
+
+      registration.onupdatefound = () => {
+        const newWorker = registration.installing;
+        newWorker.onstatechange = () => {
+          if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
+            if (confirm("🔁 Une nouvelle version est disponible. Mettre à jour maintenant ?")) {
+              window.location.reload();
+            }
+          }
+        };
+      };
+    }).catch(err => console.error("❌ Erreur SW :", err));
+
+    navigator.serviceWorker.addEventListener('controllerchange', () => {
+      window.location.reload();
+    });
   }
   </script>
+
 </body>
 </html>
+
