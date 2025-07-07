@@ -25,10 +25,10 @@ const chargerDonnees = async () => {
     if (langueInterface === 'fr') fichierHistoire = 'data/histoire.json';
 
     const [motsRes, interfaceRes, histoireRes] = await Promise.all([
-  chargerJSON('data/mots_final_489.json'),
-  chargerJSON('data/interface-langue.json'),
-  chargerJSON(fichierHistoire)
-]);
+      chargerJSON('data/mots_final_489.json'),
+      chargerJSON('data/interface-langue.json'),
+      chargerJSON(fichierHistoire)
+    ]);
 
     if (!Array.isArray(motsRes) || motsRes.length === 0) {
       throw new Error("⚠️ Le fichier mots.json est vide ou mal formé.");
@@ -38,8 +38,7 @@ const chargerDonnees = async () => {
     mots = [...motsComplet];
     interfaceData = interfaceRes;
     window.histoireDocs = histoireRes;
-
-    if (!Object.keys(mots[0]).includes(langueTrad)) {
+if (!Object.keys(mots[0]).includes(langueTrad)) {
       console.warn(`❗ La langue "${langueTrad}" n’est pas disponible dans mots.json. Passage à 'fr'.`);
       langueTrad = 'fr';
     }
@@ -81,7 +80,6 @@ const afficherMot = (motIndex = indexMot) => {
     (mot.cat ? ` <span style="color:#888;">(${escapeHTML(mot.cat)})</span>` : '');
   document.getElementById('compteur').textContent = `${indexMot + 1} / ${mots.length}`;
 };
-
 const nettoyerTexte = str =>
   str.normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^\w\s]/gi, "").toLowerCase();
 
@@ -121,7 +119,6 @@ const envoyerMessage = () => {
 
   rechercherDansHistoire(clean);
 };
-
 const rechercherDansHistoire = (clean) => {
   const trig = interfaceData[langueInterface]?.chatTriggers || {};
   const phr = interfaceData[langueInterface]?.chatPhrases || {};
@@ -172,7 +169,6 @@ const afficherMessage = (type, contenu) => {
     });
   });
 };
-
 const nomsLangues = { fr: "Français", en: "English", ar: "العربية" };
 
 const initialiserMenusLangues = () => {
@@ -265,3 +261,4 @@ window.addEventListener('DOMContentLoaded', () => {
     });
   });
 });
+    
