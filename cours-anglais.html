@@ -1,122 +1,190 @@
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <title>Cours d'Anglais – Aide et Exercices</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Idaksahak – Aide Anglais</title>
   <style>
-    body { font-family: Arial, sans-serif; padding: 2em; background: #f9f9f9; color: #333; }
-    h1, h2 { color: #005fa3; }
-    form, .section { background: #fff; padding: 1.5em; margin-bottom: 2em; box-shadow: 0 2px 5px rgba(0,0,0,0.1); border-radius: 8px; }
-    input, select, textarea { width: 100%; padding: 0.8em; margin: 0.5em 0 1em; border: 1px solid #ccc; border-radius: 4px; }
-    button { background: #0077cc; color: white; padding: 0.7em 1.2em; border: none; border-radius: 4px; cursor: pointer; }
-    button:hover { background: #005fa3; }
-    .cours-list a { display: block; margin: 0.5em 0; color: #005fa3; text-decoration: none; }
-    .cours-list a:hover { text-decoration: underline; }
+    :root {
+      --main-color: #005fa3;
+      --light-bg: #f4f9ff;
+      --white: #fff;
+      --gray: #ccc;
+      --text-color: #2c3e50;
+    }
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: var(--light-bg);
+      margin: 0;
+      padding: 2em;
+      color: var(--text-color);
+    }
+    h1, h2 {
+      color: var(--main-color);
+    }
+    .container {
+      max-width: 800px;
+      margin: auto;
+    }
+    .card {
+      background: var(--white);
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+      padding: 2em;
+      margin-bottom: 2em;
+    }
+    input, select, textarea {
+      width: 100%;
+      padding: 1em;
+      border: 1px solid var(--gray);
+      border-radius: 6px;
+      margin-bottom: 1em;
+      font-size: 1em;
+    }
+    button {
+      background: var(--main-color);
+      color: var(--white);
+      border: none;
+      padding: 1em 1.5em;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1em;
+    }
+    button:hover {
+      background: #004b86;
+    }
     .floating-banner {
       position: fixed;
       bottom: 20px;
       right: 20px;
-      background: #0077cc;
+      background: var(--main-color);
       color: white;
-      padding: 1em;
-      border-radius: 8px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-      font-size: 0.9em;
+      padding: 1em 1.5em;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      font-size: 0.95em;
       z-index: 1000;
     }
-    #inscriptionsContainer { background: #eef5ff; padding: 1em; margin-top: 1em; border-radius: 8px; }
+    .cours-list a {
+      display: block;
+      color: var(--main-color);
+      text-decoration: none;
+      margin: 0.4em 0;
+    }
+    .cours-list a:hover {
+      text-decoration: underline;
+    }
   </style>
 </head>
 <body>
-  <h1>📘 Cours d'Anglais – Aide pour Collège et Lycée</h1>
+  <div class="container">
+    <h1>📘 Aide Anglais – Idaksahak</h1>
 
-  <!-- Inscription gratuite -->
-  <section class="section">
-    <h2>📝 Inscription gratuite</h2>
-    <form id="formInscription">
-      <input id="nom" type="text" placeholder="Nom complet" required>
-      <input id="email" type="email" placeholder="Email ou numéro" required>
-      <select id="niveau" required>
-        <option value="">Choisir votre niveau scolaire</option>
-        <option value="college">Collège</option>
-        <option value="lycee">Lycée</option>
-      </select>
-      <button type="submit">S'inscrire</button>
-    </form>
-    <button onclick="afficherInscriptions()">📋 Voir les inscrits</button>
-    <div id="inscriptionsContainer" hidden></div>
-  </section>
-
-  <!-- Cours téléchargeables -->
-  <section class="section">
-    <h2>📥 Téléchargements de cours</h2>
-    <div class="cours-list">
-      <strong>Cours pour Collège :</strong>
-      <a href="#">📄 Anglais 6e</a>
-      <a href="#">📄 Anglais 5e</a>
-      <a href="#">📄 Anglais 4e</a>
-      <a href="#">📄 Anglais 3e</a>
-
-      <strong>Cours pour Lycée :</strong>
-      <a href="#">📄 Anglais 2nde</a>
-      <a href="#">📄 Anglais 1ère</a>
-      <a href="#">📄 Anglais Terminale</a>
+    <div class="card">
+      <h2>📝 Inscription gratuite</h2>
+      <form id="formInscription">
+        <input id="nom" type="text" placeholder="Nom complet" required />
+        <input id="email" type="email" placeholder="Email ou numéro" required />
+        <select id="niveau" required>
+          <option value="">Niveau scolaire</option>
+          <option value="college">Collège</option>
+          <option value="lycee">Lycée</option>
+        </select>
+        <button type="submit">S'inscrire</button>
+      </form>
+      <button onclick="afficherInscriptions()">📋 Voir les inscrits</button>
+      <div id="inscriptionsContainer" hidden></div>
     </div>
-  </section>
 
-  <!-- Envoi d'exercice -->
-  <section class="section">
-    <h2>📤 Envoie ton exercice pour aide</h2>
-    <form id="formExercice">
-      <textarea placeholder="Copie-colle ton exercice ici..." required></textarea>
-      <button type="submit">Envoyer</button>
-    </form>
-  </section>
+    <div class="card">
+      <h2>📥 Téléchargements de cours</h2>
+      <div class="cours-list">
+        <strong>Collège :</strong>
+        <a href="#">📄 Anglais 6e</a>
+        <a href="#">📄 Anglais 5e</a>
+        <a href="#">📄 Anglais 4e</a>
+        <a href="#">📄 Anglais 3e</a>
+        <strong>Lycée :</strong>
+        <a href="#">📄 Anglais 2nde</a>
+        <a href="#">📄 Anglais 1ère</a>
+        <a href="#">📄 Anglais Terminale</a>
+      </div>
+    </div>
 
-  <!-- Chatbot à venir -->
-  <section class="section">
-    <h2>💬 Chatbot éducatif (à venir)</h2>
-    <p>Un assistant éducatif interactif sera bientôt disponible ici pour t'aider en direct sur tes leçons.</p>
-  </section>
+    <div class="card">
+      <h2>📤 Envoie ton exercice</h2>
+      <form id="formExercice">
+        <textarea id="exerciceMessage" placeholder="Ton exercice ici..." required></textarea>
+        <button type="submit">Envoyer</button>
+      </form>
+    </div>
 
-  <!-- Message flottant -->
-  <div class="floating-banner">
-    🟢 Les inscriptions pour la rentrée 2025-2026 sont ouvertes !
+    <div class="card">
+      <h2>💬 Chatbot éducatif (bientôt)</h2>
+      <p>Un assistant interactif sera bientôt disponible pour t’aider avec les cours en temps réel.</p>
+    </div>
   </div>
 
+  <div class="floating-banner">
+    🟢 Inscriptions ouvertes pour 2025-2026 !
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
   <script>
-    document.getElementById('formInscription').addEventListener('submit', e => {
+    (function() {
+      emailjs.init("E4d6OcIOy2xokbr0M");
+    })();
+
+    document.getElementById("formInscription").addEventListener("submit", e => {
       e.preventDefault();
-      const nom = document.getElementById('nom').value.trim();
-      const email = document.getElementById('email').value.trim();
-      const niveau = document.getElementById('niveau').value;
+      const nom = document.getElementById("nom").value.trim();
+      const email = document.getElementById("email").value.trim();
+      const niveau = document.getElementById("niveau").value;
+
       if (nom && email && niveau) {
         const inscriptions = JSON.parse(localStorage.getItem("inscriptions") || "[]");
         inscriptions.push({ nom, email, niveau, date: new Date().toISOString() });
         localStorage.setItem("inscriptions", JSON.stringify(inscriptions));
         alert("✅ Merci pour votre inscription !");
       } else {
-        alert("❗ Veuillez remplir tous les champs.");
+        alert("❗ Remplis tous les champs.");
       }
     });
 
-    document.getElementById('formExercice').addEventListener('submit', e => {
+    document.getElementById("formExercice").addEventListener("submit", e => {
       e.preventDefault();
-      alert("🧠 Merci ! Votre exercice a bien été reçu. Une aide vous sera proposée très bientôt.");
+      const nom = document.getElementById("nom").value;
+      const email = document.getElementById("email").value;
+      const niveau = document.getElementById("niveau").value;
+      const message = document.getElementById("exerciceMessage").value.trim();
+      const time = new Date().toLocaleString();
+
+      if (!nom || !email || !niveau || !message) {
+        alert("❗ Veuillez d'abord remplir les champs d'inscription.");
+        return;
+      }
+
+      emailjs.send("service_avd1oes", "__ejs-test-mail-service__", {
+        name: nom,
+        email: email,
+        niveau: niveau,
+        message: message,
+        time: time
+      }).then(() => {
+        alert("✅ Exercice envoyé avec succès !");
+        document.getElementById("formExercice").reset();
+      }).catch(() => {
+        alert("❌ Une erreur est survenue. Vérifie ta connexion.");
+      });
     });
 
     function afficherInscriptions() {
-      const container = document.getElementById('inscriptionsContainer');
+      const container = document.getElementById("inscriptionsContainer");
       const inscriptions = JSON.parse(localStorage.getItem("inscriptions") || "[]");
       container.hidden = false;
-      if (inscriptions.length === 0) {
-        container.innerHTML = "<em>Aucune inscription enregistrée.</em>";
-        return;
-      }
-      container.innerHTML = "<strong>Liste des inscrits :</strong><ul>" +
-        inscriptions.map(i => `<li>${i.nom} (${i.email}) – ${i.niveau}</li>`).join('') +
-        "</ul>";
+      container.innerHTML = inscriptions.length
+        ? "<ul>" + inscriptions.map(i => `<li>${i.nom} (${i.email}) – ${i.niveau}</li>`).join('') + "</ul>"
+        : "<em>Aucune inscription enregistrée.</em>";
     }
   </script>
 </body>
