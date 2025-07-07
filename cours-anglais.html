@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -12,6 +13,19 @@
     button:hover { background: #005fa3; }
     .cours-list a { display: block; margin: 0.5em 0; color: #005fa3; text-decoration: none; }
     .cours-list a:hover { text-decoration: underline; }
+    .floating-banner {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: #0077cc;
+      color: white;
+      padding: 1em;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+      font-size: 0.9em;
+      z-index: 1000;
+    }
+    #inscriptionsContainer { background: #eef5ff; padding: 1em; margin-top: 1em; border-radius: 8px; }
   </style>
 </head>
 <body>
@@ -30,6 +44,8 @@
       </select>
       <button type="submit">S'inscrire</button>
     </form>
+    <button onclick="afficherInscriptions()">📋 Voir les inscrits</button>
+    <div id="inscriptionsContainer" hidden></div>
   </section>
 
   <!-- Cours téléchargeables -->
@@ -64,17 +80,22 @@
     <p>Un assistant éducatif interactif sera bientôt disponible ici pour t'aider en direct sur tes leçons.</p>
   </section>
 
-  <!-- Scripts -->
+  <!-- Message flottant -->
+  <div class="floating-banner">
+    🟢 Les inscriptions pour la rentrée 2025-2026 sont ouvertes !
+  </div>
+
   <script>
     document.getElementById('formInscription').addEventListener('submit', e => {
       e.preventDefault();
       const nom = document.getElementById('nom').value.trim();
       const email = document.getElementById('email').value.trim();
       const niveau = document.getElementById('niveau').value;
-
       if (nom && email && niveau) {
+        const inscriptions = JSON.parse(localStorage.getItem("inscriptions") || "[]");
+        inscriptions.push({ nom, email, niveau, date: new Date().toISOString() });
+        localStorage.setItem("inscriptions", JSON.stringify(inscriptions));
         alert("✅ Merci pour votre inscription !");
-        // Tu peux ici sauvegarder les données avec Firebase, Supabase, etc.
       } else {
         alert("❗ Veuillez remplir tous les champs.");
       }
@@ -84,6 +105,19 @@
       e.preventDefault();
       alert("🧠 Merci ! Votre exercice a bien été reçu. Une aide vous sera proposée très bientôt.");
     });
+
+    function afficherInscriptions() {
+      const container = document.getElementById('inscriptionsContainer');
+      const inscriptions = JSON.parse(localStorage.getItem("inscriptions") || "[]");
+      container.hidden = false;
+      if (inscriptions.length === 0) {
+        container.innerHTML = "<em>Aucune inscription enregistrée.</em>";
+        return;
+      }
+      container.innerHTML = "<strong>Liste des inscrits :</strong><ul>" +
+        inscriptions.map(i => `<li>${i.nom} (${i.email}) – ${i.niveau}</li>`).join('') +
+        "</ul>";
+    }
   </script>
 </body>
 </html>
