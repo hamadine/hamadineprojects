@@ -2,44 +2,119 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <title>Communiqués Idaksahak</title>
+  <title>Communiqués & Rapports – Idaksahak</title>
   <style>
-    body { font-family: sans-serif; padding: 1rem; }
-    section { margin-bottom: 2rem; border: 1px solid #ccc; padding: 1rem; border-radius: 4px; }
-    h2 button { background: #005fa3; color: white; border: none; padding: 0.5em 1em; border-radius: 4px; cursor: pointer; }
-    h2 button:hover { background: #004480; }
-    p { margin: 0.5rem 0; }
+    body {
+      font-family: sans-serif;
+      margin: 2rem;
+      background: #f4f4f4;
+    }
+    h1 {
+      color: #005fa3;
+    }
+    .controls {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+    input[type="text"], select {
+      padding: 0.5rem;
+      font-size: 1rem;
+    }
+    .communique {
+      background: white;
+      border-left: 5px solid #005fa3;
+      padding: 1rem;
+      margin-bottom: 1.5rem;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+    }
+    .communique h2 {
+      margin: 0 0 0.5rem 0;
+    }
+    .communique button {
+      background-color: #005fa3;
+      color: white;
+      border: none;
+      padding: 0.5em 1em;
+      margin-top: 0.5em;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 1em;
+    }
+    .communique button:hover {
+      background-color: #003d66;
+    }
+    .source {
+      font-size: 0.9em;
+      margin-top: 0.5em;
+      color: #333;
+    }
   </style>
 </head>
 <body>
-  <h1>📰 Communiqués concernant la communauté Idaksahak</h1>
+  <h1>📢 Communiqués et rapports récents sur les Idaksahak</h1>
+  <div class="controls">
+    <input type="text" id="searchInput" placeholder="🔍 Rechercher...">
+    <select id="yearFilter">
+      <option value="">Toutes les années</option>
+      <option value="2023">2023</option>
+      <option value="2022">2022</option>
+      <option value="2021">2021</option>
+      <option value="2018">2018</option>
+    </select>
+    <button onclick="sortByDate(true)">⬆️ Plus récent</button>
+    <button onclick="sortByDate(false)">⬇️ Plus ancien</button>
+  </div>
 
-  <section>
-    <h2>
-      <button onclick="window.open('https://www.maliweb.net/la-situation-politique-et-securitaire-au-nord/execution-sommaire-de-15-civils-le-26-mars-2022-a-ansongo-2971103.html','_blank')">
-        Communiqué Idaksahak – Exécution sommaire d’Ansongo (26 mars 2022)
-      </button>
-    </h2>
-    <p>La communauté Idaksahak dénonce l’exécution sommaire de 15 civils à Ansongo le 26 mars 2022 par des éléments ULRI3 de l’armée malienne, et demande justice ainsi que la création d’une commission d’enquête indépendante.<br><em>Résumé Hamadine AG MOCTAR.</em></p>
-  </section>
+  <div id="communiques"></div>
 
-  <section>
-    <h2>
-      <button onclick="window.open('https://www.agenceafrique.com/35439-mali-une-attaque-fait-11-morts-a-menaka.html','_blank')">
-        Communiqué Communauté Touareg Idaksahak – Attaque à Ménaka (août 2022)
-      </button>
-    </h2>
-    <p>Un communiqué publié par la communauté Touareg Idaksahak signale une attaque de l’EIGS à Tevolat (commune d’Askari), région de Ménaka, causant la mort de 11 civils Idaksahak.<br><em>Résumé Hamadine AG MOCTAR.</em></p>
-  </section>
+  <script>
+    const data = [
+      { title: "Exécution sommaire à Ansongo", year: 2022, url: "https://www.maliweb.net/la-situation-politique-et-securitaire-au-nord/execution-sommaire-de-15-civils-le-26-mars-2022-a-ansongo-2971103.html", desc: "15 civils Idaksahak exécutés à Ansongo le 26 mars 2022.", source: "Maliweb.net" },
+      { title: "Attaque terroriste à Ménaka", year: 2022, url: "https://www.agenceafrique.com/35439-mali-une-attaque-fait-11-morts-a-menaka.html", desc: "11 civils tués à Tevolat par l’EIGS.", source: "Agence Afrique" },
+      { title: "Rapport Amnesty – Ménaka", year: 2022, url: "https://www.amnesty.org/en/latest/news/2022/06/174337/", desc: "Violences ciblées contre les Idaksahak à Ménaka.", source: "Amnesty International" },
+      { title: "US State Dept Report 2023", year: 2023, url: "https://www.state.gov/reports/2023-country-reports-on-human-rights-practices/mali/", desc: "Violences contre les civils Idaksahak à Gao/Ménaka.", source: "US State Department" },
+      { title: "Human Rights Watch – Mali", year: 2023, url: "https://www.hrw.org/world-report/2023/country-chapters/mali", desc: "Abus des groupes armés contre les Idaksahak.", source: "Human Rights Watch" },
+      { title: "ReliefWeb – Situation Ménaka", year: 2022, url: "https://reliefweb.int/report/mali/mali-humanitarian-situation-menaka-region-special-situation-report-menaka", desc: "Contexte humanitaire suite aux attaques.", source: "ReliefWeb" },
+      { title: "Defense Post – Ménaka 2018", year: 2018, url: "https://thedefensepost.com/2018/12/13/mali-dozens-killed-menaka-niger/", desc: "47 civils tués près de Ménaka.", source: "Defense Post" },
+      { title: "OCWAR‑T – Exploitation minières", year: 2023, url: "https://www.globalinitiative.net/wp-content/uploads/2023/06/OCWART-Paper-3-E.pdf", desc: "Exploitation et traite dans zones Idaksahak.", source: "Global Initiative" }
+    ];
 
-  <section>
-    <h2>
-      <button onclick="window.open('https://www.maliweb.net/la-situation-politique-et-securitaire-au-nord/execution-sommaire-de-15-civils-le-26-mars-2022-a-ansongo-2971103.html','_blank')">
-        Appel de la communauté Idaksahak à la MINUSMA et aux droits humains
-      </button>
-    </h2>
-    <p>La communauté Idaksahak appelle formellement les organisations internationales et la MINUSMA à enquêter et à dénoncer le silence des autorités nationales suite aux massacres du nord du Mali.<br><em>Résumé Hamadine AG MOCTAR.</em></p>
-  </section>
+    let communiquesContainer = document.getElementById("communiques");
 
+    function renderData(list) {
+      communiquesContainer.innerHTML = '';
+      list.forEach(item => {
+        communiquesContainer.innerHTML += `
+          <div class="communique" data-year="${item.year}">
+            <h2>${item.title} (${item.year})</h2>
+            <p>${item.desc}</p>
+            <button onclick="window.open('${item.url}', '_blank')">Lire le communiqué</button>
+            <p class="source"><strong>Publié par :</strong> ${item.source}</p>
+          </div>`;
+      });
+    }
+
+    function filterAndRender() {
+      const year = document.getElementById("yearFilter").value;
+      const search = document.getElementById("searchInput").value.toLowerCase();
+      const filtered = data.filter(d =>
+        (!year || d.year.toString() === year) &&
+        (d.title.toLowerCase().includes(search) || d.desc.toLowerCase().includes(search))
+      );
+      renderData(filtered);
+    }
+
+    function sortByDate(descending = true) {
+      data.sort((a, b) => descending ? b.year - a.year : a.year - b.year);
+      filterAndRender();
+    }
+
+    document.getElementById("yearFilter").addEventListener("change", filterAndRender);
+    document.getElementById("searchInput").addEventListener("input", filterAndRender);
+
+    renderData(data);
+  </script>
 </body>
 </html>
