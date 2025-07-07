@@ -1,23 +1,26 @@
 {
-  "name": "Tadaksahak Learning",
   "short_name": "Tadaksahak",
-  "start_url": "/Tadaksahak-Learning-/index.html",
+  "name": "Tadaksahak Learning – Dictionnaire & Cours",
+  "lang": "fr-FR",
+  "description": "Accès hors ligne au dictionnaire Tadaksahak, cours d’anglais et soutien éducatif pour la communauté Idaksahak.",
+  "start_url": "/",
+  "scope": "/",
   "display": "standalone",
-  "background_color": "#ffffff",
+  "orientation": "portrait",
   "theme_color": "#005fa3",
-  "description": "Début d'une aventure riche autour de la langue et culture Idaksahak.",
+  "background_color": "#f9f9f9",
   "icons": [
-    {
-      "src": "images/idaksahak_square.png",
-      "sizes": "192x192",
-      "type": "image/png"
-    },
     {
       "src": "images/idaksahak_square512.png",
       "sizes": "512x512",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "images/idaksahak_square192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
     }
-  ],
-  "orientation": "portrait",
-  "lang": "fr"
+  ]
 }
