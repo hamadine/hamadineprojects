@@ -1,0 +1,23 @@
+{
+  "name": "Tadaksahak Learning",
+  "short_name": "Tadaksahak",
+  "start_url": "/Tadaksahak-Learning-/index.html",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#005fa3",
+  "description": "Début d'une aventure riche autour de la langue et culture Idaksahak.",
+  "icons": [
+    {
+      "src": "images/idaksahak_square.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "images/idaksahak_square512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "orientation": "portrait",
+  "lang": "fr"
+}
