@@ -284,6 +284,36 @@ main {
   color: #005fa3;
 }
 
+#telechargements ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+#telechargements li {
+  margin: 0.5rem 0;
+}
+#telechargements a {
+  text-decoration: none;
+  color: #005fa3;
+  font-weight: bold;
+}
+#telechargements a:hover {
+  text-decoration: underline;
+}
+.inscription-info {
+  margin-top: 1rem;
+  background: #e7f6ea;
+  padding: 1rem;
+  border-left: 5px solid #28a745;
+  font-weight: bold;
+}
+.card {
+  background: #f9f9f9;
+  padding: 1.5rem;
+  margin-top: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.05);
+}
+
 /* === STATUT === */
 .message-status {
   background-color: var(--bleu);
