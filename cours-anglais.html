@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -18,12 +17,13 @@
 <body>
   <h1>📘 Cours d'Anglais – Aide pour Collège et Lycée</h1>
 
+  <!-- Inscription gratuite -->
   <section class="section">
     <h2>📝 Inscription gratuite</h2>
-    <form>
-      <input type="text" placeholder="Nom complet" required>
-      <input type="email" placeholder="Email ou numéro" required>
-      <select required>
+    <form id="formInscription">
+      <input id="nom" type="text" placeholder="Nom complet" required>
+      <input id="email" type="email" placeholder="Email ou numéro" required>
+      <select id="niveau" required>
         <option value="">Choisir votre niveau scolaire</option>
         <option value="college">Collège</option>
         <option value="lycee">Lycée</option>
@@ -32,6 +32,7 @@
     </form>
   </section>
 
+  <!-- Cours téléchargeables -->
   <section class="section">
     <h2>📥 Téléchargements de cours</h2>
     <div class="cours-list">
@@ -48,17 +49,41 @@
     </div>
   </section>
 
+  <!-- Envoi d'exercice -->
   <section class="section">
     <h2>📤 Envoie ton exercice pour aide</h2>
-    <form>
-      <textarea placeholder="Copie-colle ton exercice ici ou pose une question précise…" rows="5"></textarea>
+    <form id="formExercice">
+      <textarea placeholder="Copie-colle ton exercice ici..." required></textarea>
       <button type="submit">Envoyer</button>
     </form>
   </section>
 
+  <!-- Chatbot à venir -->
   <section class="section">
     <h2>💬 Chatbot éducatif (à venir)</h2>
     <p>Un assistant éducatif interactif sera bientôt disponible ici pour t'aider en direct sur tes leçons.</p>
   </section>
+
+  <!-- Scripts -->
+  <script>
+    document.getElementById('formInscription').addEventListener('submit', e => {
+      e.preventDefault();
+      const nom = document.getElementById('nom').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const niveau = document.getElementById('niveau').value;
+
+      if (nom && email && niveau) {
+        alert("✅ Merci pour votre inscription !");
+        // Tu peux ici sauvegarder les données avec Firebase, Supabase, etc.
+      } else {
+        alert("❗ Veuillez remplir tous les champs.");
+      }
+    });
+
+    document.getElementById('formExercice').addEventListener('submit', e => {
+      e.preventDefault();
+      alert("🧠 Merci ! Votre exercice a bien été reçu. Une aide vous sera proposée très bientôt.");
+    });
+  </script>
 </body>
 </html>
