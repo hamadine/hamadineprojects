@@ -53,13 +53,13 @@
     <div class="card" id="coursSection" hidden>
       <h2>📥 Téléchargement de cours</h2>
       <div class="cours-list">
-        <a href="docs/anglais_6e.pdf" download="" class="download-btn">📄 Anglais 6e</a>
-        <a href="docs/anglais_5e.pdf" download="" class="download-btn">📄 Anglais 5e</a>
-        <a href="docs/anglais_4e.pdf" download="" class="download-btn">📄 Anglais 4e</a>
-        <a href="docs/anglais_3e.pdf" download="" class="download-btn">📄 Anglais 3e</a>
-        <a href="docs/anglais_2nde.pdf" download="" class="download-btn">📄 Anglais 2nde</a>
-        <a href="docs/anglais_1ere.pdf" download="" class="download-btn">📄 Anglais 1ère</a>
-        <a href="docs/anglais_terminale.pdf" download="" class="download-btn">📄 Anglais Terminale</a>
+        <a href="docs/anglais_6e.pdf" download class="download-btn">📄 Anglais 6e</a>
+        <a href="docs/anglais_5e.pdf" download class="download-btn">📄 Anglais 5e</a>
+        <a href="docs/anglais_4e.pdf" download class="download-btn">📄 Anglais 4e</a>
+        <a href="docs/anglais_3e.pdf" download class="download-btn">📄 Anglais 3e</a>
+        <a href="docs/anglais_2nde.pdf" download class="download-btn">📄 Anglais 2nde</a>
+        <a href="docs/anglais_1ere.pdf" download class="download-btn">📄 Anglais 1ère</a>
+        <a href="docs/anglais_terminale.pdf" download class="download-btn">📄 Anglais Terminale</a>
       </div>
     </div>
 
@@ -70,53 +70,105 @@
         <button type="submit">Envoyer</button>
       </form>
     </div>
+
+    <div class="card" id="adminSection" hidden>
+      <h2>👥 Liste des inscrits</h2>
+      <ul id="listeInscrits" style="list-style:none; padding:0;"></ul>
+    </div>
   </div>
 
   <div id="confirmationBanner" class="banner">
     ✅ Merci ! Tu recevras tes cours dans ta boîte mail sous peu.
   </div>
 
-  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
-  <script>
-    emailjs.init("E4d6OcIOy2xokbr0M");
-    let userData = {};
+  <!-- Firebase & EmailJS -->
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+    import { getFirestore, collection, addDoc, serverTimestamp, onSnapshot, query, orderBy } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+    import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-analytics.js";
 
-    document.getElementById("formInscription").addEventListener("submit", e => {
-      e.preventDefault();
-      const nom = document.getElementById("nom").value.trim();
-      const email = document.getElementById("email").value.trim();
-      const niveau = document.getElementById("niveau").value;
-      if (nom && email && niveau) {
+    const firebaseConfig = {
+      apiKey: "AIzaSyC32jtar8X8G6VsQr6wGOmKhHsE4HtXGM4",
+      authDomain: "tadaksahakeduplatform.firebaseapp.com",
+      projectId: "tadaksahakeduplatform",
+      storageBucket: "tadaksahakeduplatform.appspot.com",
+      messagingSenderId: "759430470573",
+      appId: "1:759430470573:web:1433e17ffe2b8e48dddf24",
+      measurementId: "G-47R1W3TEMB"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+    getAnalytics(app);
+
+    import("https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js").then(() => {
+      emailjs.init("E4d6OcIOy2xokbr0M");
+
+      let userData = {};
+
+      document.getElementById("formInscription").addEventListener("submit", async e => {
+        e.preventDefault();
+        const nom = document.getElementById("nom").value.trim();
+        const email = document.getElementById("email").value.trim();
+        const niveau = document.getElementById("niveau").value;
+        if (!nom || !email || !niveau) return;
+
         userData = { nom, email, niveau };
-        emailjs.send("service_avd1oes","__ejs-test-mail-service__",{
-          name: nom, email, niveau, message:"Demande de cours", time: new Date().toLocaleString()
-        }).then(()=> {
-          document.getElementById("coursSection").hidden = false;
-          document.getElementById("confirmationBanner").style.display = "block";
-          setTimeout(()=> document.getElementById("confirmationBanner").style.display = "none",10000);
-        });
-      }
-    });
 
-    document.getElementById("formExercice").addEventListener("submit", e => {
-      e.preventDefault();
-      const msg = document.getElementById("exerciceMessage").value.trim();
-      if (!userData.nom || !msg) {
-        alert("❗ Remplis l'inscription d'abord.");
-        return;
-      }
-      emailjs.send("service_avd1oes","__ejs-test-mail-service__",{
-        name: userData.nom, email:userData.email, niveau:userData.niveau, message:msg, time:new Date().toLocaleString()
-      }).then(()=> {
+        await emailjs.send("service_avd1oes", "__ejs-test-mail-service__", {
+          name: nom, email, niveau, message: "Demande de cours", time: new Date().toLocaleString()
+        });
+
+        await addDoc(collection(db, "inscriptions"), {
+          nom, email, niveau, timestamp: Date.now()
+        });
+
+        document.getElementById("coursSection").hidden = false;
+        document.getElementById("confirmationBanner").style.display = "block";
+        setTimeout(() => document.getElementById("confirmationBanner").style.display = "none", 8000);
+
+        // Montrer la liste si admin
+        if (email === "hamadineagmoctar@gmail.com") {
+          document.getElementById("adminSection").hidden = false;
+        }
+      });
+
+      document.getElementById("formExercice").addEventListener("submit", async e => {
+        e.preventDefault();
+        const msg = document.getElementById("exerciceMessage").value.trim();
+        if (!msg || !userData.nom) {
+          alert("❗ Remplis l'inscription d'abord.");
+          return;
+        }
+
+        await emailjs.send("service_avd1oes", "__ejs-test-mail-service__", {
+          name: userData.nom, email: userData.email, niveau: userData.niveau, message: msg, time: new Date().toLocaleString()
+        });
+
         alert("✅ Exercice envoyé !");
         document.getElementById("formExercice").reset();
       });
-    });
 
-    if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('sw.js').then(()=> console.log("✅ SW enregistré"))
-      .catch(err=> console.error("❌ SW erreur",err));
-    }
+      // 🔄 Liste des inscrits
+      const listeEl = document.getElementById("listeInscrits");
+      const q = query(collection(db, "inscriptions"), orderBy("timestamp", "desc"));
+      onSnapshot(q, (snapshot) => {
+        listeEl.innerHTML = "";
+        snapshot.forEach(doc => {
+          const { nom, email, niveau, timestamp } = doc.data();
+          const li = document.createElement("li");
+          li.innerHTML = `<strong>${nom}</strong> (${niveau})<br><small>${email}</small><br><small>${new Date(timestamp).toLocaleString()}</small>`;
+          listeEl.appendChild(li);
+        });
+      });
+
+      // 🔧 Service Worker
+      if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('sw.js')
+          .then(() => console.log("✅ SW actif"))
+          .catch(err => console.error("❌ SW error:", err));
+      }
+    });
   </script>
 </body>
 </html>
