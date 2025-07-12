@@ -171,6 +171,60 @@
       <option value="vert">Vert (naturel)</option>
       <option value="sombre">Sombre (noir et blanc)</option>
     </select>
+    </div>  <!-- Grille livres -->  <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
+    <div class="livre-bloc">
+      <h3>📖 A Grammar of Tadaksahak</h3>
+      <iframe src="https://archive.org/embed/369-tadaksahak" width="100%" height="200" frameborder="0"></iframe>
+      <a href="https://archive.org/details/369-tadaksahak" class="btn" target="_blank">Lire</a>
+    </div>
+    <div class="livre-bloc">
+      <h3>🌍 The Serpent and the Crescent</h3>
+      <a href="https://archive.org/details/in.ernet.dli.2015.129455" class="btn" target="_blank">Lire le PDF</a>
+    </div>
+    <div class="livre-bloc">
+      <h3>🌍 Medieval Africa, 1250–1800</h3>
+      <a href="https://archive.org/details/MedievalAfrica12501800" class="btn" target="_blank">Lire le PDF</a>
+    </div>
+    <div class="livre-bloc">
+      <h3>🌍 The Golden Age of the Moor</h3>
+      <a href="https://ia803204.us.archive.org/16/items/49153823GoldenAgeOfTheMoorIvanVanSertima/49153823-Golden-Age-of-The-Moor-Ivan-Van-Sertima.pdf" class="btn" target="_blank">Lire le PDF</a>
+    </div>
+    <div class="livre-bloc">
+      <h3>🌍 Vanished Cities of Northern Africa</h3>
+      <a href="https://ia801403.us.archive.org/5/items/in.ernet.dli.2015.501479/vanishisd-cities_text.pdf" class="btn" target="_blank">Lire le PDF</a>
+    </div>
+    <div class="livre-bloc">
+      <h3>🌍 Travels in the Great Desert of Sahara</h3>
+      <a href="https://archive.org/download/b29327052_0001/b29327052_0001.pdf" class="btn" target="_blank">Lire le PDF</a>
+    </div>
+  </div>  <!-- Audio -->  <div style="text-align:center; margin-top: 2em;">
+    <h3>🎧 Lecture audio introductive</h3>
+    <audio controls style="width:90%; max-width:600px;">
+      <source src="audios/intro-idaksahak.mp3" type="audio/mpeg">
+      Votre navigateur ne supporte pas l'audio.
+    </audio>
+  </div>
+</section><script>
+  document.getElementById('rechercheLivres').addEventListener('input', e => {
+    const filtre = e.target.value.toLowerCase();
+    document.querySelectorAll('#livres .livre-bloc').forEach(bloc => {
+      bloc.style.display = bloc.textContent.toLowerCase().includes(filtre) ? 'block' : 'none';
+    });
+  });
+
+  document.getElementById('selectThemeLivres').addEventListener('change', e => {
+    const theme = e.target.value;
+    const sec = document.getElementById('livres');
+    sec.classList.remove('theme-clair','theme-vert','theme-sombre');
+    sec.classList.add('theme-' + theme);
+  });
+</script><style>
+  #livres.theme-clair { background: var(--vert); }
+  #livres.theme-vert { background: var(--gris); }
+  #livres.theme-sombre { background: #333; color: #eee; }
+  #livres.theme-sombre .livre-bloc { background: #444; color: #eee; }
+</style>
+    
   </div>  <!-- 🧭 HISTOIRE & IDENTITÉ -->  <div class="livre-bloc">
     <h2>📘 Histoire de l’émancipation intégrale</h2>
     <a href="histoire-emancipation-integrale.html" class="btn">Lire ce livre</a>
