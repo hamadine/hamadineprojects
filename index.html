@@ -204,7 +204,8 @@
       Votre navigateur ne supporte pas l'audio.
     </audio>
   </div>
-</section><script>
+</section>
+    <script>
   document.getElementById('rechercheLivres').addEventListener('input', e => {
     const filtre = e.target.value.toLowerCase();
     document.querySelectorAll('#livres .livre-bloc').forEach(bloc => {
@@ -282,7 +283,19 @@
       <div class="sous-boutons">
   <button onclick="window.location.href='communiques_idaksahak.html'">📢 Communiqués</button>
   <button onclick="window.location.href='communiques_msa.html'">🛡️ Communiqués MSA</button>
-
+<div class="sous-actualites">
+  <h3>📰 Revue de presse</h3>
+  <div class="revue-presse">
+    <div class="article-presse">
+      <img src="images/revue1.jpg" alt="Revue de presse 1" loading="lazy">
+      <p>📰 Article sur la culture Idaksahak paru dans Le Sahel du 12 mars 2025.</p>
+    </div>
+    <div class="article-presse">
+      <img src="images/revue2.jpg" alt="Revue de presse 2" loading="lazy">
+      <p>🗞️ Reportage photographique sur le patrimoine saharien dans Sahara Médias.</p>
+    </div>
+  </div>
+</div>
         <section id="rapports" class="onglet-contenu" role="tabpanel" aria-labelledby="tab-rapports" hidden>
       <h2>📄 Rapports et études</h2>
       <p>Rapports des Nations Unies et d’organisations humanitaires.</p>
