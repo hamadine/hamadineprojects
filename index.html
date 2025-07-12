@@ -238,96 +238,10 @@
       </a>
         </section>
 <script>
-  const rechercheInput = document.getElementById('rechercheLivres');
-  rechercheInput.addEventListener('input', () => {
-    const filtre = rechercheInput.value.toLowerCase();
-    document.querySelectorAll('#livres .livre-bloc').forEach(bloc => {
-      const texte = bloc.textContent.toLowerCase();
-      bloc.style.display = texte.includes(filtre) ? 'block' : 'none';
-    });
-  });
-
-  const select = document.getElementById('selectThemeLivres');
-  select.addEventListener('change', () => {
-    const theme = select.value;
-    const sec = document.getElementById('livres');
-    sec.classList.remove('theme-clair','theme-vert','theme-sombre');
-    sec.classList.add('theme-' + theme);
-  });
-</script><style>
-  #livres.theme-clair { background: var(--vert); }
-  #livres.theme-vert { background: var(--gris); }
-  #livres.theme-sombre { background: #333; color: #eee; }
-  #livres.theme-sombre .livre-bloc { background: #444; color: #eee; }
-</style>
-      
-  </main>
-
-  <div id="loading" class="loading-indicator" hidden>Chargement...</div>
-  <div id="messageStatus" class="message-status" role="alert" aria-live="polite"></div>
-  <footer style="background:#0a1f33; color:#fff; padding:2em 1em; text-align:center; margin-top:3em;">
-  <img src="images/idaksahak_square.png" alt="Logo Idaksahak" style="width:80px; border-radius:50%; margin-bottom:1em;">
-  <h3 style="margin:0; font-size:1.2em;">Hamadine AG MOCTAR</h3>
-
-  <p style="max-width:600px; margin:1em auto; line-height:1.6;">
-    Ce site est né de la nécessité d'offrir aux jeunes Idaksahak, et à toute la région du Sahel, un accès équitable au savoir, à l'information et à l'expression de leur héritage.
-    Depuis des siècles, notre peuple fait preuve de résilience face aux défis — qu’ils soient sécuritaires, éducatifs, humanitaires ou identitaires.
-    Aujourd’hui, grâce aux outils numériques, nous redonnons voix à ceux qu’on a longtemps voulu faire taire. Ce projet est une passerelle entre mémoire, savoir et avenir.
-  </p>
-
-  <div style="margin:1.5em 0;">
-    <a href="https://wa.me/22786762903" target="_blank" style="margin:0 0.5em; text-decoration:none; color:#fff;">
-      <img src="images/whatsapp.png" alt="WhatsApp" style="vertical-align:middle; width:20px;"> +227 86 76 29 03
-    </a>
-    <a href="mailto:hamadineagmoctar@gmail.com" target="_blank" style="margin:0 0.5em; text-decoration:none; color:#fff;">
-      <img src="images/Gmail.png" alt="Gmail" style="vertical-align:middle; width:20px;"> hamadineagmoctar@gmail.com
-    </a>
-  </div>
-
-  <p style="font-size:0.9em; color:#bbb;">&copy; 2025 – Tous droits réservés. Ce site est une initiative communautaire dédiée à la paix, à l’éducation et à la mémoire collective.</p>
-  </footer>
-  <!-- ✅ Message flottant animé -->
-<div id="inscriptionBanner" style="
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  background-color: #005fa3;
-  color: white;
-  padding: 1em;
-  text-align: center;
-  font-weight: bold;
-  z-index: 9999;
-  transform: translateY(-100%);
-  animation: slideDown 1s ease forwards;
-  font-family: Arial, sans-serif;
-">
-  📢 Les inscriptions scolaires 2025–2026 sont ouvertes ! Rejoins-nous gratuitement pour des cours d'anglais interactifs ✍️
-  <span onclick="document.getElementById('inscriptionBanner').style.display='none';" style="margin-left:1em; cursor:pointer;">❌</span>
-</div>
-
-<style>
-@keyframes slideDown {
-  to {
-    transform: translateY(0);
-  }
-}
-</style>
-  <script>
-    // Disparition automatique bannière
-    setTimeout(() => {
-      const banner = document.getElementById('inscriptionBanner');
-      if (banner) banner.style.display = 'none';
-    }, 10000);
-  </script>
-
-  <!-- ✅ Service Worker + Installation PWA -->
-  <script>
   let deferredPrompt;
 
-  window.addEventListener('beforeinstallprompt', (e) => {
-    e.preventDefault();
-    deferredPrompt = e;
+  function showInstallBanner() {
+    if (!deferredPrompt) return;
 
     const banner = document.createElement('div');
     banner.innerHTML = `
@@ -351,9 +265,22 @@
         deferredPrompt = null;
       });
     });
+  }
+
+  window.addEventListener('beforeinstallprompt', (e) => {
+    e.preventDefault();
+    deferredPrompt = e;
+    showInstallBanner();
   });
 
-  // Enregistrement SW + mise à jour
+  // Relance régulièrement la bannière d'installation si l'utilisateur ne l'a pas encore installée
+  setInterval(() => {
+    if (deferredPrompt) {
+      showInstallBanner();
+    }
+  }, 30000); // relance toutes les 30 secondes
+
+  // Enregistrement du Service Worker
   if ('serviceWorker' in navigator) {
     navigator.serviceWorker.register('/sw.js').then(registration => {
       console.log("✅ Service Worker actif");
@@ -362,9 +289,7 @@
         const newWorker = registration.installing;
         newWorker.onstatechange = () => {
           if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
-            if (confirm("🔁 Une nouvelle version est disponible. Mettre à jour maintenant ?")) {
-              window.location.reload();
-            }
+            window.location.reload();
           }
         };
       };
@@ -374,8 +299,8 @@
       window.location.reload();
     });
   }
-  </script>
-
+</script>
 </body>
 </html>
+  
 
