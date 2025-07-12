@@ -160,60 +160,107 @@
 </div>
     </section>
 
-    <section id="rapports" class="onglet-contenu" role="tabpanel" aria-labelledby="tab-rapports" hidden>
+  <section id="livres" class="onglet-contenu" role="tabpanel" aria-labelledby="tab-livres" hidden>
+  <h2 style="color: var(--bleu); text-align: center;">📚 Livres & Manuscrits sur les Idaksahak et le Sahel</h2>  <!-- 🔍 Barre de recherche -->  <div style="text-align:center; margin: 2em auto; max-width:800px;">
+    <input type="text" id="rechercheLivres" placeholder="🔍 Rechercher un livre, une tribu ou un auteur..." 
+           style="padding: 10px; width: 90%; border-radius: 8px; border: 1px solid #ccc; font-size: 1rem;">
+  </div>  <div style="margin:1em 0; text-align:center;">
+    <label for="selectThemeLivres"><strong>🎨 Thème visuel :</strong></label>
+    <select id="selectThemeLivres" aria-label="Choisir un thème pour la section Livres">
+      <option value="clair">Clair (bleu ciel)</option>
+      <option value="vert">Vert (naturel)</option>
+      <option value="sombre">Sombre (noir et blanc)</option>
+    </select>
+  </div>  <!-- 🧭 HISTOIRE & IDENTITÉ -->  <div class="livre-bloc">
+    <h2>📘 Histoire de l’émancipation intégrale</h2>
+    <a href="histoire-emancipation-integrale.html" class="btn">Lire ce livre</a>
+  </div>
+  <div class="livre-bloc">
+    <h2>📘 تاريخ التحرر الكامل (arabe)</h2>
+    <a href="تاريخ-التحرر-الكامل-العربية.html" class="btn">قراءة الكتاب</a>
+  </div>  <!-- 📗 CONTRIBUTIONS SCIENTIFIQUES -->  <div class="livre-bloc">
+    <h2>📗 Contribution à la connaissance de la communauté Idaksahak</h2>
+    <a href="Contribution à la connaissance de la communauté Idaksahak par le Géologue Ahmed‑Mohamed AG GUIDI - Texte Intégral.html" class="btn">Lire ce livre</a>
+  </div>
+  <div class="livre-bloc">
+    <h2>📗 مساهمة في معرفة مجتمع الإداكساهك</h2>
+    <a href="مساهمة-في-معرفة-مجتمع-الإداكساهك.html" class="btn">قراءة الكتاب</a>
+  </div>
+  <div class="livre-bloc">
+    <h2>📗 Contribution to the Knowledge of the Idaksahak Community</h2>
+    <a href="contribution-to-the-knowledge-of-the-idaksahak-community.html" class="btn">Read this book</a>
+  </div>  <!-- 📜 MANUSCRITS HISTORIQUES -->  <div class="livre-bloc">
+    <h2>📜 Tarīkh al-Sūdān (John O. Hunwick)</h2>
+    <iframe src="https://archive.org/embed/john-o.-hunwick-timbuktu-and-the-songhay-empire-al-sa-dis-ta-rikh-al-sudan-down-" width="100%" height="300" frameborder="0" allowfullscreen></iframe>
+    <p>Traduction annotée du Tarīkh al-Sūdān, chronique sur Tombouctou et l’Empire Songhaï.</p>
+  </div>
+  <div class="livre-bloc">
+    <h2>📜 Tarīkh al-Fettāsh (arabe)</h2>
+    <iframe src="https://archive.org/embed/32882019289852-tarikhalfatashf" width="100%" height="300" frameborder="0" allowfullscreen></iframe>
+    <p>Version arabe originale retraçant les dynasties et lignées religieuses sahéliennes.</p>
+  </div>
+  <div class="livre-bloc">
+    <h2>📜 Tarīkh al-Fettāsh (traduction anglaise)</h2>
+    <iframe src="https://archive.org/embed/timbuktu-chronicles-1" width="100%" height="300" frameborder="0" allowfullscreen></iframe>
+    <p>Traduction critique anglaise des chroniques historiques du Sahel.</p>
+  </div>  <!-- 🌍 AUTRES LIVRES D'ARCHIVE.ORG -->  <div class="livre-bloc">
+    <h2>🌍 A Grammar of Tadaksahak</h2>
+    <a href="https://archive.org/details/369-tadaksahak" class="btn" target="_blank">Ouvrir le PDF</a>
+  </div>
+  <div class="livre-bloc">
+    <h2>🌍 The Serpent and the Crescent (Touareg)</h2>
+    <a href="https://archive.org/details/in.ernet.dli.2015.129455" class="btn" target="_blank">Lire le PDF</a>
+  </div>
+  <div class="livre-bloc">
+    <h2>🌍 Medieval Africa, 1250–1800</h2>
+    <a href="https://archive.org/details/MedievalAfrica12501800" class="btn" target="_blank">Lire le PDF</a>
+  </div>  <!-- 🎧 Audio explicatif -->  <div style="text-align:center; margin-top: 2em;">
+    <h3>🎧 Écoutez une lecture d’introduction</h3>
+    <audio controls style="width:90%; max-width:600px;">
+      <source src="audios/intro-idaksahak.mp3" type="audio/mpeg">
+      Votre navigateur ne supporte pas la lecture audio.
+    </audio>
+  </div>
+   </section>
+    section id="actualites" class="onglet-contenu" role="tabpanel" aria-labelledby="tab-actualites" hidden>
+      <h2>🗞️ Actualités</h2>
+      <p>Articles, événements et communiqués sur les Idaksahak.</p>
+      <div class="sous-boutons">
+  <button onclick="window.location.href='communiques_idaksahak.html'">📢 Communiqués</button>
+  <button onclick="window.location.href='communiques_msa.html'">🛡️ Communiqués MSA</button>
+
+        <section id="rapports" class="onglet-contenu" role="tabpanel" aria-labelledby="tab-rapports" hidden>
       <h2>📄 Rapports et études</h2>
       <p>Rapports des Nations Unies et d’organisations humanitaires.</p>
       <a href="rapports_idaksahak.html" target="_blank">📄 Rapports sur les Idaksahak (Mars 2022)</a>
       <a href="rapports_complementaires.html" target="_blank">
   📁 Rapports complémentaires sur les Idaksahak
       </a>
-    </section>
+        </section>
+<script>
+  const rechercheInput = document.getElementById('rechercheLivres');
+  rechercheInput.addEventListener('input', () => {
+    const filtre = rechercheInput.value.toLowerCase();
+    document.querySelectorAll('#livres .livre-bloc').forEach(bloc => {
+      const texte = bloc.textContent.toLowerCase();
+      bloc.style.display = texte.includes(filtre) ? 'block' : 'none';
+    });
+  });
 
-    <section id="actualites" class="onglet-contenu" role="tabpanel" aria-labelledby="tab-actualites" hidden>
-      <h2>🗞️ Actualités</h2>
-      <p>Articles, événements et communiqués sur les Idaksahak.</p>
-      <div class="sous-boutons">
-  <button onclick="window.location.href='communiques_idaksahak.html'">📢 Communiqués</button>
-  <button onclick="window.location.href='communiques_msa.html'">🛡️ Communiqués MSA</button>
-      </div>
-    </section>
-
-    <section id="livres" class="onglet-contenu" role="tabpanel" aria-labelledby="tab-livres" hidden>
-      <h2>📚 Livres sur les Idaksahak</h2>
-      <div style="margin:1em 0;">
-        <label for="selectThemeLivres"><strong>🎨 Thème visuel :</strong></label>
-        <select id="selectThemeLivres" aria-label="Choisir un thème pour la section Livres">
-          <option value="clair">Clair (bleu ciel)</option>
-          <option value="vert">Vert (naturel)</option>
-          <option value="sombre">Sombre (noir et blanc)</option>
-        </select>
-      </div>
-
-      <div class="livre-bloc">
-        <h2>📚 Grammaire du Tadaksahak</h2>
-        <a href="Introduction-Tadaksahak.html" class="btn">Lire la grammaire complète</a>
-      </div>
-      <div class="livre-bloc">
-        <h2>📘 Histoire de l’émancipation intégrale</h2>
-        <a href="histoire-emancipation-integrale.html" class="btn">Lire ce livre</a>
-      </div>
-      <div class="livre-bloc">
-        <h2>📘 Contribution à la connaissance de la communauté Idaksahak</h2>
-        <a href="Contribution à la connaissance de la communauté Idaksahak par le Géologue Ahmed‑Mohamed AG GUIDI - Texte Intégral.html" class="btn">Lire ce livre</a>
-      </div>
-      <div class="livre-bloc">
-        <h2>📘 Contribution to the Knowledge of the Idaksahak Community</h2>
-        <a href="contribution-to-the-knowledge-of-the-idaksahak-community.html" class="btn">Read this book</a>
-      </div>
-      <div class="livre-bloc">
-        <h2>📘 تاريخ التحرر الكامل (arabe)</h2>
-        <a href="تاريخ-التحرر-الكامل-العربية.html" class="btn">قراءة الكتاب</a>
-      </div>
-      <div class="livre-bloc">
-        <h2>📘 مساهمة في معرفة مجتمع الإداكساهك</h2>
-        <a href="مساهمة-في-معرفة-مجتمع-الإداكساهك.html" class="btn">قراءة الكتاب</a>
-      </div>
-    </section>
+  const select = document.getElementById('selectThemeLivres');
+  select.addEventListener('change', () => {
+    const theme = select.value;
+    const sec = document.getElementById('livres');
+    sec.classList.remove('theme-clair','theme-vert','theme-sombre');
+    sec.classList.add('theme-' + theme);
+  });
+</script><style>
+  #livres.theme-clair { background: var(--vert); }
+  #livres.theme-vert { background: var(--gris); }
+  #livres.theme-sombre { background: #333; color: #eee; }
+  #livres.theme-sombre .livre-bloc { background: #444; color: #eee; }
+</style>
+      
   </main>
 
   <div id="loading" class="loading-indicator" hidden>Chargement...</div>
