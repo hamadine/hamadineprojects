@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Dictionnaire Tadaksahak – Début d'une aventure culturelle</title>
+  <meta name="description" content="Début d'une aventure riche autour de la langue et culture Idaksahak." />
+  <meta name="theme-color" content="#005fa3" />
+  <base href="/Tadaksahak-Learning-/" />
+  <link rel="manifest" href="manifest.webmanifest" />
+  <link rel="icon" href="images/idaksahak_square.png" type="image/png" />
+  <link rel="stylesheet" href="style.css" />
+  <script type="module" src="app.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.6.2"></script>
+</head>
+<body>
+  <noscript>
+    <div class="js-warning" role="alert">
+      <p>⚠️ Ce site nécessite JavaScript pour fonctionner correctement.</p>
+    </div>
+  </noscript>
+
+  <header class="site-header">
+    <img src="images/idaksahak_round.png" alt="Logo Tadaksahak" class="logo-header" loading="lazy" />
+  </header>
+
+  <section class="language-buttons" aria-label="Paramètres de langue">
+    <button id="btnLangueInterface" class="tab-btn" aria-haspopup="true" aria-controls="menuLangueInterface" aria-expanded="false">
+      Interface : Français ⌄
+    </button>
+    <div id="menuLangueInterface" hidden role="menu" aria-label="Langue d’interface"></div>
+    <button id="btnLangueTrad" class="tab-btn" aria-haspopup="true" aria-controls="menuLangueTrad" aria-expanded="false">
+      Traduction : Français ⌄
+    </button>
+    <div id="menuLangueTrad" hidden role="menu" aria-label="Langue de traduction"></div>
+  </section>
+
+  <nav class="tabs" aria-label="Navigation principale">
+    <button class="tab-btn active" data-tab="dictionnaire" aria-selected="true" tabindex="0" id="tab-dictionnaire">
+      📖 Dictionnaire
+    </button>
+    <button class="tab-btn" data-tab="chat" aria-selected="false" tabindex="-1" id="tab-chat">
+     💬 Chat
+    </button>
+    <button class="tab-btn" onclick="window.location.href='cours-anglais.html'">
+      📘 Cours d'Anglais
+    </button>
+    <button class="tab-btn" data-tab="audio" aria-selected="false" tabindex="-1" id="tab-audio">
+      🎧 Audio
+    </button>
+    <button class="tab-btn" data-tab="photos" aria-selected="false" tabindex="-1" id="tab-photos">
+      🖼️ Photos
+    </button>
+    <button class="tab-btn" data-tab="videos" aria-selected="false" tabindex="-1" id="tab-videos">
+      🎥 Vidéos
+    </button>
+    <button class="tab-btn" data-tab="rapports" aria-selected="false" tabindex="-1" id="tab-rapports">
+      📄 Rapports
+    </button>
+    <button class="tab-btn" data-tab="livres" aria-selected="false" tabindex="-1" id="tab-livres">
+      📚 Livres
+    </button>
+    <button class="tab-btn" data-tab="actualites" aria-selected="false" tabindex="-1" id="tab-actualites">
+      📰 Actualités
+    </button>
+  </nav>
+
+  <main>
+    <!-- DICTIONNAIRE -->
+    <section id="dictionnaire" class="onglet-contenu" role="tabpanel" aria-labelledby="tab-dictionnaire">
+      <h2>📖 Dictionnaire Tadaksahak</h2>
+      <div class="search-bar">
+        <input type="text" id="searchBar" placeholder="Recherchez un mot…" aria-label="Recherche dans le dictionnaire" autocomplete="off">
+      </div>
+      <div class="mot-resultat">
+        <h3 id="motTexte">—</h3>
+        <p id="definition">—</p>
+        <p id="compteur">0 / 0</p>
+      </div>
+      <div class="button-group dictionnaire-audio">
+        <button id="btnPlay" class="btn-icon" aria-label="Écouter le mot">🔊 Écouter</button>
+        <button id="btnPrononcer" class="btn-icon" aria-label="Prononcer le mot">🎤 Dis‑le</button>
+        <button id="btnReplay" class="btn-icon" disabled aria-label="Réécouter">🔁 Réécouter</button>
+        <button id="btnAuto" class="btn-icon" disabled aria-label="Lecture auto">▶️ Lecture auto</button>
+      </div>
+      <div class="button-group dictionnaire-navigation">
+        <button id="btnPrev" class="btn-nav" aria-label="Mot précédent">⟸</button>
+        <button id="btnNext" class="btn-nav" aria-label="Mot suivant">➡️</button>
+      </div>
+    </section>
+
+    <!-- LIVRES -->
+    <section id="livres" class="onglet-contenu" role="tabpanel" aria-labelledby="tab-livres" hidden>
+      <h2>📚 Livres & Manuscrits sur les Idaksahak et le Sahel</h2>
+      <div class="search-group" style="display:flex; gap:1em; flex-wrap:wrap; justify-content:center; margin:1em 0">
+        <input type="text" id="rechercheLivres" placeholder="🔍 Rechercher un livre…" style="padding:10px;width:90%;max-width:400px;border-radius:8px;border:1px solid #ccc;">
+        <select id="selectThemeLivres" aria-label="Thème visuel">
+          <option value="clair">Clair</option>
+          <option value="vert">Vert</option>
+          <option value="sombre">Sombre</option>
+        </select>
+      </div>
+      <div class="livre-grid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px;">
+        <!-- Ajoute ici tous tes blocs de livres existants -->
+        <!-- Exemple -->
+        <div class="livre-bloc">
+          <h3>📖 A Grammar of Tadaksahak</h3>
+          <iframe src="https://archive.org/embed/369-tadaksahak" width="100%" height="200" frameborder="0"></iframe>
+          <a href="https://archive.org/details/369-tadaksahak" class="btn" target="_blank">Lire</a>
+        </div>
+        <!-- ... autres livres -->
+      </div>
+      <div style="text-align:center;margin-top:2em;">
+        <h3>🎧 Lecture audio introductive</h3>
+        <audio controls style="width:90%;max-width:600px;">
+          <source src="audios/intro-idaksahak.mp3" type="audio/mpeg">
+        </audio>
+      </div>
+    </section>
+
+    <!-- ACTUALITÉS -->
+    <section id="actualites" class="onglet-contenu" role="tabpanel" aria-labelledby="tab-actualites" hidden>
+      <h2>🗞️ Actualités</h2>
+      <div class="sous-boutons">
+        <button onclick="window.location.href='communiques_idaksahak.html'">📢 Communiqués</button>
+        <button onclick="window.location.href='communiques_msa.html'">🛡️ Communiqués MSA</button>
+      </div>
+      <div class="revue-presse" style="display:flex;gap:1em;flex-wrap:wrap;margin-top:1em;">
+        <div class="article-presse">
+          <img src="images/revue1.jpg" alt="Revue de presse 1" loading="lazy">
+          <p>📰 Article dans Le Sahel du 12 mars 2025.</p>
+        </div>
+        <div class="article-presse">
+          <img src="images/revue2.jpg" alt="Revue de presse 2" loading="lazy">
+          <p>🗞️ Reportage Sahara Médias sur le patrimoine saharien.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CHATBOT -->
+    <section id="chat" class="onglet-contenu" role="tabpanel" aria-labelledby="tab-chat" hidden>
+      <h2 id="chat-title" data-i18n="chatTitre">💬 Chat Tadaksahak</h2>
+      <div id="chatWindow" class="chatbox" role="log" aria-live="polite"></div>
+      <div id="botIntro" class="chat-intro" data-i18n="botIntro">🤖 Salut, je suis Hamadine.</div>
+      <div class="chat-input-container">
+        <input type="text" id="chatInput" placeholder="Écrivez votre message…" autocomplete="off">
+        <button id="btnEnvoyer" data-i18n="envoyer">Envoyer</button>
+      </div>
+    </section>
+
+    <!-- AUTRES SECTIONS (Audio, Photos, Vidéos, Rapports) -->
+    <section id="audio" class="onglet-contenu" role="tabpanel" aria-labelledby="tab-audio" hidden>
+      <h2>🎧 Audios de traduction</h2>
+      <p>Bientôt disponibles.</p>
+    </section>
+    <section id="photos" class="onglet-contenu" role="tabpanel" aria-labelledby="tab-photos" hidden>
+      <h2>🖼️ Photos historique</h2>
+    </section>
+    <section id="videos" class="onglet-contenu" role="tabpanel" aria-labelledby="tab-videos" hidden>
+      <h2>🎥 Vidéos historiques authentiques</h2>
+      <!-- tes vidéos ici -->
+    </section>
+    <section id="rapports" class="onglet-contenu" role="tabpanel" aria-labelledby="tab-rapports" hidden>
+      <h2>📄 Rapports et études</h2>
+      <a href="rapports_idaksahak.html" target="_blank">📄 Mars 2022</a>
+      <a href="rapports_complementaires.html" target="_blank">📁 Complémentaires</a>
+    </section>
+  </main>
+
+  <div id="inscriptionBanner" style="position:fixed;bottom:0;left:0;right:0;background:#005fa3;color:white;padding:1em;text-align:center;z-index:9999;display:none;">
+    📲 Installez cette application !
+    <button id="installBtn" style="margin-left:1em;padding:0.5em 1em;background:white;color:#005fa3;border:none;border-radius:5px;font-weight:bold;">Installer</button>
+    <span style="margin-left:1em;cursor:pointer;" onclick="this.parentNode.style.display='none'">❌</span>
+  </div>
+
+  <script>
+    let deferredPrompt;
+    window.addEventListener('beforeinstallprompt', e => {
+      e.preventDefault();
+      deferredPrompt = e;
+      showInstallBanner();
+    });
+    function showInstallBanner(){
+      if(!deferredPrompt) return;
+      const b = document.getElementById('inscriptionBanner');
+      b.style.display='block';
+      document.getElementById('installBtn').onclick = () => {
+        deferredPrompt.prompt();
+        deferredPrompt.userChoice.then(choice => {
+          deferredPrompt=null;
+          b.style.display='none';
+        });
+      };
+    }
+    setInterval(() => { if(deferredPrompt) showInstallBanner(); }, 30000);
+
+    if('serviceWorker' in navigator){
+      navigator.serviceWorker.register('/sw.js').then(reg => {
+        reg.onupdatefound = () => {
+          if(reg.installing) reg.installing.onstatechange = () => {
+            if(reg.installing.state==='installed' && navigator.serviceWorker.controller){
+              window.location.reload();
+            }
+          };
+        };
+      });
+      navigator.serviceWorker.addEventListener('controllerchange', () => window.location.reload());
+    }
+  </script>
+
+</body>
+</html>
