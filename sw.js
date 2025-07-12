@@ -1,16 +1,15 @@
-const CACHE_NAME = 'tadaksahak-v1.0.1';
+const CACHE_NAME = 'tadaksahak-v1.0.2';
 const ASSETS = [
-  '/', '/index.html', '/style.css', '/app.js',
-  '/data/mots.json', '/data/interface-langue.json',
-  '/manifest.webmanifest',
-  '/images/idaksahak_round.png',
-  '/images/idaksahak_square512.png',
-  '/images/Gmail.png',
-  '/images/whatsapp.png',
+  '/', '/index.html', '/style.css', '/app.js', '/manifest.webmanifest',
+  '/images/idaksahak_round.png', '/images/idaksahak_square.png',
+  '/images/idaksahak_square512.png', '/images/Gmail.png', '/images/whatsapp.png',
+  '/data/mots_final_489.json', '/data/interface-langue.json',
+  '/data/histoire.json', '/data/histoire-fr.json', '/data/histoire-en.json',
+  '/audios/intro-idaksahak.mp3',
   '/offline.html'
 ];
 
-// 💾 Installation : mise en cache initiale
+// Installation
 self.addEventListener('install', event => {
   self.skipWaiting();
   event.waitUntil(
@@ -18,21 +17,20 @@ self.addEventListener('install', event => {
   );
 });
 
-// 🧹 Activation : suppression des anciens caches
+// Activation
 self.addEventListener('activate', event => {
   event.waitUntil(
     caches.keys().then(keys =>
-      Promise.all(keys.filter(key => key !== CACHE_NAME).map(key => caches.delete(key)))
+      Promise.all(keys.filter(k => k !== CACHE_NAME).map(k => caches.delete(k)))
     )
   );
   self.clients.claim();
 });
 
-// 🌐 Interception des requêtes (Cache First + Fallback)
+// Fetch
 self.addEventListener('fetch', event => {
   const req = event.request;
 
-  // Pages HTML (navigations)
   if (req.mode === 'navigate') {
     event.respondWith(
       fetch(req)
@@ -46,7 +44,6 @@ self.addEventListener('fetch', event => {
     return;
   }
 
-  // Ressources statiques (JS, CSS, images, etc.)
   event.respondWith(
     caches.match(req).then(cachedRes => {
       return cachedRes || fetch(req).then(res => {
@@ -63,7 +60,7 @@ self.addEventListener('fetch', event => {
   );
 });
 
-// ⚙️ Réception des messages de mise à jour
+// Mise à jour silencieuse
 self.addEventListener('message', event => {
   if (event.data === 'SKIP_WAITING') {
     self.skipWaiting();
