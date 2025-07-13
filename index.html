@@ -442,6 +442,17 @@
       });
     }
   </script>
-
+  
+ <button id="toggleChatBot" class="floating-chat-btn" aria-label="Ouvrir le chat">💬</button>
+<script>
+  document.getElementById('toggleChatBot').addEventListener('click', () => {
+    const chat = document.getElementById('chat');
+    const allSections = document.querySelectorAll('.onglet-contenu');
+    allSections.forEach(sec => sec.hidden = true);
+    chat.hidden = false;
+    document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+    document.getElementById('tab-chat').classList.add('active');
+  });
+</script>
 </body>
 </html>
