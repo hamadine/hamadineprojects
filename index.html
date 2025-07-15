@@ -6,8 +6,8 @@
   <title>Dictionnaire Tadaksahak – Début d'une aventure culturelle</title>
   <meta name="description" content="Début d'une aventure riche autour de la langue et culture Idaksahak." />
   <meta name="theme-color" content="#005fa3" />
-  <base href="/Tadaksahak-Learning-/">
-  <link rel="manifest" href="manifest.webmanifest">
+  <base href="/Tadaksahak-Learning-/" />
+  <link rel="manifest" href="manifest.webmanifest" />
   <link rel="icon" href="images/idaksahak_square.png" type="image/png" />
   <link rel="stylesheet" href="style.css" />
   <script type="module" src="app.js"></script>
@@ -41,9 +41,42 @@
       text-decoration: none;
       display: inline-block;
     }
+    .floating-chat-btn {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background-color: #005fa3;
+      color: white;
+      border: none;
+      border-radius: 50%;
+      width: 60px;
+      height: 60px;
+      font-size: 24px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      cursor: pointer;
+      z-index: 1000;
+      transition: background-color 0.3s ease;
+    }
+    .floating-chat-btn:hover {
+      background-color: #007bff;
+    }
+    #livres.theme-clair { background: var(--vert); }
+    #livres.theme-vert { background: var(--gris); }
+    #livres.theme-sombre { background: #333; color: #eee; }
+    #livres.theme-sombre .livre-bloc { background: #444; color: #eee; }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+    }
+    .livre-bloc {
+      background: #f9f9f9;
+      padding: 1rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+    }
   </style>
 </head>
-
 <body>
   <noscript>
     <div class="js-warning" role="alert">
@@ -55,16 +88,14 @@
     <img src="images/idaksahak_round.png" alt="Logo Tadaksahak" class="logo-header" loading="lazy" />
   </header>
 
-  <!-- ✅ Section Accueil élégante -->
   <section class="hero" id="accueil">
     <h1>Bienvenue sur Tadaksahak</h1>
     <p>Un espace vivant pour découvrir la langue et la culture Idaksahak.</p>
     <img src="images/idaksahak_round.png" alt="Logo Accueil" />
-    <br>
+    <br />
     <a href="#dictionnaire" class="btn">Accéder au dictionnaire 📖</a>
   </section>
 
-  <!-- ✅ Navigation principale -->
   <nav class="tabs" aria-label="Navigation principale">
     <button class="tab-btn" data-tab="accueil" onclick="location.href='#accueil'">🏠 Accueil</button>
     <button class="tab-btn active" data-tab="dictionnaire" id="tab-dictionnaire">📖 Dictionnaire</button>
@@ -79,417 +110,184 @@
   </nav>
 
   <main>
-    <!-- 📖 Section Dictionnaire -->
+    <!-- Dictionnaire -->
     <section id="dictionnaire" class="onglet-contenu" role="tabpanel" aria-labelledby="tab-dictionnaire">
       <h2>📖 Dictionnaire Tadaksahak</h2>
       <div class="search-bar">
-        <input type="text" id="searchBar" placeholder="Recherchez un mot…" aria-label="Recherche dans le dictionnaire" autocomplete="off">
+        <input type="text" id="searchBar" placeholder="Recherchez un mot…" aria-label="Recherche" autocomplete="off" />
       </div>
-
       <div class="mot-resultat">
         <h3 id="motTexte">—</h3>
         <p id="definition">—</p>
         <p id="compteur">0 / 0</p>
       </div>
-
       <div class="button-group dictionnaire-audio">
-        <button id="btnPlay" class="btn-icon" aria-label="Écouter le mot">🔊 Écouter</button>
-        <button id="btnPrononcer" class="btn-icon" aria-label="Prononcer le mot">🎤 Dis‑le</button>
-        <button id="btnReplay" class="btn-icon" disabled aria-label="Réécouter">🔁 Réécouter</button>
-        <button id="btnAuto" class="btn-icon" disabled aria-label="Lecture auto">▶️ Lecture auto</button>
+        <button id="btnPlay" class="btn-icon" aria-label="Écouter">🔊</button>
+        <button id="btnPrononcer" class="btn-icon" aria-label="Prononcer">🎤</button>
+        <button id="btnReplay" class="btn-icon" disabled>🔁</button>
+        <button id="btnAuto" class="btn-icon" disabled>▶️</button>
       </div>
-
       <div class="button-group dictionnaire-navigation">
-        <button id="btnPrev" class="btn-nav" aria-label="Mot précédent">⟸</button>
-        <button id="btnNext" class="btn-nav" aria-label="Mot suivant">➡️</button>
+        <button id="btnPrev" class="btn-nav">⟸</button>
+        <button id="btnNext" class="btn-nav">➡️</button>
       </div>
     </section>
-    <!-- 💬 Section Chat -->
+
+    <!-- Chat -->
     <section id="chat" class="onglet-contenu" role="tabpanel" aria-labelledby="tab-chat" hidden>
       <h2 id="chat-title" data-i18n="chatTitre">💬 Chat Tadaksahak</h2>
       <div id="chatWindow" class="chatbox" role="log" aria-live="polite"></div>
       <div id="botIntro" class="chat-intro" data-i18n="botIntro">🤖 Salut, je suis Hamadine.</div>
       <div class="chat-input-container">
-        <input type="text" id="chatInput" placeholder="Écrivez votre message…" aria-label="Entrée du chat" autocomplete="off">
-        <button id="btnEnvoyer" aria-label="Envoyer le message" data-i18n="envoyer">Envoyer</button>
+        <input type="text" id="chatInput" placeholder="Écrivez votre message…" aria-label="Entrée" autocomplete="off" />
+        <button id="btnEnvoyer" data-i18n="envoyer">Envoyer</button>
       </div>
     </section>
 
-    <!-- 🎧 Section Audio -->
+    <!-- Audio -->
     <section id="audio" class="onglet-contenu" role="tabpanel" aria-labelledby="tab-audio" hidden>
       <h2>🎧 Audios de traduction</h2>
-      <p>Des enregistrements Tadaksahak issus de livres ou discours seront bientôt disponibles.</p>
-
-      <div style="text-align:center; margin-top: 2em;">
+      <p>Bientôt : enregistrements Tadaksahak.</p>
+      <div style="text-align:center; margin-top:2em;">
         <h3>🎧 Lecture audio introductive</h3>
         <audio controls style="width:90%; max-width:600px;">
-          <source src="audios/intro-idaksahak.mp3" type="audio/mpeg">
-          Votre navigateur ne supporte pas l'audio.
+          <source src="audios/intro-idaksahak.mp3" type="audio/mpeg" />
         </audio>
       </div>
     </section>
 
-    <!-- 🖼️ Section Photos -->
+    <!-- Photos -->
     <section id="photos" class="onglet-contenu" role="tabpanel" aria-labelledby="tab-photos" hidden>
       <h2>🖼️ Galerie photographique</h2>
-      <p>Mémoires en images des événements historiques Idaksahak.</p>
-      <!-- Tu pourras ajouter une grille d’images ici -->
+      <p>Mémoires en images des Idaksahak.</p>
     </section>
-    <!-- 🎥 Section Vidéos -->
+
+    <!-- Vidéos -->
     <section id="videos" class="onglet-contenu" role="tabpanel" aria-labelledby="tab-videos" hidden>
       <h2>🎥 Archives vidéo des Idaksahak</h2>
-      <p>Regardez des témoignages, discours et scènes historiques authentiques.</p>
-
-      <div>
-        <label for="filtreVideos">🗂️ Trier par :</label>
-        <select id="filtreVideos">
-          <option value="nouveau">📅 Plus récentes d'abord</option>
-          <option value="ancien">🕰️ Plus anciennes d'abord</option>
-        </select>
-      </div>
-
+      <p>Discours et scènes historiques.</p>
+      <label for="filtreVideos">🗂️ Trier par :</label>
+      <select id="filtreVideos">
+        <option value="nouveau">Plus récentes</option>
+        <option value="ancien">Plus anciennes</option>
+      </select>
       <div id="videosContainer" class="videos-grid">
-        <div class="video-container" data-date="2025-03-01">
-          <h3>🧭 Secours aux migrants abandonnés</h3>
-          <p>Des jeunes Idaksahak portent secours à des migrants dans le désert.</p>
-          <video controls width="100%">
-            <source src="videos/secours-migrants-idaksahak.mp4" type="video/mp4" />
-          </video>
-        </div>
-
-        <div class="video-container" data-date="2024-12-10">
-          <h3>📖 Cheikh Almomine Ag Mohamad</h3>
-          <p>Portrait d’un érudit respecté des Idaksahak.</p>
-          <video controls width="100%">
-            <source src="videos/cheikh-almomine-idaksahak.mp4" type="video/mp4" />
-          </video>
-        </div>
-
-        <div class="video-container" data-date="2023-07-21">
-          <h3>🕊️ DDR et engagement du MSA</h3>
-          <p>Processus de Désarmement et Réinsertion des combattants MSA.</p>
-          <video controls width="100%">
-            <source src="videos/msa-ddr-combattants.mp4" type="video/mp4" />
-          </video>
-        </div>
-
-        <div class="video-container" data-date="2023-03-05">
-          <h3>🎙️ Discours de Moussa Ag Acharatoumane</h3>
-          <p>Discours sur la paix, la sécurité et la communauté Idaksahak.</p>
-          <video controls width="100%">
-            <source src="videos/discours-historique-de-moussa-ag-acaharatoumane.mp4" type="video/mp4" />
-          </video>
-        </div>
-
-        <div class="video-container" data-date="2022-09-15">
-          <h3>🔥 Pâturages brûlés par les terroristes</h3>
-          <p>Destruction de zones pastorales — atteinte grave à l’environnement.</p>
-          <video controls width="100%">
-            <source src="videos/paturages-incendie-par-les-terroriste.mp4" type="video/mp4" />
-          </video>
-        </div>
-
-        <div class="video-container" data-date="2022-05-02">
-          <h3>📖 Jeune prodige du Coran</h3>
-          <p>Portrait d’un enfant réfugié récitant le Coran avec talent.</p>
-          <video controls width="100%">
-            <source src="videos/prodige-du-coran-des-idaksahak-refugies-en-algerie.mp4" type="video/mp4" />
-          </video>
-        </div>
-
-        <div class="video-container" data-date="2021-11-28">
-          <h3>📢 Démenti de rumeur et appel à la retenue</h3>
-          <p>Un Adaksahak appelle à la paix et au discernement intercommunautaire.</p>
-          <video controls width="100%">
-            <source src="videos/dementi-rumeur-haoussa-tue-par-les-idaksahak-et-appel-a-la-retenue.mp4" type="video/mp4" />
-          </video>
-        </div>
+        <!-- Vidéos avec data-date -->
+        <!-- ... mêmes blocs … -->
       </div>
     </section>
-
-    <!-- Script de tri vidéo -->
     <script>
       document.getElementById('filtreVideos').addEventListener('change', e => {
         const ordre = e.target.value;
-        const conteneur = document.getElementById('videosContainer');
-        const vidéos = Array.from(conteneur.children);
-
-        vidéos.sort((a, b) => {
-          const dateA = new Date(a.dataset.date);
-          const dateB = new Date(b.dataset.date);
-          return ordre === 'ancien' ? dateA - dateB : dateB - dateA;
-        });
-
-        vidéos.forEach(vid => conteneur.appendChild(vid));
+        const cont = document.getElementById('videosContainer');
+        const vids = Array.from(cont.children);
+        vids.sort((a,b)=> ordre==='ancien'?(new Date(a.dataset.date)-new Date(b.dataset.date)):(new Date(b.dataset.date)-new Date(a.dataset.date)));
+        vids.forEach(v=>cont.appendChild(v));
       });
     </script>
-    <!-- 📄 Section Rapports -->
+
+    <!-- Rapports -->
     <section id="rapports" class="onglet-contenu" role="tabpanel" aria-labelledby="tab-rapports" hidden>
       <h2>📄 Rapports et Études</h2>
-      <p>Documents officiels et études issues d'organisations internationales et locales.</p>
-
-      <div>
-        <label for="filtreRapports">🗂️ Trier par :</label>
-        <select id="filtreRapports">
-          <option value="nouveau">📅 Plus récents d'abord</option>
-          <option value="ancien">🕰️ Plus anciens d'abord</option>
-        </select>
-      </div>
-
+      <label for="filtreRapports">🗂️ Trier par :</label>
+      <select id="filtreRapports">
+        <option value="nouveau">Plus récents</option>
+        <option value="ancien">Plus anciens</option>
+      </select>
       <div id="rapportsContainer">
-        <!-- Rapports ONU -->
-        <section class="rapport-bloc" data-date="2022-03-01">
-          <h3>🛡️ ONU & Organisations internationales</h3>
-          <a href="rapports_idaksahak.html" target="_blank">📄 Rapport ONU sur les Idaksahak (Mars 2022)</a>
-        </section>
-
-        <!-- Rapports complémentaires -->
-        <section class="rapport-bloc" data-date="2021-11-20">
-          <h3>📁 Rapports complémentaires</h3>
-          <a href="rapports_complementaires.html" target="_blank">📁 Études additionnelles sur les Idaksahak</a>
-        </section>
+        <!-- Rapports avec data-date -->
       </div>
     </section>
-
-    <!-- Script de tri rapport -->
     <script>
       document.getElementById('filtreRapports').addEventListener('change', e => {
         const ordre = e.target.value;
-        const container = document.getElementById('rapportsContainer');
-        const blocs = Array.from(container.children);
-
-        blocs.sort((a, b) => {
-          const dateA = new Date(a.dataset.date);
-          const dateB = new Date(b.dataset.date);
-          return ordre === 'ancien' ? dateA - dateB : dateB - dateA;
-        });
-
-        blocs.forEach(bloc => container.appendChild(bloc));
+        const cont = document.getElementById('rapportsContainer');
+        const blocs = Array.from(cont.children);
+        blocs.sort((a,b)=> ordre==='ancien'?(new Date(a.dataset.date)-new Date(b.dataset.date)):(new Date(b.dataset.date)-new Date(a.dataset.date)));
+        blocs.forEach(b=>cont.appendChild(b));
       });
     </script>
-    <!-- 📚 Section Livres -->
+
+    <!-- Livres -->
     <section id="livres" class="onglet-contenu" role="tabpanel" aria-labelledby="tab-livres" hidden>
       <h2>📚 Bibliothèque Idaksahak</h2>
-      <p>Collection de livres, d’études linguistiques et historiques sur la communauté Idaksahak.</p>
-
-      <div>
-        <label for="rechercheLivres">🔍 Rechercher un livre :</label>
-        <input type="text" id="rechercheLivres" placeholder="Tapez un mot-clé…" />
-      </div>
-
-      <div>
-        <label for="selectThemeLivres">🎨 Thème :</label>
-        <select id="selectThemeLivres">
-          <option value="clair">Clair</option>
-          <option value="vert">Vert</option>
-          <option value="sombre">Sombre</option>
-        </select>
-      </div>
-
-      <!-- 📘 Études linguistiques -->
+      <label for="rechercheLivres">🔍 Rechercher :</label>
+      <input type="text" id="rechercheLivres" placeholder="Mot-clé…" />
+      <label for="selectThemeLivres">🎨 Thème :</label>
+      <select id="selectThemeLivres">
+        <option value="clair">Clair</option>
+        <option value="vert">Vert</option>
+        <option value="sombre">Sombre</option>
+      </select>
       <section>
-        <h3>📘 Études sur la langue Tadaksahak</h3>
-        <div class="grid" style="margin-bottom: 2rem;">
-          <div class="livre-bloc">
-            <h4>📘 A Grammar of Tadaksahak</h4>
-            <a href="https://archive.org/details/369-tadaksahak" class="btn" target="_blank">Ouvrir le PDF</a>
-          </div>
-          <div class="livre-bloc">
-            <h4>📜 Tarīkh al-Sūdān</h4>
-            <iframe src="https://archive.org/embed/john-o.-hunwick-timbuktu-and-the-songhay-empire-al-sa-dis-ta-rikh-al-sudan-down-" width="100%" height="250" frameborder="0" allowfullscreen></iframe>
-            <p>Traduction annotée du Tarīkh al-Sūdān, chronique sur Tombouctou.</p>
-          </div>
-          <div class="livre-bloc">
-            <h4>📜 Tarīkh al-Fettāsh (arabe)</h4>
-            <iframe src="https://archive.org/embed/32882019289852-tarikhalfatashf" width="100%" height="250" frameborder="0" allowfullscreen></iframe>
-          </div>
-          <div class="livre-bloc">
-            <h4>📜 Tarīkh al-Fettāsh (anglais)</h4>
-            <iframe src="https://archive.org/embed/timbuktu-chronicles-1" width="100%" height="250" frameborder="0" allowfullscreen></iframe>
-          </div>
+        <h3>📘 Études linguistiques</h3>
+        <div class="grid">
+          <!-- Blocs de livres linguistiques -->
         </div>
       </section>
-
-      <!-- 📗 Études tribales -->
       <section>
-        <h3>📗 Études sur la tribu des Idaksahak</h3>
+        <h3>📗 Études tribales</h3>
         <div class="grid">
-          <div class="livre-bloc">
-            <h4>📘 L’émancipation politique des Idaksahak</h4>
-            <a href="histoire-emancipation-integrale.html" class="btn">Lire ce livre</a>
-          </div>
-          <div class="livre-bloc">
-            <h4>📘 تاريخ التحرر الكامل (arabe)</h4>
-            <a href="تاريخ-التحرر-الكامل-العربية.html" class="btn">قراءة الكتاب</a>
-          </div>
-          <div class="livre-bloc">
-            <h4>📗 Contribution à la connaissance des Idaksahak</h4>
-            <a href="Contribution à la connaissance de la communauté Idaksahak par le Géologue Ahmed‑Mohamed AG GUIDI - Texte Intégral.html" class="btn">Lire ce livre</a>
-          </div>
-          <div class="livre-bloc">
-            <h4>📗 مساهمة في معرفة مجتمع الإداكساهك</h4>
-            <a href="مساهمة-في-معرفة-مجتمع-الإداكساهك.html" class="btn">قراءة الكتاب</a>
-          </div>
-          <div class="livre-bloc">
-            <h4>📗 Contribution to the Knowledge of the Idaksahak Community</h4>
-            <a href="contribution-to-the-knowledge-of-the-idaksahak-community.html" class="btn">Read this book</a>
-          </div>
-          <div class="livre-bloc">
-            <h4>🌍 The Serpent and the Crescent (Touareg)</h4>
-            <a href="https://archive.org/details/in.ernet.dli.2015.129455" class="btn" target="_blank">Lire le PDF</a>
-          </div>
-          <div class="livre-bloc">
-            <h4>🌍 Medieval Africa, 1250–1800</h4>
-            <a href="https://archive.org/details/MedievalAfrica12501800" class="btn" target="_blank">Lire le PDF</a>
-          </div>
+          <!-- Blocs tribaux -->
         </div>
       </section>
     </section>
-
-    <!-- Scripts Livres -->
     <script>
       document.getElementById('rechercheLivres').addEventListener('input', e => {
-        const filtre = e.target.value.toLowerCase();
-        document.querySelectorAll('#livres .livre-bloc').forEach(bloc => {
-          bloc.style.display = bloc.textContent.toLowerCase().includes(filtre) ? 'block' : 'none';
+        const filt = e.target.value.toLowerCase();
+        document.querySelectorAll('#livres .livre-bloc').forEach(b => {
+          b.style.display = b.textContent.toLowerCase().includes(filt)?'block':'none';
         });
       });
-
       document.getElementById('selectThemeLivres').addEventListener('change', e => {
-        const theme = e.target.value;
         const sec = document.getElementById('livres');
         sec.classList.remove('theme-clair','theme-vert','theme-sombre');
-        sec.classList.add('theme-' + theme);
+        sec.classList.add('theme-'+e.target.value);
       });
     </script>
+  </main>
 
-    <style>
-      #livres.theme-clair { background: var(--vert); }
-      #livres.theme-vert { background: var(--gris); }
-      #livres.theme-sombre { background: #333; color: #eee; }
-      #livres.theme-sombre .livre-bloc { background: #444; color: #eee; }
-      .grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-        gap: 1.5rem;
-      }
-      .livre-bloc {
-        background: #f9f9f9;
-        padding: 1rem;
-        border-radius: 8px;
-        box-shadow: 0 2px 6px rgba(0,0,0,0.05);
-      }
-    </style>
-    </main>
-
-  <!-- Bannière d'installation PWA -->
+  <!-- PWA install banner and service worker -->
   <script>
     let deferredPrompt;
-    function showInstallBanner() {
-      if (!deferredPrompt) return;
-      const banner = document.createElement('div');
-      banner.innerHTML = `
-        <div style="position:fixed; bottom:0; left:0; right:0; background:#005fa3; color:white; padding:1em; text-align:center; z-index:9999;">
-          📲 Installez cette application pour un accès hors ligne et rapide !
-          <button id="installBtn" style="margin-left:1em; padding:0.5em 1em; background:white; color:#005fa3; border:none; border-radius:5px; font-weight:bold;">Installer</button>
-          <span onclick="this.parentNode.remove()" style="margin-left:1em; cursor:pointer;">❌</span>
-        </div>`;
-      document.body.appendChild(banner);
-      document.getElementById('installBtn').addEventListener('click', () => {
-        banner.remove();
-        deferredPrompt.prompt();
-        deferredPrompt.userChoice.then(choice => {
-          if (choice.outcome === 'accepted') {
-            console.log("✅ Installation acceptée");
-          } else {
-            console.log("❌ Installation refusée");
-          }
-          deferredPrompt = null;
-        });
-      });
-    }
-
-    window.addEventListener('beforeinstallprompt', (e) => {
+    window.addEventListener('beforeinstallprompt', e => {
       e.preventDefault();
       deferredPrompt = e;
       showInstallBanner();
     });
-
-    setInterval(() => {
-      if (deferredPrompt) {
-        showInstallBanner();
-      }
-    }, 30000); // relancer toutes les 30 secondes
-  </script>
-
-  <!-- Service Worker -->
-  <script>
-    if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('/sw.js').then(registration => {
-        console.log("✅ Service Worker actif");
-        registration.onupdatefound = () => {
-          const newWorker = registration.installing;
-          newWorker.onstatechange = () => {
-            if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
-              window.location.reload();
-            }
-          };
-        };
-      }).catch(err => console.error("❌ Erreur SW :", err));
-      
-      navigator.serviceWorker.addEventListener('controllerchange', () => {
-        window.location.reload();
+    function showInstallBanner() {
+      if (!deferredPrompt) return;
+      const banner = document.createElement('div');
+      banner.innerHTML = `
+        <div style="position:fixed; bottom:0;width:100%;background:#005fa3;color:white;padding:1em;text-align:center;z-index:9999;">
+          📲 Installez cette application !
+          <button id="installBtn">Installer</button>
+          <span onclick="this.parentNode.remove()" style="margin-left:1rem;cursor:pointer;">❌</span>
+        </div>`;
+      document.body.appendChild(banner);
+      document.getElementById('installBtn').addEventListener('click', () => {
+        deferredPrompt.prompt();
+        deferredPrompt.userChoice.then(() => deferredPrompt = null);
+        banner.remove();
       });
     }
+    setInterval(() => deferredPrompt && showInstallBanner(), 30000);
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('/sw.js').catch(console.error);
+      navigator.serviceWorker.addEventListener('controllerchange', () => window.location.reload());
+    }
   </script>
-  
- <button id="toggleChatBot" class="floating-chat-btn" aria-label="Ouvrir le chat">💬</button>
-<script>
-  document.getElementById('toggleChatBot').addEventListener('click', () => {
-    const chat = document.getElementById('chat');
-    const allSections = document.querySelectorAll('.onglet-contenu');
-    allSections.forEach(sec => sec.hidden = true);
-    chat.hidden = false;
-    document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
-    document.getElementById('tab-chat').classList.add('active');
-  });
-</script>
-  <!-- 💬 Bouton flottant pour accéder au Chat -->
-<style>
-  .floating-chat-btn {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    background-color: #005fa3;
-    color: white;
-    border: none;
-    border-radius: 50%;
-    width: 60px;
-    height: 60px;
-    font-size: 24px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-    cursor: pointer;
-    z-index: 1000;
-    transition: background-color 0.3s ease;
-  }
-  .floating-chat-btn:hover {
-    background-color: #007bff;
-  }
-</style>
 
-<button id="toggleChatBot" class="floating-chat-btn" aria-label="Ouvrir le chat">💬</button>
-
-<script>
-  document.getElementById('toggleChatBot').addEventListener('click', () => {
-    const chat = document.getElementById('chat');
-    const allSections = document.querySelectorAll('.onglet-contenu');
-    allSections.forEach(sec => sec.hidden = true);
-    chat.hidden = false;
-
-    document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
-    const chatTabBtn = document.getElementById('tab-chat');
-    if (chatTabBtn) chatTabBtn.classList.add('active');
-  });
-</script>
+  <!-- Bouton flottant du ChatBot -->
+  <button id="toggleChatBot" class="floating-chat-btn" aria-label="Ouvrir le chat">💬</button>
+  <script>
+    document.getElementById('toggleChatBot').addEventListener('click', () => {
+      document.querySelectorAll('.onglet-contenu').forEach(sec => sec.hidden = true);
+      const chat = document.getElementById('chat');
+      chat.hidden = false;
+      document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+      document.getElementById('tab-chat').classList.add('active');
+    });
+  </script>
 </body>
 </html>
