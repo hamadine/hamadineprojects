@@ -454,5 +454,42 @@
     document.getElementById('tab-chat').classList.add('active');
   });
 </script>
+  <!-- 💬 Bouton flottant pour accéder au Chat -->
+<style>
+  .floating-chat-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #005fa3;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    font-size: 24px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    cursor: pointer;
+    z-index: 1000;
+    transition: background-color 0.3s ease;
+  }
+  .floating-chat-btn:hover {
+    background-color: #007bff;
+  }
+</style>
+
+<button id="toggleChatBot" class="floating-chat-btn" aria-label="Ouvrir le chat">💬</button>
+
+<script>
+  document.getElementById('toggleChatBot').addEventListener('click', () => {
+    const chat = document.getElementById('chat');
+    const allSections = document.querySelectorAll('.onglet-contenu');
+    allSections.forEach(sec => sec.hidden = true);
+    chat.hidden = false;
+
+    document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+    const chatTabBtn = document.getElementById('tab-chat');
+    if (chatTabBtn) chatTabBtn.classList.add('active');
+  });
+</script>
 </body>
 </html>
