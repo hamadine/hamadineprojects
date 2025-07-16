@@ -1,350 +1,211 @@
+/* RESET & BASE */
 :root {
-  --bleu: #004b82;
-  --vert: #d0f0e0;
-  --jaune: #ffee88;
-  --jaune-clair: #fff199;
-  --gris: #f5f5f5;
-  --texte: #222;
-  --ombre: 0 2px 4px rgba(0,0,0,0.1);
+  --bleu: #005fa3;
+  --bleu-clair: #007bff;
+  --gris: #f2f2f2;
+  --vert: #e9fbe9;
+  --sombre: #1d1d1d;
 }
-
-body {
-  font-family: 'Segoe UI', Tahoma, sans-serif;
+* {
   margin: 0;
   padding: 0;
-  background: linear-gradient(to bottom, var(--bleu) 0 200px, white 200px 100%);
-  color: var(--texte);
+  box-sizing: border-box;
+}
+html {
+  scroll-behavior: smooth;
+}
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background-color: white;
+  color: #333;
   line-height: 1.6;
-  overflow-x: hidden;
+  margin: 0;
+  padding-bottom: 5rem;
+}
+a {
+  text-decoration: none;
+  color: inherit;
+}
+h1, h2, h3 {
+  margin-bottom: .5rem;
 }
 
-/* === TRIANGLE BLEU EN HAUT === */
+/* HEADER */
 .site-header {
-  position: relative;
-  background: transparent;
-  height: 220px;
-  z-index: 2;
-}
-.site-header::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  border-left: 100vw solid transparent;
-  border-right: 100vw solid transparent;
-  border-bottom: 140px solid var(--bleu);
-  z-index: -1;
+  background-color: var(--bleu);
+  color: white;
+  text-align: center;
+  padding: 1rem;
 }
 .logo-header {
-  display: block;
-  max-width: 150px;
-  margin: 0 auto;
-  z-index: 5;
-  position: relative;
+  width: 100px;
+  height: auto;
 }
 
-/* === LANGUES / MENU === */
-.language-buttons {
-  display: flex;
-  justify-content: center;
-  gap: 12px;
-  background: var(--vert);
-  padding: 15px 0;
-  flex-wrap: wrap;
+/* HERO */
+.hero {
+  text-align: center;
+  padding: 3rem 1rem;
+  background: var(--gris);
 }
-#btnLangueInterface, #btnLangueTrad, .langue-item {
-  background-color: var(--jaune);
+.hero .btn {
+  background-color: var(--bleu);
+  color: white;
+  padding: 0.7rem 1.2rem;
   border: none;
-  border-radius: 8px;
-  padding: 8px 14px;
-  font-size: 0.95rem;
-  font-weight: bold;
-  cursor: pointer;
-  box-shadow: var(--ombre);
-}
-.langue-item:hover {
-  background-color: var(--jaune-clair);
+  border-radius: 5px;
+  font-size: 1rem;
+  margin-top: 1rem;
+  display: inline-block;
 }
 
-/* === TABS === */
+/* NAV TABS */
 .tabs {
   display: flex;
-  justify-content: center;
   flex-wrap: wrap;
-  gap: 10px;
-  background: var(--bleu);
-  padding: 10px 0;
+  justify-content: center;
+  background-color: #f0f0f0;
+  padding: .5rem;
 }
 .tab-btn {
-  background-color: var(--jaune);
+  padding: .5rem 1rem;
+  margin: .25rem;
   border: none;
-  border-radius: 6px;
-  padding: 8px 14px;
-  font-size: 0.9rem;
-  font-weight: bold;
-  min-width: 120px;
+  background-color: #e0e0e0;
   cursor: pointer;
-  box-shadow: var(--ombre);
-  transition: 0.2s;
+  border-radius: 4px;
 }
 .tab-btn.active {
-  background-color: #fffacd;
-  border: 2px solid var(--bleu);
-}
-.tab-btn:hover {
-  background-color: var(--jaune-clair);
-}
-.sous-boutons {
-  margin-top: 1em;
-  display: flex;
-  gap: 1em;
-  flex-wrap: wrap;
+  background-color: var(--bleu);
+  color: white;
 }
 
-.sous-boutons button {
-  background-color: #0077cc;
-  color: #fff;
-  border: none;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.sous-boutons button:hover {
-  background-color: #005fa3;
-}
-
-/* === CONTENU PRINCIPAL === */
-main {
-  background: linear-gradient(to bottom, var(--vert) 0%, var(--jaune) 100%);
-  padding: 20px 0;
-}
-
-/* === SECTIONS UNIFORMES === */
+/* MAIN CONTENT */
 .onglet-contenu {
-  background-color: white;
-  margin: 20px auto;
-  padding: 20px;
-  border-radius: 10px;
-  max-width: 850px;
-  box-shadow: var(--ombre);
+  padding: 2rem;
 }
-
-/* === BOUTONS DICTIONNAIRE (2x2) === */
-.button-group {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 10px;
-  margin: 15px auto;
-  max-width: 400px;
-}
-.btn-icon, .btn-nav, #btnEnvoyer {
-  background-color: var(--jaune);
-  border: none;
-  border-radius: 8px;
-  padding: 8px;
-  font-size: 0.9rem;
-  font-weight: bold;
-  text-align: center;
-  cursor: pointer;
-  box-shadow: var(--ombre);
-}
-.btn-icon[disabled], .btn-nav[disabled] {
-  background-color: var(--gris);
-  color: #aaa;
-  cursor: not-allowed;
-}
-.btn-icon:hover:not([disabled]), .btn-nav:hover:not([disabled]), #btnEnvoyer:hover {
-  background-color: var(--jaune-clair);
-}
-.btn-icon:active, .btn-nav:active, #btnEnvoyer:active {
-  transform: scale(0.97);
-}
-
-/* === ZONE DICTIONNAIRE === */
-#dictionnaire {
-  text-align: center;
+.search-bar {
+  margin: 1rem 0;
 }
 .search-bar input {
-  width: 90%;
-  padding: 10px;
-  font-size: 1rem;
-  border-radius: 8px;
+  width: 100%;
+  padding: .5rem;
   border: 1px solid #ccc;
-  margin-bottom: 15px;
+  border-radius: 4px;
 }
-.mot-resultat h3 {
-  font-size: 2rem;
-}
-.mot-resultat p {
+.mot-resultat {
+  margin: 1rem 0;
   font-size: 1.2rem;
 }
-
-/* === CHAT STYLE === */
-#chat {
-  background-color: white;
-  border-radius: 10px;
-  padding: 15px;
-  max-width: 800px;
-  margin: 0 auto;
-}
-.chatbox {
-  background-color: #f9f9f9;
-  border: 1px solid #ccc;
-  height: 250px;
-  overflow-y: auto;
-  padding: 10px;
-  margin-bottom: 10px;
-  border-radius: 6px;
+.button-group {
+  margin: 1rem 0;
   display: flex;
-  flex-direction: column;
+  gap: .5rem;
 }
-#chatWindow .message {
-  margin-bottom: 8px;
-  padding: 10px 14px;
-  border-radius: 12px;
-  max-width: 85%;
+.btn-nav, .btn-icon {
+  padding: .5rem;
+  font-size: 1.2rem;
+  background-color: var(--bleu);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
 }
-#chatWindow .message.utilisateur {
-  background-color: var(--jaune);
-  align-self: flex-end;
-  text-align: right;
-  font-weight: bold;
+.btn-icon[disabled] {
+  background-color: #aaa;
+  cursor: not-allowed;
 }
-#chatWindow .message.bot {
-  background-color: #e0f0ff;
-  align-self: flex-start;
-  text-align: left;
-  color: var(--bleu);
+
+/* CHAT */
+.chatbox {
+  border: 1px solid #ccc;
+  padding: 1rem;
+  height: 300px;
+  overflow-y: auto;
+  background-color: #fafafa;
 }
 .chat-input-container {
   display: flex;
-  gap: 10px;
-  flex-wrap: wrap;
+  margin-top: 1rem;
 }
-#chatInput {
-  flex: 1 1 100%;
-  padding: 10px;
-  border-radius: 6px;
+.chat-input-container input {
+  flex: 1;
+  padding: .5rem;
   border: 1px solid #ccc;
-  font-size: 1rem;
+  border-radius: 4px 0 0 4px;
 }
-#btnEnvoyer {
+.chat-input-container button {
+  padding: .5rem 1rem;
+  border: none;
+  background-color: var(--bleu);
+  color: white;
+  border-radius: 0 4px 4px 0;
+}
+.message {
+  margin-bottom: 1rem;
+}
+.message strong {
+  display: block;
+  margin-bottom: .25rem;
+}
+.message.bot {
+  background: #e3f0ff;
+  padding: .5rem;
+  border-radius: 4px;
+}
+.message.utilisateur {
+  text-align: right;
+  background: #d3ffd3;
+  padding: .5rem;
+  border-radius: 4px;
+}
+
+/* GRID & LIST */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1rem;
+}
+.livre-bloc {
+  background: white;
+  border: 1px solid #ddd;
+  padding: 1rem;
+  border-radius: 5px;
+}
+
+/* FOOTER */
+footer {
+  background: var(--bleu);
+  color: white;
+  text-align: center;
+  padding: 1rem;
+  position: fixed;
+  bottom: 0;
   width: 100%;
 }
 
-/* === LIVRES === */
-.livre-bloc {
-  background-color: #f1f9ff;
-  padding: 15px;
-  margin: 10px 0;
-  border-left: 6px solid var(--bleu);
-  border-radius: 8px;
-}
-.livre-bloc h2 {
-  margin-top: 0;
-}
-.livre-bloc .btn {
-  background-color: var(--bleu);
-  color: white;
-  padding: 8px 16px;
-  text-decoration: none;
-  border-radius: 6px;
-  display: inline-block;
-  margin-top: 10px;
-}
-
-/* === SECTIONS AUTRES === */
-#audio, #photos, #videos, #rapports, #actualites {
-  background-color: white;
-  border-radius: 10px;
-  padding: 15px;
-  margin: 20px auto;
-  box-shadow: var(--ombre);
-  max-width: 800px;
-}
-.videos-grid {
-  display: grid;
-  gap: 2em;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-}
-
-.video-container {
-  background: #fff;
-  border-radius: 8px;
-  padding: 1em;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-}
-.video-container h3 {
-  margin: 0 0 0.5em;
-  font-size: 1.1em;
-  color: #005fa3;
-}
-
-#telechargements ul {
-  list-style-type: none;
-  padding-left: 0;
-}
-#telechargements li {
-  margin: 0.5rem 0;
-}
-#telechargements a {
-  text-decoration: none;
-  color: #005fa3;
-  font-weight: bold;
-}
-#telechargements a:hover {
-  text-decoration: underline;
-}
-.inscription-info {
-  margin-top: 1rem;
-  background: #e7f6ea;
-  padding: 1rem;
-  border-left: 5px solid #28a745;
-  font-weight: bold;
-}
-.card {
-  background: #f9f9f9;
-  padding: 1.5rem;
+/* QUIZ */
+#zoneQuiz {
   margin-top: 2rem;
-  border-radius: 12px;
-  box-shadow: 0 0 10px rgba(0,0,0,0.05);
+}
+.quiz-question {
+  margin-bottom: 1.5rem;
+}
+.quiz-question h3 {
+  margin-bottom: 0.5rem;
+}
+.quiz-question label {
+  display: block;
+  margin-bottom: .25rem;
+}
+.quiz-question input[type="radio"] {
+  margin-right: .5rem;
 }
 
-/* === STATUT === */
-.message-status {
-  background-color: var(--bleu);
-  color: white;
-  text-align: center;
-  padding: 10px;
-  margin-top: 10px;
-}
-.loading-indicator {
-  text-align: center;
-  padding: 10px;
-  font-style: italic;
-}
-.js-warning {
-  background-color: #ffcc00;
-  color: black;
-  text-align: center;
-  padding: 10px;
-}
-
-/* === RESPONSIVE MAINTIEN GRILLE === */
-@media (max-width: 600px) {
-  .tabs, .language-buttons {
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
-  }
+/* MEDIA QUERIES */
+@media screen and (max-width: 600px) {
   .tab-btn {
-    min-width: 44%;
+    font-size: 0.8rem;
+    padding: 0.3rem;
   }
-  .button-group {
-    grid-template-columns: repeat(2, 1fr);
-  }
-  }
+}
