@@ -1,114 +1,166 @@
-// app.js — Version complète avec audio et quiz 🎧🧩
+// app.js — Tadaksahak Learning — version unifiée 🎯
 
-import Fuse from 'fuse.js';
+(async () => {
+  // 🌐 constantes & variables globales
+  const motsComplet = await (await fetch('data/mots_final_489.json')).json();
+  const interfaceData = await (await fetch('data/interface-langue.json')).json();
+  const histoireDocs = await (await fetch('data/histoire.json')).json();
+  const audiosList = await (await fetch('data/audios.json')).json();
+  const photosList = await (await fetch('data/photos.json')).json();
+  const videosList = await (await fetch('data/videos.json')).json();
+  const docsList = await (await fetch('data/docs.json')).json();
+  const livresList = await (await fetch('data/livres.json')).json();
+  const quizList = await (await fetch('data/quiz.json')).json();
 
-const DEFAULT_LANG = 'fr';
+  let mots = [...motsComplet], idx = parseInt(localStorage.getItem('motIndex')) || 0;
+  const langueNav = navigator.language.slice(0,2);
+  let langueInterface = localStorage.getItem('langueInterface') || (langueNav==='en'?'en':'fr');
+  let langueTrad = localStorage.getItem('langueTrad') || 'fr';
+  let fuse;
 
-let motsComplet = [], mots = [], interfaceData = {}, histoireDocs = [];
-let indexMot = 0, langueInterface, langueTrad, fuse;
+  // 🔍 fonctions utilitaires
+  const escapeHTML = str => str.replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[c]));
+  const nettoie = str=>str.normalize("NFD").replace(/[\u0300-\u036f]/g,"").replace(/[^\w\s]/g,"").toLowerCase();
+  const logStatus = (txt,type='info')=>{
+    const e = document.getElementById('messageStatus'); if(!e)return;
+    e.textContent = txt; e.style.color = (type==='error'?'red':'green'); e.hidden=false;
+  };
+  const afficheMsgChat = (who,html)=>{
+    const c = document.getElementById('chatWindow');
+    const m = document.createElement('div');
+    m.className = `message ${who}`;
+    m.innerHTML = `<strong>${who==='bot'?interfaceData[langueInterface]?.bot||'Bot':'Vous'}:</strong> ${html}`;
+    c.appendChild(m); c.scrollTop=c.scrollHeight;
+    m.querySelectorAll('.btn-ecoute').forEach(b=>{
+      b.onclick=()=>{
+        new Audio(`audios/${b.dataset.key}.mp3`).play().catch(()=>{
+          alert("⚠️ Audio non disponible.")
+        });
+      }
+    });
+  };
 
-// --- UTILITAIRES ---
-const escapeHTML = s => s.replace(/[&<>"']/g, c => ({ '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[c]));
-const normalise = s => s.normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^\w\s]/gi, "").toLowerCase();
-const logStatus = (msg, err = false) => {
-  const el = document.getElementById('messageStatus');
-  if (el) el.hidden = false, el.textContent = msg, el.style.color = err ? 'red' : 'green';
-};
-
-// --- DICO ---
-function showMot(i = indexMot) {
-  if (!mots.length) return;
-  indexMot = Math.min(Math.max(0, i), mots.length - 1);
-  localStorage.setItem('motIndex', indexMot);
-  const m = mots[indexMot];
-  document.getElementById('motTexte').textContent = m.mot;
-  document.getElementById('definition').innerHTML =
-    escapeHTML(m[langueTrad] || '') + (m.cat ? ` <span class="cat">(${escapeHTML(m.cat)})</span>` : '');
-  document.getElementById('compteur').textContent = `${indexMot + 1} / ${mots.length}`;
-}
-document.getElementById('btnPlay')?.addEventListener('click', _ => {
-  const m = mots[indexMot];
-  if (m.audio) new Audio(`audios/${m.audio}`).play();
-});
-document.getElementById('btnPrononcer')?.addEventListener('click', _ => {
-  const text = mots[indexMot]?.mot;
-  if (text && 'speechSynthesis' in window) {
-    speechSynthesis.speak(new SpeechSynthesisUtterance(text));
-  }
-});
-
-// --- CHAT BOT ---
-function postMessage(who, content) { /* identique à version précédente */ }
-async function chatSend() { /* identique à version précédente */ }
-
-// --- QUIZ ---
-let quizIndex = 0, quizScore = 0, quizQuestions = [];
-function startQuiz() {
-  quizQuestions = motsComplet.slice(0, 10).map(m => ({
-    question: `Quelle est la traduction en français de "${m.mot}" ?`,
-    answer: m.fr
-  }));
-  quizScore = 0;
-  quizIndex = 0;
-  showQuizQuestion();
-}
-function showQuizQuestion() {
-  const qDiv = document.getElementById('quizQuestion');
-  const oDiv = document.getElementById('quizOptions');
-  const scoreDiv = document.getElementById('quizScore');
-  if (quizIndex >= quizQuestions.length) {
-    qDiv.textContent = "Quiz terminé !";
-    oDiv.innerHTML = `<p>Votre score : ${quizScore} / ${quizQuestions.length}</p>`;
-    return;
-  }
-  const q = quizQuestions[quizIndex];
-  qDiv.textContent = q.question;
-  const opts = [q.answer, ...motsComplet.slice(quizIndex + 1, quizIndex + 4).map(m => m.fr)]
-    .sort(() => Math.random() - 0.5);
-  oDiv.innerHTML = opts.map(o => `<button class="quiz-opt">${escapeHTML(o)}</button>`).join('');
-  scoreDiv.textContent = `Score : ${quizScore}`;
-  oDiv.querySelectorAll('.quiz-opt').forEach(btn => {
-    btn.onclick = () => {
-      if (btn.textContent === q.answer) quizScore++;
-      quizIndex++;
-      showQuizQuestion();
+  // 🧭 navigation onglets
+  document.querySelectorAll('.tab-btn').forEach(btn=>{
+    btn.onclick = ()=>{
+      document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+      document.querySelectorAll('.onglet-contenu').forEach(s=>s.hidden=true);
+      btn.classList.add('active');
+      const id = btn.dataset.tab;
+      document.getElementById(id).hidden = false;
     };
   });
-}
 
-// --- INIT et liaison DOM ---
-async function initApp() {
-  try {
-    logStatus("Chargement...");
-    langueInterface = localStorage.getItem('langueInterface') || DEFAULT_LANG;
-    langueTrad = localStorage.getItem('langueTrad') || DEFAULT_LANG;
+  // 🧩 dictionnaire + recherche
+  fuse = new Fuse(mots, { keys:['mot','fr','en'], threshold:0.4 });
+  const showMot = (n)=>{
+    idx = Math.max(0,Math.min(mots.length-1,n));
+    localStorage.setItem('motIndex',idx);
+    const m = mots[idx];
+    document.getElementById('motTexte').textContent = m.mot||'—';
+    document.getElementById('definition').innerHTML = escapeHTML(m[langueTrad]||'—') + (m.cat?` <span style="color:#888">(${escapeHTML(m.cat)})</span>`:'');
+    document.getElementById('compteur').textContent = `${idx+1}/${mots.length}`;
+  };
+  document.getElementById('btnPrev').onclick = ()=>showMot(idx-1);
+  document.getElementById('btnNext').onclick = ()=>showMot(idx+1);
+  document.getElementById('searchBar').oninput = e=>{
+    const q = nettoie(e.target.value); mots = q? fuse.search(q).map(r=>r.item):[...motsComplet];
+    mots.length? showMot(0) : (()=>{document.getElementById('motTexte').textContent="Aucun résultat";document.getElementById('definition').textContent="";document.getElementById('compteur').textContent="0/0";})();
+  };
+  showMot(idx);
 
-    [motsComplet, interfaceData, histoireDocs] = await Promise.all([
-      fetch('data/mots_final_489.json').then(r=>r.json()),
-      fetch('data/interface-langue.json').then(r=>r.json()),
-      fetch(`data/histoire-${langueInterface}.json`).then(r=>r.json())
-    ]);
-    fuse = new Fuse(motsComplet, { keys: ['mot', 'fr', 'en'], threshold: 0.4 });
-    mots = [...motsComplet];
-    showMot(+localStorage.getItem('motIndex') || 0);
+  // 💬 chat intelligent
+  document.getElementById('btnEnvoyer').onclick = ()=>{
+    const txt = document.getElementById('chatInput').value.trim(); if(!txt)return;
+    document.getElementById('chatInput').value = '';
+    afficheMsgChat('user',escapeHTML(txt));
+    const c = nettoie(txt), bot=interfaceData[langueInterface]?.botIntelligence||{};
+    if(bot.insultes?.some(i=>c.includes(nettoie(i)))) return afficheMsgChat('bot', bot.insulte || "🙏");
+    if(bot.salutations_triggers?.some(t=>c.includes(nettoie(t)))) return afficheMsgChat('bot', bot.salutations[Math.floor(Math.random()*bot.salutations.length)]);
+    for(const fq in bot.faq||{}) if(c.includes(nettoie(fq))) return afficheMsgChat('bot', bot.faq[fq]);
+    const res = fuse.search(txt).slice(0,1);
+    if(res.length) {
+      const m=res[0].item;
+      return afficheMsgChat('bot',`🔍 <strong>${m.mot}</strong><br>Français: <strong>${m.fr}</strong><br>Anglais: <strong>${m.en}</strong>`);
+    }
+    // recherche histoire
+    for(const t in bot.chatTriggers||{}) {
+      if(c.includes(nettoie(t))) {
+        const doc = histoireDocs.find(d=>nettoie(d.titre+d.contenu).includes(nettoie(t)));
+        if(doc) {
+          let out=`<strong>${escapeHTML(doc.titre)}</strong><br>${escapeHTML(doc.contenu)}<br><button class="btn-ecoute" data-key="${t}">🔊 Écouter</button>`;
+          if(doc.image) out+=`<br><img src="${doc.image}">`;
+          if(doc.video) out+=`<br><video controls src="${doc.video}">`;
+          return afficheMsgChat('bot',out);
+        }
+        return afficheMsgChat('bot',`🔎 Rien sur «${t}».`);
+      }
+    }
+    afficheMsgChat('bot', bot.incompréhension || "❓Je ne sais pas.");
+  });
 
-    document.getElementById('searchBar').oninput = e => {
-      const q = normalise(e.target.value);
-      mots = q ? fuse.search(q).map(r=>r.item) : [...motsComplet];
-      showMot(0);
+  // 🎧 audios
+  const audC = document.getElementById('audioContainer');
+  if(audC) audiosList.forEach(a=>{
+    const b = document.createElement('button');
+    b.textContent = `▶️ ${a.title}`;
+    b.onclick = ()=>new Audio(a.src).play();
+    audC.appendChild(b);
+  });
+
+  // 🖼️ photos
+  const photC = document.getElementById('photosContainer');
+  if(photC) photosList.forEach(p=>photC.innerHTML+=`<img src="${p.src}" alt="${p.alt}">`);
+
+  // 🎥 vidéos
+  const vidC = document.getElementById('videosContainer');
+  if(vidC) videosList.forEach(v=>vidC.innerHTML+=`<video controls data-date="${v.date}" src="${v.src}" title="${v.title}"></video>`);
+
+  document.getElementById('filtreVideos')?.onchange = e=>{
+    const ord = e.target.value==='ancien'?1:-1;
+    Array.from(vidC.children).sort((a,b)=>(new Date(a.dataset.date)-new Date(b.dataset.date))*ord).forEach(n=>vidC.appendChild(n));
+  };
+
+  // 📄 docs
+  const docC = document.getElementById('rapportsContainer');
+  if(docC) docsList.filter(d=>d.type!=='communique').forEach(d=>docC.innerHTML+=`<a href="${d.url}" target="_blank">${d.title}</a> (${d.date})<br>`);
+  const actC = document.getElementById('newsContainer');
+  if(actC) docsList.filter(d=>d.type==='communique').forEach(d=>{
+    actC.innerHTML+=`<a href="${d.url}" target="_blank">${d.title}</a> (${d.date})<br>`;
+  });
+
+  // 📚 livres
+  const libC = document.getElementById('livresContainer');
+  const filtreLivres = ()=>{
+    const kw=document.getElementById('rechercheLivres').value.toLowerCase();
+    const sel=document.getElementById('selectThemeLivres').value;
+    libC.innerHTML = livresList.filter(l=> l.cat===sel && l.title.toLowerCase().includes(kw))
+      .map(l=>`<a href="${l.url}" target="_blank">${l.title}</a><br>`).join('');
+  };
+  document.getElementById('rechercheLivres').oninput = filtreLivres;
+  document.getElementById('selectThemeLivres').onchange = filtreLivres;
+  filtreLivres();
+
+  // ❓ quiz
+  const quizC = document.getElementById('quizContainer');
+  if(quizC) {
+    let qi=0, score=0;
+    const nextQ = ()=>{
+      if(qi>=quizList.length) {
+        quizC.innerHTML = `Votre score: ${score}/${quizList.length}`;
+        return;
+      }
+      const q=quizList[qi];
+      quizC.innerHTML = `<h3>${q.q}</h3>` + q.opts.map((o,i)=>`<button class="quizOpt" data-i="${i}">${o}</button>`).join('');
+      quizC.querySelectorAll('.quizOpt').forEach(b=>{
+        b.onclick=()=>{
+          if(parseInt(b.dataset.i)===q.a) score++;
+          qi++; nextQ();
+        };
+      });
     };
-
-    document.getElementById('btnPrev').onclick = _ => showMot(indexMot - 1);
-    document.getElementById('btnNext').onclick = _ => showMot(indexMot + 1);
-    document.getElementById('btnEnvoyer').onclick = chatSend;
-
-    // Quiz controls
-    document.getElementById('startQuiz')?.addEventListener('click', startQuiz);
-
-    logStatus("✅ Prêt !");
-  } catch (e) {
-    console.error(e);
-    logStatus(e.message, true);
+    nextQ();
   }
-}
-document.addEventListener('DOMContentLoaded', initApp);
+
+  logStatus("✅ Application prête.");
+})();
