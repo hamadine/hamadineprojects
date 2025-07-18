@@ -1,24 +1,19 @@
-// app.js — Tadaksahak Learning — version unifiée 🎯
-
-(async () => {
-  // 🌐 constantes & variables globales
-  const motsComplet = await (await fetch('data/mots_final_489.json')).json();
-  const interfaceData = await (await fetch('data/interface-langue.json')).json();
-  const histoireDocs = await (await fetch('data/histoire.json')).json();
-  const audiosList = await (await fetch('data/audios.json')).json();
-  const photosList = await (await fetch('data/photos.json')).json();
-  const videosList = await (await fetch('data/videos.json')).json();
-  const docsList = await (await fetch('data/docs.json')).json();
-  const livresList = await (await fetch('data/livres.json')).json();
-  const quizList = await (await fetch('data/quiz.json')).json();
+(() => {
+  const motsComplet = mots_final_489;
+  const interfaceData = interface_langue;
+  const histoireDocs = histoire;
+  const audiosList = audios;
+  const photosList = photos;
+  const videosList = videos;
+  const docsList = docs;
+  const livresList = livres;
+  const quizList = quiz;
 
   let mots = [...motsComplet], idx = parseInt(localStorage.getItem('motIndex')) || 0;
   const langueNav = navigator.language.slice(0,2);
   let langueInterface = localStorage.getItem('langueInterface') || (langueNav==='en'?'en':'fr');
   let langueTrad = localStorage.getItem('langueTrad') || 'fr';
   let fuse;
-
-  // 🔍 fonctions utilitaires
   const escapeHTML = str => str.replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[c]));
   const nettoie = str=>str.normalize("NFD").replace(/[\u0300-\u036f]/g,"").replace(/[^\w\s]/g,"").toLowerCase();
   const logStatus = (txt,type='info')=>{
@@ -39,8 +34,6 @@
       }
     });
   };
-
-  // 🧭 navigation onglets
   document.querySelectorAll('.tab-btn').forEach(btn=>{
     btn.onclick = ()=>{
       document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
@@ -50,8 +43,6 @@
       document.getElementById(id).hidden = false;
     };
   });
-
-  // 🧩 dictionnaire + recherche
   fuse = new Fuse(mots, { keys:['mot','fr','en'], threshold:0.4 });
   const showMot = (n)=>{
     idx = Math.max(0,Math.min(mots.length-1,n));
@@ -68,8 +59,6 @@
     mots.length? showMot(0) : (()=>{document.getElementById('motTexte').textContent="Aucun résultat";document.getElementById('definition').textContent="";document.getElementById('compteur').textContent="0/0";})();
   };
   showMot(idx);
-
-  // 💬 chat intelligent
   document.getElementById('btnEnvoyer').onclick = ()=>{
     const txt = document.getElementById('chatInput').value.trim(); if(!txt)return;
     document.getElementById('chatInput').value = '';
@@ -83,7 +72,6 @@
       const m=res[0].item;
       return afficheMsgChat('bot',`🔍 <strong>${m.mot}</strong><br>Français: <strong>${m.fr}</strong><br>Anglais: <strong>${m.en}</strong>`);
     }
-    // recherche histoire
     for(const t in bot.chatTriggers||{}) {
       if(c.includes(nettoie(t))) {
         const doc = histoireDocs.find(d=>nettoie(d.titre+d.contenu).includes(nettoie(t)));
@@ -97,9 +85,7 @@
       }
     }
     afficheMsgChat('bot', bot.incompréhension || "❓Je ne sais pas.");
-  });
-
-  // 🎧 audios
+  };
   const audC = document.getElementById('audioContainer');
   if(audC) audiosList.forEach(a=>{
     const b = document.createElement('button');
@@ -108,11 +94,9 @@
     audC.appendChild(b);
   });
 
-  // 🖼️ photos
   const photC = document.getElementById('photosContainer');
   if(photC) photosList.forEach(p=>photC.innerHTML+=`<img src="${p.src}" alt="${p.alt}">`);
 
-  // 🎥 vidéos
   const vidC = document.getElementById('videosContainer');
   if(vidC) videosList.forEach(v=>vidC.innerHTML+=`<video controls data-date="${v.date}" src="${v.src}" title="${v.title}"></video>`);
 
@@ -120,8 +104,6 @@
     const ord = e.target.value==='ancien'?1:-1;
     Array.from(vidC.children).sort((a,b)=>(new Date(a.dataset.date)-new Date(b.dataset.date))*ord).forEach(n=>vidC.appendChild(n));
   };
-
-  // 📄 docs
   const docC = document.getElementById('rapportsContainer');
   if(docC) docsList.filter(d=>d.type!=='communique').forEach(d=>docC.innerHTML+=`<a href="${d.url}" target="_blank">${d.title}</a> (${d.date})<br>`);
   const actC = document.getElementById('newsContainer');
@@ -129,7 +111,6 @@
     actC.innerHTML+=`<a href="${d.url}" target="_blank">${d.title}</a> (${d.date})<br>`;
   });
 
-  // 📚 livres
   const libC = document.getElementById('livresContainer');
   const filtreLivres = ()=>{
     const kw=document.getElementById('rechercheLivres').value.toLowerCase();
@@ -141,7 +122,6 @@
   document.getElementById('selectThemeLivres').onchange = filtreLivres;
   filtreLivres();
 
-  // ❓ quiz
   const quizC = document.getElementById('quizContainer');
   if(quizC) {
     let qi=0, score=0;
