@@ -1,4 +1,4 @@
-[
+const histoire-en = [
   {
     "titre": "Religion and Language among the Idaksahak",
     "contenu": "Tadaksahak is a scholarly language with strong liturgical roots, used in the oral transmission of Islamic knowledge. The Idaksahak community, known for its piety, strictly follows Sunni Islam of the Maliki school. Religious scholars (cadis and learned men) from this community provide spiritual, educational, and social leadership, sometimes in rivalry with Kel Essouk ideologues. Quranic education is free and widespread. As a deeply Muslim people, the Idaksahak reject raids and promote non-violence, religious knowledge, and peace as core identity values. Source: Summary by Hamadine AG MOCTAR, based on the document 'Contribution to the Knowledge of the Idaksahak Community' by Ahmed Mohamed AG GUIDI, Geological Engineer, 2019.",
