@@ -1,4 +1,4 @@
-[
+const histoire = [
   {
     "titre": "Religion et Langue chez les Idaksahak",
     "contenu": "Le Tadaksahak est une langue savante à fort ancrage liturgique, utilisée dans la transmission orale du savoir islamique. La communauté Idaksahak, réputée pour sa piété, suit rigoureusement l’islam sunnite de rite malikite. Les érudits religieux (cadis et lettrés) issus de cette communauté assurent la direction spirituelle, éducative et sociale, parfois dans un contexte de rivalité avec les idéologues Kel Essouk. L’enseignement coranique y est gratuit et largement répandu. En tant que peuple profondément musulman, les Idaksahak refusent les razzias et valorisent la non-violence, le savoir religieux et la paix comme fondement identitaire. Source : Résumé de l’article rédigé par Hamadine AG MOCTAR, basé sur le document « Contribution à la connaissance de la communauté Idaksahak » d’Ahmed Mohamed AG GUIDI, Ingénieur Géologue, 2019.",
