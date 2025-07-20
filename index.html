@@ -34,16 +34,12 @@
     <p>Culture, langue et histoire Idaksahak réunies</p>
   </header>
 
-  <!-- Boutons de langue modernes -->
+  <!-- Boutons de langue -->
   <div class="lang-switcher">
-    <button id="btnLangueInterface" class="lang-btn" aria-haspopup="menu" aria-expanded="false" aria-controls="menuLangueInterface">
-      🌐 Interface&nbsp;: Français <span class="chevron">▼</span>
-    </button>
-    <div id="menuLangueInterface" class="lang-menu" hidden role="menu" aria-label="Choix de la langue d'interface"></div>
-    <button id="btnLangueTrad" class="lang-btn" aria-haspopup="menu" aria-expanded="false" aria-controls="menuLangueTrad">
-      🈯 Traduction&nbsp;: Français <span class="chevron">▼</span>
-    </button>
-    <div id="menuLangueTrad" class="lang-menu" hidden role="menu" aria-label="Choix de la langue de traduction"></div>
+    <button id="btnLangueInterface" class="lang-btn">🌐 Interface&nbsp;: Français <span class="chevron">▼</span></button>
+    <div id="menuLangueInterface" class="lang-menu" hidden></div>
+    <button id="btnLangueTrad" class="lang-btn">🈯 Traduction&nbsp;: Français <span class="chevron">▼</span></button>
+    <div id="menuLangueTrad" class="lang-menu" hidden></div>
   </div>
 
   <!-- Navigation à onglets -->
@@ -51,7 +47,7 @@
     <button class="tab-btn active" data-tab="accueil">🏠 Accueil</button>
     <button class="tab-btn" data-tab="dictionnaire">📖 Dictionnaire</button>
     <button class="tab-btn" data-tab="chat">💬 Chat</button>
-    <button class="tab-btn" data-tab="Album musical Hamadine">🎧 Album musical</button>
+    <button class="tab-btn" data-tab="audio">🎧 Album musical</button>
     <button class="tab-btn" data-tab="photos">🖼️ Photos</button>
     <button class="tab-btn" data-tab="videos">🎥 Vidéos</button>
     <button class="tab-btn" data-tab="rapports">📄 Rapports & Études</button>
@@ -68,9 +64,7 @@
         <p>Un espace pour explorer la langue, la culture et l’histoire Idaksahak.</p>
         <a class="btn" data-tab-link="dictionnaire">Accéder au dictionnaire 📖</a>
       </div>
-      <p>
-        <a href="offline.html">Accès hors-ligne / Offline mode</a>
-      </p>
+      <p><a href="offline.html">Accès hors-ligne / Offline mode</a></p>
     </section>
 
     <!-- Dictionnaire -->
@@ -97,18 +91,18 @@
 
     <!-- Chat -->
     <section id="chat" class="onglet-contenu" hidden>
-      <h2 id="chat-title" data-i18n="chatTitre">💬 Chat Tadaksahak</h2>
+      <h2 id="chat-title">💬 Chat Tadaksahak</h2>
       <div id="chatWindow" class="chatbox"></div>
-      <div id="botIntro" data-i18n="botIntro">🤖 Salut, je suis Hamadine.</div>
+      <div id="botIntro">🤖 Salut, je suis Hamadine.</div>
       <div class="chat-input">
         <input id="chatInput" placeholder="Écrivez votre message…">
-        <button id="btnEnvoyer" data-i18n="envoyer">Envoyer</button>
+        <button id="btnEnvoyer">Envoyer</button>
       </div>
     </section>
 
-    <!-- Audio -->
+    <!-- Album musical -->
     <section id="audio" class="onglet-contenu" hidden>
-      <h2>🎧 Audios</h2>
+      <h2>🎧 Albums musicaux</h2>
       <div id="audioContainer"></div>
     </section>
 
@@ -126,7 +120,7 @@
       <div id="videosContainer" class="grid"></div>
     </section>
 
-    <!-- Rapports & Études -->
+    <!-- Rapports -->
     <section id="rapports" class="onglet-contenu" hidden>
       <h2>📄 Rapports & Études</h2>
       <ul>
@@ -136,7 +130,7 @@
       <div id="rapportsContainer"></div>
     </section>
 
-    <!-- Actualités & Conseil -->
+    <!-- Actualités -->
     <section id="actualites" class="onglet-contenu" hidden>
       <h2>📰 Actualités</h2>
       <ul>
@@ -146,7 +140,7 @@
       <div id="newsContainer"></div>
     </section>
 
-    <!-- Livres & Histoire -->
+    <!-- Livres -->
     <section id="livres" class="onglet-contenu" hidden>
       <h2>📚 Livres et études</h2>
       <div class="grid two-columns">
@@ -187,11 +181,11 @@
     </section>
   </main>
 
-  <button id="toggleChatBot" class="floating-chat-btn" aria-label="Ouvrir le chat">💬</button>
+  <button id="toggleChatBot" class="floating-chat-btn">💬</button>
 
   <footer>
     <p>© 2025 Tadaksahak Learning — Tous droits réservés</p>
     <p><a href="offline.html">Accès hors-ligne / Offline mode</a></p>
   </footer>
 </body>
-  </html>
+</html>
