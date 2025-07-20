@@ -2,11 +2,11 @@ const audios = [
   {
     album: "Idaksahak",
     pistes: [
-      { title: "Hamadine – Dis-moi", src: "data/audio/Idaksahak/hamadine_dis_moi.mp3" },
-      { title: "À chaque instant Tamalat – Hamadine", src: "data/audio/Idaksahak/a_chaque_instant_tamalat.mp3" },
-      { title: "الصحراء لها اسم", src: "data/audio/Idaksahak/sahara_laha_ism.mp3" },
-      { title: "Hommage à Moussa", src: "data/audio/Idaksahak/hommage_moussa.mp3" },
-      { title: "Idakssahak", src: "data/audio/Idaksahak/idakssahak.mp3" }
+      { title: "Hamadine – Dis-moi", src: "data/audio/Idaksahak/hamadine_dis-moi.mp3" },
+      { title: "À chaque instant Tamalat – Hamadine", src: "data/audio/Idaksahak/le_désert_a_un_nom.mp3" },
+      { title: "الصحراء لها اسم", src: "data/audio/Idaksahak/2_الصحراء_لها_اسم.mp3" },
+      { title: "Hommage à Moussa", src: "data/audio/Idaksahak/hommage_à__Moussa_.mp3" },
+      { title: "Idakssahak", src: "data/audio/Idaksahak/idakssahak_(1).mp3" }
     ]
   },
   {
