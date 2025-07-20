@@ -179,13 +179,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
     afficheMsgChat('bot', reponse);
   });
-// --- Albums musicaux ---
-  
+// --- Audio ---
 const audC = document.getElementById('audioContainer');
 if (audC && audiosList?.length) {
   audiosList.forEach(album => {
     const albumTitre = document.createElement('h3');
-    albumTitre.textContent = `🎵 ${album.album}`;
+    albumTitre.innerHTML = `🎵 <span class="album-name">${album.album}</span>`;
     audC.appendChild(albumTitre);
 
     album.pistes.forEach(piste => {
@@ -203,10 +202,6 @@ if (audC && audiosList?.length) {
       conteneur.appendChild(lecteur);
       audC.appendChild(conteneur);
     });
-  });
-}
-
-    audC.appendChild(section);
   });
 }
 
