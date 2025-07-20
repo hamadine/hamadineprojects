@@ -1,4 +1,4 @@
-{
+const interface_langue ={
   "fr": {
     "precedent": "Précédent",
     "suivant": "Suivant",
