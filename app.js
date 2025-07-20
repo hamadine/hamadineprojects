@@ -179,14 +179,33 @@ document.addEventListener("DOMContentLoaded", () => {
 
     afficheMsgChat('bot', reponse);
   });
-  // --- Audio ---
-  const audC = document.getElementById('audioContainer');
-  if(audC && audiosList?.length) audiosList.forEach(a=>{
-    const b = document.createElement('button');
-    b.textContent = `▶️ ${a.title}`;
-    b.onclick = () => new Audio(a.src).play();
-    audC.appendChild(b);
+// --- Albums musicaux ---
+const audC = document.getElementById('audioContainer');
+if (audC && audiosList?.length) {
+  audiosList.forEach(album => {
+    const section = document.createElement('section');
+    section.className = 'album';
+
+    const titre = document.createElement('h3');
+    titre.textContent = `🎵 ${album.album}`;
+    section.appendChild(titre);
+
+    const cover = document.createElement('img');
+    cover.src = `data/audio/${album.album}/cover.jpg`;
+    cover.alt = album.album;
+    cover.style = "max-width:100%;height:auto;margin-bottom:10px";
+    section.appendChild(cover);
+
+    album.pistes.forEach(piste => {
+      const div = document.createElement('div');
+      div.className = 'piste';
+      div.innerHTML = `<p>${piste.title}</p><audio controls src="${piste.src}"></audio>`;
+      section.appendChild(div);
+    });
+
+    audC.appendChild(section);
   });
+}
 
   // --- Photos ---
   const photC = document.getElementById('photosContainer');
