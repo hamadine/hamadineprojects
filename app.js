@@ -195,13 +195,12 @@ if (audC && audiosList?.length) {
     cover.alt = album.album;
     cover.style = "max-width:100%;height:auto;margin-bottom:10px";
     section.appendChild(cover);
-
-    album.pistes.forEach(piste => {
-      const div = document.createElement('div');
-      div.className = 'piste';
-      div.innerHTML = `<p>${piste.title}</p><audio controls src="${piste.src}"></audio>`;
-      section.appendChild(div);
-    });
+(album.pistes || album.tracks || []).forEach(piste => {
+  const btn = document.createElement('button');
+  btn.textContent = `▶️ ${piste.title}`;
+  btn.onclick = () => new Audio(piste.src).play();
+  audC.appendChild(btn);
+});
 
     audC.appendChild(section);
   });
