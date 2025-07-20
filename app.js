@@ -180,27 +180,31 @@ document.addEventListener("DOMContentLoaded", () => {
     afficheMsgChat('bot', reponse);
   });
 // --- Albums musicaux ---
+  
 const audC = document.getElementById('audioContainer');
 if (audC && audiosList?.length) {
   audiosList.forEach(album => {
-    const section = document.createElement('section');
-    section.className = 'album';
+    const albumTitre = document.createElement('h3');
+    albumTitre.textContent = `🎵 ${album.album}`;
+    audC.appendChild(albumTitre);
 
-    const titre = document.createElement('h3');
-    titre.textContent = `🎵 ${album.album}`;
-    section.appendChild(titre);
+    album.pistes.forEach(piste => {
+      const conteneur = document.createElement('div');
+      conteneur.className = 'audio-track';
 
-    const cover = document.createElement('img');
-    cover.src = `data/audio/${album.album}/cover.jpg`;
-    cover.alt = album.album;
-    cover.style = "max-width:100%;height:auto;margin-bottom:10px";
-    section.appendChild(cover);
-(album.pistes || album.tracks || []).forEach(piste => {
-  const btn = document.createElement('button');
-  btn.textContent = `▶️ ${piste.title}`;
-  btn.onclick = () => new Audio(piste.src).play();
-  audC.appendChild(btn);
-});
+      const titre = document.createElement('span');
+      titre.textContent = piste.title;
+
+      const lecteur = document.createElement('audio');
+      lecteur.controls = true;
+      lecteur.src = piste.src;
+
+      conteneur.appendChild(titre);
+      conteneur.appendChild(lecteur);
+      audC.appendChild(conteneur);
+    });
+  });
+}
 
     audC.appendChild(section);
   });
