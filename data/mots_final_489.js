@@ -1,4 +1,4 @@
-[
+const mots_final_489 =[
   {
     "mot":"bɛːʃɛ",
     "cat":"n.",
