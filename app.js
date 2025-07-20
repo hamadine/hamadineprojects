@@ -20,7 +20,6 @@ document.addEventListener("DOMContentLoaded", () => {
     e.hidden = false;
     setTimeout(() => { e.hidden = true; }, 3000);
   };
-
   // --- Navigation par onglets ---
   document.querySelectorAll('.tab-btn').forEach(btn=>{
     btn.onclick = ()=>{
@@ -32,7 +31,7 @@ document.addEventListener("DOMContentLoaded", () => {
     };
   });
 
-  // Lien rapide via data-tab-link (ex: bouton sur page accueil)
+  // Lien rapide via data-tab-link
   document.querySelectorAll('[data-tab-link]').forEach(link=>{
     link.onclick = e => {
       e.preventDefault();
@@ -47,7 +46,6 @@ document.addEventListener("DOMContentLoaded", () => {
     { code: 'en', label: 'English' },
     { code: 'ar', label: 'العربية' },
   ];
-  // Interface
   const btnLangueInterface = document.getElementById('btnLangueInterface');
   const menuLangueInterface = document.getElementById('menuLangueInterface');
   if(btnLangueInterface && menuLangueInterface) {
@@ -63,11 +61,10 @@ document.addEventListener("DOMContentLoaded", () => {
         menuLangueInterface.hidden = true;
         localStorage.setItem('langueInterface', btn.dataset.lang);
         logStatus(`Langue interface sélectionnée : ${btn.textContent}`);
-        // Optionnel : actualiser le texte de l’interface ici
       };
     });
   }
-  // Traduction
+
   const btnLangueTrad = document.getElementById('btnLangueTrad');
   const menuLangueTrad = document.getElementById('menuLangueTrad');
   if(btnLangueTrad && menuLangueTrad) {
@@ -83,7 +80,6 @@ document.addEventListener("DOMContentLoaded", () => {
         menuLangueTrad.hidden = true;
         localStorage.setItem('langueTrad', btn.dataset.lang);
         logStatus(`Langue traduction sélectionnée : ${btn.textContent}`);
-        // Optionnel : actualiser la traduction ici
       };
     });
   }
@@ -115,27 +111,74 @@ document.addEventListener("DOMContentLoaded", () => {
     );
   });
   if(mots.length) showMot(idx);
-
-  // --- Chat ---
+  // --- Chat intelligent local ---
   function afficheMsgChat(who, html) {
     const c = document.getElementById('chatWindow');
-    if(!c) return;
+    if (!c) return;
     const m = document.createElement('div');
     m.className = `message ${who}`;
-    m.innerHTML = `<strong>${who==='bot'?interfaceData['fr']?.bot||'Bot':'Vous'}:</strong> ${html}`;
+    m.innerHTML = `<strong>${who === 'bot' ? interfaceData['fr']?.bot || 'Bot' : 'Vous'}:</strong> ${html}`;
     c.appendChild(m);
     c.scrollTop = c.scrollHeight;
   }
-  document.getElementById('btnEnvoyer')?.addEventListener('click', ()=>{
+
+  function chercheDansDictionnaire(question) {
+    const mot = question.toLowerCase().trim();
+    const entree = motsComplet.find(m => nettoie(m.mot).includes(nettoie(mot)));
+    return entree
+      ? `Le mot <strong>${entree.mot}</strong> signifie : <em>${entree[langueTrad] || entree.fr}</em>.`
+      : null;
+  }
+
+  function chercheDansHistoire(question) {
+    return histoireDocs.find(h => question.toLowerCase().includes(h.title.toLowerCase()))
+      ? `🔎 Consulte un document historique correspondant dans la section 📚 Livres ou Histoire.`
+      : null;
+  }
+
+  function chercheDansDocs(question) {
+    const doc = docsList.find(d => question.toLowerCase().includes(d.title.toLowerCase()));
+    return doc
+      ? `📄 Tu trouveras des infos dans « ${doc.title} » (${doc.date}) dans la section Rapports ou Actualités.`
+      : null;
+  }
+
+  function chercheDansLivres(question) {
+    const livre = livresList.find(l => question.toLowerCase().includes(l.title.toLowerCase()));
+    return livre
+      ? `📘 Le livre « ${livre.title} » pourrait t’intéresser. Va dans l’onglet 📚 Livres.`
+      : null;
+  }
+
+  function chercheDansQuiz(question) {
+    const q = quizList.find(q => question.toLowerCase().includes(q.q.toLowerCase()));
+    return q
+      ? `🧠 Voici une question liée dans le quiz : « ${q.q} »`
+      : null;
+  }
+
+  document.getElementById('btnEnvoyer')?.addEventListener('click', () => {
     const input = document.getElementById('chatInput');
     const txt = input.value.trim();
-    if(!txt) return;
+    if (!txt) return;
     input.value = '';
     afficheMsgChat('user', escapeHTML(txt));
-    // Réponse bot simple (à améliorer)
-    afficheMsgChat('bot', `Je suis Hamadine, pose-moi une question !`);
-  });
 
+    const reponse = chercheDansDictionnaire(txt)
+      || chercheDansHistoire(txt)
+      || chercheDansDocs(txt)
+      || chercheDansLivres(txt)
+      || chercheDansQuiz(txt)
+      || `🤖 Je ne suis pas sûr de comprendre. Essaie un autre mot ou explore les sections :
+        <ul>
+          <li><code>Dictionnaire 📖</code></li>
+          <li><code>Rapports 📄</code></li>
+          <li><code>Livres 📚</code></li>
+          <li><code>Quiz ❓</code></li>
+        </ul>`;
+
+    afficheMsgChat('bot', reponse);
+  });
   // --- Audio ---
   const audC = document.getElementById('audioContainer');
   if(audC && audiosList?.length) audiosList.forEach(a=>{
@@ -170,12 +213,12 @@ document.addEventListener("DOMContentLoaded", () => {
       .sort((a,b)=>(new Date(a.dataset.date)-new Date(b.dataset.date))*ord)
       .forEach(n=>vidC.appendChild(n));
   });
-
   // --- Rapports & Actualités ---
   const docC = document.getElementById('rapportsContainer');
   if(docC && docsList?.length) docsList.filter(d=>d.type!=='communique').forEach(d=>{
     docC.innerHTML += `<a href="${d.url}" target="_blank">${d.title}</a> (${d.date})<br>`;
   });
+
   const actC = document.getElementById('newsContainer');
   if(actC && docsList?.length) docsList.filter(d=>d.type==='communique').forEach(d=>{
     actC.innerHTML += `<a href="${d.url}" target="_blank">${d.title}</a> (${d.date})<br>`;
@@ -214,12 +257,12 @@ document.addEventListener("DOMContentLoaded", () => {
     }
     nextQ();
   }
-
   // --- Bouton flottant Chat ---
   document.getElementById('toggleChatBot')?.addEventListener('click', () => {
     document.querySelector('.tab-btn[data-tab="chat"]')?.click();
     window.scrollTo({ top: document.getElementById('chat').offsetTop, behavior: 'smooth' });
   });
 
+  // --- Fin ---
   logStatus("✅ Application prête.");
 });
