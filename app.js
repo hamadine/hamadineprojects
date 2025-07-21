@@ -180,7 +180,7 @@ document.addEventListener("DOMContentLoaded", () => {
     afficheMsgChat('bot', reponse);
   });
 // --- Audio ---
-  console.log('audiosList:', audiosList);
+console.log('audiosList:', audiosList);
 const audC = document.getElementById('audioContainer');
 if (audC && audiosList?.length) {
   audiosList.forEach(album => {
@@ -199,8 +199,34 @@ if (audC && audiosList?.length) {
       lecteur.controls = true;
       lecteur.src = piste.src;
 
+      // Lien absolu et message de partage
+      const url = new URL(piste.src, window.location.origin).href;
+      const message = encodeURIComponent(`${piste.title} – Écoutez ici : ${url}`);
+
+      // Bouton de partage
+      const boutonPartage = document.createElement('button');
+      boutonPartage.textContent = '📤 Partager';
+      boutonPartage.className = 'btn-share';
+
+      const menuPartage = document.createElement('div');
+      menuPartage.className = 'share-menu';
+      menuPartage.innerHTML = `
+        <a href="https://www.facebook.com/sharer/sharer.php?u=${url}&quote=${message}" target="_blank">Facebook</a>
+        <a href="https://twitter.com/intent/tweet?text=${message}" target="_blank">Twitter</a>
+        <a href="https://www.linkedin.com/shareArticle?mini=true&url=${url}&title=${message}" target="_blank">LinkedIn</a>
+        <a href="https://www.reddit.com/submit?url=${url}&title=${message}" target="_blank">Reddit</a>
+        <a href="https://www.tiktok.com/upload?lang=fr" target="_blank">TikTok</a>
+      `;
+      menuPartage.style.display = 'none';
+
+      boutonPartage.addEventListener('click', () => {
+        menuPartage.style.display = menuPartage.style.display === 'none' ? 'block' : 'none';
+      });
+
       conteneur.appendChild(titre);
       conteneur.appendChild(lecteur);
+      conteneur.appendChild(boutonPartage);
+      conteneur.appendChild(menuPartage);
       audC.appendChild(conteneur);
     });
   });
