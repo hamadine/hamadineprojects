@@ -180,6 +180,7 @@ document.addEventListener("DOMContentLoaded", () => {
     afficheMsgChat('bot', reponse);
   });
 // --- Audio ---
+  console.log('audiosList:', audiosList);
 const audC = document.getElementById('audioContainer');
 if (audC && audiosList?.length) {
   audiosList.forEach(album => {
