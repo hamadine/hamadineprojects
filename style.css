@@ -177,3 +177,45 @@ button {
   font-weight: bold;
   margin-bottom: 0.2em;
 }
+.audio-track {
+  margin-bottom: 20px;
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+}
+
+.btn-share {
+  margin-top: 8px;
+  padding: 6px 10px;
+  background-color: #005fa3;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.btn-share:hover {
+  background-color: #004a80;
+}
+
+.share-menu {
+  margin-top: 6px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.share-menu a {
+  text-decoration: none;
+  color: #005fa3;
+  font-weight: bold;
+  padding: 4px 8px;
+  border: 1px solid #005fa3;
+  border-radius: 4px;
+  font-size: 0.9em;
+  background-color: #f0f8ff;
+}
+
+.share-menu a:hover {
+  background-color: #e0efff;
+  color: #003d66;
+}
