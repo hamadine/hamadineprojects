@@ -3,6 +3,7 @@ const audios = [
     album: "Hamadine",
     pistes: [
       { title: "Je n'ai pas choisi l'amour, j'ai choisi mes enfants", src: "data/audio/Hamadine/je_n_ai_pas_choisi_l_amour_j_ai_choisi_mes_enfants.mp3" },
+      { title: "Trois femmes, un cœur", src: "data/audio/Hamadine/trois_femmes_un_coeur.mp3" },
       { title: "Pas une cicatrice, un langage", src: "data/audio/Hamadine/pas_une_cicatrice_un_langage.mp3" },
       { title: "À chaque instant Tamalat – Hamadine", src: "data/audio/Hamadine/a_chaque_instant_tamalat_by_hamadine.mp3" },
       { title: "Hamadine – Dis-moi", src: "data/audio/Hamadine/hamadine_dis_moi.mp3" },
