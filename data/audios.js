@@ -2,6 +2,7 @@ const audios = [
   {
     album: "Hamadine",
     pistes: [
+      { title: "Je jure devant Dieu", src: "data/audio/Hamadine/je_jure_devant_dieu.mp3" },
       { title: "Je n'ai pas choisi l'amour, j'ai choisi mes enfants", src: "data/audio/Hamadine/je_n_ai_pas_choisi_l_amour_j_ai_choisi_mes_enfants.mp3" },
       { title: "Trois femmes, un cœur", src: "data/audio/Hamadine/trois_femmes_un_coeur.mp3" },
       { title: "Trois femmes, trois flammes, un homme", src: "data/audio/Hamadine/trois_femmes_trois_flammes_un_homme.mp3" },
