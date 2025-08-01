@@ -60,63 +60,113 @@ document.addEventListener("DOMContentLoaded", () => {
   });
   if (mots.length) showMot(idx);
 
-  // Chatbot
+  // Historique de la conversation
+let historiqueConversation = [];
+
+// Fonction pour afficher les messages
+function afficheMsg(user, html) {
   const chatWindow = document.getElementById('chatWindow');
-  function afficheMsg(user, html) {
-    const div = document.createElement('div');
-    div.className = `message ${user}`;
-    const label = user==='bot' ? (interfaceData[langueInterface]?.bot || 'Bot') : 'Vous';
-    div.innerHTML = `<strong>${label}:</strong> ${html}`;
-    chatWindow.appendChild(div);
-    chatWindow.scrollTop = chatWindow.scrollHeight;
+  const div = document.createElement('div');
+  div.className = `message ${user}`;
+  const label = user==='bot' ? (interfaceData[langueInterface]?.bot || 'Bot') : 'Vous';
+  div.innerHTML = `<strong>${label}:</strong> ${html}`;
+  chatWindow.appendChild(div);
+  chatWindow.scrollTop = chatWindow.scrollHeight;
+  historiqueConversation.push({user, html});
+  if (historiqueConversation.length > 20) historiqueConversation.shift();
+}
+
+// Fonction pour générer une réponse intelligente et conversationnelle
+function reponseBot(txt) {
+  const clean = nettoie(txt);
+  const botInfo = interfaceData[langueInterface]?.botIntelligence || interfaceData['fr']?.botIntelligence || {};
+
+  // Salutations personnalisées
+  if (clean.includes("bonjour") || clean.includes("salut") || clean.includes("hello")) {
+    const replies = [
+      "Bonjour ! Comment puis-je vous aider aujourd'hui ?",
+      "Salut ! Besoin d'un mot ou d'une histoire ?",
+      "Hello ! Je suis là pour vous guider.",
+      "Bienvenue ! Vous cherchez une traduction ou une info ?",
+    ];
+    return replies[Math.floor(Math.random() * replies.length)];
   }
 
-  function reponseBot(txt) {
-    const clean = nettoie(txt);
-    const botInfo = interfaceData[langueInterface]?.botIntelligence || interfaceData['fr']?.botIntelligence || {};
-    // Insultes
-    if ((botInfo.insultes||[]).some(i=>clean.includes(nettoie(i)))) {
-      return botInfo.insulte || "🙏 Merci de rester poli.";
-    }
-    // Salutations
-    if ((botInfo.salutations_triggers||[]).some(s=>clean.includes(nettoie(s)))) {
-      return botInfo.salutations[Math.floor(Math.random()*(botInfo.salutations.length||1))] || "Bonjour !";
-    }
-    // FAQ
-    for (const q in (botInfo.faq||{})) {
-      if (clean.includes(nettoie(q))) return botInfo.faq[q];
-    }
-    // Traduction simple
-    const m = motsComplet.find(m=> nettoie(m.mot)===clean || nettoie(m.fr)===clean );
-    if (m) {
-      return `Vous cherchez ? <strong>${m.mot}</strong> = ${escapeHTML(m[langueTrad]||m.fr)}${m.en?` / en anglais : ${escapeHTML(m.en)}`:''}`;
-    }
-    // Histoire / documents
-    const hist = histoireDocs.find(h=>clean.includes(nettoie(h.titre)));
-    if (hist) {
-      let out = `<strong>${escapeHTML(hist.titre)}</strong><br>${escapeHTML(hist.contenu)}`;
-      if (hist.image) out += `<br><img src="${hist.image}" alt="" style="max-width:100%;margin-top:5px;">`;
-      if (hist.video) out += `<br><video controls width="100%" style="margin-top:5px;"><source src="${hist.video}" type="video/mp4"></video>`;
-      return out;
-    }
-    return `🤖 Je ne sais pas répondre précisément. Essayez plutôt un mot du dictionnaire ou parcourez les onglets 📖 📚 📄.`;
+  // Questions sur l'état du bot
+  if (clean.includes("comment ça va") || clean.includes("ça va")) {
+    const replies = [
+      "Je vais très bien, merci ! Et vous ?",
+      "Toujours prêt à discuter et à aider.",
+      "Je me porte à merveille, surtout quand on parle Tadaksahak !",
+    ];
+    return replies[Math.floor(Math.random() * replies.length)];
   }
 
-  document.getElementById('btnEnvoyer')?.addEventListener('click', ()=>{
-    const inp = document.getElementById('chatInput');
-    const txt = inp.value.trim();
-    if (!txt) return;
-    inp.value = "";
-    afficheMsg('user', escapeHTML(txt));
-    const rep = reponseBot(txt);
-    afficheMsg('bot', rep);
-  });
+  // Expression d'hésitation ou demande d'aide
+  if (clean.includes("je ne sais pas") || clean.includes("aide") || clean.includes("j'hésite")) {
+    return "Pas de souci ! Voulez-vous que je vous propose un mot au hasard ou une histoire sur la langue ?";
+  }
 
-  // Bouton Chat flottant
-  document.getElementById('toggleChatBot')?.addEventListener('click', ()=>{
-    document.querySelector('.tab-btn[data-tab="chat"]')?.click();
-    window.scrollTo({ top: document.getElementById('chat').offsetTop, behavior: 'smooth' });
-  });
+  // Suggestions automatiques si la question n'est pas comprise
+  if (clean.length < 6 || ["?", "quoi", "hein"].some(x => clean.includes(x))) {
+    return "Si vous cherchez une traduction, tapez un mot. Sinon, demandez-moi une anecdote ou une FAQ !";
+  }
+
+  // Gestion des insultes
+  if ((botInfo.insultes||[]).some(i=>clean.includes(nettoie(i)))) {
+    return botInfo.insulte || "🙏 Merci de rester poli.";
+  }
+
+  // Gestion des triggers de salutations
+  if ((botInfo.salutations_triggers||[]).some(s=>clean.includes(nettoie(s)))) {
+    return botInfo.salutations[Math.floor(Math.random()*(botInfo.salutations.length||1))] || "Bonjour !";
+  }
+
+  // FAQ
+  for (const q in (botInfo.faq||{})) {
+    if (clean.includes(nettoie(q))) return botInfo.faq[q];
+  }
+
+  // Traduction simple (dictionnaire)
+  const m = motsComplet.find(m=> nettoie(m.mot)===clean || nettoie(m.fr)===clean );
+  if (m) {
+    return `Vous cherchez ? <strong>${m.mot}</strong> = ${escapeHTML(m[langueTrad]||m.fr)}${m.en?` / en anglais : ${escapeHTML(m.en)}`:''}`;
+  }
+
+  // Histoire / documents
+  const hist = histoireDocs.find(h=>clean.includes(nettoie(h.titre)));
+  if (hist) {
+    let out = `<strong>${escapeHTML(hist.titre)}</strong><br>${escapeHTML(hist.contenu)}`;
+    if (hist.image) out += `<br><img src="${hist.image}" alt="" style="max-width:100%;margin-top:5px;">`;
+    if (hist.video) out += `<br><video controls width="100%" style="margin-top:5px;"><source src="${hist.video}" type="video/mp4"></video>`;
+    return out;
+  }
+
+  // Suggestions contextuelles basées sur l'historique
+  if (historiqueConversation.length > 2) {
+    return "Voulez-vous découvrir un mot du dictionnaire ? Ou avez-vous une question sur Tadaksahak ?";
+  }
+
+  // Réponse par défaut améliorée
+  return `🤖 Je n'ai pas compris précisément. Essayez un mot du dictionnaire, demandez une anecdote ou parcourez les onglets 📖 📚 📄.<br><em>Astuce : demandez-moi "un mot au hasard" ou "une histoire".</em>`;
+}
+
+// Evenement bouton d'envoi
+document.getElementById('btnEnvoyer')?.addEventListener('click', ()=>{
+  const inp = document.getElementById('chatInput');
+  const txt = inp.value.trim();
+  if (!txt) return;
+  inp.value = "";
+  afficheMsg('user', escapeHTML(txt));
+  const rep = reponseBot(txt);
+  afficheMsg('bot', rep);
+});
+
+// Bouton Chat flottant
+document.getElementById('toggleChatBot')?.addEventListener('click', ()=>{
+  document.querySelector('.tab-btn[data-tab="chat"]')?.click();
+  window.scrollTo({ top: document.getElementById('chat').offsetTop, behavior: 'smooth' });
+});
 
   console.log("✅ app.js chargé avec succès.");
 });
