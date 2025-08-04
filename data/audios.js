@@ -1,16 +1,17 @@
 const audios = [
   {
     album: "Hamadine",
-    pistes: [
-      { title: "Ce que Dieu m’a laissé", src: "data/audio/Hamadine/ce_que_dieu_m_a_laisse.mp3" },
-      { title: "À chaque instant Tamalat – Hamadine", src: "data/audio/Hamadine/a_chaque_instant_tamalat_by_hamadine.mp3" },
-      { title: "Hamadine – Dis-moi", src: "data/audio/Hamadine/hamadine_dis_moi.mp3" },
-      { title: "Hommage à Moussa", src: "data/audio/Hamadine/hommage_a_moussa.mp3" },
-      { title: "Idakssahak", src: "data/audio/Hamadine/idaksahak.mp3" },
-      { title: "Voix du lien (Bridge of Hope)", src: "data/audio/Hamadine/voix_du_lien_bridge_of_hope.mp3" },
-      { title: "Rien qu’un homme", src: "data/audio/Hamadine/rien_qu_un_homme.mp3" },
-      { title: "Hamadine raconte", src: "data/audio/Hamadine/hamadine_raconte.mp3" },
-      { title: "More than surviving", src: "data/audio/Hamadine/more-than-surviving.mp3" }
+    pistes: [{ title: "A Chaque Instant Tamalat By Hamadine", src: "data/audio/Hamadine/a_chaque_instant_tamalat_by_hamadine.mp3", lyrics: null },
+  { title: "Ce Que Dieu M A Laisse", src: "data/audio/Hamadine/ce_que_dieu_m_a_laisse.mp3", lyrics: null },
+  { title: "Hamadine Dis Moi", src: "data/audio/Hamadine/hamadine_dis_moi.mp3", lyrics: null },
+  { title: "Hommage A Moussa", src: "data/audio/Hamadine/hommage_a_moussa.mp3", lyrics: null },
+  { title: "More Than Survivingofficial", src: "data/audio/Hamadine/more_than_survivingofficial.mp3", lyrics: null },
+  { title: "Rien Qu Un Homme", src: "data/audio/Hamadine/rien_qu_un_homme.mp3", lyrics: null },
+  { title: "Tabalitarabicversion", src: "data/audio/Hamadine/tabalitarabicversion.mp3", lyrics: null },
+  { title: "Tamalatacousticversion", src: "data/audio/Hamadine/tamalatacousticversion.mp3", lyrics: null },
+  { title: "Ton Daron Ton Monde Amira", src: "data/audio/Hamadine/ton_daron_ton_monde_amira.mp3", lyrics: null },
+  { title: "Verba Arma Nostra", src: "data/audio/Hamadine/verba_arma_nostra.mp3", lyrics: null },
+  { title: "Voix Du Lien Bridge Of Hope", src: "data/audio/Hamadine/voix_du_lien_bridge_of_hope.mp3", lyrics: null },
     ]
   }
 ];
