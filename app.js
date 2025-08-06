@@ -7,15 +7,11 @@ document.addEventListener("DOMContentLoaded", () => {
   let mots = [...motsComplet];
   let idx = parseInt(localStorage.getItem('motIndex')) || 0;
   const langueTrad = localStorage.getItem('langueTrad') || 'fr';
-  const langueInterface = localStorage.getItem('langueInterface') || (navigator.language ? navigator.language.slice(0, 2) : 'fr');
+  const langueInterface = localStorage.getItem('langueInterface') || (navigator.language ? navigator.language.slice(0,2) : 'fr');
+  const escapeHTML = str => str ? str.replace(/[&<>"']/g, c => ({ '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;' })[c]) : '';
+  const nettoie = str => str ? str.normalize("NFD").replace(/[\u0300-\u036f]/g,"").replace(/[^\w\s]/g,"").toLowerCase() : '';
 
-  const escapeHTML = str => str ? str.replace(/[&<>"']/g, c => ({
-    '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#039;'
-  }[c])) : '';
-
-  const nettoie = str => str ? str.normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^\w\s]/g, "").toLowerCase() : '';
-
-  // Onglets navigation
+  // Onglets
   document.querySelectorAll('.tab-btn').forEach(btn => {
     btn.onclick = () => {
       document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
@@ -50,24 +46,20 @@ document.addEventListener("DOMContentLoaded", () => {
 
   document.getElementById('btnPrev')?.addEventListener('click', () => showMot(idx - 1));
   document.getElementById('btnNext')?.addEventListener('click', () => showMot(idx + 1));
-
   document.getElementById('searchBar')?.addEventListener('input', e => {
     const q = nettoie(e.target.value);
     mots = q && fuse ? fuse.search(q).map(r => r.item) : [...motsComplet];
-    if (mots.length) {
-      showMot(0);
-    } else {
+    if (mots.length) showMot(0);
+    else {
       document.getElementById('motTexte').textContent = "Aucun résultat";
       document.getElementById('definition').textContent = "";
       document.getElementById('compteur').textContent = "0/0";
     }
   });
-
   if (mots.length) showMot(idx);
 
-  // Bot Chat
+  // Chat Bot
   let historiqueConversation = [];
-
   function afficheMsg(user, html) {
     const chatWindow = document.getElementById('chatWindow');
     if (!chatWindow) return;
@@ -82,69 +74,41 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function reponseBot(txt) {
-    const clean = nettoie(txt);
-    const botInfo = interfaceData[langueInterface]?.botIntelligence || interfaceData['fr']?.botIntelligence || {};
-
-    const salutations = ["bonjour", "salut", "hello", "bonsoir", "bjr", "bsr", "salam"];
+    const clean = nettoie(txt), botInfo = interfaceData[langueInterface]?.botIntelligence || {};
+    const salutations = ["bonjour","salut","hello","bonsoir","bjr","bsr","salam"];
     if (salutations.some(s => clean.includes(s))) {
-      const replies = botInfo.salutations || [
-        "Bonjour ! Comment puis-je vous aider aujourd'hui ?",
-        "Salut ! Besoin d'un mot ou d'une histoire ?",
-        "Hello ! Je suis là pour vous guider.",
-        "Bienvenue ! Vous cherchez une traduction ou une info ?",
-      ];
-      return replies[Math.floor(Math.random() * replies.length)];
+      const replies = botInfo.salutations || ["Bonjour ! Comment puis-je vous aider aujourd'hui ?","Salut ! Besoin d'une info ?"];
+      return replies[Math.floor(Math.random()*replies.length)];
     }
+    const caVa = ["comment ca va","ça va","cv"];
+    if (caVa.some(s => clean.includes(s))) return "Ça va bien, merci ! Et toi ?";
+    if (["je ne sais pas","aide","j'hésite"].some(s => clean.includes(s))) return "Tu veux un mot au hasard ou une anecdote ?";
 
-    const caVa = ["comment ca va", "comment ça va", "ça va", "cv"];
-    if (caVa.some(s => clean.includes(s))) {
-      return "Je vais très bien, merci ! Et toi ?";
-    }
 
-    if (clean.includes("je ne sais pas") || clean.includes("aide") || clean.includes("j'hésite")) {
-      return "Pas de souci ! Demande-moi un mot ou une anecdote Tadaksahak.";
-    }
-
-    if ((botInfo.insultes || []).some(i => clean.includes(nettoie(i)))) {
-      return botInfo.insulte || "Merci de rester poli.";
-    }
-
-    for (const q in (botInfo.faq || {})) {
-      if (clean.includes(nettoie(q))) return botInfo.faq[q];
-    }
-
-    const m = motsComplet.find(m => nettoie(m.mot) === clean || nettoie(m.fr) === clean);
-    if (m) {
-      return `📚 <strong>${m.mot}</strong> = ${escapeHTML(m[langueTrad] || m.fr)}${m.en ? ` / en: ${escapeHTML(m.en)}` : ''}`;
-    }
+    if ((botInfo.insultes||[]).some(i => clean.includes(nettoie(i)))) return botInfo.insulte || "Merci de rester poli.";
+    for (const q in (botInfo.faq||{})) if (clean.includes(nettoie(q))) return botInfo.faq[q];
+    const m = motsComplet.find(m => nettoie(m.mot)===clean || nettoie(m.fr)===clean);
+    if (m) return `📚 <strong>${m.mot}</strong> = ${escapeHTML(m?.[langueTrad]||m.fr)}${m.en?` / en: ${escapeHTML(m.en)}`: ''}`;
 
     const hist = histoireDocs.find(h => clean.includes(nettoie(h.titre)));
     if (hist) {
       let out = `<strong>${escapeHTML(hist.titre)}</strong><br>${escapeHTML(hist.contenu)}`;
-      if (hist.image) out += `<br><img src="${hist.image}" alt="" style="max-width:100%;margin-top:5px;" loading="lazy">`;
-      if (hist.video) out += `<br><video controls width="100%" style="margin-top:5px;"><source src="${hist.video}" type="video/mp4"></video>`;
+      if (hist.image) out += `<br><img src="${hist.image}" style="max-width:100%;">`;
+      if (hist.video) out += `<br><video controls width="100%" style="max-width:100%;"><source src="${hist.video}" type="video/mp4"></video>`;
       return out;
     }
-
     return "Je n’ai pas compris. Essaie un mot ou dis-moi 'une histoire'.";
   }
 
   function traiterSaisie() {
-    const inp = document.getElementById('chatInput');
-    const txt = inp.value.trim();
-    if (!txt) return;
-    inp.value = "";
+    const inp = document.getElementById('chatInput'), txt = inp.value.trim();
+    if (!txt) return; inp.value = "";
     afficheMsg('user', escapeHTML(txt));
-    const rep = reponseBot(txt);
-    afficheMsg('bot', rep);
+    afficheMsg('bot', reponseBot(txt));
   }
-
   document.getElementById('btnEnvoyer')?.addEventListener('click', traiterSaisie);
   document.getElementById('chatInput')?.addEventListener('keypress', e => {
-    if (e.key === 'Enter') {
-      e.preventDefault();
-      traiterSaisie();
-    }
+    if (e.key === 'Enter') { e.preventDefault(); traiterSaisie(); }
   });
 
   document.getElementById('toggleChatBot')?.addEventListener('click', () => {
@@ -152,47 +116,53 @@ document.addEventListener("DOMContentLoaded", () => {
     window.scrollTo({ top: document.getElementById('chat').offsetTop, behavior: 'smooth' });
   });
 
-  // 🎧 Génération dynamique des albums audio avec affichage des paroles
+  // 🎧 Albums audio + export PDF
   function genererAlbumsAudio() {
     const conteneur = document.getElementById('audioContainer');
     if (!conteneur || !albumsAudio.length) return;
-
     const section = document.createElement('section');
-    const titre = document.createElement('h3');
-    titre.textContent = "Album Hamadine";
-    section.appendChild(titre);
+    const titreAlbum = document.createElement('h3');
+    titreAlbum.textContent = "Album Hamadine";
+    section.appendChild(titreAlbum);
 
-    albumsAudio.forEach((piste, index) => {
+    albumsAudio.forEach((piste, idx) => {
+      const idLyrics = `lyrics-${idx}`;
       const bloc = document.createElement('div');
       bloc.className = 'audio-bloc';
-      const idLyrics = `lyrics-${index}`;
-
       bloc.innerHTML = `
         <p><strong>${escapeHTML(piste.title)}</strong></p>
         <audio controls src="${piste.src}" preload="none"></audio>
-        ${piste.lyrics ? `<button class="btnLyrics" data-target="${idLyrics}">🎵 Voir les paroles</button>
-        <pre id="${idLyrics}" class="lyrics-text" style="display:none;">${escapeHTML(piste.lyrics)}</pre>` : ''}
+        ${piste.lyrics ? `<button class="btnLyrics" data-target="${idLyrics}">Voir les paroles</button><pre id="${idLyrics}" class="lyrics-text" style="display:none;">${escapeHTML(piste.lyrics)}</pre>` : ''}
+        ${piste.lyrics ? `<button class="btnPdf" data-target="${idLyrics}">Télécharger PDF</button>` : ''}
       `;
-
       section.appendChild(bloc);
     });
-
     conteneur.appendChild(section);
 
     conteneur.querySelectorAll('.btnLyrics').forEach(btn => {
       btn.addEventListener('click', () => {
-        const id = btn.getAttribute('data-target');
-        const el = document.getElementById(id);
-        if (el) {
-          const isVisible = el.style.display === 'block';
-          el.style.display = isVisible ? 'none' : 'block';
-          btn.textContent = isVisible ? '🎵 Voir les paroles' : '🎵 Masquer les paroles';
-        }
+        const tgt = document.getElementById(btn.getAttribute('data-target'));
+        tgt.style.display = tgt.style.display === 'block' ? 'none' : 'block';
+        btn.textContent = tgt.style.display === 'block' ? 'Masquer paroles' : 'Voir les paroles';
+      });
+    });
+
+    conteneur.querySelectorAll('.btnPdf').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const target = document.getElementById(btn.getAttribute('data-target'));
+        if (!target) return;
+        // Génération PDF :
+        const doc = new window.jspdf.jsPDF();
+        doc.setFontSize(16);
+        doc.text(btn.parentNode.querySelector('strong').textContent, 10, 20);
+        doc.setFontSize(12);
+        const lines = doc.splitTextToSize(target.textContent, 180);
+        doc.text(lines, 10, 30);
+        doc.save(`${btn.parentNode.querySelector('strong').textContent}.pdf`);
       });
     });
   }
 
   genererAlbumsAudio();
-
-  console.log("✅ app.js harmonisé et chargé.");
+  console.log("✅ app.js harmonisé et chargé avec export PDF");
 });
