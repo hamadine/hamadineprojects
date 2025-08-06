@@ -55,27 +55,20 @@
   </a>
     </p>
       
-
-  <div class="lang-switcher">
-    <button id="btnLangueInterface" class="lang-btn">🌐 Interface&nbsp;: Français <span class="chevron">▼</span></button>
-    <div id="menuLangueInterface" class="lang-menu" hidden></div>
-    <button id="btnLangueTrad" class="lang-btn">🈯 Traduction&nbsp;: Français <span class="chevron">▼</span></button>
-    <div id="menuLangueTrad" class="lang-menu" hidden></div>
-  </div>
-
-  <nav class="tabs">
-    <button class="tab-btn active" data-tab="accueil">🏠 Accueil</button>
-    <button class="tab-btn" data-tab="dictionnaire">📖 Dictionnaire</button>
-    <button class="tab-btn" data-tab="chat">💬 Chat</button>
-    <button class="tab-btn" data-tab="audio">🎧 Albums Hamadine</button>
-    <button class="tab-btn" data-tab="photos">🖼️ Photos</button>
-    <button class="tab-btn" data-tab="videos">🎥 Vidéos</button>
-    <button class="tab-btn" data-tab="rapports">📄 Rapports & Études</button>
-    <button class="tab-btn" data-tab="actualites">📰 Actualités</button>
-    <button class="tab-btn" data-tab="livres">📚 Livres & Histoire</button>
-    <button class="tab-btn" data-tab="quiz">❓ Quiz</button>
-  </nav>
-
+<nav class="menu-deroulant">
+  <select id="sectionSelector" aria-label="Navigation principale">
+    <option value="accueil">🏠 Accueil</option>
+    <option value="dictionnaire">📖 Dictionnaire</option>
+    <option value="chat">💬 Chat</option>
+    <option value="audio">🎧 Albums</option>
+    <option value="photos">🖼️ Photos</option>
+    <option value="videos">🎥 Vidéos</option>
+    <option value="rapports">📄 Rapports</option>
+    <option value="actualites">📰 Actualités</option>
+    <option value="livres">📚 Livres</option>
+    <option value="quiz">❓ Quiz</option>
+  </select>
+</nav>
   <main>
     <section id="accueil" class="onglet-contenu">
       <div class="hero">
@@ -189,11 +182,6 @@
       <div id="livresContainer"></div>
     </section>
 
-    <section id="quiz" class="onglet-contenu" hidden>
-      <h2>❓ Quiz Tadaksahak</h2>
-      <iframe src="quiz.html" title="Quiz Tadaksahak" style="width:100%; height:600px;" frameborder="0"></iframe>
-      <div id="quizContainer"></div>
-    </section>
   </main>
 
   <button id="toggleChatBot" class="floating-chat-btn">💬</button>
