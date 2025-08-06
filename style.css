@@ -10,36 +10,18 @@
   --text: #222;
   --shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
-.bio-container {
-  background-color: #1f1f1f;
-}
 
-.bio-text {
-  color: #f0f0f0;
-}
-
-.bio-text p {
-  color: #f0f0f0;
-}
-
-.bio-text strong {
-  color: #86c5ff;
-}
-
-.bio-text em {
-  color: #b0d4ff;
-}
 html {
-  font-family: 'Segoe UI', 'Roboto', sans-serif;
+  font-family: 'Segoe UI', sans-serif;
   font-size: 16px;
   scroll-behavior: smooth;
-  line-height: 1.7;
 }
 
 body {
   margin: 0;
   background: linear-gradient(to bottom, var(--bleu), var(--sable));
   color: var(--text);
+  line-height: 1.6;
   background-attachment: fixed;
 }
 
@@ -50,7 +32,6 @@ header.site-header {
   position: relative;
   overflow: hidden;
 }
-
 header.site-header::before {
   content: "☀️";
   position: absolute;
@@ -59,10 +40,24 @@ header.site-header::before {
   font-size: 3rem;
   animation: soleil-pulse 4s infinite ease-in-out;
 }
-
 @keyframes soleil-pulse {
   0%, 100% { transform: scale(1); opacity: 1; }
   50% { transform: scale(1.1); opacity: 0.8; }
+}
+
+.toggle-mode-btn {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  font-size: 1.8rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  z-index: 999;
+  transition: transform 0.3s ease;
+}
+.toggle-mode-btn:hover {
+  transform: rotate(20deg) scale(1.1);
 }
 
 .logo-header {
@@ -111,12 +106,8 @@ input[type="text"], select {
   margin-top: 0.5rem;
 }
 
-button, .tab-btn, .linkedin-button {
+button {
   cursor: pointer;
-}
-button:focus, .tab-btn:focus, .linkedin-button:focus, input:focus {
-  outline: 2px solid #005fa3;
-  outline-offset: 2px;
 }
 
 .btn, .btn-icon {
@@ -183,6 +174,34 @@ button:focus, .tab-btn:focus, .linkedin-button:focus, input:focus {
   box-shadow: var(--shadow);
 }
 
+/* DARK MODE */
+html[data-theme='dark'] body {
+  background: radial-gradient(circle at 20% 20%, #222, #000);
+  color: #eee;
+}
+html[data-theme='dark'] .tab-btn.active {
+  background: var(--vert);
+}
+html[data-theme='dark'] header.site-header {
+  background: transparent;
+  color: #aee1f9;
+}
+html[data-theme='dark'] header.site-header::before {
+  content: "🌙";
+  color: #ccc;
+}
+html[data-theme='dark'] .message.bot {
+  background: #333;
+}
+html[data-theme='dark'] .chatbox {
+  background: #222;
+  color: white;
+}
+html[data-theme='dark'] .livre-bloc {
+  background: #2a2a2a;
+}
+
+/* Main */
 main {
   background: linear-gradient(to top, var(--sable), var(--niger));
   padding-bottom: 4rem;
@@ -190,11 +209,13 @@ main {
   border-top: 2px solid var(--vert);
 }
 
+/* Footer Touareg */
 footer {
   background: #111;
   color: #ccc;
   text-align: center;
   padding: 2rem;
+  position: relative;
 }
 footer::after {
   content: "ⵜ ⴻ ⵍ ⵍ ⴰ ⴼ ⵉ ⵣ ⵓ ⵍ";
@@ -206,13 +227,12 @@ footer::after {
   display: block;
   margin-top: 1rem;
 }
-
 @keyframes touareg-glow {
   0%, 100% { opacity: 0.8; transform: scale(1); }
   50% { opacity: 1; transform: scale(1.05); }
 }
 
-/* -------- AUDIOS -------- */
+/* Bloc audio */
 .audio-bloc {
   background: #f7f9fb;
   border: 1px solid #ccd;
@@ -237,6 +257,7 @@ footer::after {
   color: #fff;
   border: none;
   border-radius: 4px;
+  cursor: pointer;
   font-size: 0.9em;
 }
 .btnLyrics:hover {
@@ -255,7 +276,7 @@ footer::after {
   border-radius: 4px;
 }
 
-/* -------- BIO -------- */
+/* Bio */
 .bio-container {
   display: flex;
   flex-direction: column;
@@ -275,12 +296,6 @@ footer::after {
 .bio-text {
   max-width: 600px;
 }
-.bio-text p:first-child {
-  font-size: 1.2rem;
-  font-weight: bold;
-  color: #005fa3;
-}
-
 .linkedin-button {
   display: inline-block;
   margin-top: 10px;
@@ -290,64 +305,18 @@ footer::after {
   text-decoration: none;
   border-radius: 5px;
   font-weight: bold;
-  transition: background 0.3s ease, transform 0.3s ease;
+  transition: background 0.3s ease;
 }
 .linkedin-button:hover {
   background-color: #084d9c;
-  transform: scale(1.05);
+}
+.bio-text p {
+  color: #222; /* Couleur bien visible en mode clair */
 }
 
-/* Responsive bio en écran large */
-@media (min-width: 700px) {
-  .bio-container {
-    flex-direction: row;
-    text-align: left;
-    justify-content: center;
-  }
-  .bio-photo {
-    margin-right: 2rem;
-    margin-bottom: 0;
-  }
+html[data-theme='dark'] .bio-text p {
+  color: #ddd; /* Couleur claire lisible en mode sombre */
 }
-
-/* Mode sombre */
-@media (prefers-color-scheme: dark) {
-  body {
-    background: radial-gradient(circle at 20% 20%, #222, #000);
-    color: #eee;
-  }
-
-  header.site-header {
-    background: transparent;
-    color: #aee1f9;
-  }
-
-  header.site-header::before {
-    content: "🌙";
-    color: #fff2b8;
-    top: 20px;
-    right: 30px;
-    animation: none;
-  }
-
-  .tab-btn.active {
-    background: var(--vert);
-  }
-
-  .message.bot {
-    background: #333;
-  }
-  .chatbox {
-    background: #222;
-    color: white;
-  }
-  .livre-bloc {
-    background: #2a2a2a;
-  }
-  .bio-container {
-    background-color: #1f1f1f;
-  }
-  .bio-text {
-    color: #eee;
-  }
+.bio-text p strong {
+  color: #0a66c2;
 }
