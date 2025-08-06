@@ -2,18 +2,65 @@ const audios = [
   {
     album: "Hamadine",
     pistes: [
-      { title: "A Chaque Instant Tamalat By Hamadine", src: "data/audio/Hamadine/a_chaque_instant_tamalat_by_hamadine.mp3", lyrics: null },
-      { title: "Ce Que Dieu M A Laisse", src: "data/audio/Hamadine/ce_que_dieu_m_a_laisse.mp3", lyrics: null },
-      { title: "Hamadine Dis Moi", src: "data/audio/Hamadine/hamadine_dis_moi.mp3", lyrics: null },
-      { title: "Hommage A Moussa", src: "data/audio/Hamadine/hommage_a_moussa.mp3", lyrics: null },
-      { title: "More Than Survivingofficial", src: "data/audio/Hamadine/more_than_survivingofficial.mp3", lyrics: null },
-      { title: "Rien Qu Un Homme", src: "data/audio/Hamadine/rien_qu_un_homme.mp3", lyrics: null },
-      { title: "Tabalitarabicversion", src: "data/audio/Hamadine/tabalitarabicversion.mp3", lyrics: null },
-      { title: "Tamalatacousticversion", src: "data/audio/Hamadine/tamalatacousticversion.mp3", lyrics: null },
-      { title: "Ton Daron Ton Monde Amira", src: "data/audio/Hamadine/ton_daron_ton_monde_amira.mp3", lyrics: null },
-      { title: "Verba Arma Nostra", src: "data/audio/Hamadine/verba_arma_nostra.mp3", lyrics: null },
-      { title: "Voix Du Lien Bridge Of Hope", src: "data/audio/Hamadine/voix_du_lien_bridge_of_hope.mp3", lyrics: },
-      { title: "Dis Moi Remix", src: "data/audio/Hamadine/dis_moi_remix.mp3", lyrics: `[Voix du monde – Couplet 1]
+      {
+        title: "A Chaque Instant Tamalat By Hamadine",
+        src: "data/audio/Hamadine/a_chaque_instant_tamalat_by_hamadine.mp3",
+        lyrics: null
+      },
+      {
+        title: "Ce Que Dieu M A Laisse",
+        src: "data/audio/Hamadine/ce_que_dieu_m_a_laisse.mp3",
+        lyrics: null
+      },
+      {
+        title: "Hamadine Dis Moi",
+        src: "data/audio/Hamadine/hamadine_dis_moi.mp3",
+        lyrics: null
+      },
+      {
+        title: "Hommage A Moussa",
+        src: "data/audio/Hamadine/hommage_a_moussa.mp3",
+        lyrics: null
+      },
+      {
+        title: "More Than Survivingofficial",
+        src: "data/audio/Hamadine/more_than_survivingofficial.mp3",
+        lyrics: null
+      },
+      {
+        title: "Rien Qu Un Homme",
+        src: "data/audio/Hamadine/rien_qu_un_homme.mp3",
+        lyrics: null
+      },
+      {
+        title: "Tabalitarabicversion",
+        src: "data/audio/Hamadine/tabalitarabicversion.mp3",
+        lyrics: null
+      },
+      {
+        title: "Tamalatacousticversion",
+        src: "data/audio/Hamadine/tamalatacousticversion.mp3",
+        lyrics: null
+      },
+      {
+        title: "Ton Daron Ton Monde Amira",
+        src: "data/audio/Hamadine/ton_daron_ton_monde_amira.mp3",
+        lyrics: null
+      },
+      {
+        title: "Verba Arma Nostra",
+        src: "data/audio/Hamadine/verba_arma_nostra.mp3",
+        lyrics: null
+      },
+      {
+        title: "Voix Du Lien Bridge Of Hope",
+        src: "data/audio/Hamadine/voix_du_lien_bridge_of_hope.mp3",
+        lyrics: null
+      },
+      {
+        title: "Dis Moi Remix",
+        src: "data/audio/Hamadine/dis_moi_remix.mp3",
+        lyrics: `[Voix du monde – Couplet 1]
 Hamadine, dis-moi, c’est quoi ton histoire ?
 Je te vois loin des tiens, mais proche de l’espoir.
 Dans tes yeux, j’lis l’exil, la mémoire,
@@ -41,20 +88,17 @@ Hamadine, dis-moi, pourquoi tu tiens encore ?
 Je traîne mes blessures, j’crains pas les pas,
 Je suis fils du désert, j’marche avec foi.
 
-
 [Voix du monde – Couplet 2]
 Et Tamalat ? Ce 8 mars sans retour,
 Des enfants décapités, des cris sans secours.
 Le silence du monde, vide comme la lune,
 Et Ménaka noyée dans l’amertume.
 
-
 [Hamadine – Réponse]
 J’ai vu l’horreur, le sang, les regards,
 Mais personne n’a répondu à nos cauchemars.
 J’ai crié, supplié, prié sans bruit,
 Puis j’ai pris ma plume : j’ai choisi la vie.
-
 
 [Refrain 2 – en anglais]
 Far from where I come from,
@@ -65,13 +109,11 @@ Idaksahak, my people, my soul.
 Let’s stand together, united and whole.
 Mana tanamanakat ? Mana ?
 
-
 [Voix du monde – Couplet 3]
 Depuis 2023, t’as perdu un bras,
 Mais pas ta voix, ni ton combat.
 Takuba t’a lâché, sans merci, sans nom,
 Un “cringe” griffonné pour tout pardon.
-
 
 [Hamadine – Réponse]
 J’ai servi sans détour, j’ai donné sans gain,
@@ -79,13 +121,11 @@ Eux sont partis, moi j’reste en terrain.
 Je suis pas qu’un traducteur, je suis trait d’union,
 Entre l’exil, les camps, les illusions.
 
-
 [Pont – slam]
 Je parle dix langues, mais c’est la paix que j’traduis.
 Même amputé, j’avance et je construis.
 Je rêve d’un monde qu’on n’efface plus,
 Où nos morts ne seront pas des inconnus.
-
 
 [Final – Multilingue]
 Idaksahak, my people, my soul…
@@ -93,8 +133,11 @@ Let’s stand together, united and whole.
 Mana tanamanakat ? Mana ?
 والله ما ننسى، شعبنا مش وحده.
 (Par Dieu, on n’oublie pas. Notre peuple n’est pas seul.)`
-      } },
-      { title: "What He Left Me", src: "data/audio/Hamadine/what_he_left_me.mp3", lyrics: `1.
+      },
+      {
+        title: "What He Left Me",
+        src: "data/audio/Hamadine/what_he_left_me.mp3",
+        lyrics: `1.
 I haven’t kept everything — I’ve lost blood, lost limbs,
 But praise belongs to the One who gives and takes.
 
@@ -105,7 +148,6 @@ A clear mind, and a heart that remembers.
 3.
 He preserved my voice, my breath,
 And allowed me to walk again, even wounded.
-
 
 4.
 What He left me… is more than enough.
@@ -166,9 +208,6 @@ I have one life… but full intention.
 If He has taken, He knew.
 And what He left… is worth more than all.`
       }
-    ]
-  }
-]; }
     ]
   }
 ];
