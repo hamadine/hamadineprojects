@@ -2,17 +2,20 @@ document.addEventListener("DOMContentLoaded", () => {
   const motsComplet = typeof mots_final_489 !== "undefined" ? mots_final_489 : [];
   const interfaceData = typeof interface_langue !== "undefined" ? interface_langue : {};
   const histoireDocs = typeof histoire !== "undefined" ? histoire : [];
+  const albumsAudio = typeof audios !== "undefined" ? audios[0]?.pistes || [] : [];
+
   let mots = [...motsComplet];
   let idx = parseInt(localStorage.getItem('motIndex')) || 0;
   const langueTrad = localStorage.getItem('langueTrad') || 'fr';
-  const langueInterface = localStorage.getItem('langueInterface') || (navigator.language ? navigator.language.slice(0,2) : 'fr');
+  const langueInterface = localStorage.getItem('langueInterface') || (navigator.language ? navigator.language.slice(0, 2) : 'fr');
 
   const escapeHTML = str => str ? str.replace(/[&<>"']/g, c => ({
     '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#039;'
   }[c])) : '';
+
   const nettoie = str => str ? str.normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^\w\s]/g, "").toLowerCase() : '';
 
-  // Onglets
+  // Onglets navigation
   document.querySelectorAll('.tab-btn').forEach(btn => {
     btn.onclick = () => {
       document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
@@ -62,6 +65,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   if (mots.length) showMot(idx);
 
+  // Bot Chat
   let historiqueConversation = [];
 
   function afficheMsg(user, html) {
@@ -69,9 +73,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (!chatWindow) return;
     const div = document.createElement('div');
     div.className = `message ${user}`;
-    const label = user === 'bot'
-      ? (interfaceData[langueInterface]?.bot || 'Bot')
-      : 'Moi';
+    const label = user === 'bot' ? (interfaceData[langueInterface]?.bot || 'Bot') : 'Moi';
     div.innerHTML = `<strong>${label}:</strong> ${html}`;
     chatWindow.appendChild(div);
     chatWindow.scrollTop = chatWindow.scrollHeight;
@@ -85,50 +87,26 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const salutations = ["bonjour", "salut", "hello", "bonsoir", "bjr", "bsr", "salam"];
     if (salutations.some(s => clean.includes(s))) {
-      const replies = [
+      const replies = botInfo.salutations || [
         "Bonjour ! Comment puis-je vous aider aujourd'hui ?",
         "Salut ! Besoin d'un mot ou d'une histoire ?",
         "Hello ! Je suis là pour vous guider.",
         "Bienvenue ! Vous cherchez une traduction ou une info ?",
-        "Salam ! Envie de découvrir un mot en Tadaksahak ?",
-        "Bonjour à toi ! Tu peux me demander une traduction, une anecdote ou une info.",
-        "Je suis prêt, dis-moi un mot ou une question culturelle !",
-        "Bienvenue sur Tadaksahak Learning, besoin d’un coup de main ?",
-        "Tu peux me dire un mot en français, en anglais ou même en tadaksahak.",
-        "On explore ensemble ? Essaie 'un mot au hasard' ou 'raconte-moi une histoire'.",
-        "Hello camarade du désert ! Je suis tout ouïe.",
-        "C’est Hamadine, ton guide multilingue — que cherches-tu ?",
-        "Demande-moi un mot, une chanson, ou une info sur les Idaksahak.",
-        "Je suis ici pour traduire, expliquer, et partager. Que veux-tu apprendre aujourd’hui ?"
       ];
       return replies[Math.floor(Math.random() * replies.length)];
     }
 
     const caVa = ["comment ca va", "comment ça va", "ça va", "cv"];
     if (caVa.some(s => clean.includes(s))) {
-      const replies = [
-        "Je vais très bien, merci ! Et vous ?",
-        "Toujours prêt à discuter et à aider.",
-        "Je me porte à merveille, surtout quand on parle de la langue Tadaksahak !",
-        "Ça va bien alhamdoulillah !"
-      ];
-      return replies[Math.floor(Math.random() * replies.length)];
+      return "Je vais très bien, merci ! Et toi ?";
     }
 
     if (clean.includes("je ne sais pas") || clean.includes("aide") || clean.includes("j'hésite")) {
-      return "Pas de souci ! Voulez-vous que je vous propose un mot au hasard ou une histoire sur la langue ?";
-    }
-
-    if (clean.length < 6 || ["?", "quoi", "hein"].some(x => clean.includes(x))) {
-      return "Si vous cherchez une traduction, tapez un mot. Sinon, écrivez: donnes-moi une anecdote ou raconte-moi une histoire sur les Idaksahak !";
+      return "Pas de souci ! Demande-moi un mot ou une anecdote Tadaksahak.";
     }
 
     if ((botInfo.insultes || []).some(i => clean.includes(nettoie(i)))) {
       return botInfo.insulte || "Merci de rester poli.";
-    }
-
-    if ((botInfo.salutations_triggers || []).some(s => clean.includes(nettoie(s)))) {
-      return botInfo.salutations[Math.floor(Math.random() * (botInfo.salutations.length || 1))] || "Bonjour !";
     }
 
     for (const q in (botInfo.faq || {})) {
@@ -137,7 +115,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const m = motsComplet.find(m => nettoie(m.mot) === clean || nettoie(m.fr) === clean);
     if (m) {
-      return `Vous cherchez ? <strong>${m.mot}</strong> = ${escapeHTML(m[langueTrad] || m.fr)}${m.en ? ` / en anglais : ${escapeHTML(m.en)}` : ''}`;
+      return `📚 <strong>${m.mot}</strong> = ${escapeHTML(m[langueTrad] || m.fr)}${m.en ? ` / en: ${escapeHTML(m.en)}` : ''}`;
     }
 
     const hist = histoireDocs.find(h => clean.includes(nettoie(h.titre)));
@@ -148,11 +126,7 @@ document.addEventListener("DOMContentLoaded", () => {
       return out;
     }
 
-    if (historiqueConversation.length > 2) {
-      return "Voulez-vous découvrir un mot du dictionnaire ? Ou avez-vous une question sur les Idaksahak ?";
-    }
-
-    return `🤖 Je n'ai pas compris précisément. Essayez un mot du dictionnaire ou demandez une anecdote.`;
+    return "Je n’ai pas compris. Essaie un mot ou dis-moi 'une histoire'.";
   }
 
   function traiterSaisie() {
@@ -178,5 +152,47 @@ document.addEventListener("DOMContentLoaded", () => {
     window.scrollTo({ top: document.getElementById('chat').offsetTop, behavior: 'smooth' });
   });
 
-  console.log("✅ app.js harmonisé chargé.");
+  // 🎧 Génération dynamique des albums audio avec affichage des paroles
+  function genererAlbumsAudio() {
+    const conteneur = document.getElementById('audioContainer');
+    if (!conteneur || !albumsAudio.length) return;
+
+    const section = document.createElement('section');
+    const titre = document.createElement('h3');
+    titre.textContent = "Album Hamadine";
+    section.appendChild(titre);
+
+    albumsAudio.forEach((piste, index) => {
+      const bloc = document.createElement('div');
+      bloc.className = 'audio-bloc';
+      const idLyrics = `lyrics-${index}`;
+
+      bloc.innerHTML = `
+        <p><strong>${escapeHTML(piste.title)}</strong></p>
+        <audio controls src="${piste.src}" preload="none"></audio>
+        ${piste.lyrics ? `<button class="btnLyrics" data-target="${idLyrics}">🎵 Voir les paroles</button>
+        <pre id="${idLyrics}" class="lyrics-text" style="display:none;">${escapeHTML(piste.lyrics)}</pre>` : ''}
+      `;
+
+      section.appendChild(bloc);
+    });
+
+    conteneur.appendChild(section);
+
+    conteneur.querySelectorAll('.btnLyrics').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const id = btn.getAttribute('data-target');
+        const el = document.getElementById(id);
+        if (el) {
+          const isVisible = el.style.display === 'block';
+          el.style.display = isVisible ? 'none' : 'block';
+          btn.textContent = isVisible ? '🎵 Voir les paroles' : '🎵 Masquer les paroles';
+        }
+      });
+    });
+  }
+
+  genererAlbumsAudio();
+
+  console.log("✅ app.js harmonisé et chargé.");
 });
