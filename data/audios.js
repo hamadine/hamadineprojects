@@ -187,7 +187,54 @@ Et tant que j’respire… j’parlerai pour les miens.`
       {
         title: "Tabalitarabicversion",
         src: "data/audio/Hamadine/tabalitarabicversion.mp3",
-        lyrics: null
+        lyrics: `المقطع الأول :
+جاءت من بعيد، من أرضٍ ما نعرفها
+لكنها شافت فيّ، رجلًا ما يخدعها
+ما عندي مال، لا قصر ولا عنوان
+بس قلبي كبير، وحبها كان الأمان
+
+اللازمة (الكوبليه):
+يا تابلت، يا نور الليالي
+أنتِ بلسم جرحي، وأنتِ سؤالي
+في زمن قاسي، كنتِ الحضن والدفا
+حتى تحت شمس غاو، لقيتك وفا
+
+المقطع الثاني :
+خطبُوها أهل المال، وأهل الزينة والذهب
+لكنها اختارتني، رغم كل التعب
+عايشين يومنا، مرة تحت شجرة
+وهي تقول لي: "معك، ما في خسارة"
+
+اللازمة (الكوبليه):
+يا تابلت، يا تاج بلا عرش
+خلّيتي أيامي، من بعدك تفرش
+وأولادنا الأربعة، دليل المحبة
+كل خطوة معك، صارت عندي نعمة
+
+المقطع الثالث :
+الحساد حاكوا، والناس قالت كلام
+بس ما هزك ريح، ولا نقصتي احترام
+ولما نادى الوطن، رحت لتاكوبا جندي
+ونظراتك كانت درعي، في كل مَندي
+
+المقطع الرابع :
+لو بعدنا الزمان، أو سكّروا الدروب
+أنتِ قلبي وعيوني، وسري المكتوب
+ومهما تعبنا، أو لفّينا البلاد
+حبك بقلبي، ما له حدود أو ميعاد
+
+اللازمة الأخيرة :
+يا تابلت، يا نبض الحياة
+منك تعلمت، الوفا والثبات
+وإن جا يوم الرحيل، أو عمري فات
+أبقى أحبك، لو حتى في الممات
+
+الخاتمة :
+اسمها تابلت، وماهي من دمي
+لكنها صارت أغلى، من كل أهلي
+وفي أصعب الظروف، كانت سندي
+واليوم أكتب لها... حكاية وجدي
+        `
       },
       {
         title: "Tamalatacousticversion",
@@ -207,7 +254,96 @@ Et tant que j’respire… j’parlerai pour les miens.`
       {
         title: "Voix Du Lien Bridge Of Hope",
         src: "data/audio/Hamadine/voix_du_lien_bridge_of_hope.mp3",
-        lyrics: null
+        lyrics: `— "Voix du lien / Bridge of Hope" By Hamadine
+
+Intro : Aaaaahhan…
+Niamey, le soleil se lève sur nos fronts levés.
+Together we rise, in this mission we embrace,
+A chaque parole, on efface un peu la peine des déplacés.
+With every word, we give the voiceless a place.
+
+
+
+Couplet 1 : Le pont culturel
+
+Je suis Hamadine, voix des peuples oubliés,
+I walk with stories, through borders and fates untold.
+Pas un simple traducteur, mais un trait d’union sacré,
+My words build bridges stronger than gold.
+
+Entre l’espoir et la peur, je traduis la lumière,
+In chaos and doubt, I speak what hearts can’t bear.
+Quand les langues s’emmêlent, moi je tends la main,
+In every silence, I plant a sign.
+
+Je suis ce lien qui apaise les âmes déplacées,
+I stand, unshaken, where despair has stayed.
+De la brousse aux tentes, des camps aux guichets,
+Each phrase I carry, a life relayed.
+
+
+Couplet 2 : Dédicaces et équipe
+
+Kabirou, leader ferme, vision dans le regard,
+With Patiente and Evans, guidance never hard.
+Ils forment nos esprits à l’orientation,
+They light the path with dedication.
+
+Les belles dames d’Husseina et son staff fidèle,
+Their hearts bloom like flowers in the Sahel.
+Oumar Garba, sage dans l’action,
+And Hussein, voice of translation’s passion.
+
+Garba, discret, mais logistique en feu,
+Behind every move, he pulls us through.
+Moi, Hamadine, humble parmi les vaillants,
+Still I rise, where words are most gallant.
+
+
+Refrain (alterné)
+
+Rien qu’un homme dans le vent, mais je tiens le fil,
+Just a man in the storm, but I hold the line.
+Là où tout s’efface, je rends le monde subtil,
+Where voices vanish, I bring back time.
+
+Pas d’armes, mais des phrases forgées dans le feu,
+No guns, just truth in words I renew.
+L’OIM, notre phare, notre feu sacré,
+IOM — the light we carry through.
+
+
+
+Pont (Bridge)
+
+J’ai vu l’exil pleurer sans langue ni drapeau,
+I’ve seen exile whisper in unheard echoes.
+Mais j’ai traduit l’espoir dans les regards flous,
+And gave hope shape when nothing else grew.
+
+À Niamey, chaque voix compte, chaque histoire vit,
+In Niamey, every voice matters, every tale breathes.
+Et mon rôle, c’est plus qu’un métier, c’est un cri,
+More than a job — it’s a soul that believes.
+
+
+
+Outro (Final)
+
+Je suis Hamadine, fils des dunes, pont humain,
+I’m Hamadine, desert-born, yet far I’ve come.
+Et tant que l’OIM se bat, je tends mes mains,
+As long as IOM fights, I’ll never be done.
+
+Pour chaque migrant, chaque regard en errance,
+For every migrant with a glance of loss,
+Je resterai ce chant, cette dernière chance.
+I’ll be the song that bears their voice across.`
+
+
+
+
+
       },
       {
         title: "Dis Moi Remix",
