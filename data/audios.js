@@ -15,7 +15,103 @@ const audios = [
       {
         title: "Hamadine Dis Moi",
         src: "data/audio/Hamadine/hamadine_dis_moi.mp3",
-        lyrics: null
+        lyrics: `[Couplet 1 ]
+Hamadine, dis-moi, c’est quoi ton histoire ?
+J’te vois loin des tiens, mais proche de l’espoir.
+Dans ton regard, j’lis des années d’exil,
+Mais aussi la force d’un peuple fragile.
+
+Toi, fils du désert, parole des sans-voix,
+Tu portes les Idaksahak, fièrement, droit.
+Langue de Tadaksahak, cœur partagé,
+T’as vu ton peuple trop souvent rejeté.
+
+[Hamadine – réponse]
+Ouais frère, j’viens d’un monde qu’on voit rarement,
+Au nord du Mali, l’oubli, le vent.
+Les Idaksahak, peuple fier mais meurtri,
+Pris entre silence, armes et non-dits.
+
+J’suis médiateur, j’tisse entre les cœurs,
+Mais parfois j’saigne, derrière mes valeurs.
+On parle pas de nous, sauf quand on tombe,
+Mais moi j’porte leur nom jusqu’à la tombe.
+
+[Refrain ]
+ Hamadine, dis-moi, pourquoi tu restes debout ?
+(Hamadine) Parce que si j’flanche, qui va parler pour nous ?
+ Tu traînes la douleur, mais t’as l’âme d’un soldat.
+Je suis fils du désert, j’marche avec foi.
+
+[Couplet 2 ]
+Hamadine, raconte-moi Tamalat, ce jour noir,
+Le 8 mars deux-mille-vingt-deux, gravé dans ta mémoire.
+Des innocents tombés, des cris dans les dunes,
+Le silence du monde résonne comme une lacune.
+
+T’étais là, témoin de l’horreur, du carnage,
+Un peuple abandonné dans l’ombre des mirages.
+Et malgré ça, t’as gardé ta voix,
+Pour crier justice, sans haine ni loi.
+
+
+J’oublierai jamais les corps sur le sable,
+Ce jour-là, le ciel était insoutenable.
+Des femmes, des enfants, fauchés sans raison,
+Et le monde regarde sans compassion.
+
+J’ai pleuré, j’ai crié, mais j’ai pas fui,
+J’ai pris ma plume, j’ai choisi la vie.
+Si j’raconte pas, qui l’fera pour eux ?
+J’ai la mémoire lourde, mais le cœur pieux.
+
+[Refrain 2]
+Far, from where I come from. 
+
+My people are craving. 
+
+A leadership is taking form.
+
+Children are still crying. 
+
+Mothers are dying and fathers are missing. 
+
+My people did nothing wrong.
+
+But their hope is shattered. 
+
+Idaksahak, my people, my soul.
+
+Let's stand together, united to be strong. Mana tanamanakat?
+
+Mana? Mana?
+
+[Pont ]
+Tu parles dix langues, mais c’est la paix qu’tu traduis,
+Entre les armes, t’essayes d’construire un appui.
+T’es pas qu’un interprète, t’es le lien oublié,
+Celui qui rêve encore d’un monde apaisé.
+
+
+J’suis pas parfait, j’suis blessé, j’suis vivant,
+Mais j’refuse l’étiquette de survivant.
+J’veux bâtir, enseigner, transmettre,
+Que les miens marchent fiers, sans devoir se soumettre.
+
+
+
+Idaksahak, my people, my soul.
+
+Let's stand together, united to be strong. Mana tanamanakat?
+
+Mana? Mana?
+
+[Outro –murmuré]
+Je suis Hamadine…
+Fils d’un peuple effacé, mais jamais soumis…
+Idaksahak dans l’âme, la paix comme chemin…
+Et tant que j’respire… j’parlerai pour les miens.`
+
       },
       {
         title: "Hommage A Moussa",
