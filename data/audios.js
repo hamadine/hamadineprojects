@@ -5,7 +5,63 @@ const audios = [
       {
         title: "A Chaque Instant Tamalat By Hamadine",
         src: "data/audio/Hamadine/a_chaque_instant_tamalat_by_hamadine.mp3",
-        lyrics: null
+        lyrics: `
+
+
+
+(Paroles de Hamadine AG Moctar)
+
+Couplet 1
+Je n’attends pas un an, ni un mois pour pleurer,
+Les cendres sont encore chaudes dans mes pensées.
+Tamalat, ton nom résonne à chaque pas,
+À chaque silence, chaque souffle, je suis là.
+
+Pas besoin de date dans un calendrier,
+Votre drame est gravé dans mes veines déchirées.
+Ce n’est pas un anniversaire qu’on commémore,
+Mais une blessure qui saigne encore plus fort.
+
+Refrain
+🌑 À chaque instant, je vous rends hommage,
+Sans fleurs, sans discours, mais avec courage.
+Une larme, un souffle, une prière intérieure,
+Tamalat, je vous pleure à la seconde, à toute heure.
+Pas une fois l’an, mais chaque battement d’âme,
+Inchinane, Emis, Anderamboukane — même flamme.
+
+Couplet 2
+On débat sur les dates, sur ce qu’il faut faire,
+Mais la douleur ne demande pas de repère.
+Elle surgit au détour d’un mot, d’un souvenir,
+Et je vous rends justice par mon seul soupir.
+
+Chaque cri d’enfant, chaque regard désert,
+Me rappelle vos ombres dans la lumière.
+Ce monde oublie, moi je garde le feu,
+Un hommage à chaque regard vers les cieux.
+
+
+Pont
+🎶 Ce n’est pas une mode, ni une obligation,
+Mais un serment d’âme, sans célébration.
+Je m'en souviens dans mes nuits sans repos,
+Je vous evoque quand mes mots deviennent sanglots…
+
+
+Refrain final
+🌑 À chaque instant, je vous rends hommage,
+Pas dans le bruit, mais dans le mirage.
+Une prière pour chaque étoile tombée,
+Vos noms en moi, pour l’éternité.
+Tamalat, ton nom est un verset sacré,
+Je vous pleure… chaque jour… sans jamais compter.`
+
+
+
+
+
+
       },
       {
         title: "Ce Que Dieu M A Laisse",
