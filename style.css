@@ -274,3 +274,40 @@ footer::after {
   font-size: 0.95em;
   border-radius: 4px;
 }
+.bio-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #f9f9f9;
+  padding: 1em;
+  border-radius: 8px;
+  margin-top: 1em;
+  text-align: center;
+}
+
+.bio-photo {
+  max-width: 150px;
+  border-radius: 50%;
+  margin-bottom: 1em;
+  box-shadow: 0 0 5px rgba(0,0,0,0.2);
+}
+
+.bio-text {
+  max-width: 600px;
+}
+
+.linkedin-button {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 10px 16px;
+  background-color: #0a66c2;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 5px;
+  font-weight: bold;
+  transition: background 0.3s ease;
+}
+
+.linkedin-button:hover {
+  background-color: #084d9c;
+}
