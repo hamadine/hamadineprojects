@@ -320,3 +320,41 @@ html[data-theme='dark'] .bio-text p {
 .bio-text p strong {
   color: #0a66c2;
 }
+.menu-deroulant {
+  text-align: center;
+  margin: 1rem auto;
+  padding: 0.5rem;
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(5px);
+  border-radius: 8px;
+  width: 90%;
+  max-width: 500px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.05);
+}
+
+.menu-deroulant select {
+  width: 100%;
+  padding: 0.8rem;
+  font-size: 1rem;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  background: white;
+  color: #333;
+}
+
+@media (prefers-color-scheme: dark) {
+  .menu-deroulant {
+    background: rgba(34, 34, 34, 0.7);
+  }
+
+  .menu-deroulant select {
+    background: #222;
+    color: #eee;
+    border: 1px solid #555;
+  }
+}
+.menu-deroulant {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
