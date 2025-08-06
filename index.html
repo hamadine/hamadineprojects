@@ -183,7 +183,27 @@
     </section>
 
   </main>
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const select = document.getElementById('sectionSelector');
+    const sections = document.querySelectorAll('main > section');
 
+    function afficherSection(id) {
+      sections.forEach(sec => sec.hidden = sec.id !== id);
+      localStorage.setItem('lastSection', id);
+    }
+
+    if (select) {
+      select.addEventListener('change', () => {
+        afficherSection(select.value);
+      });
+
+      const last = localStorage.getItem('lastSection') || 'accueil';
+      select.value = last;
+      afficherSection(last);
+    }
+  });
+      </script>
   <button id="toggleChatBot" class="floating-chat-btn">💬</button>
 
   <footer>
