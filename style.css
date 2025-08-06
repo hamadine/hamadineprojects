@@ -10,7 +10,25 @@
   --text: #222;
   --shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
+.bio-container {
+  background-color: #1f1f1f;
+}
 
+.bio-text {
+  color: #f0f0f0;
+}
+
+.bio-text p {
+  color: #f0f0f0;
+}
+
+.bio-text strong {
+  color: #86c5ff;
+}
+
+.bio-text em {
+  color: #b0d4ff;
+}
 html {
   font-family: 'Segoe UI', 'Roboto', sans-serif;
   font-size: 16px;
