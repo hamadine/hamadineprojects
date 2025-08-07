@@ -358,3 +358,50 @@ html[data-theme='dark'] .bio-text p {
   top: 0;
   z-index: 100;
 }
+.actualite {
+  margin-bottom: 2rem;
+  padding: 1rem;
+  background: var(--bg-article, #f9f9f9);
+  border-radius: 8px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+}
+
+.galerie-actualite {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 10px;
+  margin: 1rem 0;
+}
+
+.galerie-actualite img {
+  width: 100%;
+  height: auto;
+  border-radius: 6px;
+  object-fit: cover;
+  box-shadow: 0 0 6px rgba(0,0,0,0.1);
+}
+.share-buttons {
+  margin-top: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+}
+
+.share-buttons span {
+  font-weight: bold;
+}
+
+.share-btn {
+  background: #eee;
+  color: #333;
+  padding: 5px 10px;
+  border-radius: 5px;
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: background 0.3s;
+}
+
+.share-btn:hover {
+  background: #ccc;
+}
