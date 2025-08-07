@@ -149,10 +149,31 @@
       <article class="actualite">
   <h3>🌍 Première initiative solidaire du Bureau des Jeunes Idaksahak à Gao</h3>
   <p><strong>Gao, 7 août 2025 —</strong> À peine installé, le tout nouveau Bureau des jeunes Idaksahak de Gao lance un signal fort en faveur des déplacés de Ménaka réfugiés à Gao.</p>
+
+  <div class="galerie-actualite">
+    <img src="images/WhatsApp-Image-2025-08-07-a-11.57.16_fa38ce4b.jpg" alt="Distribution à Gao">
+    <img src="images/WhatsApp-Image-2025-08-07-a-11.57.21_c78289a1-1536x864.jpg" alt="Soutien aux déplacés">
+    <img src="images/WhatsApp-Image-2025-08-07-a-11.57.18_043e01e2.jpg" alt="Jeunes Idaksahak solidaires">
+    <img src="images/45-768x432.jpg" alt="Aide humanitaire à Gao">
+  </div>
+
   <p>Dès les premières heures de leur mandat, ces jeunes engagés ont organisé une <strong>distribution de vivres, d’articles essentiels et de produits de première nécessité</strong> à plusieurs familles en situation de grande précarité. Ce geste humanitaire illustre une volonté claire : <em>agir concrètement, là où le besoin est le plus pressant</em>.</p>
+
   <p>Au-delà de l’aide matérielle, cette action symbolise <strong>le réveil d’une jeunesse responsable</strong>, consciente de son rôle dans la reconstruction sociale et la cohésion communautaire. Elle marque le début d’une nouvelle dynamique, portée par les valeurs d’<strong>unité, de dignité et de solidarité</strong>.</p>
+
   <p>En posant cet acte dès le départ, le Bureau trace une ligne claire : <em>celle d’un engagement citoyen au service des siens</em>.</p>
+
   <p><em>Un exemple inspirant à suivre.</em></p>
+
+  <!-- BOUTON DE PARTAGE (DOIT ÊTRE DANS L'ARTICLE) -->
+  <div class="share-buttons">
+    <span>Partager :</span>
+    <a class="share-btn whatsapp" href="#" title="Partager sur WhatsApp" target="_blank">WhatsApp</a>
+    <a class="share-btn facebook" href="#" title="Partager sur Facebook" target="_blank">Facebook</a>
+    <a class="share-btn twitter" href="#" title="Partager sur Twitter" target="_blank">Twitter</a>
+    <a class="share-btn linkedin" href="#" title="Partager sur LinkedIn" target="_blank">LinkedIn</a>
+    <a class="share-btn email" href="#" title="Partager par email" target="_blank">Email</a>
+  </div>
       </article>
     </section>
 
@@ -211,6 +232,18 @@
       afficherSection(last);
     }
   });
+  <script>
+  document.querySelectorAll('.share-buttons').forEach(section => {
+    const pageURL = encodeURIComponent(window.location.href);
+    const pageTitle = encodeURIComponent(document.title);
+
+    section.querySelector('.whatsapp').href = `https://wa.me/?text=${pageTitle}%20${pageURL}`;
+    section.querySelector('.facebook').href = `https://www.facebook.com/sharer/sharer.php?u=${pageURL}`;
+    section.querySelector('.twitter').href = `https://twitter.com/intent/tweet?text=${pageTitle}&url=${pageURL}`;
+    section.querySelector('.linkedin').href = `https://www.linkedin.com/sharing/share-offsite/?url=${pageURL}`;
+    section.querySelector('.email').href = `mailto:?subject=${pageTitle}&body=Voici un lien intéressant : ${pageURL}`;
+  });
+</script>
       </script>
   <button id="toggleChatBot" class="floating-chat-btn">💬</button>
 
