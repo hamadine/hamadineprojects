@@ -231,20 +231,22 @@
       select.value = last;
       afficherSection(last);
     }
-  });
-  <script>
-  document.querySelectorAll('.share-buttons').forEach(section => {
-    const pageURL = encodeURIComponent(window.location.href);
-    const pageTitle = encodeURIComponent(document.title);
 
-    section.querySelector('.whatsapp').href = `https://wa.me/?text=${pageTitle}%20${pageURL}`;
-    section.querySelector('.facebook').href = `https://www.facebook.com/sharer/sharer.php?u=${pageURL}`;
-    section.querySelector('.twitter').href = `https://twitter.com/intent/tweet?text=${pageTitle}&url=${pageURL}`;
-    section.querySelector('.linkedin').href = `https://www.linkedin.com/sharing/share-offsite/?url=${pageURL}`;
-    section.querySelector('.email').href = `mailto:?subject=${pageTitle}&body=Voici un lien intéressant : ${pageURL}`;
+    // ✅ DANS le DOMContentLoaded
+    document.querySelectorAll('.share-buttons').forEach(section => {
+      const pageURL = encodeURIComponent(window.location.href);
+      const pageTitle = encodeURIComponent(document.title);
+
+      section.querySelector('.whatsapp').href = `https://wa.me/?text=${pageTitle}%20${pageURL}`;
+      section.querySelector('.facebook').href = `https://www.facebook.com/sharer/sharer.php?u=${pageURL}`;
+      section.querySelector('.twitter').href = `https://twitter.com/intent/tweet?text=${pageTitle}&url=${pageURL}`;
+      section.querySelector('.linkedin').href = `https://www.linkedin.com/sharing/share-offsite/?url=${pageURL}`;
+      section.querySelector('.email').href = `mailto:?subject=${pageTitle}&body=Voici un lien intéressant : ${pageURL}`;
+    });
   });
 </script>
-      </script>
+
+  
   <button id="toggleChatBot" class="floating-chat-btn">💬</button>
 
   <footer>
